@@ -1,0 +1,16 @@
+<div class="new-message" [ngStyle]="{'width' : this.styles.newMessageWidth}">
+  <form [formGroup]="contentForm" (submit)="onSubmit()">
+    <textarea formControlName="newMessageContent" placeholder="Napisz wiadomość" [ngStyle]="{'width' : this.styles.newMessageFormTextAreaWidth}"></textarea>
+    <div>
+      <div class="file-btn-wrapper">
+        <svg>
+          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
+        </svg>
+
+        <input type="file" name="filename" accept="image/jpeg, image/png" formControlName="image" style="opacity: 0;" [ngStyle]="{'top' : this.styles.newMessageFormFileBtnWrapperInputTop}">
+      </div>
+
+      <button type="submit">Wyślij</button>
+    </div>
+  </form>
+</div>

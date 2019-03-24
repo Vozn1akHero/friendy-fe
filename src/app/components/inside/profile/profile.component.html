@@ -1,0 +1,9 @@
+<ng-template [ngIf]="this._showComments">
+    <router-outlet></router-outlet>
+</ng-template>
+
+
+<div class="profile">
+    <app-profile-header [activeSettings]="this._activeSettings" (openProfileInnerSettings)="openProfileInnerSettings($event)"></app-profile-header>
+    <app-profile-main-content [activeSettings]="this._activeSettings"></app-profile-main-content>
+</div>

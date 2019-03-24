@@ -1,0 +1,14 @@
+<div class="messages__new-message-panel">
+  <form [formGroup]="newMessage" class="messages__new-message-panel__form">
+      <span class="messages__new-message-panel__form__friends-list custom-dropdown">
+          <select formControlName="chosenFriend">
+            <option value="" hidden>Wybierz znajomego</option>
+            <option value="1">Mariusz Krakowski</option>
+          </select>
+      </span>
+
+      <textarea cols="32" rows="6" formControlName="messageContent" placeholder="Napisz wiadomość"></textarea>
+  
+      <button type="submit">Wyślij</button>
+  </form>
+</div>

@@ -1,0 +1,83 @@
+<div class="app">
+  <nav class="navigation">
+    <div class="navigation__header-buttons">
+        <button class="navigation__header-buttons__logout-btn" (click)="logOut()">
+            <svg class="navigation__buttons__icon">
+                <use xlink:href="../../../assets/images/icon/symbol-defs.svg#icon-exit"></use>
+            </svg>
+        </button>
+
+        <a class="navigation__header-buttons__settings-btn" routerLink="settings">
+            <svg class="navigation__buttons__icon">
+                <use xlink:href="../../../assets/images/icon/symbol-defs.svg#icon-cog"></use>
+            </svg>
+        </a>
+    </div>
+
+    <a routerLink="home" class="navigation__logo">
+        <!--<img src="../../../assets/images/logo-white.png" alt="Friendy logo" class="navigation__logo">-->
+        <img src="../../../../assets/images/logoanim/1.png" alt="Friendy logo" class="navigation__logo--1" draggable="false">
+        <img src="../../../../assets/images/logoanim/2.png" alt="Friendy logo" class="navigation__logo--2" draggable="false">
+    </a>
+   
+    <div class="navigation__buttons">
+        <div class="navigation__buttons__profile">
+            
+            <a routerLink="profile">
+                <svg class="navigation__buttons__icon">
+                    <use xlink:href="../../../assets/images/icon/symbol-defs.svg#icon-user"></use>
+                </svg>
+                <span>Profil</span>
+            </a>
+        </div>
+        <div class="navigation__buttons__friends">
+            <a routerLink="friends">
+                <svg class="navigation__buttons__icon">
+                    <use xlink:href="../../../assets/images/icon/symbol-defs.svg#icon-group"></use>
+                </svg>
+                <span>Znajomi</span>
+            </a>
+        </div>
+        <div class="navigation__buttons__messages">
+            <a routerLink="messages">
+              <svg class="navigation__buttons__icon">
+                  <use xlink:href="../../../assets/images/icon/symbol-defs.svg#icon-bubble"></use>
+              </svg>
+              <span>Wiadomości</span>
+            </a>
+        </div>
+        <div class="navigation__buttons__events">
+            <a routerLink="events">
+              <svg class="navigation__buttons__icon">
+                  <use xlink:href="../../../assets/images/icon/symbol-defs.svg#icon-calendar"></use>
+              </svg>
+              <span>Wydarzenia</span>
+            </a>
+        </div>
+        <div class="navigation__buttons__groups">
+            <a routerLink="groups">
+              <svg class="navigation__buttons__icon">
+                  <use xlink:href="../../../assets/images/icon/symbol-defs.svg#icon-make-group"></use>
+              </svg>
+              <span>Grupy</span>
+            </a>
+        </div>
+        <div class="navigation__buttons__home">
+            <a routerLink="home">
+              <svg class="navigation__buttons__icon">
+                  <use xlink:href="../../../assets/images/icon/symbol-defs.svg#icon-home"></use>
+              </svg>
+              <span>Dom</span>
+            </a>
+        </div>
+      
+    </div>
+
+    <app-footer></app-footer>
+
+  </nav>
+
+  <div class="page">
+      <router-outlet></router-outlet>
+  </div>
+</div>

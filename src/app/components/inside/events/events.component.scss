@@ -1,0 +1,28 @@
+@import '../../../../assets/sass/base/variables';
+
+@import '../../../../assets/sass/components/checkbox';
+
+@import '../../../../assets/sass/abstracts/mixins';
+
+
+.events{
+    display: flex;
+    width: calc(100vw - #{$navigation-width});
+    padding-top: 5rem;
+    justify-content: center;
+
+    &__left{
+        display: flex;
+        flex-direction: column;
+        width: 48%;
+        height: fit-content;
+        background: $color-bg-grey-footer;
+    }
+
+    &__right{
+        width: 35%;
+        margin-left: 4rem;
+    }
+ 
+}
+

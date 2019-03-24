@@ -1,0 +1,13 @@
+<div class="search">
+  <div class="search--inner-wrapper">
+    <form [formGroup]="contentForm" (click)="onSearch()">
+      <input formControlName="inputContent" type="text" placeholder="Szukaj" class="search__input">
+
+      <button class="search__btn">
+        <svg>
+          <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>

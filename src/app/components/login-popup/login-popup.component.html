@@ -1,0 +1,26 @@
+<div class="login-popup popup">
+  <div class="login-popup__login-form popup__form">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <button class="popup__close-btn" (click)="closeLogInPopup()">
+          <svg class="close_icon">
+              <use xlink:href="../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+          </svg>
+      </button>
+
+      <div class="login-popup__login-form__email">
+          <input type="text" formControlName="email" placeholder="Email">
+      </div>
+  
+      <div class="login-popup__login-form__password">
+          <input type="password" formControlName="password" placeholder="Hasło">
+      </div>
+      
+      <button class="login-popup__login-form__button" type="submit">Zaloguj</button>
+  
+      <div class="login-popup__login-form__pass-recovery">
+          <p class="login-popup__login-form__pass-recovery--text">zapomniałeś(aś) hasła?</p>
+          <a class="login-popup__login-form__pass-recovery--link">wtedy kliknij tu</a>
+      </div>
+      </form>
+  </div>
+  </div>

@@ -1,0 +1,24 @@
+@import '../../../../../assets/sass/base/variables';
+
+.events__new{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //padding: 1rem;
+
+    &__btn{
+        border: none;
+        background: linear-gradient(0.85turn, rgb(255, 240, 0), rgb(0, 186, 255));
+        color: $color-white;
+        font-weight: 700;
+        height: 2.6rem;
+        width: 12rem;
+        border-radius: 2rem;
+        transition: all .3s;
+
+        &:hover{
+            width: 13rem;
+        }
+    }
+}
+

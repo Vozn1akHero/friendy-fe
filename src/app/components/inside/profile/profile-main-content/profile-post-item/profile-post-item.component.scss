@@ -1,0 +1,100 @@
+@import '../../../../../../assets/sass/base/variables';
+
+.profile {
+  &__main-content {
+    &__records {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &__item {
+        display: flex;
+        width: 405px;
+        flex-direction: column;
+        margin-bottom: 2rem;
+
+        &__upper-wrapper {
+          display: flex;
+
+        }
+
+        &__avatar {
+          width: 3.5rem;
+          height: 3.5rem;
+          //-webkit-clip-path: circle(50% at 50% 50%);
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+
+          img {
+            height: 100%;
+          }
+        }
+
+        &__content {
+          font-size: .8rem;
+          width: 330px;
+          margin-left: 1rem;
+          word-break: break-all;
+        }
+
+
+        &__bottom-wrapper {
+          display: flex;
+          justify-content: space-between;
+          width: 330px;
+          margin-top: .3rem;
+          margin-left: 70px;
+        }
+
+        &__comments, &__likes {
+          display: flex;
+          text-decoration: none;
+
+          svg {
+            height: 1.5rem;
+            width: 1.5rem;
+          }
+
+          span {
+            font-size: .6rem;
+            display: flex;
+            align-self: center;
+            margin-left: .3rem;
+          }
+        }
+
+        &__comments {
+          svg {
+            fill: $color-grey-light-2;
+          }
+
+          span {
+            color: $color-grey-light-2;
+          }
+        }
+
+        &__likes {
+          transform: translateX(-5rem);
+
+          svg {
+            fill: $color-pink;
+          }
+
+          span {
+            color: $color-pink;
+          }
+        }
+
+        &__date {
+          font-size: .6rem;
+          display: flex;
+          align-self: center;
+          color: $color-grey-light-2;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@import '../../../../../../assets/sass/base/variables';
+
+.dialog__chats{
+    @import '../../../../../../assets/sass/abstracts/mixins';
+    height: 300px;
+    @include cardview;
+    background-color: $color-bg-grey-footer;
+}

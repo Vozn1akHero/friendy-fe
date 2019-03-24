@@ -1,0 +1,14 @@
+<div class="groups">
+  <app-group-creation *ngIf="this.groupCreationPopupOpened" (closeGroupCreationPopup)="openOrCloseGroupCreationPopup()"></app-group-creation>
+
+  <div class="groups__left">
+      <app-groups-list></app-groups-list>
+  </div>
+
+  <div class="groups__right">
+      <app-new-group-btn (openGroupCreationPopupInParent)="openOrCloseGroupCreationPopup()"></app-new-group-btn>
+      <app-search-groups ></app-search-groups>
+  </div>
+  
+  
+</div>

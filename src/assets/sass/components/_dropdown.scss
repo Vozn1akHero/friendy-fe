@@ -1,0 +1,62 @@
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+
+    & select {
+        background-color: $color-white;
+        color: $color-grey-light;
+        font-size: 1rem;
+        padding: .5em;
+        padding-left: 1rem;
+        padding-right: 2.5em;
+        border: 0;
+        margin: 0;
+        border-radius: 3px;
+        text-indent: 0.01px;
+        text-overflow: '';
+        -webkit-appearance: button;
+
+        &:focus{
+            outline: none;
+            border: none;
+        }
+    }
+
+    &::before, &::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+    }
+    
+    &::after {
+        content: "\25BC";
+        height: 1em;
+        font-size: .8em;
+        line-height: 1;
+        right: .45em;
+        top: 26%;
+    }
+    
+    &::before {
+        width: 2em;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 0 3px 3px 0;
+    }
+    
+    & select[disabled] {
+        color: rgba(0,0,0,.3);
+    }
+    
+    & select[disabled]::after {
+        color: rgba(0,0,0,.1);
+    }
+    
+    &::after {
+        color: rgba(0,0,0,.4);
+    }
+
+    
+}

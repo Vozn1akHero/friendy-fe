@@ -1,0 +1,86 @@
+<div class="profile__bg__alter" *ngIf="this.activeSettings">
+  <div class="profile__bg__alter__btn-info">
+          <svg>
+              <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
+          </svg>
+          <span>
+              Zmień zdjęcie
+          </span>
+  </div>
+
+  <div class="profile__bg__alter__btn">
+      <input type="file" name="filename" accept="image/jpeg, image/png">
+      <div class="profile__bg__alter__btn__bg"></div>
+  </div>
+</div>
+
+
+<div class="profile__bg">
+  <figure>
+    <img src="../../../../assets/images/test/clouds-lake-lake-mcdonald-259881.jpg" alt="">
+  </figure>
+</div>
+
+
+<div class="profile__user-info__wrapper" [ngStyle]="{'transform': this.activeSettings ? 'translateX(-85%)' : 'translateX(0)', 
+  'background-image': this.activeSettings ? 'linear-gradient(0.45turn, #fff000, #00baff)' : 'linear-gradient(0.85turn, #fff000, #00baff)'}">
+
+  <div class="profile__user-info">
+    <!--<img src="../../../assets/images/test/adult-background-beard-941693.jpg" class="profile__user-info__avatar">-->
+
+    <div class="profile__settings">
+      <button class="profile__settings__accept-changes-btn" *ngIf="this.activeSettings">
+          <svg>
+              <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-checkmark"></use>
+          </svg>
+      </button>
+      <button class="profile__settings__open-close-btn" (click)="openProfileInnerSettingsChild()">
+          <svg [ngStyle]="{'visibility': !this.activeSettings ? 'visible' : 'hidden'}">
+              <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cog"></use>
+          </svg>
+          <svg [ngStyle]="{'visibility': this.activeSettings ? 'visible' : 'hidden'}">
+              <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+          </svg>
+      </button>
+    </div>
+
+
+    <div class="profile__user-info__avatar__settings" *ngIf="this.activeSettings">
+          <input type="file" name="filename" accept="image/jpeg, image/png">
+          <button class="profile__user-info__avatar__settings__btn">
+              <svg>
+                  <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
+              </svg>
+              <span>
+                  Zmień zdjęcie
+              </span>
+          </button>
+    </div>
+
+    <figure class="profile__user-info__avatar">
+      <img src="../../../../assets/images/test/adult-background-beard-941693.jpg" alt="">
+    </figure>
+
+
+    <div class="profile__user-info__settings" *ngIf="this.activeSettings">
+          <input type="text" class="profile__user-info__settings__desc" placeholder="Co słychać?">
+          <input type="text" class="profile__user-info__settings__location" placeholder="Wpisz miasto">
+    </div>
+
+
+    <h2 class="profile__user-info__name" [ngStyle]="{'opacity': this.activeSettings ? '0.1' : '1'}">Tomasz Kowalski</h2>
+    <p class="profile__user-info__desc">Siedzę i nic nie robię</p>
+    <div class="profile__user-info__location">
+      <svg class="navigation__buttons__icon">
+        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-location"></use>
+      </svg>
+      <span>Gdańsk</span>
+    </div>
+    <div class="profile__user-info__joindate" [ngStyle]="{'opacity': this.activeSettings ? '0.1' : '1'}">
+      <svg class="navigation__buttons__icon">
+        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-calendar"></use>
+      </svg>
+      <span>12.02.2019</span>
+    </div>
+  </div>
+</div>

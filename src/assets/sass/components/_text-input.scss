@@ -1,0 +1,13 @@
+input{
+    height: 44px;
+    font-size: .85rem;
+
+    padding: 1.1rem 1.05rem;
+    outline: none;
+    border: none;
+    
+    &:focus{
+        outline: none;
+        
+    }
+}

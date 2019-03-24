@@ -1,0 +1,22 @@
+<!--<div class="new-post-or-msg">
+  <form [formGroup]="newPost" (submit)="createPost()">
+    <textarea formControlName="newMessageContent" placeholder="Napisz wiadomość"></textarea>
+    <div>
+      <div class="file-btn-wrapper">
+          
+            <svg>
+                <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
+            </svg>
+          
+      
+          <input type="file" name="filename" accept="image/jpeg, image/png" formControlName="image" style="opacity: 0;">
+      </div>
+      
+      <button type="submit">Wyślij</button>
+    </div>
+  </form>
+</div>-->
+
+<app-new-message-form [styles]="{newMessageWidth: '560px',
+    newMessageFormTextAreaWidth : '38em',
+    newMessageFormFileBtnWrapperInputTop: '4px'}" (event)="newPostEvent($event)"></app-new-message-form>

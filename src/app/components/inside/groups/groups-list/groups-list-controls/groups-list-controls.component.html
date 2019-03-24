@@ -1,0 +1,9 @@
+<div class="groups__controls">
+  <button class="groups__controls__all-btn" (click)="showConcreteTypeOfGroups('all')" [ngClass]="{'activeButton': typeOfGroupsToShow == 'all' ? true : false}">
+    Wszystkie grupy
+  </button>
+
+  <button class="groups__controls__my-events-btn" (click)="showConcreteTypeOfGroups('my')" [ngClass]="{'activeButton': typeOfGroupsToShow == 'my' ? true : false}">
+    Moje grupy
+  </button>
+</div>

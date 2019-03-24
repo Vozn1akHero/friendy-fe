@@ -1,0 +1,14 @@
+<div class="events">
+    <app-event-creation *ngIf="this.eventCreationPopupOpened" (closeEventCreationPopup)="openOrCloseEventCreationPopup()"></app-event-creation>   
+
+    <div class="events__left">
+        <app-events-list></app-events-list>
+    </div>
+
+    <div class="events__right">
+        <app-new-event-btn (openEventCreationPopupInParent)="openOrCloseEventCreationPopup()"></app-new-event-btn>
+        <app-search-events ></app-search-events>
+    </div>
+    
+    
+</div>

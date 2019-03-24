@@ -1,0 +1,73 @@
+<div class="events__event-creation-popup popup-2">
+  <div class="popup-2__form">
+      <form [formGroup]="eventCreationForm" (ngSubmit)="onSubmit()" class="events__event-creation-popup__event-creation-form">
+        <button class="popup-2__close-btn" (click)="closePopup()">
+            <svg class="close_icon">
+                <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+            </svg>
+        </button>
+
+        
+        <input type="text" formControlName="eventName" class="events__event-creation-popup__event-creation-form__name" placeholder="Nazwa">
+        <textarea class="events__event-creation-popup__event-creation-form__desc" formControlName="eventDescription" placeholder="Opis"></textarea>
+
+        <input type="text" formControlName="eventAdressCity" class="events__event-creation-popup__event-creation-form__city" placeholder="Miasto">
+
+        <div class="events__event-creation-popup__event-creation-form__wrapper--1">
+            <input type="text" formControlName="eventAdressStreet" class="events__event-creation-popup__event-creation-form__street" placeholder="Ulica">
+            <input type="text" formControlName="eventAdressNumber" class="events__event-creation-popup__event-creation-form__number" placeholder="Numer">
+        </div>      
+
+        <div class="events__event-creation-popup__event-creation-form__wrapper--2">
+            <input type="number" formControlName="eventDateYear" class="events__event-creation-popup__event-creation-form__date-year" placeholder="Rok">
+            <span class="custom-dropdown events__event-creation-popup__event-creation-form__date-month">
+                <select formControlName="dateMonth">
+                <option value="" hidden>Miesiąc</option>
+                <option value="1">styczeń</option>
+                <option value="2">luty</option>
+                <option value="3">marzec</option>
+                <option value="4">kwiecień</option>
+                <option value="5">maj</option>
+                <option value="6">czerwiec</option>
+                <option value="7">lipiec</option>
+                <option value="8">sierpień</option>
+                <option value="9">wrzesień</option>
+                <option value="10">październik</option>
+                <option value="11">listopad</option>
+                <option value="12">grudzień</option>
+                </select>
+            </span>
+            <span class="custom-dropdown events__event-creation-popup__event-creation-form__date-day">
+                <select formControlName="eventDateDay">
+                <option value="" hidden>Dzień</option>
+                <option *ngFor="let number of this.daysOfMonth" value="{{number}}">
+                    {{number}}
+                </option>
+                </select>
+            </span>
+        </div>
+
+        <div class="events__event-creation-popup__event-creation-form__wrapper--3">
+            <span class="custom-dropdown events__event-creation-popup__event-creation-form__date-hour">
+                <select formControlName="eventDateHour">
+                <option value="" hidden>Godzina</option>
+                <option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,00]" value="{{number}}">
+                    {{number}}
+                </option>
+                </select>
+            </span>
+
+            <input type="number" formControlName="eventDateMinute" class="events__event-creation-popup__event-creation-form__date-minute" placeholder="Minuta">
+        </div>
+
+        <input type="number" formControlName="eventPrice" class="events__event-creation-popup__event-creation-form__price" placeholder="Cena wejścia">
+
+        <input type="number" formControlName="eventSubject" class="events__event-creation-popup__event-creation-form__subject" placeholder="Tematyka">
+
+        <input type="number" formControlName="eventParAmount" class="events__event-creation-popup__event-creation-form__par-amount" placeholder="Maksymalna ilość uczestników">
+
+    
+        <button type="submit">Utwórz</button>
+      </form>
+  </div>
+  </div>

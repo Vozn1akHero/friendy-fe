@@ -1,0 +1,116 @@
+@import '../../../../../assets/sass/base/variables';
+@import '../../../../../assets/sass/components/dropdown';
+@import "../../../../../assets/sass/components/popup-2";
+
+.events__event-creation-popup{
+    &__event-creation-form{
+        height: 75%;
+        
+        &__name, &__desc, &__city, &__price, &__subject, &__par-amount {
+            
+            width: 417px;
+            margin-top: .7rem;
+            
+        }
+
+        &__name{
+            
+        }
+
+        &__desc{
+            padding: 1.1rem 1.05rem;
+            height: 5rem;
+            resize: none;
+            font-size: .85rem;
+        }
+
+        &__wrapper{
+            &--1, &--2, &--3{
+                display: flex;
+                margin-top: .7rem;
+                width: 417px;
+                justify-content: space-between;
+            } 
+        }
+
+        
+        &__street{
+            width: 67%;
+        }
+        &__number{
+            width: 30%;
+        }
+    
+    
+        &__date{
+            &-year{
+                width: 147px;
+            }
+
+            &-month{
+                width: 148px;
+                select{
+                    width: inherit;
+                }
+            }
+
+            &-day{
+                    width: 101px;
+
+                select{
+                    width: inherit;
+                    &::after{
+                        right: 1.45em !important;
+                    }
+                }
+                
+            }
+
+            &-month, &-day{
+                &::after{
+                    top: 40%;
+                }
+            }
+        
+            &-hour{
+                width: 50%;
+
+                select{
+                    width: 100%;
+
+                    &::after{
+                    
+                        top: 40%;
+                    }
+                }
+            }
+
+            &-minute{
+                width: 47%;
+            }
+        }
+        
+        
+    }
+
+    button[type=submit]{
+        margin-top: 2.5rem;
+        border: none;
+        height: 3rem;
+        width: 10rem;
+        border-radius: 3rem;
+        background: $color-blue;
+        font-weight: 700;
+        color: white;
+        font-size: .85rem;
+
+        &:hover{
+            cursor: pointer;
+        }
+
+        &:focus{
+            outline: none;
+        }
+        
+    }
+}

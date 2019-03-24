@@ -1,0 +1,81 @@
+@import "../base/variables";
+
+@keyframes comments-popup-anim{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+.comments-popup{
+    animation: comments-popup-anim .5s;
+
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, .5);
+    
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+
+    &__form{
+        width: 37rem;
+        .new-comment{
+            select{
+                height: 44px;
+                font-size: .85rem;
+            }
+    
+            .comments__creation-form{
+                background-color: $color-bg-light-grey;
+                width: 100%;
+                box-shadow: 0px 2px 24px 0px rgba(0,0,0,0.16);
+                padding-top: 4rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: relative;
+    
+                transition: all .3s;
+                
+            }
+            
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        
+        
+    }
+
+    &__close-btn{
+        position: absolute;
+            right: 1rem;
+            top: 1rem;
+            border: none;
+            background: none;
+            
+            &:focus { outline: none; }
+
+            .close_icon{
+                width: 1.5rem;
+                height: 1.5rem;
+                fill: $color-grey-dark;
+
+                &:hover{ cursor: pointer; }
+                
+            }
+    }
+
+    
+}

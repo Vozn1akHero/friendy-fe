@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import 'assets/sass/base/variables';
+
+*{
+    padding: 0;
+    margin: 0;   
+}
+
+body, input[type=button], button, select, input, textarea{
+    font-family: 'Montserrat', sans-serif;
+}
+
+button, input[type=file], a{
+    cursor: pointer;
+
+    &:focus{ outline: none; border: none; }
+}
+
+textarea, input{
+    outline: none;
+    border: none;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+body{
+    //min-width: 1280px;
+    overflow-x: hidden;
+}
+
+*, *::after, *::before{
+    box-sizing: inherit;
+}
+
+html{
+    box-sizing: border-box;
+}
+
+
+*::selection{
+    background: $color-blue;
+    color: $color-white;
+}

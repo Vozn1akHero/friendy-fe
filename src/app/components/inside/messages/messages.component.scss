@@ -1,0 +1,23 @@
+@import '../../../../assets/sass/base/variables';
+
+
+.messages{
+    display: flex;
+    width: calc(100vw - #{$navigation-width});
+    padding-top: 5rem;
+    justify-content: center;
+
+    &__left{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__right{
+        display: flex;
+        flex-direction: column;
+        margin-left: 5rem;
+        
+    }
+
+    
+}

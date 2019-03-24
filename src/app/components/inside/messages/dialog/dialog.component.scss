@@ -1,0 +1,31 @@
+@import '../../../../../assets/sass/base/variables';
+
+.dialog{
+    display: flex;
+    width: calc(100vw - #{$navigation-width});
+    height: 100vh;
+    justify-content: center;
+    padding-top: 2rem;
+
+    &__left-wrap, &__right-wrap{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__left-wrap{
+        //width: 660px;
+        width: 750px;
+    }
+
+    &__right-wrap{
+        margin-left: 5rem;
+        width: 300px;
+    }
+
+
+    :host ::ng-deep  &__chat{
+        width: inherit;
+        height: 600px;
+        overflow-y: visible;
+    }
+}
