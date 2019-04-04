@@ -12,11 +12,11 @@
     justify-content: center;
   }
 
-  &--inner-wrapper{
+  .inner-wrapper{
     width: 100%;
   }
 
-  &__input{
+  &-input{
     width: 84%;
     height: 39px;
     outline: none;
@@ -25,7 +25,7 @@
     transition: all .3s;
   }
 
-  &__btn{
+  &-btn{
     width: 39px;
     height: 39px;
     border: none;

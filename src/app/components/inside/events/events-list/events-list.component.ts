@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./events-list.component.scss']
 })
 export class EventsListComponent implements OnInit {
-  typeOfEventsToShow: string = 'all';
+  typeOfEventsToShow = 'all';
   
   constructor() { }
 
   ngOnInit() {
   }
 
-  showConcreteTypeOfEvents(value):void{
+  showConcreteTypeOfEvents(value) {
     this.typeOfEventsToShow = value;
   }
 

@@ -1,14 +1,14 @@
-<div class="messages__sort">
-    <button class="messages__sort--1"
+<div class="messages-sort">
+    <button class="messages-sort-btn--1"
        [ngStyle]="{fontWeight: this.sortMethod == this.sortMethods[0] ? '600' : '500'}"
        (click)="changeSortMethod(0)">Wszystkie wiadomości</button>
 
     <button
-       class="messages__sort--2"
+       class="messages-sort-btn--2"
        [ngStyle]="{fontWeight: this.sortMethod == this.sortMethods[1] ? '600' : '500'}"
        (click)="changeSortMethod(1)">Przeczytane</button>
 
-    <button class="messages__sort--3"
+    <button class="messages-sort-btn--3"
             [ngStyle]="{fontWeight: this.sortMethod == this.sortMethods[2] ? '600' : '500'}"
             (click)="changeSortMethod(2)">Nieprzeczytane</button>
 </div>

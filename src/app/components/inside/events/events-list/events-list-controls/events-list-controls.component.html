@@ -1,11 +1,11 @@
-<div class="events__controls">
-    <button class="events__controls__all-btn" (click)="showConcreteTypeOfEvents('all')"
-            [ngClass]="{'activeButton': typeOfEventsToShow == 'all' ? true : false}">
+<div class="events-controls">
+    <button class="all-events-btn" (click)="showConcreteTypeOfEvents('all')"
+            [ngClass]="{'activeButton': typeOfEventsToShow == 'all'}">
       Wszystkie wydarzenia
     </button>
 
-    <button class="events__controls__my-events-btn" (click)="showConcreteTypeOfEvents('my')"
-            [ngClass]="{'activeButton': typeOfEventsToShow == 'my' ? true : false}">
+    <button class="my-events-btn" (click)="showConcreteTypeOfEvents('my')"
+            [ngClass]="{'activeButton': typeOfEventsToShow == 'my'}">
         Moje wydarzenia
     </button>
 </div>

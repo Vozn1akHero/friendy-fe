@@ -2,29 +2,29 @@
 @import '../../../../../assets/sass/components/dropdown';
 @import "../../../../../assets/sass/components/popup-2";
 
-.events__event-creation-popup{
-    &__event-creation-form{
+.event-creation-popup{
+    .event-creation-form{
         height: 75%;
         
-        &__name, &__desc, &__city, &__price, &__subject, &__par-amount {
+        .name, .desc, .city, .price, .subject, .par-amount {
             
             width: 417px;
             margin-top: .7rem;
             
         }
 
-        &__name{
+        .name{
             
         }
 
-        &__desc{
+        .desc{
             padding: 1.1rem 1.05rem;
             height: 5rem;
             resize: none;
             font-size: .85rem;
         }
 
-        &__wrapper{
+        .wrapper{
             &--1, &--2, &--3{
                 display: flex;
                 margin-top: .7rem;
@@ -34,15 +34,15 @@
         }
 
         
-        &__street{
+        .street{
             width: 67%;
         }
-        &__number{
+        .number{
             width: 30%;
         }
     
     
-        &__date{
+        .date{
             &-year{
                 width: 147px;
             }

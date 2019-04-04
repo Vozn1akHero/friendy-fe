@@ -1,26 +1,25 @@
-<div class="events__event-creation-popup popup-2">
+<div class="event-creation-popup popup-2">
   <div class="popup-2__form">
-      <form [formGroup]="eventCreationForm" (ngSubmit)="onSubmit()" class="events__event-creation-popup__event-creation-form">
+      <form [formGroup]="eventCreationForm" (ngSubmit)="onSubmit()" class="event-creation-form">
         <button class="popup-2__close-btn" (click)="closePopup()">
             <svg class="close_icon">
                 <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
             </svg>
         </button>
 
-        
-        <input type="text" formControlName="eventName" class="events__event-creation-popup__event-creation-form__name" placeholder="Nazwa">
-        <textarea class="events__event-creation-popup__event-creation-form__desc" formControlName="eventDescription" placeholder="Opis"></textarea>
+        <input type="text" formControlName="eventName" class="name" placeholder="Nazwa">
+        <textarea class="desc" formControlName="eventDescription" placeholder="Opis"></textarea>
 
-        <input type="text" formControlName="eventAdressCity" class="events__event-creation-popup__event-creation-form__city" placeholder="Miasto">
+        <input type="text" formControlName="eventAdressCity" class="city" placeholder="Miasto">
 
-        <div class="events__event-creation-popup__event-creation-form__wrapper--1">
-            <input type="text" formControlName="eventAdressStreet" class="events__event-creation-popup__event-creation-form__street" placeholder="Ulica">
-            <input type="text" formControlName="eventAdressNumber" class="events__event-creation-popup__event-creation-form__number" placeholder="Numer">
+        <div class="wrapper--1">
+            <input type="text" formControlName="eventAdressStreet" class="street" placeholder="Ulica">
+            <input type="text" formControlName="eventAdressNumber" class="number" placeholder="Numer">
         </div>      
 
-        <div class="events__event-creation-popup__event-creation-form__wrapper--2">
-            <input type="number" formControlName="eventDateYear" class="events__event-creation-popup__event-creation-form__date-year" placeholder="Rok">
-            <span class="custom-dropdown events__event-creation-popup__event-creation-form__date-month">
+        <div class="wrapper--2">
+            <input type="number" formControlName="eventDateYear" class="date-year" placeholder="Rok">
+            <span class="custom-dropdown date-month">
                 <select formControlName="dateMonth">
                 <option value="" hidden>Miesiąc</option>
                 <option value="1">styczeń</option>
@@ -37,7 +36,7 @@
                 <option value="12">grudzień</option>
                 </select>
             </span>
-            <span class="custom-dropdown events__event-creation-popup__event-creation-form__date-day">
+            <span class="custom-dropdown date-day">
                 <select formControlName="eventDateDay">
                 <option value="" hidden>Dzień</option>
                 <option *ngFor="let number of this.daysOfMonth" value="{{number}}">
@@ -47,8 +46,8 @@
             </span>
         </div>
 
-        <div class="events__event-creation-popup__event-creation-form__wrapper--3">
-            <span class="custom-dropdown events__event-creation-popup__event-creation-form__date-hour">
+        <div class="wrapper--3">
+            <span class="custom-dropdown date-hour">
                 <select formControlName="eventDateHour">
                 <option value="" hidden>Godzina</option>
                 <option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,00]" value="{{number}}">
@@ -57,14 +56,14 @@
                 </select>
             </span>
 
-            <input type="number" formControlName="eventDateMinute" class="events__event-creation-popup__event-creation-form__date-minute" placeholder="Minuta">
+            <input type="number" formControlName="eventDateMinute" class="date-minute" placeholder="Minuta">
         </div>
 
-        <input type="number" formControlName="eventPrice" class="events__event-creation-popup__event-creation-form__price" placeholder="Cena wejścia">
+        <input type="number" formControlName="eventPrice" class="price" placeholder="Cena wejścia">
 
-        <input type="number" formControlName="eventSubject" class="events__event-creation-popup__event-creation-form__subject" placeholder="Tematyka">
+        <input type="number" formControlName="eventSubject" class="subject" placeholder="Tematyka">
 
-        <input type="number" formControlName="eventParAmount" class="events__event-creation-popup__event-creation-form__par-amount" placeholder="Maksymalna ilość uczestników">
+        <input type="number" formControlName="eventParAmount" class="par-amount" placeholder="Maksymalna ilość uczestników">
 
     
         <button type="submit">Utwórz</button>

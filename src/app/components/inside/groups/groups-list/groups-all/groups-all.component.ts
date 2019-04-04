@@ -13,4 +13,15 @@ export class GroupsAllComponent implements OnInit {
   ngOnInit() {
   }
 
+  searchGroups() {
+    const firstInput = document.getElementById('search-input');
+    const secondInput = document.querySelector('* /deep/ #mini-search-input');
+
+    const firstInputWidth = getComputedStyle(firstInput).width;
+
+    if (firstInputWidth === '16px') {
+      this._renderer.setStyle(firstInput, 'width', '100%');
+      this._renderer.setStyle(secondInput, 'width', '0');
+    }
+  }
 }

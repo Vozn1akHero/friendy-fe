@@ -12,6 +12,7 @@ export class EventsListControlsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
   showConcreteTypeOfEvents(value) {

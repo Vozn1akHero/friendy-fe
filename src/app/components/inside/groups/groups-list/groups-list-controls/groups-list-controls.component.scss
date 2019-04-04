@@ -1,9 +1,9 @@
 @import '../../../../../../assets/sass/base/variables';
 
-.groups__controls{
+.groups-controls{
   display: flex;
 
-  &__all-btn, &__my-events-btn{
+  .all-groups-btn, .my-groups-btn{
     width: 50%;
     height: 3rem;
 
@@ -25,20 +25,14 @@
     }
   }
 
-  &__all-btn{
-
-  }
-
-  &__my-events-btn{
-
-  }
-}
-
-.activeButton {
-  color: white;
-  background: #00baff;
-  &:hover{
-    background: #00baff;
+  .activeButton {
     color: white;
+    background: #00baff;
+    &:hover{
+      background: #00baff;
+      color: white;
+    }
   }
+
 }
+

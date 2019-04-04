@@ -1,18 +1,18 @@
 @import '../../../../../../assets/sass/base/variables';
 
-.events__mine__search{
+.my-events-search{
     display: flex;
     justify-content: center;
     width: 100%;
 
-    &--inner-wrapper{
+    .inner-wrapper{
         display: flex;
         margin-top: 2rem;
         width: 86%;
         justify-content: center;
 
         
-        input{
+        #my-events-search-input{
             height: 39px;
             outline: none;
             border: none;

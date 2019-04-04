@@ -1,97 +1,11 @@
-<div class="friends__adv-search">
-    <div class="friends__adv-search__header">
-      <svg>
-          <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-binoculars"></use>
-      </svg>
-      <p>Kryteria wyszukiwania</p>
-  </div>
-  <div class="friends__adv-search__down">
-      <form [formGroup]="advSearch" (submit)="advSearchSubmit()">
-        <input type="text" formControlName="city" class="friends__adv-search__city" placeholder="Miasto">
-        
-        <span class="custom-dropdown">
-          <select formControlName="education">
-            <option value="" hidden>Wykształcenie</option>
-            <option value="1">Średnie</option>
-            <option value="2">Wyższe</option>
-            <option value="3">Inne</option>
-          </select>
-        </span>
+<app-main-panel
+  [panelContent]="{
+  title: 'Kryteria wyszukiwania',
+  icon: '../../../../assets/images/icon/symbol-defs.svg#icon-binoculars',
+  link: null,
+  marginTop: true
+}">
 
-        <input type="text" formControlName="school" class="friends__adv-search__school" placeholder="Szkoła">
-        <input type="text" formControlName="university" class="friends__adv-search__university" placeholder="Uniwersytet">
-        
-        <div class="friends__adv-search__age" formGroupName="age">
-          <p>Wiek</p>
-          <input type="text" placeholder="Od" formControlName="ageMin">
-          <input type="text" placeholder="Do" formControlName="ageMax">
-        </div>
+  <app-friends-adv-search-form></app-friends-adv-search-form>
 
-        <div class="friends__adv-search__gender">
-          <p>Płeć</p>
-          <label class="container"><span>mężczyzna</span>
-            <input type="radio" checked="checked" value="male" name="gender" formControlName="gender">
-            <span class="checkmark"></span>
-          </label>
-          <label class="container"><span>kobieta</span>
-            <input type="radio" name="gender" value="female" formControlName="gender">
-            <span class="checkmark"></span>
-          </label>
-        </div>
-
-        <span class="custom-dropdown">
-          <select formControlName="familyStatus">
-            <option value="" hidden>Status rodzinny</option>
-            <option value="zonaty">Żonaty</option>
-            <option value="zareczony">Zaręczony</option>
-            <option value="inne">Inne</option>
-          </select>
-        </span>
-
-
-        <span class="custom-dropdown">
-          <select formControlName="religion">
-            <option value="" hidden>Religia</option>
-            <option value="katolicyzm">Katolicyzm</option>
-            <option value="prawoslawie">Prawosławie</option>
-            <option value="islam">Islam</option>
-            <option value="inne">Inne</option>
-          </select>
-        </span>
-
-        <span class="custom-dropdown">
-          <select formControlName="alcoholOpinion">
-            <option value="" hidden>Stosunek do alkoholu</option>
-            <option value="zonaty">Negatywny</option>
-            <option value="zareczony">Pozytywny</option>
-            <option value="other">Neutralny</option>
-          </select>
-        </span>
-
-        <span class="custom-dropdown">
-          <select formControlName="smokingOpinion">
-            <option value="" hidden>Stosunek do palenia</option>
-            <option value="zonaty">Negatywny</option>
-            <option value="zareczony">Pozytywny</option>
-            <option value="other">Neutralny</option>
-          </select>
-        </span>
-
-        <span class="custom-dropdown">
-          <select formControlName="drugsOpinion">
-            <option value="" hidden>Stosunek do narkotyków</option>
-            <option value="zonaty">Negatywny</option>
-            <option value="zareczony">Pozytywny</option>
-            <option value="other">Neutralny</option>
-          </select>
-        </span>
-
-
-        <div class="friends__adv-search__interests">
-          <input type="text" formControlName="interests" placeholder="Zainteresowania (maks. 5)">
-        </div>
-
-        <button type="submit">Szukaj</button>
-      </form>
-  </div>
-</div>
+</app-main-panel>

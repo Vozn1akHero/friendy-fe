@@ -22,12 +22,12 @@
   background-size: cover;
   background: url('../../../../assets/images/fadebg.png') no-repeat;
 
-  &__header-buttons {
+  .header-buttons {
     display: flex;
     justify-content: flex-end;
     margin: 2rem 2rem 0 0;
 
-    &__logout-btn {
+    .logout-btn {
       background: none;
       border: none;
       margin-right: 1rem;
@@ -39,7 +39,7 @@
       }
     }
 
-    &__logout-btn, &__settings-btn {
+    .logout-btn, .settings-btn {
       width: 26px;
       height: 26px;
 
@@ -51,7 +51,7 @@
       }
     }
 
-    &__settings-btn {
+    .settings-btn {
       &:hover {
         svg {
           transform: rotate(90deg);
@@ -63,7 +63,7 @@
   }
 
 
-  &__logo {
+  .logo {
     display: block;
     margin-top: 4rem;
     //margin: 6rem auto;
@@ -85,23 +85,23 @@
     &:hover {
       cursor: pointer;
 
-      .navigation__logo--1 {
+      .logo--1 {
         transform: translateX(-1rem) rotate(-15deg);
       }
 
-      .navigation__logo--2 {
+      .logo--2 {
         transform: translateY(-5rem) translateX(1rem);
       }
     }
   }
 
 
-  &__buttons {
+  .buttons {
     margin-top: 2rem;
     padding-left: 4rem;
     padding-right: 5rem;
 
-    &__icon {
+    .icon {
       transition: transform .4s;
     }
 
@@ -141,7 +141,7 @@
               width: 1rem;
           }*/
 
-          .navigation__buttons__icon {
+          .icon {
             transform: translateX(-.5rem);
 
             //fill: $color-yellow;
@@ -153,7 +153,7 @@
 
     }
 
-    &__icon {
+    .icon {
       display: flex;
       width: 36px;
       height: 34px;

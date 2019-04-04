@@ -16,8 +16,8 @@ export class EventsMineSearchComponent implements OnInit {
   }
 
   searchEvents(){
-    const firstInput = document.getElementById('events__mine__search__input');
-    const secondInput = document.querySelector('* /deep/ #search-events__search__input');
+    const firstInput = document.getElementById('my-events-search-input');
+    const secondInput = document.querySelector('* /deep/ #search-events-input');
 
     const firstInputWidth = getComputedStyle(firstInput).width;
 

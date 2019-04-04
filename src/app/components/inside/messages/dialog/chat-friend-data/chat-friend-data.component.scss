@@ -1,11 +1,11 @@
 @import '../../../../../../assets/sass/base/variables';
 
-.dialog__chat-data{
+.chat-data{
     width: inherit;
     height: 70px;
     background-color: $color-bg-grey-footer;
 
-    &__user-data{
+    .user-data{
         display: flex;
         flex-direction: column;
         justify-content: center;

@@ -1,0 +1,17 @@
+<div class="main-panel" [style.margin-top]="panelContent.marginTop ? '2rem' : '0px'">
+  <div class="header">
+    <svg>
+      <use attr.xlink:href="{{panelContent.icon}}"></use>
+    </svg>
+    <ng-container *ngIf="panelContent.link !== null; else standardText">
+        <a routerLink="{{panelContent.link}}" class="section-link">{{panelContent.title}}</a>
+    </ng-container>
+    <ng-template #standardText>
+      <p>{{panelContent.title}}</p>
+    </ng-template>
+    
+  </div>
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+</div>
