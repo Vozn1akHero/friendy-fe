@@ -1,23 +1,23 @@
 @import '../../../../assets/sass/base/variables';
 
 
-.messages{
+.messages {
+  display: flex;
+  width: calc(100vw - #{$navigation-width});
+  padding-top: 5rem;
+  justify-content: center;
+
+  section:first-child {
     display: flex;
-    width: calc(100vw - #{$navigation-width});
-    padding-top: 5rem;
-    justify-content: center;
+    flex-direction: column;
+  }
 
-    &__left{
-        display: flex;
-        flex-direction: column;
-    }
+  section:last-child {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5rem;
 
-    &__right{
-        display: flex;
-        flex-direction: column;
-        margin-left: 5rem;
-        
-    }
+  }
 
-    
+
 }

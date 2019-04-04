@@ -1,13 +1,13 @@
 @import '../../../../../../../assets/sass/base/variables';
 
-.groups__suggested__item{
+.item{
   display: flex;
   margin-bottom: 1.5rem;
   background: $color-white;
   margin-top: 2rem;
   width: 25.25rem;
 
-  &__avatar{
+  .avatar{
     padding-top: 1rem;
     width: 10rem;
     height: fit-content;
@@ -31,10 +31,10 @@
     }
   }
 
-  &__info{
+  .info{
     padding: 1.5rem 1.5rem 1.5rem 0rem;
 
-    &__location, &__date, &__participants{
+    .location, .date, .participants{
       display: flex;
       align-items: center;
       margin-top: 1rem;
@@ -45,13 +45,13 @@
       }
     }
 
-    &__name{
+    .name{
       font-size: 1.1rem;
       color: $color-blue;
       text-decoration: none;
     }
 
-    &__icon{
+    .icon{
       width: 1.4rem;
       height: 1.4rem;
     }
@@ -64,7 +64,7 @@
     }
   }
 
-  &__controls{
+  .controls{
     display: flex;
     margin-top: 1rem;
 

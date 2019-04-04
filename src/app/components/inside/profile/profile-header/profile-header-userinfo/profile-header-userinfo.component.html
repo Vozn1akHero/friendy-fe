@@ -1,0 +1,15 @@
+<div [ngStyle]="{'transform': this.activeSettings ? 'translateX(-85%)' : 'translateX(0)',
+  'background-image': this.activeSettings ? 'linear-gradient(0.45turn, #fff000, #00baff)' : 'linear-gradient(0.85turn, #fff000, #00baff)'}" class="profile-user-info__wrapper">
+
+  <div class="profile-user-info">
+    <!--<img src="../../../assets/images/test/adult-background-beard-941693.jpg" class="profile-user-info__avatar">-->
+
+    <app-profile-settings [activeSettings]="activeSettings" (openProfileInnerSettingsChild)="this.openProfileInnerSettingsChild($event)"></app-profile-settings>
+
+
+    <app-profile-avatar [activeSettings]="activeSettings"></app-profile-avatar>
+
+    <app-profile-userinfo-basic [activeSettings]="activeSettings"></app-profile-userinfo-basic>
+
+  </div>
+</div>

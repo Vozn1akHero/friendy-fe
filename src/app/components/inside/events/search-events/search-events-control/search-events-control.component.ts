@@ -13,8 +13,8 @@ export class SearchEventsControlComponent implements OnInit {
   }
 
   searchEvents():void{
-      let firstInput = document.querySelector('* /deep/ #events__mine__search__input');
-      let secondInput = document.getElementById("search-events__search__input");
+      let firstInput = document.querySelector('* /deep/ #my-events-search-input');
+      let secondInput = document.getElementById("search-events-input");
   
       let secondInputWidth = getComputedStyle(secondInput).width;
   

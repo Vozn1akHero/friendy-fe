@@ -1,14 +1,14 @@
 @import '../../../../../../assets/sass/base/variables';
 
-.search-events__search{
+.search-events{
     display: flex;
     justify-content: center;
 
-    &--inner-wrapper{
+    .inner-wrapper{
         display: flex;
         margin-top: 2rem;
             
-        input{
+        #search-events-input{
             width: 0px;
             height: 39px;
             outline: none;

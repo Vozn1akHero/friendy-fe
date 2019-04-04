@@ -7,7 +7,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class ProfileHeaderComponent implements OnInit {
   @Input() activeSettings: boolean;
-  @Output() openProfileInnerSettings: EventEmitter<boolean> = new EventEmitter();
+
 
   constructor() {
   }
@@ -15,9 +15,7 @@ export class ProfileHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  openProfileInnerSettingsChild(): void {
-    this.activeSettings = this.activeSettings !== true;
-    this.openProfileInnerSettings.emit(this.activeSettings);
+  openProfileInnerSettingsChild(value) {
+    this.activeSettings = value;
   }
-
 }

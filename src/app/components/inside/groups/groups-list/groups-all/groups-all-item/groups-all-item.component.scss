@@ -1,13 +1,13 @@
 @import '../../../../../../../assets/sass/base/variables';
 
-.groups__all__item{
+.item{
   display: flex;
   justify-content: center;
   margin-bottom: 1.5rem;
   background: $color-white;
   width: 560px;
 
-  &__avatar{
+  .avatar{
     padding-top: 1rem;
     height: fit-content;
     a{
@@ -27,10 +27,10 @@
     }
   }
 
-  &__info{
+  .info{
     padding: 1.5rem;
 
-    &__participants{
+    .participants{
       display: flex;
       align-items: center;
       margin-top: 1rem;
@@ -41,13 +41,13 @@
       }
     }
 
-    &__name{
+    .name{
       font-size: 1.1rem;
       color: $color-blue;
       text-decoration: none;
     }
 
-    &__icon{
+    .icon{
       width: 1.4rem;
       height: 1.4rem;
     }
@@ -60,7 +60,7 @@
     }
   }
 
-  &__controls{
+  .controls{
     display: flex;
     margin-top: 1rem;
 
@@ -78,7 +78,7 @@
       }
     }
 
-    &__icon{
+    .icon{
       width: 1rem;
       height: 1rem;
       fill: $color-grey-light-2;

@@ -1,20 +1,12 @@
-<div class="profile__main-content__photos">
-  <div class="profile__main-content__photos__header">
-    <svg>
-      <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-images"></use>
-    </svg>
-    <a href="#" class="section-link">Zdjęcia</a>
+<app-main-panel
+  [panelContent]="{
+  title: 'Zdjęcia',
+  icon: '../../../../assets/images/icon/symbol-defs.svg#icon-images',
+  link: '#',
+  marginTop: true}">
 
-    <a href="#" class="profile__main-content__photos__new-btn">
-      <svg>
-        <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-plus"></use>
-      </svg>
-    </a>
+  <app-profile-photos-item [photoContent]="{
+    href: '#',
+    src: '../../../assets/images/test/adult-background-beard-941693.jpg'}"></app-profile-photos-item>
 
-  </div>
-  <div class="profile__main-content__photos__down">
-    <a href="#">
-      <img src="../../../assets/images/test/adult-background-beard-941693.jpg" alt="">
-    </a>
-  </div>
-</div>
+</app-main-panel>

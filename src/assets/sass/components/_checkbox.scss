@@ -14,6 +14,9 @@
   }
 
   .checkmark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     top: -2px;
     left: 0;
@@ -30,8 +33,11 @@
   }
   
   .checkmark:after {
-    content: "";
-    position: absolute;
+    content: "\2714";
+    /* position: absolute; */
+    font-size: 0.75rem;
+    color: white;
+    transform: translateY(-1px);
     display: none;
   }
 

@@ -29,22 +29,4 @@ export class ProfileComponent implements OnInit {
     
   }
 
-  openProfileInnerSettings(activeSettings : boolean):void{
-    //this._activeSettings = this._activeSettings == true ? false : true;
-    this._activeSettings = activeSettings;
-
-    if(this._activeSettings){
-      this.renderer.setStyle((document.querySelector(".profile__user-info__avatar img") as HTMLBaseElement), 'filter', 'blur(5px)');
-      
-      this.renderer.setStyle((document.querySelector(".profile__bg figure img") as HTMLBaseElement), 'filter', 'blur(5px)');
-      this.renderer.setStyle((document.querySelector(".profile__bg figure img") as HTMLBaseElement), 'transform', 'scale(1.1)');
-    }
-    else{
-      this.renderer.setStyle((document.querySelector(".profile__user-info__avatar img") as HTMLBaseElement), 'filter', 'blur(0px)');
-
-      this.renderer.setStyle((document.querySelector(".profile__bg figure img") as HTMLBaseElement), 'filter', 'blur(0px)');
-      this.renderer.setStyle((document.querySelector(".profile__bg figure img") as HTMLBaseElement), 'transform', 'scale(1)');
-    }
-  }
-
 }

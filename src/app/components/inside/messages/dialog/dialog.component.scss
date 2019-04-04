@@ -1,31 +1,31 @@
 @import '../../../../../assets/sass/base/variables';
 
-.dialog{
+.dialog {
+  display: flex;
+  width: calc(100vw - #{$navigation-width});
+  height: 100vh;
+  justify-content: center;
+  padding-top: 2rem;
+
+  section:first-child, section:last-child {
     display: flex;
-    width: calc(100vw - #{$navigation-width});
-    height: 100vh;
-    justify-content: center;
-    padding-top: 2rem;
+    flex-direction: column;
+  }
 
-    &__left-wrap, &__right-wrap{
-        display: flex;
-        flex-direction: column;
-    }
+  section:first-child {
+    //width: 660px;
+    width: 750px;
+  }
 
-    &__left-wrap{
-        //width: 660px;
-        width: 750px;
-    }
-
-    &__right-wrap{
-        margin-left: 5rem;
-        width: 300px;
-    }
+  section:last-child {
+    margin-left: 5rem;
+    width: 300px;
+  }
 
 
-    :host ::ng-deep  &__chat{
-        width: inherit;
-        height: 600px;
-        overflow-y: visible;
-    }
+  :host ::ng-deep .chat {
+    width: inherit;
+    height: 600px;
+    overflow-y: visible;
+  }
 }

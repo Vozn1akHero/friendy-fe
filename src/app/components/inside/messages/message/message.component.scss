@@ -1,10 +1,10 @@
 @import '../../../../../assets/sass/base/variables';
 
-.messages__item{
+.item{
     display: flex;
     align-items: center;
 
-    &__avatar{
+    .avatar{
         a{
             figure{
                 display: flex;

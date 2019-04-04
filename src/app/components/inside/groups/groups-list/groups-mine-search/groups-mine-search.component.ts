@@ -16,7 +16,7 @@ export class GroupsMineSearchComponent implements OnInit {
   }
 
   searchGroups() {
-    const firstInput = document.getElementById('groups__mine__search__input');
+    const firstInput = document.getElementById('groups__mine__search-input');
     const secondInput = document.querySelector('* /deep/ #search-groups__search__input');
 
     const firstInputWidth = getComputedStyle(firstInput).width;

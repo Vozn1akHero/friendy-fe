@@ -10,12 +10,12 @@
     justify-content: center;
   }
 
-  &--inner-wrapper{
+  .inner-wrapper{
     display: flex;
     margin-top: 2rem;
   }
 
-  &__input{
+  &-input{
     width: 0px;
     height: 39px;
     outline: none;
@@ -24,7 +24,7 @@
     transition: all .3s;
   }
 
-  &__btn{
+  &-btn{
     display: flex;
     align-self: center;
     justify-content: center;
