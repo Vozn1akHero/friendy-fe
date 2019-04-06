@@ -16,7 +16,7 @@
     }
 
     input:not(:last-child), select {
-      margin-bottom: 1rem !important;
+      margin-bottom: 1rem;
     }
 
     .custom-dropdown {
@@ -30,26 +30,49 @@
   .age {
     display: flex;
     margin: .5rem 0;
+    background: white;
+    align-items: center;
+    padding: .5rem .1rem;
 
     p {
-      align-self: center;
       font-size: .8rem;
-      margin-top: -12.5px;
+      margin-left: .5rem;
     }
 
-    input {
-      width: 5rem;
+    #ageFrom{
+      margin-left: 1.5rem;
+    }
+
+    #ageTo{
       margin-left: 1rem;
+    }
+
+    #ageFrom, #ageTo {
+      margin-bottom: 0 !important;
+      width: 5rem;
+      background: rgba(184,184,184,.05);
+
+      &:focus{
+        border-bottom: 1px $color-yellow solid;
+      }
     }
   }
 
   .gender {
-    margin: .5rem 0;
-    margin-bottom: 1rem;
+    display: flex;
+    margin: .5rem 0 1rem 0;
+    background: white;
+    align-items: center;
+    padding: 1rem .1rem;
 
-    label {
+
+    .container-male, .container-female {
+      margin-left: 1rem;
+      margin-bottom: 0;
+    }
+
+    .container-male{
       margin-left: 1.5rem;
-      margin-right: .5rem;
     }
 
     .gender-title {
@@ -57,15 +80,18 @@
       color: $color-grey-light-2;
     }
 
-    display: flex;
-
     p {
       font-size: .8rem;
-
+      margin-left: .5rem;
     }
 
     .checkmark {
       top: -.1rem;
+
+      &::after{
+        color: $color-white;
+      }
+
     }
   }
 

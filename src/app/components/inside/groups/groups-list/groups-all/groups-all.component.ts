@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'app-groups-all',
@@ -8,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class GroupsAllComponent implements OnInit {
   @Input() typeOfGroupsToShow;
 
-  constructor() { }
+  constructor(private _renderer : Renderer2) { }
 
   ngOnInit() {
   }
