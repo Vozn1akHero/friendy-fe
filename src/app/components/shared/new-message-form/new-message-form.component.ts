@@ -10,7 +10,9 @@ export class NewMessageFormComponent implements OnInit {
   @Input() styles = {
     newMessageWidth: '500px',
     newMessageFormTextAreaWidth : '44em',
-    newMessageFormFileBtnWrapperInputTop: '0'
+    newMessageFormFileBtnWrapperInputTop: '0',
+    formPosition: 'static',
+    formBottomPos: '0rem'
   };
 
   @Output() event : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
