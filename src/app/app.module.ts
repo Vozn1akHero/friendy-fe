@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainpageComponent } from './components/mainpage/mainpage.component';
-import { LoginPopupComponent } from './components/login-popup/login-popup.component';
-import { JoinupPopupComponent } from './components/joinup-popup/joinup-popup.component';
+import { LoginPopupComponent } from './auth/login-popup/login-popup.component';
+import { JoinupPopupComponent } from './auth/joinup-popup/joinup-popup.component';
 import { WholenessComponent } from './components/inside/wholeness/wholeness.component';
 import { ProfileComponent } from './components/inside/profile/profile.component';
 import { FriendsComponent } from './components/inside/friends/friends.component';
@@ -62,6 +63,30 @@ import { FriendsListItemComponent } from './components/inside/friends/friends-li
 import { FriendsSearchControlComponent } from './components/inside/friends/friends-search/friends-search-control/friends-search-control.component';
 import { SearchInputComponent } from './components/shared/search-input/search-input.component';
 import { MiniSearchInputComponent } from './components/shared/mini-search-input/mini-search-input.component';
+import { HomeRecordItemComponent } from './components/inside/home/home-record-item/home-record-item.component';
+import { HomeUpcomingEventsComponent } from './components/inside/home/home-upcoming-events/home-upcoming-events.component';
+import { HomeStatsComponent } from './components/inside/home/home-stats/home-stats.component';
+import { HomeUpcomingEventsItemComponent } from './components/inside/home/home-upcoming-events/home-upcoming-events-item/home-upcoming-events-item.component';
+import { ProfileHeaderBgComponent } from './components/inside/profile/profile-header/profile-header-bg/profile-header-bg.component';
+import { ProfileHeaderBgAlterComponent } from './components/inside/profile/profile-header/profile-header-bg/profile-header-bg-alter/profile-header-bg-alter.component';
+import { ProfileHeaderUserinfoComponent } from './components/inside/profile/profile-header/profile-header-userinfo/profile-header-userinfo.component';
+import { ProfileSettingsComponent } from './components/inside/profile/profile-header/profile-header-userinfo/profile-settings/profile-settings.component';
+import { ProfileAvatarComponent } from './components/inside/profile/profile-header/profile-header-userinfo/profile-avatar/profile-avatar.component';
+import { ProfileAvatarAlterComponent } from './components/inside/profile/profile-header/profile-header-userinfo/profile-avatar/profile-avatar-alter/profile-avatar-alter.component';
+import { ProfileUserinfoBasicComponent } from './components/inside/profile/profile-header/profile-header-userinfo/profile-userinfo-basic/profile-userinfo-basic.component';
+import { ProfileFriendsItemComponent } from './components/inside/profile/profile-main-content/profile-friends/profile-friends-item/profile-friends-item.component';
+import { MainPanelComponent } from './components/shared/main-panel/main-panel.component';
+import { ProfilePhotosItemComponent } from './components/inside/profile/profile-main-content/profile-photos/profile-photos-item/profile-photos-item.component';
+import { SuggestedFriendsItemComponent } from './components/inside/friends/suggested-friends/suggested-friends-item/suggested-friends-item.component';
+import { FriendsAdvSearchFormComponent } from './components/inside/friends/friends-adv-search/friends-adv-search-form/friends-adv-search-form.component';
+import { SuggestedEventsItemComponent } from './components/inside/events/search-events/suggested-events/suggested-events-item/suggested-events-item.component';
+import { NewCommentFormComponent } from './components/shared/comments/new-comment-form/new-comment-form.component';
+import { FriendMessagesComponent } from './components/inside/messages/dialog/chat/friend-messages/friend-messages.component';
+import { UserMessagesComponent } from './components/inside/messages/dialog/chat/user-messages/user-messages.component';
+import { MessageInChatComponent } from './components/inside/messages/dialog/chat/message-in-chat/message-in-chat.component';
+import { FriendInChatsInDialogComponent } from './components/inside/messages/dialog/chats-in-dialog/friend-in-chats-in-dialog/friend-in-chats-in-dialog.component';
+import { EventComponent } from './components/inside/event/event.component';
+
 
 
 
@@ -124,12 +149,36 @@ import { MiniSearchInputComponent } from './components/shared/mini-search-input/
     FriendsListItemComponent,
     FriendsSearchControlComponent,
     SearchInputComponent,
-    MiniSearchInputComponent
+    MiniSearchInputComponent,
+    HomeRecordItemComponent,
+    HomeUpcomingEventsComponent,
+    HomeStatsComponent,
+    HomeUpcomingEventsItemComponent,
+    ProfileHeaderBgComponent,
+    ProfileHeaderBgAlterComponent,
+    ProfileHeaderUserinfoComponent,
+    ProfileSettingsComponent,
+    ProfileAvatarComponent,
+    ProfileAvatarAlterComponent,
+    ProfileUserinfoBasicComponent,
+    ProfileFriendsItemComponent,
+    MainPanelComponent,
+    ProfilePhotosItemComponent,
+    SuggestedFriendsItemComponent,
+    FriendsAdvSearchFormComponent,
+    SuggestedEventsItemComponent,
+    NewCommentFormComponent,
+    FriendMessagesComponent,
+    UserMessagesComponent,
+    MessageInChatComponent,
+    FriendInChatsInDialogComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

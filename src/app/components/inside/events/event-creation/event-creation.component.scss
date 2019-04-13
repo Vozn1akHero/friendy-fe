@@ -5,7 +5,31 @@
 .event-creation-popup{
     .event-creation-form{
         height: 75%;
-        
+
+      .close-btn {
+        position: absolute;
+        right: -1rem;
+        top: -1rem;
+        border: none;
+        width: 2.3rem;
+        height: 2.3rem;
+        border-radius: 50%;
+        display: flex;
+        place-content: center;
+        background: #e85372;
+
+
+        .close-icon {
+          width: 55%;
+          height: 55%;
+          fill: white;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+        }
+      }
         .name, .desc, .city, .price, .subject, .par-amount {
             
             width: 417px;

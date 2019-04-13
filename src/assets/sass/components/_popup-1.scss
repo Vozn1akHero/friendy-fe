@@ -16,12 +16,7 @@
     height: 100vh;
     width: 100vw;
     z-index: 1000;
-    animation: popup-anim-top .5s;
     background-image: linear-gradient(0.85turn, rgba(#fff000, 1),  rgba(#00baff, 1));
-    
-    position: absolute;
-    top: 0;
-    left: 0;
     
 
     &__form{
@@ -34,22 +29,6 @@
             height: 44px;
             font-size: .85rem;
         }
-
-        /*input, select{
-            height: 44px;
-            font-size: .85rem;
-        }
-
-        input{
-            padding: 1.1rem 1.05rem;
-            outline: none;
-            border: none;
-            
-            &:focus{
-                outline: none;
-                
-            }
-        }*/
 
         form{
             background-color: $color-bg-light-grey;
@@ -68,18 +47,22 @@
     }
 
     &__close-btn{
-        position: absolute;
-            right: 1rem;
-            top: 1rem;
-            border: none;
-            background: none;
-            
-            &:focus { outline: none; }
+      position: absolute;
+      right: -1rem;
+      top: -1rem;
+      border: none;
+      width: 2.3rem;
+      height: 2.3rem;
+      border-radius: 50%;
+      display: flex;
+      place-content: center;
+      background: #e85372;
+
 
             .close_icon{
-                width: 1.5rem;
-                height: 1.5rem;
-                fill: $color-grey-dark;
+              width: 55%;
+              height: 55%;
+              fill: white;
 
                 &:hover{ cursor: pointer; }
                 

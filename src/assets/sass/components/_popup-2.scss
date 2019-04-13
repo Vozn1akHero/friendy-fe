@@ -53,22 +53,26 @@
     }
 
     &__close-btn{
-        position: absolute;
-            right: 1rem;
-            top: 1rem;
-            border: none;
-            background: none;
-            
-            &:focus { outline: none; }
+      position: absolute;
+      right: -1rem;
+      top: -1rem;
+      border: none;
+      width: 2.3rem;
+      height: 2.3rem;
+      border-radius: 50%;
+      display: flex;
+      place-content: center;
+      background: #e85372;
 
-            .close_icon{
-                width: 1.5rem;
-                height: 1.5rem;
-                fill: $color-grey-dark;
 
-                &:hover{ cursor: pointer; }
-                
-            }
+      .close_icon{
+        width: 55%;
+        height: 55%;
+        fill: white;
+
+        &:hover{ cursor: pointer; }
+
+      }
     }
 
     

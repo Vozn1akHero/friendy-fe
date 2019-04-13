@@ -1,12 +1,27 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import {animate, group, query, style, transition, trigger} from '@angular/animations';
 
 
 @Component({
   selector: 'app-joinup-popup',
   templateUrl: './joinup-popup.component.html',
-  styleUrls: ['./joinup-popup.component.scss']
+  styleUrls: ['./joinup-popup.component.scss'],
+  animations: [
+    trigger('anim', [
+      transition(':enter', [
+        style({
+          opacity: '0'
+        }),
+        animate(
+          '300ms ease-in',
+          style({ opacity: '1' })
+        )
+      ])
+    ])
+  ]
 })
+
 export class JoinupPopupComponent implements OnInit {
   joinUpForm = new FormGroup({
     name: new FormControl(''),

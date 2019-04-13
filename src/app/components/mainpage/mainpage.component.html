@@ -1,36 +1,29 @@
-<div class="main-page" (mousemove)="moveBubbles($event)">
-    <div class="main-page__bg">
-        <h1>HEJKA :)</h1>
-    </div>
-
-    <ng-template [ngIf]="this.joinUpFormVisibility">
-           <app-joinup-popup (closePopUp)="closeJoinUpPopup()"></app-joinup-popup> 
-    </ng-template>
-
-    <ng-template [ngIf]="this.logInFormVisibility">
-            <app-login-popup (closePopUp)="closeLoginPopup()"></app-login-popup>
-    </ng-template>
-
-  <div class="main-page__header">
-      <div class="main-page__header__left">
-            <a routerLink="/"><img src="../../../assets/images/mainpagelogo.png" alt="Friendy logo" class="main-page__logo" draggable="none"></a>
-          <p class="main-page__header__text">Friendy - miejsce w którym możesz poznawać ludzi na podstawie<br>
-              wspólnych zainteresowań,  na przykład, biorąc udział w imprezach<br>
-              organizowanych przez użytkowników.</p>
-      </div>
-      <div class="main-page__header__right">
-          
-          <a class="main-page__header__loginbtn" (click)="openLogInPopup()">
-              zaloguj
-              <div class="btn__under-border"></div>
-          </a>
-      </div>
+<div class="main-page" (mousemove)="moveBubbles($event)" @anim>
+  <div class="bg">
+      <h1>HEJKA :)</h1>
   </div>
 
-  <div class="main-page__greet-sec">
-    <p class="main-page__greet-sec__main-text">Szukasz nowych znajomości?</p>
-    <p class="main-page__greet-sec__secondary-text">więc jesteś we właściwym miejscu</p>
-    <button class="main-page__greet-sec__join-up-button" (click)="navigateToJoinUp()">Zarejestruj się</button>
+  <div class="header">
+      <section>
+          <a routerLink="/">
+            <img src="../../../assets/images/mainpagelogo.png" alt="Friendy logo" class="logo" draggable="none">
+          </a>
+          <p>Friendy - miejsce w którym możesz poznawać ludzi na podstawie<br>
+              wspólnych zainteresowań,  na przykład, biorąc udział w imprezach<br>
+              organizowanych przez użytkowników.</p>
+      </section>
+      <section>
+          <a class="login-btn" routerLink="login">
+              zaloguj
+              <div class="under-border"></div>
+          </a>
+      </section>
+  </div>
+
+  <div class="greet-sec">
+    <p class="main-text">Szukasz nowych znajomości?</p>
+    <p class="secondary-text">więc jesteś we właściwym miejscu</p>
+    <a class="join-up-button" routerLink="joinup">Zarejestruj się</a>
   </div>
 
   <div class="bubbles">

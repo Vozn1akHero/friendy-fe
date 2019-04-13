@@ -2,16 +2,35 @@ import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from "@angular/router"
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
+import {animate, group, query, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-mainpage',
   templateUrl: './mainpage.component.html',
-  styleUrls: ['./mainpage.component.scss']
+  styleUrls: ['./mainpage.component.scss'],
+  animations: [
+    trigger('anim', [
+      transition(':enter', [
+          style({
+            opacity: '0'
+          }),
+          animate(
+            '300ms ease-in',
+            style({ opacity: '1' })
+          )]),
+      transition(':leave', [
+        style({
+          opacity: '1'
+        }),
+        animate(
+          '300ms ease-out',
+          style({ opacity: '0' })
+        )])
+    ])
+  ]
 })
-export class MainpageComponent implements OnInit {
-  joinUpFormVisibility: Boolean = false;
-  logInFormVisibility: Boolean = false;
 
+export class MainpageComponent implements OnInit {
   width = window.innerWidth
       || document.documentElement.clientWidth
       || document.body.clientWidth;
@@ -30,12 +49,6 @@ export class MainpageComponent implements OnInit {
     
   }
 
-  AfterViewInit(){
-    /*this.elementRef.nativeElement.querySelector('.main-page').addEventListener('onmousemove ', () => {
-      console.log(1);
-    });*/
-  }
-
   moveBubbles($event){
       let bubbles = (document.querySelector('.bubbles svg')  as HTMLElement);
       bubbles.style.position = 'absolute';
@@ -44,22 +57,4 @@ export class MainpageComponent implements OnInit {
       bubbles.style.bottom = String(($event.clientY / this.height) * 100) + 'px';
       bubbles.style.right = String(($event.clientX / this.width) * 100) + 'px';
   }
-
-
-  navigateToJoinUp(){
-    this.joinUpFormVisibility = true;
-  }
-
-  closeJoinUpPopup(){
-    this.joinUpFormVisibility = false;
-  }
-
-  openLogInPopup(){
-    this.logInFormVisibility = true;
-  }
-
-  closeLoginPopup(){
-    this.logInFormVisibility = false;
-  }
-
 }

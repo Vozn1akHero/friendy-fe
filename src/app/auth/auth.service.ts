@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private _authStatus: boolean = true;
+  private _authStatus = true;
   get authStatus(){
     return this._authStatus;
   }
