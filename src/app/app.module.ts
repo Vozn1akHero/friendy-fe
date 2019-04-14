@@ -86,6 +86,21 @@ import { UserMessagesComponent } from './components/inside/messages/dialog/chat/
 import { MessageInChatComponent } from './components/inside/messages/dialog/chat/message-in-chat/message-in-chat.component';
 import { FriendInChatsInDialogComponent } from './components/inside/messages/dialog/chats-in-dialog/friend-in-chats-in-dialog/friend-in-chats-in-dialog.component';
 import { EventComponent } from './components/inside/event/event.component';
+import { EventHeaderBgComponent } from './components/inside/event/event-header/event-header-bg/event-header-bg.component';
+import { EventHeaderEventinfoComponent } from './components/inside/event/event-header/event-header-eventinfo/event-header-eventinfo.component';
+import { EventMainContentComponent } from './components/inside/event/event-main-content/event-main-content.component';
+import { EventParticipantsComponent } from './components/inside/event/event-main-content/event-participants/event-participants.component';
+import { EventPhotosComponent } from './components/inside/event/event-main-content/event-photos/event-photos.component';
+import { EventNewPostComponent } from './components/inside/event/event-main-content/event-new-post/event-new-post.component';
+import { EventAvatarComponent } from './components/inside/event/event-header/event-header-eventinfo/event-avatar/event-avatar.component';
+import { EventEventinfoBasicComponent } from './components/inside/event/event-header/event-header-eventinfo/event-eventinfo-basic/event-eventinfo-basic.component';
+import { EventPostItemComponent } from './components/inside/event/event-main-content/event-post-item/event-post-item.component';
+import { EventParticipantsItemComponent } from './components/inside/event/event-main-content/event-participants/event-participants-item/event-participants-item.component';
+import { EventPhotosItemComponent } from './components/inside/event/event-main-content/event-photos/event-photos-item/event-photos-item.component';
+import { EventHeaderBgAlterComponent } from './components/inside/event/event-header/event-header-bg/event-header-bg-alter/event-header-bg-alter.component';
+import { EventPageSettingsComponent } from './components/inside/event/event-header/event-header-eventinfo/event-page-settings/event-page-settings.component';
+import { EventAvatarAlterComponent } from './components/inside/event/event-header/event-header-eventinfo/event-avatar/event-avatar-alter/event-avatar-alter.component';
+import { EventPageSettingsControlsComponent } from './components/inside/event/event-header/event-header-eventinfo/event-page-settings/event-page-settings-controls/event-page-settings-controls.component';
 
 
 
@@ -172,7 +187,22 @@ import { EventComponent } from './components/inside/event/event.component';
     UserMessagesComponent,
     MessageInChatComponent,
     FriendInChatsInDialogComponent,
-    EventComponent
+    EventComponent,
+    EventHeaderBgComponent,
+    EventHeaderEventinfoComponent,
+    EventMainContentComponent,
+    EventParticipantsComponent,
+    EventPhotosComponent,
+    EventNewPostComponent,
+    EventAvatarComponent,
+    EventEventinfoBasicComponent,
+    EventPostItemComponent,
+    EventParticipantsItemComponent,
+    EventPhotosItemComponent,
+    EventHeaderBgAlterComponent,
+    EventPageSettingsComponent,
+    EventAvatarAlterComponent,
+    EventPageSettingsControlsComponent
   ],
   imports: [
     BrowserModule,

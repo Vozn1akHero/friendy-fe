@@ -1,5 +1,5 @@
-<div class="event-creation-popup popup-2">
-  <div class="popup-2__form">
+<div class="event-creation-popup" @anim>
+  <div class="event-creation-popup-wrapper">
       <form [formGroup]="eventCreationForm" (ngSubmit)="onSubmit()" class="event-creation-form">
         <button class="close-btn" (click)="closePopup()">
             <svg class="close-icon">
