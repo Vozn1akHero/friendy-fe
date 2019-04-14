@@ -1,0 +1,24 @@
+<div class="new-comment">
+  <button class="close-btn" (click)="closePopup()">
+    <svg class="close-icon">
+      <use xlink:href="../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+    </svg>
+  </button>
+
+  <form [formGroup]="commentCreationForm" (ngSubmit)="onSubmit()" class="creation-form">
+
+
+    <textarea formControlName="newMessageContent" placeholder="Napisz wiadomość"></textarea>
+    <div>
+      <div class="file-btn-wrapper">
+        <svg>
+          <use xlink:href="../../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
+        </svg>
+
+        <input type="file" name="filename" accept="image/jpeg, image/png" formControlName="image" style="opacity: 0;">
+      </div>
+
+      <button type="submit">Wyślij</button>
+    </div>
+  </form>
+</div>

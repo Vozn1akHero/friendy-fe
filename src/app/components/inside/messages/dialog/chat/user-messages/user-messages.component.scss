@@ -1,0 +1,27 @@
+.user-messages{
+  display: flex;
+  margin-top: 2rem;
+  justify-content: flex-end;
+
+  .message-group{
+    display: flex;
+
+    figure{
+      display: flex;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      float: left;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img{
+        height: 100%;
+      }
+    }
+
+    .message-items{
+
+    }
+  }
+}

@@ -1,0 +1,16 @@
+
+<div class="event-settings-controls">
+  <button *ngIf="this.activeSettings" class="accept-changes-btn">
+    <svg>
+      <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-checkmark"></use>
+    </svg>
+  </button>
+  <button (click)="openEventInnerSettings()" class="open-close-btn">
+    <svg [ngStyle]="{'visibility': !this.activeSettings ? 'visible' : 'hidden'}">
+      <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cog"></use>
+    </svg>
+    <svg [ngStyle]="{'visibility': this.activeSettings ? 'visible' : 'hidden'}">
+      <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+    </svg>
+  </button>
+</div>

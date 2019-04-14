@@ -1,0 +1,45 @@
+.friend-messages{
+  display: flex;
+  margin-top: 1rem;
+
+  .message-group{
+    display: flex;
+
+
+    figure{
+      display: flex;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      float: left;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img{
+        height: 100%;
+      }
+    }
+
+    .message-items{
+      .message{
+        height: auto;
+        background-color: #f8f8f8;
+        padding: 1rem;
+        margin-left: 1rem;
+        text-decoration: none;
+
+        &:not(:first-child){
+          margin-top: .5rem;
+        }
+
+        span{
+          text-decoration: none;
+          font-size: .8rem;
+          word-break: break-all;
+          color: #3f3f3f;
+          transition: all .1s;
+        }
+      }
+    }
+  }
+}
