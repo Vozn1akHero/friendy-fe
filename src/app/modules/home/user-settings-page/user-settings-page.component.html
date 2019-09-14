@@ -1,0 +1,90 @@
+<div class="user-settings">
+  <form (submit)="advSearchSubmit()" [formGroup]="advSearch">
+    <div class="basic-settings">
+
+      <input formControlName="name" placeholder="Imię" type="text">
+      <input formControlName="name" placeholder="Nazwisko" type="text">
+
+      <div class="gender">
+        <p>Płeć</p>
+        <label class="container container-male"><span class="gender-title">mężczyzna</span>
+          <input checked="checked" formControlName="gender" name="gender" type="radio" value="male">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container container-female"><span class="gender-title">kobieta</span>
+          <input formControlName="gender" name="gender" type="radio" value="female">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+
+      <input class="city" formControlName="city" placeholder="Miasto" type="text">
+
+      <span class="custom-dropdown">
+      <select formControlName="education">
+        <option hidden value="">Wykształcenie</option>
+        <option value="1">Średnie</option>
+        <option value="2">Wyższe</option>
+        <option value="3">Inne</option>
+      </select>
+    </span>
+
+      <input class="school" formControlName="school" placeholder="Szkoła" type="text">
+      <input class="university" formControlName="university" placeholder="Uniwersytet" type="text">
+
+
+      <span class="custom-dropdown">
+      <select formControlName="familyStatus">
+        <option hidden value="">Status rodzinny</option>
+        <option value="zonaty">Żonaty</option>
+        <option value="zareczony">Zaręczony</option>
+        <option value="inne">Inne</option>
+      </select>
+    </span>
+
+
+      <span class="custom-dropdown">
+      <select formControlName="religion">
+        <option hidden value="">Religia</option>
+        <option value="katolicyzm">Katolicyzm</option>
+        <option value="prawoslawie">Prawosławie</option>
+        <option value="islam">Islam</option>
+        <option value="inne">Inne</option>
+      </select>
+    </span>
+
+      <span class="custom-dropdown">
+      <select formControlName="alcoholOpinion">
+        <option hidden value="">Stosunek do alkoholu</option>
+        <option value="zonaty">Negatywny</option>
+        <option value="zareczony">Pozytywny</option>
+        <option value="other">Neutralny</option>
+      </select>
+    </span>
+
+      <span class="custom-dropdown">
+      <select formControlName="smokingOpinion">
+        <option hidden value="">Stosunek do palenia</option>
+        <option value="zonaty">Negatywny</option>
+        <option value="zareczony">Pozytywny</option>
+        <option value="other">Neutralny</option>
+      </select>
+    </span>
+
+      <span class="custom-dropdown">
+      <select formControlName="drugsOpinion">
+        <option hidden value="">Stosunek do narkotyków</option>
+        <option value="zonaty">Negatywny</option>
+        <option value="zareczony">Pozytywny</option>
+        <option value="other">Neutralny</option>
+      </select>
+    </span>
+
+
+      <div class="interests">
+        <input formControlName="interests" placeholder="Zainteresowania (maks. 5)" type="text">
+      </div>
+
+      <button type="submit">Zapisz</button>
+    </div>
+  </form>
+</div>

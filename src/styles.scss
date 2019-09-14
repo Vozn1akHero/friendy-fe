@@ -32,7 +32,8 @@ input::-webkit-inner-spin-button {
 }
 
 body{
-    //min-width: 1280px;
+    width: auto;
+    min-width: 1600px;
     overflow-x: hidden;
 }
 
@@ -48,4 +49,15 @@ html{
 *::selection{
     background: $color-blue;
     color: $color-white;
+}
+
+svg{
+  pointer-events: none;
+}
+
+button{
+  &:disabled{
+    background: $color-grey-for-disabled-btn !important;
+    pointer-events: none;
+  }
 }

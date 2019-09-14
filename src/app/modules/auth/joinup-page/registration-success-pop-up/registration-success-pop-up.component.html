@@ -1,0 +1,16 @@
+<div class="registration-success-pop-up">
+  <div class="registration-success-pop-up__wrapper">
+    <button class="close-btn" (click)="this.closeEventCreationPopup.emit();">
+      <svg class="close-icon">
+        <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+      </svg>
+    </button>
+
+    <p class="text-info">
+      Zostałeś pomyślnie zarejestrowany.
+    </p>
+    <a class="log-in-btn" routerLink="/login">
+      Przejdź do strony logowania
+    </a>
+  </div>
+</div>

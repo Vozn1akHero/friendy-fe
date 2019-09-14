@@ -1,0 +1,24 @@
+@import '../../../../assets/sass/base/variables';
+
+.home{
+  display: flex;
+  width: calc(100vw - #{$navigation-width});
+  padding-top: 5rem;
+  justify-content: center;
+
+  section:first-child{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 48%;
+    height: fit-content;
+    background: $color-bg-grey-footer;
+  }
+
+  section:last-child{
+    width: 301px;
+    margin-left: 4rem;
+  }
+
+}
+

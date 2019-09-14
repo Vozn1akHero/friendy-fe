@@ -1,10 +1,11 @@
+@import "../base/variables";
+
 .container {
     display: block;
     position: relative;
     padding-left: 30px;
-    margin-bottom: 12px;
     cursor: pointer;
-    font-size: .8rem;
+    font-size: .85rem;
     user-select: none;
   
 
@@ -28,6 +29,12 @@
 
   & input:checked ~ .checkmark {
     background: linear-gradient(0.85turn, #fff000, #00baff);
+
+    &:after{
+      content: "\2022";
+      font-size: 2rem;
+      transform: translateY(-2.6px) translateX(-.6px);
+      color: $color-bg-grey-footer;
+    }
   }
-  
 }

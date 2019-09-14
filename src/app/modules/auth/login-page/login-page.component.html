@@ -1,0 +1,38 @@
+<div @anim class="login-page">
+  <a class="logo" routerLink="/">
+    <img alt="Friendy logo" draggable="none" src="../../../../assets/images/logo-white.png">
+  </a>
+
+  <div class="login-form-wrapper">
+    <span *ngIf="incorrectAuthData" class="incorrect-data-text">
+      Nieprawidłowe hasło lub login
+    </span>
+
+    <form (ngSubmit)="onLoginFormSubmit()" [formGroup]="loginForm">
+      <div class="email">
+        <input [ngClass]="{
+                'bordered-onError': loginForm.get('email').touched && loginForm.get('email').invalid
+               }"
+               formControlName="email"
+               placeholder="Email"
+               type="email">
+      </div>
+
+      <div class="password">
+        <input [ngClass]="{
+                'bordered-onError': loginForm.get('password').touched && loginForm.get('password').invalid
+               }"
+               formControlName="password"
+               placeholder="Hasło"
+               type="password">
+      </div>
+
+      <button class="submit-btn" type="submit">Zaloguj</button>
+
+      <div class="pass-recovery">
+        <p class="pass-recovery--text">zapomniałeś(aś) hasła?</p>
+        <a class="pass-recovery--link">wtedy kliknij tu</a>
+      </div>
+    </form>
+  </div>
+</div>

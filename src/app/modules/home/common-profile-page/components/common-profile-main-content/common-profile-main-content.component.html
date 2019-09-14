@@ -1,0 +1,16 @@
+<div class="profile-main-content" [ngStyle]="{'opacity': activeSettings ? '0.5' : '1', 'pointer-events': activeSettings ? 'none' : 'all'}">
+
+  <!-- ten element służy do przyciemniania głównej strony profilu kiedy zmiana ustawień jest aktywna
+  <div class="profile-main-content--dim" *ngIf="activeSettings"></div> -->
+
+
+  <section>
+    <app-common-profile-post-item></app-common-profile-post-item>
+  </section>
+
+  <section>
+      <app-common-profile-friends></app-common-profile-friends>
+      <app-common-profile-photos></app-common-profile-photos>
+  </section>
+  
+</div>

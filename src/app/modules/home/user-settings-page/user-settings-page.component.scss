@@ -1,0 +1,85 @@
+@import '../../../../assets/sass/base/variables';
+@import '../../../../assets/sass/components/dropdown';
+@import '../../../../assets/sass/components/radiobutton';
+@import "../../../../assets/sass/components/text-input";
+
+.user-settings{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(100vw - 20rem);
+
+  input, select{
+    width: 250px;
+    height: 35px;
+    margin-top: 1rem;
+    font-size: .8rem !important;
+  }
+
+  .custom-dropdown::after{
+    top: 55%;
+  }
+
+  .basic-settings{
+    display: flex;
+    width: 30rem;
+    padding: 2rem;
+    margin-top: 2rem;
+    flex-direction: column;
+    align-items: center;
+    background: $color-bg-grey-footer;
+    border-top: solid .5rem $color-yellow;
+
+    .gender {
+      display: flex;
+      margin-top: 1rem;
+      background: white;
+      align-items: center;
+      padding: 1rem .1rem;
+
+
+      .container-male, .container-female {
+        margin-left: 1rem;
+        margin-bottom: 0;
+      }
+
+      .container-male{
+        margin-left: 1.5rem;
+      }
+
+      .gender-title {
+        margin-left: -.2rem;
+        color: $color-grey-light-2;
+      }
+
+      p {
+        font-size: .8rem;
+        margin-left: .5rem;
+      }
+
+      .checkmark {
+        top: -.1rem;
+
+        &::after{
+          color: $color-white;
+        }
+
+      }
+    }
+
+    button[type="submit"] {
+      margin-top: 2rem;
+      border: none;
+      height: 3rem;
+      width: 10rem;
+      border-radius: 3rem;
+      background: $color-blue;
+      font-weight: 700;
+      color: white;
+      font-size: .85rem;
+    }
+  }
+
+
+}

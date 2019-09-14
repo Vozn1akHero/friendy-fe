@@ -1,0 +1,11 @@
+<ng-container *ngIf="(loading$ | async) === false">
+  <ng-template [ngIf]="this._showComments">
+    <router-outlet></router-outlet>
+  </ng-template>
+
+  <div class="common-profile">
+    <app-common-profile-header [userData]="this._userData"></app-common-profile-header>
+
+    <!--     <app-common-profile-main-content></app-common-profile-main-content>-->
+  </div>
+</ng-container>

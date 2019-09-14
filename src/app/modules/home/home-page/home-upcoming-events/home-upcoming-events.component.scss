@@ -1,0 +1,7 @@
+@import '../../../../../assets/sass/abstracts/mixins';
+
+.home {
+  &__upcoming-events {
+      @include cardview;
+  }
+}

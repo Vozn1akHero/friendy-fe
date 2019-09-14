@@ -1,0 +1,17 @@
+@import '../../../assets/sass/base/variables';
+
+
+footer{
+    position: absolute;
+    background-color: $color-bg-grey-footer;
+    height: 80px;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    padding-top: 30px;
+
+    p{
+        color: $color-grey-dark;
+        font-size: .8rem;
+    }
+}

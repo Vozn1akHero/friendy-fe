@@ -1,0 +1,41 @@
+
+  <header>
+    <div class="profile-bg">
+      <figure [ngStyle]="{ background: userData.profileBg == null && '#f8f8f8' }">
+        <img
+          *ngIf="userData.profileBg != null"
+          alt="user's avatar"
+          src="{{ userData.profileBg }}">
+      </figure>
+    </div>
+
+    <div class="profile-user-info__wrapper">
+      <div class="profile-user-info">
+        <figure class="profile-avatar">
+          <img alt="" src="{{ userData.avatar }}">
+        </figure>
+
+        <h2 class="name">
+          {{ userData.name }} {{ userData.surname }}
+        </h2>
+        <p *ngIf="userData.status != null" class="desc">
+          {{ userData.status }}
+        </p>
+        <div class="location">
+          <svg class="icon">
+            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-location"></use>
+          </svg>
+          <span>
+          {{ userData.city }}
+        </span>
+        </div>
+        <div class="joindate">
+          <svg class="icon">
+            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-calendar"></use>
+          </svg>
+          <span>{{ userData.birthday }}.{{ userData.birthMonth }}.{{ userData.birthYear }}</span>
+        </div>
+      </div>
+    </div>
+  </header>
+

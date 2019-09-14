@@ -1,0 +1,10 @@
+.bordered-onError{
+  box-shadow: 0 0 0 0.1rem rgba($color-red-for-invalid-input,.25);
+}
+
+.invalid-input-span{
+  display: block;
+  font-size: .6rem;
+  color: $color-red-for-invalid-input;
+  margin-top: .5rem;
+}
