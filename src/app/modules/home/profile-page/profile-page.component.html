@@ -1,13 +1,35 @@
-<ng-container *ngIf="(loading$ | async) == false">
-  <ng-template [ngIf]="this._showComments">
+<ng-container *ngIf="(userMDLoading$ | async) === false">
+  <ng-template [ngIf]="_showComments">
     <router-outlet></router-outlet>
   </ng-template>
 
-  <div class="profile">
-    <app-profile-header [activeSettings]="this._activeSettings"
-                        [userData]="this._userData"></app-profile-header>
+  <section class="profile">
+    <app-profile-header [activeSettings]="activeSettings"
+                        [userData$]="userData$"></app-profile-header>
 
-    <app-profile-main-content [activeSettings]="this._activeSettings"></app-profile-main-content>
-  </div>
+    <section class="profile-main-content"
+         [ngStyle]="{'opacity': activeSettings ? '0.5' : '1', 'pointer-events': activeSettings ? 'none' : 'all'}">
+
+      <!-- ten element służy do przyciemniania głównej strony profilu kiedy zmiana ustawień jest aktywna
+      <div class="profile-main-content--dim" *ngIf="activeSettings"></div> -->
+
+      <section class="profile-main-content__left-side-wrapper">
+        <app-profile-new-post (newPostEvent)="onNewPost($event)">
+        </app-profile-new-post>
+
+        <app-profile-post-item *ngFor="let post of (posts$ | async)"
+                               [post]="post"
+                               (removePost)="onRemovePost($event)"
+                               (likePost)="onLikePost($event)"
+                               [avatar]="(userData$ | async).avatar">
+        </app-profile-post-item>
+      </section>
+
+      <section class="profile-main-content__right-side-wrapper">
+        <app-profile-friends></app-profile-friends>
+        <app-profile-photos></app-profile-photos>
+      </section>
+    </section>
+  </section>
 
 </ng-container>

@@ -1,0 +1,16 @@
+<div class="friends-search-input">
+  <div class="inner-wrapper">
+    <form [formGroup]="contentForm" (ngSubmit)="onSearchFormSubmit($event)">
+      <input formControlName="inputContent"
+             type="text"
+             placeholder="Szukaj"
+             class="keywords-input">
+
+      <button class="submit-btn">
+        <svg>
+          <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>

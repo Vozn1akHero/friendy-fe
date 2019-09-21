@@ -24,7 +24,7 @@ export class CommonProfilePageComponent implements OnInit, OnDestroy {
   private _userId : number;
   private _userData : User;
   private userDataSubscription: Subscription;
-
+  private activeSettings : boolean = false;
 
   private userData$: Observable<User>;
   private usersData$: Observable<User[]>;

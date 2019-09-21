@@ -4,7 +4,15 @@
     </app-event-creation>
 
     <div class="events__left">
-        <app-events-list></app-events-list>
+        <!--<app-events-list></app-events-list>-->
+      <app-events-list-controls [typeOfEventsToShow]="typeOfEventsToShow"
+                                (changeConcreteTypeOfEvents)="showConcreteTypeOfEvents($event)"></app-events-list-controls>
+
+      <app-events-mine-search [typeOfEventsToShow]="typeOfEventsToShow"></app-events-mine-search>
+
+      <div class="all-events">
+        <app-events-item></app-events-item>
+      </div>
     </div>
 
     <div class="events__right">

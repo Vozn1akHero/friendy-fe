@@ -10,6 +10,7 @@ export class EventsPageComponent implements OnInit {
   eventCreationPopupOpened = false;
   // @ts-ignore
   daysOfMonth = this.getDaysOfMonth();
+  typeOfEventsToShow = 'all';
 
   getDaysOfMonth() {
     return Array.apply(null, Array(5)).map((_, i) => i + 1);
@@ -24,4 +25,7 @@ export class EventsPageComponent implements OnInit {
     this.eventCreationPopupOpened = this.eventCreationPopupOpened === false;
   }
 
+  showConcreteTypeOfEvents(value) {
+    this.typeOfEventsToShow = value;
+  }
 }

@@ -1,30 +1,35 @@
-import {Component, OnInit, Renderer, ElementRef, Renderer2, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnInit, Renderer, ElementRef, Renderer2, OnChanges, SimpleChanges, OnDestroy} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {ProfilePageService} from './services/profile-page.service';
 
 import {Store, State} from '@ngrx/store';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 
 import * as fromApp from '../../../core/ngrx/store/app.reducer';
-import * as UserActions from '../../../core/ngrx/common/store/user.actions';
-import User from '../../../data/schema/user';
+import * as UserActions from '../../../core/ngrx/user/user.actions';
+import * as UserPostsActions from './store/user-posts/user-posts.actions';
 
-import { take } from 'rxjs/operators';
+import User from '../../../data/schema/user';
+import * as moment from 'moment';
+import Post from './models/post.model';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.scss']
 })
-export class ProfilePageComponent implements OnInit, OnChanges {
-  private _myProfile : boolean = true;
-  private _activeSettings : boolean = false;
+export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
+  private activeSettings : boolean = false;
   private _showComments : boolean = true;
 
-  private _userData;
+  posts : Post[];
+  userData: User;
 
   private userData$: Observable<User>;
-  private loading$: Observable<boolean>;
+  private userMDLoading$: Observable<boolean>;
+  private userPostsLoading$: Observable<boolean>;
+  private posts$: Observable<Post[]>;
+
 
   newPost : FormGroup = new FormGroup({
     newMessageContent: new FormControl('',
@@ -35,31 +40,57 @@ export class ProfilePageComponent implements OnInit, OnChanges {
   constructor(private renderer: Renderer2,
               private store: Store<fromApp.AppState>,
               private state: State<fromApp.AppState>,
-              private pageService: ProfilePageService) {
+              private pageService: ProfilePageService) {}
+
+
+  ngOnInit() {
+    this.userMDLoading$ = this.store.select(state => state.user.loading);
+    this.userPostsLoading$ = this.store.select(state => state.userPosts.loading);
+
     this.userData$ = this.store.select(state => state.user.user);
-    this.loading$ = this.store.select(state => state.user.loading);
+    this.posts$ = this.store.select(state => state.userPosts.posts);
+/*
 
-    this.store.dispatch(new UserActions.GetUserStart());
+    this.posts$.subscribe(posts => {
+      console.log(posts)
+    })
+*/
+    this.getUserData();
+    this.getUserPosts();
 
-    this.userData$.subscribe(value => {
-      console.log(value)
-      this._userData = value;
-    });
+    this.pageService.connectToSocket();
   }
 
   getUserData(){
-    this.userData$.subscribe(value => {
-      this._userData = value;
-    });
+    this.store.dispatch(new UserActions.GetUserStart());
   }
 
-  ngOnInit() {
-    this.pageService.connectToSocket();
+  getUserPosts() {
+    this.store.dispatch(new UserPostsActions.GetUserPostsStart());
+  }
 
-    this.getUserData();
+  onNewPost(newPost : FormGroup):void{
+    const post : Post = {
+      userId: this.userData.id,
+      content: newPost.value.newMessageContent,
+      image: newPost.value.image
+    };
+    this.store.dispatch(new UserPostsActions.AddPostStart(post));
+  }
+
+  onRemovePost(id){
+    this.store.dispatch(new UserPostsActions.RemovePostStart({ id }))
+  }
+
+  onLikePost(id){
+    this.store.dispatch(new UserPostsActions.LikePostStart({ id }))
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+
+  }
+
+  ngOnDestroy(): void {
 
   }
 }

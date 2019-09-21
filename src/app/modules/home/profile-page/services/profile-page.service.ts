@@ -41,6 +41,4 @@ export class ProfilePageService {
       console.log(data);
     })
   }
-
-
 }

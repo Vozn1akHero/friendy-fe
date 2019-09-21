@@ -2,36 +2,44 @@ import {Injectable, OnDestroy} from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { AuthService } from './core/auth/auth.service';
 import {Observable, Subscription} from 'rxjs';
-import * as UserActions from './core/ngrx/common/store/user.actions';
+import * as UserActions from './core/ngrx/user/user.actions';
 import {HttpClient} from '@angular/common/http';
 import {el} from '@angular/platform-browser/testing/src/browser_util';
 import {map} from 'rxjs/operators';
+import {Store} from '@ngrx/store';
+import * as fromApp from './core/ngrx/store/app.reducer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, OnDestroy {
-  private authServiceSubscription : Subscription;
+  //private authServiceSubscription : Subscription;
   private _canActive : boolean;
 
-  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {}
+  constructor(private http: HttpClient,
+              private store: Store<fromApp.AppState>,
+              private authService: AuthService,
+              private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
     : Observable<boolean>|Promise<boolean>|boolean {
-    /*this.http.get('/api/auth/getUserAuthStatus', {observe: 'response'}).subscribe(res => {
-      this._canActive = res.status == 200;
-    });*/
-    return this.authService.isLoggedIn().pipe(
+    return this.authService
+      .isLoggedIn()
+      .pipe(
       map(response=> {
         if(response.status == 200){
+        //  this.store.dispatch(new UserActions.GetUserStart());
           return true;
         }
-        else return false;
+        else {
+          this.router.navigate(['/login']);
+          return false;
+        }
       })
     )
   }
 
   ngOnDestroy(): void {
-    this.authServiceSubscription.unsubscribe();
+    //this.authServiceSubscription.unsubscribe();
   }
 }

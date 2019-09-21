@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 import {Subscription} from 'rxjs';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../core/ngrx/store/app.reducer';
-import * as UserActions from '../../core/ngrx/common/store/user.actions';
+import * as UserActions from '../../core/ngrx/user/user.actions';
 
 @Component({
   selector: 'app-wholeness',

@@ -34,16 +34,16 @@ import * as fromApp from '../../core/ngrx/store/app.reducer';
 })
 
 export class MainpageComponent implements OnInit, OnDestroy {
-  private authServiceSubscription : Subscription;
+  //private authServiceSubscription : Subscription;
 
 
   constructor(private router : Router,
               private authService: AuthService) {
-    this.authServiceSubscription = this.authService.isLoggedIn().subscribe(res => {
+/*    this.authServiceSubscription = this.authService.isLoggedIn().subscribe(res => {
       if (res.status == 200) {
         return this.router.navigate(['/app'])
       }
-    });
+    });*/
   }
 
   ngOnInit() {
@@ -51,6 +51,6 @@ export class MainpageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.authServiceSubscription.unsubscribe();
+   // this.authServiceSubscription.unsubscribe();
   }
 }

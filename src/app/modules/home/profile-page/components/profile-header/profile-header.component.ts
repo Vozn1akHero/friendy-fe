@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, ViewChild, ElementRef} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import User from '../../../../../data/schema/user';
 import {ImageService} from '../../../../../shared/services/image.service';
 
@@ -10,9 +10,7 @@ import {ImageService} from '../../../../../shared/services/image.service';
 })
 export class ProfileHeaderComponent implements OnInit {
   @Input() activeSettings: boolean;
-  //@Input() userData$ : Observable<User>;
-
-  @Input() userData : User;
+  @Input() userData$ : Observable<User>;
 
   @ViewChild('userStatus') userStatus: ElementRef;
   @ViewChild('changedProfileBg') changedProfileBg: ElementRef;
@@ -22,6 +20,7 @@ export class ProfileHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   changeUserAvatar(e){
@@ -31,7 +30,6 @@ export class ProfileHeaderComponent implements OnInit {
 
     this.imageService.uploadFiles(this.changedProfileAvatar.nativeElement.value, (result) => {
       console.log(result);
-      this.userData.avatar = result;
     });
   }
 

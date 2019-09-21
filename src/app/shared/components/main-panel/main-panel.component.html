@@ -1,4 +1,6 @@
-<div class="main-panel" [style.margin-top]="panelContent.marginTop ? '2rem' : '0px'">
+<div class="main-panel"
+     [ngStyle]="{ width: '379px' }"
+     [style.margin-top]="panelContent.marginTop ? '2rem' : '0px'">
   <div class="header">
     <svg>
       <use attr.xlink:href="{{panelContent.icon}}"></use>

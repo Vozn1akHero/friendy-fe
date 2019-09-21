@@ -1,6 +1,6 @@
 import * as ProfilePageActions from './common-profile-page.actions'
 import User from '../../../../data/schema/user';
-import {Observable} from 'rxjs';
+
 
 export interface State {
   user: User;

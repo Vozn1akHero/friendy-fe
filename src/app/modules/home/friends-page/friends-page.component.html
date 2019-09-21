@@ -1,11 +1,61 @@
-<div class="friends">
-    <section>
-        <app-friends-search></app-friends-search>
-        <app-friends-list></app-friends-list>
+<ng-container *ngIf="(friendsLoading$ | async) === false">
+  <div class="friends">
+    <section class="friends__left-side-wrapper">
+        <ng-container *ngIf="userSearchingActivated">
+          <div class="friends-adv-search-list">
+            <button class="back-to-friends-btn" (click)="userSearchingActivated = false">
+              &#8592; Wróć
+            </button>
+
+            <span *ngIf="foundUsers.length == 0" class="users-not-found">Nikogo nie znaleźliśmy</span>
+            <app-found-user-item *ngFor="let user of foundUsers" [foundUserData]="user"></app-found-user-item>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="!userSearchingActivated">
+          <div class="friends-search">
+            <app-friends-search-input (searchFormSubmit)="searchFriends($event)"></app-friends-search-input>
+
+            <div>
+              <label class="custom-checkbox">
+                <span>teraz online</span>
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="friends-list">
+            <section>
+              <app-friends-list-item *ngFor="let friend of (friends$ | async)" [friendData]="friend"></app-friends-list-item>
+            </section>
+          </div>
+        </ng-container>
     </section>
 
-    <section>
-        <app-suggested-friends></app-suggested-friends>
-        <app-friends-adv-search></app-friends-adv-search>
+    <section class="friends__right-side-wrapper">
+      <div class="suggested-friends">
+        <app-main-panel
+          [panelContent]="{
+          title: 'Proponowani znajomi',
+          icon: '../../../../../assets/images/icon/symbol-defs.svg#icon-users1',
+          link: null
+        }">
+<!--          <app-suggested-friends-item></app-suggested-friends-item>-->
+        </app-main-panel>
+      </div>
+
+      <div class="friends-adv-search">
+        <app-main-panel
+          [panelContent]="{
+          title: 'Znajdź znajomych',
+          icon: '../../../../assets/images/icon/symbol-defs.svg#icon-binoculars',
+          link: null,
+          marginTop: true
+        }">
+          <app-friends-adv-search-form (advSearchFormSubmit)="advSearchSubmit($event)"></app-friends-adv-search-form>
+        </app-main-panel>
+      </div>
     </section>
-</div>
+  </div>
+</ng-container>

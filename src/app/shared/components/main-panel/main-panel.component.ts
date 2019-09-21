@@ -7,7 +7,11 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class MainPanelComponent implements OnInit {
   @Input() panelContent = {
-    title: '', icon: '', link: null, marginTop: false
+    title: null,
+    icon: null,
+    link: null,
+    additionalStyles: { width: '379px' },
+    marginTop: false
   };
 
   constructor() { }

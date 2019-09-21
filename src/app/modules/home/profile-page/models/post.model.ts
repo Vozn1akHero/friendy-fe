@@ -1,5 +1,9 @@
-export class Post{
+export default class Post{
+  id?: number;
+  userId: number;
   content: string;
-  commentsQuantity : number = 0;
-  likesQuantity: number = 0;
+  image?: string = null;
+  userPostLikes?: any = [];
+  userPostComments?: any = [];
+  date?: Date;
 }
