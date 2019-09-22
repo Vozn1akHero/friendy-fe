@@ -7,12 +7,14 @@ import {Observable, Subscription, throwError} from 'rxjs';
 
 import * as fromApp from '../../../core/ngrx/store/app.reducer';
 
-import User from '../../../data/schema/user';
+import User from '../../../data/models/user.model';
 
 import {catchError, map, take} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
-import * as CommonProfilePageActions from './store/common-profile-page.actions';
+import * as UserDataActions from './store/user-data/user-data.actions';
+import * as PostsActions from './store/user-posts/user-posts.actions';
+import Post from '../profile-page/models/post.model';
 
 @Component({
   selector: 'app-common-profile',
@@ -30,6 +32,7 @@ export class CommonProfilePageComponent implements OnInit, OnDestroy {
   private usersData$: Observable<User[]>;
   private loading$: Observable<boolean>;
   private userNotFound$: Observable<boolean>;
+  private posts$: Observable<Post[]>;
 
   constructor(private renderer: Renderer2,
               private activatedRoute: ActivatedRoute,
@@ -46,13 +49,13 @@ export class CommonProfilePageComponent implements OnInit, OnDestroy {
   }
 
   getUserData(){
-    this.loading$ = this.store.select(state => state.commonProfilePage.loading);
-    this.userNotFound$ = this.store.select(state => state.commonProfilePage.userNotFound);
-    this.usersData$ = this.store.select(state => state.commonProfilePage.users);
+    this.loading$ = this.store.select(state => state.commonProfilePageUserData.loading);
+    this.userNotFound$ = this.store.select(state => state.commonProfilePageUserData.userNotFound);
+    this.usersData$ = this.store.select(state => state.commonProfilePageUserData.users);
 
-    this.store.select(state => state.commonProfilePage.users).subscribe(users => {
+    this.store.select(state => state.commonProfilePageUserData.users).subscribe(users => {
       if(users.length === 0){
-        this.store.dispatch(new CommonProfilePageActions.GetUserStart({ id: this._userId }));
+        this.store.dispatch(new UserDataActions.GetUserStart({ id: this._userId }));
         this.usersData$.subscribe(users => {
           users.forEach(value => {
             if(value.id == this._userId){
@@ -69,7 +72,7 @@ export class CommonProfilePageComponent implements OnInit, OnDestroy {
         });
 
         if(this._userData == null){
-          this.store.dispatch(new CommonProfilePageActions.GetUserStart({ id: this._userId }));
+          this.store.dispatch(new UserDataActions.GetUserStart({ id: this._userId }));
           this.usersData$.subscribe(users => {
             users.forEach(value => {
               if(value.id == this._userId){
@@ -79,13 +82,17 @@ export class CommonProfilePageComponent implements OnInit, OnDestroy {
           });
         }
       }
-    }).unsubscribe();
+    });
 
     this.userNotFound$.subscribe(notFound => {
       if(notFound){
         this.router.navigate(['/404'])
       }
     })
+  }
+
+  onLikePost(id){
+    this.store.dispatch(new PostsActions.LikePostStart({ id }))
   }
 
 /*

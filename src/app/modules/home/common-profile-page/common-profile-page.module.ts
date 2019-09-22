@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { CommonProfilePageComponent } from './common-profile-page.component';
 import { CommonProfileHeaderComponent } from './components/common-profile-header/common-profile-header.component';
-import { CommonProfileMainContentComponent } from './components/common-profile-main-content/common-profile-main-content.component';
 import { CommonProfilePostItemComponent } from './components/common-profile-post-item/common-profile-post-item.component';
 import { CommonProfileFriendsComponent } from './components/common-profile-friends/common-profile-friends.component';
 import { CommonProfilePhotosComponent } from './components/common-profile-photos/common-profile-photos.component';
@@ -25,7 +24,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     CommonProfilePageComponent,
     CommonProfileHeaderComponent,
-    CommonProfileMainContentComponent,
     CommonProfilePostItemComponent,
     CommonProfileFriendsComponent,
     CommonProfilePhotosComponent,

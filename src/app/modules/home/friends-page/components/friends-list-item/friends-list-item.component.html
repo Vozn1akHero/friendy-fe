@@ -10,7 +10,7 @@
   </div>
 
   <div class="info">
-    <a href="#" class="name">{{ friendData.friend.friendNavigation.name }} {{ friendData.friend.friendNavigation.surname }}</a>
+    <a routerLink="/app/profile/{{friendData.friend.friendNavigation.id}}" class="name">{{ friendData.friend.friendNavigation.name }} {{ friendData.friend.friendNavigation.surname }}</a>
 
     <div class="online-status">
         <ng-container>

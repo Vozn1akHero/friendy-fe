@@ -1,22 +1,24 @@
-<div class="events">
+
+  <div class="events">
     <app-event-creation *ngIf="this.eventCreationPopupOpened"
                         (closeEventCreationPopup)="openOrCloseEventCreationPopup()">
     </app-event-creation>
 
     <div class="events__left">
-        <!--<app-events-list></app-events-list>-->
+      <!--<app-events-list></app-events-list>-->
       <app-events-list-controls [typeOfEventsToShow]="typeOfEventsToShow"
                                 (changeConcreteTypeOfEvents)="showConcreteTypeOfEvents($event)"></app-events-list-controls>
 
       <app-events-mine-search [typeOfEventsToShow]="typeOfEventsToShow"></app-events-mine-search>
 
-      <div class="all-events">
-        <app-events-item></app-events-item>
+      <div *ngIf="(userEventsLoading$ | async) === false" class="all-events">
+        <app-events-item *ngFor="let event of events"
+                         [eventData]="event"></app-events-item>
       </div>
     </div>
 
     <div class="events__right">
-        <!--<app-new-event-btn (openEventCreationPopupInParent)="openOrCloseEventCreationPopup()"></app-new-event-btn>-->
+      <!--<app-new-event-btn (openEventCreationPopupInParent)="openOrCloseEventCreationPopup()"></app-new-event-btn>-->
       <div class="new-event">
         <button class="new-event__btn" (click)="openOrCloseEventCreationPopup()">
           Utwórz wydarzenie
@@ -26,4 +28,5 @@
       <app-search-events ></app-search-events>
     </div>
 
-</div>
+  </div>
+

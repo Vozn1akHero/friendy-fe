@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {animate, style, transition, trigger} from '@angular/animations';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-event-creation',
@@ -31,6 +32,21 @@ import {animate, style, transition, trigger} from '@angular/animations';
 export class EventCreationComponent implements OnInit {
   @Output() closeEventCreationPopup = new EventEmitter();
 
+  eventCreationForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    city: new FormControl('', [Validators.required]),
+    street: new FormControl('', [Validators.required]),
+    streetNumber: new FormControl('', [Validators.required]),
+    year: new FormControl('', [Validators.required]),
+    month: new FormControl('', [Validators.required]),
+    day: new FormControl('', [Validators.required]),
+    hour: new FormControl('', [Validators.required]),
+    minute: new FormControl('', [Validators.required]),
+    entryPrice: new FormControl('', [Validators.required]),
+    participantsAmount: new FormControl('', [Validators.required])
+  });
+
   constructor() { }
 
   ngOnInit() {
@@ -38,5 +54,9 @@ export class EventCreationComponent implements OnInit {
 
   closePopup(){
     this.closeEventCreationPopup.emit();
+  }
+
+  onSubmit(){
+
   }
 }

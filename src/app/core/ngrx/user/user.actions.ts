@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import User from '../../../data/schema/user';
+import User from '../../../data/models/user.model';
 
 export const GET_USER_START = '[User] Get User Start';
 export const GET_USER = '[User] Get User';

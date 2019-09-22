@@ -2,33 +2,35 @@
     <div class="avatar">
       <a href="#">
         <figure>
-            <img src="../../../assets/images/test/adult-background-beard-941693.jpg" alt="#">
+            <img src="{{ eventData.avatar }}" alt="event avatar">
         </figure>
       </a>
     </div>
 
     <div class="info">
-      <a href="#" class="title">Spotkanie fanów TWD</a>
+      <a href="#" class="title">
+        {{ eventData.title }}
+      </a>
 
       <div class="location">
           <svg class="icon">
             <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-location"></use>
           </svg>
-          <span>Aleja Lipowa 28a, Gdańsk</span>
+          <span>{{ eventData.street }} {{ eventData.streetNumber }},{{ eventData.city }}</span>
       </div>
 
       <div class="date">
           <svg class="icon">
               <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-calendar"></use>
           </svg>
-          <span>09.02.2019 21:45</span>
+          <span>{{ eventData.date }}</span>
       </div>
 
       <div class="participants">
           <svg class="icon">
               <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-users1"></use>
           </svg>
-          <span>17/25 uczestników</span>
+          <span>{{ eventData.participantsAmount }} uczestników</span>
       </div>
 
       <hr>

@@ -1,5 +1,5 @@
-import * as ProfilePageActions from './common-profile-page.actions'
-import User from '../../../../data/schema/user';
+import * as ProfilePageActions from './user-data.actions'
+import User from '../../../../../data/models/user.model';
 
 
 export interface State {
@@ -16,9 +16,9 @@ const initialState: State = {
   userNotFound: false
 };
 
-export function commonProfilePageReducer(
+export function userDataReducer(
   state: State = initialState,
-  action: ProfilePageActions.CommonProfilePageActions
+  action: ProfilePageActions.UserDataActions
 ) {
   switch (action.type) {
     case ProfilePageActions.GET_USER_START:

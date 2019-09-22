@@ -5,11 +5,11 @@ import { switchMap, catchError, map, tap, withLatestFrom } from 'rxjs/operators'
 import { of } from 'rxjs';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
-import * as CommonProfilePageActions from './common-profile-page.actions';
-import User from '../../../../data/schema/user';
-import {AppState} from '../../../../core/ngrx/store/app.reducer';
+import * as CommonProfilePageActions from './user-data.actions';
+import User from '../../../../../data/models/user.model';
+import {AppState} from '../../../../../core/ngrx/store/app.reducer';
 import {Store} from '@ngrx/store';
-import * as fromApp from '../../../../core/ngrx/store/app.reducer';
+import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 
 const handleErrors = (error : HttpErrorResponse) => {
     if(error.status == 404){
@@ -18,7 +18,7 @@ const handleErrors = (error : HttpErrorResponse) => {
   };
 
 @Injectable()
-export class CommonProfilePageEffects {
+export class UserDataEffects {
   @Effect()
   getUser = this.actions$.pipe(
     ofType(CommonProfilePageActions.GET_USER_START),

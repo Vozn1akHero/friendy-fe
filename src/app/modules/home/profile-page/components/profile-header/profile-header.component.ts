@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, ViewChild, ElementRef} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
-import User from '../../../../../data/schema/user';
+import User from '../../../../../data/models/user.model';
 import {ImageService} from '../../../../../shared/services/image.service';
 
 @Component({

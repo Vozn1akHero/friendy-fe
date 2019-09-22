@@ -29,7 +29,6 @@ export class JoinupPageComponent implements OnInit {
   emailInputAvailability = true;
   onRegistrationSuccessPopupVisibility = false;
 
-
   joinUpForm = new FormGroup({
     name: new FormControl('',
       [Validators.required]),

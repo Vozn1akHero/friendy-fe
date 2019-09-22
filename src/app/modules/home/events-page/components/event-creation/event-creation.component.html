@@ -1,27 +1,66 @@
-<div class="event-creation-popup" @anim>
+<div @anim class="event-creation-popup">
   <div class="event-creation-popup-wrapper">
-      <form [formGroup]="eventCreationForm" (ngSubmit)="onSubmit()" class="event-creation-form">
-        <button class="close-btn" (click)="closePopup()">
-            <svg class="close-icon">
-                <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
-            </svg>
-        </button>
+    <form (ngSubmit)="onSubmit()" [formGroup]="eventCreationForm" class="event-creation-form">
+      <button (click)="closePopup()" class="close-btn">
+        <svg class="close-icon">
+          <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+        </svg>
+      </button>
 
-        <input type="text" formControlName="eventName" class="name" placeholder="Nazwa">
-        <textarea class="desc" formControlName="eventDescription" placeholder="Opis"></textarea>
+      <input [ngClass]="{
+                'bordered-onError': eventCreationForm.get('name').touched && eventCreationForm.get('name').invalid
+               }"
+             class="name"
+             formControlName="title"
+             placeholder="Nazwa"
+             type="text">
+      <textarea [ngClass]="{
+                'bordered-onError': eventCreationForm.get('description').touched && eventCreationForm.get('description').invalid
+               }"
+                class="desc"
+                formControlName="description"
+                placeholder="Opis"></textarea>
 
-        <input type="text" formControlName="eventAdressCity" class="city" placeholder="Miasto">
+      <input [ngClass]="{
+                'bordered-onError': eventCreationForm.get('city').touched && eventCreationForm.get('city').invalid
+               }"
+             class="city"
+             formControlName="city"
+             placeholder="Miasto"
+             type="text">
 
-        <div class="wrapper--1">
-            <input type="text" formControlName="eventAdressStreet" class="street" placeholder="Ulica">
-            <input type="text" formControlName="eventAdressNumber" class="number" placeholder="Numer">
-        </div>      
+      <div class="wrapper--1">
+        <input [ngClass]="{
+                'bordered-onError': eventCreationForm.get('street').touched && eventCreationForm.get('street').invalid
+               }"
+               class="street"
+               formControlName="street"
+               placeholder="Ulica"
+               type="text">
 
-        <div class="wrapper--2">
-            <input type="number" formControlName="eventDateYear" class="date-year" placeholder="Rok">
-            <span class="custom-dropdown date-month">
-                <select formControlName="dateMonth">
-                <option value="" hidden>Miesiąc</option>
+        <input [ngClass]="{
+                'bordered-onError': eventCreationForm.get('streetNumber').touched && eventCreationForm.get('streetNumber').invalid
+               }"
+               class="number"
+               formControlName="streetNumber"
+               placeholder="Numer"
+               type="text">
+      </div>
+
+      <div class="wrapper--2">
+        <input [ngClass]="{
+                'bordered-onError': eventCreationForm.get('year').touched && eventCreationForm.get('year').invalid
+               }"
+               class="date-year"
+               formControlName="year"
+               placeholder="Rok"
+               type="number">
+        <span class="custom-dropdown date-month">
+                <select [ngClass]="{
+                'bordered-onError': eventCreationForm.get('month').touched && eventCreationForm.get('month').invalid
+               }"
+                        formControlName="month">
+                <option hidden value="">Miesiąc</option>
                 <option value="1">styczeń</option>
                 <option value="2">luty</option>
                 <option value="3">marzec</option>
@@ -36,37 +75,58 @@
                 <option value="12">grudzień</option>
                 </select>
             </span>
-            <span class="custom-dropdown date-day">
-                <select formControlName="eventDateDay">
-                <option value="" hidden>Dzień</option>
-                <option *ngFor="let number of this.daysOfMonth" value="{{number}}">
-                    {{number}}
-                </option>
-                </select>
-            </span>
-        </div>
+        <input [ngClass]="{
+                'bordered-onError': eventCreationForm.get('day').touched && eventCreationForm.get('day').invalid
+               }"
+               class="date-day"
+               formControlName="day"
+               placeholder="Dzień"
+               type="number">
 
-        <div class="wrapper--3">
+      </div>
+
+      <div class="wrapper--3">
             <span class="custom-dropdown date-hour">
-                <select formControlName="eventDateHour">
-                <option value="" hidden>Godzina</option>
-                <option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,00]" value="{{number}}">
+                <select [ngClass]="{
+                'bordered-onError': eventCreationForm.get('hour').touched && eventCreationForm.get('hour').invalid
+               }"
+                        formControlName="hour">
+                <option hidden value="">Godzina</option>
+                <option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,00]"
+                        value="{{number}}">
                     {{number}}
                 </option>
                 </select>
             </span>
 
-            <input type="number" formControlName="eventDateMinute" class="date-minute" placeholder="Minuta">
-        </div>
+        <input [ngClass]="{
+                'bordered-onError': eventCreationForm.get('minute').touched && eventCreationForm.get('minute').invalid
+               }"
+               class="date-minute"
+               formControlName="minute" placeholder="Minuta"
+               type="number">
+      </div>
 
-        <input type="number" formControlName="eventPrice" class="price" placeholder="Cena wejścia">
+      <input [ngClass]="{
+                'bordered-onError': eventCreationForm.get('price').touched && eventCreationForm.get('price').invalid
+               }"
+             class="price"
+             formControlName="entryPrice"
+             placeholder="Cena wejścia"
+             type="number">
+      <!--        <input type="number" formControlName="eventSubject" class="subject" placeholder="Tematyka">-->
+      <input [ngClass]="{
+                'bordered-onError': eventCreationForm.get('participantsAmount').touched && eventCreationForm.get('participantsAmount').invalid
+               }"
+             class="participantsAmount"
+             formControlName="participantsAmount"
+             placeholder="Maksymalna ilość uczestników"
+             type="number">
 
-        <input type="number" formControlName="eventSubject" class="subject" placeholder="Tematyka">
-
-        <input type="number" formControlName="eventParAmount" class="par-amount" placeholder="Maksymalna ilość uczestników">
-
-    
-        <button type="submit">Utwórz</button>
-      </form>
+      <button [disabled]="eventCreationForm.invalid"
+              type="submit">
+        Utwórz
+      </button>
+    </form>
   </div>
-  </div>
+</div>

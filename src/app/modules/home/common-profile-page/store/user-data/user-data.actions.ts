@@ -1,12 +1,9 @@
 import { Action } from '@ngrx/store';
-import User from '../../../../data/schema/user';
-import {Post} from '../models/post.model';
+import User from '../../../../../data/models/user.model';
 
 
 export const GET_USER_START = '[CommonProfile] CommonProfile Start';
 export const GET_USER = '[CommonProfile] CommonProfile Get User';
-export const GET_POSTS = '[CommonProfile] CommonProfile Get Posts';
-export const LIKE_POST = '[CommonProfile] CommonProfile Like Post';
 export const USER_NOT_FOUND = '[CommonProfile] CommonProfile User Not Found';
 
 
@@ -22,11 +19,6 @@ export class GetUser implements Action {
   constructor(public payload: User) {}
 }
 
-export class LikePost implements Action {
-  readonly type = LIKE_POST;
-
-  constructor(public payload: Post) {}
-}
 
 export class UserNotFound implements Action {
   readonly type = USER_NOT_FOUND;
@@ -35,7 +27,7 @@ export class UserNotFound implements Action {
 }
 
 
-export type CommonProfilePageActions =
+export type UserDataActions =
   | GetUserStart
   | GetUser
-  | LikePost | UserNotFound;
+  | UserNotFound;

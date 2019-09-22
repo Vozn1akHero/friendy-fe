@@ -9,7 +9,7 @@ import * as fromApp from '../../../core/ngrx/store/app.reducer';
 import * as UserActions from '../../../core/ngrx/user/user.actions';
 import * as UserPostsActions from './store/user-posts/user-posts.actions';
 
-import User from '../../../data/schema/user';
+import User from '../../../data/models/user.model';
 import * as moment from 'moment';
 import Post from './models/post.model';
 
@@ -45,10 +45,10 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.userMDLoading$ = this.store.select(state => state.user.loading);
-    this.userPostsLoading$ = this.store.select(state => state.userPosts.loading);
+    this.userPostsLoading$ = this.store.select(state => state.profilePageUserPosts.loading);
 
     this.userData$ = this.store.select(state => state.user.user);
-    this.posts$ = this.store.select(state => state.userPosts.posts);
+    this.posts$ = this.store.select(state => state.profilePageUserPosts.posts);
 /*
 
     this.posts$.subscribe(posts => {
@@ -63,6 +63,9 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
 
   getUserData(){
     this.store.dispatch(new UserActions.GetUserStart());
+    this.userData$.subscribe(user => {
+      this.userData = user;
+    })
   }
 
   getUserPosts() {
@@ -71,10 +74,10 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
 
   onNewPost(newPost : FormGroup):void{
     const post : Post = {
-      userId: this.userData.id,
       content: newPost.value.newMessageContent,
       image: newPost.value.image
     };
+
     this.store.dispatch(new UserPostsActions.AddPostStart(post));
   }
 

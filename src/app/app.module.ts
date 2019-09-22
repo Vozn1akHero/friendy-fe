@@ -83,7 +83,7 @@ import {UserEffects} from './core/ngrx/user/user.effects';
 import {SharedModule} from './shared/shared.module';
 import {ModulesModule} from './modules/modules.module';
 import {ProfilePageModule} from './modules/home/profile-page/profile-page.module';
-import {CommonProfilePageEffects} from './modules/home/common-profile-page/store/common-profile-page.effects';
+import {UserDataEffects} from './modules/home/common-profile-page/store/user-data/user-data.effects';
 
 
 import * as UserPostsActions from './modules/home/profile-page/store/user-posts/user-posts.actions';
@@ -91,6 +91,7 @@ import * as UserActions from './core/ngrx/user/user.actions';
 import {UserPostsEffects} from './modules/home/profile-page/store/user-posts/user-posts.effects';
 import {EventHeaderComponent} from './modules/home/event-page/event-header/event-header.component';
 import {UserFriendsEffects} from './modules/home/friends-page/store/user-friends/friends-page.effects';
+import {UserEventsEffects} from './modules/home/events-page/store/user-events/user-events.effects';
 
 
 
@@ -172,9 +173,10 @@ import {UserFriendsEffects} from './modules/home/friends-page/store/user-friends
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([
       UserEffects,
-      CommonProfilePageEffects,
+      UserDataEffects,
       UserPostsEffects,
-      UserFriendsEffects
+      UserFriendsEffects,
+      UserEventsEffects
     ]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),

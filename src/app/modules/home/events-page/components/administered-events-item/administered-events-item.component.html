@@ -1,0 +1,47 @@
+<div class="administered-events-item">
+  <div class="avatar">
+    <a href="#">
+      <figure>
+        <img src="{{ eventData.avatar }}" alt="event avatar">
+      </figure>
+    </a>
+  </div>
+
+  <div class="info">
+    <a href="#" class="title">
+      {{ eventData.title }}
+    </a>
+
+    <div class="location">
+      <svg class="icon">
+        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-location"></use>
+      </svg>
+      <span>{{ eventData.street }} {{ eventData.streetNumber }},{{ eventData.city }}</span>
+    </div>
+
+    <div class="date">
+      <svg class="icon">
+        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-calendar"></use>
+      </svg>
+      <span>{{ eventData.date }}</span>
+    </div>
+
+    <div class="participants">
+      <svg class="icon">
+        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-users1"></use>
+      </svg>
+      <span>{{ eventData.participantsAmount }} uczestników</span>
+    </div>
+
+    <hr>
+
+    <div class="controls">
+      <a href="#">
+        <span>wyłącz powiadomienia</span>
+        <svg class="icon">
+          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-notifications"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
