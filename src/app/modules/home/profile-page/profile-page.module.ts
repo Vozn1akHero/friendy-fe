@@ -7,7 +7,7 @@ import { ProfileNewPostComponent } from './components/profile-new-post/profile-n
 import { ProfilePostItemComponent } from './components/profile-post-item/profile-post-item.component';
 import { ProfileFriendsComponent } from './components/profile-friends/profile-friends.component';
 import { ProfilePhotosComponent } from './components/profile-photos/profile-photos.component';
-import { ProfileFriendsItemComponent } from './components/profile-friends/profile-friends-item/profile-friends-item.component';
+import { ProfileFriendsItemComponent } from './components/profile-friends-item/profile-friends-item.component';
 import { ProfilePhotosItemComponent } from './components/profile-photos/profile-photos-item/profile-photos-item.component';
 
 import { SharedModule } from '../../../shared/shared.module';

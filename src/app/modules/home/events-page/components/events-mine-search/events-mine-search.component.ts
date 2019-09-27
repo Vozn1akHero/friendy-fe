@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Renderer2 } from '@angular/core';
+import {Component, OnInit, Input, Renderer2, Output, EventEmitter} from '@angular/core';
+import {EventType} from '../../enums/event-types.enum';
 
 @Component({
   selector: 'app-events-mine-search',
@@ -6,24 +7,18 @@ import { Component, OnInit, Input, Renderer2 } from '@angular/core';
   styleUrls: ['./events-mine-search.component.scss']
 })
 export class EventsMineSearchComponent implements OnInit {
-  @Input() typeOfEventsToShow;
+  //@Input() typeOfEventsToShow : EventType;
+  eventsSearchTerm: string;
+  @Output() searchEventsSubmit: EventEmitter<string> = new EventEmitter<string>();
+  @Output() toggleInput: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private _renderer : Renderer2){
-    
-  }
+  constructor(private _renderer : Renderer2){}
 
   ngOnInit() {
   }
 
-  searchEvents(){
-    const firstInput = document.getElementById('my-events-search-input');
-    const secondInput = document.querySelector('* /deep/ #search-events-input');
-
-    const firstInputWidth = getComputedStyle(firstInput).width;
-
-    if (firstInputWidth === '16px') {
-      this._renderer.setStyle(firstInput, 'width', '100%');
-      this._renderer.setStyle(secondInput, 'width', '0');
-    }
+  onSubmitBtnClick(){
+      this.searchEventsSubmit.emit(this.eventsSearchTerm);
+      this.toggleInput.emit(false);
   }
 }

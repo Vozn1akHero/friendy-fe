@@ -78,7 +78,7 @@ export class JoinupPageComponent implements OnInit {
       Name: this.joinUpForm.value.name,
       Surname: this.joinUpForm.value.surname,
       City: this.joinUpForm.value.city,
-      GenderId: this.joinUpForm.value.gender === "male" ? 0 : 1,
+      GenderId: this.joinUpForm.value.gender === "male" ? 1 : 2,
       Email: this.joinUpForm.value.email,
       Password: this.joinUpForm.value.password,
       BirthYear: this.joinUpForm.value.birthYear,

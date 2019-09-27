@@ -1,20 +1,38 @@
-
-  <div class="events">
+ <div class="events">
     <app-event-creation *ngIf="this.eventCreationPopupOpened"
                         (closeEventCreationPopup)="openOrCloseEventCreationPopup()">
     </app-event-creation>
 
     <div class="events__left">
-      <!--<app-events-list></app-events-list>-->
-      <app-events-list-controls [typeOfEventsToShow]="typeOfEventsToShow"
-                                (changeConcreteTypeOfEvents)="showConcreteTypeOfEvents($event)"></app-events-list-controls>
+      <div class="events-controls">
+        <button class="all-events-btn" (click)="showConcreteTypeOfEvents('participating')"
+                [ngClass]="{'activeButton': chosenSubpage === participatingType}">
+          Wszystkie wydarzenia
+        </button>
 
-      <app-events-mine-search [typeOfEventsToShow]="typeOfEventsToShow"></app-events-mine-search>
-
-      <div *ngIf="(userEventsLoading$ | async) === false" class="all-events">
-        <app-events-item *ngFor="let event of events"
-                         [eventData]="event"></app-events-item>
+        <button class="my-events-btn" (click)="showConcreteTypeOfEvents('administered')"
+                [ngClass]="{'activeButton': chosenSubpage === administeredType}">
+          Moje wydarzenia
+        </button>
       </div>
+
+      <app-events-mine-search (searchEventsSubmit)="searchEvents($event)"></app-events-mine-search>
+
+      <section *ngIf="chosenSubpage === participatingType">
+        <div *ngIf="(userEventsLoading$ | async) === false" class="participating-events">
+          <app-events-item *ngFor="let event of events"
+                           [eventData]="event"></app-events-item>
+        </div>
+      </section>
+
+      <section *ngIf="chosenSubpage === administeredType">
+        <div *ngIf="(administeredEventsLoading$ | async) === false" class="administered-events">
+<!--          <app-administered-events-item *ngFor="let admEvent of administeredEvents"
+                           [eventData]="admEvent"></app-administered-events-item>-->
+          <app-events-item *ngFor="let admEvent of administeredEvents"
+                           [eventData]="admEvent"></app-events-item>
+        </div>
+      </section>
     </div>
 
     <div class="events__right">
@@ -25,8 +43,14 @@
         </button>
       </div>
 
-      <app-search-events ></app-search-events>
-    </div>
+      <section class="search-events">
+        <app-search-events></app-search-events>
 
+        <div class="suggested-friends">
+          <app-suggested-events-item></app-suggested-events-item>
+        </div>
+
+      </section>
+    </div>
   </div>
 

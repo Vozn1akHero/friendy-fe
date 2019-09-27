@@ -3,25 +3,23 @@ import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import { switchMap, catchError, map, tap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
-import * as UserEventsActions from './user-events.actions';
-import {AppState} from '../../../../../core/ngrx/store/app.reducer';
+import * as UserExemplaryFriendsActions from './user-exemplary-friends.actions';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 
-
 @Injectable()
-export class UserEventsEffects {
+export class UserPostsEffects {
   @Effect()
-  getEvents = this.actions$.pipe(
-    ofType(UserEventsActions.GET_EVENTS_START),
-    withLatestFrom(this.store$.select(e => e.eventsPageUserEvents.events)),
-    switchMap(() => {
-      return this.http.get('/api/event/getLoggedInUserEvents', {observe: 'response'})
+  profilePageGetExemplaryFriends = this.actions$.pipe(
+    ofType(UserExemplaryFriendsActions.GET_EXEMPLARY_FRIENDS_START),
+    switchMap((getExemplaryFriendsStart: UserExemplaryFriendsActions.GetExemplaryFriendsStart) => {
+      return this.http.get('/api/friend/getExemplaryByUserId',
+        {observe: 'response'})
         .pipe(
           map(res => {
-            return ({ type: UserEventsActions.GET_EVENTS, payload: res.body })
+            return ({ type: UserExemplaryFriendsActions.GET_EXAMPLE_FRIENDS, payload: res.body })
           })
         )
     })

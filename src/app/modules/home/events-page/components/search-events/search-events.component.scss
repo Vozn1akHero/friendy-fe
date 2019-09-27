@@ -1,31 +1,20 @@
 @import '../../../../../../assets/sass/base/variables';
 
-.search-events{
-    background: $color-bg-grey-footer;
-    margin-top: 3rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
-  .search-events-controls{
-    display: flex;
-    justify-content: center;
-
-    .inner-wrapper{
-      display: flex;
+  .search-events{
+     display: flex;
       margin-top: 2rem;
 
-      #search-events-input{
-        width: 0px;
+      .search-events-input{
         height: 39px;
+        width: 20vw;
         outline: none;
         border: none;
         padding-left: 1rem;
         transition: all .3s;
       }
 
-      button{
+      .search-events-submit{
         display: flex;
         align-self: center;
         justify-content: center;
@@ -35,17 +24,13 @@
         border: none;
         background: $color-pink;
 
-        svg{
+        &__icon {
           display: flex;
           align-self: center;
           width: 19px;
           height: 19px;
-
           fill: $color-white;
         }
       }
-
-
-    }
   }
-}
+

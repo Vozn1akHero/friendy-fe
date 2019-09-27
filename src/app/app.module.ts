@@ -79,7 +79,6 @@ import { environment } from '../environments/environment';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {EffectsModule} from '@ngrx/effects';
-import {UserEffects} from './core/ngrx/user/user.effects';
 import {SharedModule} from './shared/shared.module';
 import {ModulesModule} from './modules/modules.module';
 import {ProfilePageModule} from './modules/home/profile-page/profile-page.module';
@@ -87,11 +86,12 @@ import {UserDataEffects} from './modules/home/common-profile-page/store/user-dat
 
 
 import * as UserPostsActions from './modules/home/profile-page/store/user-posts/user-posts.actions';
-import * as UserActions from './core/ngrx/user/user.actions';
+
 import {UserPostsEffects} from './modules/home/profile-page/store/user-posts/user-posts.effects';
 import {EventHeaderComponent} from './modules/home/event-page/event-header/event-header.component';
 import {UserFriendsEffects} from './modules/home/friends-page/store/user-friends/friends-page.effects';
 import {UserEventsEffects} from './modules/home/events-page/store/user-events/user-events.effects';
+import {AdministeredEventsEffects} from './modules/home/events-page/store/administered-events/administered-events.effects';
 
 
 
@@ -172,11 +172,12 @@ import {UserEventsEffects} from './modules/home/events-page/store/user-events/us
     ModulesModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([
-      UserEffects,
+      //UserEffects,
       UserDataEffects,
       UserPostsEffects,
       UserFriendsEffects,
-      UserEventsEffects
+      UserEventsEffects,
+      AdministeredEventsEffects
     ]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),

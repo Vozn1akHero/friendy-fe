@@ -31,8 +31,8 @@ export class FriendsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.friendsLoading$ = this.store.select(state => state.profilePageUserFriends.loading);
-    this.friends$ = this.store.select(state => state.profilePageUserFriends.friends);
+    this.friendsLoading$ = this.store.select(state => state.friendsPageUserFriends.loading);
+    this.friends$ = this.store.select(state => state.friendsPageUserFriends.friends);
 
     this.activatedRoute.queryParams.subscribe(params => {
       this.userSearchingActivated = params.userSearchingActivated != null;

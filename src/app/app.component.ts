@@ -1,7 +1,6 @@
 import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from './core/auth/auth.service';
-import * as UserActions from './core/ngrx/user/user.actions';
 import {Store} from '@ngrx/store';
 import * as fromApp from './core/ngrx/store/app.reducer';
 import {Observable, Subscription} from 'rxjs';

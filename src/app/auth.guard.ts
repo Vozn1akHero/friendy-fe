@@ -2,7 +2,6 @@ import {Injectable, OnDestroy} from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { AuthService } from './core/auth/auth.service';
 import {Observable, Subscription} from 'rxjs';
-import * as UserActions from './core/ngrx/user/user.actions';
 import {HttpClient} from '@angular/common/http';
 import {el} from '@angular/platform-browser/testing/src/browser_util';
 import {map} from 'rxjs/operators';

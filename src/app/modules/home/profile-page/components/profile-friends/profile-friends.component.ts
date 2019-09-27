@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ExemplaryFriend} from '../../models/exemplary-friend.model';
 
 @Component({
   selector: 'app-profile-friends',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-friends.component.scss']
 })
 export class ProfileFriendsComponent implements OnInit {
+  @Input() exemplaryFriends: ExemplaryFriend[];
 
   constructor() { }
 

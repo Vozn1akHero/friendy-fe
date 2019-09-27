@@ -6,12 +6,14 @@ import {Store, State} from '@ngrx/store';
 import {Observable, Subscription} from 'rxjs';
 
 import * as fromApp from '../../../core/ngrx/store/app.reducer';
-import * as UserActions from '../../../core/ngrx/user/user.actions';
+//import * as UserActions from '../../../core/ngrx/user/user.actions';
+import * as UserDataActions from './store/user-data/user-data.actions';
 import * as UserPostsActions from './store/user-posts/user-posts.actions';
 
 import User from '../../../data/models/user.model';
 import * as moment from 'moment';
 import Post from './models/post.model';
+import {ExemplaryFriend} from './models/exemplary-friend.model';
 
 @Component({
   selector: 'app-profile',
@@ -30,12 +32,16 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
   private userPostsLoading$: Observable<boolean>;
   private posts$: Observable<Post[]>;
 
+  private exemplaryFriends: ExemplaryFriend[];
+  private exemplaryFriendsSubscription: Subscription;
+  private exemplaryFriendsLoading$: Observable<boolean>;
 
   newPost : FormGroup = new FormGroup({
     newMessageContent: new FormControl('',
       [Validators.required, Validators.minLength(1)]),
     image: new FormControl('')
   });
+
   
   constructor(private renderer: Renderer2,
               private store: Store<fromApp.AppState>,
@@ -44,11 +50,17 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
 
 
   ngOnInit() {
-    this.userMDLoading$ = this.store.select(state => state.user.loading);
+    this.userMDLoading$ = this.store.select(state => state.profilePageUserData.loading);
     this.userPostsLoading$ = this.store.select(state => state.profilePageUserPosts.loading);
+    this.exemplaryFriendsLoading$ = this.store.select(state => state.profilePageUserExemplaryFriends.loading);
 
-    this.userData$ = this.store.select(state => state.user.user);
+    this.userData$ = this.store.select(state => state.profilePageUserData.user);
     this.posts$ = this.store.select(state => state.profilePageUserPosts.posts);
+
+    this.exemplaryFriendsSubscription = this.store.select(state => state.profilePageUserExemplaryFriends.exemplaryFriends)
+      .subscribe(exemplaryFriends => {
+        this.exemplaryFriends = exemplaryFriends;
+    });
 /*
 
     this.posts$.subscribe(posts => {
@@ -62,7 +74,7 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   getUserData(){
-    this.store.dispatch(new UserActions.GetUserStart());
+    this.store.dispatch(new UserDataActions.GetUserDataStart());
     this.userData$.subscribe(user => {
       this.userData = user;
     })
@@ -94,6 +106,6 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
-
+    if(this.exemplaryFriendsSubscription != null) this.exemplaryFriendsSubscription.unsubscribe();
   }
 }

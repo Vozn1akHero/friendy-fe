@@ -26,7 +26,19 @@
       </section>
 
       <section class="profile-main-content__right-side-wrapper">
-        <app-profile-friends></app-profile-friends>
+
+        <ng-container *ngIf="(exemplaryFriendsLoading$ | async) === false">
+            <app-main-panel
+            [panelContent]="{
+              title: 'Znajomi',
+              icon: '../../../../assets/images/icon/symbol-defs.svg#icon-users1',
+              link: '/app/friends'}">
+
+            <app-profile-friends-item *ngFor="let exemplaryFriend of exemplaryFriends" [exemplaryFriend]="exemplaryFriend"></app-profile-friends-item>
+
+          </app-main-panel>
+        </ng-container>
+
         <app-profile-photos></app-profile-photos>
       </section>
     </section>

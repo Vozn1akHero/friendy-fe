@@ -4,7 +4,9 @@ import Event from './models/event.model';
 import {State, Store} from '@ngrx/store';
 import * as fromApp from '../../../core/ngrx/store/app.reducer';
 import * as EventsPageUserEventsActions from './store/user-events/user-events.actions';
-import {ActivatedRoute} from '@angular/router';
+import * as EventsPageAdministeredEventsActions from './store/administered-events/administered-events.actions';
+import {ActivatedRoute, Router} from '@angular/router';
+import {EventType} from './enums/event-types.enum';
 
 @Component({
   selector: 'app-events',
@@ -12,55 +14,98 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./events-page.component.scss']
 })
 export class EventsPageComponent implements OnInit, OnDestroy {
-  searchEventsInputOpened = false;
   eventCreationPopupOpened = false;
-  //daysOfMonth = this.getDaysOfMonth();
-  typeOfEventsToShow = 'all';
-  events$: Observable<Event[]>;
+
   eventsSubscription: Subscription;
   events: Event[];
-  administeredEvents: Observable<Event[]>;
   userEventsLoading$: Observable<boolean>;
-  chosenSubpage: string;
-  /*getDaysOfMonth() {
-    return Array.apply(null, Array(5)).map((_, i) => i + 1);
-  }*/
+
+  administeredEvents: Event[];
+  administeredEventsSubscription: Subscription;
+  administeredEventsLoading$: Observable<boolean>;
+
+  chosenSubpage: EventType;
+  administeredType: EventType = EventType.Administered;
+  participatingType: EventType = EventType.Participating;
+
 
   constructor(private renderer: Renderer2,
+              private router: Router,
               private activatedRoute: ActivatedRoute,
               private store: Store<fromApp.AppState>,
-              private state: State<fromApp.AppState>) {
-    this.activatedRoute.fragment.subscribe(fragment => {
-      this.chosenSubpage = new URLSearchParams(fragment).get('access_token');
-      console.log(this.chosenSubpage);
-    })
-  }
+              private state: State<fromApp.AppState>) {}
 
   ngOnInit() {
     //this.events$ = this.store.select(state => state.eventsPageUserEvents.events);
     this.userEventsLoading$ = this.store.select(state => state.eventsPageUserEvents.loading);
+    this.administeredEventsLoading$ = this.store.select(state => state.eventsPageAdministeredEventsReducer.loading);
     //this.store.dispatch(new EventsPageUserEventsActions.GetEventsStart());
 
-    this.eventsSubscription = this.store
-      .select(state => state.eventsPageUserEvents.events)
-      .subscribe(events => {
-        if(events.length == 0){
-          this.store.dispatch(new EventsPageUserEventsActions.GetEventsStart());
-        }
+    this.activatedRoute.fragment.subscribe(fragment => {
+      let chosenSubpage = new URLSearchParams(fragment).get('ev_t');
+      switch (chosenSubpage) {
+        case 'administered':
+          this.chosenSubpage = EventType.Administered;
+          break;
+        case 'participating':
+          this.chosenSubpage = EventType.Participating;
+      }
 
-        this.events = events;
-      })
+      if(this.chosenSubpage === EventType.Administered){
+        this.administeredEventsSubscription = this.store.select(state => state.eventsPageAdministeredEventsReducer.administeredEvents)
+          .subscribe(events => {
+            if(events.length === 0){
+              this.store.dispatch(new EventsPageAdministeredEventsActions.GetAdministeredEventsStart());
+            }
+            this.administeredEvents = events;
+          })
+      } else if (this.chosenSubpage === EventType.Participating) {
+        this.eventsSubscription = this.store
+          .select(state => state.eventsPageUserEvents.events)
+          .subscribe(events => {
+            if(events.length == 0){
+              this.store.dispatch(new EventsPageUserEventsActions.GetEventsStart());
+            }
+            this.events = events;
+          });
+      } else {
+        this.router.navigate(['.'], { fragment: 'ev_t=participating',
+          relativeTo: this.activatedRoute })
+      }
+    })
   }
 
   openOrCloseEventCreationPopup() {
-    this.eventCreationPopupOpened = this.eventCreationPopupOpened === false;
+    this.eventCreationPopupOpened = !this.eventCreationPopupOpened;
   }
 
-  showConcreteTypeOfEvents(value) {
-    this.typeOfEventsToShow = value;
+  showConcreteTypeOfEvents(chosenSubpage) {
+    //this.typeOfEventsToShow = value;
+    if(chosenSubpage === 'administered'){
+      this.router.navigate(['.'], { fragment: 'ev_t=administered',
+        relativeTo: this.activatedRoute })
+    } else if(chosenSubpage === 'participating') {
+      this.router.navigate(['.'], { fragment: 'ev_t=participating',
+        relativeTo: this.activatedRoute })
+    } else {
+      this.router.navigate(['.'], { fragment: 'ev_t=participating',
+        relativeTo: this.activatedRoute })
+    }
+  }
+
+  searchEvents(keyword){
+    console.log(keyword)
+    if(this.chosenSubpage === EventType.Administered){
+
+      this.store.dispatch(new EventsPageAdministeredEventsActions
+        .FilterAdministeredEventsStart({ keyword }))
+    } else if (this.chosenSubpage === EventType.Participating){
+
+    }
   }
 
   ngOnDestroy(): void {
-    this.eventsSubscription.unsubscribe();
+    if(this.eventsSubscription != null) this.eventsSubscription.unsubscribe();
+    if(this.administeredEventsSubscription != null) this.administeredEventsSubscription.unsubscribe();
   }
 }
