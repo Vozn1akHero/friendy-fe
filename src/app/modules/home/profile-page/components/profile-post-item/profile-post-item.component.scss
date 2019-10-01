@@ -80,6 +80,24 @@
     }
   }
 
+  .unlike-post-btn{
+    transition: .5s;
+    &:hover{
+      svg {
+        fill: $color-grey-light-2;
+      }
+    }
+  }
+
+  .like-user-post-btn{
+    transition: .5s;
+    &:hover{
+      svg {
+        transform: scale(1.1);
+      }
+    }
+  }
+
   .comments {
     svg {
       fill: $color-grey-light-2;

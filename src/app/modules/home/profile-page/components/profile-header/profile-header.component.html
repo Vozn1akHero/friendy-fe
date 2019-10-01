@@ -17,23 +17,23 @@
     </div>
 
     <div class="profile-bg">
-      <figure [ngStyle]="{ background: (userData$ | async).profileBg == null && '#f8f8f8' }">
+      <figure [ngStyle]="{ background: userData.profileBg == null && '#f8f8f8' }">
         <img
-          *ngIf="(userData$ | async).profileBg != null"
+          *ngIf="userData.profileBg != null"
           [ngStyle]="{filter: activeSettings ? 'blur(5px)' : 'blur(0px)', transform: activeSettings ? 'scale(1.1)' : 'scale(1)'}"
           alt=""
-          src="{{ (userData$ | async).profileBg }}">
+          src="{{ userData.profileBg }}">
       </figure>
     </div>
 
-    <div [ngStyle]="{'transform': this.activeSettings ? 'translateX(-85%)' : 'translateX(0)',
-  'background-image': this.activeSettings ? 'linear-gradient(0.45turn, #fff000, #00baff)' : 'linear-gradient(0.85turn, #fff000, #00baff)'}"
+    <div [ngStyle]="{'transform': activeSettings ? 'translateX(-85%)' : 'translateX(0)',
+  'background-image': activeSettings ? 'linear-gradient(0.45turn, #fff000, #00baff)' : 'linear-gradient(0.85turn, #fff000, #00baff)'}"
          class="profile-user-info__wrapper">
 
       <div class="profile-user-info">
-        <div *ngIf="this.activeSettings" class="profile-avatar-alter">
+        <div *ngIf="activeSettings" class="profile-avatar-alter">
           <input #changedProfileAvatar
-                 (change)="this.changeUserAvatar($event)"
+                 (change)="changeUserAvatar($event)"
                  accept="image/jpeg, image/png"
                  name="filename"
                  type="file">
@@ -49,8 +49,9 @@
         </div>
 
         <figure class="profile-avatar">
-          <!--<img alt="" src="../../../../assets/images/test/adult-background-beard-941693.jpg">-->
-          <img alt="" src="{{ (userData$ | async).avatar }}">
+          <img *ngIf="userAvatar != null"
+               alt="user's avatar"
+               src="{{ userAvatar.avatarBytes }}">
         </figure>
 
         <div class="profile-settings">
@@ -60,10 +61,10 @@
             </svg>
           </button>
           <button (click)="openProfileInnerSettingsChild()" class="open-close-btn">
-            <svg [ngStyle]="{'visibility': !this.activeSettings ? 'visible' : 'hidden'}">
+            <svg [ngStyle]="{'visibility': !activeSettings ? 'visible' : 'hidden'}">
               <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cog"></use>
             </svg>
-            <svg [ngStyle]="{'visibility': this.activeSettings ? 'visible' : 'hidden'}">
+            <svg [ngStyle]="{'visibility': activeSettings ? 'visible' : 'hidden'}">
               <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
             </svg>
           </button>
@@ -77,24 +78,24 @@
         </div>
 
         <h2 [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="name">
-          {{ (userData$ | async).name }} {{ (userData$ | async).surname }}
+          {{ userData.name }} {{ userData.surname }}
         </h2>
-        <p *ngIf="(userData$ | async).status != null" [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="desc">
-          {{ (userData$ | async).status }}
+        <p *ngIf="userData.status != null" [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="desc">
+          {{ userData.status }}
         </p>
         <div [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="location">
           <svg class="icon">
             <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-location"></use>
           </svg>
           <span>
-          {{ (userData$ | async).city }}
+          {{ userData.city }}
         </span>
         </div>
         <div [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="birthday">
           <svg class="icon" aria-label="Data urodzenia">
             <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-calendar"></use>
           </svg>
-          <span>{{ (userData$ | async).birthday }}.{{ (userData$ | async).birthMonth }}.{{ (userData$ | async).birthYear }}</span>
+          <span>{{ userData.birthday }}.{{ userData.birthMonth }}.{{ userData.birthYear }}</span>
         </div>
       </div>
     </div>

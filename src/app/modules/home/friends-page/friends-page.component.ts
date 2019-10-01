@@ -15,6 +15,7 @@ import {FriendsPageService} from './services/friends-page.service';
 export class FriendsPageComponent implements OnInit, OnDestroy {
   private friends$: Observable<any[]>;
   private friendsLoading$: Observable<boolean>;
+
   private foundUsers: any;
   private searchTerm: string;
   private searchTermInserted: boolean;
@@ -32,6 +33,7 @@ export class FriendsPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.friendsLoading$ = this.store.select(state => state.friendsPageUserFriends.loading);
+
     this.friends$ = this.store.select(state => state.friendsPageUserFriends.friends);
 
     this.activatedRoute.queryParams.subscribe(params => {
@@ -40,7 +42,12 @@ export class FriendsPageComponent implements OnInit, OnDestroy {
   }
 
   searchFriends(searchTerm) {
-    this.store.dispatch(new UserFriendsActions.FilterFriendsStart({ keyword: searchTerm }));
+    if(searchTerm.length === 0){
+      this.userSearchingActivated = false;
+    } else {
+      this.userSearchingActivated = true;
+      this.store.dispatch(new UserFriendsActions.FilterFriendsStart({keyword: searchTerm}));
+    }
   }
 
   advSearchSubmit(data){

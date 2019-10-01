@@ -8,7 +8,9 @@
             </button>
 
             <span *ngIf="foundUsers.length == 0" class="users-not-found">Nikogo nie znaleźliśmy</span>
-            <app-found-user-item *ngFor="let user of foundUsers" [foundUserData]="user"></app-found-user-item>
+
+            <app-found-user-item *ngFor="let user of foundUsers"
+                                 [foundUserData]="user"></app-found-user-item>
           </div>
         </ng-container>
 

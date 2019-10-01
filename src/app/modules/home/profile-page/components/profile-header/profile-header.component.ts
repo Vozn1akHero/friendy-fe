@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, ViewChild, ElementRef} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
-import User from '../../../../../data/models/user.model';
-import {ImageService} from '../../../../../shared/services/image.service';
+import User from '../../models/user.model';
+import UserAvatar from '../../models/user-avatar.model';
 
 @Component({
   selector: 'app-profile-header',
@@ -10,20 +10,21 @@ import {ImageService} from '../../../../../shared/services/image.service';
 })
 export class ProfileHeaderComponent implements OnInit {
   @Input() activeSettings: boolean;
-  @Input() userData$ : Observable<User>;
+  //@Input() userData$ : Observable<User>;
+  @Input() userData : User;
+  @Input() userAvatar : UserAvatar;
 
   @ViewChild('userStatus') userStatus: ElementRef;
   @ViewChild('changedProfileBg') changedProfileBg: ElementRef;
   @ViewChild('changedProfileAvatar') changedProfileAvatar: ElementRef;
 
-  constructor(private imageService: ImageService) {
-  }
+  constructor() {}
 
   ngOnInit() {
 
   }
 
-  changeUserAvatar(e){
+/*  changeUserAvatar(e){
     e.preventDefault();
 
     let value = this.changedProfileAvatar.nativeElement.value.replace('/', '\'');
@@ -31,7 +32,12 @@ export class ProfileHeaderComponent implements OnInit {
     this.imageService.uploadFiles(this.changedProfileAvatar.nativeElement.value, (result) => {
       console.log(result);
     });
+  }*/
+  changeUserAvatar(e){
+    e.preventDefault();
+
   }
+
 
   openProfileInnerSettingsChild() {
     this.activeSettings = !this.activeSettings;
@@ -40,5 +46,4 @@ export class ProfileHeaderComponent implements OnInit {
   changeUserData() {
     console.log(this.userStatus, this.changedProfileAvatar, this.changedProfileBg);
   }
-
 }

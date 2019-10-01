@@ -1,5 +1,5 @@
 import * as ProfilePageActions from './user-data.actions'
-import User from '../../../../../data/models/user.model';
+import User from '../../../profile-page/models/user.model';
 
 
 export interface State {

@@ -9,9 +9,6 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 import { MiniSearchInputComponent } from './components/mini-search-input/mini-search-input.component';
 import { MainPanelComponent } from './components/main-panel/main-panel.component';
 import { NewCommentFormComponent } from './components/comments/new-comment-form/new-comment-form.component';
-import {ProfilePageModule} from '../modules/home/profile-page/profile-page.module';
-import {ModulesModule} from '../modules/modules.module';
-import {ImageService} from './services/image.service';
 
 
 @NgModule({

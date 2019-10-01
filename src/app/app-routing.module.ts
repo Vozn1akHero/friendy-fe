@@ -9,8 +9,8 @@ import { FriendsPageComponent } from './modules/home/friends-page/friends-page.c
 import { GroupsPageComponent } from './modules/home/groups-page/groups-page.component';
 import { HomePageComponent } from './modules/home/home-page/home-page.component';
 import { MessagesPageComponent } from './modules/home/messages-page/messages-page.component';
-import { MessageComponent } from './modules/home/messages-page/message/message.component';
-import { DialogComponent } from './modules/home/messages-page/dialog/dialog.component';
+import { MessageComponent } from './modules/home/messages-page/components/message/message.component';
+import { DialogComponent } from './modules/home/messages-page/components/dialog/dialog.component';
 import { CommentsComponent } from './shared/components/comments/comments.component';
 import {UserSettingsPageComponent} from './modules/home/user-settings-page/user-settings-page.component';
 import {EventComponent} from './modules/home/event-page/event-page.component';

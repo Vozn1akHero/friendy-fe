@@ -11,7 +11,7 @@ import { ProfileFriendsItemComponent } from './components/profile-friends-item/p
 import { ProfilePhotosItemComponent } from './components/profile-photos/profile-photos-item/profile-photos-item.component';
 
 import { SharedModule } from '../../../shared/shared.module';
-import {AppRoutingModule} from '../../../app-routing.module';
+import { AppRoutingModule } from '../../../app-routing.module';
 
 
 @NgModule({

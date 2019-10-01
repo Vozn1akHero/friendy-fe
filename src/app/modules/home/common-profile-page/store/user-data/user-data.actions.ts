@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import User from '../../../../../data/models/user.model';
+import User from '../../../profile-page/models/user.model';
 
 
 export const GET_USER_START = '[CommonProfile] CommonProfile Start';

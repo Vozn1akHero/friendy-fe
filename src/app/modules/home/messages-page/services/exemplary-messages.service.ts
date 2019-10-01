@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import * as signalR from'@aspnet/signalr';
 import {HubConnection} from '@aspnet/signalr';
-import UserAvatar from '../models/user-avatar.model';
+
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -14,18 +14,18 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class ProfilePageService {
+export class ExemplaryMessagesService {
   private connection : HubConnection;
 
   constructor(private http: HttpClient){
 
   }
 
-  getAvatar(){
-    return this.http.get('/api/user/getAvatar', {observe: 'response'});
+  getExemplaryMessages(){
+    return this.http.get('/api/chat/getLastMessages', {observe: 'response'});
   }
 
-  connectToSocket() {
+/*  connectToSocket() {
     this.connection = new signalR.HubConnectionBuilder()
       .withUrl("http://localhost:5000/profileHub", {
         skipNegotiation: true,
@@ -40,5 +40,5 @@ export class ProfilePageService {
     this.connection.on("Connected", (data) => {
       console.log(data);
     })
-  }
+  }*/
 }

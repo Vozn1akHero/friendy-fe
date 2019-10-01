@@ -1,5 +1,5 @@
 import * as UserActions from './user-data.actions'
-import User from '../../../../../data/models/user.model';
+import User from '../../models/user.model';
 
 export interface State {
   user: User;
@@ -18,12 +18,12 @@ export function userDataReducer(
   action: UserActions.Actions
 ) : State {
   switch (action.type) {
-    case UserActions.GET_USER_DATA_START:
+    case UserActions.GET_USER_DATA:
       return {
         ...state,
         loading: true
       };
-    case UserActions.GET_USER_DATA:
+    case UserActions.SET_USER_DATA:
       return {
         ...state,
         loading: false,

@@ -1,43 +1,48 @@
-<ng-container *ngIf="(userMDLoading$ | async) === false">
-  <ng-template [ngIf]="_showComments">
+<ng-container *ngIf="!pageLoading">
+  <ng-template [ngIf]="showComments">
     <router-outlet></router-outlet>
   </ng-template>
 
   <section class="profile">
     <app-profile-header [activeSettings]="activeSettings"
-                        [userData$]="userData$"></app-profile-header>
+                        [userAvatar]="userAvatar"
+                        [userData]="userData"></app-profile-header>
 
     <section class="profile-main-content"
-         [ngStyle]="{'opacity': activeSettings ? '0.5' : '1', 'pointer-events': activeSettings ? 'none' : 'all'}">
-
-      <!-- ten element służy do przyciemniania głównej strony profilu kiedy zmiana ustawień jest aktywna
-      <div class="profile-main-content--dim" *ngIf="activeSettings"></div> -->
+         [ngStyle]="{'opacity': activeSettings ? '0.5' : '1',
+         'pointer-events': activeSettings ? 'none' : 'all'}">
 
       <section class="profile-main-content__left-side-wrapper">
         <app-profile-new-post (newPostEvent)="onNewPost($event)">
         </app-profile-new-post>
 
-        <app-profile-post-item *ngFor="let post of (posts$ | async)"
+        <span *ngIf="userPosts.length === 0">
+          Brak wpisów
+        </span>
+
+        <app-profile-post-item *ngFor="let post of userPosts"
                                [post]="post"
+                               [userId]="userData.id"
                                (removePost)="onRemovePost($event)"
                                (likePost)="onLikePost($event)"
-                               [avatar]="(userData$ | async).avatar">
+                               (unlikePost)="onUnlikePost($event)"
+                               [userAvatar]="userAvatar">
         </app-profile-post-item>
+
       </section>
 
       <section class="profile-main-content__right-side-wrapper">
 
-        <ng-container *ngIf="(exemplaryFriendsLoading$ | async) === false">
+        <!--<ng-container *ngIf="(exemplaryFriendsLoading$ | async) === false">
             <app-main-panel
-            [panelContent]="{
-              title: 'Znajomi',
-              icon: '../../../../assets/images/icon/symbol-defs.svg#icon-users1',
-              link: '/app/friends'}">
-
-            <app-profile-friends-item *ngFor="let exemplaryFriend of exemplaryFriends" [exemplaryFriend]="exemplaryFriend"></app-profile-friends-item>
-
+              [panelContent]="{
+                title: 'Znajomi',
+                icon: '../../../../assets/images/icon/symbol-defs.svg#icon-users1',
+                link: '/app/friends'}">
+            <app-profile-friends-item *ngFor="let exemplaryFriend of exemplaryFriends"
+                                      [exemplaryFriend]="exemplaryFriend"></app-profile-friends-item>
           </app-main-panel>
-        </ng-container>
+        </ng-container>-->
 
         <app-profile-photos></app-profile-photos>
       </section>

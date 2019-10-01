@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 import * as CommonProfilePostsActions from './user-posts.actions';
-import User from '../../../../../data/models/user.model';
+import User from '../../../profile-page/models/user.model';
 import {AppState} from '../../../../../core/ngrx/store/app.reducer';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';

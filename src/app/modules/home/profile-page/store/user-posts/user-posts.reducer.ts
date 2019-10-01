@@ -28,12 +28,12 @@ export function userPostsReducer(
         loading: false,
         posts: action.payload
       };
-    case UserPostsActions.ADD_POST_START:
+    case UserPostsActions.ADD_POST:
       return {
         ...state,
         loading: true
       };
-    case UserPostsActions.ADD_POST:
+    case UserPostsActions.SET_ADDED_POST:
       return {
         ...state,
         loading: false,
@@ -54,6 +54,20 @@ export function userPostsReducer(
         posts: [...state.posts.map(post => {
           if(post.id === action.payload.id) {
             post.userPostLikes.push(action.payload)
+          }
+          return post;
+        })]
+      };
+    case UserPostsActions.UNLIKE_POST:
+      return {
+        ...state,
+        posts: [...state.posts.map(post => {
+          if(post.id !== action.payload.id) {
+            post.userPostLikes.map(userPostLike => {
+              if(userPostLike.id !== action.payload.id){
+                return userPostLike;
+              }
+            })
           }
           return post;
         })]

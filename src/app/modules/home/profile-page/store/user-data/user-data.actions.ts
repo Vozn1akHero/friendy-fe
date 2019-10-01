@@ -1,22 +1,21 @@
 import { Action } from '@ngrx/store';
-import User from '../../../../../data/models/user.model';
+import User from '../../models/user.model';
 
-export const GET_USER_DATA_START = '[Profile Page] Get User Start Data';
 export const GET_USER_DATA = '[Profile Page] Get User Data';
+export const SET_USER_DATA = '[Profile Page] Set User Data';
 
-
-export class GetUserDataStart implements Action {
-  readonly type = GET_USER_DATA_START;
-
-  constructor(){}
-}
 
 export class GetUserData implements Action {
   readonly type = GET_USER_DATA;
 
-  constructor(public payload: User){
+  constructor(){}
+}
 
+export class SetUserData implements Action {
+  readonly type = SET_USER_DATA;
+
+  constructor(public payload: User){
   }
 }
 
-export type Actions = GetUserData | GetUserDataStart
+export type Actions = SetUserData | GetUserData

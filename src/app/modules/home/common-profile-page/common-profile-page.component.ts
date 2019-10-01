@@ -7,7 +7,7 @@ import {Observable, Subscription, throwError} from 'rxjs';
 
 import * as fromApp from '../../../core/ngrx/store/app.reducer';
 
-import User from '../../../data/models/user.model';
+import User from '../profile-page/models/user.model';
 
 import {catchError, map, take} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';

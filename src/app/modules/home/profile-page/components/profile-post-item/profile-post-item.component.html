@@ -4,14 +4,14 @@
   </button>
   <div class="upper-wrapper">
     <figure class="avatar">
-      <img src="{{ avatar }}" alt="">
+      <img src="{{ userAvatar.avatarBytes }}" alt="user's avatar">
     </figure>
     <p class="content">
       {{ post.content }}
     </p>
     <img *ngIf="post.image != null"
          src="{{ post.image }}"
-         alt="" class="image"/>
+         class="image"/>
   </div>
 
   <div class="bottom-wrapper">
@@ -23,7 +23,10 @@
         {{ post.userPostComments.length }}
       </span>
     </button>
-    <button class="likes" (click)="onLikePostBtnClick()">
+
+    <button class="likes"
+            [ngClass]="putLike ? 'unlike-post-btn' : 'like-user-post-btn'"
+            (click)="onLikeOrUnlikePost()">
       <svg>
         <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-heart"></use>
       </svg>

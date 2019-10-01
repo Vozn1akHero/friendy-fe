@@ -52,7 +52,8 @@ export class EventsPageComponent implements OnInit, OnDestroy {
       }
 
       if(this.chosenSubpage === EventType.Administered){
-        this.administeredEventsSubscription = this.store.select(state => state.eventsPageAdministeredEventsReducer.administeredEvents)
+        this.administeredEventsSubscription = this.store.select(state => state
+          .eventsPageAdministeredEventsReducer.administeredEvents)
           .subscribe(events => {
             if(events.length === 0){
               this.store.dispatch(new EventsPageAdministeredEventsActions.GetAdministeredEventsStart());
@@ -60,7 +61,7 @@ export class EventsPageComponent implements OnInit, OnDestroy {
             this.administeredEvents = events;
           })
       } else if (this.chosenSubpage === EventType.Participating) {
-        this.eventsSubscription = this.store
+        this.store
           .select(state => state.eventsPageUserEvents.events)
           .subscribe(events => {
             if(events.length == 0){
@@ -72,7 +73,7 @@ export class EventsPageComponent implements OnInit, OnDestroy {
         this.router.navigate(['.'], { fragment: 'ev_t=participating',
           relativeTo: this.activatedRoute })
       }
-    })
+    }).unsubscribe()
   }
 
   openOrCloseEventCreationPopup() {

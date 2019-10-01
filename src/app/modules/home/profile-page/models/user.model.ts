@@ -8,7 +8,6 @@ export default class User {
   genderId: number;
   name: string;
   surname: string;
-  avatar: File;
   profileBg: string;
   status: string;
 }

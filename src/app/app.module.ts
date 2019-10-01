@@ -9,20 +9,9 @@ import { MainpageComponent } from './modules/mainpage/mainpage.component';
 import { LoginPageComponent } from './modules/auth/login-page/login-page.component';
 import { JoinupPageComponent } from './modules/auth/joinup-page/joinup-page.component';
 
-import { MessagesPageComponent } from './modules/home/messages-page/messages-page.component';
 
 import { GroupsPageComponent } from './modules/home/groups-page/groups-page.component';
 import { HomePageComponent } from './modules/home/home-page/home-page.component';
-import { MessageComponent } from './modules/home/messages-page/message/message.component';
-import { DialogComponent } from './modules/home/messages-page/dialog/dialog.component';
-import { ChatComponent } from './modules/home/messages-page/dialog/chat/chat.component';
-import { NewMessageComponent } from './modules/home/messages-page/dialog/new-message/new-message.component';
-import { ChatFriendDataComponent } from './modules/home/messages-page/dialog/chat-friend-data/chat-friend-data.component';
-import { ChatsInDialogComponent } from './modules/home/messages-page/dialog/chats-in-dialog/chats-in-dialog.component';
-import { SortMessagesPanelComponent } from './modules/home/messages-page/sort-messages-panel/sort-messages-panel.component';
-import { NewMessagePanelComponent } from './modules/home/messages-page/new-message-panel/new-message-panel.component';
-
-
 
 
 import { GroupCreationComponent } from './modules/home/groups-page/group-creation/group-creation.component';
@@ -49,10 +38,7 @@ import { HomeUpcomingEventsItemComponent } from './modules/home/home-page/home-u
 
 
 
-import { FriendMessagesComponent } from './modules/home/messages-page/dialog/chat/friend-messages/friend-messages.component';
-import { UserMessagesComponent } from './modules/home/messages-page/dialog/chat/user-messages/user-messages.component';
-import { MessageInChatComponent } from './modules/home/messages-page/dialog/chat/message-in-chat/message-in-chat.component';
-import { FriendInChatsInDialogComponent } from './modules/home/messages-page/dialog/chats-in-dialog/friend-in-chats-in-dialog/friend-in-chats-in-dialog.component';
+
 import { EventComponent } from './modules/home/event-page/event-page.component';
 import { EventHeaderBgComponent } from './modules/home/event-page/event-header/event-header-bg/event-header-bg.component';
 import { EventHeaderEventinfoComponent } from './modules/home/event-page/event-header/event-header-eventinfo/event-header-eventinfo.component';
@@ -85,13 +71,18 @@ import {ProfilePageModule} from './modules/home/profile-page/profile-page.module
 import {UserDataEffects} from './modules/home/common-profile-page/store/user-data/user-data.effects';
 
 
-import * as UserPostsActions from './modules/home/profile-page/store/user-posts/user-posts.actions';
 
 import {UserPostsEffects} from './modules/home/profile-page/store/user-posts/user-posts.effects';
 import {EventHeaderComponent} from './modules/home/event-page/event-header/event-header.component';
 import {UserFriendsEffects} from './modules/home/friends-page/store/user-friends/friends-page.effects';
 import {UserEventsEffects} from './modules/home/events-page/store/user-events/user-events.effects';
 import {AdministeredEventsEffects} from './modules/home/events-page/store/administered-events/administered-events.effects';
+
+import {UserAvatarEffects} from './modules/home/profile-page/store/user-avatar/user-avatar.effects';
+import {MainUserDataEffects} from './modules/home/profile-page/store/user-data/user-data.effects';
+import {UserExemplaryFriendsEffects} from './modules/home/profile-page/store/user-exemplary-friends/user-exemplary-friends.effects';
+import {ExemplaryMessagesEffects} from './modules/home/messages-page/store/exemplary-messages/exemplary-messages.effects';
+import {MessagesPageModule} from './modules/home/messages-page/messages-page.module';
 
 
 
@@ -103,17 +94,10 @@ import {AdministeredEventsEffects} from './modules/home/events-page/store/admini
     LoginPageComponent,
     JoinupPageComponent,
 
-    MessagesPageComponent,
+
     GroupsPageComponent,
     HomePageComponent,
-    MessageComponent,
-    DialogComponent,
-    ChatComponent,
-    NewMessageComponent,
-    ChatFriendDataComponent,
-    ChatsInDialogComponent,
-    SortMessagesPanelComponent,
-    NewMessagePanelComponent,
+
 
 
     RegistrationSuccessPopUpComponent,
@@ -139,10 +123,7 @@ import {AdministeredEventsEffects} from './modules/home/events-page/store/admini
     HomeUpcomingEventsItemComponent,
 
 
-    FriendMessagesComponent,
-    UserMessagesComponent,
-    MessageInChatComponent,
-    FriendInChatsInDialogComponent,
+
     EventComponent,
     EventHeaderBgComponent,
     EventHeaderEventinfoComponent,
@@ -164,6 +145,7 @@ import {AdministeredEventsEffects} from './modules/home/events-page/store/admini
     ProfilePageModule,
     SharedModule,
     BrowserModule,
+    MessagesPageModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -173,6 +155,10 @@ import {AdministeredEventsEffects} from './modules/home/events-page/store/admini
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([
       //UserEffects,
+      ExemplaryMessagesEffects,
+      MainUserDataEffects,
+      UserAvatarEffects,
+      UserExemplaryFriendsEffects,
       UserDataEffects,
       UserPostsEffects,
       UserFriendsEffects,

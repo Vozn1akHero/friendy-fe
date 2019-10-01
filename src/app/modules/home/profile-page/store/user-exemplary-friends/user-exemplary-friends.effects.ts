@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
-import { switchMap, catchError, map, tap, withLatestFrom } from 'rxjs/operators';
+import {switchMap, catchError, map, tap, withLatestFrom, take, exhaustMap} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -10,11 +10,11 @@ import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 
 @Injectable()
-export class UserPostsEffects {
+export class UserExemplaryFriendsEffects {
   @Effect()
   profilePageGetExemplaryFriends = this.actions$.pipe(
     ofType(UserExemplaryFriendsActions.GET_EXEMPLARY_FRIENDS_START),
-    switchMap((getExemplaryFriendsStart: UserExemplaryFriendsActions.GetExemplaryFriendsStart) => {
+    exhaustMap((getExemplaryFriendsStart: UserExemplaryFriendsActions.GetExemplaryFriendsStart) => {
       return this.http.get('/api/friend/getExemplaryByUserId',
         {observe: 'response'})
         .pipe(
