@@ -15,7 +15,7 @@ import {EventType} from './enums/event-types.enum';
 })
 export class EventsPageComponent implements OnInit, OnDestroy {
   eventCreationPopupOpened = false;
-
+  chosenEventTypeSubscription: Subscription;
   eventsSubscription: Subscription;
   events: Event[];
   userEventsLoading$: Observable<boolean>;
@@ -32,8 +32,7 @@ export class EventsPageComponent implements OnInit, OnDestroy {
   constructor(private renderer: Renderer2,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private store: Store<fromApp.AppState>,
-              private state: State<fromApp.AppState>) {}
+              private store: Store<fromApp.AppState>) {}
 
   ngOnInit() {
     //this.events$ = this.store.select(state => state.eventsPageUserEvents.events);
@@ -41,7 +40,7 @@ export class EventsPageComponent implements OnInit, OnDestroy {
     this.administeredEventsLoading$ = this.store.select(state => state.eventsPageAdministeredEventsReducer.loading);
     //this.store.dispatch(new EventsPageUserEventsActions.GetEventsStart());
 
-    this.activatedRoute.fragment.subscribe(fragment => {
+    this.chosenEventTypeSubscription = this.activatedRoute.fragment.subscribe(fragment => {
       let chosenSubpage = new URLSearchParams(fragment).get('ev_t');
       switch (chosenSubpage) {
         case 'administered':
@@ -52,28 +51,23 @@ export class EventsPageComponent implements OnInit, OnDestroy {
       }
 
       if(this.chosenSubpage === EventType.Administered){
+        this.store.dispatch(new EventsPageAdministeredEventsActions.GetAdministeredEventsStart());
         this.administeredEventsSubscription = this.store.select(state => state
           .eventsPageAdministeredEventsReducer.administeredEvents)
           .subscribe(events => {
-            if(events.length === 0){
-              this.store.dispatch(new EventsPageAdministeredEventsActions.GetAdministeredEventsStart());
-            }
             this.administeredEvents = events;
           })
       } else if (this.chosenSubpage === EventType.Participating) {
-        this.store
-          .select(state => state.eventsPageUserEvents.events)
+        this.store.dispatch(new EventsPageUserEventsActions.GetEventsStart());
+        this.store.select(state => state.eventsPageUserEvents.events)
           .subscribe(events => {
-            if(events.length == 0){
-              this.store.dispatch(new EventsPageUserEventsActions.GetEventsStart());
-            }
             this.events = events;
           });
       } else {
         this.router.navigate(['.'], { fragment: 'ev_t=participating',
           relativeTo: this.activatedRoute })
       }
-    }).unsubscribe()
+    })
   }
 
   openOrCloseEventCreationPopup() {
@@ -81,7 +75,6 @@ export class EventsPageComponent implements OnInit, OnDestroy {
   }
 
   showConcreteTypeOfEvents(chosenSubpage) {
-    //this.typeOfEventsToShow = value;
     if(chosenSubpage === 'administered'){
       this.router.navigate(['.'], { fragment: 'ev_t=administered',
         relativeTo: this.activatedRoute })
@@ -97,7 +90,6 @@ export class EventsPageComponent implements OnInit, OnDestroy {
   searchEvents(keyword){
     console.log(keyword)
     if(this.chosenSubpage === EventType.Administered){
-
       this.store.dispatch(new EventsPageAdministeredEventsActions
         .FilterAdministeredEventsStart({ keyword }))
     } else if (this.chosenSubpage === EventType.Participating){
@@ -108,5 +100,6 @@ export class EventsPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if(this.eventsSubscription != null) this.eventsSubscription.unsubscribe();
     if(this.administeredEventsSubscription != null) this.administeredEventsSubscription.unsubscribe();
+    this.chosenEventTypeSubscription.unsubscribe();
   }
 }

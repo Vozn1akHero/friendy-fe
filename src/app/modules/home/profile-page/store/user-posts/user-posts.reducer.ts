@@ -5,11 +5,13 @@ import Post from '../../models/post.model';
 export interface State {
   posts: Post[];
   loading: boolean;
+  loaded: boolean;
 }
 
 const initialState: State = {
   loading: false,
-  posts: []
+  posts: [],
+  loaded: false
 };
 
 export function userPostsReducer(
@@ -17,16 +19,15 @@ export function userPostsReducer(
   action: UserPostsActions.UserPostsActions
 ) {
   switch (action.type) {
-    case UserPostsActions.GET_USER_POSTS_START:
-      return {
-        ...state,
-        loading: true
-      };
     case UserPostsActions.GET_USER_POSTS:
       return {
+        ...state
+      };
+    case UserPostsActions.SET_USER_POSTS:
+      return {
         ...state,
-        loading: false,
-        posts: action.payload
+        posts: action.payload,
+        loaded: true
       };
     case UserPostsActions.ADD_POST:
       return {
@@ -39,14 +40,10 @@ export function userPostsReducer(
         loading: false,
         posts: [action.payload, ...state.posts]
       };
-    case UserPostsActions.REMOVE_POST:
+    case UserPostsActions.REMOVE_POST_FROM_STATE:
       return {
         ...state,
-        posts: state.posts.filter(post => {
-          if(post.id !== action.payload.id){
-            return post;
-          }
-        })
+        posts: state.posts.filter(post => post.id !== action.payload.id)
       };
     case UserPostsActions.LIKE_POST:
       return {

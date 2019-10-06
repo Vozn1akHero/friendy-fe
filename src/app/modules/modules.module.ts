@@ -8,6 +8,7 @@ import {CommonProfilePageModule} from './home/common-profile-page/common-profile
 import {NotFoundPageComponent} from './not-found/not-found-page.component';
 import {FriendsPageModule} from './home/friends-page/friends-page.module';
 import {EventsPageModule} from './home/events-page/events-page.module';
+import { PhotosPageComponent } from './home/photos-page/photos-page.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {EventsPageModule} from './home/events-page/events-page.module';
     EventsPageModule
   ],
   declarations: [
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    PhotosPageComponent
   ],
   exports: [
 

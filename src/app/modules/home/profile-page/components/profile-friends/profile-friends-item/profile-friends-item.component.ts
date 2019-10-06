@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ExemplaryFriend} from '../../models/exemplary-friend.model';
+import ExemplaryFriend from '../../../models/exemplary-friend.model';
 
 @Component({
   selector: 'app-profile-friends-item',

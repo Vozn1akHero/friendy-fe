@@ -3,12 +3,12 @@ import User from '../../models/user.model';
 
 export interface State {
   user: User;
-  loading: boolean;
+  loaded: boolean;
 }
 
 const initialState: State = {
   user: null,
-  loading: false
+  loaded: false
 };
 
 //export const selectUser = (state: State) => state.user;
@@ -20,13 +20,12 @@ export function userDataReducer(
   switch (action.type) {
     case UserActions.GET_USER_DATA:
       return {
-        ...state,
-        loading: true
+        ...state
       };
     case UserActions.SET_USER_DATA:
       return {
         ...state,
-        loading: false,
+        loaded: true,
         user: action.payload
       };
     default:

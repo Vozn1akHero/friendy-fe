@@ -11,6 +11,7 @@ import {EventsMineSearchComponent} from './components/events-mine-search/events-
 import {EventCreationComponent} from './components/event-creation/event-creation.component';
 import {EventsListControlsComponent} from './components/events-list-controls/events-list-controls.component';
 import { AdministeredEventsItemComponent } from './components/administered-events-item/administered-events-item.component';
+import { EventListComponent } from './components/event-list/event-list.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { AdministeredEventsItemComponent } from './components/administered-event
     SearchEventsComponent,
     EventCreationComponent,
     SuggestedEventsItemComponent,
-    AdministeredEventsItemComponent
+    AdministeredEventsItemComponent,
+    EventListComponent
   ],
   exports: []
 })

@@ -10,6 +10,7 @@ import {AppRoutingModule} from '../../../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FriendsSearchInputComponent} from './components/friends-search-input/friends-search-input.component';
 import { FoundUserItemComponent } from './components/found-user-item/found-user-item.component';
+import { FriendListComponent } from './components/friend-list/friend-list.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FoundUserItemComponent } from './components/found-user-item/found-user-
     FriendsAdvSearchFormComponent,
     FriendsListItemComponent,
     FriendsSearchInputComponent,
-    FoundUserItemComponent
+    FoundUserItemComponent,
+    FriendListComponent
   ],
   exports: []
 })

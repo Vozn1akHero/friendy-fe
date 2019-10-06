@@ -2,23 +2,7 @@
 @import '../../../../../../assets/sass/components/dropdown';
 @import "../../../../../../assets/sass/components/text-input";
 
-.event-creation-popup{
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  z-index: 1000;
-  background: rgba(0, 0, 0, .5);
 
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  &-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 
     .event-creation-form{
       background-color: $color-bg-light-grey;
@@ -156,6 +140,3 @@
       }
 
     }
-  }
-
-}

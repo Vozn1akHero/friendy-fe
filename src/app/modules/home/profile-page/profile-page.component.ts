@@ -10,11 +10,12 @@ import * as fromApp from '../../../core/ngrx/store/app.reducer';
 import * as UserDataActions from './store/user-data/user-data.actions';
 import * as UserPostsActions from './store/user-posts/user-posts.actions';
 import * as UserAvatarActions from './store/user-avatar/user-avatar.actions';
+import * as UserExemplaryFriends from './store/user-exemplary-friends/user-exemplary-friends.actions';
 
 import User from './models/user.model';
 import * as moment from 'moment';
 import Post from './models/post.model';
-import {ExemplaryFriend} from './models/exemplary-friend.model';
+import ExemplaryFriend from './models/exemplary-friend.model';
 import UserAvatar from './models/user-avatar.model';
 import {map} from 'rxjs/operators';
 
@@ -30,23 +31,20 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
   loadingSubscription: Subscription;
 
   userData: User;
-  userMDLoading$: Observable<boolean>;
+  userDataLoaded: boolean;
   userDataSubscription: Subscription;
 
   userPosts: Post[];
+  userPostsLoaded: boolean;
   userPostsSubscription: Subscription;
-  userPostsLoading$: Observable<boolean>;
-  //posts$: Observable<Post[]>;
 
   exemplaryFriends: ExemplaryFriend[];
+  exemplaryFriendsLoaded: boolean;
   exemplaryFriendsSubscription: Subscription;
-  exemplaryFriendsLoading$: Observable<boolean>;
 
-  //user avatar
-  //userAvatar$: Observable<UserAvatar>;
   userAvatar: UserAvatar;
+  userAvatarLoaded: boolean;
   userAvatarSubscription: Subscription;
-  userAvatarLoading$: Observable<boolean>;
 
 /*  newPost : FormGroup = new FormGroup({
     newMessageContent: new FormControl('',
@@ -56,26 +54,27 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(private renderer: Renderer2,
               private store: Store<fromApp.AppState>,
-              private state: State<fromApp.AppState>,
               private pageService: ProfilePageService) {}
 
 
   ngOnInit() {
     this.loadingSubscription = combineLatest(
-      this.store.select(state => state.profilePageUserData.loading),
-      this.store.select(state => state.profilePageUserPosts.loading),
-      this.store.select(state => state.profilePageUserAvatar.loading),
-    ).subscribe(([userMdLoading, userPostsLoading, userAvatarLoading]) => {
-      this.pageLoading = userMdLoading && userPostsLoading && userAvatarLoading;
+      this.store.select(state => state.profilePageUserData.loaded),
+      this.store.select(state => state.profilePageUserPosts.loaded),
+      this.store.select(state => state.profilePageUserAvatar.loaded),
+      this.store.select(state => state.profilePageUserExemplaryFriends.loaded)
+    ).subscribe(([userDataLoading, userPostsLoaded, userAvatarLoaded, exemplaryFriendsLoaded]) => {
+      //this.pageLoading = userDataLoading && userPostsLoading && userAvatarLoading;
+      this.userDataLoaded = userDataLoading;
+      this.userPostsLoaded = userPostsLoaded;
+      this.userAvatarLoaded = userAvatarLoaded;
+      this.exemplaryFriendsLoaded = exemplaryFriendsLoaded;
     });
-    /*this.userMDLoading$ = this.store.select(state => state.profilePageUserData.loading);
-    this.userPostsLoading$ = this.store.select(state => state.profilePageUserPosts.loading);
-    //this.exemplaryFriendsLoading$ = this.store.select(state => state.profilePageUserExemplaryFriends.loading);
-    this.userAvatarLoading$ = this.store.select(state => state.profilePageUserAvatar.loading);*/
 
     this.getUserAvatar();
     this.getUserData();
     this.getUserPosts();
+    this.getExemplaryFriends();
 
     this.pageService.connectToSocket();
   }
@@ -90,7 +89,7 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   getUserPosts() {
-    this.store.dispatch(new UserPostsActions.GetUserPostsStart());
+    this.store.dispatch(new UserPostsActions.GetUserPosts());
     this.userPostsSubscription = this.store
       .select(state => state.profilePageUserPosts.posts)
       .subscribe(userPosts => {
@@ -107,6 +106,15 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
       })
   }
 
+  getExemplaryFriends(){
+    this.store.dispatch(new UserExemplaryFriends.GetExemplaryFriends());
+    this.exemplaryFriendsSubscription = this.store
+      .select(state => state.profilePageUserExemplaryFriends.exemplaryFriends)
+      .subscribe(exemplaryFriends => {
+        this.exemplaryFriends = exemplaryFriends;
+      })
+  }
+
   onNewPost(newPost : FormGroup):void{
     const post : Post = {
       content: newPost.value.newMessageContent,
@@ -117,7 +125,7 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   onRemovePost(id){
-    this.store.dispatch(new UserPostsActions.RemovePostStart({ id }))
+    this.store.dispatch(new UserPostsActions.RemovePost({ id }))
   }
 
   onLikePost(id){
@@ -135,8 +143,7 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
   ngOnDestroy(): void {
     this.userDataSubscription.unsubscribe();
     this.userPostsSubscription.unsubscribe();
-    //this.exemplaryFriendsSubscription.unsubscribe();
+    this.exemplaryFriendsSubscription.unsubscribe();
     this.userAvatarSubscription.unsubscribe();
-    //if(this.userAvatarSubscription != null) this.userAvatarSubscription.unsubscribe();
   }
 }

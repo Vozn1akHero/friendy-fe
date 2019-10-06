@@ -1,14 +1,14 @@
 import * as UserExemplaryFriendsActions from './user-exemplary-friends.actions'
-import {ExemplaryFriend} from '../../models/exemplary-friend.model';
+import ExemplaryFriend from '../../models/exemplary-friend.model';
 
 
 export interface State {
   exemplaryFriends: ExemplaryFriend[];
-  loading: boolean;
+  loaded: boolean;
 }
 
 const initialState: State = {
-  loading: false,
+  loaded: false,
   exemplaryFriends: []
 };
 
@@ -17,15 +17,14 @@ export function userExemplaryFriendsReducer(
   action: UserExemplaryFriendsActions.Actions
 ) {
   switch (action.type) {
-    case UserExemplaryFriendsActions.GET_EXEMPLARY_FRIENDS_START:
+    case UserExemplaryFriendsActions.GET_EXEMPLARY_FRIENDS:
       return {
-        ...state,
-        loading: true
+        ...state
       };
-    case UserExemplaryFriendsActions.GET_EXAMPLE_FRIENDS:
+    case UserExemplaryFriendsActions.SET_EXEMPLARY_FRIENDS:
       return {
         ...state,
-        loading: false,
+        loaded: true,
         exemplaryFriends: action.payload
       };
     default:

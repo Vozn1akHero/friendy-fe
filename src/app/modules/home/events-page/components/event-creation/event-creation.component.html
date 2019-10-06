@@ -1,63 +1,62 @@
-<div @anim class="event-creation-popup">
-  <div class="event-creation-popup-wrapper">
-    <form (ngSubmit)="onSubmit()" [formGroup]="eventCreationForm" class="event-creation-form">
-      <button (click)="closePopup()" class="close-btn">
-        <svg class="close-icon">
-          <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
-        </svg>
-      </button>
+<app-common-modal>
+  <form (ngSubmit)="onSubmit()" [formGroup]="eventCreationForm" class="event-creation-form">
+    <button (click)="closePopup()" class="close-btn">
+      <svg class="close-icon">
+        <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+      </svg>
+    </button>
 
-      <div class="wrapper">
-        <input [ngClass]="{
+    <div class="wrapper">
+      <input [ngClass]="{
                   'bordered-onError': eventCreationForm.get('name').touched && eventCreationForm.get('name').invalid
                  }"
-               class="name"
-               formControlName="title"
-               placeholder="Nazwa"
-               type="text">
-        <textarea [ngClass]="{
+             class="name"
+             formControlName="name"
+             placeholder="Nazwa"
+             type="text">
+      <textarea [ngClass]="{
                   'bordered-onError': eventCreationForm.get('description').touched && eventCreationForm.get('description').invalid
                  }"
-                  class="desc"
-                  formControlName="description"
-                  placeholder="Opis"></textarea>
+                class="desc"
+                formControlName="description"
+                placeholder="Opis"></textarea>
 
-        <input [ngClass]="{
+      <input [ngClass]="{
                   'bordered-onError': eventCreationForm.get('city').touched && eventCreationForm.get('city').invalid
                  }"
-               class="city"
-               formControlName="city"
-               placeholder="Miasto"
-               type="text">
-      </div>
+             class="city"
+             formControlName="city"
+             placeholder="Miasto"
+             type="text">
+    </div>
 
-      <div class="wrapper spec-wrapper">
-        <input [ngClass]="{
+    <div class="wrapper spec-wrapper">
+      <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('street').touched && eventCreationForm.get('street').invalid
                }"
-               class="street"
-               formControlName="street"
-               placeholder="Ulica"
-               type="text">
+             class="street"
+             formControlName="street"
+             placeholder="Ulica"
+             type="text">
 
-        <input [ngClass]="{
+      <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('streetNumber').touched && eventCreationForm.get('streetNumber').invalid
                }"
-               class="number"
-               formControlName="streetNumber"
-               placeholder="Numer"
-               type="text">
-      </div>
+             class="number"
+             formControlName="streetNumber"
+             placeholder="Numer"
+             type="text">
+    </div>
 
-      <div class="wrapper spec-wrapper">
-        <input [ngClass]="{
+    <div class="wrapper spec-wrapper">
+      <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('year').touched && eventCreationForm.get('year').invalid
                }"
-               class="date-year"
-               formControlName="year"
-               placeholder="Rok"
-               type="number">
-        <span class="custom-dropdown date-month">
+             class="date-year"
+             formControlName="year"
+             placeholder="Rok"
+             type="number">
+      <span class="custom-dropdown date-month">
                 <select [ngClass]="{
                 'bordered-onError': eventCreationForm.get('month').touched && eventCreationForm.get('month').invalid
                }"
@@ -77,16 +76,16 @@
                 <option value="12">grudzień</option>
                 </select>
             </span>
-        <input [ngClass]="{
+      <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('day').touched && eventCreationForm.get('day').invalid
                }"
-               class="date-day"
-               formControlName="day"
-               placeholder="Dzień"
-               type="number">
-      </div>
+             class="date-day"
+             formControlName="day"
+             placeholder="Dzień"
+             type="number">
+    </div>
 
-      <div class="wrapper spec-wrapper">
+    <div class="wrapper spec-wrapper">
             <span class="custom-dropdown date-hour">
                 <select [ngClass]="{
                 'bordered-onError': eventCreationForm.get('hour').touched && eventCreationForm.get('hour').invalid
@@ -100,36 +99,35 @@
                 </select>
             </span>
 
-        <input [ngClass]="{
+      <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('minute').touched && eventCreationForm.get('minute').invalid
                }"
-               class="date-minute"
-               formControlName="minute" placeholder="Minuta"
-               type="number">
-      </div>
+             class="date-minute"
+             formControlName="minute" placeholder="Minuta"
+             type="number">
+    </div>
 
-      <div class="wrapper">
-        <input [ngClass]="{
-                  'bordered-onError': eventCreationForm.get('price').touched && eventCreationForm.get('price').invalid
+    <div class="wrapper">
+      <input [ngClass]="{
+                  'bordered-onError': eventCreationForm.get('entryPrice').touched && eventCreationForm.get('entryPrice').invalid
                  }"
-               class="price"
-               formControlName="entryPrice"
-               placeholder="Cena wejścia"
-               type="number">
-        <!--        <input type="number" formControlName="eventSubject" class="subject" placeholder="Tematyka">-->
-        <input [ngClass]="{
+             class="price"
+             formControlName="entryPrice"
+             placeholder="Cena wejścia"
+             type="number">
+      <!--        <input type="number" formControlName="eventSubject" class="subject" placeholder="Tematyka">-->
+      <input [ngClass]="{
                   'bordered-onError': eventCreationForm.get('participantsAmount').touched && eventCreationForm.get('participantsAmount').invalid
                  }"
-               class="participants-amount"
-               formControlName="participantsAmount"
-               placeholder="Maksymalna ilość uczestników"
-               type="number">
-      </div>
+             class="participants-amount"
+             formControlName="participantsAmount"
+             placeholder="Maksymalna ilość uczestników"
+             type="number">
+    </div>
 
-      <button [disabled]="eventCreationForm.invalid"
-              type="submit">
-        Utwórz
-      </button>
-    </form>
-  </div>
-</div>
+    <button [disabled]="eventCreationForm.invalid"
+            type="submit">
+      Utwórz
+    </button>
+  </form>
+</app-common-modal>

@@ -3,7 +3,7 @@
     <input class="name" formControlName="name" placeholder="Imię" type="text">
     <input class="surname" formControlName="surname" placeholder="Nazwisko" type="text">
 
-    <button *ngIf="!advFormVisibility" (click)="onShowMoreBtnClick()" class="show-more-btn">Więcej</button>
+    <button *ngIf="!advFormVisibility" (click)="onShowMoreBtnClick()" class="show-more-btn">Pokaż więcej</button>
 
     <ng-container *ngIf="advFormVisibility">
       <input class="city" formControlName="city" placeholder="Miasto" type="text">

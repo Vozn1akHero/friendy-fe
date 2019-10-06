@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import Post from '../../models/post.model';
+import Post from '../../../models/post.model';
 import * as moment from 'moment';
-import ExtendedPost from '../../models/extended-post.model';
+import ExtendedPost from '../../../models/extended-post.model';
 import {Observable} from 'rxjs';
-import UserAvatar from '../../models/user-avatar.model';
+import UserAvatar from '../../../models/user-avatar.model';
 
 @Component({
   selector: 'app-profile-post-item',

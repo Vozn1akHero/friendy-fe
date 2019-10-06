@@ -3,14 +3,14 @@ import UserAvatar from '../../models/user-avatar.model';
 
 export interface State {
   avatar: UserAvatar;
-  loading: boolean;
   loaded: boolean;
+  loading: boolean;
 }
 
 const initialState: State = {
   avatar: null,
-  loading: false,
-  loaded: false
+  loaded: false,
+  loading: false
 };
 
 export function userAvatarReducer(
@@ -20,13 +20,11 @@ export function userAvatarReducer(
   switch (action.type) {
     case UserAvatarActions.GET_USER_AVATAR:
       return {
-        ...state,
-        loading: true
+        ...state
       };
     case UserAvatarActions.SET_USER_AVATAR:
       return {
         ...state,
-        loading: false,
         avatar: action.payload,
         loaded: true
       };

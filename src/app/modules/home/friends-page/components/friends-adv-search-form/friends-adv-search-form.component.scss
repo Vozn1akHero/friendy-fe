@@ -5,6 +5,7 @@
 
 .friends-adv-search {
   width: inherit;
+  position: relative;
 
   form {
     display: flex;
@@ -24,7 +25,10 @@
       outline: none;
       border: none;
       color: $color-blue;
-      margin: 0 1rem;
+      margin: .5rem 0 0 1rem;
+      font-size: .7rem;
+      width: fit-content;
+
 
       &:hover{
         text-decoration: underline;

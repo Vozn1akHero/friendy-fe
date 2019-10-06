@@ -9,6 +9,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 import { MiniSearchInputComponent } from './components/mini-search-input/mini-search-input.component';
 import { MainPanelComponent } from './components/main-panel/main-panel.component';
 import { NewCommentFormComponent } from './components/comments/new-comment-form/new-comment-form.component';
+import { CommonModalComponent } from './components/common-modal/common-modal.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NewCommentFormComponent } from './components/comments/new-comment-form/
     SearchInputComponent,
     MiniSearchInputComponent,
     MainPanelComponent,
-    NewCommentFormComponent
+    NewCommentFormComponent,
+    CommonModalComponent
   ],
   exports: [
     NewMessageFormComponent,
@@ -32,7 +34,8 @@ import { NewCommentFormComponent } from './components/comments/new-comment-form/
     SearchInputComponent,
     MiniSearchInputComponent,
     MainPanelComponent,
-    NewCommentFormComponent
+    NewCommentFormComponent,
+    CommonModalComponent
   ]
 })
 

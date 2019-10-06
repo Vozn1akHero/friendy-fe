@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-new-message-panel',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-message-panel.component.scss']
 })
 export class NewMessagePanelComponent implements OnInit {
+  newMessage: FormGroup = new FormGroup(
+    {
+      chosenFriend: new FormControl([Validators.required]),
+      messageContent: new FormControl([Validators.required])
+    }
+  );
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }

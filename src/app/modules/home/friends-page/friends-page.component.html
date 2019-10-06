@@ -29,7 +29,8 @@
 
           <div class="friends-list">
             <section>
-              <app-friends-list-item *ngFor="let friend of (friends$ | async)" [friendData]="friend"></app-friends-list-item>
+              <app-friends-list-item *ngFor="let friend of (friends$ | async)"
+                                     [friendData]="friend"></app-friends-list-item>
             </section>
           </div>
         </ng-container>

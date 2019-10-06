@@ -6,12 +6,12 @@
     <div class="events__left">
       <div class="events-controls">
         <button class="all-events-btn" (click)="showConcreteTypeOfEvents('participating')"
-                [ngClass]="{'activeButton': chosenSubpage === participatingType}">
+                [ngClass]="{'activeButton': chosenSubpage == participatingType}">
           Wszystkie wydarzenia
         </button>
 
         <button class="my-events-btn" (click)="showConcreteTypeOfEvents('administered')"
-                [ngClass]="{'activeButton': chosenSubpage === administeredType}">
+                [ngClass]="{'activeButton': chosenSubpage == administeredType}">
           Moje wydarzenia
         </button>
       </div>

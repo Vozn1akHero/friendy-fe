@@ -1,8 +1,8 @@
 <section class="messages">
-  <section>
-
-    <app-message></app-message>
-
+  <section *ngIf="exemplaryMessagesLoaded$ | async">
+    <app-message *ngFor="let exemplaryMessage of exemplaryMessages"
+                 [exemplaryMessage]="exemplaryMessage">
+    </app-message>
   </section>
 
   <section>

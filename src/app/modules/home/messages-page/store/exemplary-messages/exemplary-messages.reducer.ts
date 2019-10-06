@@ -4,13 +4,13 @@ import ExemplaryMessage from '../../models/exemplary-message.model';
 
 export interface State {
   exemplaryMessages: ExemplaryMessage[];
-  loading: boolean;
+  //loading: boolean;
   loaded: boolean;
 }
 
 const initialState: State = {
   exemplaryMessages: [],
-  loading: false,
+ // loading: false,
   loaded: false
 };
 
@@ -22,12 +22,12 @@ export function exemplaryMessagesReducer(
     case ExemplaryMessagesActions.GET_EXEMPLARY_MESSAGES:
       return {
         ...state,
-        loading: true
+        //loading: true
       };
     case ExemplaryMessagesActions.SET_EXEMPLARY_MESSAGES:
       return {
         ...state,
-        loading: false,
+       // loading: false,
         exemplaryMessages: action.payload,
         loaded: true
       };

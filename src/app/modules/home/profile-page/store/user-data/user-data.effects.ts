@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
-import {switchMap, catchError, map, tap, withLatestFrom, take, concatMap, exhaustMap} from 'rxjs/operators';
+import {switchMap, catchError, map, tap, withLatestFrom, take, concatMap, exhaustMap, mergeMap, filter} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -15,8 +15,11 @@ export class MainUserDataEffects {
   @Effect()
   getUser = this.actions$.pipe(
     ofType(UserDataActions.GET_USER_DATA),
-    withLatestFrom(this.store.select(e=>e.profilePageUserData.user)),
-    exhaustMap(() => {
+    withLatestFrom(this.store.select(e=>e.profilePageUserData.loaded)),
+    filter(([{payload}, loaded]) => {
+      return !loaded
+    }),
+    mergeMap(() => {
       return this.http.get('/api/user/getUser', {observe: 'response'})
         .pipe(
           map(res => {

@@ -1,10 +1,11 @@
-<ng-container *ngIf="!pageLoading">
+<ng-container>
   <ng-template [ngIf]="showComments">
     <router-outlet></router-outlet>
   </ng-template>
 
   <section class="profile">
-    <app-profile-header [activeSettings]="activeSettings"
+    <app-profile-header *ngIf="userDataLoaded"
+                        [activeSettings]="activeSettings"
                         [userAvatar]="userAvatar"
                         [userData]="userData"></app-profile-header>
 
@@ -13,7 +14,15 @@
          'pointer-events': activeSettings ? 'none' : 'all'}">
 
       <section class="profile-main-content__left-side-wrapper">
-        <app-profile-new-post (newPostEvent)="onNewPost($event)">
+        <app-profile-post-list *ngIf="userPostsLoaded"
+                               (removePost)="onRemovePost($event)"
+                               (newPostEvent)="onNewPost($event)"
+                               (likePost)="onLikePost($event)"
+                               (unlikePost)="onUnlikePost($event)"
+                               [userAvatar]="userAvatar"
+                               [userId]="userData.id"
+                               [userPosts]="userPosts"></app-profile-post-list>
+        <!--<app-profile-new-post (newPostEvent)="onNewPost($event)">
         </app-profile-new-post>
 
         <span *ngIf="userPosts.length === 0">
@@ -27,23 +36,12 @@
                                (likePost)="onLikePost($event)"
                                (unlikePost)="onUnlikePost($event)"
                                [userAvatar]="userAvatar">
-        </app-profile-post-item>
-
+        </app-profile-post-item>-->
       </section>
 
       <section class="profile-main-content__right-side-wrapper">
-
-        <!--<ng-container *ngIf="(exemplaryFriendsLoading$ | async) === false">
-            <app-main-panel
-              [panelContent]="{
-                title: 'Znajomi',
-                icon: '../../../../assets/images/icon/symbol-defs.svg#icon-users1',
-                link: '/app/friends'}">
-            <app-profile-friends-item *ngFor="let exemplaryFriend of exemplaryFriends"
-                                      [exemplaryFriend]="exemplaryFriend"></app-profile-friends-item>
-          </app-main-panel>
-        </ng-container>-->
-
+        <app-profile-friends *ngIf="exemplaryFriendsLoaded"
+                             [exemplaryFriends]="exemplaryFriends"></app-profile-friends>
         <app-profile-photos></app-profile-photos>
       </section>
     </section>
