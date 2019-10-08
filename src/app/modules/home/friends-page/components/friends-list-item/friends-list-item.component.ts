@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import Friend from '../../models/friend.model';
 
 @Component({
   selector: 'app-friends-list-item',
@@ -6,7 +7,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./friends-list-item.component.scss']
 })
 export class FriendsListItemComponent implements OnInit {
-  @Input() friendData: any;
+  @Input() friendData: Friend;
   @Output() removeFriendEvent: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }

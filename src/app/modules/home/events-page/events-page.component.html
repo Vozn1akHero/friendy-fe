@@ -19,24 +19,15 @@
       <app-events-mine-search (searchEventsSubmit)="searchEvents($event)"></app-events-mine-search>
 
       <section *ngIf="chosenSubpage === participatingType">
-        <div *ngIf="(userEventsLoading$ | async) === false" class="participating-events">
-          <app-events-item *ngFor="let event of events"
-                           [eventData]="event"></app-events-item>
-        </div>
+        <app-user-events-list></app-user-events-list>
       </section>
 
       <section *ngIf="chosenSubpage === administeredType">
-        <div *ngIf="(administeredEventsLoading$ | async) === false" class="administered-events">
-<!--          <app-administered-events-item *ngFor="let admEvent of administeredEvents"
-                           [eventData]="admEvent"></app-administered-events-item>-->
-          <app-events-item *ngFor="let admEvent of administeredEvents"
-                           [eventData]="admEvent"></app-events-item>
-        </div>
+       <app-user-administered-events-list></app-user-administered-events-list>
       </section>
     </div>
 
     <div class="events__right">
-      <!--<app-new-event-btn (openEventCreationPopupInParent)="openOrCloseEventCreationPopup()"></app-new-event-btn>-->
       <div class="new-event">
         <button class="new-event__btn" (click)="openOrCloseEventCreationPopup()">
           Utwórz wydarzenie
@@ -49,7 +40,6 @@
         <div class="suggested-friends">
           <app-suggested-events-item></app-suggested-events-item>
         </div>
-
       </section>
     </div>
   </div>

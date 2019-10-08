@@ -39,22 +39,7 @@ import { HomeUpcomingEventsItemComponent } from './modules/home/home-page/home-u
 
 
 
-import { EventComponent } from './modules/home/event-page/event-page.component';
-import { EventHeaderBgComponent } from './modules/home/event-page/event-header/event-header-bg/event-header-bg.component';
-import { EventHeaderEventinfoComponent } from './modules/home/event-page/event-header/event-header-eventinfo/event-header-eventinfo.component';
-import { EventMainContentComponent } from './modules/home/event-page/event-main-content/event-main-content.component';
-import { EventParticipantsComponent } from './modules/home/event-page/event-main-content/event-participants/event-participants.component';
-import { EventPhotosComponent } from './modules/home/event-page/event-main-content/event-photos/event-photos.component';
-import { EventNewPostComponent } from './modules/home/event-page/event-main-content/event-new-post/event-new-post.component';
-import { EventAvatarComponent } from './modules/home/event-page/event-header/event-header-eventinfo/event-avatar/event-avatar.component';
-import { EventEventinfoBasicComponent } from './modules/home/event-page/event-header/event-header-eventinfo/event-eventinfo-basic/event-eventinfo-basic.component';
-import { EventPostItemComponent } from './modules/home/event-page/event-main-content/event-post-item/event-post-item.component';
-import { EventParticipantsItemComponent } from './modules/home/event-page/event-main-content/event-participants/event-participants-item/event-participants-item.component';
-import { EventPhotosItemComponent } from './modules/home/event-page/event-main-content/event-photos/event-photos-item/event-photos-item.component';
-import { EventHeaderBgAlterComponent } from './modules/home/event-page/event-header/event-header-bg/event-header-bg-alter/event-header-bg-alter.component';
-import { EventPageSettingsComponent } from './modules/home/event-page/event-header/event-header-eventinfo/event-page-settings/event-page-settings.component';
-import { EventAvatarAlterComponent } from './modules/home/event-page/event-header/event-header-eventinfo/event-avatar/event-avatar-alter/event-avatar-alter.component';
-import { EventPageSettingsControlsComponent } from './modules/home/event-page/event-header/event-header-eventinfo/event-page-settings/event-page-settings-controls/event-page-settings-controls.component';
+
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {RegistrationSuccessPopUpComponent} from './modules/auth/joinup-page/registration-success-pop-up/registration-success-pop-up.component';
@@ -73,7 +58,7 @@ import {UserDataEffects} from './modules/home/common-profile-page/store/user-dat
 
 
 import {UserPostsEffects} from './modules/home/profile-page/store/user-posts/user-posts.effects';
-import {EventHeaderComponent} from './modules/home/event-page/event-header/event-header.component';
+
 import {UserFriendsEffects} from './modules/home/friends-page/store/user-friends/friends-page.effects';
 import {UserEventsEffects} from './modules/home/events-page/store/user-events/user-events.effects';
 import {AdministeredEventsEffects} from './modules/home/events-page/store/administered-events/administered-events.effects';
@@ -83,6 +68,7 @@ import {MainUserDataEffects} from './modules/home/profile-page/store/user-data/u
 import {UserExemplaryFriendsEffects} from './modules/home/profile-page/store/user-exemplary-friends/user-exemplary-friends.effects';
 import {ExemplaryMessagesEffects} from './modules/home/messages-page/store/exemplary-messages/exemplary-messages.effects';
 import {MessagesPageModule} from './modules/home/messages-page/messages-page.module';
+import {EventDataEffects} from './modules/home/event-page/store/event-data/event-data.effects';
 
 
 
@@ -93,20 +79,13 @@ import {MessagesPageModule} from './modules/home/messages-page/messages-page.mod
     MainpageComponent,
     LoginPageComponent,
     JoinupPageComponent,
-
-
     GroupsPageComponent,
     HomePageComponent,
-
-
-
     RegistrationSuccessPopUpComponent,
-
     GroupCreationComponent,
     GroupsListComponent,
     NewGroupBtnComponent,
     SearchGroupsComponent,
-    EventHeaderComponent,
     UserSettingsPageComponent,
     GroupsAllComponent,
     GroupsListControlsComponent,
@@ -115,31 +94,10 @@ import {MessagesPageModule} from './modules/home/messages-page/messages-page.mod
     SearchGroupsControlComponent,
     SuggestedGroupsComponent,
     SuggestedGroupsItemComponent,
-
-
     HomeRecordItemComponent,
     HomeUpcomingEventsComponent,
     HomeStatsComponent,
     HomeUpcomingEventsItemComponent,
-
-
-
-    EventComponent,
-    EventHeaderBgComponent,
-    EventHeaderEventinfoComponent,
-    EventMainContentComponent,
-    EventParticipantsComponent,
-    EventPhotosComponent,
-    EventNewPostComponent,
-    EventAvatarComponent,
-    EventEventinfoBasicComponent,
-    EventPostItemComponent,
-    EventParticipantsItemComponent,
-    EventPhotosItemComponent,
-    EventHeaderBgAlterComponent,
-    EventPageSettingsComponent,
-    EventAvatarAlterComponent,
-    EventPageSettingsControlsComponent
   ],
   imports: [
     ProfilePageModule,
@@ -155,6 +113,7 @@ import {MessagesPageModule} from './modules/home/messages-page/messages-page.mod
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([
       //UserEffects,
+      EventDataEffects,
       ExemplaryMessagesEffects,
       MainUserDataEffects,
       UserAvatarEffects,

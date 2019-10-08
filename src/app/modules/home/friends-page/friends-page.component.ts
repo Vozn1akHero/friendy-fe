@@ -28,7 +28,7 @@ export class FriendsPageComponent implements OnInit, OnDestroy {
               private activatedRoute: ActivatedRoute,
               private store: Store<fromApp.AppState>,
               private state: State<fromApp.AppState>) {
-    this.store.dispatch(new UserFriendsActions.GetFriendsStart({ startIndex: 0, lastIndex: 9 }))
+    this.store.dispatch(new UserFriendsActions.GetFriends({ startIndex: 0, lastIndex: 9 }))
   }
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class FriendsPageComponent implements OnInit, OnDestroy {
       this.userSearchingActivated = false;
     } else {
       this.userSearchingActivated = true;
-      this.store.dispatch(new UserFriendsActions.FilterFriendsStart({keyword: searchTerm}));
+      this.store.dispatch(new UserFriendsActions.FilterFriends({keyword: searchTerm}));
     }
   }
 

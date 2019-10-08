@@ -2,25 +2,19 @@ import {Action} from '@ngrx/store';
 import Event from '../../models/event.model';
 
 export const GET_EVENTS = '[Events Page] Get Events';
-export const GET_EVENTS_START = '[Events Page] Get Events Start';
-
-
-
-export class GetEventsStart implements Action {
-  readonly type = GET_EVENTS_START;
-
-  constructor() {}
-}
+export const SET_EVENTS = '[Events Page] Set Events';
 
 export class GetEvents implements Action {
   readonly type = GET_EVENTS;
+  constructor() {}
+}
 
+export class SetEvents implements Action {
+  readonly type = SET_EVENTS;
   constructor(public payload: Event[]) {}
 }
 
-
-
-export type UserEventsActions = GetEventsStart
-  | GetEvents
+export type UserEventsActions = GetEvents
+  | SetEvents
 
 

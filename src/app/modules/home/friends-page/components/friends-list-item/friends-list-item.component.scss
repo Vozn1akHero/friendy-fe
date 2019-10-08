@@ -24,6 +24,7 @@
     top: .5rem;
     right: .5rem;
     transition: .2s;
+
     &:hover{ color: $color-grey-dark; }
   }
 
@@ -60,12 +61,6 @@
       align-items: center;
       margin-top: .7rem;
       justify-content: center;
-
-      .user-is-online-smile{
-        font-size: 1.1rem;
-        margin-right: .15rem;
-        color: $color-grey-light-2;
-      }
 
       .user-is-online-text {
         font-size: 0.75rem;

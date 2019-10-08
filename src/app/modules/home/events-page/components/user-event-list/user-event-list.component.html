@@ -1,0 +1,5 @@
+<div *ngIf="!(userEventsLoading$ | async)"
+     class="participating-events">
+  <app-user-event *ngFor="let event of events"
+                   [eventData]="event"></app-user-event>
+</div>

@@ -8,8 +8,12 @@ import * as fromMessagesPageExemplaryMessages from '../../../modules/home/messag
 
 import * as fromProfilePageExemplaryFriends from '../../../modules/home/profile-page/store/user-exemplary-friends/user-exemplary-friends.reducer';
 import * as fromFriendsPageUserFriends from '../../../modules/home/friends-page/store/user-friends/friends-page.reducer';
+
 import * as fromEventsPageUserEvents from '../../../modules/home/events-page/store/user-events/user-events.reducer';
 import * as fromEventsPageAdministeredEvents from '../../../modules/home/events-page/store/administered-events/administered-events.reducer';
+
+import * as fromEventPageEventData from '../../../modules/home/event-page/store/event-data/event-data.reducer';
+
 import * as fromCommonProfilePageUserData from '../../../modules/home/common-profile-page/store/user-data/user-data.reducer';
 
 
@@ -32,6 +36,9 @@ export interface AppState {
   //events page
   eventsPageUserEvents: fromEventsPageUserEvents.State;
   eventsPageAdministeredEventsReducer: fromEventsPageAdministeredEvents.State;
+
+  //event page
+  eventPageEventData: fromEventPageEventData.State
 }
 
 export const appReducer: ActionReducerMap<AppState> = {
@@ -53,4 +60,7 @@ export const appReducer: ActionReducerMap<AppState> = {
   //events page
   eventsPageUserEvents: fromEventsPageUserEvents.userEventsReducer,
   eventsPageAdministeredEventsReducer: fromEventsPageAdministeredEvents.administeredEventsReducer,
+
+  //event page
+  eventPageEventData: fromEventPageEventData.eventDataReducer
 };

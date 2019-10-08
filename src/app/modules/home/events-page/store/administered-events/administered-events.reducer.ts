@@ -5,10 +5,12 @@ import Event from '../../models/event.model';
 export interface State {
   administeredEvents: Event[];
   loading: boolean;
+  loaded: boolean;
 }
 
 const initialState: State = {
   administeredEvents: [],
+  loaded: false,
   loading: false
 };
 
@@ -17,23 +19,24 @@ export function administeredEventsReducer(
   action: AdministeredEventsActions.AdministeredEventsActions
 ) {
   switch (action.type) {
-    case AdministeredEventsActions.GET_ADMINISTERED_EVENTS_START:
-      return {
-        ...state,
-        loading: true
-      };
     case AdministeredEventsActions.GET_ADMINISTERED_EVENTS:
       return {
         ...state,
+        loading: true
+      };
+    case AdministeredEventsActions.SET_ADMINISTERED_EVENTS:
+      return {
+        ...state,
         loading: false,
+        loaded: true,
         administeredEvents: action.payload
       };
-    case AdministeredEventsActions.FILTER_ADMINISTERED_EVENTS_START:
+    case AdministeredEventsActions.FILTER_ADMINISTERED_EVENTS:
       return {
         ...state,
         loading: true
       };
-    case AdministeredEventsActions.FILTER_ADMINISTERED_EVENTS:
+    case AdministeredEventsActions.SET_FILTER_ADMINISTERED_EVENTS:
       return {
         ...state,
         loading: false,

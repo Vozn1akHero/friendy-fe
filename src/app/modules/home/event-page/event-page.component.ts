@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {map} from 'rxjs/operators';
-import {OpensettingsService} from './shared/opensettings.service';
+import {OpenSettingsService} from './services/opensettings.service';
 
 @Component({
   selector: 'app-event',
@@ -13,18 +13,18 @@ export class EventComponent implements OnInit, OnDestroy {
   activeSettings = false;
 
   constructor(private router : ActivatedRoute,
-              private opensettingsService: OpensettingsService) {
+              private openSettingsService: OpenSettingsService) {
     console.log(this.router.params.pipe(map(p => p.id)));
     this.eventId = this.router.snapshot.params.id;
   }
 
   ngOnInit() {
-    this.opensettingsService.openedSettingsValueChanged.subscribe((data) => {
-      this.activeSettings = data as boolean;
+    this.openSettingsService.openedSettingsValueChanged.subscribe((data : boolean) => {
+      this.activeSettings = data;
     });
   }
 
   ngOnDestroy(): void {
-    this.opensettingsService.openedSettingsValueChanged.unsubscribe();
+    this.openSettingsService.openedSettingsValueChanged.unsubscribe();
   }
 }

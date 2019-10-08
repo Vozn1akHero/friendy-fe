@@ -4,29 +4,27 @@
   <div class="avatar">
     <a href="#">
       <figure>
-        <img src="{{ friendData.friend.friendNavigation.avatar }}" alt="friend's avatar">
+        <img src="{{ friendData.avatar }}" alt="friend's avatar">
       </figure>
     </a>
   </div>
 
   <div class="info">
-    <a routerLink="/app/profile/{{friendData.friend.friendNavigation.id}}" class="name">{{ friendData.friend.friendNavigation.name }} {{ friendData.friend.friendNavigation.surname }}</a>
+    <a routerLink="/app/profile/{{friendData.id}}" class="name">{{ friendData.name }} {{ friendData.surname }}</a>
 
     <div class="online-status">
         <ng-container>
-          <span class="user-is-online-smile">&#9786;</span>
           <span class="user-is-online-text"> online</span>
         </ng-container>
     </div>
 
     <hr>
 
-    <a href="#" class="send-msg-btn">
+    <a [routerLink]="['app/dialog', friendData.dialogLink]" class="send-msg-btn">
       <svg class="control-icon">
         <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-bubble"></use>
       </svg>
     </a>
-
 
   </div>
 </div>

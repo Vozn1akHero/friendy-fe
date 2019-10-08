@@ -1,8 +1,9 @@
 import * as UserFriendsActions from './friends-page.actions';
+import Friend from '../../models/friend.model';
 
 
 export interface State {
-  friends: any[];
+  friends: Friend[];
   loading: boolean;
 }
 
@@ -16,18 +17,18 @@ export function userFriendsReducer(
   action: UserFriendsActions.FriendsPageActions
 ) {
   switch (action.type) {
-    case UserFriendsActions.GET_FRIENDS_START:
+    case UserFriendsActions.GET_FRIENDS:
       return {
         ...state,
         loading: true
       };
-    case UserFriendsActions.GET_FRIENDS:
+    case UserFriendsActions.SET_FRIENDS:
       return {
         ...state,
         friends: action.payload,
         loading: false
       };
-    case UserFriendsActions.FILTER_FRIENDS: {
+    case UserFriendsActions.SET_FILTERED_FRIENDS: {
       return {
         ...state,
         friends: action.payload

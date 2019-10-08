@@ -5,11 +5,13 @@ import Event from '../../models/event.model';
 export interface State {
   events: Event[];
   loading: boolean;
+  loaded: boolean;
 }
 
 const initialState: State = {
   events: [],
-  loading: false
+  loading: false,
+  loaded: false
 };
 
 export function userEventsReducer(
@@ -17,15 +19,16 @@ export function userEventsReducer(
   action: UserEventsActions.UserEventsActions
 ) {
   switch (action.type) {
-    case UserEventsActions.GET_EVENTS_START:
+    case UserEventsActions.GET_EVENTS:
       return {
         ...state,
         loading: true
       };
-    case UserEventsActions.GET_EVENTS:
+    case UserEventsActions.SET_EVENTS:
       return {
         ...state,
         loading: false,
+        loaded: true,
         events: action.payload
       };
     default:
