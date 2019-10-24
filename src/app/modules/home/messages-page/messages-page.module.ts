@@ -18,6 +18,7 @@ import { MessagesPageComponent } from './messages-page.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { AppRoutingModule } from '../../../app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {DialogListComponent} from './components/dialog-list/dialog-list.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     FriendMessagesComponent,
     UserMessagesComponent,
     MessageInChatComponent,
+    DialogListComponent,
     FriendInChatsInDialogComponent
   ]
 })

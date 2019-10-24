@@ -1,13 +1,8 @@
 <section class="messages">
-  <section *ngIf="exemplaryMessagesLoaded$ | async">
-    <app-message *ngFor="let exemplaryMessage of exemplaryMessages"
-                 [exemplaryMessage]="exemplaryMessage">
-    </app-message>
-  </section>
+  <app-dialog-list></app-dialog-list>
 
-  <section>
+  <section class="right-sec-wrapper">
     <app-sort-messages-panel></app-sort-messages-panel>
-    <app-new-message-panel></app-new-message-panel>
+    <!--<app-new-message-panel></app-new-message-panel>-->
   </section>
-
 </section>

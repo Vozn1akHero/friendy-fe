@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MessageService } from './message.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-dialog',
@@ -13,7 +14,13 @@ export class DialogComponent implements OnInit {
     image: new FormControl('')
   });
 
-  constructor() { }
+  chatHash: string;
+
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe(params => {
+      this.chatHash = params.chatHash;
+    })
+  }
 
   ngOnInit() {
   }

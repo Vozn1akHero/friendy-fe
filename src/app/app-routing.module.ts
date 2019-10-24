@@ -37,7 +37,7 @@ const routes: Routes = [
       {path: 'groups', component: GroupsPageComponent},
       {path: 'home', component: HomePageComponent},
       {path: 'messages', component: MessagesPageComponent},
-      {path: 'dialog', component: DialogComponent},
+      {path: 'dialog/:chatHash', component: DialogComponent},
       {path: 'settings', component: UserSettingsPageComponent}
   ]},
   {path: '404', component: NotFoundPageComponent},

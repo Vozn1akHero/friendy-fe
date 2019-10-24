@@ -1,0 +1,5 @@
+<section class="dialog-list" *ngIf="exemplaryMessagesLoaded$ | async">
+  <app-message *ngFor="let exemplaryMessage of exemplaryMessages"
+               [exemplaryMessage]="exemplaryMessage">
+  </app-message>
+</section>

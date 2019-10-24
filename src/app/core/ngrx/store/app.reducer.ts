@@ -5,6 +5,7 @@ import * as fromProfilePageUserData from '../../../modules/home/profile-page/sto
 import * as fromProfilePageAvatar from '../../../modules/home/profile-page/store/user-avatar/user-avatar.reducer';
 
 import * as fromMessagesPageExemplaryMessages from '../../../modules/home/messages-page/store/exemplary-messages/exemplary-messages.reducer';
+import * as fromMessagesPageDialogMessages from '../../../modules/home/messages-page/store/dialog-messages/dialog-messages.reducer';
 
 import * as fromProfilePageExemplaryFriends from '../../../modules/home/profile-page/store/user-exemplary-friends/user-exemplary-friends.reducer';
 import * as fromFriendsPageUserFriends from '../../../modules/home/friends-page/store/user-friends/friends-page.reducer';
@@ -29,6 +30,7 @@ export interface AppState {
 
   //messages page
   messagesPageExemplaryMessages: fromMessagesPageExemplaryMessages.State;
+  messagesPageDialog: fromMessagesPageDialogMessages.State;
 
   //common profile page
   commonProfilePageUserData: fromCommonProfilePageUserData.State;
@@ -53,6 +55,7 @@ export const appReducer: ActionReducerMap<AppState> = {
 
   //messages page
   messagesPageExemplaryMessages: fromMessagesPageExemplaryMessages.exemplaryMessagesReducer,
+  messagesPageDialog: fromMessagesPageDialogMessages.dialogMessagesReducer,
 
   //common profile page
   commonProfilePageUserData: fromCommonProfilePageUserData.userDataReducer,

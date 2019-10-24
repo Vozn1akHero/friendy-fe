@@ -44,7 +44,7 @@ export class AdministeredEventsEffects {
   filterAdministeredEvents = this.actions$.pipe(
     ofType(AdministeredEventsActions.FILTER_ADMINISTERED_EVENTS),
     switchMap((actionData: AdministeredEventsActions.FilterAdministeredEvents) => {
-      return this.http.get(`/api/event/filterAdministeredEvents?keyword=${actionData.payload.keyword}`, {observe: 'response'})
+      return this.http.get(`/api/event/filter/administered/?keyword=${actionData.payload.keyword}`, {observe: 'response'})
         .pipe(
           map(res => {
             return ({ type: AdministeredEventsActions.FILTER_ADMINISTERED_EVENTS,

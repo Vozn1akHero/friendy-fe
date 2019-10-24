@@ -7,7 +7,7 @@
         </a>
     </div>
 
-    <a class="content" routerLink="/app/dialog">
+    <a class="content" [routerLink]="['/app/dialog', exemplaryMessage.chatUrlPart]">
         <span>
            {{ exemplaryMessage.content }}
         </span>

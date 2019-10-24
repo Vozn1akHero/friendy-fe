@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {animate, style, transition, trigger} from '@angular/animations';
 import {AuthService} from '../../../core/auth/auth.service';
@@ -54,6 +54,7 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
   onLoginFormSubmit(){
     let userEmail = this.loginForm.get('email').value;
