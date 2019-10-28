@@ -1,0 +1,13 @@
+<div class="chat-data" *ngIf="(chatFriendData$ | async) as chatFriendData">
+  <div class="user-data">
+    <section>
+      <figure>
+          <img src="{{ chatFriendData.avatar }}" alt="">
+      </figure>
+      <section>
+          <a [routerLink]="['/profile', chatFriendData.friendId]">{{ chatFriendData.name }} {{ chatFriendData.surname }}</a>
+          <p>w sieci ERROR minut temu</p>
+      </section>
+    </section> 
+  </div>
+</div>

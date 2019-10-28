@@ -1,0 +1,39 @@
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Actions, ofType, Effect } from '@ngrx/effects';
+import {switchMap, catchError, map, tap, withLatestFrom, take, filter, mergeMap, exhaustMap, mapTo, concatMap} from 'rxjs/operators';
+import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import * as DialogActions from './dialog-messages.actions';
+import {Action, Store} from '@ngrx/store';
+import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
+import {DialogService} from '../../services/dialog.service';
+
+
+@Injectable()
+export class DialogMessagesEffects {
+  @Effect() getMessagesInDialog = this.actions$.pipe(
+    ofType(DialogActions.GET_DIALOG),
+    withLatestFrom(this.store$.select(state => state.messagesPageExemplaryMessages.loaded)),
+    filter(([{payload}, loaded]) => {
+      return !loaded;
+    }),
+    mergeMap((payload: any) => {
+      return this.dialogService.getMessagesInDialog(payload[0].payload.chatHash)
+        .pipe(
+          map(response => {
+            return new DialogActions.SetDialog(response);
+          })
+        )
+      }
+    )
+  );
+
+  constructor(
+    private actions$: Actions,
+    private http: HttpClient,
+    private dialogService: DialogService,
+    private router: Router,
+    private store$: Store<fromApp.AppState>
+  ) {}
+}

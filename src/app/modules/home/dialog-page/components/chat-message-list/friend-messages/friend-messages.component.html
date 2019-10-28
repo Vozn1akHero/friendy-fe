@@ -1,0 +1,16 @@
+<div class="friend-messages">
+  <div class="message-group">
+    <div class="friend-data">
+      <a [routerLink]="['/profile', chatFriendId]">
+        <figure>
+          <img src="{{ chatFriendAvatar }}">
+        </figure>
+      </a>
+    </div>
+    <div class="message-items">
+      <app-chat-message-item [messageContent]="message.content"
+                           *ngFor="let message of messages"
+                           [messageStyles]="{marginLeft: '1rem', marginRight: '0', marginTop: '0'}" ></app-chat-message-item>
+    </div>
+  </div>
+</div>

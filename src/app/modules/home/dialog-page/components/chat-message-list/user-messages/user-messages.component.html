@@ -1,0 +1,14 @@
+<div class="user-messages">
+  <div class="message-group">
+    <div class="message-items">
+      <app-chat-message-item [messageContent]="message.content"
+                           *ngFor="let message of messages"
+                           [messageStyles]="{marginLeft: '0px', marginRight: '1rem', marginTop: '0'}" ></app-chat-message-item>
+    </div>
+    <!--<div class="user-data">
+      <figure>
+        <img src="../../../assets/images/test/adult-background-beard-941693.jpg" alt="">
+      </figure>
+    </div>-->
+  </div>
+</div>

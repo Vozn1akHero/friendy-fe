@@ -10,6 +10,7 @@ import {FriendsPageModule} from './home/friends-page/friends-page.module';
 import {EventsPageModule} from './home/events-page/events-page.module';
 import { PhotosPageComponent } from './home/photos-page/photos-page.component';
 import {EventPageModule} from './home/event-page/event-page.module';
+import {DialogPageModule} from './home/dialog-page/dialog-page.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {EventPageModule} from './home/event-page/event-page.module';
     FriendsPageModule,
     LayoutModule,
     EventsPageModule,
-    EventPageModule
+    EventPageModule,
+    DialogPageModule
   ],
   declarations: [
     NotFoundPageComponent,

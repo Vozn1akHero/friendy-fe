@@ -9,8 +9,6 @@ import { FriendsPageComponent } from './modules/home/friends-page/friends-page.c
 import { GroupsPageComponent } from './modules/home/groups-page/groups-page.component';
 import { HomePageComponent } from './modules/home/home-page/home-page.component';
 import { MessagesPageComponent } from './modules/home/messages-page/messages-page.component';
-import { MessageComponent } from './modules/home/messages-page/components/message/message.component';
-import { DialogComponent } from './modules/home/messages-page/components/dialog/dialog.component';
 import { CommentsComponent } from './shared/components/comments/comments.component';
 import {UserSettingsPageComponent} from './modules/home/user-settings-page/user-settings-page.component';
 import {EventComponent} from './modules/home/event-page/event-page.component';
@@ -18,6 +16,7 @@ import {JoinupPageComponent} from './modules/auth/joinup-page/joinup-page.compon
 import {LoginPageComponent} from './modules/auth/login-page/login-page.component';
 import {CommonProfilePageComponent} from './modules/home/common-profile-page/common-profile-page.component';
 import {NotFoundPageComponent} from './modules/not-found/not-found-page.component';
+import {DialogPageComponent} from './modules/home/dialog-page/dialog-page.component';
 
 const routes: Routes = [
   {path: '', component: MainpageComponent},
@@ -37,7 +36,7 @@ const routes: Routes = [
       {path: 'groups', component: GroupsPageComponent},
       {path: 'home', component: HomePageComponent},
       {path: 'messages', component: MessagesPageComponent},
-      {path: 'dialog/:chatHash', component: DialogComponent},
+      {path: 'dialog/:chatHash', component: DialogPageComponent},
       {path: 'settings', component: UserSettingsPageComponent}
   ]},
   {path: '404', component: NotFoundPageComponent},

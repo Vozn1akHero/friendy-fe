@@ -69,6 +69,7 @@ import {UserExemplaryFriendsEffects} from './modules/home/profile-page/store/use
 import {ExemplaryMessagesEffects} from './modules/home/messages-page/store/exemplary-messages/exemplary-messages.effects';
 import {MessagesPageModule} from './modules/home/messages-page/messages-page.module';
 import {EventDataEffects} from './modules/home/event-page/store/event-data/event-data.effects';
+import {DialogMessagesEffects} from './modules/home/dialog-page/store/dialog-messages/dialog-messages.effects';
 
 
 
@@ -114,6 +115,7 @@ import {EventDataEffects} from './modules/home/event-page/store/event-data/event
     EffectsModule.forRoot([
       //UserEffects,
       EventDataEffects,
+      DialogMessagesEffects,
       ExemplaryMessagesEffects,
       MainUserDataEffects,
       UserAvatarEffects,
