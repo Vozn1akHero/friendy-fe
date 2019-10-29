@@ -1,4 +1,4 @@
-import * as UserFriendsActions from './friends-page.actions';
+import * as UserFriendsActions from './user-friends.actions';
 import Friend from '../../models/friend.model';
 
 
@@ -14,7 +14,7 @@ const initialState: State = {
 
 export function userFriendsReducer(
   state: State = initialState,
-  action: UserFriendsActions.FriendsPageActions
+  action: UserFriendsActions.UserFriendsActions
 ) {
   switch (action.type) {
     case UserFriendsActions.GET_FRIENDS:

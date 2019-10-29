@@ -9,8 +9,8 @@
     </div>
     <div class="message-items">
       <app-chat-message-item [messageContent]="message.content"
-                           *ngFor="let message of messages"
-                           [messageStyles]="{marginLeft: '1rem', marginRight: '0', marginTop: '0'}" ></app-chat-message-item>
+                           *ngFor="let message of messages; let i = index"
+                           [messageStyles]="{marginLeft: '1rem', marginRight: '0', marginTop: i === 0 ? '0' : '5px'}" ></app-chat-message-item>
     </div>
   </div>
 </div>

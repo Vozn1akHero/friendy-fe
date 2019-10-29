@@ -3,9 +3,9 @@
     <input class="name" formControlName="name" placeholder="Imię" type="text">
     <input class="surname" formControlName="surname" placeholder="Nazwisko" type="text">
 
-    <button *ngIf="!advFormVisibility" (click)="onShowMoreBtnClick()" class="show-more-btn">Pokaż więcej</button>
+    <button class="show-more-btn">Pokaż więcej</button>
 
-    <ng-container *ngIf="advFormVisibility">
+
       <input class="city" formControlName="city" placeholder="Miasto" type="text">
 
       <span class="custom-dropdown">
@@ -88,7 +88,7 @@
       <div class="interests">
         <input formControlName="interests" placeholder="Zainteresowania (maks. 5)" type="text">
       </div>
-    </ng-container>
+
 
     <button type="submit">Szukaj</button>
   </form>

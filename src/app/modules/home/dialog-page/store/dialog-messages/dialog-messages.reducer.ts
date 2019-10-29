@@ -1,15 +1,16 @@
 import * as DialogActions from './dialog-messages.actions';
 import MessageInChat from '../../models/message-in-chat.model';
+import {act} from '@ngrx/effects';
 
 export interface State {
+  dialogs: any[];
   messagesInDialog: MessageInChat[];
-  //loading: boolean;
   loaded: boolean;
 }
 
 const initialState: State = {
+  dialogs: [],
   messagesInDialog: [],
-  // loading: false,
   loaded: false
 };
 
@@ -20,8 +21,7 @@ export function dialogMessagesReducer(
   switch (action.type) {
     case DialogActions.GET_DIALOG:
       return {
-        ...state,
-        //loading: true
+        ...state
       };
     case DialogActions.SET_DIALOG:
       return {
@@ -29,6 +29,19 @@ export function dialogMessagesReducer(
         messagesInDialog: action.payload,
         loaded: true
       };
+    case DialogActions.ADD_NEW_MESSAGE:
+      return {
+        ...state
+      };
+    case DialogActions.SET_ADDED_MESSAGE:{
+      return {
+        ...state,
+        messagesInDialog: [...state.messagesInDialog, {
+          ...action.payload,
+          isUserAuthor: true
+        }]
+      }
+    }
     default:
       return state;
   }

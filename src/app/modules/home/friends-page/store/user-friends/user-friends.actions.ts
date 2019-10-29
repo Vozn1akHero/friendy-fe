@@ -33,4 +33,4 @@ export class SetFilteredFriends implements Action{
 }
 
 
-export type FriendsPageActions = GetFriends | SetFriends | SetFilteredFriends | FilterFriends;
+export type UserFriendsActions = GetFriends | SetFriends | SetFilteredFriends | FilterFriends;

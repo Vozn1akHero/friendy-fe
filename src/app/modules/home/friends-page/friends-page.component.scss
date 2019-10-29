@@ -9,7 +9,6 @@
   padding-top: 5rem;
   justify-content: center;
 
-  .friends-adv-search-list,
   .friends-list{
     width: 100%;
     display: flex;
@@ -17,7 +16,7 @@
     align-items: center;
   }
 
-  .friends-adv-search-list{
+/*  .friends-adv-search-list{
     position: relative;
 
     .back-to-friends-btn{
@@ -38,7 +37,7 @@
     .users-not-found{
       color: $color-grey-dark;
     }
-  }
+  }*/
 
   .friends-list {
     margin-top: 2rem;
@@ -62,6 +61,26 @@
     }
   }
 
+  .friends-search-wrapper{
+    margin-top: 5rem;
+
+    &__link{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      border: none;
+      background: linear-gradient(0.85turn, #fff000, #00baff);
+      color: #fff;
+      font-weight: 700;
+      height: 2.6rem;
+      text-decoration: none;
+      width: 12rem;
+      border-radius: 2rem;
+      transition: all .3s;
+      font-size: .85rem;
+    }
+  }
 
   &__left-side-wrapper {
     display: flex;
@@ -74,6 +93,4 @@
   &__right-side-wrapper {
     margin-left: 5rem;
   }
-
-
 }

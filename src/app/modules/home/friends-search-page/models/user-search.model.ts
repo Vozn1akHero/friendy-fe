@@ -1,4 +1,4 @@
-export class UserSearchModel {
+export default class UserSearchModel {
   name: any;
   surname: any;
   city: any;

@@ -17,6 +17,7 @@ import {LoginPageComponent} from './modules/auth/login-page/login-page.component
 import {CommonProfilePageComponent} from './modules/home/common-profile-page/common-profile-page.component';
 import {NotFoundPageComponent} from './modules/not-found/not-found-page.component';
 import {DialogPageComponent} from './modules/home/dialog-page/dialog-page.component';
+import {FriendsSearchPageComponent} from './modules/home/friends-search-page/friends-search-page.component';
 
 const routes: Routes = [
   {path: '', component: MainpageComponent},
@@ -33,6 +34,7 @@ const routes: Routes = [
       {path: 'events', component: EventsPageComponent},
       {path: 'event/:id', component: EventComponent},
       {path: 'friends', component: FriendsPageComponent},
+      {path: 'friends-search', component: FriendsSearchPageComponent},
       {path: 'groups', component: GroupsPageComponent},
       {path: 'home', component: HomePageComponent},
       {path: 'messages', component: MessagesPageComponent},

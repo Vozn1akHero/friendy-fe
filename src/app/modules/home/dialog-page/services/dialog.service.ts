@@ -7,6 +7,7 @@ import * as signalR from'@aspnet/signalr';
 import {HubConnection} from '@aspnet/signalr';
 import ChatFriendBasicData from '../models/chat-friend-basic-data.model';
 import MessageInChat from '../models/message-in-chat.model';
+import NewMessageInChat from '../models/new-message-in-chat.model';
 
 
 const httpOptions = {
@@ -45,6 +46,15 @@ export class DialogService {
             chatFriendData.surname,
             chatFriendData.friendId,
             chatFriendData.avatar);
+      }))
+  }
+
+  addNewMessage(chatHash: string, chatMessage: NewMessageInChat){
+    return this.http.post(`/api/chat/message/${chatHash}`,
+      chatMessage
+    ).pipe(
+      map((response : MessageInChat) => {
+        return response;
       }))
   }
 }

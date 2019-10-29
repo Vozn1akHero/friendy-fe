@@ -14,11 +14,10 @@ import {combineLatest} from 'rxjs';
 })
 export class MessagesComponent implements OnInit, OnDestroy {
   @Input() chatHash : string;
-  @Input() chatFriendData$ : Observable<ChatFriendBasicData>;
+  @Input() chatFriendData : ChatFriendBasicData;
 
   messagesInDialogLoaded$: Observable<boolean>;
   messagesInDialogSubscription: Subscription;
-
 
   orderedMessages: any[] = [];
 
@@ -36,6 +35,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
     this.messagesInDialogSubscription = this.store.select(state => state.messagesPageDialog.messagesInDialog)
       .subscribe(messages => {
+        console.log(messages)
         this.groupMessages(messages);
       })
   }
@@ -48,7 +48,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
     let friendMsgsGroup = [];
     let userMsgsGroup = [];
 
-    console.log(messages);
+    this.orderedMessages = [];
 
     messages.map((message, index) => {
       if(message.isUserAuthor) {
@@ -102,7 +102,6 @@ export class MessagesComponent implements OnInit, OnDestroy {
       }
     });
 
-    //console.log(friendMsgsGroup, userMsgsGroup, this.orderedMessages);
   }
 
   ngOnDestroy(): void {

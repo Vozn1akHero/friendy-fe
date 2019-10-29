@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -7,7 +7,7 @@ import {FormControl, FormGroup} from '@angular/forms';
   templateUrl: './new-message-form.component.html',
   styleUrls: ['./new-message-form.component.scss']
 })
-export class NewMessageFormComponent implements OnInit {
+export class NewMessageFormComponent {
   @Input() styles = {
     newMessageWidth: '500px',
     newMessageFormTextAreaWidth : '44em',
@@ -15,21 +15,34 @@ export class NewMessageFormComponent implements OnInit {
     formPosition: 'static',
     formBottomPos: '0rem'
   };
+  @Output() event : EventEmitter<Object> = new EventEmitter<Object>();
 
-  @Output() event : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+  @ViewChild('image') image;
+  imageFile: File;
 
-  contentForm : FormGroup = new FormGroup({
-    newMessageContent : new FormControl(''),
-    image: new FormControl('')
-  });
+  @ViewChild('newMessageContent') newMessageContent;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   onSubmit() {
-    this.event.emit(this.contentForm);
-  }
+    const image = this.image.nativeElement;
+    if(image.files && image.files[0]){
+      this.imageFile = image.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const newMessage = {
+          newMessageContent: this.newMessageContent.nativeElement.value,
+          image: String(reader.result)
+        };
+        this.event.emit(newMessage);
+      };
+      reader.readAsDataURL(this.imageFile);
+    } else {
+      const newMessage = {
+        newMessageContent: this.newMessageContent.nativeElement.value,
+        image: null
+      };
 
+      this.event.emit(newMessage);
+    }
+  }
 }

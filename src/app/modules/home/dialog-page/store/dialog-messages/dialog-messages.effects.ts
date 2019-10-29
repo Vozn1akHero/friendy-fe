@@ -14,7 +14,7 @@ import {DialogService} from '../../services/dialog.service';
 export class DialogMessagesEffects {
   @Effect() getMessagesInDialog = this.actions$.pipe(
     ofType(DialogActions.GET_DIALOG),
-    withLatestFrom(this.store$.select(state => state.messagesPageExemplaryMessages.loaded)),
+    withLatestFrom(this.store$.select(state => state.messagesPageDialog.loaded)),
     filter(([{payload}, loaded]) => {
       return !loaded;
     }),
@@ -25,6 +25,19 @@ export class DialogMessagesEffects {
             return new DialogActions.SetDialog(response);
           })
         )
+      }
+    )
+  );
+
+  @Effect() addMessageInDialog = this.actions$.pipe(
+    ofType(DialogActions.ADD_NEW_MESSAGE),
+    mergeMap((payload: any) => {
+        return this.dialogService.addNewMessage(payload.payload.chatHash, payload.payload.newMessage)
+          .pipe(
+            map((response) => {
+              return new DialogActions.SetAddedMessage(response);
+            })
+          )
       }
     )
   );

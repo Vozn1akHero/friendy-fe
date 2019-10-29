@@ -59,7 +59,7 @@ import {UserDataEffects} from './modules/home/common-profile-page/store/user-dat
 
 import {UserPostsEffects} from './modules/home/profile-page/store/user-posts/user-posts.effects';
 
-import {UserFriendsEffects} from './modules/home/friends-page/store/user-friends/friends-page.effects';
+import {UserFriendsEffects} from './modules/home/friends-page/store/user-friends/user-friends.effects';
 import {UserEventsEffects} from './modules/home/events-page/store/user-events/user-events.effects';
 import {AdministeredEventsEffects} from './modules/home/events-page/store/administered-events/administered-events.effects';
 

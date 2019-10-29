@@ -11,9 +11,9 @@ import ChatFriendBasicData from '../../models/chat-friend-basic-data.model';
 })
 export class ChatFriendDataComponent implements OnInit, OnDestroy {
   @Input() chatHash : string;
-  @Input() chatFriendData$ : Observable<ChatFriendBasicData>;
+  @Input() chatFriendData : ChatFriendBasicData;
 
-  constructor(private dialogService: DialogService) { }
+  constructor() { }
 
   ngOnInit() {
    // this.getMessagesInDialog();

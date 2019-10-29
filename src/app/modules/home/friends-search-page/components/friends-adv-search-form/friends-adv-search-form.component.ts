@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormGroup, FormControl, Validators, Form} from '@angular/forms';
-import {UserSearchModel} from '../../models/user-search.model';
+import UserSearchModel from '../../models/user-search.model';
+import {FriendsSearchService} from '../../services/friends-search.service';
 
 @Component({
   selector: 'app-friends-adv-search-form',
@@ -29,10 +30,11 @@ export class FriendsAdvSearchFormComponent implements OnInit {
   });
 
   @Output() advSearchFormSubmit: EventEmitter<FormGroup> = new EventEmitter();
+  private foundUsers: any;
 
-  private advFormVisibility: boolean = false;
+ // advFormVisibility: boolean = false;
 
-  constructor() {
+  constructor(private friendsSearchService: FriendsSearchService) {
 
   }
 
@@ -40,10 +42,11 @@ export class FriendsAdvSearchFormComponent implements OnInit {
   }
 
   advSearchSubmit(){
-    this.advSearchFormSubmit.emit(this.advSearchExtendedForm);
-  }
+    //this.advSearchFormSubmit.emit(this.advSearchExtendedForm);
 
-  onShowMoreBtnClick(){
-    this.advFormVisibility = true;
+    this.friendsSearchService.getUsersByCriteria(this.advSearchExtendedForm.value).subscribe(response => {
+      //console.log(response);
+      this.foundUsers = response.body;
+    });
   }
 }

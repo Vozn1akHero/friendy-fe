@@ -1,4 +1,4 @@
-<div class="chat-data" *ngIf="(chatFriendData$ | async) as chatFriendData">
+<div class="chat-data">
   <div class="user-data">
     <section>
       <figure>
@@ -8,6 +8,6 @@
           <a [routerLink]="['/profile', chatFriendData.friendId]">{{ chatFriendData.name }} {{ chatFriendData.surname }}</a>
           <p>w sieci ERROR minut temu</p>
       </section>
-    </section> 
+    </section>
   </div>
 </div>

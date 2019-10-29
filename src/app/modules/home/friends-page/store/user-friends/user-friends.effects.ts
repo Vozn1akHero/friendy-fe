@@ -5,7 +5,7 @@ import { switchMap, catchError, map, tap, withLatestFrom } from 'rxjs/operators'
 import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import * as UserFriendsActions from './friends-page.actions';
+import * as UserFriendsActions from './user-friends.actions';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import Friend from '../../models/friend.model';
