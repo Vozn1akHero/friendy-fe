@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import MessageInChat from '../../../models/message-in-chat.model';
 import {Observable} from 'rxjs';
 import ChatFriendBasicData from '../../../models/chat-friend-basic-data.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-friend-messages',
@@ -10,12 +11,12 @@ import ChatFriendBasicData from '../../../models/chat-friend-basic-data.model';
 })
 export class FriendMessagesComponent implements OnInit {
   @Input() messages : MessageInChat[];
-  //@Input() chatFriendData$ : Observable<ChatFriendBasicData>;
   @Input() chatFriendAvatar: string;
   @Input() chatFriendId: number;
 
   constructor() { }
 
   ngOnInit() {
+
   }
 }

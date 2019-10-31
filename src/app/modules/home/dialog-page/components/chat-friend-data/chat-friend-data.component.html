@@ -1,11 +1,15 @@
 <div class="chat-data">
   <div class="user-data">
     <section>
-      <figure>
+      <a [routerLink]="['/app/profile', chatFriendData.friendId]">
+        <figure>
           <img src="{{ chatFriendData.avatar }}" alt="">
-      </figure>
+        </figure>
+      </a>
       <section>
-          <a [routerLink]="['/profile', chatFriendData.friendId]">{{ chatFriendData.name }} {{ chatFriendData.surname }}</a>
+          <a [routerLink]="['/app/profile', chatFriendData.friendId]">
+            {{ chatFriendData.name }} {{ chatFriendData.surname }}
+          </a>
           <p>w sieci ERROR minut temu</p>
       </section>
     </section>

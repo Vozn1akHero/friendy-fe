@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import MessageInChat from '../../../models/message-in-chat.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-chat-message-item',
@@ -6,12 +8,17 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./chat-message-item.component.scss']
 })
 export class ChatMessageItemComponent implements OnInit {
-  @Input() messageContent : string;
-  @Input() messageStyles;
+  @Input() messageStyles : Object;
+  @Input() message: MessageInChat;
+
+  timePassed: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.timePassed = moment(this.message.date).fromNow();
+
+    console.log(this.message.isUserAuthor)
   }
 
 }

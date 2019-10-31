@@ -13,7 +13,7 @@ export class AuthService {
               private http: HttpClient) {}
 
   isLoggedIn() {
-    return this.http.get('/api/auth/getUserAuthStatus', {observe: 'response'});
+    return this.http.get('/api/auth/status', {observe: 'response'});
   }
 
   logOut() {

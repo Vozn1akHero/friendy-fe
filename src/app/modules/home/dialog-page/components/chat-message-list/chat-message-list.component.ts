@@ -6,6 +6,7 @@ import MessageInChat from '../../models/message-in-chat.model';
 import * as DialogActions from '../../store/dialog-messages/dialog-messages.actions';
 import ChatFriendBasicData from '../../models/chat-friend-basic-data.model';
 import {combineLatest} from 'rxjs';
+import * as moment from '../../../profile-page/components/profile-post-list/profile-post-item/profile-post-item.component';
 
 @Component({
   selector: 'app-chat-message-list',

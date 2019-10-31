@@ -3,9 +3,38 @@
 @import "../../../../../../assets/sass/components/dropdown";
 @import "../../../../../../assets/sass/components/radiobutton";
 
-.friends-adv-search {
+.friends-search {
   width: inherit;
   position: relative;
+
+  .box {
+    width: 10rem;
+    background: $color-blue;
+    padding: 1.5rem .65rem .65rem .65rem;
+    text-align: center;
+    font-weight: 500;
+    color: #fff;
+    border-radius: 5rem;
+    position: absolute;
+    left: -13rem;
+    font-size: .8rem;
+    height: 4rem;
+    pointer-events: none;
+    display: none;
+
+    &__sb:before {
+      content: "";
+      width: 0px;
+      height: 0px;
+      position: absolute;
+      border-left: 10px solid $color-blue;
+      border-right: 10px solid transparent;
+      border-top: 10px solid $color-blue;
+      border-bottom: 10px solid transparent;
+      right: -10px;
+      top: 10px;
+    }
+  }
 
   form {
     display: flex;
@@ -20,18 +49,11 @@
       margin-bottom: 1rem;
     }
 
-    .show-more-btn{
-      background: none;
-      outline: none;
-      border: none;
-      color: $color-blue;
-      margin: .5rem 0 0 1rem;
-      font-size: .7rem;
-      width: fit-content;
+    .dropdown-wrapper{
+      position: relative;
 
-
-      &:hover{
-        text-decoration: underline;
+      .custom-dropdown{
+        width: 100%;
       }
     }
 
@@ -92,6 +114,7 @@
 
     .gender-title {
       margin-left: -.2rem;
+      font-size: .8rem;
       color: $color-grey-light-2;
     }
 
@@ -117,8 +140,33 @@
   }
 
   .interests {
-    input {
-      width: 347px;
+    &__input {
+      width: 100%
+    }
+    .inserted-interests{
+      &__item{
+        &:not(:last-child){
+          margin-right: .5rem;
+        }
+        float: left;
+        min-width: 5rem;
+        width: fit-content;
+        padding: .455rem;
+        background: $color-pink-lighter;
+        color: white;
+        font-size: .8rem;
+        margin-top: .5rem;
+      }
+      &__remove-btn{
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-left: .5rem;
+        border-radius: 50%;
+        background: none;
+        border: 1.5px solid white;
+        color: white;
+        font-weight: 700;
+      }
     }
   }
 

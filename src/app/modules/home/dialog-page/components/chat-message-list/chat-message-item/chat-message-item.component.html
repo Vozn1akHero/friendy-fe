@@ -1,5 +1,17 @@
 <div class="chat-message-item" [ngStyle]="messageStyles">
-      <span>
-        {{messageContent}}
-      </span>
+  <ng-container *ngIf="message.isUserAuthor">
+     <span class="time-passed time-passed--user">
+      {{timePassed}}
+    </span>
+  </ng-container>
+  <div class="content">
+    <span>
+      {{message.content}}
+    </span>
+  </div>
+  <ng-container *ngIf="!message.isUserAuthor">
+    <span class="time-passed time-passed--friend">
+      {{timePassed}}
+    </span>
+  </ng-container>
 </div>

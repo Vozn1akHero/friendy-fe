@@ -11,6 +11,12 @@ body, input[type=button], button, select, input, textarea{
     font-family: 'Montserrat', sans-serif;
 }
 
+select{
+  &:hover{
+    cursor: pointer;
+  }
+}
+
 button, input[type=file], a{
     cursor: pointer;
 
