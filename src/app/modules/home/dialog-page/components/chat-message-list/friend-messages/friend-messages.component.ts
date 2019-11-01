@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import MessageInChat from '../../../models/message-in-chat.model';
+import MessageInChatModel from '../../../models/message-in-chat.model';
 import {Observable} from 'rxjs';
-import ChatFriendBasicData from '../../../models/chat-friend-basic-data.model';
+import ChatFriendBasicData from '../../../models/interlocutor-data.model';
 import * as moment from 'moment';
 
 @Component({
@@ -10,9 +10,9 @@ import * as moment from 'moment';
   styleUrls: ['./friend-messages.component.scss']
 })
 export class FriendMessagesComponent implements OnInit {
-  @Input() messages : MessageInChat[];
-  @Input() chatFriendAvatar: string;
-  @Input() chatFriendId: number;
+  @Input() messages : MessageInChatModel[];
+  @Input() chatInterlocutorAvatar: string;
+  @Input() chatInterlocutorId: number;
 
   constructor() { }
 

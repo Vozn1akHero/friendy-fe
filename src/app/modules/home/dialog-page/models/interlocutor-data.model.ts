@@ -1,4 +1,4 @@
-export default class ChatFriendBasicData {
+export default class InterlocutorDataModel {
   name: string;
   surname: string;
   friendId: number;

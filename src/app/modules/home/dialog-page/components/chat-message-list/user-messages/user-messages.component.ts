@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import MessageInChat from '../../../models/message-in-chat.model';
+import MessageInChatModel from '../../../models/message-in-chat.model';
 
 @Component({
   selector: 'app-user-messages',
@@ -7,7 +7,7 @@ import MessageInChat from '../../../models/message-in-chat.model';
   styleUrls: ['./user-messages.component.scss']
 })
 export class UserMessagesComponent implements OnInit {
-  @Input() messages : MessageInChat[];
+  @Input() messages : MessageInChatModel[];
 
   constructor() { }
 

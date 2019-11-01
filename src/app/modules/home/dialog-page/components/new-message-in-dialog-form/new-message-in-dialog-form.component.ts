@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
 import NewMessageInChat from '../../models/new-message-in-chat.model';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import * as DialogActions from '../../store/dialog-messages/dialog-messages.actions';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-new-message-in-dialog-form',
@@ -11,12 +11,15 @@ import * as DialogActions from '../../store/dialog-messages/dialog-messages.acti
   styleUrls: ['./new-message-in-dialog-form.component.scss']
 })
 export class NewMessageInDialogFormComponent implements OnInit {
-  @Input() chatHash: string;
+  chatHash: string;
 
-  constructor(private store: Store<fromApp.AppState>) {
+  constructor(private store: Store<fromApp.AppState>, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.chatHash = params.chatHash;
+    });
   }
 
   newMessageEvent($event) {

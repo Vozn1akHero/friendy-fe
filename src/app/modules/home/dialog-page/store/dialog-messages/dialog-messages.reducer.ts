@@ -1,10 +1,11 @@
 import * as DialogActions from './dialog-messages.actions';
 import MessageInChat from '../../models/message-in-chat.model';
 import {act} from '@ngrx/effects';
+import MessageInChatModel from '../../models/message-in-chat.model';
 
 export interface State {
   dialogs: any[];
-  messagesInDialog: MessageInChat[];
+  messagesInDialog: MessageInChatModel[];
   loaded: boolean;
 }
 

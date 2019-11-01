@@ -42,7 +42,7 @@ import { HomeUpcomingEventsItemComponent } from './modules/home/home-page/home-u
 
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {RegistrationSuccessPopUpComponent} from './modules/auth/joinup-page/registration-success-pop-up/registration-success-pop-up.component';
+import {RegistrationSuccessPopUpComponent} from './modules/auth/joinup-page/components/registration-success-pop-up/registration-success-pop-up.component';
 import {TokenInterceptor} from './shared/services/token-interceptor.service';
 import {Store, StoreModule} from '@ngrx/store';
 import * as fromApp from './core/ngrx/store/app.reducer';
@@ -70,6 +70,7 @@ import {ExemplaryMessagesEffects} from './modules/home/messages-page/store/exemp
 import {MessagesPageModule} from './modules/home/messages-page/messages-page.module';
 import {EventDataEffects} from './modules/home/event-page/store/event-data/event-data.effects';
 import {DialogMessagesEffects} from './modules/home/dialog-page/store/dialog-messages/dialog-messages.effects';
+import {LoggedInResolver} from './logged-in.resolver';
 
 
 
@@ -134,7 +135,8 @@ import {DialogMessagesEffects} from './modules/home/dialog-page/store/dialog-mes
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    LoggedInResolver
   ],
   bootstrap: [AppComponent]
 })

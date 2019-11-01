@@ -1,15 +1,15 @@
 <div class="friend-messages">
   <div class="message-group">
     <div class="friend-data">
-      <a [routerLink]="['/app/profile', chatFriendId]">
+      <a [routerLink]="['/app/profile', chatInterlocutorId]">
         <figure>
-          <img src="{{ chatFriendAvatar }}">
+          <img src="{{ chatInterlocutorAvatar }}">
         </figure>
       </a>
     </div>
     <div class="message-items">
-      <app-chat-message-item [message]="message"
-                           *ngFor="let message of messages; let i = index"
+      <app-chat-message-item *ngFor="let message of messages; let i = index"
+                             [messageData]="message"
                            [messageStyles]="{marginLeft: '1rem', marginRight: '0', marginTop: i === 0 ? '0' : '5px'}" >
         <div class="time-passed">
 

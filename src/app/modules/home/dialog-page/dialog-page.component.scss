@@ -6,26 +6,71 @@
   height: 100vh;
   justify-content: center;
   padding-top: 2rem;
+  position: relative;
 
-  section:first-child, section:last-child {
+  &__back{
+    position: absolute;
+    width: fit-content;
+    top: 3rem;
+    left: .7rem;
+    font-size: .8rem;
+    text-decoration: none;
+    z-index: 1000;
+    color: $color-grey-dark;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
+  &__add-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__wrapper--1{
+    position: fixed;
+    left: 20rem;
+    top: 0;
+    height: 100vh;
+    width: 4%;
+    background-color: $color-bg-grey-footer;
+
+    &::before, &::after{
+      content: "";
+      position: absolute;
+      left: 0rem;
+      right: 0;
+      top: 0rem;
+      height: 100vh;
+      background: radial-gradient(closest-side, $color-bg-grey-footer, $color-bg-grey-footer 50%, transparent 50%);
+      background-size: 50px 50px;
+      background-position: 0 25px;
+      background-repeat: repeat-y;
+      transform: rotate(180deg) translateX(-40px);
+    }
+
+    &::after{
+      background: radial-gradient(closest-side, transparent, transparent 50%, $color-bg-grey-footer 50%);
+      background-size: 50px 50px;
+      background-position: 27px -29px;
+      background-repeat: repeat-y;
+      top: 0rem;
+    }
+  }
+
+  &__wrapper--2, &__wrapper--3{
     display: flex;
     flex-direction: column;
   }
 
-  section:first-child {
-    //width: 660px;
-    width: 750px;
+  &__wrapper--2{
+    width: 50%;
   }
 
-  section:last-child {
+  &__wrapper--3 {
     margin-left: 5rem;
-    width: 300px;
-  }
-
-
-  :host ::ng-deep .chat {
-    width: inherit;
-    height: 600px;
-    overflow-y: visible;
+    width: 20%;
   }
 }

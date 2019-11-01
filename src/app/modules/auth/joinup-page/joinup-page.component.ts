@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {animate, group, query, style, transition, trigger} from '@angular/animations';
 import {AuthService} from '../../../core/auth/auth.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HttpResponse} from '@angular/common/http';
 
 
@@ -55,18 +55,13 @@ export class JoinupPageComponent implements OnInit {
 
   @Output() closePopUp = new EventEmitter();
 
-  constructor(private authService: AuthService, private router: Router) {
-    let $userAuthStatus = this.authService.isLoggedIn();
-    $userAuthStatus.subscribe(res => {
-      if(res.status == 200){
-        this.router.navigate(['app']);
-      }
-    }, error => {
-
-    });
-  }
+  constructor(private authService: AuthService,
+              private router: Router,
+              private route : ActivatedRoute) {}
 
   ngOnInit() {
+    const isLoggedIn = this.route.snapshot.data.isLoggedIn;
+    if(isLoggedIn) this.router.navigate(['/app/me']);
   }
 
   closeJoinUpPopup(){

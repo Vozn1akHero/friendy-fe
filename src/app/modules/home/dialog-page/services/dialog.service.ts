@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import * as signalR from'@aspnet/signalr';
 import {HubConnection} from '@aspnet/signalr';
-import ChatFriendBasicData from '../models/chat-friend-basic-data.model';
+import ChatFriendBasicData from '../models/interlocutor-data.model';
 import MessageInChat from '../models/message-in-chat.model';
 import NewMessageInChat from '../models/new-message-in-chat.model';
 

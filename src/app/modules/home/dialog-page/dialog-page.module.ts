@@ -16,6 +16,7 @@ import { DialogPageComponent } from './dialog-page.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { AppRoutingModule } from '../../../app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {InterlocutorDataResolver} from './resolvers/interlocutor-data.resolver';
 
 
 @NgModule({
@@ -36,6 +37,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     UserMessagesComponent,
     ChatMessageItemComponent,
     ChatsInDialogItemComponent
+  ],
+  providers: [
+    InterlocutorDataResolver
   ]
 })
 

@@ -2,11 +2,12 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {Observable, Subscription} from 'rxjs';
-import MessageInChat from '../../models/message-in-chat.model';
+import MessageInChatModel from '../../models/message-in-chat.model';
+
+import {ActivatedRoute} from '@angular/router';
+import InterlocutorDataModel from '../../models/interlocutor-data.model';
 import * as DialogActions from '../../store/dialog-messages/dialog-messages.actions';
-import ChatFriendBasicData from '../../models/chat-friend-basic-data.model';
-import {combineLatest} from 'rxjs';
-import * as moment from '../../../profile-page/components/profile-post-list/profile-post-item/profile-post-item.component';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-chat-message-list',
@@ -14,40 +15,42 @@ import * as moment from '../../../profile-page/components/profile-post-list/prof
   styleUrls: ['./chat-message-list.component.scss']
 })
 export class MessagesComponent implements OnInit, OnDestroy {
-  @Input() chatHash : string;
-  @Input() chatFriendData : ChatFriendBasicData;
-
-  messagesInDialogLoaded$: Observable<boolean>;
-  messagesInDialogSubscription: Subscription;
+  interlocutorData: InterlocutorDataModel;
+  chatHash: string;
+  messagesSubscription: Subscription;
+  messagesLoaded$ : Observable<boolean>;
+  messagesLoadedSubscription: Subscription;
+  messagesLoaded : boolean = false;
 
   orderedMessages: any[] = [];
 
-  constructor(private store: Store<fromApp.AppState>) { }
+  constructor(private store: Store<fromApp.AppState>,
+              private route : ActivatedRoute) { }
 
   ngOnInit() {
-    this.messagesInDialogLoaded$ = this.store
-      .select(state => state.messagesPageDialog.loaded);
+    this.messagesLoaded$ = this.store.select(e => e.messagesPageDialog.loaded);
+/*    this.messagesLoadedSubscription = this.store.select(e => e.messagesPageDialog.loaded).subscribe(value => {
+      this.messagesLoaded = value;
+    });*/
 
-    this.getMessagesInDialog();
+    this.route.params.subscribe(params => {
+      this.chatHash = params.chatHash;
+    });
+    this.store.dispatch(new DialogActions.GetDialog({chatHash: this.chatHash}));
+
+    this.interlocutorData = this.route.snapshot.data.interlocutorData;
+
+    this.messagesSubscription = this.store
+      .select('messagesPageDialog')
+      .subscribe(messagesPageDialog => {
+        console.log(messagesPageDialog.messagesInDialog)
+      this.groupMessages(messagesPageDialog.messagesInDialog);
+    })
   }
 
-  getMessagesInDialog(){
-    this.store.dispatch(new DialogActions.GetDialog({ chatHash: this.chatHash }));
-
-    this.messagesInDialogSubscription = this.store.select(state => state.messagesPageDialog.messagesInDialog)
-      .subscribe(messages => {
-        console.log(messages)
-        this.groupMessages(messages);
-      })
-  }
-
-  groupMessages(messages: MessageInChat[]){
-    let msgGroupStartIndex = 0;
+  groupMessages(messages: MessageInChatModel[]){
     let friendMsgsSubgroup = [];
     let userMsgsSubgroup = [];
-
-    let friendMsgsGroup = [];
-    let userMsgsGroup = [];
 
     this.orderedMessages = [];
 
@@ -94,7 +97,6 @@ export class MessagesComponent implements OnInit, OnDestroy {
             isAuthor: true
           });
         } else {
-          //friendMsgsGroup.push(friendMsgsSubgroup);
           this.orderedMessages.push({
             messages: friendMsgsSubgroup,
             isAuthor: false
@@ -102,10 +104,10 @@ export class MessagesComponent implements OnInit, OnDestroy {
         }
       }
     });
-
   }
 
   ngOnDestroy(): void {
-    this.messagesInDialogSubscription.unsubscribe();
+    this.messagesSubscription.unsubscribe();
+    //this.messagesLoadedSubscription.unsubscribe();
   }
 }

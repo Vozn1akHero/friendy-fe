@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import MessageInChat from '../../models/message-in-chat.model';
+import MessageInChatModel from '../../models/message-in-chat.model';
 import NewMessageInChat from '../../models/new-message-in-chat.model';
 
 
@@ -17,7 +17,7 @@ export class GetDialog implements Action {
 export class SetDialog implements Action {
   readonly type = SET_DIALOG;
 
-  constructor(public payload: MessageInChat[]){}
+  constructor(public payload: MessageInChatModel[]){}
 }
 
 export class AddNewMessage implements Action {
@@ -29,7 +29,7 @@ export class AddNewMessage implements Action {
 export class SetAddedMessage implements Action {
   readonly type = SET_ADDED_MESSAGE;
 
-  constructor(public payload: MessageInChat){}
+  constructor(public payload: MessageInChatModel){}
 }
 
 export type Actions = GetDialog | SetDialog | AddNewMessage | SetAddedMessage

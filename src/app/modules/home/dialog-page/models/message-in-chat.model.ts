@@ -1,4 +1,4 @@
-export default class MessageInChat {
+export default class MessageInChatModel {
   content: string;
   isUserAuthor:boolean;
   date: Date;

@@ -1,5 +1,5 @@
 import {Component, OnInit, AfterViewInit, ElementRef, OnDestroy} from '@angular/core';
-import { Router } from "@angular/router"
+import {ActivatedRoute, Router} from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../core/auth/auth.service';
 import {animate, group, query, style, transition, trigger} from '@angular/animations';
@@ -34,20 +34,11 @@ import * as fromApp from '../../core/ngrx/store/app.reducer';
 })
 
 export class MainpageComponent implements OnInit, OnDestroy {
-  //private authServiceSubscription : Subscription;
-
-
-  constructor(private router : Router,
-              private authService: AuthService) {
-/*    this.authServiceSubscription = this.authService.isLoggedIn().subscribe(res => {
-      if (res.status == 200) {
-        return this.router.navigate(['/app'])
-      }
-    });*/
-  }
+  constructor(private router: Router, private route : ActivatedRoute) {}
 
   ngOnInit() {
-
+    const isLoggedIn = this.route.snapshot.data.isLoggedIn;
+    if(isLoggedIn) this.router.navigate(['/app/me']);
   }
 
   ngOnDestroy(){

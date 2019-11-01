@@ -18,11 +18,18 @@ import {CommonProfilePageComponent} from './modules/home/common-profile-page/com
 import {NotFoundPageComponent} from './modules/not-found/not-found-page.component';
 import {DialogPageComponent} from './modules/home/dialog-page/dialog-page.component';
 import {FriendsSearchPageComponent} from './modules/home/friends-search-page/friends-search-page.component';
+import {LoggedInResolver} from './logged-in.resolver';
+import {InterlocutorDataResolver} from './modules/home/dialog-page/resolvers/interlocutor-data.resolver';
 
 const routes: Routes = [
-  {path: '', component: MainpageComponent},
-  {path: 'joinup', component: JoinupPageComponent, data: { page: 'joinup' }},
-  {path: 'login', component: LoginPageComponent, data: { page: 'login' }},
+  {path: '', component: MainpageComponent, resolve: {isLoggedIn: LoggedInResolver}},
+  {path: 'joinup', component: JoinupPageComponent,
+    resolve: {isLoggedIn: LoggedInResolver},
+    data: { page: 'joinup' }},
+  {path: 'login',
+    component: LoginPageComponent,
+    resolve: {isLoggedIn: LoggedInResolver},
+    data: { page: 'login' }},
   {path: 'app', component: NavigationComponent, canActivate: [AuthGuard], children: [
       {path: '', redirectTo: 'me', pathMatch: 'full'},
       {path: 'me', component: ProfilePageComponent, children: [
@@ -38,7 +45,9 @@ const routes: Routes = [
       {path: 'groups', component: GroupsPageComponent},
       {path: 'home', component: HomePageComponent},
       {path: 'messages', component: MessagesPageComponent},
-      {path: 'dialog/:chatHash', component: DialogPageComponent},
+      {path: 'dialog/:chatHash',
+        component: DialogPageComponent,
+        resolve: {interlocutorData: InterlocutorDataResolver}},
       {path: 'settings', component: UserSettingsPageComponent}
   ]},
   {path: '404', component: NotFoundPageComponent},

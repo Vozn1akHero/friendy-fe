@@ -1,29 +1,18 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
-
-import {DialogService} from '../../services/dialog.service';
-import ChatFriendBasicData from '../../models/chat-friend-basic-data.model';
+import {Component, OnInit} from '@angular/core';
+import InterlocutorDataModel from '../../models/interlocutor-data.model';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-chat-friend-data',
   templateUrl: './chat-friend-data.component.html',
   styleUrls: ['./chat-friend-data.component.scss']
 })
-export class ChatFriendDataComponent implements OnInit, OnDestroy {
-  @Input() chatHash : string;
-  @Input() chatFriendData : ChatFriendBasicData;
+export class ChatFriendDataComponent implements OnInit {
+  interlocutorData: InterlocutorDataModel;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-   // this.getMessagesInDialog();
-  }
-
-/*  getMessagesInDialog(){
-    this.chatFriendData$ = this.dialogService.getChatFriendData(this.chatHash);
-  }*/
-
-  ngOnDestroy(): void {
-    //this.chatFriendDataSubscription.unsubscribe();
+    this.interlocutorData = this.route.snapshot.data.interlocutorData;
   }
 }

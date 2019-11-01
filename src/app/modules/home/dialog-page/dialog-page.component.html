@@ -1,17 +1,17 @@
 <section class="dialog-page">
-  <section>
-    <ng-container *ngIf="isChatFriendDataLoaded">
-      <app-chat-friend-data [chatFriendData]="chatFriendData"
-                            [chatHash]="chatHash"></app-chat-friend-data>
-
-      <app-chat-message-list [chatFriendData]="chatFriendData"
-                             [chatHash]="chatHash"></app-chat-message-list>
-    </ng-container>
-
-    <app-new-message-in-dialog-form [chatHash]="chatHash"></app-new-message-in-dialog-form>
+  <section class="dialog-page__wrapper--1">
+    <div class="dialog-page__add-wrapper">
+      <a [routerLink]="['/app/messages']"
+         class="dialog-page__back">&#8592; Wróć</a>
+    </div>
   </section>
 
-  <section>
+  <section class="dialog-page__wrapper--2">
+    <app-chat-friend-data></app-chat-friend-data>
+    <app-chat-message-list></app-chat-message-list>
+    <app-new-message-in-dialog-form></app-new-message-in-dialog-form>
+  </section>
+  <section class="dialog-page__wrapper--3">
     <app-chats-in-dialog-panel></app-chats-in-dialog-panel>
   </section>
 </section>
