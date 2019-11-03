@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import FoundUser from '../../models/found-user.model';
 import {ActivatedRoute} from '@angular/router';
 import FoundUserModel from '../../models/found-user.model';
@@ -9,12 +9,11 @@ import FoundUserModel from '../../models/found-user.model';
   styleUrls: ['./found-users-list.component.scss']
 })
 export class FoundUsersListComponent implements OnInit {
-  userList: FoundUserModel[];
+  @Input() userList: FoundUserModel[];
 
   constructor(private route : ActivatedRoute) { }
 
   ngOnInit() {
-    this.userList = this.route.snapshot.data.startingUserList;
-  }
 
+  }
 }

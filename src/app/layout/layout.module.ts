@@ -14,7 +14,9 @@ import {FooterComponent} from './footer/footer.component';
     NavigationComponent,
     FooterComponent
   ],
-  exports: []
+  exports: [
+    NavigationComponent
+  ]
 })
 
 

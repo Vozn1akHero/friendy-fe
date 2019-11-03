@@ -6,6 +6,6 @@
           link: null,
           marginTop: false
         }">
-    <app-friends-search-form></app-friends-search-form>
+    <app-friends-search-form (searchFormSubmitEmitter)="searchFormSubmit($event)"></app-friends-search-form>
   </app-main-panel>
 </section>

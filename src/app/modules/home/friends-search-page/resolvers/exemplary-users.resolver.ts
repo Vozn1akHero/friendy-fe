@@ -9,6 +9,6 @@ export class ExemplaryUsersResolver implements Resolve<FoundUserModel[]> {
 
   resolve(route: ActivatedRouteSnapshot){
     return this.friendsSearchService
-      .getExemplaryUsers(1, 10);
+      .getExemplaryUsers(1, 20);
   }
 }

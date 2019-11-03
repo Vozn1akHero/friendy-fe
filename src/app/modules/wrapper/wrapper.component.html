@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <app-friend-requests-modal *ngIf="friendRequestsModalOpened">
+  </app-friend-requests-modal>
+
+  <app-navigation [friendRequestModalOpened]="friendRequestsModalOpened"
+                  (openFriendRequestsModalEmitter)="openFriendRequestsModal()"
+                  (closeFriendRequestsModalEmitter)="closeFriendRequestsModal()"></app-navigation>
+
+  <section class="page">
+    <router-outlet></router-outlet>
+  </section>
+</div>

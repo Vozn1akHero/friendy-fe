@@ -9,16 +9,22 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class FriendsSearchService {
-  constructor(private http: HttpClient){}
-
-  getUsersByCriteria(criteria : UserSearchModelDto){
-    return this.http.post('/api/user/with-criteria', criteria, { observe: 'response' })
+  constructor(private http: HttpClient) {
   }
 
-  getExemplaryUsers(firstIndex: number, lastIndex: number) : Observable<FoundUserModel[]>{
-    return this.http.get(`/api/user/search/exemplary/?firstIndex=${firstIndex}&lastIndex=${lastIndex}`)
+  getUsersByCriteria(criteria: UserSearchModelDto) {
+    return this.http.post('/api/user-search/with-criteria', criteria, {observe: 'response'})
+  }
+
+  getExemplaryUsers(firstIndex: number, lastIndex: number): Observable<FoundUserModel[]> {
+    return this.http.get(`/api/friend/recommended/?firstIndex=${firstIndex}&lastIndex=${lastIndex}`)
       .pipe(map(response => {
         return response as FoundUserModel[];
       }))
+  }
+
+  checkIfFriendByUserId(userId : number){
+    return this.http.get(`api/friend/friendship-status/?id=${userId}`,
+      {observe: 'response'})
   }
 }

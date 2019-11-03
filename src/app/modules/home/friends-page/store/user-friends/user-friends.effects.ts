@@ -9,6 +9,7 @@ import * as UserFriendsActions from './user-friends.actions';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import Friend from '../../models/friend.model';
+import {FriendsService} from '../../services/friends.service';
 
 @Injectable()
 export class UserFriendsEffects {
@@ -16,13 +17,18 @@ export class UserFriendsEffects {
   getFriends = this.actions$.pipe(
     ofType(UserFriendsActions.GET_FRIENDS),
     switchMap((getFriendsStart: UserFriendsActions.GetFriends) => {
-      return this.http.get(`/api/friend/sample/indexed/?firstIndex=${getFriendsStart.payload.startIndex}&lastIndex=${getFriendsStart.payload.lastIndex}`,
-        {observe: 'response'})
+      return this.friendsService.getFriendsRange(getFriendsStart.payload.firstIndex,
+        getFriendsStart.payload.lastIndex)
         .pipe(
           map(res => {
             let friends : Friend[] = [];
             Array(res.body).map(friend => {
-              friends.push(new Friend(friend[0].id, friend[0].name, friend[0].surname, friend[0].onlineStatus, friend[0].dialogLink, friend[0].avatar));
+              friends.push(new Friend(friend[0].id,
+                friend[0].name,
+                friend[0].surname,
+                friend[0].onlineStatus,
+                friend[0].dialogLink,
+                friend[0].avatar));
             });
             return ({type: UserFriendsActions.SET_FRIENDS, payload: friends})
           })
@@ -34,8 +40,7 @@ export class UserFriendsEffects {
   filterFriends = this.actions$.pipe(
     ofType(UserFriendsActions.FILTER_FRIENDS),
     switchMap((filterFriendsStart: UserFriendsActions.FilterFriends) => {
-      return this.http.get(`/api/friend/filterFriends/?keyword=${filterFriendsStart.payload.keyword}`,
-        {observe: 'response'})
+      return this.friendsService.filterFriends(filterFriendsStart.payload.keyword)
         .pipe(
           map(res => {
             return ({type: UserFriendsActions.SET_FILTERED_FRIENDS, payload: res.body})
@@ -47,6 +52,7 @@ export class UserFriendsEffects {
   constructor(
     private actions$: Actions,
     private http: HttpClient,
+    private friendsService: FriendsService,
     private router: Router,
     private store$: Store<fromApp.AppState>
   ) {}

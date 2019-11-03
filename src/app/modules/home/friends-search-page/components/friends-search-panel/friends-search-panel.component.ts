@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormGroup} from '@angular/forms';
+import UserSearchModelDto from '../../models/user-search-dto.model';
 
 @Component({
   selector: 'app-friends-search-panel',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./friends-search-panel.component.scss']
 })
 export class FriendsSearchPanelComponent implements OnInit {
+  @Output() searchFormSubmitEmitter: EventEmitter<UserSearchModelDto> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  searchFormSubmit($event){
+    this.searchFormSubmitEmitter.emit($event);
+  }
 }

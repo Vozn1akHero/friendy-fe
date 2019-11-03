@@ -5,7 +5,7 @@ import * as fromApp from '../../../core/ngrx/store/app.reducer';
 import {Observable, Subscription} from 'rxjs';
 import * as UserFriendsActions from './store/user-friends/user-friends.actions';
 import {ActivatedRoute} from '@angular/router';
-import {FriendsPageService} from './services/friends-page.service';
+import {FriendsService} from './services/friends.service';
 
 @Component({
   selector: 'app-friends',
@@ -17,10 +17,10 @@ export class FriendsPageComponent implements OnInit {
   friendsLoading$: Observable<boolean>;
 
   constructor(private renderer: Renderer2,
-              private friendsPageService: FriendsPageService,
+              private friendsPageService: FriendsService,
               private activatedRoute: ActivatedRoute,
               private store: Store<fromApp.AppState>) {
-    this.store.dispatch(new UserFriendsActions.GetFriends({startIndex: 0, lastIndex: 9}));
+    this.store.dispatch(new UserFriendsActions.GetFriends({firstIndex: 1, lastIndex: 9}));
   }
 
   ngOnInit() {

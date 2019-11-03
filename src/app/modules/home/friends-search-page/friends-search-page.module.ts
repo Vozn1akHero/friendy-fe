@@ -13,6 +13,7 @@ import {FriendsSearchPageComponent} from './friends-search-page.component';
 import {FoundUsersListComponent} from './components/found-users-list/found-users-list.component';
 import {FriendsSearchPanelComponent} from './components/friends-search-panel/friends-search-panel.component';
 import {ExemplaryUsersResolver} from './resolvers/exemplary-users.resolver';
+import {FriendsSearchService} from './services/friends-search.service';
 
 
 @NgModule({
@@ -31,6 +32,6 @@ import {ExemplaryUsersResolver} from './resolvers/exemplary-users.resolver';
     FriendsSearchPanelComponent
   ],
   exports: [],
-  providers: [ExemplaryUsersResolver]
+  providers: [ExemplaryUsersResolver, FriendsSearchService]
 })
 export class FriendsSearchPageModule { }

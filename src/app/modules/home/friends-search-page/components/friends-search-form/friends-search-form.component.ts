@@ -1,8 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild} from '@angular/core';
 import {FormGroup, FormControl, Validators, Form} from '@angular/forms';
 import UserSearchModelDto from '../../models/user-search-dto.model';
 import {FriendsSearchService} from '../../services/friends-search.service';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-friends-search-form',
@@ -21,18 +20,18 @@ export class FriendsSearchFormComponent implements OnInit {
       ageMin: new FormControl(0),
       ageMax: new FormControl(0)
     }),
-    gender: new FormControl(0),
-    maritalStatus: new FormControl(0),
-    religion: new FormControl(0),
-    alcoholOpinion: new FormControl(0),
-    smokingOpinion: new FormControl(0),
-    drugsOpinion: new FormControl(0),
+    gender: new FormControl(''),
+    maritalStatus: new FormControl(''),
+    religion: new FormControl(''),
+    alcoholAttitude: new FormControl(''),
+    smokingAttitude: new FormControl(''),
     interests: new FormControl([])
   });
 
-  @Output() advSearchFormSubmit: EventEmitter<FormGroup> = new EventEmitter();
+  @Output() searchFormSubmitEmitter: EventEmitter<UserSearchModelDto> = new EventEmitter();
 
   @ViewChild('interestsInput') interestsInput;
+  @ViewChild('dropdownWrapper') dropdownWrapperList : QueryList<ElementRef>;
 
   interests: string[] = [];
 
@@ -41,7 +40,7 @@ export class FriendsSearchFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.addListenerOnDropdown();
+    this.addListenerOnDropdowns();
   }
 
   addNewInterest($event) : void{
@@ -58,48 +57,52 @@ export class FriendsSearchFormComponent implements OnInit {
     //this.interests.splice(index, 1);
   }
 
-  addListenerOnDropdown() : void{
-    $(".dropdown-wrapper").on('mouseover', ()=>{
-      if($(this).add(".dropdown-wrapper select").hasClass("ng-dirty")){
-        $(this).add(".box").show(100);
-      }
-    });
+  addListenerOnDropdowns() : void{
+    const dropDowns = document.querySelectorAll(".dropdown-wrapper");
+    dropDowns.forEach((element) => {
+      element.addEventListener('mouseover', (event)=>{
+        const target : HTMLTextAreaElement = <HTMLTextAreaElement>event.currentTarget;
+        const selector = "."+target.classList.item(1) + " .custom-dropdown select";
+        if(document.querySelector(selector).classList.contains("ng-dirty")){
+          const boxSelector : HTMLElement = document
+            .querySelector("." + target.classList.item(1) + " .box");
+          boxSelector.style.visibility = 'visible';
+          boxSelector.style.opacity = '1';
+        }
+      });
 
-    $(".dropdown-wrapper").on('mouseleave', ()=>{
-      $(".box").hide(100);
+      element.addEventListener('mouseleave', (event)=>{
+        const target : HTMLTextAreaElement = <HTMLTextAreaElement>event.currentTarget;
+        const boxSelector : HTMLElement = document
+          .querySelector("." + target.classList.item(1) + " .box");
+        boxSelector.style.opacity = '0';
+        setTimeout(()=>{
+          boxSelector.style.visibility = 'hidden';
+        }, 1500);
+      });
     });
   }
 
   searchSubmit(){
-    if(!($(".interests__input").is(":focus"))){
-      const searchFormValue = this.searchForm.value;
-      const userSearchModel = new UserSearchModelDto(searchFormValue.name,
-        searchFormValue.surname,
-        searchFormValue.city,
-        +searchFormValue.education,
-        searchFormValue.school,
-        searchFormValue.university,
-        +searchFormValue.age.ageMin,
-        +searchFormValue.age.ageMax,
-        +searchFormValue.gender,
-        +searchFormValue.maritalStatus,
-        +searchFormValue.religion,
-        +searchFormValue.alcoholOpinion,
-        +searchFormValue.smokingOpinion,
-        this.interests);
+    const searchFormValue = this.searchForm.value;
 
-      this.friendsSearchService.getUsersByCriteria(userSearchModel).subscribe(response => {
-        console.log(response.body);
-        //this.foundUsers = response.body;
-      });
+    const userSearchModel = new UserSearchModelDto(searchFormValue.name,
+      searchFormValue.surname,
+      searchFormValue.city,
+      +searchFormValue.education,
+      searchFormValue.school,
+      searchFormValue.university,
+      +searchFormValue.age.ageMin,
+      +searchFormValue.age.ageMax,
+      +searchFormValue.gender,
+      +searchFormValue.maritalStatus,
+      +searchFormValue.religion,
+      +searchFormValue.alcoholAttitude,
+      +searchFormValue.smokingAttitude,
+      this.interests);
+
+    if(!this.interestsInput.nativeElement.activeElement) {
+      this.searchFormSubmitEmitter.emit(userSearchModel);
     }
-
-    /*if(!this.interestsInput.nativeElement.activeElement) {
-      console.log(this.searchForm.value)
-    }*/
-    /*this.friendsSearchService.getUsersByCriteria(this.searchForm.value).subscribe(response => {
-      //console.log(response);
-      this.foundUsers = response.body;
-    });*/
   }
 }

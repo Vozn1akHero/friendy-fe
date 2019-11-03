@@ -1,10 +1,7 @@
 import {Component, OnDestroy, OnInit, Renderer2} from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import {State, Store} from '@ngrx/store';
-import * as fromApp from '../../../core/ngrx/store/app.reducer';
-import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {FriendsSearchService} from './services/friends-search.service';
+import FoundUserModel from './models/found-user.model';
 
 @Component({
   selector: 'app-friends-search-page',
@@ -12,24 +9,35 @@ import {FriendsSearchService} from './services/friends-search.service';
   styleUrls: ['./friends-search-page.component.scss']
 })
 export class FriendsSearchPageComponent implements OnInit, OnDestroy {
-
-  private searchTerm: string;
-  private searchTermInserted: boolean;
-
-  private usersByCriteriaRes : Subscription;
+  userList : FoundUserModel[] = [];
 
   constructor(private renderer: Renderer2,
               private friendsSearchService: FriendsSearchService,
-              private activatedRoute: ActivatedRoute) {
+              private route: ActivatedRoute) {}
 
+  searchFormSubmit($event){
+    this.friendsSearchService.getUsersByCriteria($event).subscribe((response : any) => {
+      Array(response.body).map(user => {
+        this.userList.push(new FoundUserModel(user.id,
+          user.name,
+          user.surname,
+          user.avatar))
+      });
+    });
   }
 
   ngOnInit() {
-/*    this.activatedRoute.queryParams.subscribe(params => {
-      this.userSearchingActivated = params.userSearchingActivated != null;
-    })*/
+    this.setStartingUserList();
   }
 
+  setStartingUserList(){
+    this.route.snapshot.data.startingUserList.map(user => {
+      this.userList.push(new FoundUserModel(user.id,
+        user.name,
+        user.surname,
+        user.avatar))
+    });
+  }
 
   ngOnDestroy(): void {
 

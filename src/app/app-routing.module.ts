@@ -21,6 +21,7 @@ import {FriendsSearchPageComponent} from './modules/home/friends-search-page/fri
 import {LoggedInResolver} from './logged-in.resolver';
 import {InterlocutorDataResolver} from './modules/home/dialog-page/resolvers/interlocutor-data.resolver';
 import {ExemplaryUsersResolver} from './modules/home/friends-search-page/resolvers/exemplary-users.resolver';
+import {WrapperComponent} from './modules/wrapper/wrapper.component';
 
 const routes: Routes = [
   {path: '',
@@ -37,7 +38,7 @@ const routes: Routes = [
     resolve: {isLoggedIn: LoggedInResolver},
     data: { page: 'login' }},
 
-  {path: 'app', component: NavigationComponent, canActivate: [AuthGuard], children: [
+  {path: 'app', component: WrapperComponent, canActivate: [AuthGuard], children: [
       {path: '', redirectTo: 'me', pathMatch: 'full'},
 
       {path: 'me', component: ProfilePageComponent, children: [

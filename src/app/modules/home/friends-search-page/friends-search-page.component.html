@@ -1,9 +1,10 @@
 <section class="friends-search-page">
   <section class="friends-search-page__left-wrapper">
-    <app-found-users-list></app-found-users-list>
+    <app-found-users-list [userList]="userList"></app-found-users-list>
   </section>
 
   <section class="friends-search-page__right-wrapper">
-    <app-friends-search-panel></app-friends-search-panel>
+    <app-friends-search-panel (searchFormSubmitEmitter)="searchFormSubmit($event)">
+    </app-friends-search-panel>
   </section>
 </section>

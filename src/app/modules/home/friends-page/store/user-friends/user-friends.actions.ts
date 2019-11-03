@@ -11,7 +11,7 @@ export const SET_FILTERED_FRIENDS = '[Friends Page] Filter Friends';
 export class GetFriends implements Action {
   readonly type = GET_FRIENDS;
 
-  constructor(public payload: {startIndex: number, lastIndex: number}) {}
+  constructor(public payload: {firstIndex: number, lastIndex: number}) {}
 }
 
 export class SetFriends implements Action {

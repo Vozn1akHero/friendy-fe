@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import {Subscription} from 'rxjs';
@@ -6,26 +6,29 @@ import {Store} from '@ngrx/store';
 import * as fromApp from '../../core/ngrx/store/app.reducer';
 
 @Component({
-  selector: 'app-wholeness',
+  selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-  private authServiceSubscription : Subscription;
-  private storeUserSubscription : Subscription;
+  @Input() friendRequestModalOpened:boolean;
+  @Output() openFriendRequestsModalEmitter: EventEmitter<void> = new EventEmitter();
+  @Output() closeFriendRequestsModalEmitter: EventEmitter<void> = new EventEmitter();
 
   constructor(private router: Router,
-              private store: Store<fromApp.AppState>,
-              private authService: AuthService) {
+              private authService: AuthService) {}
 
-  }
+  ngOnInit() {}
 
-  ngOnInit() {
-    //this.store.dispatch(new UserActions.GetUserStart());
+  toggleFriendRequestsModal(){
+    if(this.friendRequestModalOpened){
+      this.closeFriendRequestsModalEmitter.emit();
+    } else{
+      this.openFriendRequestsModalEmitter.emit();
+    }
   }
 
   logOut():void{
     this.authService.logOut();
   }
-
 }

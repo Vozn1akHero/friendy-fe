@@ -1,11 +1,11 @@
 <div class="friends-search">
-  <form (submit)="searchSubmit()" [formGroup]="searchForm">
+  <form (submit)="searchSubmit($event)" [formGroup]="searchForm">
     <input class="name" formControlName="name" placeholder="Imię" type="text">
     <input class="surname" formControlName="surname" placeholder="Nazwisko" type="text">
 
     <input class="city" formControlName="city" placeholder="Miasto" type="text">
 
-    <div class="dropdown-wrapper">
+    <div class="dropdown-wrapper dropdown-wrapper--1">
       <div class="box box__sb">
         Wykształcenie
       </div>
@@ -40,7 +40,7 @@
       </label>
     </div>
 
-    <div class="dropdown-wrapper">
+    <div class="dropdown-wrapper dropdown-wrapper--2">
       <div class="box box__sb">
         Status rodzinny
       </div>
@@ -54,7 +54,7 @@
     </span>
     </div>
 
-    <div class="dropdown-wrapper">
+    <div class="dropdown-wrapper dropdown-wrapper--3">
       <div class="box box__sb">
         Religia
       </div>
@@ -69,12 +69,12 @@
     </span>
     </div>
 
-    <div class="dropdown-wrapper">
+    <div class="dropdown-wrapper dropdown-wrapper--4">
       <div class="box box__sb">
         Stosunek do alkoholu
       </div>
       <span class="custom-dropdown">
-        <select formControlName="alcoholOpinion">
+        <select formControlName="alcoholAttitude">
           <option hidden value="">Stosunek do alkoholu</option>
           <option value="1">Negatywny</option>
           <option value="2">Pozytywny</option>
@@ -83,12 +83,12 @@
       </span>
     </div>
 
-    <div class="dropdown-wrapper">
+    <div class="dropdown-wrapper dropdown-wrapper--5">
       <div class="box box__sb">
         Stosunek do palenia
       </div>
       <span class="custom-dropdown">
-        <select formControlName="smokingOpinion">
+        <select formControlName="smokingAttitude">
           <option hidden value="">Stosunek do palenia</option>
           <option value="1">Negatywny</option>
           <option value="2">Pozytywny</option>
@@ -99,6 +99,7 @@
 
     <div class="interests">
       <input (keypress)="addNewInterest($event)"
+             #interestsInput
              class="interests__input"
              formControlName="interests"
              placeholder="Zainteresowania (maks. 5)" type="text">
