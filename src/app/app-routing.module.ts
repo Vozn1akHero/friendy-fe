@@ -20,37 +20,56 @@ import {DialogPageComponent} from './modules/home/dialog-page/dialog-page.compon
 import {FriendsSearchPageComponent} from './modules/home/friends-search-page/friends-search-page.component';
 import {LoggedInResolver} from './logged-in.resolver';
 import {InterlocutorDataResolver} from './modules/home/dialog-page/resolvers/interlocutor-data.resolver';
+import {ExemplaryUsersResolver} from './modules/home/friends-search-page/resolvers/exemplary-users.resolver';
 
 const routes: Routes = [
-  {path: '', component: MainpageComponent, resolve: {isLoggedIn: LoggedInResolver}},
-  {path: 'joinup', component: JoinupPageComponent,
+  {path: '',
+    component: MainpageComponent,
+    resolve: {isLoggedIn: LoggedInResolver}},
+
+  {path: 'joinup',
+    component: JoinupPageComponent,
     resolve: {isLoggedIn: LoggedInResolver},
+
     data: { page: 'joinup' }},
   {path: 'login',
     component: LoginPageComponent,
     resolve: {isLoggedIn: LoggedInResolver},
     data: { page: 'login' }},
+
   {path: 'app', component: NavigationComponent, canActivate: [AuthGuard], children: [
       {path: '', redirectTo: 'me', pathMatch: 'full'},
+
       {path: 'me', component: ProfilePageComponent, children: [
           {path: 'comments', component: CommentsComponent }
       ]},
+
       {path: 'profile/:id', component: CommonProfilePageComponent, children: [
           {path: 'comments', component: CommentsComponent }
       ]},
       {path: 'events', component: EventsPageComponent},
+
       {path: 'event/:id', component: EventComponent},
+
       {path: 'friends', component: FriendsPageComponent},
-      {path: 'friends-search', component: FriendsSearchPageComponent},
+
+      {path: 'friends-search', component: FriendsSearchPageComponent,
+        resolve: { startingUserList: ExemplaryUsersResolver }},
+
       {path: 'groups', component: GroupsPageComponent},
+
       {path: 'home', component: HomePageComponent},
+
       {path: 'messages', component: MessagesPageComponent},
+
       {path: 'dialog/:chatHash',
         component: DialogPageComponent,
         resolve: {interlocutorData: InterlocutorDataResolver}},
+
       {path: 'settings', component: UserSettingsPageComponent}
   ]},
   {path: '404', component: NotFoundPageComponent},
+
   {path: '**', redirectTo: '/404'}
 ];
 

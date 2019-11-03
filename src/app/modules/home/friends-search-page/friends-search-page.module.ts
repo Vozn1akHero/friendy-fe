@@ -12,6 +12,7 @@ import { FoundUserItemComponent } from './components/found-users-list/found-user
 import {FriendsSearchPageComponent} from './friends-search-page.component';
 import {FoundUsersListComponent} from './components/found-users-list/found-users-list.component';
 import {FriendsSearchPanelComponent} from './components/friends-search-panel/friends-search-panel.component';
+import {ExemplaryUsersResolver} from './resolvers/exemplary-users.resolver';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {FriendsSearchPanelComponent} from './components/friends-search-panel/fri
     FoundUserItemComponent,
     FriendsSearchPanelComponent
   ],
-  exports: []
+  exports: [],
+  providers: [ExemplaryUsersResolver]
 })
 export class FriendsSearchPageModule { }

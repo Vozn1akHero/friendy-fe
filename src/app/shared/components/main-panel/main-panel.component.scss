@@ -2,10 +2,9 @@
 
 .main-panel{
   background-color: $color-bg-grey-footer;
-  //margin-left: 4rem;
   padding: 1rem;
-  //width: 419px;
   width: inherit;
+  border-radius: $panel-border-radius;
 
   .header{
     display: flex;

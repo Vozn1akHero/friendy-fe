@@ -1,10 +1,12 @@
 <section class="dialog-page">
-  <section class="dialog-page__wrapper--1">
+  <a [routerLink]="['/app/messages']"
+     class="dialog-page__back-anchor">&#8592; Wróć</a>
+<!--  <section class="dialog-page__wrapper&#45;&#45;1">
     <div class="dialog-page__add-wrapper">
       <a [routerLink]="['/app/messages']"
          class="dialog-page__back">&#8592; Wróć</a>
     </div>
-  </section>
+  </section>-->
 
   <section class="dialog-page__wrapper--2">
     <app-chat-friend-data></app-chat-friend-data>

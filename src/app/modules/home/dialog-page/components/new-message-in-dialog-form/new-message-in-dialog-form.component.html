@@ -1,2 +1,30 @@
-<app-new-message-form [styles]="{newMessageWidth: '50em', newMessageFormTextAreaWidth: '50em', formPosition: 'absolute', formBottomPos: '2rem'}"
-                      (event)="newMessageEvent($event)"></app-new-message-form>
+<!--
+<app-new-message-form [styles]="{newMessageWidth: '50%',
+ newMessageFormTextAreaWidth: '50em',
+  formPosition: 'absolute',
+   formBottomPos: '2rem'}" (event)="newMessageEvent($event)"></app-new-message-form>
+-->
+
+<div class="new-message-in-dialog">
+  <form (ngSubmit)="newMessageEvent()">
+    <textarea placeholder="Napisz wiadomość"
+              #newMessageContent
+              [minLength]="1"></textarea>
+
+    <div>
+      <div class="file-btn-wrapper">
+        <svg>
+          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
+        </svg>
+
+        <input type="file"
+               name="filename"
+               #image
+               accept="image/jpeg, image/png"
+               style="opacity: 0;">
+      </div>
+
+      <button type="submit">Wyślij</button>
+    </div>
+  </form>
+</div>

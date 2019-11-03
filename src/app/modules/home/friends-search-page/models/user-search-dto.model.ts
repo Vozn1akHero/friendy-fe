@@ -8,14 +8,26 @@ export default class UserSearchModelDto {
   AgeMin: number;
   AgeMax: number;
   Gender: number;
-  FamilyStatus: number;
+  MaritalStatus: number;
   Religion: number;
   AlcoholOpinion: number;
   SmokingOpinion: number;
-  DrugsOpinion: number;
   Interests: string[];
 
-  constructor(Name: string, Surname: string, City: string, Education: number, School: string, University: string, AgeMin: number, AgeMax: number, Gender: number, FamilyStatus: number, Religion: number, AlcoholOpinion: number, SmokingOpinion: number, DrugsOpinion: number, Interests: string[]) {
+  constructor(Name: string,
+              Surname: string,
+              City: string,
+              Education: number,
+              School: string,
+              University: string,
+              AgeMin: number,
+              AgeMax: number,
+              Gender: number,
+              MaritalStatus: number,
+              Religion: number,
+              AlcoholOpinion: number,
+              SmokingOpinion: number,
+              Interests: string[]) {
     this.Name = Name;
     this.Surname = Surname;
     this.City = City;
@@ -25,11 +37,10 @@ export default class UserSearchModelDto {
     this.AgeMin = AgeMin;
     this.AgeMax = AgeMax;
     this.Gender = Gender;
-    this.FamilyStatus = FamilyStatus;
+    this.MaritalStatus = MaritalStatus;
     this.Religion = Religion;
     this.AlcoholOpinion = AlcoholOpinion;
     this.SmokingOpinion = SmokingOpinion;
-    this.DrugsOpinion = DrugsOpinion;
     this.Interests = Interests;
   }
 }

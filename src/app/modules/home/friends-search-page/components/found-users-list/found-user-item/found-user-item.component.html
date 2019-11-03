@@ -2,13 +2,17 @@
   <div class="avatar">
     <a href="#">
       <figure>
-        <img src="{{ foundUserData.avatar }}" alt="friend's avatar">
+        <!--<img src="{{ foundUserData.avatar }}" alt="friend's avatar">-->
+        <img src="{{ null }}" alt="friend's avatar">
       </figure>
     </a>
   </div>
 
   <div class="info">
-    <a href="#" class="name">{{ foundUserData.name }} {{ foundUserData.surname }}</a>
+    <a [routerLink]="['/app/profile', foundUserData.id]"
+       class="name">
+      {{ foundUserData.name }} {{ foundUserData.surname }}
+    </a>
 
     <div class="online-status">
       <ng-container>
@@ -23,7 +27,6 @@
        <svg class="control-icon">
          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-bubble"></use>
        </svg>
-     </a>
-
+    </a>
   </div>
 </div>

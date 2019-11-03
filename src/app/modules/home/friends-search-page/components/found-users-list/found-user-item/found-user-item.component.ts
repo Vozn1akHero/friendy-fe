@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import FoundUserModel from '../../../models/found-user.model';
 
 @Component({
   selector: 'app-found-user-item',
@@ -6,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./found-user-item.component.scss']
 })
 export class FoundUserItemComponent implements OnInit {
-  @Input() foundUserData: any;
+  @Input() foundUserData: FoundUserModel;
 
   constructor() { }
 

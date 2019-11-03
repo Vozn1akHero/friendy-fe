@@ -11,23 +11,23 @@ import * as $ from 'jquery';
 })
 export class FriendsSearchFormComponent implements OnInit {
   searchForm = new FormGroup({
-    name: new FormControl(''),
-    surname: new FormControl(''),
-    city: new FormControl(''),
+    name: new FormControl(null),
+    surname: new FormControl(null),
+    city: new FormControl(null),
     education: new FormControl(''),
-    school: new FormControl(''),
-    university: new FormControl(''),
+    school: new FormControl(null),
+    university: new FormControl(null),
     age: new FormGroup({
-      ageMin: new FormControl(''),
-      ageMax: new FormControl('')
+      ageMin: new FormControl(0),
+      ageMax: new FormControl(0)
     }),
-    gender: new FormControl(''),
-    familyStatus: new FormControl(''),
-    religion: new FormControl(''),
-    alcoholOpinion: new FormControl(''),
-    smokingOpinion: new FormControl(''),
-    drugsOpinion: new FormControl(''),
-    interests: new FormControl('')
+    gender: new FormControl(0),
+    maritalStatus: new FormControl(0),
+    religion: new FormControl(0),
+    alcoholOpinion: new FormControl(0),
+    smokingOpinion: new FormControl(0),
+    drugsOpinion: new FormControl(0),
+    interests: new FormControl([])
   });
 
   @Output() advSearchFormSubmit: EventEmitter<FormGroup> = new EventEmitter();
@@ -82,15 +82,14 @@ export class FriendsSearchFormComponent implements OnInit {
         +searchFormValue.age.ageMin,
         +searchFormValue.age.ageMax,
         +searchFormValue.gender,
-        +searchFormValue.familyStatus,
+        +searchFormValue.maritalStatus,
         +searchFormValue.religion,
         +searchFormValue.alcoholOpinion,
         +searchFormValue.smokingOpinion,
-        +searchFormValue.drugsOpinion,
         this.interests);
 
       this.friendsSearchService.getUsersByCriteria(userSearchModel).subscribe(response => {
-        //console.log(response.body);
+        console.log(response.body);
         //this.foundUsers = response.body;
       });
     }

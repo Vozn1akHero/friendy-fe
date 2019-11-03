@@ -8,11 +8,11 @@
   padding-top: 2rem;
   position: relative;
 
-  &__back{
+  &__back-anchor{
     position: absolute;
     width: fit-content;
-    top: 3rem;
-    left: .7rem;
+    top: 3.5rem;
+    left: 3.5rem;
     font-size: .8rem;
     text-decoration: none;
     z-index: 1000;
@@ -29,7 +29,7 @@
     height: 100%;
   }
 
-  &__wrapper--1{
+  /*&__wrapper--1{
     position: fixed;
     left: 20rem;
     top: 0;
@@ -58,7 +58,7 @@
       background-repeat: repeat-y;
       top: 0rem;
     }
-  }
+  }*/
 
   &__wrapper--2, &__wrapper--3{
     display: flex;
@@ -66,7 +66,7 @@
   }
 
   &__wrapper--2{
-    width: 50%;
+    width: 53%;
   }
 
   &__wrapper--3 {
