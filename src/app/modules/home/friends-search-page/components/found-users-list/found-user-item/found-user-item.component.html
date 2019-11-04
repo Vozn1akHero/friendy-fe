@@ -15,20 +15,38 @@
     </a>
 
     <div class="online-status">
-      <ng-container>
         <span class="user-is-online-smile">&#9786;</span>
         <span class="user-is-online-text"> online</span>
-      </ng-container>
     </div>
 
     <hr class="line">
 
-    <a href="#"
-       *ngIf="friendshipStatus"
-       class="send-msg-btn">
-      <svg class="control-icon">
-        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-bubble"></use>
-      </svg>
-    </a>
+    <div class="controls-wrapper">
+      <a href="#"
+         *ngIf="friendshipStatus"
+         class="controls-wrapper__btn
+         send-msg-btn">
+        <svg class="control-icon">
+          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-bubble"></use>
+        </svg>
+      </a>
+
+      <ng-template *ngIf="!friendshipStatus; else removeFriendRequest">
+        <button (click)="onSendFriendRequestBtnClick()"
+                class="controls-wrapper__btn add-new-friend-btn">
+          <svg class="control-icon">
+            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-plus"></use>
+          </svg>
+        </button>
+      </ng-template>
+      <ng-template #removeFriendRequest>
+        <button (click)="onRemoveFriendRequestBtnClick()"
+                class="controls-wrapper__btn remove-request-btn">
+          <svg class="control-icon">
+            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+          </svg>
+        </button>
+      </ng-template>
+    </div>
   </div>
 </div>
