@@ -31,14 +31,15 @@ const routes: Routes = [
   {path: 'joinup',
     component: JoinupPageComponent,
     resolve: {isLoggedIn: LoggedInResolver},
-
     data: { page: 'joinup' }},
   {path: 'login',
     component: LoginPageComponent,
     resolve: {isLoggedIn: LoggedInResolver},
     data: { page: 'login' }},
 
-  {path: 'app', component: WrapperComponent, canActivate: [AuthGuard], children: [
+  {path: 'app', component: WrapperComponent,
+    canActivate: [AuthGuard],
+    children: [
       {path: '', redirectTo: 'me', pathMatch: 'full'},
 
       {path: 'me', component: ProfilePageComponent, children: [

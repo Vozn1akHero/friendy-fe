@@ -1,6 +1,8 @@
 @import '../../../../assets/sass/base/variables';
+@import '../../../../assets/sass/abstracts/mixins';
 
 .friends-search-page {
+  @include min-width-page();
   display: flex;
   width: calc(100vw - #{$navigation-width});
   padding-top: 5rem;
@@ -16,5 +18,8 @@
 
   &__right-wrapper {
     margin-left: 5rem;
+    position: sticky;
+    height: fit-content;
+    top: 1rem;
   }
 }

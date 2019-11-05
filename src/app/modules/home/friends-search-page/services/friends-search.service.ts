@@ -17,11 +17,15 @@ export class FriendsSearchService {
   }
 
   getExemplaryUsers(firstIndex: number, lastIndex: number): Observable<FoundUserModel[]> {
-    return this.http.get(`/api/friend/recommended/?firstIndex=${firstIndex}&lastIndex=${lastIndex}`)
+    return this.http.get(`/api/user-search/exemplary/?firstIndex=${firstIndex}&lastIndex=${lastIndex}`)
       .pipe(map(response => {
         return response as FoundUserModel[];
       }))
-  }
+  /*return this.http.get(`/api/friend/recommended/?firstIndex=${firstIndex}&lastIndex=${lastIndex}`)
+      .pipe(map(response => {
+        return response as FoundUserModel[];
+      }))
+  */}
 
   checkIfFriendByUserId(userId : number){
     return this.http.get(`api/friend/friendship-status/?id=${userId}`,
@@ -29,7 +33,7 @@ export class FriendsSearchService {
   }
 
   getFriendRequestStatus(userId: number){
-    return this.http.get(`api/friend/request/status/?id=${userId}`,
+    return this.http.get(`api/friend/request/status/?receiverId=${userId}`,
       {observe: 'response'})
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-wrapper',
@@ -8,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class WrapperComponent implements OnInit {
   friendRequestsModalOpened: boolean = false;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log(this.route.snapshot.data.receivedFriendRequests)
+    console.log(this.route.snapshot.data.sentFriendRequests)
   }
 
   openFriendRequestsModal(){

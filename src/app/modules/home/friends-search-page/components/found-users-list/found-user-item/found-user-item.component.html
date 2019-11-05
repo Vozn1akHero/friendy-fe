@@ -2,7 +2,6 @@
   <div class="avatar">
     <a href="#">
       <figure>
-        <!--<img src="{{ foundUserData.avatar }}" alt="friend's avatar">-->
         <img src="{{ foundUserData.avatar }}" alt="friend's avatar">
       </figure>
     </a>
@@ -31,22 +30,29 @@
         </svg>
       </a>
 
-      <ng-template *ngIf="!friendshipStatus; else removeFriendRequest">
-        <button (click)="onSendFriendRequestBtnClick()"
+      <ng-container *ngIf="!friendshipStatus">
+        <button *ngIf="!friendRequestStatus; else removeFriendRequest"
+                (click)="onSendFriendRequestBtnClick()"
                 class="controls-wrapper__btn add-new-friend-btn">
           <svg class="control-icon">
             <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-plus"></use>
           </svg>
+          <span class="btn__text">
+            Dodaj do znajomych
+          </span>
         </button>
-      </ng-template>
-      <ng-template #removeFriendRequest>
-        <button (click)="onRemoveFriendRequestBtnClick()"
-                class="controls-wrapper__btn remove-request-btn">
-          <svg class="control-icon">
-            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
-          </svg>
-        </button>
-      </ng-template>
+        <ng-template #removeFriendRequest>
+          <button (click)="onRemoveFriendRequestBtnClick()"
+                  class="controls-wrapper__btn remove-request-btn">
+            <svg class="control-icon">
+              <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+            </svg>
+            <span class="btn__text">
+              Anuluj prośbę
+            </span>
+          </button>
+        </ng-template>
+      </ng-container>
     </div>
   </div>
 </div>

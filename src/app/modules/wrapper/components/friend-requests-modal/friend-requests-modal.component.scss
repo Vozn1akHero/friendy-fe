@@ -1,3 +1,5 @@
+@import '../../../../../assets/sass/base/variables';
+
 .friend-requests-modal{
   width: 50%;
   height: 45vh;
@@ -7,4 +9,36 @@
   top: 1rem;
   left: 17rem;
   z-index: 1000;
+  box-shadow: 0 0 5px 0 rgba(black, .15);
+  border-radius: $panel-border-radius;
+
+  .controls-wrapper{
+    display: flex;
+    height: 10%;
+
+    .btn{
+      width: 50%;
+      border: none;
+      background: white;
+      color: $color-grey-dark;
+    }
+
+    .chosen-subpage-btn{
+      color: white;
+      background: $color-blue;
+    }
+
+    .received-friend-requests-btn{
+      border-top-left-radius: $panel-border-radius;
+    }
+
+    .sent-friend-requests-btn{
+      border-top-right-radius: $panel-border-radius;
+    }
+  }
+
+  .friend-requests-list-wrapper{
+    //height: 90%;
+    background-color: $color-bg-grey-footer;
+  }
 }

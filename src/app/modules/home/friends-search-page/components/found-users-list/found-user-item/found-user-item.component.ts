@@ -50,7 +50,7 @@ export class FoundUserItemComponent implements OnInit, OnDestroy {
     this.friendRequestStatusSubscription = this.friendsSearchService
       .sendFriendRequest(this.foundUserData.id)
       .subscribe(response => {
-        this.friendRequestStatus = false;
+        this.friendRequestStatus = true;
       }, (error) => {
         alert(error);
       })

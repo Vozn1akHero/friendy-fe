@@ -1,3 +1,18 @@
-<div class="friend-requests-modal">
+<div @anim class="friend-requests-modal">
+  <div class="controls-wrapper">
+    <button (click)="onReceivedFriendRequestsBtnClick()"
+            [ngClass]="chosenSubpage === 'received-requests' && 'chosen-subpage-btn'"
+            class="btn received-friend-requests-btn">
+      Otrzymane
+    </button>
+    <button (click)="onSentFriendRequestsBtnClick()"
+            [ngClass]="chosenSubpage === 'sent-requests' && 'chosen-subpage-btn'"
+            class="btn sent-friend-requests-btn">
+      Wysłane
+    </button>
+  </div>
 
+  <div class="friend-requests-list-wrapper">
+    <app-friend-request-list [events]="eventsSubject.asObservable()"></app-friend-request-list>
+  </div>
 </div>
