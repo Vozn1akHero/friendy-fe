@@ -14,7 +14,7 @@ export class FriendRequestsService {
   getSentFriendRequests(){
     return this.http.get(`api/friend/requests/sent`, {observe: 'response'})
       .pipe(map(response => {
-        if(Array(response.body).length === 0){
+        if(Object.keys(response.body).length === 0){
           return null;
         }
         let sentFriendRequests: SentFriendRequestModel[] = [];
@@ -32,7 +32,7 @@ export class FriendRequestsService {
   getReceivedFriendRequests(){
     return this.http.get(`api/friend/requests/received`, {observe: 'response'})
       .pipe(map(response => {
-        if(Array(response.body).length === 0){
+        if(Object.keys(response.body).length === 0){
           return null;
         }
         let receivedFriendRequests: ReceivedFriendRequestModel[] = [];

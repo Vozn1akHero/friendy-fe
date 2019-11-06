@@ -6,51 +6,26 @@ import ReceivedFriendRequestModel from '../../models/received-friend-request.mod
 import SentFriendRequestModel from '../../models/sent-friend-request.model';
 
 @Component({
-  selector: 'app-friend-request-list',
-  templateUrl: './friend-request-list.component.html',
-  styleUrls: ['./friend-request-list.component.scss']
+  selector: 'app-received-friend-request-list',
+  templateUrl: './received-friend-request-list.component.html',
+  styleUrls: ['./received-friend-request-list.component.scss']
 })
-export class FriendRequestListComponent implements OnInit, OnDestroy {
+export class ReceivedFriendRequestListComponent implements OnInit {
   receivedFriendRequestsSubscription: Subscription;
-  sentFriendRequestsSubscription: Subscription;
+  receivedFriendRequests: ReceivedFriendRequestModel[] = null;
 
-  receivedFriendRequests: ReceivedFriendRequestModel[];
-  sentFriendRequests: SentFriendRequestModel[];
-
-  private eventsSubscription: any;
-  @Input() events: Observable<void>;
-
-
-  constructor(private http: HttpClient,
-              private friendRequestsService: FriendRequestsService) {}
+  constructor(private friendRequestsService: FriendRequestsService) {}
 
   ngOnInit() {
-    this.eventsSubscription = this.events.subscribe(() => {
-      this.getSentFriendRequests();
-    });
-
     this.getReceivedFriendRequests();
-  }
-
-  getSentFriendRequests() {
-    this.sentFriendRequestsSubscription = this.friendRequestsService
-      .getSentFriendRequests()
-      .subscribe(
-        (sentFriendRequests:SentFriendRequestModel[]) => {
-        this.sentFriendRequests = sentFriendRequests;
-      }
-    );
   }
 
   getReceivedFriendRequests() {
     this.receivedFriendRequestsSubscription = this.friendRequestsService
       .getReceivedFriendRequests()
       .subscribe((receivedFriendRequests: ReceivedFriendRequestModel[]) => {
+        console.log(receivedFriendRequests);
         this.receivedFriendRequests = receivedFriendRequests;
       })
-  }
-
-  ngOnDestroy() {
-    this.eventsSubscription.unsubscribe()
   }
 }

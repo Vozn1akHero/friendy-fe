@@ -1,4 +1,9 @@
-<section class="friend-request-list">
-  <app-friend-request-item>
-  </app-friend-request-item>
+<section class="received-friend-request-list">
+  <span *ngIf="receivedFriendRequests == null; else friendRequestList">
+    Lista otrzymanych prośb o dodanie do znajomych jest pusta.
+  </span>
+  <ng-template #friendRequestList>
+    <app-received-friend-request-item>
+    </app-received-friend-request-item>
+  </ng-template>
 </section>

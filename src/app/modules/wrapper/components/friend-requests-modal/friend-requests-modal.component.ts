@@ -32,7 +32,7 @@ import {Subject} from 'rxjs';
 export class FriendRequestsModalComponent implements OnInit {
   chosenSubpage: string = "received-requests";
   //@Output() chosenSubpageChangeEmitter: EventEmitter<void> = new EventEmitter();
-  private eventsSubject: Subject<void> = new Subject<void>();
+  sentEventSubpageChosenSubject: Subject<void> = new Subject<void>();
 
   constructor() { }
 
@@ -46,6 +46,6 @@ export class FriendRequestsModalComponent implements OnInit {
   onSentFriendRequestsBtnClick(){
     this.chosenSubpage = "sent-requests";
     //this.chosenSubpageChangeEmitter.emit();
-    this.eventsSubject.next();
+    this.sentEventSubpageChosenSubject.next();
   }
 }

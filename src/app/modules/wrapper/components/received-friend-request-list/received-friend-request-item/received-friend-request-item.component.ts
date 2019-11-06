@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-friend-request-item',
-  templateUrl: './friend-request-item.component.html',
-  styleUrls: ['./friend-request-item.component.scss']
+  selector: 'app-received-friend-request-item',
+  templateUrl: './received-friend-request-item.component.html',
+  styleUrls: ['./received-friend-request-item.component.scss']
 })
-export class FriendRequestItemComponent implements OnInit {
+export class ReceivedFriendRequestItemComponent implements OnInit {
 
   constructor() { }
 

@@ -1,3 +1,9 @@
-<p>
-  sent-friend-request-list works!
-</p>
+<section class="sent-friend-request-list">
+  <span *ngIf="sentFriendRequests == null; else friendRequestList">
+    Lista wysłanych prośb o dodanie do znajomych jest pusta.
+  </span>
+  <ng-template #friendRequestList>
+    <app-sent-friend-request-item>
+    </app-sent-friend-request-item>
+  </ng-template>
+</section>
