@@ -10,7 +10,6 @@
   left: 17rem;
   z-index: 1000;
   box-shadow: 0 0 5px 0 rgba(black, .15);
-  border-radius: $panel-border-radius;
 
   .controls-wrapper{
     display: flex;
@@ -28,17 +27,18 @@
       background: $color-blue;
     }
 
-    .received-friend-requests-btn{
+/*    .received-friend-requests-btn{
       border-top-left-radius: $panel-border-radius;
     }
 
     .sent-friend-requests-btn{
       border-top-right-radius: $panel-border-radius;
-    }
+    }*/
   }
 
   .friend-requests-list-wrapper{
     //height: 90%;
     background-color: $color-bg-grey-footer;
+    min-height: 88%;
   }
 }

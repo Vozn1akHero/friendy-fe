@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import {switchMap, catchError, map, tap, withLatestFrom, concatMap, exhaustMap, filter, mergeMap} from 'rxjs/operators';
-import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import * as UserPostsActions from './user-posts.actions';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
+import {UserPostService} from '../../services/user-post.service';
 
 @Injectable()
 export class UserPostsEffects {
@@ -15,9 +15,7 @@ export class UserPostsEffects {
   profilePageAddPost = this.actions$.pipe(
     ofType(UserPostsActions.ADD_POST),
     switchMap((addPostStart: UserPostsActions.AddPost) => {
-      return this.http.post('/api/post/createUserPost',
-        addPostStart.payload,
-        {observe: 'response'})
+      return this.userPostService.create(addPostStart.payload)
         .pipe(
           map(res => {
             return ({ type: UserPostsActions.SET_ADDED_POST, payload: res.body })
@@ -34,8 +32,7 @@ export class UserPostsEffects {
       return !loaded
     }),
     mergeMap(() => {
-      return this.http.get(`/api/post/getLoggedInUserPosts`,
-        {observe: 'response'})
+      return this.userPostService.current()
         .pipe(
           map(res => {
             return ({ type: UserPostsActions.SET_USER_POSTS,
@@ -49,8 +46,7 @@ export class UserPostsEffects {
   profilePageRemovePost = this.actions$.pipe(
     ofType(UserPostsActions.REMOVE_POST),
     switchMap((payload: UserPostsActions.RemovePost) => {
-      return this.http.delete(`/api/post/removeUserPostById/${payload.payload.id}`,
-        {observe: 'response'})
+      return this.userPostService.delete(payload.payload.id)
         .pipe(
           map(() => {
             return ({ type: UserPostsActions.REMOVE_POST_FROM_STATE,
@@ -63,9 +59,8 @@ export class UserPostsEffects {
   @Effect()
   profilePageLikePost = this.actions$.pipe(
     ofType(UserPostsActions.LIKE_POST_START),
-    exhaustMap((payload: UserPostsActions.LikePostStart) => {
-      return this.http.put(`/api/post/likeUserPostById/${payload.payload.id}`,
-        {observe: 'response'})
+    switchMap((payload: UserPostsActions.LikePostStart) => {
+      return this.userPostService.like(payload.payload.id)
         .pipe(
           map(res => {
             return ({ type: UserPostsActions.LIKE_POST, payload: res })
@@ -75,11 +70,10 @@ export class UserPostsEffects {
   );
 
   @Effect()
-  profilePageUnLikePost = this.actions$.pipe(
+  profilePageUnlikePost = this.actions$.pipe(
     ofType(UserPostsActions.UNLIKE_POST_START),
-    exhaustMap((payload: UserPostsActions.UnlikePostStart) => {
-      return this.http.put(`/api/post/unlikeUserPostById/${payload.payload.id}`,
-        {observe: 'response'})
+    switchMap((payload: UserPostsActions.UnlikePostStart) => {
+      return this.userPostService.unlike(payload.payload.id)
         .pipe(
           map(res => {
             return ({ type: UserPostsActions.UNLIKE_POST, payload: res })
@@ -91,6 +85,7 @@ export class UserPostsEffects {
   constructor(
     private actions$: Actions,
     private http: HttpClient,
+    private userPostService: UserPostService,
     private router: Router,
     private store$: Store<fromApp.AppState>
   ) {}

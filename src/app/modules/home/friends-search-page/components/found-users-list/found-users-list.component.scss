@@ -1,6 +1,11 @@
+@import '../../../../../../assets/sass/base/variables';
+
 .found-users-search-list{
-  width: 100%;
+  width: 80%;
   display: flex;
   align-items: center;
   flex-direction: column;
+  background: $color-bg-grey-footer;
+  margin: 0 auto;
+  min-height: 150vh;
 }

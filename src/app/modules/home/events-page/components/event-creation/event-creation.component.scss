@@ -3,140 +3,134 @@
 @import "../../../../../../assets/sass/components/text-input";
 
 
+.event-creation-form {
+  background-color: $color-bg-light-grey;
+  box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.16);
+  padding: 3rem 4rem;
+  position: relative;
+  text-align: center;
+  transition: all .3s;
 
-    .event-creation-form{
-      background-color: $color-bg-light-grey;
-      box-shadow: 0px 2px 24px 0px rgba(0,0,0,0.16);
-      padding: 3rem 4rem;
-      position: relative;
-      text-align: center;
-      transition: all .3s;
+  select {
+    height: 44px;
+    font-size: .85rem;
+  }
 
-      select{
-        height: 44px;
-        font-size: .85rem;
+  .close-btn {
+    position: absolute;
+    right: -1rem;
+    top: -1rem;
+    border: none;
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 50%;
+    background: $color-pink;
+
+    .close-icon {
+      transform: translateY(1px);
+      width: 55%;
+      height: 55%;
+      fill: white;
+    }
+  }
+
+  .name, .desc, .city, .price, .subject, .participants-amount {
+    width: 100%;
+    display: block;
+    margin-top: .7rem;
+  }
+
+  .desc {
+    padding: 1.1rem 1.05rem;
+    height: 5rem;
+    resize: none;
+    font-size: .85rem;
+  }
+
+  .wrapper {
+    margin: 0 auto;
+  }
+
+  .spec-wrapper {
+    display: flex;
+    margin-top: .7rem !important;
+    width: 417px;
+    justify-content: space-between;
+  }
+
+  .street {
+    width: 65%;
+  }
+
+  .number {
+    width: 35%;
+    margin-left: .5rem;
+  }
+
+  .date {
+    &-year {
+      width: 33%;
+    }
+
+    &-month {
+      select {
+        width: inherit;
       }
+    }
 
-      .close-btn {
-        position: absolute;
-        right: -1rem;
-        top: -1rem;
-        border: none;
-        width: 2.3rem;
-        height: 2.3rem;
-        border-radius: 50%;
-        display: flex;
-        place-content: center;
-        background: #e85372;
+    &-day {
+      width: 33%;
 
+      select {
+        width: inherit;
 
-        .close-icon {
-          width: 55%;
-          height: 55%;
-          fill: white;
-
-          &:hover {
-            cursor: pointer;
-          }
-
-        }
-      }
-      .name, .desc, .city, .price, .subject, .participants-amount {
-        width:100%;
-        display: block;
-        margin-top: .7rem;
-      }
-
-      .desc{
-        padding: 1.1rem 1.05rem;
-        height: 5rem;
-        resize: none;
-        font-size: .85rem;
-      }
-
-      .wrapper {
-        margin: 0 auto;
-      }
-
-      .spec-wrapper{
-        display: flex;
-        margin-top: .7rem !important;
-        width: 417px;
-        justify-content: space-between;
-      }
-
-      .street{
-        width: 65%;
-      }
-
-      .number{
-        width: 35%;
-        margin-left: .5rem;
-      }
-
-      .date{
-        &-year{
-          width: 33%;
-        }
-
-        &-month{
-          select{
-            width: inherit;
-          }
-        }
-
-        &-day{
-          width: 33%;
-          select{
-            width: inherit;
-            &::after{
-              right: 1.45em !important;
-            }
-          }
-        }
-
-        &-month, &-day{
-          &::after{
-            top: 40%;
-          }
-        }
-
-        &-hour{
-          width: 50%;
-
-          select{
-            width: 100%;
-
-            &::after{
-
-              top: 40%;
-            }
-          }
-        }
-
-        &-minute{
-          width: 47%;
+        &::after {
+          right: 1.45em !important;
         }
       }
     }
 
-    button[type=submit]{
-      margin-top: 2.5rem;
-      border: none;
-      height: 3rem;
-      width: 10rem;
-      border-radius: 3rem;
-      background: $color-blue;
-      font-weight: 700;
-      color: white;
-      font-size: .85rem;
-
-      &:hover{
-        cursor: pointer;
+    &-month, &-day {
+      &::after {
+        top: 40%;
       }
-
-      &:focus{
-        outline: none;
-      }
-
     }
+
+    &-hour {
+      width: 50%;
+
+      select {
+        width: 100%;
+
+        &::after {
+
+          top: 40%;
+        }
+      }
+    }
+
+    &-minute {
+      width: 47%;
+    }
+  }
+}
+
+button[type=submit] {
+  margin-top: 2.5rem;
+  border: none;
+  height: 3rem;
+  width: 10rem;
+  border-radius: 3rem;
+  background: $color-blue;
+  font-weight: 700;
+  color: white;
+  font-size: .85rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

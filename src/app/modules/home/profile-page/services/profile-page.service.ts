@@ -5,11 +5,6 @@ import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import * as signalR from'@aspnet/signalr';
 import {HubConnection} from '@aspnet/signalr';
-import UserAvatar from '../models/user-avatar.model';
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +14,6 @@ export class ProfilePageService {
 
   constructor(private http: HttpClient){
 
-  }
-
-  getAvatar(){
-    return this.http.get('/api/user/getAvatar', {observe: 'response'});
   }
 
   connectToSocket() {

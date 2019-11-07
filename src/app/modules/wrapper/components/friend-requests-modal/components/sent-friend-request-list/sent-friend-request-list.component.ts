@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import SentFriendRequestModel from '../../models/sent-friend-request.model';
+import SentFriendRequestModel from '../../../../models/sent-friend-request.model';
 import {Observable, Subscription} from 'rxjs';
-import {FriendRequestsService} from '../../services/friend-requests.service';
+import {FriendRequestsService} from '../../../../services/friend-requests.service';
 
 @Component({
   selector: 'app-sent-friend-request-list',
@@ -12,7 +12,7 @@ export class SentFriendRequestListComponent implements OnInit, OnDestroy {
   sentFriendRequests: SentFriendRequestModel[] = null;
   sentFriendRequestsSubscription: Subscription;
 
-  private sentEventSubpageChosenSubscription: any;
+  sentEventSubpageChosenSubscription: Subscription;
   @Input() sentEventSubpageChosen: Observable<void>;
 
   constructor(private friendRequestsService: FriendRequestsService) { }

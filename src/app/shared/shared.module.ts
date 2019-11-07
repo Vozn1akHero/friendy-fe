@@ -10,6 +10,7 @@ import { MiniSearchInputComponent } from './components/mini-search-input/mini-se
 import { MainPanelComponent } from './components/main-panel/main-panel.component';
 import { NewCommentFormComponent } from './components/comments/new-comment-form/new-comment-form.component';
 import { CommonModalComponent } from './components/common-modal/common-modal.component';
+import { ButtonHoverInfoModalComponent } from './components/button-hover-info-modal/button-hover-info-modal.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { CommonModalComponent } from './components/common-modal/common-modal.com
     MiniSearchInputComponent,
     MainPanelComponent,
     NewCommentFormComponent,
-    CommonModalComponent
+    CommonModalComponent,
+    ButtonHoverInfoModalComponent
   ],
   exports: [
     NewMessageFormComponent,
@@ -35,7 +37,8 @@ import { CommonModalComponent } from './components/common-modal/common-modal.com
     MiniSearchInputComponent,
     MainPanelComponent,
     NewCommentFormComponent,
-    CommonModalComponent
+    CommonModalComponent,
+    ButtonHoverInfoModalComponent
   ]
 })
 

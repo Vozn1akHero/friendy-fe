@@ -1,0 +1,10 @@
+@import '../../../../../../../assets/sass/base/variables';
+
+.received-friend-request-list{
+  text-align: center;
+  .list-is-empty-text{
+    font-size: .85rem;
+    transform: translateY(10rem);
+    display: block;
+  }
+}

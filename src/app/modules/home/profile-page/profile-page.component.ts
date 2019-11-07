@@ -60,20 +60,18 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
     this.loadingSubscription = combineLatest(
       this.store.select(state => state.profilePageUserData.loaded),
-      this.store.select(state => state.profilePageUserPosts.loaded),
       this.store.select(state => state.profilePageUserAvatar.loaded),
       this.store.select(state => state.profilePageUserExemplaryFriends.loaded)
-    ).subscribe(([userDataLoading, userPostsLoaded, userAvatarLoaded, exemplaryFriendsLoaded]) => {
+    ).subscribe(([userDataLoading, userAvatarLoaded, exemplaryFriendsLoaded]) => {
       //this.pageLoading = userDataLoading && userPostsLoading && userAvatarLoading;
       this.userDataLoaded = userDataLoading;
-      this.userPostsLoaded = userPostsLoaded;
       this.userAvatarLoaded = userAvatarLoaded;
       this.exemplaryFriendsLoaded = exemplaryFriendsLoaded;
     });
 
     this.getUserAvatar();
     this.getUserData();
-    this.getUserPosts();
+    //this.getUserPosts();
     this.getExemplaryFriends();
 
     this.pageService.connectToSocket();
@@ -88,14 +86,14 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
       });
   }
 
-  getUserPosts() {
+  /*getUserPosts() {
     this.store.dispatch(new UserPostsActions.GetUserPosts());
     this.userPostsSubscription = this.store
       .select(state => state.profilePageUserPosts.posts)
       .subscribe(userPosts => {
         this.userPosts = userPosts;
       })
-  }
+  }*/
 
   getUserAvatar() {
     this.store.dispatch(new UserAvatarActions.GetUserAvatar());
@@ -115,7 +113,7 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
       })
   }
 
-  onNewPost(newPost : FormGroup):void{
+  /*onNewPost(newPost : FormGroup):void{
     const post : Post = {
       content: newPost.value.newMessageContent,
       image: newPost.value.image
@@ -134,7 +132,7 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
 
   onUnlikePost(id){
     this.store.dispatch(new UserPostsActions.UnlikePostStart({ id }))
-  }
+  }*/
 
   ngOnChanges(changes: SimpleChanges): void {
 
@@ -142,7 +140,6 @@ export class ProfilePageComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy(): void {
     this.userDataSubscription.unsubscribe();
-    this.userPostsSubscription.unsubscribe();
     this.exemplaryFriendsSubscription.unsubscribe();
     this.userAvatarSubscription.unsubscribe();
   }

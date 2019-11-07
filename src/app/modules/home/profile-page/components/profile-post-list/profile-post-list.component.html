@@ -1,5 +1,5 @@
-<section class="profile-post-list">
-  <app-profile-new-post (newPostEvent)="onNewPostCreated($event)">
+<section class="profile-post-list" *ngIf="(userPostsLoaded$ | async)">
+  <app-profile-new-post (newPostEvent)="onNewPost($event)">
   </app-profile-new-post>
 
   <span *ngIf="userPosts.length === 0">

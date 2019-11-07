@@ -5,23 +5,23 @@ import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import * as signalR from'@aspnet/signalr';
 import {HubConnection} from '@aspnet/signalr';
-
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
+import UserAvatar from '../models/user-avatar.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExemplaryMessagesService {
+export class UserAvatarService {
   private connection : HubConnection;
 
   constructor(private http: HttpClient){
 
   }
 
-  getExemplaryMessages(){
-    return this.http.get('/api/chat/last-messages', {observe: 'response'});
+  getAvatar(){
+    return this.http.get('/api/user/avatar', {observe: 'response'});
+  }
+
+  updateAvatar(avatarBytes: string){
+    return this.http.put('/api/user/avatar', avatarBytes, {observe: 'response'});
   }
 }

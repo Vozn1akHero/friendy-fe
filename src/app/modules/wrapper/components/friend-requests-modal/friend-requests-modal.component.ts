@@ -10,7 +10,7 @@ import {Subject} from 'rxjs';
     trigger('anim', [
       transition(':enter', [
         style({
-          transform: 'translateY(-150%)'
+          transform: 'translateY(-100%)'
         }),
         animate(
           '100ms ease-in',
@@ -33,6 +33,7 @@ export class FriendRequestsModalComponent implements OnInit {
   chosenSubpage: string = "received-requests";
   //@Output() chosenSubpageChangeEmitter: EventEmitter<void> = new EventEmitter();
   sentEventSubpageChosenSubject: Subject<void> = new Subject<void>();
+
 
   constructor() { }
 

@@ -10,6 +10,9 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./found-user-item.component.scss']
 })
 export class FoundUserItemComponent implements OnInit, OnDestroy {
+  removeFriendRequestBtnInfoModalOpened: boolean;
+  addFriendRequestBtnInfoModalOpened: boolean;
+
   @Input() foundUserData: FoundUserModel;
 
   friendshipStatus: boolean = false;
@@ -64,6 +67,32 @@ export class FoundUserItemComponent implements OnInit, OnDestroy {
       }, (error) => {
         alert(error);
       })
+  }
+
+  openButtonHoverInfoModal(option){
+    switch (option) {
+      case 'removeFriendRequestButton':
+        this.removeFriendRequestBtnInfoModalOpened = true;
+        break;
+      case 'addFriendRequestButton':
+        this.addFriendRequestBtnInfoModalOpened = true;
+        break;
+      default:
+        break;
+    }
+  }
+
+  closeButtonHoverInfoModal(option){
+    switch (option) {
+      case 'removeFriendRequestButton':
+        this.removeFriendRequestBtnInfoModalOpened = false;
+        break;
+      case 'addFriendRequestButton':
+        this.addFriendRequestBtnInfoModalOpened = false;
+        break;
+      default:
+        break;
+    }
   }
 
   ngOnDestroy(): void {

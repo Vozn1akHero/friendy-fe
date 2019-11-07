@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 
-import { FriendsListItemComponent } from './components/friends-list-item/friends-list-item.component';
+import { FriendsListItemComponent } from './components/friend-list/friends-list-item/friends-list-item.component';
 import { SuggestedFriendsItemComponent } from './components/suggested-friends-panel/suggested-friends-item/suggested-friends-item.component';
 import { FriendsPageComponent } from './friends-page.component';
 import {CommonModule} from '@angular/common';

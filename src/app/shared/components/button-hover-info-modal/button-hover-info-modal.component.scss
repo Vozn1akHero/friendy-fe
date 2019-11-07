@@ -1,0 +1,12 @@
+@import '../../../../assets/sass/base/variables';
+
+.button-hover-info-modal{
+  display: block;
+  min-width: 10rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  background: white;
+  box-shadow: 0 0 5px 0 rgba(black, .15);
+  color: $color-grey-dark;
+  pointer-events: none;
+}

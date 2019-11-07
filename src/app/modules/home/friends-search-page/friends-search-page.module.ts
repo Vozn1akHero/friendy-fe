@@ -14,6 +14,7 @@ import {FoundUsersListComponent} from './components/found-users-list/found-users
 import {FriendsSearchPanelComponent} from './components/friends-search-panel/friends-search-panel.component';
 import {ExemplaryUsersResolver} from './resolvers/exemplary-users.resolver';
 import {FriendsSearchService} from './services/friends-search.service';
+import {ButtonHoverInfoModalComponent} from '../../../shared/components/button-hover-info-modal/button-hover-info-modal.component';
 
 
 @NgModule({

@@ -7,7 +7,7 @@
   align-items: center;
   text-align: center;
   min-width: 25rem;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   margin-top: 1rem;
 
   &:last-child{
@@ -47,6 +47,10 @@
       font-size: .95rem;
       color: $color-blue;
       text-decoration: none;
+
+      &:hover{
+        text-decoration: underline;
+      }
     }
 
     .online-status {
@@ -75,28 +79,12 @@
       margin-top: 1rem;
       font-size: .8rem;
 
-      &__btn{
+      .btn-with-icon{
         color: $color-grey-light-2;
         width: 1rem;
         height: 1rem;
         background: none;
         border: none;
-
-        &:hover{
-          .btn__text{
-            display: block;
-          }
-        }
-
-        .btn__text{
-          min-width: 8vw;
-          border-radius: 1rem;
-          display: none;
-          padding: 1rem;
-          background: white;
-          box-shadow: 0 0 5px 0 rgba(black, .15);
-          color: $color-grey-dark;
-        }
 
         .control-icon {
           width: 1rem;
@@ -106,10 +94,12 @@
       }
 
       .add-new-friend-btn{
-        background: none;
+        border-radius: 3rem;
+        background: $color-pink;
+        padding: .5rem 0;
+        width: 8rem;
+        color: white;
         border: none;
-        width: .96rem;
-        height: .96rem;
       }
     }
   }

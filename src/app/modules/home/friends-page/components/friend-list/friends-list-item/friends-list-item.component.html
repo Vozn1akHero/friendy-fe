@@ -1,5 +1,10 @@
 <div class="friend-item">
-  <button class="remove-btn">&times;</button>
+  <button class="remove-btn">
+    &times;
+    <span>
+
+    </span>
+  </button>
 
   <div class="avatar">
     <a href="#">
@@ -10,7 +15,9 @@
   </div>
 
   <div class="info">
-    <a routerLink="/app/profile/{{friendData.id}}" class="name">{{ friendData.name }} {{ friendData.surname }}</a>
+    <a [routerLink]="['/app/profile/', friendData.id]"
+       class="name">{{ friendData.name }} {{ friendData.surname }}
+    </a>
 
     <div class="online-status">
         <ng-container>
@@ -20,11 +27,10 @@
 
     <hr>
 
-    <a [routerLink]="['app/dialog', friendData.dialogLink]" class="send-msg-btn">
+    <a [routerLink]="['/app/dialog/', friendData.dialogLink]" class="send-msg-btn">
       <svg class="control-icon">
         <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-bubble"></use>
       </svg>
     </a>
-
   </div>
 </div>
