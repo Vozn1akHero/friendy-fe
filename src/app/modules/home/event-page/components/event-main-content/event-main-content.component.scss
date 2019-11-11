@@ -4,22 +4,18 @@
 .event-main-content {
   position: relative;
   display: flex;
-  transform: translateY(-8rem);
+  transform: translateY(-5rem);
 
-  section:first-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .left-wrapper {
+    display: inline-block;
     width: 40%;
+    padding-left: 9rem;
   }
 
-  section:last-child {
-    display: flex;
-    flex-direction: column;
+  .right-wrapper {
     margin-left: 6rem;
-    margin-top: 4rem;
-    align-items: center;
+    margin-top: 2rem;
+    display: inline-block;
   }
 }
 

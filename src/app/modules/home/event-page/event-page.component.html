@@ -1,11 +1,6 @@
-<div class="event">
-  <app-event-header [activeSettings]="activeSettings"></app-event-header>
+<div class="event-page">
+  <app-event-header></app-event-header>
 
-  <ng-template [ngIf]="activeSettings">
-    <app-event-page-settings></app-event-page-settings>
-  </ng-template>
-
-
-  <app-event-main-content [activeSettings]="activeSettings">
+  <app-event-main-content>
   </app-event-main-content>
 </div>

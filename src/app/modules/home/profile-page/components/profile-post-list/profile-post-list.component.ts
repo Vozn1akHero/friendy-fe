@@ -4,7 +4,7 @@ import Post from '../../models/post.model';
 import User from '../../models/user.model';
 import UserAvatar from '../../models/user-avatar.model';
 import * as UserPostsActions from '../../store/user-posts/user-posts.actions';
-import {Observable, Subscription} from 'rxjs';
+import {combineLatest, Observable, Subscription} from 'rxjs';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 
@@ -19,20 +19,33 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
   @Output() likePost: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   @Output() unlikePost: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();*/
 
-  postsLoadedSubscription: Subscription;
+  componentLoadedSubscription: Subscription;
+  componentLoaded : boolean;
+
   userPostsSubscription: Subscription;
-  userPostsLoaded$: Observable<boolean>;
   userPosts: Post[];
-  @Input() userId: number;
-  @Input() userAvatar: UserAvatar;
+
+  userId: number;
+  userIdSubscription: Subscription;
+
+  userAvatar: UserAvatar;
+  userAvatarSubscription: Subscription;
 
 
   constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
-    this.userPostsLoaded$ = this.store.select(state => state.profilePageUserPosts.loaded);
+    this.componentLoadedSubscription = combineLatest(
+      this.store.select(state => state.profilePageUserData.loaded),
+      this.store.select(state => state.profilePageUserAvatar.loaded),
+      this.store.select(state => state.profilePageUserPosts.loaded)
+    ).subscribe(([userDataLoaded, userAvatarLoaded, userPostsLoaded]) => {
+      this.componentLoaded = userDataLoaded && userAvatarLoaded && userPostsLoaded
+    });
 
     this.getUserPosts();
+    this.getUserAvatar();
+    this.getUserId();
   }
 
   getUserPosts() {
@@ -41,6 +54,20 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
       .select(state => state.profilePageUserPosts.posts)
       .subscribe(userPosts => {
         this.userPosts = userPosts;
+      })
+  }
+
+  getUserAvatar(){
+    this.userAvatarSubscription = this.store.select(state => state.profilePageUserAvatar.avatar)
+      .subscribe(value => {
+        this.userAvatar = value;
+    })
+  }
+
+  getUserId(){
+    this.userIdSubscription = this.store.select(state => state.profilePageUserData.user)
+      .subscribe(value => {
+        this.userId = value.id;
       })
   }
 
@@ -68,5 +95,6 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.userPostsSubscription.unsubscribe();
+    this.userAvatarSubscription.unsubscribe();
   }
 }

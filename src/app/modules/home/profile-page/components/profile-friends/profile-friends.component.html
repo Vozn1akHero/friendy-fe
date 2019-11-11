@@ -1,4 +1,4 @@
-<section class="friend-list">
+<section *ngIf="(exemplaryFriendsLoaded$ | async)" class="friend-list">
   <app-main-panel
     [panelContent]="{
                 title: 'Znajomi',

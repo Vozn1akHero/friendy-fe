@@ -10,11 +10,11 @@ import {Subject} from 'rxjs';
     trigger('anim', [
       transition(':enter', [
         style({
-          transform: 'translateY(-100%)'
+          opacity: '0'
         }),
         animate(
-          '100ms ease-in',
-          style({ transform: 'translateY(0)' })
+          '75ms ease-in',
+          style({ opacity: '1' })
         )
       ]),
       transition(':leave', [

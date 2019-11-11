@@ -67,3 +67,20 @@ button{
     pointer-events: none;
   }
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+
+  &-track{
+    background: $color-bg-grey-footer;
+  }
+
+  &-thumb{
+    background: $color-bg-light-grey-2;
+    border-radius: 5px;
+
+    &:hover{
+      background: $color-grey-dark;
+    }
+  }
+}

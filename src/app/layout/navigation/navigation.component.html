@@ -22,8 +22,7 @@
    
     <div class="links">
         <div class="links__item profile">
-            
-            <a routerLink="me">
+            <a [routerLink]="['/app/profile', profileId]">
                 <svg class="icon">
                     <use xlink:href="../../../assets/images/icon/symbol-defs.svg#icon-user"></use>
                 </svg>

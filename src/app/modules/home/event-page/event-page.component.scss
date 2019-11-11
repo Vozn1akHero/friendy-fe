@@ -1,7 +1,6 @@
 @import '../../../../assets/sass/base/variables';
+@import '../../../../assets/sass/abstracts/mixins';
 
-.event{
-  display: flex;
-  position: relative;
-  flex-direction: column;
+.event-page{
+  @include min-width-page();
 }

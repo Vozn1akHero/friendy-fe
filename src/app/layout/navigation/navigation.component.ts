@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 import {Subscription} from 'rxjs';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../core/ngrx/store/app.reducer';
+import Cookies from 'js-cookie';
 
 @Component({
   selector: 'app-navigation',
@@ -15,10 +16,14 @@ export class NavigationComponent implements OnInit {
   @Output() openFriendRequestsModalEmitter: EventEmitter<void> = new EventEmitter();
   @Output() closeFriendRequestsModalEmitter: EventEmitter<void> = new EventEmitter();
 
+  profileId: number;
+
   constructor(private router: Router,
               private authService: AuthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.setProfileId();
+  }
 
   toggleFriendRequestsModal(){
     if(this.friendRequestModalOpened){
@@ -26,6 +31,10 @@ export class NavigationComponent implements OnInit {
     } else{
       this.openFriendRequestsModalEmitter.emit();
     }
+  }
+
+  setProfileId(){
+    this.profileId = +Cookies.get('pid');
   }
 
   logOut():void{

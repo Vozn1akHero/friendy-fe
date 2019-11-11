@@ -27,6 +27,7 @@
     "@ngrx/store-devtools": "^7.4.0",
     "core-js": "^2.6.10",
     "jquery": "^3.4.1",
+    "js-cookie": "^2.2.1",
     "moment": "^2.24.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.10.0",

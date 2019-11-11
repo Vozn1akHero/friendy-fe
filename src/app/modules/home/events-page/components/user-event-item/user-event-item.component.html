@@ -1,0 +1,53 @@
+<div class="user-event-item">
+    <div class="avatar">
+      <a [routerLink]="['/app/event', eventData.id ]">
+        <figure>
+            <img src="{{ eventData.avatar }}" alt="event avatar">
+        </figure>
+      </a>
+    </div>
+
+    <div class="info">
+      <a [routerLink]="['/app/event', eventData.id ]" class="title">
+        {{ eventData.title }}
+      </a>
+
+      <div class="location">
+          <span class="icon icon-location"></span>
+          <span class="text">{{ eventData.street }} {{ eventData.streetNumber }},{{ eventData.city }}</span>
+      </div>
+
+      <div class="date">
+          <span class="icon icon-calendar"></span>
+          <span class="text">{{ eventData.date }}</span>
+      </div>
+
+      <div class="participants">
+          <span class="icon icon-participants"></span>
+          <span class="text">{{ eventData.participantsAmount }} uczestników</span>
+      </div>
+
+      <hr>
+
+      <div class="controls" *ngIf="enumType === 'common'; else administeredEventControls">
+        <button class="btn leave-event-btn">
+          <span class="text">wypisz się</span>
+          <span class="icon icon-close"></span>
+        </button>
+
+        <button class="btn notifications-off-btn">
+          <span class="text">wyłącz powiadomienia</span>
+          <span class="icon icon-notifications"></span>
+        </button>
+      </div>
+
+      <ng-template #administeredEventControls>
+        <div class="controls">
+          <button class="btn notifications-off-btn">
+            <span class="text">wyłącz powiadomienia</span>
+            <span class="icon icon-notifications"></span>
+          </button>
+        </div>
+      </ng-template>
+    </div>
+  </div>

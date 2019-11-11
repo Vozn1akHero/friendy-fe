@@ -10,7 +10,6 @@ import {OpenSettingsService} from './services/opensettings.service';
 })
 export class EventComponent implements OnInit, OnDestroy {
   eventId;
-  activeSettings = false;
 
   constructor(private router : ActivatedRoute,
               private openSettingsService: OpenSettingsService) {
@@ -19,9 +18,9 @@ export class EventComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.openSettingsService.openedSettingsValueChanged.subscribe((data : boolean) => {
+    /*this.openSettingsService.openedSettingsValueChanged.subscribe((data : boolean) => {
       this.activeSettings = data;
-    });
+    });*/
   }
 
   ngOnDestroy(): void {

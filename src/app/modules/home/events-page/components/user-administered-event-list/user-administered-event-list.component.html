@@ -1,7 +1,6 @@
-<div *ngIf="administeredEventsLoaded$ | async"
+<div *ngIf="(administeredEventsLoaded$ | async)"
      class="administered-events">
-  <!--          <app-administered-events-item *ngFor="let admEvent of administeredEvents"
-                             [eventData]="admEvent"></app-administered-events-item>-->
-  <app-user-event *ngFor="let admEvent of administeredEvents"
-                   [eventData]="admEvent"></app-user-event>
+  <app-user-event-item *ngFor="let admEvent of administeredEvents"
+                       [enumType]="'administered'"
+                       [eventData]="admEvent"></app-user-event-item>
 </div>

@@ -13,6 +13,7 @@ import { ProfilePhotosItemComponent } from './components/profile-photos/profile-
 import { SharedModule } from '../../../shared/shared.module';
 import { AppRoutingModule } from '../../../app-routing.module';
 import { ProfilePostListComponent } from './components/profile-post-list/profile-post-list.component';
+import {ProfileBelongingResolver} from './resolvers/profile-belonging.resolver';
 
 
 @NgModule({
@@ -32,6 +33,9 @@ import { ProfilePostListComponent } from './components/profile-post-list/profile
     ProfilePhotosItemComponent,
     ProfilePostListComponent,
     ProfilePostListComponent
+  ],
+  providers: [
+    ProfileBelongingResolver
   ]
 })
 

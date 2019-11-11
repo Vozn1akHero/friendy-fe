@@ -22,6 +22,9 @@ import {LoggedInResolver} from './logged-in.resolver';
 import {InterlocutorDataResolver} from './modules/home/dialog-page/resolvers/interlocutor-data.resolver';
 import {ExemplaryUsersResolver} from './modules/home/friends-search-page/resolvers/exemplary-users.resolver';
 import {WrapperComponent} from './modules/wrapper/wrapper.component';
+import {ProfileBelongingResolver} from './modules/home/profile-page/resolvers/profile-belonging.resolver';
+import {ProfileIdResolver} from './modules/wrapper/resolvers/profile-id.resolver';
+import {EventSettingsPageComponent} from './modules/home/event-settings-page/event-settings-page.component';
 
 const routes: Routes = [
   {path: '',
@@ -38,20 +41,34 @@ const routes: Routes = [
     data: { page: 'login' }},
 
   {path: 'app', component: WrapperComponent,
+    resolve: {
+      profileId: ProfileIdResolver
+    },
     canActivate: [AuthGuard],
     children: [
       {path: '', redirectTo: 'me', pathMatch: 'full'},
 
-      {path: 'me', component: ProfilePageComponent, children: [
+      {path: 'profile/:id',
+        component: ProfilePageComponent,
+        resolve: {
+          profileBelongingStatus: ProfileBelongingResolver
+        },
+        children: [
           {path: 'comments', component: CommentsComponent }
       ]},
 
-      {path: 'profile/:id', component: CommonProfilePageComponent, children: [
+/*      {path: 'profile/:id', component: CommonProfilePageComponent, children: [
           {path: 'comments', component: CommentsComponent }
-      ]},
+      ]},*/
+
       {path: 'events', component: EventsPageComponent},
 
-      {path: 'event/:id', component: EventComponent},
+      {path: 'event/:id',
+        component: EventComponent
+      },
+
+      { path: 'event/:id/settings',
+        component: EventSettingsPageComponent },
 
       {path: 'friends', component: FriendsPageComponent},
 

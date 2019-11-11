@@ -21,6 +21,7 @@ export class UserEventListComponent implements OnInit, OnDestroy {
     this.userEventsLoaded$ = this.store.select(state => state.eventsPageUserEvents.loaded);
 
     this.store.dispatch(new EventsPageUserEventsActions.GetEvents());
+
     this.eventsSubscription = this.store.select(state => state.eventsPageUserEvents.events)
       .subscribe(events => {
         this.events = events;

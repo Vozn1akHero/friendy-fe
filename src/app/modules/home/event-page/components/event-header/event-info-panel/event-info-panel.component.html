@@ -1,18 +1,39 @@
-<div class="event-info">
+<div class="event-info-panel">
+  <div *ngIf="settingsVariantModalOpened"
+       (mouseover)="cursorOverVariantModalOn()"
+       (mouseleave)="cursorOverVariantModalOff()"
+       class="settings-variant-modal">
+    <button (click)="openBasicEventSettings()"
+            class="btn">
+      Podstawowe
+    </button>
+    <hr>
+    <a routerLink="settings" class="btn">
+      Rozszerzone
+    </a>
+  </div>
+
   <div class="event-settings-controls">
-    <button *ngIf="this.activeSettings" class="accept-changes-btn">
+    <button *ngIf="activeSettings" class="accept-changes-btn">
       <svg>
         <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-checkmark"></use>
       </svg>
     </button>
-    <button (click)="openEventInnerSettings()" class="open-close-btn">
-      <svg [ngStyle]="{'visibility': !this.activeSettings ? 'visible' : 'hidden'}">
+    <button *ngIf="!activeSettings; else closeBasicEventSettingsBtn"
+            (mouseover)="openEventSettingsModal()"
+            (mouseleave)="closeEventSettingsModal()"
+            class="btn">
+      <svg>
         <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cog"></use>
       </svg>
-      <svg [ngStyle]="{'visibility': this.activeSettings ? 'visible' : 'hidden'}">
-        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
-      </svg>
     </button>
+    <ng-template #closeBasicEventSettingsBtn>
+      <button class="btn" (click)="closeBasicEventSettings()">
+        <svg>
+          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+        </svg>
+      </button>
+    </ng-template>
   </div>
 
   <div class="wrapper">

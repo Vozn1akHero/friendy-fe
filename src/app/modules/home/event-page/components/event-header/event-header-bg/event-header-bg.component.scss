@@ -1,15 +1,10 @@
 .event-bg {
   position: relative;
-  width: calc(100vw - 320px);
+  width: 100%;
   height: 25rem;
-  /*background: url('../../../assets/images/test/clouds-lake-lake-mcdonald-259881.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;*/
   overflow: hidden;
 
   figure {
-    width: inherit;
-
     img {
       width: 100%;
       height: 100%;

@@ -8,6 +8,7 @@
   width: calc(100vw - #{$navigation-width});
   padding-top: 5rem;
   justify-content: center;
+  @include min-width-page();
 
   &__left {
     display: flex;

@@ -1,6 +1,6 @@
 @import '../../../../../../../assets/sass/base/variables';
 
-.event-info {
+.event-info-panel {
   position: relative;
   display: flex;
   align-self: center;
@@ -11,9 +11,43 @@
   padding: 2rem;
   color: #010101;
   width: 35rem;
-  margin-left: 3rem;
+  margin-left: 5rem;
   transform: translateY(-5rem);
   z-index: 1;
+
+  .settings-variant-modal{
+    position: absolute;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1.355rem 2.355rem;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: -11rem;
+    box-shadow: 0 0 5px 0 rgba(black, .15);
+    border-radius: 1rem;
+
+    hr{
+      margin: 1rem 0;
+      height: 1px;
+      border: none;
+      background-color: $color-grey-light-2;
+    }
+
+    .btn{
+      font-size: .8rem;
+      color: $color-grey-dark;
+      background: none;
+      border: none;
+      text-decoration: none;
+
+      &:hover{
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
 
   .event-settings-controls {
     position: absolute;
@@ -42,13 +76,12 @@
       }
     }
 
-    .open-close-btn {
+    .btn {
       border: none;
       background: transparent;
       width: 1.5rem;
       height: 1.5rem;
       position: relative;
-
 
       svg {
         width: 100%;
@@ -65,7 +98,6 @@
         & > svg:first-child {
           transform: rotate(90deg);
         }
-
       }
     }
   }

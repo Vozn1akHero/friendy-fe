@@ -1,4 +1,4 @@
-<section class="profile-post-list" *ngIf="(userPostsLoaded$ | async)">
+<section class="profile-post-list" *ngIf="componentLoaded">
   <app-profile-new-post (newPostEvent)="onNewPost($event)">
   </app-profile-new-post>
 

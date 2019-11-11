@@ -4,18 +4,14 @@
   </ng-template>
 
   <section class="profile">
-    <app-profile-header *ngIf="userDataLoaded"
-                        [activeSettings]="activeSettings"
-                        [userAvatar]="userAvatar"
-                        [userData]="userData"></app-profile-header>
+    <app-profile-header [activeSettings]="activeSettings"></app-profile-header>
 
     <section class="profile-main-content"
          [ngStyle]="{'opacity': activeSettings ? '0.5' : '1',
          'pointer-events': activeSettings ? 'none' : 'all'}">
 
       <section class="profile-main-content__left-side-wrapper">
-        <app-profile-post-list [userAvatar]="userAvatar"
-                               [userId]="userData.id"></app-profile-post-list>
+        <app-profile-post-list></app-profile-post-list>
         <!--<app-profile-new-post (newPostEvent)="onNewPost($event)">
         </app-profile-new-post>
 
@@ -34,8 +30,7 @@
       </section>
 
       <section class="profile-main-content__right-side-wrapper">
-        <app-profile-friends *ngIf="exemplaryFriendsLoaded"
-                             [exemplaryFriends]="exemplaryFriends"></app-profile-friends>
+        <app-profile-friends></app-profile-friends>
         <app-profile-photos></app-profile-photos>
       </section>
     </section>

@@ -1,6 +1,6 @@
-<div class="administered-events-item">
+<div class="administered-event-item">
   <div class="avatar">
-    <a href="#">
+    <a [routerLink]="['/app/event', eventData.id]">
       <figure>
         <img src="{{ eventData.avatar }}" alt="event avatar">
       </figure>
@@ -8,7 +8,7 @@
   </div>
 
   <div class="info">
-    <a href="#" class="title">
+    <a [routerLink]="['/app/event', eventData.id]">
       {{ eventData.title }}
     </a>
 

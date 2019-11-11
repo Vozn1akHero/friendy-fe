@@ -12,8 +12,8 @@ import { PhotosPageComponent } from './home/photos-page/photos-page.component';
 import {EventPageModule} from './home/event-page/event-page.module';
 import {DialogPageModule} from './home/dialog-page/dialog-page.module';
 import {FriendsSearchPageModule} from './home/friends-search-page/friends-search-page.module';
-import { WrapperComponent } from './wrapper/wrapper.component';
 import {WrapperModule} from './wrapper/wrapper.module';
+import {EventSettingsPageModule} from './home/event-settings-page/event-settings-page.module';
 
 
 @NgModule({
@@ -28,6 +28,7 @@ import {WrapperModule} from './wrapper/wrapper.module';
     EventPageModule,
     DialogPageModule,
     WrapperModule,
+    EventSettingsPageModule,
     FriendsSearchPageModule
   ],
   declarations: [

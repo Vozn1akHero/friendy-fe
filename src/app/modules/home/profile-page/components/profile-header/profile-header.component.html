@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="(userDataLoaded$ | async)">
   <div *ngIf="activeSettings" class="profile-bg-alter">
     <div class="profile-bg-alter-btn_info">
       <svg>
@@ -6,7 +6,7 @@
       </svg>
       <span>
         Zmień zdjęcie
-    </span>
+      </span>
     </div>
 
     <div class="profile-bg-alter-btn">
