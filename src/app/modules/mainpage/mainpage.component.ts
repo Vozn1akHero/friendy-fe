@@ -39,7 +39,7 @@ export class MainpageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const isLoggedIn = this.route.snapshot.data.isLoggedIn;
     console.log(isLoggedIn);
-    if(isLoggedIn) this.router.navigate(['/app/me']);
+    if(isLoggedIn) this.router.navigate(['/app']);
   }
 
   ngOnDestroy(){

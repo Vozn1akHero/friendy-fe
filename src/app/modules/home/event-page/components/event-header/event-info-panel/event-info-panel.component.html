@@ -37,23 +37,25 @@
   </div>
 
   <div class="wrapper">
-    <app-event-avatar [activeSettings]="activeSettings"></app-event-avatar>
+    <app-event-avatar [avatarUrl]="eventData.avatarUrl" [activeSettings]="activeSettings"></app-event-avatar>
 
     <div class="basic-info">
-      <p class="title">Spotkanie fanow</p>
+      <p class="title">
+        {{ eventData.title }}
+      </p>
 
       <div class="location">
         <svg class="icon">
           <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-location"></use>
         </svg>
-        <span>Aleja Lipowa 28a, Gdańsk</span>
+        <span>{{ eventData.street }}, {{ eventData.streetNumber }}, {{ eventData.city }}</span>
       </div>
 
       <div class="date">
         <svg class="icon">
           <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-calendar"></use>
         </svg>
-        <span>09.02.2019 21:45</span>
+        <span>{{ eventData.date }}</span>
       </div>
 
       <div class="participants">

@@ -13,7 +13,7 @@ import {EventPageModule} from './home/event-page/event-page.module';
 import {DialogPageModule} from './home/dialog-page/dialog-page.module';
 import {FriendsSearchPageModule} from './home/friends-search-page/friends-search-page.module';
 import {WrapperModule} from './wrapper/wrapper.module';
-import {EventSettingsPageModule} from './home/event-settings-page/event-settings-page.module';
+import {EventSettingsPageModule} from './home/event-page/submodules/event-settings-page/event-settings-page.module';
 
 
 @NgModule({

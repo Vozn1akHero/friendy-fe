@@ -12,7 +12,7 @@ import { EventMainContentComponent } from './components/event-main-content/event
 import { EventParticipantsComponent } from './components/event-main-content/event-participants/event-participants.component';
 import { EventPhotosComponent } from './components/event-main-content/event-photos/event-photos.component';
 import { EventNewPostComponent } from './components/event-main-content/event-new-post/event-new-post.component';
-import { EventAvatarComponent } from './components/event-header/event-avatar/event-avatar.component';
+import { EventAvatarComponent } from './components/event-header/event-info-panel/event-avatar/event-avatar.component';
 import { EventPostItemComponent } from './components/event-main-content/event-post-list/event-post-item/event-post-item.component';
 import { EventParticipantsItemComponent } from './components/event-main-content/event-participants/event-participants-item/event-participants-item.component';
 import { EventPhotosItemComponent } from './components/event-main-content/event-photos/event-photos-item/event-photos-item.component';

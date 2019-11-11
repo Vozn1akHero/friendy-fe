@@ -1,4 +1,6 @@
-<header>
+<header *ngIf="!(eventDataLoading$ | async)">
   <app-event-header-bg [activeSettings]="activeSettings"></app-event-header-bg>
-  <app-event-header-event-info [activeSettings]="activeSettings"></app-event-header-event-info>
+
+  <app-event-header-event-info [eventData]="eventData"
+                               [activeSettings]="activeSettings"></app-event-header-event-info>
 </header>

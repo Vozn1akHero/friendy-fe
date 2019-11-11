@@ -24,7 +24,7 @@ import {ExemplaryUsersResolver} from './modules/home/friends-search-page/resolve
 import {WrapperComponent} from './modules/wrapper/wrapper.component';
 import {ProfileBelongingResolver} from './modules/home/profile-page/resolvers/profile-belonging.resolver';
 import {ProfileIdResolver} from './modules/wrapper/resolvers/profile-id.resolver';
-import {EventSettingsPageComponent} from './modules/home/event-settings-page/event-settings-page.component';
+import {EventSettingsPageComponent} from './modules/home/event-page/submodules/event-settings-page/event-settings-page.component';
 
 const routes: Routes = [
   {path: '',
@@ -46,7 +46,7 @@ const routes: Routes = [
     },
     canActivate: [AuthGuard],
     children: [
-      {path: '', redirectTo: 'me', pathMatch: 'full'},
+      {path: '', redirectTo: 'home', pathMatch: 'full'},
 
       {path: 'profile/:id',
         component: ProfilePageComponent,
@@ -87,6 +87,7 @@ const routes: Routes = [
 
       {path: 'settings', component: UserSettingsPageComponent}
   ]},
+
   {path: '404', component: NotFoundPageComponent},
 
   {path: '**', redirectTo: '/404'}

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {OpenSettingsService} from '../../../services/opensettings.service';
+import EventShortened from '../../../models/event-shortened.model';
 
 @Component({
   selector: 'app-event-header-event-info',
@@ -8,6 +9,7 @@ import {OpenSettingsService} from '../../../services/opensettings.service';
 })
 export class EventInfoPanelComponent implements OnInit {
   @Input() activeSettings;
+  @Input() eventData : EventShortened;
   settingsVariantModalOpened: boolean = false;
   settingsVariantModalOpenedBeingChanged: boolean = false;
   cursorOverVariantModal: boolean = false;

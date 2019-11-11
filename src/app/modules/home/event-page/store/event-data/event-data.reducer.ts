@@ -27,9 +27,8 @@ export function eventDataReducer(
     case EventDataActions.SET_EVENT_DATA:
       return {
         ...state,
-        events: [...this.state.events, action.payload],
-        loading: false,
-        loaded: true
+        events: [...state.events, action.payload],
+        loading: false
       };
     default:
       return state;
