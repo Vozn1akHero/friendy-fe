@@ -8,6 +8,8 @@ import * as UserPostsActions from './user-posts.actions';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {UserPostService} from '../../services/user-post.service';
+import Post from '../../models/post.model';
+
 
 @Injectable()
 export class UserPostsEffects {
@@ -31,12 +33,13 @@ export class UserPostsEffects {
     filter(([{payload}, loaded]) => {
       return !loaded
     }),
-    mergeMap(() => {
-      return this.userPostService.current()
+    mergeMap(([{payload}] : any) => {
+      return this.userPostService.getByUserId(payload.userId, 0)
         .pipe(
           map(res => {
+            let posts : Post[] = res.body as Post[];
             return ({ type: UserPostsActions.SET_USER_POSTS,
-              payload: res.body })
+              payload: posts })
           })
         )
     })

@@ -39,9 +39,10 @@ export class ProfilePageService {
         map(res => {
           if(res.status === 200) return true;
         }, catchError((err) => {
-          if(err.statusCode === 409){
+          /*if(err.statusCode === 409){
             return of(false);
           }
+          */return of(false);
         }))
       )
   }

@@ -1,27 +1,26 @@
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
-import * as signalR from'@aspnet/signalr';
-import {HubConnection} from '@aspnet/signalr';
-import UserAvatar from '../models/user-avatar.model';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAvatarService {
-  private connection : HubConnection;
+  newAvatar: File;
+  newAvatarModalOpened: boolean;
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient){}
 
+  getAvatarByUserId(id:number){
+    return this.http.get(`/api/user/${id}/avatar`, {responseType: 'text'});
   }
 
-  getAvatar(){
-    return this.http.get('/api/user/avatar', {observe: 'response'});
+  updateAvatar(newAvatar:File){
+    const content = new FormData();
+    content.append("newAvatar", newAvatar);
+    return this.http.put('/api/user/avatar', content, {responseType: 'text'});
   }
 
-  updateAvatar(avatarBytes: string){
-    return this.http.put('/api/user/avatar', avatarBytes, {observe: 'response'});
+  setNewAvatar(){
+
   }
 }

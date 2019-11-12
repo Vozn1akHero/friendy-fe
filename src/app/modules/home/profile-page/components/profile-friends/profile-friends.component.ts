@@ -15,6 +15,7 @@ export class ProfileFriendsComponent implements OnInit, OnDestroy {
   exemplaryFriends: ExemplaryFriend[];
   exemplaryFriendsLoaded$: Observable<boolean>;
   exemplaryFriendsSubscription: Subscription;
+  @Input() isUserProfileOwner : boolean;
 
   constructor(private store: Store<fromApp.AppState>) { }
 

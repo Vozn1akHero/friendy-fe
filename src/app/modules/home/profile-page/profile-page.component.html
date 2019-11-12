@@ -1,39 +1,30 @@
-<ng-container>
-  <ng-template [ngIf]="showComments">
-    <router-outlet></router-outlet>
-  </ng-template>
+<ng-template [ngIf]="showComments">
+  <router-outlet></router-outlet>
+</ng-template>
 
-  <section class="profile">
-    <app-profile-header [activeSettings]="activeSettings"></app-profile-header>
+<app-new-avatar-modal *ngIf="profilePageModalsService.newAvatarModalOpened"
+                      (newAvatarSubmitted)="newAvatarSubmitted()"
+                      [newAvatar]="profilePageModalsService.newAvatar"></app-new-avatar-modal>
 
-    <section class="profile-main-content"
-         [ngStyle]="{'opacity': activeSettings ? '0.5' : '1',
-         'pointer-events': activeSettings ? 'none' : 'all'}">
+<section class="profile">
+  <app-profile-header [activeSettings]="activeSettings"
+                      [userId]="userId"
+                      [isUserProfileOwner]="isUserProfileOwner"></app-profile-header>
 
-      <section class="profile-main-content__left-side-wrapper">
-        <app-profile-post-list></app-profile-post-list>
-        <!--<app-profile-new-post (newPostEvent)="onNewPost($event)">
-        </app-profile-new-post>
+  <section class="profile-main-content"
+       [ngStyle]="{'opacity': activeSettings ? '0.5' : '1',
+       'pointer-events': activeSettings ? 'none' : 'all'}">
 
-        <span *ngIf="userPosts.length === 0">
-          Brak wpisów
-        </span>
+    <section class="profile-main-content__left-side-wrapper">
+      <app-profile-new-post *ngIf="isUserProfileOwner"></app-profile-new-post>
 
-        <app-profile-post-item *ngFor="let post of userPosts"
-                               [post]="post"
-                               [userId]="userData.id"
-                               (removePost)="onRemovePost($event)"
-                               (likePost)="onLikePost($event)"
-                               (unlikePost)="onUnlikePost($event)"
-                               [userAvatar]="userAvatar">
-        </app-profile-post-item>-->
-      </section>
+      <app-profile-post-list [userId]="userId"
+                             [isUserProfileOwner]="isUserProfileOwner"></app-profile-post-list>
+    </section>
 
-      <section class="profile-main-content__right-side-wrapper">
-        <app-profile-friends></app-profile-friends>
-        <app-profile-photos></app-profile-photos>
-      </section>
+    <section class="profile-main-content__right-side-wrapper">
+      <app-profile-friends [isUserProfileOwner]="isUserProfileOwner"></app-profile-friends>
+      <app-profile-photos [isUserProfileOwner]="isUserProfileOwner"></app-profile-photos>
     </section>
   </section>
-
-</ng-container>
+</section>

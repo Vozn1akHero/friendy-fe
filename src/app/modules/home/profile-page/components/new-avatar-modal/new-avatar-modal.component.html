@@ -1,0 +1,6 @@
+<app-common-modal>
+  <div *ngIf="newAvatarBytesLoaded" class="new-avatar-modal">
+    <img id="image" [src]="newAvatarBytes" alt="#" />
+    <button (click)="updateAvatarSubmit()" class="submit-btn">Zmień</button>
+  </div>
+</app-common-modal>

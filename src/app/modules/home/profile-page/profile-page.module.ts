@@ -14,6 +14,9 @@ import { SharedModule } from '../../../shared/shared.module';
 import { AppRoutingModule } from '../../../app-routing.module';
 import { ProfilePostListComponent } from './components/profile-post-list/profile-post-list.component';
 import {ProfileBelongingResolver} from './resolvers/profile-belonging.resolver';
+import { NewAvatarModalComponent } from './components/new-avatar-modal/new-avatar-modal.component';
+import { ProfileAvatarComponent } from './components/profile-avatar/profile-avatar.component';
+import { ProfileBackgroundComponent } from './components/profile-background/profile-background.component';
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import {ProfileBelongingResolver} from './resolvers/profile-belonging.resolver';
     ProfileFriendsItemComponent,
     ProfilePhotosItemComponent,
     ProfilePostListComponent,
-    ProfilePostListComponent
+    ProfilePostListComponent,
+    NewAvatarModalComponent,
+    ProfileAvatarComponent,
+    ProfileBackgroundComponent
   ],
   providers: [
     ProfileBelongingResolver

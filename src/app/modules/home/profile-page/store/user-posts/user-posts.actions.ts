@@ -1,5 +1,6 @@
 import {Action} from '@ngrx/store';
 import Post from '../../models/post.model';
+import NewPost from '../../models/new-post.model';
 
 export const ADD_POST = '[Profile Page] Add Post Start';
 export const SET_ADDED_POST = '[Profile Page] Add Post';
@@ -21,13 +22,13 @@ export class SetAddedPost implements Action {
 export class AddPost implements Action {
   readonly type = ADD_POST;
 
-  constructor(public payload: Post) {}
+  constructor(public payload: NewPost) {}
 }
 
 export class GetUserPosts implements Action {
   readonly type = GET_USER_POSTS;
 
-  constructor() {}
+  constructor(public payload: { userId: number }) {}
 }
 
 export class SetUserPosts implements Action {

@@ -62,7 +62,6 @@ import {UserPostsEffects} from './modules/home/profile-page/store/user-posts/use
 import {UserFriendsEffects} from './modules/home/friends-page/store/user-friends/user-friends.effects';
 import {UserEventsEffects} from './modules/home/events-page/store/user-events/user-events.effects';
 import {AdministeredEventsEffects} from './modules/home/events-page/store/administered-events/administered-events.effects';
-
 import {UserAvatarEffects} from './modules/home/profile-page/store/user-avatar/user-avatar.effects';
 import {MainUserDataEffects} from './modules/home/profile-page/store/user-data/user-data.effects';
 import {UserExemplaryFriendsEffects} from './modules/home/profile-page/store/user-exemplary-friends/user-exemplary-friends.effects';

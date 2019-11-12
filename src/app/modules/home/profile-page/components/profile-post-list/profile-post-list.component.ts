@@ -18,6 +18,8 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
   @Output() removePost: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   @Output() likePost: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   @Output() unlikePost: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();*/
+  @Input() isUserProfileOwner : boolean;
+  @Input() userId: number;
 
   componentLoadedSubscription: Subscription;
   componentLoaded : boolean;
@@ -25,12 +27,8 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
   userPostsSubscription: Subscription;
   userPosts: Post[];
 
-  userId: number;
-  userIdSubscription: Subscription;
-
-  userAvatar: UserAvatar;
+  userAvatarUrl: string;
   userAvatarSubscription: Subscription;
-
 
   constructor(private store: Store<fromApp.AppState>) { }
 
@@ -45,11 +43,13 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
 
     this.getUserPosts();
     this.getUserAvatar();
-    this.getUserId();
+
+
+    //this.getUserId();
   }
 
   getUserPosts() {
-    this.store.dispatch(new UserPostsActions.GetUserPosts());
+    this.store.dispatch(new UserPostsActions.GetUserPosts({ userId : this.userId }));
     this.userPostsSubscription = this.store
       .select(state => state.profilePageUserPosts.posts)
       .subscribe(userPosts => {
@@ -58,28 +58,18 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
   }
 
   getUserAvatar(){
-    this.userAvatarSubscription = this.store.select(state => state.profilePageUserAvatar.avatar)
+    this.userAvatarSubscription = this.store.select(state => state.profilePageUserAvatar.avatarUrl)
       .subscribe(value => {
-        this.userAvatar = value;
+        this.userAvatarUrl = value;
     })
   }
 
-  getUserId(){
+  /*getUserId(){
     this.userIdSubscription = this.store.select(state => state.profilePageUserData.user)
       .subscribe(value => {
         this.userId = value.id;
       })
-  }
-
-  onNewPost(newPost : FormGroup):void{
-    console.log(newPost)
-/*    const post : Post = {
-      content: newPost.value.newMessageContent,
-      image: newPost.value.image
-    };
-
-    this.store.dispatch(new UserPostsActions.AddPost(post));*/
-  }
+  }*/
 
   onRemovePost(id){
     this.store.dispatch(new UserPostsActions.RemovePost({ id }))

@@ -1,80 +1,42 @@
 <header *ngIf="(userDataLoaded$ | async)">
-  <div *ngIf="activeSettings" class="profile-bg-alter">
-    <div class="profile-bg-alter-btn_info">
-      <svg>
-        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
-      </svg>
-      <span>
-        Zmień zdjęcie
-      </span>
-    </div>
-
-    <div class="profile-bg-alter-btn">
-      <input #changedProfileBg accept="image/jpeg, image/png" name="filename" type="file">
-      <div class="bg"></div>
-    </div>
-  </div>
-
-  <div class="profile-bg">
-    <figure [ngStyle]="{ background: userData.profileBg == null && '#f8f8f8' }">
-      <img
-        *ngIf="userData.profileBg != null"
-        [ngStyle]="{filter: activeSettings ? 'blur(5px)' : 'blur(0px)', transform: activeSettings ? 'scale(1.1)' : 'scale(1)'}"
-        alt=""
-        src="{{ userData.profileBg }}">
-    </figure>
-  </div>
+  <app-profile-background [isUserProfileOwner]="isUserProfileOwner"
+                          [activeSettings]="activeSettings"
+                          [userId]="userId"></app-profile-background>
 
   <div [ngStyle]="{'transform': activeSettings ? 'translateX(-85%)' : 'translateX(0)',
 'background-image': activeSettings ? 'linear-gradient(0.45turn, #fff000, #00baff)' : 'linear-gradient(0.85turn, #fff000, #00baff)'}"
        class="profile-user-info__wrapper">
-
     <div class="profile-user-info">
-      <div *ngIf="activeSettings" class="profile-avatar-alter">
-        <input #changedProfileAvatar
-               (change)="changeUserAvatar($event)"
-               accept="image/jpeg, image/png"
-               name="filename"
-               type="file">
+      <app-profile-avatar [isUserProfileOwner]="isUserProfileOwner"
+                          [activeSettings]="activeSettings"
+                          [userId]="userId"></app-profile-avatar>
 
-        <button class="profile-avatar-alter-btn">
-          <svg>
-            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
-          </svg>
-          <span>
-          Zmień zdjęcie
-        </span>
-        </button>
-      </div>
+      <ng-container *ngIf="isUserProfileOwner">
+        <div class="profile-settings">
+          <button (click)="changeUserData()" *ngIf="activeSettings" class="confirm-changes-btn">
+            <svg>
+              <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-checkmark"></use>
+            </svg>
+          </button>
+          <button (click)="openProfileInnerSettingsChild()" class="open-close-btn">
+            <svg [ngStyle]="{'visibility': !activeSettings ? 'visible' : 'hidden'}">
+              <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cog"></use>
+            </svg>
+            <svg [ngStyle]="{'visibility': activeSettings ? 'visible' : 'hidden'}">
+              <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+            </svg>
+          </button>
+        </div>
+      </ng-container>
 
-      <figure class="profile-avatar">
-        <img *ngIf="userAvatar != null"
-             alt="user's avatar"
-             src="{{ userAvatar.avatarBytes }}">
-      </figure>
-
-      <div class="profile-settings">
-        <button (click)="changeUserData()" *ngIf="activeSettings" class="confirm-changes-btn">
-          <svg>
-            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-checkmark"></use>
-          </svg>
-        </button>
-        <button (click)="openProfileInnerSettingsChild()" class="open-close-btn">
-          <svg [ngStyle]="{'visibility': !activeSettings ? 'visible' : 'hidden'}">
-            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cog"></use>
-          </svg>
-          <svg [ngStyle]="{'visibility': activeSettings ? 'visible' : 'hidden'}">
-            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
-          </svg>
-        </button>
-      </div>
-
-      <div *ngIf="activeSettings" class="profile-ui-settings">
-        <textarea #userStatus
-                  class="desc"
-                  placeholder="Co słychać?"
-                  type="text"></textarea>
-      </div>
+      <ng-container *ngIf="isUserProfileOwner">
+        <div *ngIf="activeSettings" class="profile-ui-settings">
+          <textarea #userStatus
+                    class="desc"
+                    placeholder="Co słychać?"
+                    type="text"></textarea>
+        </div>
+      </ng-container>
 
       <h2 [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="name">
         {{ userData.name }} {{ userData.surname }}

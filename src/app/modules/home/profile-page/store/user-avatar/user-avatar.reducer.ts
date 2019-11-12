@@ -1,14 +1,13 @@
 import * as UserAvatarActions from './user-avatar.actions'
-import UserAvatar from '../../models/user-avatar.model';
 
 export interface State {
-  avatar: UserAvatar;
+  avatarUrl: string;
   loaded: boolean;
   loading: boolean;
 }
 
 const initialState: State = {
-  avatar: null,
+  avatarUrl: null,
   loaded: false,
   loading: false
 };
@@ -25,7 +24,7 @@ export function userAvatarReducer(
     case UserAvatarActions.SET_USER_AVATAR:
       return {
         ...state,
-        avatar: action.payload,
+        avatarUrl: action.payload.userAvatarUrl,
         loaded: true
       };
     case UserAvatarActions.UPDATE_USER_AVATAR:
@@ -37,7 +36,7 @@ export function userAvatarReducer(
       return {
         ...state,
         loading: false,
-        avatar: action.payload
+        avatarUrl: action.payload.userAvatarUrl
       };
     default:
       return state;

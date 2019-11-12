@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-profile-photos',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-photos.component.scss']
 })
 export class ProfilePhotosComponent implements OnInit {
-
+  @Input() isUserProfileOwner : boolean;
   constructor() { }
 
   ngOnInit() {

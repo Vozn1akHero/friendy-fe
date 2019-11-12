@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
-import {switchMap, map, withLatestFrom, filter} from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import {switchMap, map, withLatestFrom, filter, mergeMap} from 'rxjs/operators';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import * as UserAvatarActions from './user-avatar.actions';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
-import UserAvatar from '../../models/user-avatar.model';
 import {UserAvatarService} from '../../services/user-avatar.service';
 
 @Injectable()
@@ -18,15 +17,13 @@ export class UserAvatarEffects {
     filter(([{payload}, loaded]) => {
       return !loaded
     }),
-    switchMap(() => {
-        return this.userAvatarService.getAvatar()
-          .pipe(
-            map(res => {
-              const avatarBytes: string = res.body.toString();
-              const newAvatar : UserAvatar = new UserAvatar(avatarBytes);
-              return new UserAvatarActions.SetUserAvatar(newAvatar);
-            })
-        )
+    mergeMap(([{payload}] : any) => {
+      return this.userAvatarService.getAvatarByUserId(payload.userId)
+        .pipe(
+          map(res => {
+          const userAvatarUrl = "http://localhost:5000/" + res;
+          return ({ type: UserAvatarActions.SET_USER_AVATAR, payload: { userAvatarUrl: userAvatarUrl } })
+        }));
       }
     )
   );
@@ -35,11 +32,11 @@ export class UserAvatarEffects {
   updateUserAvatar = this.actions$.pipe(
     ofType(UserAvatarActions.UPDATE_USER_AVATAR),
     switchMap((updateAvatarStart: UserAvatarActions.UpdateUserAvatar) => {
-      return this.userAvatarService.updateAvatar(updateAvatarStart.payload.avatarBytes)
+      return this.userAvatarService.updateAvatar(updateAvatarStart.payload)
         .pipe(
-          map(() => {
-            return ({ type: UserAvatarActions.SET_USER_AVATAR,
-              payload: updateAvatarStart.payload.avatarBytes })
+          map(res => {
+            const userAvatarUrl = "http://localhost:5000/" + res;
+            return new UserAvatarActions.SetUserAvatar({userAvatarUrl});
           })
         )
     })

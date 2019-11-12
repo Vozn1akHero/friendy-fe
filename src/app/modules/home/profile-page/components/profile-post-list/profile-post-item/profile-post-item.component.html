@@ -1,17 +1,22 @@
 <div class="post-item">
-  <button class="remove-post" (click)="onRemovePostBtnClick()">
+  <button *ngIf="isUserProfileOwner" class="remove-post" (click)="onRemovePostBtnClick()">
     &#10006;
   </button>
   <div class="upper-wrapper">
-    <figure class="avatar">
-      <img src="{{ userAvatar.avatarBytes }}" alt="user's avatar">
-    </figure>
-    <p class="content">
-      {{ post.content }}
-    </p>
-    <img *ngIf="post.image != null"
-         src="{{ post.image }}"
-         class="image"/>
+    <div class="avatar-wrapper">
+      <figure class="avatar">
+        <img src="{{ userAvatarUrl }}" alt="user's avatar">
+      </figure>
+    </div>
+    <div class="content-wrapper">
+      <p class="text-content">
+        {{ post.content }}
+      </p>
+      <img *ngIf="post.imagePath != null"
+           src="http://localhost:5000/{{ post.imagePath }}"
+           alt="#"
+           class="image"/>
+    </div>
   </div>
 
   <div class="bottom-wrapper">
@@ -20,18 +25,18 @@
         <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-bubble"></use>
       </svg>
       <span>
-        {{ post.userPostComments.length }}
+        {{ post.commentsCount }}
       </span>
     </button>
 
     <button class="likes"
-            [ngClass]="putLike ? 'unlike-post-btn' : 'like-user-post-btn'"
+            [ngClass]="post.isPostLiked ? 'unlike-post-btn' : 'like-user-post-btn'"
             (click)="onLikeOrUnlikePost()">
       <svg>
         <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-heart"></use>
       </svg>
       <span>
-        {{ post.userPostLikes.length }}
+        {{ post.likesCount }}
       </span>
     </button>
     <p class="date">

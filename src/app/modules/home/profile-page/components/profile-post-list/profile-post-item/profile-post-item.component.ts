@@ -12,8 +12,9 @@ import UserAvatar from '../../../models/user-avatar.model';
 })
 export class ProfilePostItemComponent implements OnInit {
   @Input() post : Post;
-  @Input() userAvatar : UserAvatar;
+  @Input() userAvatarUrl : string;
   @Input() userId : number;
+  @Input() isUserProfileOwner : boolean;
 
   @Output() removePost: EventEmitter<number> = new EventEmitter<number>();
   @Output() likePost: EventEmitter<number> = new EventEmitter<number>();
@@ -26,12 +27,12 @@ export class ProfilePostItemComponent implements OnInit {
 
   ngOnInit() {
     this.timePassed = moment(this.post.date).fromNow();
-
+/*
     this.post.userPostLikes.map(userPostLike => {
       if(userPostLike.userId === this.userId){
         this.putLike = true;
       }
-    })
+    })*/
   }
 
   onRemovePostBtnClick(){

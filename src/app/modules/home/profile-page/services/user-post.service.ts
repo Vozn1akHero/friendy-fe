@@ -7,6 +7,7 @@ import * as signalR from'@aspnet/signalr';
 import {HubConnection} from '@aspnet/signalr';
 import UserAvatar from '../models/user-avatar.model';
 import Post from '../models/post.model';
+import NewPost from '../models/new-post.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +17,21 @@ export class UserPostService {
 
   constructor(private http: HttpClient){}
 
-  create(post: Post){
-    return this.http.post('/api/user-post', post, {observe: 'response'});
+  create(post: NewPost){
+    const content = new FormData();
+    content.append("image", post.image);
+    content.append("content", post.content);
+
+    return this.http.post('/api/user-post', content, {observe: 'response'});
   }
 
-  current(){
-    return this.http.get(`/api/user-post/current`,
+  current(startIndex: number){
+    return this.http.get(`/api/user-post/current?startIndex=${startIndex}&length=10`,
+      {observe: 'response'})
+  }
+
+  getByUserId(id: number, startIndex: number){
+    return this.http.get(`/api/user-post?userId=${id}&startIndex=${startIndex}&length=10`,
       {observe: 'response'})
   }
 
@@ -31,12 +41,12 @@ export class UserPostService {
   }
 
   like(id: number){
-    return this.http.put(`/api/user-post/like/${id}`,
+    return this.http.put(`/api/post/like/${id}`,
       {observe: 'response'})
   }
 
   unlike(id: number){
-    return this.http.put(`/api/user-post/unlike/${id}`,
+    return this.http.put(`/api/post/unlike/${id}`,
       {observe: 'response'})
   }
 }

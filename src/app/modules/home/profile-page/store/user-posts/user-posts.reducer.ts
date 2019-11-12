@@ -50,7 +50,7 @@ export function userPostsReducer(
         ...state,
         posts: [...state.posts.map(post => {
           if(post.id === action.payload.id) {
-            post.userPostLikes.push(action.payload)
+            post.likesCount++;
           }
           return post;
         })]
@@ -60,11 +60,12 @@ export function userPostsReducer(
         ...state,
         posts: [...state.posts.map(post => {
           if(post.id !== action.payload.id) {
-            post.userPostLikes.map(userPostLike => {
+            /*post.userPostLikes.map(userPostLike => {
               if(userPostLike.id !== action.payload.id){
                 return userPostLike;
               }
-            })
+            })*/
+            post.likesCount--;
           }
           return post;
         })]

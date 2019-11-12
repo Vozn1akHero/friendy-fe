@@ -1,19 +1,78 @@
 @import '../../../../../../assets/sass/components/new-post';
 
-.new-post-or-msg{
-    width: 560px;
 
-    form{
-        textarea{
-            width: 38em;
-        }
+.new-post{
+  width: 35rem;
+  height: 12rem;
+  background-color: $color-bg-grey-footer;
+  margin-bottom: 2rem;
 
-        div{
-            .file-btn-wrapper{
-                input{
-                     top: 4px;
-                }
-            }
-        }
+  form{
+    width: 85%;
+
+    textarea{
+      border: none;
+      resize: none;
+      padding: 1rem;
+      width: 100%;
+      height: 6em;
+
+      &:focus{
+        outline: none;
+      }
     }
+
+    div{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+      width: calc(100% - 42px);
+
+      .file-btn-wrapper{
+        position: relative;
+
+        input{
+          opacity: 0;
+          width: 24px;
+          height: 24px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          font-size: 0;
+          cursor: pointer;
+        }
+
+        svg{
+          display: flex;
+          align-self: center;
+          border: none;
+          outline: none;
+          background: none;
+          width: 1.5rem;
+          height: 1.5rem;
+          fill: $color-grey-light-2;
+        }
+      }
+
+
+      button[type=submit]{
+        border: none;
+        height: 3rem;
+        width: 10rem;
+        border-radius: 3rem;
+        background: $color-blue;
+        font-weight: 700;
+        color: white;
+        font-size: .85rem;
+
+        &:hover{
+          cursor: pointer;
+        }
+
+        &:focus{
+          outline: none;
+        }
+      }
+    }
+  }
 }
