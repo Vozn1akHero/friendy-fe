@@ -18,6 +18,10 @@ export class UserEventListComponent implements OnInit, OnDestroy {
   constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
+    this.getEventList();
+  }
+
+  getEventList(){
     this.userEventsLoaded$ = this.store.select(state => state.eventsPageUserEvents.loaded);
 
     this.store.dispatch(new EventsPageUserEventsActions.GetEvents());

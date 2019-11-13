@@ -5,7 +5,7 @@ export default class Post{
   imagePath: string;
   likesCount: number;
   commentsCount: number;
-  isPostLiked: boolean;
+  isPostLikedByUser: boolean;
   date: Date;
 
   constructor(id: number,
@@ -14,7 +14,7 @@ export default class Post{
               imagePath: string,
               likesCount: any,
               commentsCount: any,
-              isPostLiked: boolean,
+              isPostLikedByUser: boolean,
               date: Date) {
     this.id = id;
     this.userId = userId;
@@ -22,7 +22,7 @@ export default class Post{
     this.imagePath = imagePath != null && `http://localhost:5000/${imagePath}`;
     this.likesCount = likesCount;
     this.commentsCount = commentsCount;
-    this.isPostLiked = isPostLiked;
+    this.isPostLikedByUser = isPostLikedByUser;
     this.date = date;
   }
 }

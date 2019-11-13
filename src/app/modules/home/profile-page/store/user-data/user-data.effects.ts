@@ -18,8 +18,8 @@ export class MainUserDataEffects {
     filter(([{payload}, loaded]) => {
       return !loaded
     }),
-    mergeMap(() => {
-      return this.http.get('/api/user/getUser', {observe: 'response'})
+    mergeMap(([{payload}] : any) => {
+      return this.http.get(`/api/user/${payload.id}`, {observe: 'response'})
         .pipe(
           map(res => {
             return ({ type: UserDataActions.SET_USER_DATA, payload: res.body })

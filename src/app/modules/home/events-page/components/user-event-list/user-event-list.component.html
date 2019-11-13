@@ -1,6 +1,13 @@
 <div *ngIf="(userEventsLoaded$ | async)"
      class="participating-events">
-  <app-user-event-item *ngFor="let event of events"
-                       [enumType]="'common'"
-                       [eventData]="event"></app-user-event-item>
+  <ng-container *ngIf="events.length > 0; else eventListEmptyMsg">
+    <app-user-event-item *ngFor="let event of events"
+                         [enumType]="'common'"
+                         [eventData]="event"></app-user-event-item>
+  </ng-container>
+  <ng-template #eventListEmptyMsg>
+    <span class="event-list-empty-msg">
+      Nie bierzesz udziału w żadnym wydarzeniu
+    </span>
+  </ng-template>
 </div>

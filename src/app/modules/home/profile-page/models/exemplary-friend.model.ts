@@ -1,9 +1,9 @@
 export default class ExemplaryFriend {
   id: number;
-  avatar: string;
+  avatarUrl: string;
 
-  constructor(id: number, avatar: string) {
+  constructor(id: number, avatarUrl: string) {
     this.id = id;
-    this.avatar = "data:image/png;base64," + avatar;
+    this.avatarUrl = "http://localhost:5000/" + avatarUrl;
   }
 }

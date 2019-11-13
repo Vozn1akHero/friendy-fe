@@ -1,8 +1,5 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {Component, EventEmitter, Input, OnDestroy, OnInit } from '@angular/core';
 import Post from '../../models/post.model';
-import User from '../../models/user.model';
-import UserAvatar from '../../models/user-avatar.model';
 import * as UserPostsActions from '../../store/user-posts/user-posts.actions';
 import {combineLatest, Observable, Subscription} from 'rxjs';
 import {Store} from '@ngrx/store';
@@ -43,9 +40,6 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
 
     this.getUserPosts();
     this.getUserAvatar();
-
-
-    //this.getUserId();
   }
 
   getUserPosts() {
@@ -54,6 +48,7 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
       .select(state => state.profilePageUserPosts.posts)
       .subscribe(userPosts => {
         this.userPosts = userPosts;
+        console.log(this.userPosts)
       })
   }
 
@@ -70,18 +65,6 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
         this.userId = value.id;
       })
   }*/
-
-  onRemovePost(id){
-    this.store.dispatch(new UserPostsActions.RemovePost({ id }))
-  }
-
-  onLikePost(id){
-    this.store.dispatch(new UserPostsActions.LikePostStart({ id }))
-  }
-
-  onUnlikePost(id){
-    this.store.dispatch(new UserPostsActions.UnlikePostStart({ id }))
-  }
 
   ngOnDestroy(): void {
     this.userPostsSubscription.unsubscribe();

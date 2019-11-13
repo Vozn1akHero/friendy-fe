@@ -9,6 +9,7 @@ import * as UserExemplaryFriendsActions from './user-exemplary-friends.actions';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import ExemplaryFriend from '../../models/exemplary-friend.model';
+import {ExemplaryFriendsService} from '../../services/exemplary-friends.service';
 
 @Injectable()
 export class UserExemplaryFriendsEffects {
@@ -19,16 +20,17 @@ export class UserExemplaryFriendsEffects {
     filter(([{payload}, loaded]) => {
       return !loaded
     }),
-    mergeMap(() => {
-      return this.http.get('/api/friend/getExemplaryByUserId',
-        {observe: 'response'})
+    mergeMap(([{payload}] : any) => {
+      return this.exemplaryFriendsService.getByUserId(payload.id)
         .pipe(
-          map(res => {
-            //console.log(res.body)
+          map((res: Array<any>) => {
+            if(res.length === 0){
+              return ({ type: UserExemplaryFriendsActions.SET_EXEMPLARY_FRIENDS, payload: [] })
+            }
             let exemplaryFriends : ExemplaryFriend[] = [];
-            Array(res.body).map((exemplaryFriend : any) => {
+            Array(res).map((exemplaryFriend : any) => {
               const newExemplaryFriend : ExemplaryFriend = new ExemplaryFriend(exemplaryFriend[0].id,
-                exemplaryFriend[0].avatar);
+                exemplaryFriend[0].avatarPath);
               exemplaryFriends.push(newExemplaryFriend);
             });
             return ({ type: UserExemplaryFriendsActions.SET_EXEMPLARY_FRIENDS, payload: exemplaryFriends })
@@ -40,6 +42,7 @@ export class UserExemplaryFriendsEffects {
   constructor(
     private actions$: Actions,
     private http: HttpClient,
+    private exemplaryFriendsService: ExemplaryFriendsService,
     private router: Router,
     private store$: Store<fromApp.AppState>
   ) {}

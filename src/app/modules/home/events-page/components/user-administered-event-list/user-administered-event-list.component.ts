@@ -21,11 +21,14 @@ export class UserAdministeredEventListComponent implements OnInit, OnDestroy {
               private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
-    this.administeredEventsLoaded$ = this.store.select(state => state.eventsPageAdministeredEventsReducer.loaded);
+    this.getAdmEventsList();
+  }
 
+  getAdmEventsList(){
+    this.administeredEventsLoaded$ = this.store.select(state => state.eventsPageAdministeredEvents.loaded);
     this.store.dispatch(new EventsPageAdministeredEventsActions.GetAdministeredEvents());
     this.administeredEventsSubscription = this.store.select(state => state
-      .eventsPageAdministeredEventsReducer.administeredEvents)
+      .eventsPageAdministeredEvents.administeredEvents)
       .subscribe(events => {
         this.administeredEvents = events;
       })

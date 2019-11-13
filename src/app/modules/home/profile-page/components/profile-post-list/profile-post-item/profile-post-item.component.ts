@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import Post from '../../../models/post.model';
 import * as moment from 'moment';
-import ExtendedPost from '../../../models/extended-post.model';
-import {Observable} from 'rxjs';
-import UserAvatar from '../../../models/user-avatar.model';
+import * as UserPostsActions from '../../../store/user-posts/user-posts.actions';
+import {Store} from '@ngrx/store';
+import * as fromApp from '../../../../../../core/ngrx/store/app.reducer';
 
 @Component({
   selector: 'app-profile-post-item',
@@ -16,14 +16,15 @@ export class ProfilePostItemComponent implements OnInit {
   @Input() userId : number;
   @Input() isUserProfileOwner : boolean;
 
-  @Output() removePost: EventEmitter<number> = new EventEmitter<number>();
+/*  @Output() removePost: EventEmitter<number> = new EventEmitter<number>();
   @Output() likePost: EventEmitter<number> = new EventEmitter<number>();
-  @Output() unlikePost: EventEmitter<number> = new EventEmitter<number>();
+  @Output() unlikePost: EventEmitter<number> = new EventEmitter<number>();*/
 
   timePassed: string;
-  putLike: boolean = false;
+  //putLike: boolean = false;
 
-  constructor() { }
+  constructor(private store: Store<fromApp.AppState>) {
+  }
 
   ngOnInit() {
     this.timePassed = moment(this.post.date).fromNow();
@@ -35,12 +36,26 @@ export class ProfilePostItemComponent implements OnInit {
     })*/
   }
 
-  onRemovePostBtnClick(){
+/*  onRemovePostBtnClick(){
     this.removePost.emit(this.post.id);
-  }
+  }*/
 
   onLikeOrUnlikePost(){
-    if(this.putLike) this.unlikePost.emit(this.post.id);
-    else this.likePost.emit(this.post.id);
+    if(this.post.isPostLikedByUser) this.onUnlikePost();
+    else this.onLikePost();
+  }
+
+  onRemovePost(){
+    this.store.dispatch(new UserPostsActions.RemovePost({ id: this.post.id }))
+  }
+
+  onLikePost(){
+    this.store.dispatch(new UserPostsActions.LikePost({ id: this.post.id  }));
+    this.post.isPostLikedByUser = true;
+  }
+
+  onUnlikePost(){
+    this.store.dispatch(new UserPostsActions.UnlikePost({ id: this.post.id  }));
+    this.post.isPostLikedByUser = false;
   }
 }

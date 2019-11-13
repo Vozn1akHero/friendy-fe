@@ -37,7 +37,7 @@ export interface AppState {
 
   //events page
   eventsPageUserEvents: fromEventsPageUserEvents.State;
-  eventsPageAdministeredEventsReducer: fromEventsPageAdministeredEvents.State;
+  eventsPageAdministeredEvents: fromEventsPageAdministeredEvents.State;
 
   //event page
   eventPageEventData: fromEventPageEventData.State
@@ -62,7 +62,7 @@ export const appReducer: ActionReducerMap<AppState> = {
 
   //events page
   eventsPageUserEvents: fromEventsPageUserEvents.userEventsReducer,
-  eventsPageAdministeredEventsReducer: fromEventsPageAdministeredEvents.administeredEventsReducer,
+  eventsPageAdministeredEvents: fromEventsPageAdministeredEvents.administeredEventsReducer,
 
   //event page
   eventPageEventData: fromEventPageEventData.eventDataReducer

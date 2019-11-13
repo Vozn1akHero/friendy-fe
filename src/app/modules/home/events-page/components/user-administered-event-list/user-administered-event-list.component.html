@@ -1,6 +1,13 @@
 <div *ngIf="(administeredEventsLoaded$ | async)"
      class="administered-events">
-  <app-user-event-item *ngFor="let admEvent of administeredEvents"
-                       [enumType]="'administered'"
-                       [eventData]="admEvent"></app-user-event-item>
+  <ng-container *ngIf="administeredEvents.length > 0; else admEventListEmptyMsg">
+    <app-user-event-item *ngFor="let admEvent of administeredEvents"
+                         [enumType]="'administered'"
+                         [eventData]="admEvent"></app-user-event-item>
+  </ng-container>
+  <ng-template #admEventListEmptyMsg>
+    <span class="adm-list-empty-msg">
+      Nie zarządzasz żadnym wydarzeniem
+    </span>
+  </ng-template>
 </div>

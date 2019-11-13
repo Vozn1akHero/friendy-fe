@@ -1,5 +1,5 @@
 <div class="post-item">
-  <button *ngIf="isUserProfileOwner" class="remove-post" (click)="onRemovePostBtnClick()">
+  <button *ngIf="isUserProfileOwner" class="remove-post" (click)="onRemovePost()">
     &#10006;
   </button>
   <div class="upper-wrapper">
@@ -30,7 +30,7 @@
     </button>
 
     <button class="likes"
-            [ngClass]="post.isPostLiked ? 'unlike-post-btn' : 'like-user-post-btn'"
+            [ngClass]="post.isPostLikedByUser ? 'unlike-post-btn' : 'like-user-post-btn'"
             (click)="onLikeOrUnlikePost()">
       <svg>
         <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-heart"></use>

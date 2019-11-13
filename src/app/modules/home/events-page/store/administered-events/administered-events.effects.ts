@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
-import { switchMap, catchError, map, tap, withLatestFrom } from 'rxjs/operators';
+import {switchMap, catchError, map, tap, withLatestFrom, filter, mergeMap} from 'rxjs/operators';
 import { of } from 'rxjs';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
@@ -10,6 +10,7 @@ import {AppState} from '../../../../../core/ngrx/store/app.reducer';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import Event from '../../models/event.model';
+import {EventsService} from '../../services/events.service';
 
 
 @Injectable()
@@ -17,10 +18,18 @@ export class AdministeredEventsEffects {
   @Effect()
   getAdministeredEvents = this.actions$.pipe(
     ofType(AdministeredEventsActions.GET_ADMINISTERED_EVENTS),
-    switchMap(() => {
-      return this.http.get('/api/event/user/loggedin/administered', {observe: 'response'})
+    withLatestFrom(this.store.select(e=>e.eventsPageAdministeredEvents.loaded)),
+    filter(([{payload}, loaded]) => {
+      return !loaded
+    }),
+    mergeMap(() => {
+      return this.eventsService.getAdministeredEvents()
         .pipe(
           map(res => {
+            if((res.body as Array<any>).length === 0){
+              return ({ type: AdministeredEventsActions.SET_ADMINISTERED_EVENTS,
+                payload: [] })
+            }
             let administeredEvents : Event[] = [];
             Array(res.body).map(event => {
               administeredEvents.push(new Event(event[0].id,
@@ -28,11 +37,10 @@ export class AdministeredEventsEffects {
                 event[0].street,
                 event[0].streetNumber,
                 event[0].city,
-                event[0].avatar,
+                event[0].avatarPath,
                 event[0].participantsAmount,
                 event[0].date))
             });
-
             return ({ type: AdministeredEventsActions.SET_ADMINISTERED_EVENTS,
               payload: administeredEvents })
           })
@@ -44,7 +52,7 @@ export class AdministeredEventsEffects {
   filterAdministeredEvents = this.actions$.pipe(
     ofType(AdministeredEventsActions.FILTER_ADMINISTERED_EVENTS),
     switchMap((actionData: AdministeredEventsActions.FilterAdministeredEvents) => {
-      return this.http.get(`/api/event/filter/administered/?keyword=${actionData.payload.keyword}`, {observe: 'response'})
+      return this.eventsService.filterAdministeredEvents(actionData.payload.keyword)
         .pipe(
           map(res => {
             return ({ type: AdministeredEventsActions.FILTER_ADMINISTERED_EVENTS,
@@ -57,7 +65,7 @@ export class AdministeredEventsEffects {
   constructor(
     private actions$: Actions,
     private http: HttpClient,
-    private router: Router,
-    private store$: Store<fromApp.AppState>
+    private eventsService : EventsService,
+    private store: Store<fromApp.AppState>
   ) {}
 }

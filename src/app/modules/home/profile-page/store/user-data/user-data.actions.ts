@@ -8,7 +8,7 @@ export const SET_USER_DATA = '[Profile Page] Set User Data';
 export class GetUserData implements Action {
   readonly type = GET_USER_DATA;
 
-  constructor(){}
+  constructor(public payload : { id: number }){}
 }
 
 export class SetUserData implements Action {

@@ -16,6 +16,7 @@ export class ProfileFriendsComponent implements OnInit, OnDestroy {
   exemplaryFriendsLoaded$: Observable<boolean>;
   exemplaryFriendsSubscription: Subscription;
   @Input() isUserProfileOwner : boolean;
+  @Input() userId : number;
 
   constructor(private store: Store<fromApp.AppState>) { }
 
@@ -25,11 +26,12 @@ export class ProfileFriendsComponent implements OnInit, OnDestroy {
 
   getExemplaryFriends(){
     this.exemplaryFriendsLoaded$ = this.store.select(state => state.profilePageUserExemplaryFriends.loaded);
-    this.store.dispatch(new UserExemplaryFriends.GetExemplaryFriends());
+    this.store.dispatch(new UserExemplaryFriends.GetExemplaryFriends({ id : this.userId }));
     this.exemplaryFriendsSubscription = this.store
       .select(state => state.profilePageUserExemplaryFriends.exemplaryFriends)
       .subscribe(exemplaryFriends => {
         this.exemplaryFriends = exemplaryFriends;
+        console.log(this.exemplaryFriends.length)
       })
   }
 

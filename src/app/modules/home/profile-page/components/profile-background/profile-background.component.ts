@@ -1,9 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import * as ProfileBackgroundActions from '../../store/profile-background/profile-background.actions';
-import {Store} from '@ngrx/store';
-import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
+
 import {Observable, Subscription} from 'rxjs';
-import {map} from 'rxjs/operators';
+
 import {ProfileBackgroundService} from '../../services/profile-background.service';
 
 @Component({

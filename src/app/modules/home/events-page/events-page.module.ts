@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {SharedModule} from '../../../shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from '../../../app-routing.module';
-import {UserEventItemComponent} from './components/user-event-item/user-event-item.component';
+import {UserEventItemComponent} from './components/user-event-list/user-event-item/user-event-item.component';
 import {EventsPageComponent} from './events-page.component';
 import {SuggestedEventsItemComponent} from './components/suggested-events-item/suggested-events-item.component';
 import {SearchEventsComponent} from './components/search-events/search-events.component';

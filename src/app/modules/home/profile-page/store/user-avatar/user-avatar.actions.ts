@@ -1,5 +1,4 @@
 import { Action } from '@ngrx/store';
-import UserAvatar from '../../models/user-avatar.model';
 
 export const GET_USER_AVATAR = '[Profile Page] Get User Avatar';
 export const SET_USER_AVATAR = '[Profile Page] Set User Avatar';

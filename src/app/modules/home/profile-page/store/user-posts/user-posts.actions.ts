@@ -7,9 +7,9 @@ export const SET_ADDED_POST = '[Profile Page] Add Post';
 export const REMOVE_POST_FROM_STATE = '[Profile Page] Remove Post';
 export const REMOVE_POST = '[Profile Page] Remove Post Start';
 export const LIKE_POST = '[Profile Page] Like Post';
-export const LIKE_POST_START = '[Profile Page] Like Post Start';
-export const UNLIKE_POST_START = '[Profile Page] Unlike Post Start';
-export const UNLIKE_POST = '[Profile Page] Unlike Post';
+export const LIKE_POST_IN_STATE = '[Profile Page] Like Post In State';
+export const UNLIKE_POST = '[Profile Page] Unlike Post Start';
+export const UNLIKE_POST_IN_STATE = '[Profile Page] Unlike Post In State';
 export const GET_USER_POSTS = '[Profile Page] Get User Posts';
 export const SET_USER_POSTS = '[Profile Page] Set User Posts';
 
@@ -49,30 +49,29 @@ export class RemovePostFromState implements Action {
   constructor(public payload: {id: number}) {}
 }
 
-export class LikePostStart implements Action {
-  readonly type = LIKE_POST_START;
-
-  constructor(public payload: { id: number } ) {}
-}
-
 export class LikePost implements Action {
   readonly type = LIKE_POST;
 
-  constructor(public payload: any) {}
+  constructor(public payload: { id: number } ) {}
 }
 
-export class UnlikePostStart implements Action {
-  readonly type = UNLIKE_POST_START;
+export class LikePostInState implements Action {
+  readonly type = LIKE_POST_IN_STATE;
 
-  constructor(public payload: { id: number } ) {}
+  constructor(public payload: any) {}
 }
 
 export class UnlikePost implements Action {
   readonly type = UNLIKE_POST;
 
-  constructor(public payload: any) {}
+  constructor(public payload: { id: number } ) {}
 }
 
+export class UnlikePostInState implements Action {
+  readonly type = UNLIKE_POST_IN_STATE;
+
+  constructor(public payload: any) {}
+}
 
 
 export type UserPostsActions = SetAddedPost
@@ -81,7 +80,7 @@ export type UserPostsActions = SetAddedPost
   | SetUserPosts
   | RemovePost
   | RemovePostFromState
-  | LikePostStart
   | LikePost
-  | UnlikePostStart
-  | UnlikePost;
+  | LikePostInState
+  | UnlikePost
+  | UnlikePostInState;

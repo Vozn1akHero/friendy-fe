@@ -7,9 +7,10 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ProfilePhotosComponent implements OnInit {
   @Input() isUserProfileOwner : boolean;
+  @Input() userId : number;
+
   constructor() { }
 
   ngOnInit() {
   }
-
 }

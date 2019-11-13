@@ -12,9 +12,7 @@ import {HubConnection} from '@aspnet/signalr';
 export class ProfilePageService {
   private connection : HubConnection;
 
-  constructor(private http: HttpClient){
-
-  }
+  constructor(private http: HttpClient){}
 
   connectToSocket() {
     this.connection = new signalR.HubConnectionBuilder()
@@ -37,13 +35,8 @@ export class ProfilePageService {
     return this.http.get(`api/user/profile-belonging/${id}`, {observe: 'response'})
       .pipe(
         map(res => {
-          if(res.status === 200) return true;
-        }, catchError((err) => {
-          /*if(err.statusCode === 409){
-            return of(false);
-          }
-          */return of(false);
-        }))
+          return res.body as boolean;
+        })
       )
   }
 }

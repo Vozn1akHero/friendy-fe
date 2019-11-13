@@ -4,7 +4,14 @@
                 title: 'Znajomi',
                 icon: '../../../../assets/images/icon/symbol-defs.svg#icon-users1',
                 link: '/app/friends'}">
-    <app-profile-friends-item *ngFor="let exemplaryFriend of exemplaryFriends"
-                              [exemplaryFriend]="exemplaryFriend"></app-profile-friends-item>
+    <ng-container *ngIf="exemplaryFriends.length > 0; else noFriendsMsg">
+      <app-profile-friends-item *ngFor="let exemplaryFriend of exemplaryFriends"
+                                [exemplaryFriend]="exemplaryFriend"></app-profile-friends-item>
+    </ng-container>
+    <ng-template #noFriendsMsg>
+      <span class="no-friends-msg">
+        Brak znajomych
+      </span>
+    </ng-template>
   </app-main-panel>
 </section>

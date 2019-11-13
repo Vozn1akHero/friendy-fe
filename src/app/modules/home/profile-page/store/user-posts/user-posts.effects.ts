@@ -61,12 +61,12 @@ export class UserPostsEffects {
 
   @Effect()
   profilePageLikePost = this.actions$.pipe(
-    ofType(UserPostsActions.LIKE_POST_START),
-    switchMap((payload: UserPostsActions.LikePostStart) => {
+    ofType(UserPostsActions.LIKE_POST),
+    switchMap((payload: UserPostsActions.LikePost) => {
       return this.userPostService.like(payload.payload.id)
         .pipe(
           map(res => {
-            return ({ type: UserPostsActions.LIKE_POST, payload: res })
+            return ({ type: UserPostsActions.LIKE_POST_IN_STATE, payload: res })
           })
         )
     })
@@ -74,12 +74,12 @@ export class UserPostsEffects {
 
   @Effect()
   profilePageUnlikePost = this.actions$.pipe(
-    ofType(UserPostsActions.UNLIKE_POST_START),
-    switchMap((payload: UserPostsActions.UnlikePostStart) => {
+    ofType(UserPostsActions.UNLIKE_POST),
+    switchMap((payload: UserPostsActions.UnlikePost) => {
       return this.userPostService.unlike(payload.payload.id)
         .pipe(
           map(res => {
-            return ({ type: UserPostsActions.UNLIKE_POST, payload: res })
+            return ({ type: UserPostsActions.UNLIKE_POST_IN_STATE, payload: res })
           })
         )
     })

@@ -45,7 +45,7 @@ export function userPostsReducer(
         ...state,
         posts: state.posts.filter(post => post.id !== action.payload.id)
       };
-    case UserPostsActions.LIKE_POST:
+    case UserPostsActions.LIKE_POST_IN_STATE:
       return {
         ...state,
         posts: [...state.posts.map(post => {
@@ -55,7 +55,7 @@ export function userPostsReducer(
           return post;
         })]
       };
-    case UserPostsActions.UNLIKE_POST:
+    case UserPostsActions.UNLIKE_POST_IN_STATE:
       return {
         ...state,
         posts: [...state.posts.map(post => {

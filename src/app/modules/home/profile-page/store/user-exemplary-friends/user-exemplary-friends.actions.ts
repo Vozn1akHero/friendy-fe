@@ -13,7 +13,7 @@ export class SetExemplaryFriends implements Action {
 export class GetExemplaryFriends implements Action {
   readonly type = GET_EXEMPLARY_FRIENDS;
 
-  constructor() {}
+  constructor(public payload: { id: number }) {}
 }
 
 

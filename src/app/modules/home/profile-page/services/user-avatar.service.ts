@@ -19,8 +19,4 @@ export class UserAvatarService {
     content.append("newAvatar", newAvatar);
     return this.http.put('/api/user/avatar', content, {responseType: 'text'});
   }
-
-  setNewAvatar(){
-
-  }
 }
