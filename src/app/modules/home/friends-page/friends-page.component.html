@@ -1,38 +1,30 @@
-<ng-container *ngIf="(friendsLoading$ | async) === false">
-  <div class="friends">
-    <section class="friends__left-side-wrapper">
+<div class="friends">
+  <section class="friends__left-side-wrapper">
+      <div class="friends-search">
+        <app-friends-search-input (searchFormSubmit)="searchFriends($event)"></app-friends-search-input>
 
-
-          <div class="friends-search">
-            <app-friends-search-input (searchFormSubmit)="searchFriends($event)"></app-friends-search-input>
-
-            <div>
-              <label class="custom-checkbox">
-                <span>teraz online</span>
-                <input type="checkbox">
-                <span class="checkmark"></span>
-              </label>
-            </div>
-          </div>
-
-          <div class="friends-list">
-            <section>
-              <app-friends-list-item *ngFor="let friend of (friends$ | async)"
-                                     [friendData]="friend"></app-friends-list-item>
-            </section>
-          </div>
-
-    </section>
-
-    <section class="friends__right-side-wrapper">
-      <app-suggested-friends-panel></app-suggested-friends-panel>
-
-      <div class="friends-search-wrapper">
-        <a class="friends-search-wrapper__link"
-           [routerLink]="['/app/friends-search']">
-          Znajdź znajomych
-        </a>
+        <div>
+          <label class="custom-checkbox">
+            <span>teraz online</span>
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+        </div>
       </div>
-    </section>
-  </div>
-</ng-container>
+
+    <app-friend-list>
+    </app-friend-list>
+  </section>
+
+  <section class="friends__right-side-wrapper">
+    <app-suggested-friends-panel></app-suggested-friends-panel>
+
+    <div class="friends-search-wrapper">
+      <a class="friends-search-wrapper__link"
+         [routerLink]="['/app/friends-search']">
+        Znajdź znajomych
+      </a>
+    </div>
+  </section>
+</div>
+

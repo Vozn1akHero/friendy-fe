@@ -1,6 +1,9 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {animate, style, transition, trigger} from '@angular/animations';
-import {Subject} from 'rxjs';
+import {Subject, Subscription} from 'rxjs';
+import ReceivedFriendRequestModel from '../../models/received-friend-request.model';
+import SentFriendRequestModel from '../../models/sent-friend-request.model';
+import {FriendRequestsService} from '../../services/friend-requests.service';
 
 @Component({
   selector: 'app-friend-requests-modal',
@@ -29,24 +32,56 @@ import {Subject} from 'rxjs';
     ])
   ]
 })
-export class FriendRequestsModalComponent implements OnInit {
+export class FriendRequestsModalComponent implements OnInit, OnDestroy {
   chosenSubpage: string = "received-requests";
-  //@Output() chosenSubpageChangeEmitter: EventEmitter<void> = new EventEmitter();
-  sentEventSubpageChosenSubject: Subject<void> = new Subject<void>();
 
+  receivedFriendRequests: ReceivedFriendRequestModel[] = [];
+  receivedFriendRequestsSubscription: Subscription;
+  receivedFriendRequestsLoaded: boolean = false;
 
-  constructor() { }
+  sentFriendRequests: SentFriendRequestModel[] = [];
+  sentFriendRequestsSubscription: Subscription;
+  sendFriendRequestsLoaded: boolean = false;
+
+  constructor(private friendRequestsService: FriendRequestsService) { }
 
   ngOnInit() {
   }
 
   onReceivedFriendRequestsBtnClick(){
     this.chosenSubpage = "received-requests";
+    this.getReceivedFriendRequests();
   }
 
   onSentFriendRequestsBtnClick(){
     this.chosenSubpage = "sent-requests";
-    //this.chosenSubpageChangeEmitter.emit();
-    this.sentEventSubpageChosenSubject.next();
+    this.getSentFriendRequests();
+  }
+
+  getReceivedFriendRequests() {
+    this.receivedFriendRequestsSubscription = this.friendRequestsService
+      .getReceivedFriendRequests()
+      .subscribe((receivedFriendRequests: ReceivedFriendRequestModel[]) => {
+        console.log(receivedFriendRequests);
+        this.receivedFriendRequests = receivedFriendRequests;
+        this.receivedFriendRequestsLoaded = true;
+      })
+  }
+
+  getSentFriendRequests() {
+    this.sentFriendRequestsSubscription = this.friendRequestsService
+      .getSentFriendRequests()
+      .subscribe(
+        (sentFriendRequests:SentFriendRequestModel[]) => {
+          console.log(sentFriendRequests);
+          this.sentFriendRequests = sentFriendRequests;
+          this.sendFriendRequestsLoaded = true;
+        }
+      );
+  }
+
+  ngOnDestroy(): void {
+    this.receivedFriendRequestsSubscription.unsubscribe();
+    this.sentFriendRequestsSubscription.unsubscribe();
   }
 }

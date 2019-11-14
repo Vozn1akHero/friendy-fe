@@ -1,11 +1,12 @@
 @import '../../../../../../assets/sass/base/variables';
 
 .found-users-search-list{
-  width: 80%;
+  width: 100%;
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  background: $color-bg-grey-footer;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: flex-start;
   margin: 0 auto;
   min-height: 150vh;
+  padding: 1rem 0;
 }

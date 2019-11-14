@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
-import { switchMap, catchError, map, tap, withLatestFrom } from 'rxjs/operators';
+import {switchMap, catchError, map, tap, withLatestFrom, filter, mergeMap} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -16,11 +16,18 @@ export class UserFriendsEffects {
   @Effect()
   getFriends = this.actions$.pipe(
     ofType(UserFriendsActions.GET_FRIENDS),
-    switchMap((getFriendsStart: UserFriendsActions.GetFriends) => {
-      return this.friendsService.getFriendsRange(getFriendsStart.payload.firstIndex,
-        getFriendsStart.payload.lastIndex)
+    withLatestFrom(this.store.select(e=>e.friendsPageUserFriends.loaded)),
+    filter(([{payload}, loaded]) => {
+      return !loaded
+    }),
+    mergeMap(([{payload}] : any) => {
+      return this.friendsService.getFriendsRange(payload.firstIndex,
+        payload.lastIndex)
         .pipe(
           map(res => {
+            if(Object.keys(res.body).length === 0){
+              return ({type: UserFriendsActions.SET_FRIENDS, payload: []})
+            }
             let friends : Friend[] = [];
             Array(res.body).map(friend => {
               friends.push(new Friend(friend[0].id,
@@ -28,7 +35,7 @@ export class UserFriendsEffects {
                 friend[0].surname,
                 friend[0].onlineStatus,
                 friend[0].dialogLink,
-                friend[0].avatar));
+                friend[0].avatarPath));
             });
             return ({type: UserFriendsActions.SET_FRIENDS, payload: friends})
           })
@@ -54,7 +61,7 @@ export class UserFriendsEffects {
     private http: HttpClient,
     private friendsService: FriendsService,
     private router: Router,
-    private store$: Store<fromApp.AppState>
+    private store: Store<fromApp.AppState>
   ) {}
 }
 

@@ -13,20 +13,15 @@ import {FriendsService} from './services/friends.service';
   styleUrls: ['./friends-page.component.scss']
 })
 export class FriendsPageComponent implements OnInit {
-  friends$: Observable<any[]>;
-  friendsLoading$: Observable<boolean>;
+
 
   constructor(private renderer: Renderer2,
               private friendsPageService: FriendsService,
               private activatedRoute: ActivatedRoute,
-              private store: Store<fromApp.AppState>) {
-    this.store.dispatch(new UserFriendsActions.GetFriends({firstIndex: 1, lastIndex: 9}));
-  }
+              private store: Store<fromApp.AppState>) {}
 
   ngOnInit() {
-    this.friendsLoading$ = this.store.select(state => state.friendsPageUserFriends.loading);
 
-    this.friends$ = this.store.select(state => state.friendsPageUserFriends.friends);
   }
 
   searchFriends(searchTerm) {

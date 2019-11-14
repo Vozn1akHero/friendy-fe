@@ -1,17 +1,17 @@
-export default class Friend {
+export default class FriendModel {
   id: number;
   name: string;
   surname: string;
   onlineStatus: boolean;
   dialogLink: string;
-  avatar: string;
+  avatarUrl: string;
 
-  constructor(id: number, name: string, surname: string, onlineStatus: boolean, dialogLink: string, avatar: string) {
+  constructor(id: number, name: string, surname: string, onlineStatus: boolean, dialogLink: string, avatarPath: string) {
     this.id = id;
     this.name = name;
     this.surname = surname;
     this.onlineStatus = onlineStatus;
     this.dialogLink = dialogLink;
-    this.avatar = "data:image/png;base64," + avatar;
+    this.avatarUrl = "http://localhost:5000" + avatarPath;
   }
 }

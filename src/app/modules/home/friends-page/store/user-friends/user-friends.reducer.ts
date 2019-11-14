@@ -5,10 +5,12 @@ import Friend from '../../models/friend.model';
 export interface State {
   friends: Friend[];
   loading: boolean;
+  loaded: boolean;
 }
 
 const initialState: State = {
   loading: false,
+  loaded: false,
   friends: []
 };
 
@@ -26,7 +28,7 @@ export function userFriendsReducer(
       return {
         ...state,
         friends: action.payload,
-        loading: false
+        loaded: true
       };
     case UserFriendsActions.SET_FILTERED_FRIENDS: {
       return {

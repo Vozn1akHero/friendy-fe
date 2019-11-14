@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import ReceivedFriendRequestModel from '../../../../../models/received-friend-request.model';
 
 @Component({
   selector: 'app-received-friend-request-item',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./received-friend-request-item.component.scss']
 })
 export class ReceivedFriendRequestItemComponent implements OnInit {
+  @Input() receivedFriendRequest: ReceivedFriendRequestModel[];
 
   constructor() { }
 

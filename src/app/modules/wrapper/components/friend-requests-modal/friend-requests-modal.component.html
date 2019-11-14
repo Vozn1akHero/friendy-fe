@@ -13,11 +13,12 @@
   </div>
 
   <div class="friend-requests-list-wrapper">
-    <app-sent-friend-request-list *ngIf="chosenSubpage === 'sent-requests'"
-                                  [sentEventSubpageChosen]="sentEventSubpageChosenSubject.asObservable()">
+    <app-sent-friend-request-list *ngIf="chosenSubpage === 'sent-requests' && sendFriendRequestsLoaded"
+                                  [sentFriendRequests]="sentFriendRequests">
     </app-sent-friend-request-list>
 
-    <app-received-friend-request-list *ngIf="chosenSubpage === 'received-requests'">
+    <app-received-friend-request-list *ngIf="chosenSubpage === 'received-requests' && receivedFriendRequestsLoaded"
+                                      [receivedFriendRequests]="receivedFriendRequests">
     </app-received-friend-request-list>
   </div>
 </div>

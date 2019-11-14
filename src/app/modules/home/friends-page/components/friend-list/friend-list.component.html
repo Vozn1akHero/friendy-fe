@@ -1,3 +1,18 @@
-<p>
-  friend-list works!
-</p>
+<div class="friends-list">
+  <ng-container *ngIf="(friendsLoaded$ | async); else friendListLoading">
+    <ng-container *ngIf="friendList.length > 0; else friendListEmptyMsg">
+      <app-friends-list-item *ngFor="let friend of friendList"
+                             [friendData]="friend"></app-friends-list-item>
+    </ng-container>
+    <ng-template #friendListEmptyMsg>
+      <span>
+        Lista znajomych jest pusta
+      </span>
+    </ng-template>
+  </ng-container>
+  <ng-template #friendListLoading>
+    <span>
+      loading
+    </span>
+  </ng-template>
+</div>

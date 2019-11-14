@@ -15,13 +15,14 @@ export class FriendRequestsService {
     return this.http.get(`api/friend/requests/sent`, {observe: 'response'})
       .pipe(map(response => {
         if(Object.keys(response.body).length === 0){
-          return null;
+          return [];
         }
         let sentFriendRequests: SentFriendRequestModel[] = [];
-        Array(response.body).map((value : SentFriendRequestModel) => {
+        Array(response.body).map((value : any) => {
           const sentFriendRequest = new SentFriendRequestModel(value.receiverId,
             value.name,
             value.surname,
+            value.avatarPath,
             value.requestId);
           sentFriendRequests.push(sentFriendRequest);
         });
@@ -33,13 +34,14 @@ export class FriendRequestsService {
     return this.http.get(`api/friend/requests/received`, {observe: 'response'})
       .pipe(map(response => {
         if(Object.keys(response.body).length === 0){
-          return null;
+          return [];
         }
         let receivedFriendRequests: ReceivedFriendRequestModel[] = [];
-        Array(response.body).map((value : ReceivedFriendRequestModel) => {
+        Array(response.body).map((value : any) => {
           const receivedFriendRequest = new ReceivedFriendRequestModel(value.authorId,
             value.name,
             value.surname,
+            value.avatarPath,
             value.requestId);
           receivedFriendRequests.push(receivedFriendRequest);
         });

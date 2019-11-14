@@ -11,21 +11,12 @@ import SentFriendRequestModel from '../../../../models/sent-friend-request.model
   styleUrls: ['./received-friend-request-list.component.scss']
 })
 export class ReceivedFriendRequestListComponent implements OnInit {
-  receivedFriendRequestsSubscription: Subscription;
-  receivedFriendRequests: ReceivedFriendRequestModel[] = null;
+  @Input() receivedFriendRequests: ReceivedFriendRequestModel[];
 
-  constructor(private friendRequestsService: FriendRequestsService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.getReceivedFriendRequests();
+
   }
 
-  getReceivedFriendRequests() {
-    this.receivedFriendRequestsSubscription = this.friendRequestsService
-      .getReceivedFriendRequests()
-      .subscribe((receivedFriendRequests: ReceivedFriendRequestModel[]) => {
-        console.log(receivedFriendRequests);
-        this.receivedFriendRequests = receivedFriendRequests;
-      })
-  }
 }

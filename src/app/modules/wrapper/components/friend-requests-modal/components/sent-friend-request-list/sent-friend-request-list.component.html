@@ -1,10 +1,9 @@
 <section class="sent-friend-request-list">
   <span class="list-is-empty-text"
-        *ngIf="sentFriendRequests == null; else friendRequestList">
+        *ngIf="sentFriendRequests.length === 0; else friendRequestList">
     Lista wysłanych prośb o dodanie do znajomych jest pusta
   </span>
   <ng-template #friendRequestList>
-    <app-sent-friend-request-item>
-    </app-sent-friend-request-item>
+    <app-friend-request-item *ngFor="let friendRequest of sentFriendRequests" [friendRequest]="friendRequest"></app-friend-request-item>
   </ng-template>
 </section>

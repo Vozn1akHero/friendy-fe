@@ -12,6 +12,8 @@ import {FriendRequestsService} from './services/friend-requests.service';
 import { SentFriendRequestListComponent } from './components/friend-requests-modal/components/sent-friend-request-list/sent-friend-request-list.component';
 import {SentFriendRequestItemComponent} from './components/friend-requests-modal/components/sent-friend-request-list/sent-friend-request-item/sent-friend-request-item.component';
 import {ProfileIdResolver} from './resolvers/profile-id.resolver';
+import {FriendRequestItemComponent} from './components/friend-requests-modal/components/friend-request-item/friend-request-item.component';
+
 
 @NgModule({
   imports: [
@@ -26,6 +28,7 @@ import {ProfileIdResolver} from './resolvers/profile-id.resolver';
     FriendRequestsModalComponent,
     ReceivedFriendRequestListComponent,
     ReceivedFriendRequestItemComponent,
+    FriendRequestItemComponent,
     SentFriendRequestListComponent,
     SentFriendRequestItemComponent
   ],
