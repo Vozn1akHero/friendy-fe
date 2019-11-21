@@ -14,29 +14,14 @@ import EventShortened from './models/event-shortened.model';
   styleUrls: ['./event-page.component.scss']
 })
 export class EventComponent implements OnInit, OnDestroy {
-  eventId : number;
-
-  eventDataSubscription: Subscription;
-  eventData: EventShortened;
+  isEventAdmin: boolean;
 
   constructor(private router : ActivatedRoute,
               private store: Store<fromApp.AppState>,
-              private openSettingsService: OpenSettingsService) {
-    console.log(this.router.params.pipe(map(p => p.id)));
-  }
+              private openSettingsService: OpenSettingsService) {}
 
   ngOnInit() {
-    /*this.eventId = this.router.snapshot.params['id'];
-    this.store.dispatch(new UserDataActions.GetEventData({ id : this.eventId }));
-    this.eventDataSubscription = this.store.select(e => e.eventPageEventData.events)
-      .subscribe(events => {
-      for(let event of events){
-        if(event.id === this.eventId){
-          this.eventData = event;
-        }
-      }
-    });
-    console.log(this.eventData);*/
+    this.isEventAdmin = this.router.snapshot.data.isEventAdmin;
   }
 
   ngOnDestroy(): void {

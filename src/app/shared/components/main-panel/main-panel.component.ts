@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-main-panel',
@@ -10,13 +11,16 @@ export class MainPanelComponent implements OnInit {
     title: null,
     icon: null,
     link: null,
-    additionalStyles: { width: '379px' },
+    queryParams: null,
     marginTop: false
   };
 
-  constructor() { }
+  @Input() panelStyles = {
+    width: '379px'
+  };
+
+  constructor(private router : Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
-
 }

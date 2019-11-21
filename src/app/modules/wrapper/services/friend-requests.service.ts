@@ -12,13 +12,13 @@ export class FriendRequestsService {
   constructor(private http: HttpClient){}
 
   getSentFriendRequests(){
-    return this.http.get(`api/friend/requests/sent`, {observe: 'response'})
-      .pipe(map(response => {
-        if(Object.keys(response.body).length === 0){
+    return this.http.get(`api/friend/requests/sent`, {observe: 'body'})
+      .pipe(map((response : any[]) => {
+        if(Object.keys(response).length === 0){
           return [];
         }
         let sentFriendRequests: SentFriendRequestModel[] = [];
-        Array(response.body).map((value : any) => {
+        response.map((value : any) => {
           const sentFriendRequest = new SentFriendRequestModel(value.receiverId,
             value.name,
             value.surname,
@@ -26,18 +26,19 @@ export class FriendRequestsService {
             value.requestId);
           sentFriendRequests.push(sentFriendRequest);
         });
+
         return sentFriendRequests;
       }))
   }
 
   getReceivedFriendRequests(){
-    return this.http.get(`api/friend/requests/received`, {observe: 'response'})
-      .pipe(map(response => {
-        if(Object.keys(response.body).length === 0){
+    return this.http.get(`api/friend/requests/received`, {observe: 'body'})
+      .pipe(map((response : any[]) => {
+        if(response.length === 0){
           return [];
         }
         let receivedFriendRequests: ReceivedFriendRequestModel[] = [];
-        Array(response.body).map((value : any) => {
+        response.map((value : any) => {
           const receivedFriendRequest = new ReceivedFriendRequestModel(value.authorId,
             value.name,
             value.surname,

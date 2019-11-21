@@ -11,7 +11,7 @@ import NewPost from '../../models/new-post.model';
   styleUrls: ['./profile-new-post.component.scss']
 })
 export class ProfileNewPostComponent implements OnInit {
-  @Output() newPostEvent : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+ // @Output() newPostEvent : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   @ViewChild('image') image;
   @ViewChild('newMessageContent') newMessageContent;
   @Input() isUserProfileOwner : boolean;

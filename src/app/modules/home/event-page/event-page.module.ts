@@ -18,6 +18,10 @@ import { EventParticipantsItemComponent } from './components/event-main-content/
 import { EventPhotosItemComponent } from './components/event-main-content/event-photos/event-photos-item/event-photos-item.component';
 import { EventHeaderBgAlterComponent } from './components/event-header/event-header-bg/event-header-bg-alter/event-header-bg-alter.component';
 import {EventPostListComponent} from './components/event-main-content/event-post-list/event-post-list.component';
+import {IsEventAdminResolver} from './resolvers/is-event-admin.resolver';
+import { EventModalsComponent } from './components/event-modals/event-modals.component';
+import { EventParticipantsPageComponent } from './submodules/event-participants-page/event-participants-page.component';
+import {EventParticipantItemComponent} from './submodules/event-participants-page/event-participant-item/event-participant-item.component';
 
 @NgModule({
   imports: [
@@ -41,8 +45,13 @@ import {EventPostListComponent} from './components/event-main-content/event-post
     EventPhotosItemComponent,
     EventHeaderBgAlterComponent,
     EventHeaderComponent,
-    EventPostListComponent
+    EventPostListComponent,
+    EventModalsComponent,
+    EventParticipantItemComponent,
+    EventParticipantsPageComponent
   ],
-  exports: []
+  providers: [
+    IsEventAdminResolver
+  ]
 })
 export class EventPageModule { }

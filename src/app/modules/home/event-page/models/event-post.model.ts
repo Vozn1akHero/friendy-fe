@@ -1,6 +1,6 @@
-export default class Post{
+export default class EventPost{
   id: number;
-  userId: number;
+  eventId: number;
   content: string;
   imagePath: string;
   likesCount: number = 0;
@@ -10,7 +10,7 @@ export default class Post{
   date: Date;
 
   constructor(id: number,
-              userId: number,
+              eventId: number,
               content: string,
               imagePath: string,
               likesCount: any,
@@ -19,7 +19,7 @@ export default class Post{
               isPostLikedByUser: boolean,
               date: Date) {
     this.id = id;
-    this.userId = userId;
+    this.eventId = eventId;
     this.content = content;
     this.imagePath = imagePath != null && `http://localhost:5000/${imagePath}`;
     this.likesCount = likesCount;

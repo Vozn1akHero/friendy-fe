@@ -39,8 +39,6 @@ export class EventHeaderComponent implements OnInit, OnDestroy {
     this.eventDataSubscription = this.store.select(state => state.eventPageEventData.events)
       .subscribe(events => {
         const found = events.find(e => e.id === this.eventId);
-        console.log(found);
-
         if(found == null){
           this.store.dispatch(new EventPageEventDataActions.GetEventData({id: this.eventId}));
         } else {
@@ -48,8 +46,6 @@ export class EventHeaderComponent implements OnInit, OnDestroy {
         }
       });
   }
-
-
 
   ngOnDestroy(): void {
     this.eventDataSubscription.unsubscribe();

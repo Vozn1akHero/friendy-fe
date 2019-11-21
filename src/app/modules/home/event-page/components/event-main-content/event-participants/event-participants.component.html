@@ -1,11 +1,12 @@
 <section class="event-participants">
   <app-main-panel
     [panelContent]="{
-  title: 'Uczestnicy',
-  icon: '../../../../assets/images/icon/symbol-defs.svg#icon-users1',
-  marginTop: true}">
-
-    <app-event-participants-item></app-event-participants-item>
-
+      title: 'Uczestnicy',
+      link: this.activatedRoute + '/participants',
+      icon: '../../../../assets/images/icon/symbol-defs.svg#icon-users1',
+      marginTop: true}" [panelStyles]="{ width: '17rem' }">
+    <ng-container *ngIf="eventParticipantsLoaded">
+      <app-event-participants-item *ngFor="let eventParticipant of eventParticipants" [eventParticipant]="eventParticipant"></app-event-participants-item>
+    </ng-container>
   </app-main-panel>
 </section>

@@ -91,7 +91,10 @@
   }
 
   .unlike-post-btn{
-    transition: .5s;
+
+    svg{
+      transition: all .255s;
+    }
     &:hover{
       svg {
         fill: $color-grey-light-2;
@@ -100,7 +103,10 @@
   }
 
   .like-user-post-btn{
-    transition: .5s;
+
+    svg{
+      transition: all .255s;
+    }
     &:hover{
       svg {
         transform: scale(1.1);

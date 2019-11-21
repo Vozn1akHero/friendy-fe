@@ -10,6 +10,8 @@
     width: 9rem;
     height: 9rem;
     z-index: 1;
+    top: 54px;
+    left: 37px;
 
     input[type=file] {
       position: absolute;
@@ -48,13 +50,13 @@
   }
 
   .img-wrapper{
-      display: flex;
-      justify-content: center;
       width: 9rem;
       height: 9rem;
       float: left;
       border-radius: 50%;
       overflow: hidden;
+      border: solid 0.3rem #fff;
+      box-sizing: content-box;
 
       img{
         height: 100%;

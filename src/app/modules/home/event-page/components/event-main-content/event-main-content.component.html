@@ -1,12 +1,13 @@
 <div class="event-main-content">
   <section class="left-wrapper">
-    <!--<app-event-header-eventinfo [activeSettings]="activeSettings"></app-event-header-eventinfo>-->
-    <app-event-participants></app-event-participants>
+    <app-event-participants [isEventAdmin]="isEventAdmin"></app-event-participants>
     <app-event-photos></app-event-photos>
   </section>
 
   <section class="right-wrapper">
-    <app-event-new-post></app-event-new-post>
-    <app-event-post-list></app-event-post-list>
+    <ng-container *ngIf="isEventAdmin">
+      <app-event-new-post></app-event-new-post>
+    </ng-container>
+    <app-event-post-list [isEventAdmin]="isEventAdmin"></app-event-post-list>
   </section>
 </div>

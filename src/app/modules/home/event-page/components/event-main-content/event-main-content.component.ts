@@ -7,10 +7,12 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class EventMainContentComponent implements OnInit {
   @Input() activeSettings;
+  @Input() isEventAdmin: boolean;
 
   constructor() { }
 
   ngOnInit() {
   }
+
 
 }

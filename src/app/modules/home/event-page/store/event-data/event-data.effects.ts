@@ -13,18 +13,15 @@ import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {EventDataService} from '../../services/event-data.service';
 
 
-
 @Injectable()
 export class EventDataEffects {
   @Effect()
   getEventData = this.actions$.pipe(
     ofType(EventDataActions.GET_EVENT_DATA),
     switchMap((actionData: EventDataActions.GetEventData) => {
-      console.log(actionData.payload.id)
       return this.eventDataService.getEventData(actionData.payload.id)
         .pipe(
           map(res => {
-            console.log(res);
             return ({ type: EventDataActions.SET_EVENT_DATA, payload: res })
           }
       ))

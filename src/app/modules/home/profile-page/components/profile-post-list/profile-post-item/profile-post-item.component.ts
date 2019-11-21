@@ -46,7 +46,7 @@ export class ProfilePostItemComponent implements OnInit {
   }
 
   onRemovePost(){
-    this.store.dispatch(new UserPostsActions.RemovePost({ id: this.post.id }))
+    this.store.dispatch(new UserPostsActions.RemovePost({ id: this.post.postId }))
   }
 
   onLikePost(){

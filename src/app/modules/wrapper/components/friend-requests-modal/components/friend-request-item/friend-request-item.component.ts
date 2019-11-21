@@ -18,9 +18,13 @@ export class FriendRequestItemComponent implements OnInit {
     return this.friendRequest instanceof ReceivedFriendRequestModel;
   }
 
+  onRemoveFriendRequestBtnClick(){
+  }
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.friendRequest)
   }
 
 }

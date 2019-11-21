@@ -160,7 +160,7 @@
         text-decoration: none;
 
         &:not(:last-child) {
-          margin-right: 1.5rem;
+          margin-right: 1rem;
         }
 
         span {
@@ -176,6 +176,5 @@
         fill: $color-grey-light-2;
       }
     }
-
   }
 }

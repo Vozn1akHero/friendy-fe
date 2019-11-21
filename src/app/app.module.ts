@@ -8,37 +8,12 @@ import { AppComponent } from './app.component';
 import { MainpageComponent } from './modules/mainpage/mainpage.component';
 import { LoginPageComponent } from './modules/auth/login-page/login-page.component';
 import { JoinupPageComponent } from './modules/auth/joinup-page/joinup-page.component';
-
-
-import { GroupsPageComponent } from './modules/home/groups-page/groups-page.component';
 import { HomePageComponent } from './modules/home/home-page/home-page.component';
-
-
-import { GroupCreationComponent } from './modules/home/groups-page/group-creation/group-creation.component';
-import { GroupsListComponent } from './modules/home/groups-page/groups-list/groups-list.component';
-import { NewGroupBtnComponent } from './modules/home/groups-page/new-group-btn/new-group-btn.component';
-import { SearchGroupsComponent } from './modules/home/groups-page/search-groups/search-groups.component';
-
-
 import { UserSettingsPageComponent } from './modules/home/user-settings-page/user-settings-page.component';
-import { GroupsAllComponent } from './modules/home/groups-page/groups-list/groups-all/groups-all.component';
-import { GroupsListControlsComponent } from './modules/home/groups-page/groups-list/groups-list-controls/groups-list-controls.component';
-import { GroupsMineSearchComponent } from './modules/home/groups-page/groups-list/groups-mine-search/groups-mine-search.component';
-import { GroupsAllItemComponent } from './modules/home/groups-page/groups-list/groups-all/groups-all-item/groups-all-item.component';
-import { SearchGroupsControlComponent } from './modules/home/groups-page/search-groups/search-groups-control/search-groups-control.component';
-import { SuggestedGroupsComponent } from './modules/home/groups-page/search-groups/suggested-groups/suggested-groups.component';
-import { SuggestedGroupsItemComponent } from './modules/home/groups-page/search-groups/suggested-groups/suggested-groups-item/suggested-groups-item.component';
-
-
 import { HomeRecordItemComponent } from './modules/home/home-page/home-record-item/home-record-item.component';
 import { HomeUpcomingEventsComponent } from './modules/home/home-page/home-upcoming-events/home-upcoming-events.component';
 import { HomeStatsComponent } from './modules/home/home-page/home-stats/home-stats.component';
 import { HomeUpcomingEventsItemComponent } from './modules/home/home-page/home-upcoming-events/home-upcoming-events-item/home-upcoming-events-item.component';
-
-
-
-
-
 
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -80,21 +55,12 @@ import {LoggedInResolver} from './logged-in.resolver';
     MainpageComponent,
     LoginPageComponent,
     JoinupPageComponent,
-    GroupsPageComponent,
+
     HomePageComponent,
     RegistrationSuccessPopUpComponent,
-    GroupCreationComponent,
-    GroupsListComponent,
-    NewGroupBtnComponent,
-    SearchGroupsComponent,
+
     UserSettingsPageComponent,
-    GroupsAllComponent,
-    GroupsListControlsComponent,
-    GroupsMineSearchComponent,
-    GroupsAllItemComponent,
-    SearchGroupsControlComponent,
-    SuggestedGroupsComponent,
-    SuggestedGroupsItemComponent,
+
     HomeRecordItemComponent,
     HomeUpcomingEventsComponent,
     HomeStatsComponent,

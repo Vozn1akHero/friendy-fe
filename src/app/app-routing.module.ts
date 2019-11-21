@@ -6,7 +6,6 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
 import { AuthGuard } from './auth.guard';
 import { EventsPageComponent } from './modules/home/events-page/events-page.component';
 import { FriendsPageComponent } from './modules/home/friends-page/friends-page.component';
-import { GroupsPageComponent } from './modules/home/groups-page/groups-page.component';
 import { HomePageComponent } from './modules/home/home-page/home-page.component';
 import { MessagesPageComponent } from './modules/home/messages-page/messages-page.component';
 import { CommentsComponent } from './shared/components/comments/comments.component';
@@ -25,6 +24,8 @@ import {WrapperComponent} from './modules/wrapper/wrapper.component';
 import {ProfileBelongingResolver} from './modules/home/profile-page/resolvers/profile-belonging.resolver';
 import {ProfileIdResolver} from './modules/wrapper/resolvers/profile-id.resolver';
 import {EventSettingsPageComponent} from './modules/home/event-page/submodules/event-settings-page/event-settings-page.component';
+import {IsEventAdminResolver} from './modules/home/event-page/resolvers/is-event-admin.resolver';
+import {EventParticipantsPageComponent} from './modules/home/event-page/submodules/event-participants-page/event-participants-page.component';
 
 const routes: Routes = [
   {path: '',
@@ -64,18 +65,25 @@ const routes: Routes = [
       {path: 'events', component: EventsPageComponent},
 
       {path: 'event/:id',
-        component: EventComponent
+        component: EventComponent,
+        resolve: {
+          isEventAdmin: IsEventAdminResolver
+        }
       },
 
       { path: 'event/:id/settings',
+        resolve: {
+          isEventAdmin: IsEventAdminResolver
+        },
         component: EventSettingsPageComponent },
+
+      { path: 'event/:id/participants',
+        component: EventParticipantsPageComponent },
 
       {path: 'friends', component: FriendsPageComponent},
 
       {path: 'friends-search', component: FriendsSearchPageComponent,
         resolve: { startingUserList: ExemplaryUsersResolver }},
-
-      {path: 'groups', component: GroupsPageComponent},
 
       {path: 'home', component: HomePageComponent},
 

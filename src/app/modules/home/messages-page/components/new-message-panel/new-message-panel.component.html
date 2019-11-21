@@ -12,6 +12,6 @@
                 formControlName="messageContent"
                 placeholder="Napisz wiadomość"></textarea>
   
-      <button type="submit">Wyślij</button>
+      <button [disabled]="newMessage.valid" type="submit">Wyślij</button>
   </form>
 </div>

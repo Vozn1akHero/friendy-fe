@@ -1,3 +1,22 @@
-<app-new-message-form [styles]="{newMessageWidth: '560px',
-    newMessageFormTextAreaWidth : '38em',
-    newMessageFormFileBtnWrapperInputTop: '4px'}"></app-new-message-form>
+<div class="new-post">
+  <form (submit)="onSubmit($event)">
+    <textarea placeholder="Napisz wiadomość"
+              #newMessageContent
+              [minLength]="1"></textarea>
+    <div>
+      <div class="file-btn-wrapper">
+        <svg>
+          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
+        </svg>
+
+        <input type="file"
+               name="filename"
+               #image
+               accept="image/jpeg, image/png"
+               style="opacity: 0;">
+      </div>
+
+      <button type="submit">Wyślij</button>
+    </div>
+  </form>
+</div>

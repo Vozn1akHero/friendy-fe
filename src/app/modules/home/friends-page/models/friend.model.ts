@@ -12,6 +12,6 @@ export default class FriendModel {
     this.surname = surname;
     this.onlineStatus = onlineStatus;
     this.dialogLink = dialogLink;
-    this.avatarUrl = "http://localhost:5000" + avatarPath;
+    this.avatarUrl = "http://localhost:5000/" + avatarPath;
   }
 }

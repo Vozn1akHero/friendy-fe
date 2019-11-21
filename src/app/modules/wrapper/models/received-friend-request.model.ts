@@ -9,7 +9,7 @@ export default class ReceivedFriendRequestModel{
     this.authorId = authorId;
     this.name = name;
     this.surname = surname;
-    this.avatarUrl = avatarPath;
+    this.avatarUrl = "http://localhost:5000/" + avatarPath;
     this.requestId = requestId;
   }
 }

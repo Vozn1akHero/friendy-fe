@@ -7,17 +7,34 @@
     </a>
   </div>
 
-  <div class="info">
-    <a [routerLink]="['/app/profile/', checkIfInstanceOfReceivedRequest() ? friendRequest.authorId : friendRequest.receiverId]"
-       class="name">{{ friendRequest.name }} {{ friendRequest.surname }}
-    </a>
+  <div class="right-wrapper">
+    <div class="info">
+      <a [routerLink]="['/app/profile/', checkIfInstanceOfReceivedRequest() ? friendRequest.authorId : friendRequest.receiverId]"
+         class="name">{{ friendRequest.name }} {{ friendRequest.surname }}
+      </a>
 
-    <div class="online-status">
-      <ng-container>
-        <span class="user-is-online-text"> online</span>
-      </ng-container>
+      <div class="online-status">
+        <ng-container>
+          <span class="user-is-online-text">online</span>
+        </ng-container>
+      </div>
+
+      <hr class="line">
     </div>
 
-    <hr>
+    <div class="controls-wrapper">
+      <ng-container *ngIf="checkIfInstanceOfSentRequest(); else acceptFriendBtnWrapper">
+        <button (click)="onRemoveFriendRequestBtnClick()"
+                class="btn remove-request-btn">
+          Anuluj wniosek
+        </button>
+      </ng-container>
+      <ng-template #acceptFriendBtnWrapper>
+        <button class="btn accept-friend-btn">
+          Dodaj do znajomych
+        </button>
+      </ng-template>
+    </div>
   </div>
 </div>
+

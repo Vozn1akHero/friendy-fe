@@ -1,5 +1,5 @@
-<a href="#" class="item">
+<a [routerLink]="['/app/profile/', eventParticipant.id]" class="item">
   <figure class="avatar">
-    <img src="../../../assets/images/test/adult-background-beard-941693.jpg" alt="">
+    <img src="{{ eventParticipant.avatarUrl }}" alt="">
   </figure>
 </a>
