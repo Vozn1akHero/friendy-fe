@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-event-photos',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event-photos.component.scss']
 })
 export class EventPhotosComponent implements OnInit {
+  activatedRoute: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    this.activatedRoute = this.router.url;
   }
-
 }

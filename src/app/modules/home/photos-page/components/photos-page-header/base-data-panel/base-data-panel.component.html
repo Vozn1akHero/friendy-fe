@@ -1,0 +1,13 @@
+<div class="base-data-panel">
+  <div class="upper-wrapper">
+    <ng-container *ngIf="(baseData|async) != null">
+      <button class="back-btn" (click)="onBackBtnClick()">
+        <span class="back-arrow">&#8249;</span>
+        <img class="base-avatar" src="{{ (baseData|async).avatarUrl }}" alt="">
+        <span class="base-title">
+          {{ (baseData|async).title }}
+        </span>
+      </button>
+    </ng-container>
+  </div>
+</div>

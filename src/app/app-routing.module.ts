@@ -26,6 +26,7 @@ import {ProfileIdResolver} from './modules/wrapper/resolvers/profile-id.resolver
 import {EventSettingsPageComponent} from './modules/home/event-page/submodules/event-settings-page/event-settings-page.component';
 import {IsEventAdminResolver} from './modules/home/event-page/resolvers/is-event-admin.resolver';
 import {EventParticipantsPageComponent} from './modules/home/event-page/submodules/event-participants-page/event-participants-page.component';
+import {PhotosPageComponent} from './modules/home/photos-page/photos-page.component';
 
 const routes: Routes = [
   {path: '',
@@ -58,6 +59,7 @@ const routes: Routes = [
           {path: 'comments', component: CommentsComponent }
       ]},
 
+      { path: 'profile/:id/photos', component: PhotosPageComponent },
 /*      {path: 'profile/:id', component: CommonProfilePageComponent, children: [
           {path: 'comments', component: CommentsComponent }
       ]},*/
@@ -79,6 +81,11 @@ const routes: Routes = [
 
       { path: 'event/:id/participants',
         component: EventParticipantsPageComponent },
+
+      {
+        path: 'event/:id/photos',
+        component: PhotosPageComponent
+      },
 
       {path: 'friends', component: FriendsPageComponent},
 

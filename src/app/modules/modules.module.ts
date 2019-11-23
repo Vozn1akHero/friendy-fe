@@ -14,6 +14,11 @@ import {DialogPageModule} from './home/dialog-page/dialog-page.module';
 import {FriendsSearchPageModule} from './home/friends-search-page/friends-search-page.module';
 import {WrapperModule} from './wrapper/wrapper.module';
 import {EventSettingsPageModule} from './home/event-page/submodules/event-settings-page/event-settings-page.module';
+import { PhotosComponent } from './home/photos-page/components/photos/photos.component';
+import { PhotosItemComponent } from './home/photos-page/components/photos/photos-item/photos-item.component';
+import { PhotosPageHeaderComponent } from './home/photos-page/components/photos-page-header/photos-page-header.component';
+import { NewPhotoFormComponent } from './home/photos-page/components/photos-page-header/new-photo-form/new-photo-form.component';
+import { BaseDataPanelComponent } from './home/photos-page/components/photos-page-header/base-data-panel/base-data-panel.component';
 
 
 @NgModule({
@@ -33,7 +38,12 @@ import {EventSettingsPageModule} from './home/event-page/submodules/event-settin
   ],
   declarations: [
     NotFoundPageComponent,
-    PhotosPageComponent
+    PhotosPageComponent,
+    PhotosComponent,
+    PhotosItemComponent,
+    PhotosPageHeaderComponent,
+    NewPhotoFormComponent,
+    BaseDataPanelComponent
   ],
   exports: [
 

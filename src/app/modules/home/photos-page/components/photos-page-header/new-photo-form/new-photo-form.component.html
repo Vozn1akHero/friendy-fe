@@ -1,0 +1,17 @@
+<div class="new-photo-form">
+  <div class="text-wrapper">
+    <svg>
+      <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
+    </svg>
+    <span>
+        Dodaj nowe zdjęcie
+      </span>
+  </div>
+
+  <input type="file"
+         name="filename"
+         #image
+         (change)="onImageChoosing()"
+         accept="image/jpeg, image/png"
+         style="opacity: 0;">
+</div>
