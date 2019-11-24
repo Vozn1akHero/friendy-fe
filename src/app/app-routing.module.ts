@@ -23,9 +23,9 @@ import {ExemplaryUsersResolver} from './modules/home/friends-search-page/resolve
 import {WrapperComponent} from './modules/wrapper/wrapper.component';
 import {ProfileBelongingResolver} from './modules/home/profile-page/resolvers/profile-belonging.resolver';
 import {ProfileIdResolver} from './modules/wrapper/resolvers/profile-id.resolver';
-import {EventSettingsPageComponent} from './modules/home/event-page/submodules/event-settings-page/event-settings-page.component';
+import {EventSettingsPageComponent} from './modules/home/event-settings-page/event-settings-page.component';
 import {IsEventAdminResolver} from './modules/home/event-page/resolvers/is-event-admin.resolver';
-import {EventParticipantsPageComponent} from './modules/home/event-page/submodules/event-participants-page/event-participants-page.component';
+import {EventParticipantsPageComponent} from './modules/home/event-participants-page/event-participants-page.component';
 import {PhotosPageComponent} from './modules/home/photos-page/photos-page.component';
 
 const routes: Routes = [
@@ -103,9 +103,9 @@ const routes: Routes = [
       {path: 'settings', component: UserSettingsPageComponent}
   ]},
 
-  {path: '404', component: NotFoundPageComponent},
+ /* {path: '404', component: NotFoundPageComponent},
 
-  {path: '**', redirectTo: '/404'}
+  {path: '**', redirectTo: '/404'}*/
 ];
 
 @NgModule({

@@ -1,20 +1,38 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
-import EventShortened from '../models/event-shortened.model';
-import * as EventDataActions from '../store/event-data/event-data.actions';
+import {BehaviorSubject, Observable} from 'rxjs';
 import EventAvatar from '../models/event-avatar.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventAvatarService {
-  constructor(private http: HttpClient) {
+  private _eventAvatar = new BehaviorSubject(null);
+
+  private set eventAvatar(value : EventAvatar){
+    this._eventAvatar.next(value);
   }
 
-  getEventData(id : number){
-    return this.http.get(`api/event/avatar/${id}`, {
-      observe: 'response'
-    })
+  private get eventAvatar() : EventAvatar{
+    return this._eventAvatar.value;
+  }
+
+  public get eventAvatar$() : Observable<EventAvatar>{
+    return this._eventAvatar.asObservable();
+  }
+
+  constructor(private http: HttpClient) {}
+
+  get(eventId:number){
+    this.http.get(`api/event/${eventId}/avatar`, { responseType: 'text'})
+      .subscribe((res) => {
+        this.eventAvatar = new EventAvatar(res);
+      })
+  }
+
+  update(eventId: number, newAvatar: File) {
+    const content = new FormData();
+    content.append("newAvatar", newAvatar);
+    return this.http.put(`/api/event/${eventId}/avatar`, content, {responseType: 'text'});
   }
 }

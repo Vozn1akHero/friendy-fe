@@ -1,12 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {map} from 'rxjs/operators';
 import {OpenSettingsService} from './services/opensettings.service';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../core/ngrx/store/app.reducer';
-import * as UserDataActions from './store/event-data/event-data.actions';
 import {Subscription} from 'rxjs';
-import EventShortened from './models/event-shortened.model';
 
 @Component({
   selector: 'app-event',
@@ -15,6 +12,8 @@ import EventShortened from './models/event-shortened.model';
 })
 export class EventComponent implements OnInit, OnDestroy {
   isEventAdmin: boolean;
+  activeSettings: boolean = false;
+  activeSettingsSubscription: Subscription;
 
   constructor(private router : ActivatedRoute,
               private store: Store<fromApp.AppState>,
@@ -22,9 +21,12 @@ export class EventComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isEventAdmin = this.router.snapshot.data.isEventAdmin;
+    this.activeSettingsSubscription = this.openSettingsService.openedSettingsValueChanged$.subscribe(value => {
+      this.activeSettings = value;
+    })
   }
 
   ngOnDestroy(): void {
-    this.openSettingsService.openedSettingsValueChanged.unsubscribe();
+    this.activeSettingsSubscription.unsubscribe();
   }
 }

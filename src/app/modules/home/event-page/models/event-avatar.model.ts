@@ -1,7 +1,7 @@
 export default class EventAvatar {
-  avatarPath: string;
+  avatarUrl: string;
 
   constructor(avatarPath: string){
-    this.avatarPath = "http://localhost:5000/" + avatarPath;
+    this.avatarUrl = "http://localhost:5000/" + avatarPath;
   }
 }

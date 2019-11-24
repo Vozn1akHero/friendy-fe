@@ -1,17 +1,11 @@
 <div class="avatar">
-  <div *ngIf="activeSettings" class="event-avatar-alter">
-    <input accept="image/jpeg, image/png" name="filename" type="file">
-    <button class="event-avatar-alter-btn">
-      <svg>
-        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
-      </svg>
-      <span>
-        Zmień zdjęcie
-    </span>
-    </button>
-  </div>
+  <ng-container *ngIf="activeSettings">
+    <app-event-avatar-alter [eventId]="eventId"></app-event-avatar-alter>
+  </ng-container>
 
-  <figure class="img-wrapper">
-    <img src="{{ avatarUrl }}" alt="#">
-  </figure>
+  <ng-container *ngIf="(avatar | async)">
+    <figure class="img-wrapper">
+      <img src="{{ (avatar | async).avatarUrl }}" alt="">
+    </figure>
+  </ng-container>
 </div>

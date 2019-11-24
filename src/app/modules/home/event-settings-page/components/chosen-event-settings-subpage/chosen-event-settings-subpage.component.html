@@ -1,0 +1,7 @@
+<section class="chosen-event-settings-subpage">
+  <ng-container [ngSwitch]="chosenSubpage">
+    <app-basic-event-settings *ngSwitchCase="1"></app-basic-event-settings>
+    <app-event-participants-settings *ngSwitchCase="2"></app-event-participants-settings>
+    <app-event-admins-settings *ngSwitchCase="3"></app-event-admins-settings>
+  </ng-container>
+</section>

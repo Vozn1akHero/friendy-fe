@@ -6,7 +6,6 @@ export default class EventShortened {
   city: string;
   participantsAmount: number;
   date: Date;
-  avatarUrl: string;
 
   constructor(id: number,
               title: string,
@@ -14,8 +13,7 @@ export default class EventShortened {
               streetNumber: string,
               city: string,
               participantsAmount: number,
-              date: Date,
-              avatarPath: string) {
+              date: Date) {
     this.id = id;
     this.title = title;
     this.street = street;
@@ -23,6 +21,5 @@ export default class EventShortened {
     this.city = city;
     this.participantsAmount = participantsAmount;
     this.date = date;
-    this.avatarUrl = "http://localhost:5000/" + avatarPath;
   }
 }

@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import EventPost from '../../../../models/event-post.model';
 import * as moment from 'moment';
 import {EventPostService} from '../../../../services/event-post.service';
+import {EventAvatarService} from '../../../../services/event-avatar.service';
+import EventAvatar from '../../../../models/event-avatar.model';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-event-post-item',
@@ -11,8 +14,8 @@ import {EventPostService} from '../../../../services/event-post.service';
 export class EventPostItemComponent implements OnInit {
   @Input() post : EventPost;
   timePassed : string;
-  @Input() eventAvatarUrl: string;
   @Input() isEventAdmin: boolean;
+  @Input() eventAvatar$: Observable<EventAvatar>;
 
   constructor(private eventPostService : EventPostService) { }
 

@@ -7,9 +7,11 @@
 
   <div class="upper-wrapper">
     <div class="avatar-wrapper">
-      <figure class="avatar">
-        <img src="{{ eventAvatarUrl }}" alt="user's avatar">
-      </figure>
+      <ng-container *ngIf="(eventAvatar$|async)">
+        <figure class="avatar">
+          <img src="{{ (eventAvatar$|async).avatarUrl }}" alt="user's avatar">
+        </figure>
+      </ng-container>
     </div>
     <div class="content-wrapper">
       <p class="text-content">

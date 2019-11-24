@@ -15,12 +15,11 @@ import EventAvatar from '../../models/event-avatar.model';
 })
 export class EventHeaderComponent implements OnInit, OnDestroy {
   @Input() activeSettings;
+  @Input() isEventAdmin: boolean;
 
   eventDataLoading$: Observable<boolean>;
   eventData: EventShortened = null;
   eventDataSubscription: Subscription;
-
-  //componentLoading: boolean = true;
 
   eventId: number;
 

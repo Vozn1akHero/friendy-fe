@@ -1,0 +1,8 @@
+<div class="event-participants-page">
+  <ng-container *ngIf="(participantsLoaded$ | async)">
+    <ng-container>
+      <app-event-participant-modal-item *ngFor="let participant of (participants$ | async)"
+                                        [participantData]="participant"></app-event-participant-modal-item>
+    </ng-container>
+  </ng-container>
+</div>

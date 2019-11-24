@@ -1,9 +1,7 @@
 <div @anim class="joinup-page">
   <registration-success-pop-up
-    *ngIf="this.onRegistrationSuccessPopupVisibility"
-    (closeEventCreationPopup)="this.onRegistrationSuccessPopupVisibility = false;"
-  >
-  </registration-success-pop-up>
+    *ngIf="onRegistrationSuccessPopupVisibility"
+    (closeEventCreationPopup)="onRegistrationSuccessPopupVisibility = false;"></registration-success-pop-up>
 
   <a routerLink="/" class="logo">
     <img src="../../../../assets/images/logo-white.png" alt="Friendy logo" draggable="none">

@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {EventParticipantService} from '../../../services/event-participant.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import EventExemplaryParticipant from '../../../models/event-exemplary-participant.model';
@@ -9,31 +9,35 @@ import EventExemplaryParticipant from '../../../models/event-exemplary-participa
   templateUrl: './event-participants.component.html',
   styleUrls: ['./event-participants.component.scss']
 })
-export class EventParticipantsComponent implements OnInit, OnDestroy {
+export class EventParticipantsComponent implements OnInit {
   @Input() isEventAdmin: boolean;
-  eventParticipantsSubscription: Subscription;
-  eventParticipantsLoaded: boolean = false;
-  eventParticipants: EventExemplaryParticipant[];
+  eventExemplaryParticipantsLoaded$: Observable<boolean>;
+  eventExemplaryParticipants$: Observable<EventExemplaryParticipant[]>;
   activatedRoute: string;
+  eventId: number;
 
   constructor(private route : ActivatedRoute,
               private router: Router,
               private eventParticipantService : EventParticipantService) { }
 
   ngOnInit() {
+    this.eventId = this.route.snapshot.params.id;
     this.activatedRoute = this.router.url;
-    this.getParticipants();
+
+    this.setExemplaryParticipantsLoaded();
+    this.getExemplaryParticipants();
+    this.setExemplaryParticipants();
   }
 
-  getParticipants(){
-    this.eventParticipantsSubscription = this.eventParticipantService.getExemplary(this.route.snapshot.params.id)
-      .subscribe(value => {
-        this.eventParticipants = value;
-        this.eventParticipantsLoaded = true;
-    })
+  getExemplaryParticipants(){
+    this.eventParticipantService.getExemplary(this.eventId);
   }
 
-  ngOnDestroy(): void {
-    this.eventParticipantsSubscription.unsubscribe();
+  setExemplaryParticipants(){
+    this.eventExemplaryParticipants$ = this.eventParticipantService.eventExemplaryParticipants$;
+  }
+
+  setExemplaryParticipantsLoaded(){
+    this.eventExemplaryParticipantsLoaded$ = this.eventParticipantService.eventExemplaryParticipantsLoaded$;
   }
 }

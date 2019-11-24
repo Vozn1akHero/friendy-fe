@@ -1,0 +1,15 @@
+.event-settings-nav{
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid;
+  height: 100vh;
+
+  .link-btn{
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid;
+    height: 4rem;
+  }
+}

@@ -5,8 +5,18 @@
       link: this.activatedRoute + '/participants',
       icon: '../../../../assets/images/icon/symbol-defs.svg#icon-users1',
       marginTop: true}" [panelStyles]="{ width: '17rem' }">
-    <ng-container *ngIf="eventParticipantsLoaded">
-      <app-event-participants-item *ngFor="let eventParticipant of eventParticipants" [eventParticipant]="eventParticipant"></app-event-participants-item>
+
+    <ng-container *ngIf="(eventExemplaryParticipantsLoaded$ | async)">
+      <ng-container *ngIf="(eventExemplaryParticipants$ | async).length > 0; else noParticipants;">
+        <app-event-participants-item *ngFor="let eventParticipant of (eventExemplaryParticipants$ | async)"
+                                     [eventParticipant]="eventParticipant"></app-event-participants-item>
+      </ng-container>
+      <ng-template #noParticipants>
+          <span class="panel-empty-warning">
+            Lista zdjęć jest pusta
+          </span>
+      </ng-template>
     </ng-container>
+
   </app-main-panel>
 </section>

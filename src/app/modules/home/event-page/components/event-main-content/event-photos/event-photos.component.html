@@ -3,10 +3,19 @@
     [panelContent]="{
     title: 'Zdjęcia',
     icon: '../../../../assets/images/icon/symbol-defs.svg#icon-images',
-    link: this.activatedRoute + '/photos',
-    marginTop: true}" [panelStyles]="{ width: '17rem' }">
-    <app-event-photos-item [photoContent]="{
-      href: '#',
-      src: '../../../assets/images/test/adult-background-beard-941693.jpg'}"></app-event-photos-item>
+    link: activatedRoute + '/photos',
+    marginTop: true}" [panelStyles]="{ width: '17rem' }" [contentSecStyles]="{ 'flex-direction': 'row !important' }">
+    <div [ngStyle]="{ display: 'flex', flexDirection: 'row' }">
+      <ng-container *ngIf="(photosLoaded$ | async)">
+        <ng-container *ngIf="(photos$|async).length > 0; else noPhotos">
+          <app-event-photos-item *ngFor="let photo of (photos$|async)" [photo]="photo"></app-event-photos-item>
+        </ng-container>
+        <ng-template #noPhotos>
+          <span class="panel-empty-warning">
+            Lista zdjęć jest pusta
+          </span>
+        </ng-template>
+      </ng-container>
+    </div>
   </app-main-panel>
 </section>

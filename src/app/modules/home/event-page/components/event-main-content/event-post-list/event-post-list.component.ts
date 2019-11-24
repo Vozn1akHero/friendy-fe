@@ -1,10 +1,12 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {EventPostService} from '../../../services/event-post.service';
 import EventPost from '../../../models/event-post.model';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../../core/ngrx/store/app.reducer';
+import EventAvatar from '../../../models/event-avatar.model';
+import {EventAvatarService} from '../../../services/event-avatar.service';
 
 @Component({
   selector: 'app-event-post-list',
@@ -15,22 +17,16 @@ export class EventPostListComponent implements OnInit, OnDestroy {
   posts: EventPost[];
   postsSubscription: Subscription;
   eventId:number;
-  eventAvatarUrl: string;
-  eventAvatarSubscription: Subscription;
+  eventAvatar$: Observable<EventAvatar>;
   @Input() isEventAdmin: boolean;
 
   constructor(private eventPostService : EventPostService,
+              private eventAvatarService : EventAvatarService,
               private store: Store<fromApp.AppState>,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.eventAvatarSubscription = this.store.select(state => state.eventPageEventData.events).subscribe(data => {
-      data.map(event => {
-        if(event.id === this.eventId){
-          this.eventAvatarUrl = event.avatarUrl;
-        }
-      })
-    });
+    this.eventAvatar$ = this.eventAvatarService.eventAvatar$;
     this.eventId = +this.route.snapshot.paramMap.get("id");
     this.getPosts();
   }

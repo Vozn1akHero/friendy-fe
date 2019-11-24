@@ -1,12 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-main-panel',
   templateUrl: './main-panel.component.html',
   styleUrls: ['./main-panel.component.scss']
 })
-export class MainPanelComponent implements OnInit {
+export class MainPanelComponent {
   @Input() panelContent = {
     title: null,
     icon: null,
@@ -19,8 +18,5 @@ export class MainPanelComponent implements OnInit {
     width: '379px'
   };
 
-  constructor(private router : Router, private route: ActivatedRoute) { }
-
-  ngOnInit() {
-  }
+  @Input() contentSecStyles : {[p:string]: string};
 }

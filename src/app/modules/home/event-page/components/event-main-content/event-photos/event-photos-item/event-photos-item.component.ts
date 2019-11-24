@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import EventPhoto from '../../../../models/event-photo.model';
+import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-event-photos-item',
@@ -6,13 +8,12 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./event-photos-item.component.scss']
 })
 export class EventPhotosItemComponent implements OnInit {
-  @Input() photoContent = {
-    href: String, src : String
-  };
+  @Input() photo : EventPhoto;
+  photoUrl: SafeStyle;
 
-  constructor() { }
+  constructor(private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    this.photoUrl = this._sanitizer.bypassSecurityTrustStyle(`url(${this.photo.photoUrl})`);
   }
-
 }

@@ -55,13 +55,11 @@ export class EventInfoPanelComponent implements OnInit {
   }
 
   openBasicEventSettings(){
-    this.activeSettings = true;
-    this.openSettingsService.openedSettingsValueChanged.next(this.activeSettings);
+    this.openSettingsService.openedSettingsValueChanged = true;
   }
 
   closeBasicEventSettings(){
-      this.settingsVariantModalOpened = false;
-      this.activeSettings = false;
-      this.openSettingsService.openedSettingsValueChanged.next(this.activeSettings);
+    this.settingsVariantModalOpened = false;
+    this.openSettingsService.openedSettingsValueChanged = false;
   }
 }

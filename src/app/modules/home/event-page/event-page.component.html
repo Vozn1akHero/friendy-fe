@@ -1,6 +1,9 @@
 <app-event-modals></app-event-modals>
 
 <div class="event-page">
-  <app-event-header></app-event-header>
-  <app-event-main-content [isEventAdmin]="isEventAdmin"></app-event-main-content>
+  <app-event-header [activeSettings]="activeSettings"
+                    [isEventAdmin]="isEventAdmin"></app-event-header>
+
+  <app-event-main-content [activeSettings]="activeSettings"
+                          [isEventAdmin]="isEventAdmin"></app-event-main-content>
 </div>

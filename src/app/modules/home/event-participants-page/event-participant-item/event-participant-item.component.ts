@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import EventParticipantListItem from '../../../models/event-participant-list-item.model';
+import EventParticipantListItem from '../../event-page/models/event-participant-list-item.model';
 
 
 @Component({

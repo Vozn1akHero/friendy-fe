@@ -13,6 +13,4 @@ export class EventMainContentComponent implements OnInit {
 
   ngOnInit() {
   }
-
-
 }

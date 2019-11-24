@@ -5,49 +5,7 @@
   height: 100%;
   margin-right: 1rem;
 
-  .event-avatar-alter {
-    position: absolute;
-    width: 9rem;
-    height: 9rem;
-    z-index: 1;
-    top: 54px;
-    left: 37px;
 
-    input[type=file] {
-      position: absolute;
-      width: inherit;
-      height: inherit;
-      border-radius: 50%;
-      opacity: 0;
-
-      &:hover {
-        & + button {
-          background-color: rgba(224, 224, 224, 0.4);
-        }
-      }
-    }
-
-    &-btn {
-      width: inherit;
-      height: inherit;
-      border-radius: 50%;
-      border: none;
-      background: rgba(224, 224, 224, 0.5);
-      transition: background-color .5s;
-
-      svg {
-        width: 40%;
-        height: 40%;
-        fill: $color-white;
-      }
-
-      span {
-        display: block;
-        font-size: .9rem;
-        color: $color-white;
-      }
-    }
-  }
 
   .img-wrapper{
       width: 9rem;

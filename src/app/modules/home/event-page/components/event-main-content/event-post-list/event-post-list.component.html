@@ -1,4 +1,6 @@
-<app-event-post-item *ngFor="let post of posts"
-                     [post]="post"
-                     [isEventAdmin]="isEventAdmin"
-                     [eventAvatarUrl]="eventAvatarUrl"></app-event-post-item>
+<section class="event-post-list">
+  <app-event-post-item *ngFor="let post of posts"
+                       [post]="post"
+                       [isEventAdmin]="isEventAdmin"
+                       [eventAvatar$]="eventAvatar$"></app-event-post-item>
+</section>

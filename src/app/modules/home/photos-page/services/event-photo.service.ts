@@ -10,6 +10,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 export class EventPhotoService {
   private _eventPhotos = new BehaviorSubject<Photo[]>([]);
 
+
   get eventPhotos(): Photo[] {
     return this._eventPhotos.getValue();
   }
