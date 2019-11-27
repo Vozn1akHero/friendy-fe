@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import Cookies from 'js-cookie';
-import {Subscription} from 'rxjs';
-import {UserDataService} from './services/user-data.service';
 
 @Component({
   selector: 'app-wrapper',
@@ -11,16 +8,12 @@ import {UserDataService} from './services/user-data.service';
 })
 export class WrapperComponent implements OnInit {
   friendRequestsModalOpened: boolean = false;
-  profileIdSubscription: Subscription;
 
-  constructor(private route: ActivatedRoute,
-              private userDataService : UserDataService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.data.receivedFriendRequests)
-    console.log(this.route.snapshot.data.sentFriendRequests)
-
-    this.setProfileId();
+/*    console.log(this.route.snapshot.data.receivedFriendRequests)
+    console.log(this.route.snapshot.data.sentFriendRequests)*/
   }
 
   openFriendRequestsModal(){
@@ -29,9 +22,5 @@ export class WrapperComponent implements OnInit {
 
   closeFriendRequestsModal(){
     this.friendRequestsModalOpened = false;
-  }
-
-  setProfileId(){
-    Cookies.set('pid', this.route.snapshot.data.profileId);
   }
 }

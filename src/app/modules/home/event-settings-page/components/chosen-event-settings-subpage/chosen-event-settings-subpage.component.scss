@@ -1,5 +1,9 @@
+@import '../../../../../../assets/sass/base/variables';
+
 .chosen-event-settings-subpage{
-  //width: 85%;
-  padding-left: 1.5rem;
+  float: left;
+  width: 85%;
+  min-height: 100vh;
   padding-top: 1.5rem;
+  background-color: $color-bg-light-grey;
 }

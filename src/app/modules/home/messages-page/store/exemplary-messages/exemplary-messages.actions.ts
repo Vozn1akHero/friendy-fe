@@ -6,6 +6,10 @@ export const SET_EXEMPLARY_MESSAGES = '[Messages Page] Set Exemplary Messages';
 
 export class GetExemplaryMessages implements Action {
   readonly type = GET_EXEMPLARY_MESSAGES;
+
+  constructor(public payload: { startIndex: number, length: number }){
+
+  }
 }
 
 export class SetExemplaryMessages implements Action {

@@ -1,15 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
-import * as signalR from'@aspnet/signalr';
+import {HttpClient} from '@angular/common/http';
 import {HubConnection} from '@aspnet/signalr';
-
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
+import {map} from 'rxjs/operators';
+import ExemplaryMessage from '../models/exemplary-message.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +10,24 @@ const httpOptions = {
 export class ExemplaryMessagesService {
   private connection : HubConnection;
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient){}
 
-  }
-
-  getExemplaryMessages(){
-    return this.http.get('/api/chat/last-messages', {observe: 'response'});
+  getExemplaryMessages(startIndex: number, length: number){
+    return this.http.get(`/api/chat/last-messages?startIndex=${startIndex}&length=${length}`,
+      {observe: 'body'}).pipe(map((response : any[]) => {
+          let messages : ExemplaryMessage[] = [];
+          response.map((res : any) => {
+            const newExemplaryMessage = new ExemplaryMessage(res.content,
+              res.senderId,
+              res.senderAvatarPath,
+              res.date,
+              res.imageUrl != null,
+              res.interlocutorId,
+              res.interlocutorAvatarPath,
+              res.writtenByRequestIssuer);
+            messages.push(newExemplaryMessage);
+          });
+          return messages;
+    }))
   }
 }

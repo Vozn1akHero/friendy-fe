@@ -9,14 +9,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ChosenEventSettingsSubpageComponent implements OnInit {
   chosenSubpage: number;
 
-  constructor(private route: ActivatedRoute, private router : Router) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(value => {
-/*      if(value.sp == null || Array.of("basic", "participants", "admins").indexOf(value.sp) === -1){
-        this.router.navigate([`${this.router.url}?sp=basic`]);
-      }*/
-console.log(value.sp)
+      if(value.sp == null || Array.of("basic", "participants", "admins").indexOf(value.sp) === -1){
+        window.location.replace(`${window.location.origin}/app/event/${+this.route.snapshot.params.id}/settings?sp=basic`)
+      }
+
       if(value.sp === "basic"){
         this.chosenSubpage = 1;
       } else if(value.sp === "participants"){

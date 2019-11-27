@@ -1,9 +1,0 @@
-<div class="user-messages">
-  <div class="message-group">
-    <div class="message-items">
-      <app-chat-message-item *ngFor="let message of messages; let i = index"
-                             [messageData]="message"
-                             [messageStyles]="{marginTop: i === 0 ? '0' : '5px'}" ></app-chat-message-item>
-    </div>
-  </div>
-</div>

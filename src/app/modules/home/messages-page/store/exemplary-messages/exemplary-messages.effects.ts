@@ -7,9 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import * as ExemplaryMessagesActions from './exemplary-messages.actions';
 import {Action, Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
-
 import {ExemplaryMessagesService} from '../../services/exemplary-messages.service';
-import {AppState} from '../../../../../core/ngrx/store/app.reducer';
 import ExemplaryMessage from '../../models/exemplary-message.model';
 
 @Injectable()
@@ -20,22 +18,10 @@ export class ExemplaryMessagesEffects {
     filter(([{payload}, loaded]) => {
       return !loaded;
     }),
-    mergeMap(([{payload}]) => {
-      return this.exemplaryMessagesService.getExemplaryMessages()
+    mergeMap(([{payload}] : any) => {
+      return this.exemplaryMessagesService.getExemplaryMessages(payload.startIndex, payload.length)
         .pipe(
-          map(response => {
-            let messages : ExemplaryMessage[] = [];
-            Array(response.body).map((exemplaryMessage : any) => {
-              let newExemplaryMessage = new ExemplaryMessage(exemplaryMessage[0].chatUrlPart,
-                exemplaryMessage[0].content,
-                exemplaryMessage[0].hasImage,
-                exemplaryMessage[0].userId,
-                exemplaryMessage[0].userAvatar,
-                exemplaryMessage[0].date);
-              //console.log(newExemplaryMessage);
-              messages.push(newExemplaryMessage);
-            });
-
+          map(messages => {
             return new ExemplaryMessagesActions.SetExemplaryMessages(messages);
           })
         )

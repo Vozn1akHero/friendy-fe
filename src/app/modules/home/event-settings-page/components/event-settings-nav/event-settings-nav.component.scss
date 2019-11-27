@@ -1,15 +1,21 @@
+@import '../../../../../../assets/sass/base/variables';
+
 .event-settings-nav{
-  width: 15rem;
+  float: left;
+  width: 15%;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid;
   height: 100vh;
+  padding-top: 2rem;
 
   .link-btn{
     background: none;
     outline: none;
     border: none;
-    border-bottom: 1px solid;
     height: 4rem;
+    font-size: .8rem;
+    &:hover{
+      text-decoration: underline;
+    }
   }
 }

@@ -1,10 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
-import {Subscription} from 'rxjs';
-import {Store} from '@ngrx/store';
-import * as fromApp from '../../core/ngrx/store/app.reducer';
-import Cookies from 'js-cookie';
+import {UserIdService} from '../../shared/services/user-id.service';
 
 @Component({
   selector: 'app-navigation',
@@ -19,6 +16,7 @@ export class NavigationComponent implements OnInit {
   profileId: number;
 
   constructor(private router: Router,
+              private userIdService : UserIdService,
               private authService: AuthService) {}
 
   ngOnInit() {
@@ -34,7 +32,7 @@ export class NavigationComponent implements OnInit {
   }
 
   setProfileId(){
-    this.profileId = +Cookies.get('pid');
+    this.profileId = this.userIdService.userId;
   }
 
   logOut():void{

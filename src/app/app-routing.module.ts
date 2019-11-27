@@ -27,6 +27,7 @@ import {EventSettingsPageComponent} from './modules/home/event-settings-page/eve
 import {IsEventAdminResolver} from './modules/home/event-page/resolvers/is-event-admin.resolver';
 import {EventParticipantsPageComponent} from './modules/home/event-participants-page/event-participants-page.component';
 import {PhotosPageComponent} from './modules/home/photos-page/photos-page.component';
+import {ChatDataResolver} from './modules/home/dialog-page/resolvers/chat-data.resolver';
 
 const routes: Routes = [
   {path: '',
@@ -96,9 +97,10 @@ const routes: Routes = [
 
       {path: 'messages', component: MessagesPageComponent},
 
-      {path: 'dialog/:chatHash',
+      {path: 'dialog',
         component: DialogPageComponent,
-        resolve: {interlocutorData: InterlocutorDataResolver}},
+        resolve: {interlocutorData: InterlocutorDataResolver,
+          chatData: ChatDataResolver }},
 
       {path: 'settings', component: UserSettingsPageComponent}
   ]},

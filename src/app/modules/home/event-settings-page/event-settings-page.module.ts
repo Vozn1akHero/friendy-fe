@@ -9,6 +9,9 @@ import { BasicEventSettingsComponent } from './components/basic-event-settings/b
 import { EventParticipantsSettingsComponent } from './components/event-participants-settings/event-participants-settings.component';
 import { EventAdminsSettingsComponent } from './components/event-admins-settings/event-admins-settings.component';
 import { ChosenEventSettingsSubpageComponent } from './components/chosen-event-settings-subpage/chosen-event-settings-subpage.component';
+import { EventParticipantsComponent } from './components/event-participants-settings/event-participants/event-participants.component';
+import { EventParticipantComponent } from './components/event-participants-settings/event-participants/event-participant/event-participant.component';
+import { EventParticipantsSearchComponent } from './components/event-participants-settings/event-participants/event-participants-search/event-participants-search.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { ChosenEventSettingsSubpageComponent } from './components/chosen-event-s
     BasicEventSettingsComponent,
     EventParticipantsSettingsComponent,
     EventAdminsSettingsComponent,
-    ChosenEventSettingsSubpageComponent
+    ChosenEventSettingsSubpageComponent,
+    EventParticipantsComponent,
+    EventParticipantComponent,
+    EventParticipantsSearchComponent
   ],
   exports: []
 })

@@ -2,12 +2,12 @@ export default class InterlocutorDataModel {
   name: string;
   surname: string;
   friendId: number;
-  avatar: string;
+  avatarUrl: string;
 
   constructor(name: string, surname: string, friendId: number, avatar: string) {
     this.name = name;
     this.surname = surname;
     this.friendId = friendId;
-    this.avatar = "data:image/png;base64,"+avatar;
+    this.avatarUrl = "http://localhost:5000/"+avatar;
   }
 }

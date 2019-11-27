@@ -1,0 +1,94 @@
+@import '../../../../../../assets/sass/base/variables';
+@import '../../../../../../assets/sass/components/dropdown';
+@import "../../../../../../assets/sass/components/text-input";
+
+
+.event-creation-form {
+  position: relative;
+  text-align: center;
+  width: 35rem;
+  margin: 0 auto;
+
+  .name, .desc, .city, .price, .subject, .participants-amount {
+    width: 100%;
+    display: block;
+    margin-top: .7rem;
+  }
+
+  .desc {
+    padding: 1.1rem 1.05rem;
+    height: 5rem;
+    resize: none;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+
+  .spec-wrapper {
+    display: flex;
+    margin-top: .7rem !important;
+    justify-content: space-between;
+  }
+
+  .street {
+    width: 65%;
+  }
+
+  .number {
+    width: 35%;
+    margin-left: .5rem;
+  }
+
+  .date {
+    &-year {
+      width: 33%;
+    }
+
+    &-month {
+      select {
+        width: inherit;
+      }
+    }
+
+    &-day {
+      width: 33%;
+
+      select {
+        width: inherit;
+
+        &::after {
+          right: 1.45em !important;
+        }
+      }
+    }
+
+    &-hour {
+      width: 50%;
+    }
+
+    &-minute {
+      width: 47%;
+    }
+  }
+
+  .changes-submit-btn {
+    margin-top: 2.5rem;
+    border: none;
+    height: 3rem;
+    width: 10rem;
+    border-radius: 3rem;
+    background: $color-blue;
+    font-weight: 700;
+    color: white;
+    font-size: .85rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

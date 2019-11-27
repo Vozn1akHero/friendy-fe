@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import ExemplaryMessage from '../../models/exemplary-message.model';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -10,10 +11,12 @@ import ExemplaryMessage from '../../models/exemplary-message.model';
 export class MessageComponent implements OnInit {
   @Input() exemplaryMessage: ExemplaryMessage;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-
+  navigateToDialog(){
+    this.router.navigate(['/app/dialog'], { queryParams: { to : this.exemplaryMessage.interlocutorId  }});
+  }
 }

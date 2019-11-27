@@ -1,13 +1,7 @@
 <div class="chat-message-list">
   <ng-container *ngIf="(messagesLoaded$ | async)">
-    <ng-container *ngFor="let messages of orderedMessages">
-      <app-friend-messages *ngIf="!messages.isAuthor"
-                           [chatInterlocutorAvatar]="interlocutorData.avatar"
-                           [chatInterlocutorId]="interlocutorData.friendId"
-                           [messages]="messages.messages"></app-friend-messages>
-
-      <app-user-messages *ngIf="messages.isAuthor"
-                         [messages]="messages.messages"></app-user-messages>
+    <ng-container *ngFor="let message of messages">
+      <app-chat-message-item [messageData]="message"></app-chat-message-item>
     </ng-container>
   </ng-container>
 </div>

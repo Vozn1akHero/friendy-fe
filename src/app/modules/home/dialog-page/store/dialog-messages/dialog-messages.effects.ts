@@ -8,6 +8,7 @@ import * as DialogActions from './dialog-messages.actions';
 import {Action, Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {DialogService} from '../../services/dialog.service';
+import {DialogWsService} from '../../services/dialog-ws.service';
 
 
 @Injectable()
@@ -18,8 +19,8 @@ export class DialogMessagesEffects {
     filter(([{payload}, loaded]) => {
       return !loaded;
     }),
-    mergeMap((payload: any) => {
-      return this.dialogService.getMessagesInDialog(payload[0].payload.chatHash)
+    mergeMap(([{payload}]: any) => {
+      return this.dialogService.getMessagesInDialog(payload.to, payload.startIndex, payload.length)
         .pipe(
           map(response => {
             return new DialogActions.SetDialog(response);
@@ -32,9 +33,10 @@ export class DialogMessagesEffects {
   @Effect() addMessageInDialog = this.actions$.pipe(
     ofType(DialogActions.ADD_NEW_MESSAGE),
     mergeMap((payload: any) => {
-        return this.dialogService.addNewMessage(payload.payload.chatHash, payload.payload.newMessage)
+        return this.dialogService.addNewMessage(payload.payload.receiverId, payload.payload.newMessage)
           .pipe(
             map((response) => {
+              //this.dialogWsService.sendNewMessage()
               return new DialogActions.SetAddedMessage(response);
             })
           )
@@ -46,6 +48,7 @@ export class DialogMessagesEffects {
     private actions$: Actions,
     private http: HttpClient,
     private dialogService: DialogService,
+    private dialogWsService : DialogWsService,
     private router: Router,
     private store$: Store<fromApp.AppState>
   ) {}

@@ -23,9 +23,7 @@ export class NewMessageInDialogFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.chatHash = params.chatHash;
-    });
+
   }
 
   newMessageEvent() {
@@ -38,14 +36,14 @@ export class NewMessageInDialogFormComponent implements OnInit {
         const image : string = String(reader.result);
         const newMessage : NewMessageInChat = new NewMessageInChat(textFieldValue, image);
         this.store.dispatch(new DialogActions.AddNewMessage({
-          chatHash: this.chatHash, newMessage: newMessage
+          receiverId: this.route.snapshot.params.to, newMessage: newMessage
         }))
       };
       reader.readAsDataURL(this.imageFile);
     } else {
       const newMessage : NewMessageInChat = new NewMessageInChat(textFieldValue, null);
       this.store.dispatch(new DialogActions.AddNewMessage({
-        chatHash: this.chatHash, newMessage: newMessage
+        receiverId: this.route.snapshot.params.to, newMessage: newMessage
       }))
     }
   }

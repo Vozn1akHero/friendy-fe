@@ -1,10 +1,15 @@
 .chat-message-item{
+  margin-bottom: 1rem;
   min-height: 3rem;
   margin-right: 1rem;
   text-decoration: none;
-  width: fit-content;
+  width: 100%;
   display: flex;
   align-items: center;
+
+  .inner-ab-wrapper{
+    position: absolute;
+  }
 
   .content{
     background-color: #f8f8f8;
@@ -25,9 +30,15 @@
     font-size: .65rem;
     opacity: .55;
 
+    &--user, &--friend{
+      float: left;
+      transform: translateY(1rem);
+    }
+
     &--user{
       margin-right: .5rem;
     }
+
     &--friend{
       margin-left: .5rem;
     }

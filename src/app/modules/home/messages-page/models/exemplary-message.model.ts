@@ -1,22 +1,28 @@
 export default class ExemplaryMessage {
-  public chatUrlPart: string;
   public content: string;
-  public hasImage: boolean;
-  public userId: number;
-  public userAvatar: string;
+  public senderId: number;
+  public avatarUrl: string;
   public date: Date;
+  public hasImage: boolean;
+  public interlocutorId: number;
+  public interlocutorAvatar: string;
+  public writtenByRequestIssuer: boolean;
 
-  constructor(chatUrlPart: string,
-              content: string,
+  constructor(content: string,
+              senderId: number,
+              avatarPath: string,
+              date: Date,
               hasImage: boolean,
-              userId: number,
-              userAvatar: string,
-              date: Date) {
-    this.chatUrlPart = chatUrlPart;
+              interlocutorId: number,
+              interlocutorAvatarPath: string,
+              writtenByRequestIssuer: boolean) {
     this.content = content;
-    this.hasImage = hasImage;
-    this.userId = userId;
-    this.userAvatar = userAvatar;
+    this.senderId = senderId;
+    this.avatarUrl = "http://localhost:5000/" + avatarPath;
     this.date = date;
+    this.hasImage = hasImage;
+    this.interlocutorId = interlocutorId;
+    this.interlocutorAvatar = "http://localhost:5000/" + interlocutorAvatarPath;
+    this.writtenByRequestIssuer = writtenByRequestIssuer;
   }
 }

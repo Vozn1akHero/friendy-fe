@@ -1,10 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {combineLatest, Observable, Subscription} from 'rxjs';
-import InterlocutorData from './models/interlocutor-data.model';
-import {DialogService} from './services/dialog.service';
-import MessageInChat from './models/message-in-chat.model';
+import {DialogWsService} from './services/dialog-ws.service';
 
 @Component({
   selector: 'app-dialog-page',
@@ -16,28 +13,22 @@ export class DialogPageComponent implements OnInit, OnDestroy {
     newMessageContent: new FormControl('', [Validators.required, Validators.minLength(1)]),
     image: new FormControl('')
   });
-
-  chatHash: string;
+  interlocutorId: string;
 
   constructor(private route: ActivatedRoute,
-              private dialogService: DialogService) {}
+              private dialogWsService: DialogWsService) {}
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.chatHash = params.chatHash;
-    });
+    this.interlocutorId = this.route.snapshot.params.to;
 
-    //this.getFriendData();
+    this.joinGroup();
   }
 
-  getFriendData(){
-    //this.chatFriendData$ = this.dialogService.getChatFriendData(this.chatHash);
-
-
+  joinGroup(){
+    this.dialogWsService.joinChat(this.interlocutorId);
   }
-
 
   ngOnDestroy(): void {
-    //this.chatFriendDataSubscription.unsubscribe();
+
   }
 }

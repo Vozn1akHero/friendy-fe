@@ -11,7 +11,7 @@ export const SET_ADDED_MESSAGE = '[Messages Page] Set Added Message';
 export class GetDialog implements Action {
   readonly type = GET_DIALOG;
 
-  constructor(public payload: {chatHash: string}){}
+  constructor(public payload: {to: number, startIndex: number, length: number}){}
 }
 
 export class SetDialog implements Action {
@@ -23,7 +23,7 @@ export class SetDialog implements Action {
 export class AddNewMessage implements Action {
   readonly type = ADD_NEW_MESSAGE;
 
-  constructor(public payload: {chatHash: string, newMessage: NewMessageInChat}){}
+  constructor(public payload: {receiverId: number, newMessage: NewMessageInChat}){}
 }
 
 export class SetAddedMessage implements Action {

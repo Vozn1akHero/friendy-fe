@@ -1,15 +1,25 @@
 <div class="item">
     <div class="avatar">
-        <a [routerLink]="['/app/profile', exemplaryMessage.userId]">
+        <a [routerLink]="['/app/profile', exemplaryMessage.senderId]">
           <figure>
-              <img src="data:image/png;base64,{{ exemplaryMessage.userAvatar }}" alt="">
+              <img src="{{ exemplaryMessage.interlocutorAvatar }}" alt="">
           </figure>
         </a>
     </div>
 
-    <a class="content" [routerLink]="['/app/dialog', exemplaryMessage.chatUrlPart]">
-        <span>
+    <a class="content" (click)="navigateToDialog()">
+        <ng-container *ngIf="exemplaryMessage.writtenByRequestIssuer">
+          <div class="written-by-user-msg-wrapper">
+            <span>
+              {{ exemplaryMessage.content }}
+            </span>
+            <img class="own-avatar" src="{{ exemplaryMessage.avatarUrl }}" alt="">
+          </div>
+        </ng-container>
+        <ng-template #writtenByFriend>
+          <span>
            {{ exemplaryMessage.content }}
-        </span>
+          </span>
+        </ng-template>
     </a>
 </div>

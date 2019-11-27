@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import * as ExemplaryMesagesActions from '../../store/exemplary-messages/exemplary-messages.actions';
+import * as ExemplaryMessagesActions from '../../store/exemplary-messages/exemplary-messages.actions';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {Observable, Subscription} from 'rxjs';
@@ -21,17 +20,13 @@ export class DialogListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.exemplaryMessagesLoaded$ = this.store
       .select(state => state.messagesPageExemplaryMessages.loaded);
-
     this.getExemplaryMessages();
   }
 
   getExemplaryMessages() {
-    this.store.dispatch(new ExemplaryMesagesActions.GetExemplaryMessages());
+    this.store.dispatch(new ExemplaryMessagesActions.GetExemplaryMessages({ startIndex: 1, length: 10 }));
     this.exemplaryMessagesSubscription = this.store.select(state => state.messagesPageExemplaryMessages.exemplaryMessages)
       .subscribe(exemplaryMessages => {
-        /*        if(exemplaryMessages.length === 0){
-                  this.store.dispatch(new ExemplaryMesagesActions.GetExemplaryMessages());
-                }*/
         this.exemplaryMessages = exemplaryMessages;
       })
   }
