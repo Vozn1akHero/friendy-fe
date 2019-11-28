@@ -51,7 +51,6 @@ export class DialogHubService {
 
   listenToNewLastMessage(){
     this.dialogHubConnection.on('SendExpandedMessageToUser', (message : any) => {
-      console.log(message);
       this.store.select(e => e.messagesPageExemplaryMessages.exemplaryMessages)
         .pipe(take(1))
         .subscribe(exemplaryMessages => {
@@ -87,6 +86,7 @@ export class DialogHubService {
   }
 
   joinGroup(groupName: string){
+    console.log(groupName);
     this.dialogHubConnection.invoke('JoinGroup', groupName).then(() => {});
   }
 }

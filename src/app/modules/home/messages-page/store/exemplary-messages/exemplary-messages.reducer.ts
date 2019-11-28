@@ -24,7 +24,7 @@ export function exemplaryMessagesReducer(
     case ExemplaryMessagesActions.SET_EXEMPLARY_MESSAGES:
       return {
         ...state,
-        exemplaryMessages: [...action.payload, ...state.exemplaryMessages],
+        exemplaryMessages: [...action.payload],
         loaded: true
       };
     default:

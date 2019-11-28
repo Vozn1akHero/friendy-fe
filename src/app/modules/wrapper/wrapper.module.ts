@@ -8,7 +8,7 @@ import {LayoutModule} from '../../layout/layout.module';
 import { FriendRequestsModalComponent } from './components/friend-requests-modal/friend-requests-modal.component';
 import { ReceivedFriendRequestListComponent } from './components/friend-requests-modal/components/received-friend-request-list/received-friend-request-list.component';
 import { ReceivedFriendRequestItemComponent } from './components/friend-requests-modal/components/received-friend-request-list/received-friend-request-item/received-friend-request-item.component';
-import {FriendRequestsService} from './services/friend-requests.service';
+import {FriendRequestsModalService} from './services/friend-requests-modal.service';
 import { SentFriendRequestListComponent } from './components/friend-requests-modal/components/sent-friend-request-list/sent-friend-request-list.component';
 import {SentFriendRequestItemComponent} from './components/friend-requests-modal/components/sent-friend-request-list/sent-friend-request-item/sent-friend-request-item.component';
 import {ProfileIdResolver} from './resolvers/profile-id.resolver';
@@ -35,7 +35,7 @@ import {SharedModule} from '../../shared/shared.module';
     SentFriendRequestItemComponent
   ],
   providers: [
-    FriendRequestsService,
+    FriendRequestsModalService,
     ProfileIdResolver
   ]
 })

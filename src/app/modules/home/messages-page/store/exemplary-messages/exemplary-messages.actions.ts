@@ -8,9 +8,7 @@ export const ADD_NEW_OR_UPDATE_EXEMPLARY_MESSAGE = '[Messages Page] Add New Or U
 export class GetExemplaryMessages implements Action {
   readonly type = GET_EXEMPLARY_MESSAGES;
 
-  constructor(public payload: { startIndex: number, length: number }){
-
-  }
+  constructor(public payload: { startIndex: number, length: number }){}
 }
 
 export class SetExemplaryMessages implements Action {

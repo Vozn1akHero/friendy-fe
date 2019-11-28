@@ -11,6 +11,7 @@ import { MainPanelComponent } from './components/main-panel/main-panel.component
 import { NewCommentFormComponent } from './components/comments/new-comment-form/new-comment-form.component';
 import { CommonModalComponent } from './components/common-modal/common-modal.component';
 import { ButtonHoverInfoModalComponent } from './components/button-hover-info-modal/button-hover-info-modal.component';
+import { TransparentBgModalComponent } from './components/transparent-bg-modal/transparent-bg-modal.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ButtonHoverInfoModalComponent } from './components/button-hover-info-mo
     MainPanelComponent,
     NewCommentFormComponent,
     CommonModalComponent,
-    ButtonHoverInfoModalComponent
+    ButtonHoverInfoModalComponent,
+    TransparentBgModalComponent
   ],
   exports: [
     NewMessageFormComponent,
@@ -38,7 +40,8 @@ import { ButtonHoverInfoModalComponent } from './components/button-hover-info-mo
     MainPanelComponent,
     NewCommentFormComponent,
     CommonModalComponent,
-    ButtonHoverInfoModalComponent
+    ButtonHoverInfoModalComponent,
+    TransparentBgModalComponent
   ]
 })
 

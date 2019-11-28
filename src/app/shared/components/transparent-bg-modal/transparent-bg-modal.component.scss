@@ -1,0 +1,23 @@
+@import '../../../../assets/sass/base/variables';
+
+.transparent-bg-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  
+  .bg{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    cursor: pointer;
+
+/*    pointer-events: none;
+    &:hover{
+      pointer-events: all;
+    }*/
+  }
+}

@@ -1,24 +1,26 @@
-<div @anim class="friend-requests-modal">
-  <div class="controls-wrapper">
-    <button (click)="onReceivedFriendRequestsBtnClick()"
-            [ngClass]="chosenSubpage === 'received-requests' && 'chosen-subpage-btn'"
-            class="btn received-friend-requests-btn">
-      Otrzymane
-    </button>
-    <button (click)="onSentFriendRequestsBtnClick()"
-            [ngClass]="chosenSubpage === 'sent-requests' && 'chosen-subpage-btn'"
-            class="btn sent-friend-requests-btn">
-      Wysłane
-    </button>
-  </div>
+<app-transparent-bg-modal (closeModalEvent)="closeModal()">
+  <div class="friend-requests-modal">
+    <div class="controls-wrapper">
+      <button (click)="onReceivedFriendRequestsBtnClick()"
+              [ngClass]="chosenSubpage === 'received-requests' && 'chosen-subpage-btn'"
+              class="btn received-friend-requests-btn">
+        Otrzymane
+      </button>
+      <button (click)="onSentFriendRequestsBtnClick()"
+              [ngClass]="chosenSubpage === 'sent-requests' && 'chosen-subpage-btn'"
+              class="btn sent-friend-requests-btn">
+        Wysłane
+      </button>
+    </div>
 
-  <div class="friend-requests-list-wrapper">
-    <app-sent-friend-request-list *ngIf="chosenSubpage === 'sent-requests' && sendFriendRequestsLoaded"
-                                  [sentFriendRequests]="sentFriendRequests">
-    </app-sent-friend-request-list>
+    <div class="friend-requests-list-wrapper">
+      <app-sent-friend-request-list *ngIf="chosenSubpage === 'sent-requests' && (sentFriendRequestsLoaded$ | async)"
+                                    [sentFriendRequests]="(sentFriendRequests | async)">
+      </app-sent-friend-request-list>
 
-    <app-received-friend-request-list *ngIf="chosenSubpage === 'received-requests' && receivedFriendRequestsLoaded"
-                                      [receivedFriendRequests]="receivedFriendRequests">
-    </app-received-friend-request-list>
+      <app-received-friend-request-list *ngIf="chosenSubpage === 'received-requests' && (receivedFriendRequestsLoaded$ | async)"
+                                        [receivedFriendRequests]="(receivedFriendRequests | async)">
+      </app-received-friend-request-list>
+    </div>
   </div>
-</div>
+</app-transparent-bg-modal>

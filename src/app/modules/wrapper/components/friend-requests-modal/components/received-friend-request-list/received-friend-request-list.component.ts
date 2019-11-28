@@ -1,6 +1,6 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {FriendRequestsService} from '../../../../services/friend-requests.service';
+import {FriendRequestsModalService} from '../../../../services/friend-requests-modal.service';
 import {Observable, Subscription} from 'rxjs';
 import ReceivedFriendRequestModel from '../../../../models/received-friend-request.model';
 import SentFriendRequestModel from '../../../../models/sent-friend-request.model';
