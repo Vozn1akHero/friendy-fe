@@ -8,14 +8,20 @@ import * as moment from 'moment';
   styleUrls: ['./chat-message-item.component.scss']
 })
 export class ChatMessageItemComponent implements OnInit {
-  @Input() messageStyles : {[p: string]:string};
   @Input() messageData: MessageInChatModel;
+  @Input() profileId: number;
 
+  isUserAuthor: boolean;
   timePassed: string;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.timePassed = moment(this.messageData.date).fromNow();
+    this.setIsUserAuthor();
+  }
+
+  setIsUserAuthor(){
+    this.isUserAuthor = this.messageData.userId === this.profileId;
   }
 }

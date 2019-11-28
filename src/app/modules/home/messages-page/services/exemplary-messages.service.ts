@@ -8,8 +8,6 @@ import ExemplaryMessage from '../models/exemplary-message.model';
   providedIn: 'root'
 })
 export class ExemplaryMessagesService {
-  private connection : HubConnection;
-
   constructor(private http: HttpClient){}
 
   getExemplaryMessages(startIndex: number, length: number){

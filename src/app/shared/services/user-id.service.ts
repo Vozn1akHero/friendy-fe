@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {map, take} from 'rxjs/operators';
+import {take} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class UserIdService{
@@ -23,10 +23,10 @@ export class UserIdService{
   }
 
   getUserId(){
-    return this.http.get(`api/user/profile-id`)
+    return this.http.get(`api/user/logged-in/with-selected-fields?selectedFields=Id`)
       .pipe(take(1))
-      .subscribe(res => {
-        this.userId = +res;
+      .subscribe((res:any) => {
+        this.userId = res.id;
         this.userIdLoaded = true;
       })
   }

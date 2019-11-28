@@ -8,7 +8,7 @@
     </div>
 
     <a class="content" (click)="navigateToDialog()">
-        <ng-container *ngIf="exemplaryMessage.writtenByRequestIssuer">
+        <ng-container *ngIf="exemplaryMessage.writtenByRequestIssuer; else writtenByFriend">
           <div class="written-by-user-msg-wrapper">
             <span>
               {{ exemplaryMessage.content }}

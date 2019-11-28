@@ -37,10 +37,7 @@ export function dialogMessagesReducer(
     case DialogActions.SET_ADDED_MESSAGE:{
       return {
         ...state,
-        messagesInDialog: [...state.messagesInDialog, {
-          ...action.payload,
-          isUserAuthor: true
-        }]
+        messagesInDialog: [...state.messagesInDialog, action.payload]
       }
     }
     default:

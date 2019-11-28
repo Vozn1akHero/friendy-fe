@@ -4,7 +4,6 @@ import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import * as DialogActions from '../../store/dialog-messages/dialog-messages.actions';
 import {ActivatedRoute} from '@angular/router';
-import {text} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-new-message-in-dialog-form',
@@ -12,18 +11,18 @@ import {text} from '@angular/core/src/render3';
   styleUrls: ['./new-message-in-dialog-form.component.scss']
 })
 export class NewMessageInDialogFormComponent implements OnInit {
-  chatHash: string;
   @ViewChild('image') image;
   imageFile: File;
   @ViewChild('newMessageContent') newMessageContent;
-  //newMessage: {newMessageContent: string, image: string};
   newMessage: NewMessageInChat;
+  chatId: number;
+  receiverId: number;
 
-  constructor(private store: Store<fromApp.AppState>, private route: ActivatedRoute) {
-  }
+  constructor(private store: Store<fromApp.AppState>, private route: ActivatedRoute) {}
 
   ngOnInit() {
-
+    this.chatId = this.route.snapshot.data.chatData.id;
+    this.receiverId = this.route.snapshot.queryParams.to;
   }
 
   newMessageEvent() {
@@ -31,19 +30,14 @@ export class NewMessageInDialogFormComponent implements OnInit {
     const image = this.image.nativeElement;
     if(image.files && image.files[0]){
       this.imageFile = image.files[0];
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const image : string = String(reader.result);
-        const newMessage : NewMessageInChat = new NewMessageInChat(textFieldValue, image);
-        this.store.dispatch(new DialogActions.AddNewMessage({
-          receiverId: this.route.snapshot.params.to, newMessage: newMessage
-        }))
-      };
-      reader.readAsDataURL(this.imageFile);
+      const newMessage : NewMessageInChat = new NewMessageInChat(textFieldValue, image.files[0]);
+      this.store.dispatch(new DialogActions.AddNewMessage({
+        chatId: this.chatId, receiverId: this.receiverId, newMessage: newMessage
+      }))
     } else {
       const newMessage : NewMessageInChat = new NewMessageInChat(textFieldValue, null);
       this.store.dispatch(new DialogActions.AddNewMessage({
-        receiverId: this.route.snapshot.params.to, newMessage: newMessage
+        chatId: this.chatId, receiverId: this.receiverId, newMessage: newMessage
       }))
     }
   }

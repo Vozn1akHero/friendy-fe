@@ -6,12 +6,14 @@ export const GET_FRIENDS = '[Friends Page] Get Friends Start';
 export const SET_FRIENDS = '[Friends Page] Set Friends';
 export const FILTER_FRIENDS = '[Friends Page] Filter Friends Start';
 export const SET_FILTERED_FRIENDS = '[Friends Page] Filter Friends';
+export const REMOVE_FRIEND = '[Friends Page] Remove Friend';
+export const REMOVE_FRIEND_FROM_STATE = '[Friends Page] Remove Friend From State';
 
 
 export class GetFriends implements Action {
   readonly type = GET_FRIENDS;
 
-  constructor(public payload: {firstIndex: number, lastIndex: number}) {}
+  constructor(public payload: {firstIndex: number, length: number}) {}
 }
 
 export class SetFriends implements Action {
@@ -32,5 +34,16 @@ export class SetFilteredFriends implements Action{
   constructor(public payload: any){}
 }
 
+export class RemoveFriend implements Action{
+  readonly type = REMOVE_FRIEND;
 
-export type UserFriendsActions = GetFriends | SetFriends | SetFilteredFriends | FilterFriends;
+  constructor(public payload: { id: number }){}
+}
+
+export class RemoveFriendFromState implements Action{
+  readonly type = REMOVE_FRIEND_FROM_STATE;
+
+  constructor(public payload: { id: number }){}
+}
+
+export type UserFriendsActions = GetFriends | SetFriends | SetFilteredFriends | FilterFriends | RemoveFriend | RemoveFriendFromState;

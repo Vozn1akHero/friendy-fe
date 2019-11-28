@@ -3,8 +3,6 @@ import {Router} from '@angular/router';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
-
-import {HubConnection} from '@aspnet/signalr';
 import ChatFriendBasicData from '../models/interlocutor-data.model';
 import MessageInChat from '../models/message-in-chat.model';
 import NewMessageInChat from '../models/new-message-in-chat.model';
@@ -14,15 +12,17 @@ import ChatData from '../models/chat-data.model';
   providedIn: 'root'
 })
 export class DialogService {
-  private connection : HubConnection;
-
   constructor(private http: HttpClient){}
 
   getMessagesInDialog(to: number, startIndex: number, length: number) : Observable<MessageInChat[]>{
     return this.http.get(`/api/chat/${to}?startIndex=${startIndex}&length=${length}`)
       .pipe(
-        map((response : MessageInChat[]) => {
-          return response;
+        map((response : any[]) => {
+          let arr : MessageInChat[] = [];
+          response.map(value => {
+            arr.push(new MessageInChat(value.content, value.imagePath, value.userId, value.date))
+          });
+          return arr;
         }))
   }
 
@@ -33,7 +33,7 @@ export class DialogService {
           return new ChatData(res.id, res.firstParticipantId, res.secondParticipantId);
         }))
   }
-  
+
   getChatFriendData(receiverId: number) : Observable<ChatFriendBasicData>{
     return this.http.get(`/api/user/${receiverId}/with-selected-fields?selectedFields=Id,Name,Surname,Avatar`)
       .pipe(
@@ -45,12 +45,13 @@ export class DialogService {
       }))
   }
 
-  addNewMessage(chatHash: string, chatMessage: NewMessageInChat){
-    return this.http.post(`/api/chat/message/${chatHash}`,
+  addNewMessage(chatId: number, interlocutorId: number, chatMessage: NewMessageInChat){
+    return this.http.post(`/api/chat/message/${chatId}/${interlocutorId}`,
       chatMessage
     ).pipe(
       map((response : MessageInChat) => {
         return response;
       }))
   }
+
 }

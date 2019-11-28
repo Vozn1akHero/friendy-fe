@@ -18,7 +18,7 @@ export class FriendListComponent implements OnInit {
   constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
-    this.store.dispatch(new UserFriendsActions.GetFriends({firstIndex: 1, lastIndex: 9}));
+    this.store.dispatch(new UserFriendsActions.GetFriends({firstIndex: 1, length: 10}));
 
     this.friendsLoaded$ = this.store.select(state => state.friendsPageUserFriends.loaded);
 
@@ -28,4 +28,7 @@ export class FriendListComponent implements OnInit {
       })
   }
 
+  removeFriend($event){
+    this.store.dispatch(new UserFriendsActions.RemoveFriend({ id: $event }))
+  }
 }

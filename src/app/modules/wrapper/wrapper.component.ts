@@ -12,8 +12,6 @@ export class WrapperComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-/*    console.log(this.route.snapshot.data.receivedFriendRequests)
-    console.log(this.route.snapshot.data.sentFriendRequests)*/
   }
 
   openFriendRequestsModal(){

@@ -1,7 +1,8 @@
 <div class="chat-message-list">
   <ng-container *ngIf="(messagesLoaded$ | async)">
     <ng-container *ngFor="let message of messages">
-      <app-chat-message-item [messageData]="message"></app-chat-message-item>
+      <app-chat-message-item [messageData]="message"
+                             [profileId]="profileId"></app-chat-message-item>
     </ng-container>
   </ng-container>
 </div>

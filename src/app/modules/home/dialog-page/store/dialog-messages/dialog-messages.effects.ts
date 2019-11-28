@@ -8,7 +8,7 @@ import * as DialogActions from './dialog-messages.actions';
 import {Action, Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {DialogService} from '../../services/dialog.service';
-import {DialogWsService} from '../../services/dialog-ws.service';
+import MessageInChatModel from '../../models/message-in-chat.model';
 
 
 @Injectable()
@@ -33,10 +33,11 @@ export class DialogMessagesEffects {
   @Effect() addMessageInDialog = this.actions$.pipe(
     ofType(DialogActions.ADD_NEW_MESSAGE),
     mergeMap((payload: any) => {
-        return this.dialogService.addNewMessage(payload.payload.receiverId, payload.payload.newMessage)
+        return this.dialogService.addNewMessage(payload.payload.chatId,
+          payload.payload.receiverId,
+          payload.payload.newMessage)
           .pipe(
-            map((response) => {
-              //this.dialogWsService.sendNewMessage()
+            map((response : MessageInChatModel) => {
               return new DialogActions.SetAddedMessage(response);
             })
           )
@@ -48,7 +49,6 @@ export class DialogMessagesEffects {
     private actions$: Actions,
     private http: HttpClient,
     private dialogService: DialogService,
-    private dialogWsService : DialogWsService,
     private router: Router,
     private store$: Store<fromApp.AppState>
   ) {}

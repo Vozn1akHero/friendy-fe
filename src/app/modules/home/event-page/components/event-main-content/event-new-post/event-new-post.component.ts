@@ -14,13 +14,11 @@ export class EventNewPostComponent implements OnInit, OnDestroy {
   @ViewChild('image') image;
   @ViewChild('newMessageContent') newMessageContent;
   @Input() isUserAdmin : boolean;
-  newPostSubscription : Subscription;
 
   constructor(private eventPostService : EventPostService,
               private route : ActivatedRoute) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSubmit($event) {
     $event.preventDefault();

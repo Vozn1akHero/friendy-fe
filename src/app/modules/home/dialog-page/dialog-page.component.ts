@@ -1,7 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {DialogWsService} from './services/dialog-ws.service';
+import {DialogHubService} from '../../../shared/services/dialog-hub.service';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-dialog-page',
@@ -13,22 +15,34 @@ export class DialogPageComponent implements OnInit, OnDestroy {
     newMessageContent: new FormControl('', [Validators.required, Validators.minLength(1)]),
     image: new FormControl('')
   });
+
   interlocutorId: string;
+  chatId: string;
+  private unsubscribe$ = new Subject();
 
   constructor(private route: ActivatedRoute,
-              private dialogWsService: DialogWsService) {}
+              private dialogHubService: DialogHubService) {}
 
   ngOnInit() {
-    this.interlocutorId = this.route.snapshot.params.to;
+    this.interlocutorId = this.route.snapshot.queryParams.to;
+    this.chatId = this.route.snapshot.data.chatData.id;
 
-    this.joinGroup();
+    this.activateDialogHub();
   }
 
-  joinGroup(){
-    this.dialogWsService.joinChat(this.interlocutorId);
+  activateDialogHub(){
+    this.dialogHubService.connected$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((value) => {
+        if(value){
+          this.dialogHubService.joinGroup(this.chatId);
+          this.dialogHubService.listenToNewMessage();
+        }
+      })
   }
 
   ngOnDestroy(): void {
-
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

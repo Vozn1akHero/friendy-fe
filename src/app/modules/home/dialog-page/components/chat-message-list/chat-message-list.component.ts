@@ -1,11 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {Observable, Subscription} from 'rxjs';
 import MessageInChatModel from '../../models/message-in-chat.model';
 import {ActivatedRoute} from '@angular/router';
-import InterlocutorDataModel from '../../models/interlocutor-data.model';
 import * as DialogActions from '../../store/dialog-messages/dialog-messages.actions';
+import {UserIdService} from '../../../../../shared/services/user-id.service';
 
 @Component({
   selector: 'app-chat-message-list',
@@ -13,15 +13,23 @@ import * as DialogActions from '../../store/dialog-messages/dialog-messages.acti
   styleUrls: ['./chat-message-list.component.scss']
 })
 export class MessagesComponent implements OnInit, OnDestroy {
-  interlocutorData: InterlocutorDataModel;
+  //interlocutorData: InterlocutorDataModel;
   messagesSubscription: Subscription;
   messagesLoaded$ : Observable<boolean>;
   messages: MessageInChatModel[];
+  profileId: number;
 
   constructor(private store: Store<fromApp.AppState>,
+              private profileIdService: UserIdService,
               private route : ActivatedRoute) { }
 
   ngOnInit() {
+    this.getDialog();
+    this.setMessageList();
+    this.setProfileId();
+  }
+
+  getDialog(){
     this.messagesLoaded$ = this.store.select(e => e.messagesPageDialog.loaded);
 
     this.store.dispatch(new DialogActions.GetDialog({
@@ -30,13 +38,19 @@ export class MessagesComponent implements OnInit, OnDestroy {
       length: 10
     }));
 
-    this.interlocutorData = this.route.snapshot.data.interlocutorData;
+    //this.interlocutorData = this.route.snapshot.data.interlocutorData;
+  }
 
+  setMessageList(){
     this.messagesSubscription = this.store
-      .select('messagesPageDialog')
+      .select(e => e.messagesPageDialog.messagesInDialog)
       .subscribe(messagesPageDialog => {
-        this.messages = messagesPageDialog.messagesInDialog;
-    })
+        this.messages = messagesPageDialog;
+      })
+  }
+
+  setProfileId(){
+    this.profileId = this.profileIdService.userId;
   }
 
   ngOnDestroy(): void {

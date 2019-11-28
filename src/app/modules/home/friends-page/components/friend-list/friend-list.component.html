@@ -2,6 +2,7 @@
   <ng-container *ngIf="(friendsLoaded$ | async); else friendListLoading">
     <ng-container *ngIf="friendList.length > 0; else friendListEmptyMsg">
       <app-friends-list-item *ngFor="let friend of friendList"
+                             (removeFriendEvent)="removeFriend($event)"
                              [friendData]="friend"></app-friends-list-item>
     </ng-container>
     <ng-template #friendListEmptyMsg>

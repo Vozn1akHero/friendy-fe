@@ -1,17 +1,17 @@
 <div class="chat-message-item">
-  <div class="inner-ab-wrapper" [ngStyle]="{ left: !messageData.isUserAuthor && '5px',
-   right: messageData.isUserAuthor && '15px' }">
-    <ng-container *ngIf="messageData.isUserAuthor">
+  <div class="inner-ab-wrapper" [ngStyle]="{ left: !isUserAuthor && '5px',
+   right: isUserAuthor && '15px' }">
+    <ng-container *ngIf="isUserAuthor">
        <span class="time-passed time-passed--user">
         {{timePassed}}
       </span>
     </ng-container>
-    <div class="content" [ngStyle]="{ float: messageData.isUserAuthor ? 'right' : 'left' }">
+    <div class="content" [ngStyle]="{ float: isUserAuthor ? 'right' : 'left' }">
       <span>
         {{messageData.content}}
       </span>
     </div>
-    <ng-container *ngIf="!messageData.isUserAuthor">
+    <ng-container *ngIf="!isUserAuthor">
       <span class="time-passed time-passed--friend">
         {{timePassed}}
       </span>

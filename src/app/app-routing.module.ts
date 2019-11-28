@@ -100,6 +100,7 @@ const routes: Routes = [
       {path: 'dialog',
         component: DialogPageComponent,
         resolve: {interlocutorData: InterlocutorDataResolver,
+          profileId: ProfileIdResolver,
           chatData: ChatDataResolver }},
 
       {path: 'settings', component: UserSettingsPageComponent}

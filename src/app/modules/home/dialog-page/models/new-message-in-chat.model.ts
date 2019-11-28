@@ -1,9 +1,9 @@
 export default class NewMessageInChat {
-  Content: string;
-  ImageBytes: string;
+  content: string;
+  image: File;
 
-  constructor(content: string, imageBytes: string) {
-    this.Content = content;
-    this.ImageBytes = imageBytes;
+  constructor(content: string, image: File) {
+    this.content = content;
+    this.image = image;
   }
 }

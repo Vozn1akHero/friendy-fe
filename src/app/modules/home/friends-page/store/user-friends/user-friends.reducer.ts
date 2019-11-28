@@ -30,12 +30,16 @@ export function userFriendsReducer(
         friends: action.payload,
         loaded: true
       };
-    case UserFriendsActions.SET_FILTERED_FRIENDS: {
+    case UserFriendsActions.REMOVE_FRIEND_FROM_STATE:
+      return {
+        ...state,
+        friends: [...state.friends.filter(value => value.id !== action.payload.id)]
+      };
+    case UserFriendsActions.SET_FILTERED_FRIENDS:
       return {
         ...state,
         friends: action.payload
-      }
-    }
+      };
     default:
       return state;
   }

@@ -1,9 +1,6 @@
 <div class="friend-item">
-  <button class="remove-btn">
+  <button class="remove-btn" (click)="removeFriend()">
     &times;
-    <span>
-
-    </span>
   </button>
 
   <div class="avatar">
@@ -27,7 +24,7 @@
 
     <hr>
 
-    <a [routerLink]="['/app/dialog/', friendData.dialogLink]" class="send-msg-btn">
+    <a (click)="navigateToDialog()" class="send-msg-btn">
       <svg class="control-icon">
         <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-bubble"></use>
       </svg>

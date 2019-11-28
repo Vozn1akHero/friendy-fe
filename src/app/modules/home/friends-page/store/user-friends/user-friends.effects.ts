@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import {switchMap, catchError, map, tap, withLatestFrom, filter, mergeMap} from 'rxjs/operators';
 import { of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 
 import * as UserFriendsActions from './user-friends.actions';
 import {Store} from '@ngrx/store';
@@ -22,22 +22,10 @@ export class UserFriendsEffects {
     }),
     mergeMap(([{payload}] : any) => {
       return this.friendsService.getFriendsRange(payload.firstIndex,
-        payload.lastIndex)
+        payload.length)
         .pipe(
           map(res => {
-            if(Object.keys(res.body).length === 0){
-              return ({type: UserFriendsActions.SET_FRIENDS, payload: []})
-            }
-            let friends : Friend[] = [];
-            Array(res.body).map(friend => {
-              friends.push(new Friend(friend[0].id,
-                friend[0].name,
-                friend[0].surname,
-                friend[0].onlineStatus,
-                friend[0].dialogLink,
-                friend[0].avatarPath));
-            });
-            return ({type: UserFriendsActions.SET_FRIENDS, payload: friends})
+            return ({type: UserFriendsActions.SET_FRIENDS, payload: res})
           })
         )
     })
@@ -50,7 +38,23 @@ export class UserFriendsEffects {
       return this.friendsService.filterFriends(filterFriendsStart.payload.keyword)
         .pipe(
           map(res => {
-            return ({type: UserFriendsActions.SET_FILTERED_FRIENDS, payload: res.body})
+            return ({type: UserFriendsActions.SET_FILTERED_FRIENDS, payload: res})
+          })
+        )
+    })
+  );
+
+  @Effect()
+  removeFriend = this.actions$.pipe(
+    ofType(UserFriendsActions.REMOVE_FRIEND),
+    switchMap((filterFriendsStart: UserFriendsActions.RemoveFriend) => {
+      return this.friendsService.removeById(filterFriendsStart.payload.id)
+        .pipe(
+          map((res:any) => {
+            if(res.status === 200){
+              return ({type: UserFriendsActions.REMOVE_FRIEND_FROM_STATE,
+                payload: { id: filterFriendsStart.payload.id }})
+            }
           })
         )
     })
