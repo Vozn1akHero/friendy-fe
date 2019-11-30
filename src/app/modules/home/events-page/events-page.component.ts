@@ -15,71 +15,23 @@ import {EventType} from './enums/event-types.enum';
 })
 export class EventsPageComponent implements OnInit, OnDestroy {
   eventCreationPopupOpened = false;
-  chosenEventTypeSubscription: Subscription;
+  searchSubpageActivated: boolean;
 
-
-
-
-  chosenSubpage: EventType;
-  administeredType: EventType = EventType.Administered;
-  participatingType: EventType = EventType.Participating;
-
-
-  constructor(private renderer: Renderer2,
-              private router: Router,
-              private activatedRoute: ActivatedRoute,
-              private store: Store<fromApp.AppState>) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.chosenEventTypeSubscription = this.activatedRoute.fragment.subscribe(fragment => {
-        let chosenSubpage = new URLSearchParams(fragment).get('ev_t');
-        switch (chosenSubpage) {
-          case 'administered':
-            this.chosenSubpage = EventType.Administered;
-            break;
-          case 'participating':
-            this.chosenSubpage = EventType.Participating;
-        }
 
-        if (this.chosenSubpage !== EventType.Administered
-          && this.chosenSubpage !== EventType.Participating) {
-          this.router.navigate(['.'], {
-            fragment: 'ev_t=participating',
-            relativeTo: this.activatedRoute
-          })
-        }
-      }
-    );
+  }
+
+  setSelectedSubpage(){
+    this.searchSubpageActivated = this.route.snapshot.queryParams.search_act == 'true';
   }
 
   openOrCloseEventCreationPopup() {
     this.eventCreationPopupOpened = !this.eventCreationPopupOpened;
   }
 
-  showConcreteTypeOfEvents(chosenSubpage) {
-    if(chosenSubpage === 'administered'){
-      this.router.navigate(['.'], { fragment: 'ev_t=administered',
-        relativeTo: this.activatedRoute })
-    } else if(chosenSubpage === 'participating') {
-      this.router.navigate(['.'], { fragment: 'ev_t=participating',
-        relativeTo: this.activatedRoute })
-    } else {
-      this.router.navigate(['.'], { fragment: 'ev_t=participating',
-        relativeTo: this.activatedRoute })
-    }
-  }
-
-  searchEvents(keyword){
-    console.log(keyword)
-    if(this.chosenSubpage === EventType.Administered){
-      this.store.dispatch(new EventsPageAdministeredEventsActions
-        .FilterAdministeredEvents({ keyword }))
-    } else if (this.chosenSubpage === EventType.Participating){
-
-    }
-  }
-
   ngOnDestroy(): void {
-    this.chosenEventTypeSubscription.unsubscribe();
+
   }
 }

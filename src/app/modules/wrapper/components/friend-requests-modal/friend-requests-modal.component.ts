@@ -39,12 +39,14 @@ export class FriendRequestsModalComponent implements OnInit, OnDestroy {
     this.friendRequestsModalService
       .getReceivedFriendRequests();
     this.receivedFriendRequestsLoaded$ = this.friendRequestsModalService.receivedFriendRequestsLoaded$;
+    this.receivedFriendRequests = this.friendRequestsModalService.receivedFriendRequests$;
   }
 
   getSentFriendRequests() {
     this.friendRequestsModalService
       .getSentFriendRequests();
     this.sentFriendRequestsLoaded$ = this.friendRequestsModalService.sentFriendRequestsLoaded$;
+    this.sentFriendRequests = this.friendRequestsModalService.sentFriendRequests$;
   }
 
   closeModal(){

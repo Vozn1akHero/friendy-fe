@@ -1,4 +1,4 @@
-@import '../../../../../../../assets/sass/base/variables';
+@import '../../../../../../assets/sass/base/variables';
 
 .user-event-item {
   display: flex;
@@ -59,15 +59,15 @@
     }
 
     .icon-location{
-      background-image: url('../../../../../../../assets/images/icon/location.svg');
+      background-image: url('../../../../../../assets/images/icon/location.svg');
     }
 
     .icon-calendar{
-      background-image: url('../../../../../../../assets/images/icon/calendar.svg');
+      background-image: url('../../../../../../assets/images/icon/calendar.svg');
     }
 
     .icon-participants{
-      background-image: url('../../../../../../../assets/images/icon/users1.svg');
+      background-image: url('../../../../../../assets/images/icon/users1.svg');
     }
 
     hr {
@@ -109,11 +109,11 @@
       }
 
       .icon-close{
-        background-image: url('../../../../../../../assets/images/icon/cancel-circle.svg');
+        background-image: url('../../../../../../assets/images/icon/cancel-circle.svg');
       }
 
       .icon-notifications{
-        background-image: url('../../../../../../../assets/images/icon/notifications.svg');
+        background-image: url('../../../../../../assets/images/icon/notifications.svg');
       }
 
       &:hover{

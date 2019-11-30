@@ -1,11 +1,12 @@
 @import '../../../../assets/sass/base/variables';
-
+@import '../../../../assets/sass/abstracts/mixins';
 
 .messages {
   display: flex;
   width: calc(100vw - #{$navigation-width});
   padding-top: 5rem;
   justify-content: center;
+  @include min-width-page();
 
   .right-sec-wrapper {
     display: flex;

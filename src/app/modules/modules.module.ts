@@ -19,6 +19,8 @@ import { PhotosPageHeaderComponent } from './home/photos-page/components/photos-
 import { NewPhotoFormComponent } from './home/photos-page/components/photos-page-header/new-photo-form/new-photo-form.component';
 import { BaseDataPanelComponent } from './home/photos-page/components/photos-page-header/base-data-panel/base-data-panel.component';
 import {EventSettingsPageModule} from './home/event-settings-page/event-settings-page.module';
+import { SettingsPanelWrapperComponent } from '../shared/components/settings-panel-wrapper/settings-panel-wrapper.component';
+import {UserSettingsPageModule} from './home/user-settings-page/user-settings-page.module';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import {EventSettingsPageModule} from './home/event-settings-page/event-settings
     DialogPageModule,
     WrapperModule,
     EventSettingsPageModule,
-    FriendsSearchPageModule
+    FriendsSearchPageModule,
+    UserSettingsPageModule
   ],
   declarations: [
     NotFoundPageComponent,
@@ -46,6 +49,7 @@ import {EventSettingsPageModule} from './home/event-settings-page/event-settings
     BaseDataPanelComponent
   ],
   exports: [
+    SettingsPanelWrapperComponent
 
   ]
 })

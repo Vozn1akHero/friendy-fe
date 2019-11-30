@@ -1,46 +1,28 @@
- <div class="events">
-    <app-event-creation *ngIf="this.eventCreationPopupOpened"
-                        (closeEventCreationPopup)="openOrCloseEventCreationPopup()">
-    </app-event-creation>
+<section class="events-page">
+  <app-event-creation *ngIf="this.eventCreationPopupOpened"
+                      (closeEventCreationPopup)="openOrCloseEventCreationPopup()">
+  </app-event-creation>
 
-    <div class="events__left">
-      <div class="events-controls">
-        <button class="all-events-btn" (click)="showConcreteTypeOfEvents('participating')"
-                [ngClass]="{'activeButton': chosenSubpage == participatingType}">
-          Wszystkie wydarzenia
-        </button>
+  <app-events-search-panel></app-events-search-panel>
 
-        <button class="my-events-btn" (click)="showConcreteTypeOfEvents('administered')"
-                [ngClass]="{'activeButton': chosenSubpage == administeredType}">
-          Moje wydarzenia
-        </button>
+  <section class="left-side-wrapper">
+    <app-user-event-list></app-user-event-list>
+  </section>
+
+  <section class="right-side-wrapper">
+    <section class="new-event">
+      <button class="new-event__btn" (click)="openOrCloseEventCreationPopup()">
+        Utwórz wydarzenie
+      </button>
+    </section>
+
+    <section class="search-events">
+      <app-search-events></app-search-events>
+
+      <div class="suggested-friends">
+        <app-suggested-events-item></app-suggested-events-item>
       </div>
-
-      <app-events-mine-search (searchEventsSubmit)="searchEvents($event)"></app-events-mine-search>
-
-      <section *ngIf="chosenSubpage === participatingType">
-        <app-user-events-list></app-user-events-list>
-      </section>
-
-      <section *ngIf="chosenSubpage === administeredType">
-       <app-user-administered-events-list></app-user-administered-events-list>
-      </section>
-    </div>
-
-    <div class="events__right">
-      <div class="new-event">
-        <button class="new-event__btn" (click)="openOrCloseEventCreationPopup()">
-          Utwórz wydarzenie
-        </button>
-      </div>
-
-      <section class="search-events">
-        <app-search-events></app-search-events>
-
-        <div class="suggested-friends">
-          <app-suggested-events-item></app-suggested-events-item>
-        </div>
-      </section>
-    </div>
-  </div>
+    </section>
+  </section>
+</section>
 

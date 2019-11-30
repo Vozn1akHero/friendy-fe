@@ -13,7 +13,8 @@ import SentFriendRequestModel from '../../../../models/sent-friend-request.model
 export class ReceivedFriendRequestListComponent implements OnInit {
   @Input() receivedFriendRequests: ReceivedFriendRequestModel[];
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
 

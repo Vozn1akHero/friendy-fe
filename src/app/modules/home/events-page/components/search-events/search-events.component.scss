@@ -1,36 +1,52 @@
 @import '../../../../../../assets/sass/base/variables';
 
 
-  .search-events{
-     display: flex;
-      margin-top: 2rem;
+.search-events {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
 
-      .search-events-input{
-        height: 39px;
-        width: 20vw;
-        outline: none;
-        border: none;
-        padding-left: 1rem;
-        transition: all .3s;
-      }
+  .search-input-wrapper {
+    display: flex;
 
-      .search-events-submit{
+    .search-events-input {
+      height: 39px;
+      width: 20vw;
+      outline: none;
+      border: none;
+      padding-left: 1rem;
+      transition: all .3s;
+    }
+
+    .search-events-submit {
+      display: flex;
+      align-self: center;
+      justify-content: center;
+
+      width: 39px;
+      height: 39px;
+      border: none;
+      background: $color-pink;
+
+      &__icon {
         display: flex;
         align-self: center;
-        justify-content: center;
-
-        width: 39px;
-        height: 39px;
-        border: none;
-        background: $color-pink;
-
-        &__icon {
-          display: flex;
-          align-self: center;
-          width: 19px;
-          height: 19px;
-          fill: $color-white;
-        }
+        width: 19px;
+        height: 19px;
+        fill: $color-white;
       }
+    }
   }
+/*
+  .open-adv-search-model-btn {
+    border: none;
+    background: none;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    &:hover{
+      text-decoration: underline;
+    }
+  }*/
+}
 

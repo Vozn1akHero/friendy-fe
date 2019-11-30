@@ -1,13 +1,24 @@
-<div *ngIf="(userEventsLoaded$ | async)"
-     class="participating-events">
-  <ng-container *ngIf="events.length > 0; else eventListEmptyMsg">
-    <app-user-event-item *ngFor="let event of events"
-                         [enumType]="'common'"
-                         [eventData]="event"></app-user-event-item>
-  </ng-container>
-  <ng-template #eventListEmptyMsg>
-    <span class="event-list-empty-msg">
-      Nie bierzesz udziału w żadnym wydarzeniu
-    </span>
-  </ng-template>
+<div class="user-event-list">
+  <div class="events-controls">
+    <button class="all-events-btn" (click)="showConcreteTypeOfEvents('participating')"
+            [ngClass]="{'activeButton': chosenSubpage == participatingType}">
+      Wszystkie wydarzenia
+    </button>
+
+    <button class="my-events-btn" (click)="showConcreteTypeOfEvents('administered')"
+            [ngClass]="{'activeButton': chosenSubpage == administeredType}">
+      Moje wydarzenia
+    </button>
+  </div>
+
+  <app-events-mine-search (searchEventsSubmit)="searchEvents($event)"></app-events-mine-search>
+
+  <section *ngIf="chosenSubpage === participatingType">
+    <app-user-default-event-list></app-user-default-event-list>
+  </section>
+
+  <section *ngIf="chosenSubpage === administeredType">
+    <app-user-administered-events-list></app-user-administered-events-list>
+  </section>
+
 </div>

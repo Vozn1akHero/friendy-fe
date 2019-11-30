@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import {UserIdService} from '../../shared/services/user-id.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -12,8 +13,7 @@ export class NavigationComponent implements OnInit {
   @Input() friendRequestModalOpened:boolean;
   @Output() openFriendRequestsModalEmitter: EventEmitter<void> = new EventEmitter();
   @Output() closeFriendRequestsModalEmitter: EventEmitter<void> = new EventEmitter();
-
-  profileId: number;
+  profileId$: Observable<number>;
 
   constructor(private router: Router,
               private userIdService : UserIdService,
@@ -32,7 +32,7 @@ export class NavigationComponent implements OnInit {
   }
 
   setProfileId(){
-    this.profileId = this.userIdService.userId;
+    this.profileId$ = this.userIdService.userId$;
   }
 
   logOut():void{

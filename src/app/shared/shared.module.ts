@@ -12,6 +12,7 @@ import { NewCommentFormComponent } from './components/comments/new-comment-form/
 import { CommonModalComponent } from './components/common-modal/common-modal.component';
 import { ButtonHoverInfoModalComponent } from './components/button-hover-info-modal/button-hover-info-modal.component';
 import { TransparentBgModalComponent } from './components/transparent-bg-modal/transparent-bg-modal.component';
+import {SettingsPanelWrapperComponent} from './components/settings-panel-wrapper/settings-panel-wrapper.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { TransparentBgModalComponent } from './components/transparent-bg-modal/t
     NewCommentFormComponent,
     CommonModalComponent,
     ButtonHoverInfoModalComponent,
-    TransparentBgModalComponent
+    TransparentBgModalComponent,
+    SettingsPanelWrapperComponent
   ],
   exports: [
     NewMessageFormComponent,
@@ -41,7 +43,8 @@ import { TransparentBgModalComponent } from './components/transparent-bg-modal/t
     NewCommentFormComponent,
     CommonModalComponent,
     ButtonHoverInfoModalComponent,
-    TransparentBgModalComponent
+    TransparentBgModalComponent,
+    SettingsPanelWrapperComponent
   ]
 })
 

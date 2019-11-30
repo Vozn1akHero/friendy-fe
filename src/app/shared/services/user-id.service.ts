@@ -18,7 +18,11 @@ export class UserIdService{
     return this._userId.getValue();
   }
 
-  public set userIdLoaded(value : boolean){
+  get userId$() : Observable<number>{
+    return this._userId.asObservable();
+  }
+
+  set userIdLoaded(value : boolean){
     this._userIdLoaded.next(value);
   }
 

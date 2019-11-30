@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import Event from '../../../models/event.model';
+import Event from '../../models/event.model';
 
 @Component({
   selector: 'app-user-event-item',
@@ -9,6 +9,7 @@ import Event from '../../../models/event.model';
 export class UserEventItemComponent implements OnInit {
   @Input() eventData : Event;
   @Input() enumType : string;
+  @Input() chosenType: string;
 
   constructor() { }
 

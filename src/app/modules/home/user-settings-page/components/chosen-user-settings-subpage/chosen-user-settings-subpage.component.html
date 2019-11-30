@@ -1,0 +1,7 @@
+<section class="chosen-user-settings-subpage">
+  <ng-container [ngSwitch]="chosenSubpage">
+    <app-basic-user-settings *ngSwitchCase="1"></app-basic-user-settings>
+    <app-user-interests-settings *ngSwitchCase="2"></app-user-interests-settings>
+    <app-user-safety-settings *ngSwitchCase="3"></app-user-safety-settings>
+  </ng-container>
+</section>

@@ -1,0 +1,39 @@
+@import '../../../../../../assets/sass/base/variables';
+
+.user-event-list{
+  .events-controls {
+    display: flex;
+
+    .all-events-btn, .my-events-btn {
+      width: 50%;
+      height: 3rem;
+
+      border: none;
+      background: none;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: .85rem;
+      color: $color-grey-dark;
+
+      transition: all .2s;
+
+      &:hover {
+        background: $color-bg-light-grey-2;
+        color: $color-white;
+      }
+    }
+
+    .activeButton {
+      color: white;
+      background: #00baff;
+
+      &:hover {
+        background: #00baff;
+        color: white;
+      }
+    }
+  }
+}

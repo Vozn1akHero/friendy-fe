@@ -23,22 +23,7 @@ export class UserEventsEffects {
       return this.eventsService.getLoggedInUserEvents()
           .pipe(
             map(res => {
-              if((res.body as Array<any>).length === 0){
-                return ({ type: UserEventsActions.SET_EVENTS,
-                  payload: [] })
-              }
-              let events : Event[] = [];
-              Array(res.body).map(event => {
-                events.push(new Event(event[0].id,
-                  event[0].title,
-                  event[0].street,
-                  event[0].streetNumber,
-                  event[0].city,
-                  event[0].avatarPath,
-                  event[0].participantsAmount,
-                  event[0].date))
-              });
-              return ({ type: UserEventsActions.SET_EVENTS, payload: events })
+              return ({ type: UserEventsActions.SET_EVENTS, payload: res })
             })
           )
     })

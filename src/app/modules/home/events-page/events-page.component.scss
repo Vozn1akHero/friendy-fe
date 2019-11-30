@@ -3,14 +3,14 @@
 @import '../../../../assets/sass/abstracts/mixins';
 
 
-.events {
+.events-page {
   display: flex;
   width: calc(100vw - #{$navigation-width});
   padding-top: 5rem;
   justify-content: center;
   @include min-width-page();
 
-  &__left {
+  .left-side-wrapper {
     display: flex;
     flex-direction: column;
     width: 48%;
@@ -61,44 +61,10 @@
       }
     }
 
-    .events-controls {
-      display: flex;
 
-      .all-events-btn, .my-events-btn {
-        width: 50%;
-        height: 3rem;
-
-        border: none;
-        background: none;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        font-size: .85rem;
-        color: $color-grey-dark;
-
-        transition: all .2s;
-
-        &:hover {
-          background: $color-bg-light-grey-2;
-          color: $color-white;
-        }
-      }
-
-      .activeButton {
-        color: white;
-        background: #00baff;
-
-        &:hover {
-          background: #00baff;
-          color: white;
-        }
-      }
-    }
   }
 
-  &__right {
+  .right-side-wrapper {
     width: 35%;
     margin-left: 4rem;
   }

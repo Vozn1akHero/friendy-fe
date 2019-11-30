@@ -22,7 +22,7 @@
    
     <div class="links">
         <div class="links__item profile">
-            <a [routerLink]="['/app/profile', profileId]">
+            <a [routerLink]="['/app/profile', (this.profileId$|async)]">
                 <svg class="icon">
                     <use xlink:href="../../../assets/images/icon/symbol-defs.svg#icon-user"></use>
                 </svg>

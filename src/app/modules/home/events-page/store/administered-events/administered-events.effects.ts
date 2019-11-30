@@ -26,23 +26,9 @@ export class AdministeredEventsEffects {
       return this.eventsService.getAdministeredEvents()
         .pipe(
           map(res => {
-            if((res.body as Array<any>).length === 0){
-              return ({ type: AdministeredEventsActions.SET_ADMINISTERED_EVENTS,
-                payload: [] })
-            }
-            let administeredEvents : Event[] = [];
-            Array(res.body).map(event => {
-              administeredEvents.push(new Event(event[0].id,
-                event[0].title,
-                event[0].street,
-                event[0].streetNumber,
-                event[0].city,
-                event[0].avatarPath,
-                event[0].participantsAmount,
-                event[0].date))
-            });
+
             return ({ type: AdministeredEventsActions.SET_ADMINISTERED_EVENTS,
-              payload: administeredEvents })
+              payload: res })
           })
         )
     })
@@ -56,7 +42,7 @@ export class AdministeredEventsEffects {
         .pipe(
           map(res => {
             return ({ type: AdministeredEventsActions.FILTER_ADMINISTERED_EVENTS,
-              payload: res.body })
+              payload: res })
           })
         )
     })

@@ -31,7 +31,6 @@ import {animate, style, transition, trigger} from '@angular/animations';
 export class TransparentBgModalComponent implements OnInit {
   @Output() closeModalEvent: EventEmitter<void> = new EventEmitter();
 
-
   constructor() { }
 
   ngOnInit() {

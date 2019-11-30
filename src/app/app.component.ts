@@ -11,4 +11,13 @@ export class AppComponent {
   constructor() {
     moment.locale('pl');
   }
+
+  closeModalOnBodyClickListener(){
+    document.body.addEventListener('click', (e) => {
+      const modal = document.getElementsByClassName('f-modal')[0];
+      if(modal != null){
+        modal.classList.add('f-modal-hidden')
+      }
+    })
+  }
 }

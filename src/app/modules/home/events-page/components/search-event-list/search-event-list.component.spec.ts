@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserSettingsPageComponent } from './user-settings-page.component';
+import { SearchEventListComponent } from './search-event-list.component';
 
-describe('UserSettingsComponent', () => {
-  let component: UserSettingsPageComponent;
-  let fixture: ComponentFixture<UserSettingsPageComponent>;
+describe('SearchEventListComponent', () => {
+  let component: SearchEventListComponent;
+  let fixture: ComponentFixture<SearchEventListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserSettingsPageComponent ]
+      declarations: [ SearchEventListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserSettingsPageComponent);
+    fixture = TestBed.createComponent(SearchEventListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

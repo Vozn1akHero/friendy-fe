@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 @import 'assets/sass/base/variables';
+@import 'assets/sass/abstracts/utilities';
+@import 'assets/sass/abstracts/m-p-loops';
+
+@include m-p-loops;
 
 *{
     padding: 0;

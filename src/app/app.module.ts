@@ -9,7 +9,6 @@ import { MainpageComponent } from './modules/mainpage/mainpage.component';
 import { LoginPageComponent } from './modules/auth/login-page/login-page.component';
 import { JoinupPageComponent } from './modules/auth/joinup-page/joinup-page.component';
 import { HomePageComponent } from './modules/home/home-page/home-page.component';
-import { UserSettingsPageComponent } from './modules/home/user-settings-page/user-settings-page.component';
 import { HomeRecordItemComponent } from './modules/home/home-page/home-record-item/home-record-item.component';
 import { HomeUpcomingEventsComponent } from './modules/home/home-page/home-upcoming-events/home-upcoming-events.component';
 import { HomeStatsComponent } from './modules/home/home-page/home-stats/home-stats.component';
@@ -59,7 +58,6 @@ import {LoggedInResolver} from './logged-in.resolver';
     HomePageComponent,
     RegistrationSuccessPopUpComponent,
 
-    UserSettingsPageComponent,
 
     HomeRecordItemComponent,
     HomeUpcomingEventsComponent,

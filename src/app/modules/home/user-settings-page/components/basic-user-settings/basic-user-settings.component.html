@@ -1,0 +1,18 @@
+<section class="basic-user-settings">
+  <form (submit)="userBasicSettingsSubmit()" [formGroup]="userBasicSettings">
+  <app-settings-panel-wrapper>
+    <div class="row m-5">
+      <span class="row__header">
+        Imię
+      </span>
+      <input formControlName="name" type="text">
+    </div>
+    <div class="row m-b-20">
+      <span class="row__header">
+        Nazwisko
+      </span>
+      <input formControlName="name" type="text">
+    </div>
+  </app-settings-panel-wrapper>
+  </form>
+</section>

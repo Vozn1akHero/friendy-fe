@@ -1,0 +1,14 @@
+<aside #panel class="event-search-panel">
+  <div class="inner-wrapper">
+    <button (click)="onToggleBtnClick()"
+            #toggleBtn
+            class="toggle-btn">
+      <ng-container *ngIf="eventSearchPanelExpanded">
+        &#8250;
+      </ng-container>
+      <ng-container *ngIf="!eventSearchPanelExpanded">
+        &#8249;
+      </ng-container>
+    </button>
+  </div>
+</aside>
