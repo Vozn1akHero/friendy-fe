@@ -1,4 +1,11 @@
 <section class="chosen-user-settings-subpage">
+  <header class="header color-dark-grey fr-m-b-1">
+    <ng-container [ngSwitch]="chosenSubpage">
+      <h1 *ngSwitchCase="1" class="title">Podstawowe</h1>
+      <h1 *ngSwitchCase="2" class="title">Zainteresowania</h1>
+      <h1 *ngSwitchCase="3" class="title">Bezpieczeństwo</h1>
+    </ng-container>
+  </header>
   <ng-container [ngSwitch]="chosenSubpage">
     <app-basic-user-settings *ngSwitchCase="1"></app-basic-user-settings>
     <app-user-interests-settings *ngSwitchCase="2"></app-user-interests-settings>

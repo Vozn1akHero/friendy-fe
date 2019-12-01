@@ -9,12 +9,23 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class BasicUserSettingsComponent implements OnInit {
   userBasicSettings = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    surname: new FormControl('', [Validators.required])
+    surname: new FormControl('', [Validators.required]),
+    birthday: new FormControl('', [Validators.required])
   });
+
+  showCalendar: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleCalendar(){
+    this.showCalendar = !this.showCalendar;
+  }
+
+  onSelectBirthday($event){
+
   }
 
   userBasicSettingsSubmit(){

@@ -1,0 +1,30 @@
+@import "../base/variables";
+
+.settings-panel-wrapper{
+  width: 55%;
+  min-width: 45rem;
+  background: white;
+  padding: 1rem;
+  border: 1px solid rgba($color-grey-dark,.1);
+
+  &__row{
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__label{
+    font-size: .8rem;
+    font-weight: 600;
+    color: $color-grey-dark;
+  }
+
+  &__input, &__textarea{
+    background: $color-bg-grey-footer;
+    width: 60%;
+  }
+
+  &__textarea{
+    resize: none;
+  }
+}

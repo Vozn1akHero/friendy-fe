@@ -1,18 +1,39 @@
 <section class="basic-user-settings">
   <form (submit)="userBasicSettingsSubmit()" [formGroup]="userBasicSettings">
-  <app-settings-panel-wrapper>
-    <div class="row m-5">
-      <span class="row__header">
-        Imię
-      </span>
-      <input formControlName="name" type="text">
+    <div class="settings-panel-wrapper">
+      <div class="settings-panel-wrapper__row">
+        <label class="settings-panel-wrapper__label" for="name">
+          Imię
+        </label>
+        <input id="name" class="settings-panel-wrapper__input fr-input" type="text">
+      </div>
+      <div class="settings-panel-wrapper__row">
+        <label class="settings-panel-wrapper__label" for="surname">
+          Nazwisko
+        </label>
+        <input id="surname" class="settings-panel-wrapper__input fr-input" type="text">
+      </div>
     </div>
-    <div class="row m-b-20">
-      <span class="row__header">
-        Nazwisko
-      </span>
-      <input formControlName="name" type="text">
+
+    <div class="settings-panel-wrapper fr-m-t-1">
+      <div class="settings-panel-wrapper__row">
+        <label class="settings-panel-wrapper__label" for="birthday">
+          Data urodzenia
+        </label>
+        <app-calendar *ngIf="showCalendar"
+                      (onSelectDateEvent)="onSelectBirthday($event)"></app-calendar>
+        <input (click)="toggleCalendar()"
+               readonly="readonly"
+               id="birthday"
+               class="settings-panel-wrapper__input fr-input"
+               type="text">
+      </div>
     </div>
-  </app-settings-panel-wrapper>
+
+    <div class="submit-btn-wrapper m-t-3">
+      <button class="fr-btn-main-blue submit-btn" type="submit">
+        Zapisz
+      </button>
+    </div>
   </form>
 </section>

@@ -1,0 +1,88 @@
+<div class="calendar">
+  <div class="header header--year fr-border-bottom">
+    <button class="left-arr-btn left-arr-btn--year" (click)="setPreviousYear()">
+      &#8249;
+    </button>
+    <h3 class="cur-year">
+      {{ chosenYear }}
+    </h3>
+    <button class="right-arr-btn right-arr-btn--year" (click)="setNextYear()">
+      &#8250;
+    </button>
+  </div>
+  <div class="header header--month">
+    <button class="left-arr-btn left-arr-btn--month" (click)="setPreviousMonth()">
+      &#8249;
+    </button>
+    <h3 class="cur-month">
+      {{ chosenMonthText }}
+    </h3>
+    <button class="right-arr-btn right-arr-btn--month" (click)="setNextMonth()">
+      &#8250;
+    </button>
+  </div>
+  <div class="day-title">
+    <span class="day">pon</span>
+    <span class="day">wto</span>
+    <span class="day">śro</span>
+    <span class="day">czw</span>
+    <span class="day">pią</span>
+    <span class="day">sob</span>
+    <span class="day">nie</span>
+  </div>
+  <ng-container *ngIf="daysOfMonth.length > 0">
+    <div class="days">
+      <div *ngFor="let weekdays of daysOfMonth;" class="row">
+        <button [disabled]="weekdays[0] === null"
+                (click)="onDateSelect(weekdays[0])"
+                class="day-btn">
+          <ng-container *ngIf="weekdays[0]">
+            {{ weekdays[0].number }}
+          </ng-container>
+        </button>
+        <button [disabled]="weekdays[1] === null"
+                (click)="onDateSelect(weekdays[1])"
+                class="day-btn">
+          <ng-container *ngIf="weekdays[1]">
+            {{ weekdays[1].number }}
+          </ng-container>
+        </button>
+        <button [disabled]="weekdays[2] === null"
+                (click)="onDateSelect(weekdays[2])"
+                class="day-btn">
+          <ng-container *ngIf="weekdays[2]">
+            {{ weekdays[2].number }}
+          </ng-container>
+        </button>
+        <button [disabled]="weekdays[3] === null"
+                (click)="onDateSelect(weekdays[3])"
+                class="day-btn">
+          <ng-container *ngIf="weekdays[3]">
+            {{ weekdays[3].number }}
+          </ng-container>
+        </button>
+        <button [disabled]="weekdays[4] === null"
+                (click)="onDateSelect(weekdays[4])"
+                class="day-btn">
+          <ng-container *ngIf="weekdays[4]">
+            {{ weekdays[4].number }}
+          </ng-container>
+        </button>
+        <button [disabled]="weekdays[5] === null"
+                (click)="onDateSelect(weekdays[5])"
+                class="day-btn">
+          <ng-container *ngIf="weekdays[5]">
+            {{ weekdays[5].number }}
+          </ng-container>
+        </button>
+        <button [disabled]="weekdays[6] === null"
+                (click)="onDateSelect(weekdays[6])"
+                class="day-btn">
+          <ng-container *ngIf="weekdays[6]">
+              {{ weekdays[6].number }}
+          </ng-container>
+        </button>
+      </div>
+  </div>
+  </ng-container>
+</div>

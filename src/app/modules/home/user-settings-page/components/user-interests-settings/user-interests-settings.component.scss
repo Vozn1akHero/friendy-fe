@@ -1,0 +1,14 @@
+@import '../../../../../../assets/sass/base/variables';
+
+.user-interests-settings{
+  .submit-btn-wrapper{
+    width: 45rem;
+    position: relative;
+    background: rgba($color-grey-dark, .5);
+
+    .submit-btn{
+      position: absolute;
+      right: 0;
+    }
+  }
+}

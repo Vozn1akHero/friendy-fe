@@ -12,7 +12,7 @@ import { NewCommentFormComponent } from './components/comments/new-comment-form/
 import { CommonModalComponent } from './components/common-modal/common-modal.component';
 import { ButtonHoverInfoModalComponent } from './components/button-hover-info-modal/button-hover-info-modal.component';
 import { TransparentBgModalComponent } from './components/transparent-bg-modal/transparent-bg-modal.component';
-import {SettingsPanelWrapperComponent} from './components/settings-panel-wrapper/settings-panel-wrapper.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 
 @NgModule({
@@ -32,7 +32,7 @@ import {SettingsPanelWrapperComponent} from './components/settings-panel-wrapper
     CommonModalComponent,
     ButtonHoverInfoModalComponent,
     TransparentBgModalComponent,
-    SettingsPanelWrapperComponent
+    CalendarComponent,
   ],
   exports: [
     NewMessageFormComponent,
@@ -44,7 +44,7 @@ import {SettingsPanelWrapperComponent} from './components/settings-panel-wrapper
     CommonModalComponent,
     ButtonHoverInfoModalComponent,
     TransparentBgModalComponent,
-    SettingsPanelWrapperComponent
+    CalendarComponent,
   ]
 })
 

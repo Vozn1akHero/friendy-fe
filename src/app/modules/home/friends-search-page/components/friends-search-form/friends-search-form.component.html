@@ -1,5 +1,5 @@
 <div class="friends-search">
-  <form (submit)="searchSubmit($event)" [formGroup]="searchForm">
+  <form (submit)="searchSubmit()" [formGroup]="searchForm">
     <input class="name" formControlName="name" placeholder="Imię" type="text">
     <input class="surname" formControlName="surname" placeholder="Nazwisko" type="text">
 
@@ -10,13 +10,13 @@
         Wykształcenie
       </div>
       <span class="custom-dropdown">
-      <select formControlName="education">
-        <option hidden value="">Wykształcenie</option>
-        <option value="1">Średnie</option>
-        <option value="2">Wyższe</option>
-        <option value="3">Inne</option>
-      </select>
-    </span>
+        <select formControlName="education">
+          <option hidden value="">Wykształcenie</option>
+          <option value="1">Średnie</option>
+          <option value="2">Wyższe</option>
+          <option value="3">Inne</option>
+        </select>
+      </span>
     </div>
 
     <input class="school" formControlName="school" placeholder="Szkoła" type="text">

@@ -2,18 +2,23 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 @import 'assets/sass/base/variables';
 @import 'assets/sass/abstracts/utilities';
-@import 'assets/sass/abstracts/m-p-loops';
+@import 'assets/sass/components/fr-input';
+@import 'assets/sass/components/dropdown';
+@import 'assets/sass/components/radiobutton';
+@import 'assets/sass/components/fr-btn-main-blue';
+@import 'assets/sass/components/settings-panel-wrapper';
 
-@include m-p-loops;
 
 *{
     padding: 0;
-    margin: 0;   
-}
-
-body, input[type=button], button, select, input, textarea{
+    margin: 0;
     font-family: 'Montserrat', sans-serif;
 }
+
+/*body, input[type=button], button, select, input, textarea{
+    font-family: 'Montserrat', sans-serif;
+}*/
+
 
 select{
   &:hover{

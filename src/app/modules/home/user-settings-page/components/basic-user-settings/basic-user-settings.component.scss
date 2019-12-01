@@ -1,0 +1,13 @@
+@import '../../../../../../assets/sass/base/variables';
+
+.basic-user-settings{
+  .submit-btn-wrapper{
+     width: 45rem;
+     position: relative;
+
+     .submit-btn{
+       position: absolute;
+       right: 0;
+     }
+   }
+}

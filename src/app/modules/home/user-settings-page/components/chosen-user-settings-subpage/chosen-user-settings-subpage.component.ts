@@ -13,10 +13,6 @@ export class ChosenUserSettingsSubpageComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(value => {
-      if(value.sp == null || Array.of("basic", "interests", "safety").indexOf(value.sp) === -1){
-        window.location.replace(`${window.location.origin}/app/settings?sp=basic`)
-      }
-
       if(value.sp === "basic"){
         this.chosenSubpage = 1;
       } else if(value.sp === "interests"){

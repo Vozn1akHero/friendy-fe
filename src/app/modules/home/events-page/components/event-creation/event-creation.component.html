@@ -10,21 +10,21 @@
       <input [ngClass]="{
                   'bordered-onError': eventCreationForm.get('name').touched && eventCreationForm.get('name').invalid
                  }"
-             class="name"
+             class="fr-input name"
              formControlName="name"
              placeholder="Nazwa"
              type="text">
       <textarea [ngClass]="{
                   'bordered-onError': eventCreationForm.get('description').touched && eventCreationForm.get('description').invalid
                  }"
-                class="desc"
+                class="fr-input desc"
                 formControlName="description"
                 placeholder="Opis"></textarea>
 
       <input [ngClass]="{
                   'bordered-onError': eventCreationForm.get('city').touched && eventCreationForm.get('city').invalid
                  }"
-             class="city"
+             class="fr-input city"
              formControlName="city"
              placeholder="Miasto"
              type="text">
@@ -34,7 +34,7 @@
       <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('street').touched && eventCreationForm.get('street').invalid
                }"
-             class="street"
+             class="fr-input street"
              formControlName="street"
              placeholder="Ulica"
              type="text">
@@ -42,7 +42,7 @@
       <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('streetNumber').touched && eventCreationForm.get('streetNumber').invalid
                }"
-             class="number"
+             class="fr-input number"
              formControlName="streetNumber"
              placeholder="Numer"
              type="text">
@@ -52,7 +52,7 @@
       <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('year').touched && eventCreationForm.get('year').invalid
                }"
-             class="date-year"
+             class="fr-input date-year"
              formControlName="year"
              placeholder="Rok"
              type="number">
@@ -79,7 +79,7 @@
       <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('day').touched && eventCreationForm.get('day').invalid
                }"
-             class="date-day"
+             class="fr-input date-day"
              formControlName="day"
              placeholder="Dzień"
              type="number">
@@ -102,7 +102,7 @@
       <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('minute').touched && eventCreationForm.get('minute').invalid
                }"
-             class="date-minute"
+             class="fr-input date-minute"
              formControlName="minute" placeholder="Minuta"
              type="number">
     </div>
@@ -111,7 +111,7 @@
       <input [ngClass]="{
                   'bordered-onError': eventCreationForm.get('entryPrice').touched && eventCreationForm.get('entryPrice').invalid
                  }"
-             class="price"
+             class="fr-input price"
              formControlName="entryPrice"
              placeholder="Cena wejścia"
              type="number">
@@ -119,7 +119,7 @@
       <input [ngClass]="{
                   'bordered-onError': eventCreationForm.get('participantsAmount').touched && eventCreationForm.get('participantsAmount').invalid
                  }"
-             class="participants-amount"
+             class="fr-input participants-amount"
              formControlName="participantsAmount"
              placeholder="Maksymalna ilość uczestników"
              type="number">

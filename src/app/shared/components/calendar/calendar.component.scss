@@ -1,0 +1,81 @@
+@import "../../../../assets/sass/base/variables";
+
+.calendar{
+  background: white;
+  min-height: 22.5rem;
+  width: 20rem;
+  position: absolute;
+  box-shadow: 0 2rem 4rem 0 rgba(0, 0, 0, 0.3);
+
+  .header{
+    width: 100%;
+    background: $color-blue;
+    display: flex;
+    justify-content: space-around;
+    height: 3rem;
+    align-items: center;
+
+    &--year{
+      .cur-year{
+        color: white;
+        font-size: .95rem;
+        font-weight: 500;
+      }
+    }
+
+    &--month{
+      .cur-month{
+        color: white;
+        font-weight: 500;
+        font-size: .95rem;
+      }
+    }
+
+    .left-arr-btn, .right-arr-btn{
+      width: 3rem;
+      height: 3rem;
+      background: transparent;
+      border: none;
+      color: white;
+
+      &--year{
+        font-size: 1.65rem;
+      }
+      &--month{
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .day-title{
+    background: rgba($color-blue, .5);
+    height: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-size: .85rem;
+  }
+
+  .days{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+
+    .row{
+      display: flex;
+
+      .day-btn{
+        width: 2.5rem;
+        height: 2.5rem;
+        background: none;
+        border: none;
+        margin: 3px;
+
+        &:disabled{
+          background: none !important;
+        }
+      }
+    }
+  }
+}

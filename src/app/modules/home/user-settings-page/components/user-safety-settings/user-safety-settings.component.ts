@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-safety-settings.component.scss']
 })
 export class UserSafetySettingsComponent implements OnInit {
+  password: string;
+  email: string;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onNewPasswordSubmit() {
+
+  }
+
+  onNewEmailSubmit() {
+
+  }
 }

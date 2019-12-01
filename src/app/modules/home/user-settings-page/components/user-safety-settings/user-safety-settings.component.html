@@ -1,3 +1,33 @@
-<p>
-  user-safety-settings works!
-</p>
+<div class="user-safety-settings">
+  <div class="settings-panel-wrapper">
+    <form (submit)="onNewPasswordSubmit()">
+      <div class="settings-panel-wrapper__row">
+        <label class="settings-panel-wrapper__label" for="password">
+          Hasło
+        </label>
+        <input [(ngModel)]="password" class="settings-panel-wrapper__input fr-input" id="password" required
+               type="password">
+      </div>
+      <div class="submit-btn-wrapper m-t-3">
+        <button class="fr-btn-main-blue submit-btn" type="submit">
+          Zapisz
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="settings-panel-wrapper">
+    <form (submit)="onNewEmailSubmit()">
+      <div class="settings-panel-wrapper__row">
+        <label class="settings-panel-wrapper__label" for="email">
+          Email
+        </label>
+        <input [(ngModel)]="email" class="settings-panel-wrapper__input fr-input" id="email" required type="text">
+      </div>
+      <div class="submit-btn-wrapper m-t-3">
+        <button class="fr-btn-main-blue submit-btn" type="submit">
+          Zapisz
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

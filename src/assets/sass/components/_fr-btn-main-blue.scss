@@ -1,0 +1,12 @@
+@import "../base/variables";
+
+.fr-btn-main-blue{
+  border: none;
+  height: 3rem;
+  width: 10rem;
+  border-radius: 3rem;
+  background: $color-blue;
+  font-weight: 700;
+  color: white;
+  font-size: .85rem;
+}
