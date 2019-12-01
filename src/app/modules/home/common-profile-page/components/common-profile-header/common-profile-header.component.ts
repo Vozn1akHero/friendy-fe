@@ -1,7 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, ViewChild, ElementRef} from '@angular/core';
 import {Observable} from 'rxjs';
 import User from '../../../profile-page/models/user.model';
-import {ImageService} from '../../../../../shared/services/image.service';
 
 @Component({
   selector: 'app-common-profile-header',
@@ -12,7 +11,7 @@ export class CommonProfileHeaderComponent implements OnInit {
   @Input() userData : User;
   private _loading : boolean;
 
-  constructor(private imageService: ImageService) {
+  constructor() {
   }
 
   ngOnInit() {

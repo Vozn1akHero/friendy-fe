@@ -34,7 +34,7 @@ export class UserPostsEffects {
       return !loaded
     }),
     mergeMap(([{payload}] : any) => {
-      return this.userPostService.getByUserId(payload.userId, 0)
+      return this.userPostService.getByUserId(payload.userId, 0, 10)
         .pipe(
           map(res => {
             let posts : Post[] = res.body as Post[];

@@ -10,6 +10,8 @@ import {AppRoutingModule} from '../../../app-routing.module';
 import {UserInterestsSettingsComponent} from './components/user-interests-settings/user-interests-settings.component';
 import {UserSafetySettingsComponent} from './components/user-safety-settings/user-safety-settings.component';
 import {ModulesModule} from '../../modules.module';
+import { UserEducationSettingsComponent } from './components/user-education-settings/user-education-settings.component';
+import { UserOtherSettingsComponent } from './components/user-other-settings/user-other-settings.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import {ModulesModule} from '../../modules.module';
     ChosenUserSettingsSubpageComponent,
     UserSettingsNavComponent,
     UserInterestsSettingsComponent,
-    UserSafetySettingsComponent
+    UserSafetySettingsComponent,
+    UserEducationSettingsComponent,
+    UserOtherSettingsComponent
   ],
   exports: [
 

@@ -44,6 +44,7 @@ import {MessagesPageModule} from './modules/home/messages-page/messages-page.mod
 import {EventDataEffects} from './modules/home/event-page/store/event-data/event-data.effects';
 import {DialogMessagesEffects} from './modules/home/dialog-page/store/dialog-messages/dialog-messages.effects';
 import {LoggedInResolver} from './logged-in.resolver';
+import { UserEducationSettingsComponent } from './user-education-settings/user-education-settings.component';
 
 
 
@@ -54,15 +55,13 @@ import {LoggedInResolver} from './logged-in.resolver';
     MainpageComponent,
     LoginPageComponent,
     JoinupPageComponent,
-
     HomePageComponent,
     RegistrationSuccessPopUpComponent,
-
-
     HomeRecordItemComponent,
     HomeUpcomingEventsComponent,
     HomeStatsComponent,
     HomeUpcomingEventsItemComponent,
+    UserEducationSettingsComponent,
   ],
   imports: [
     ProfilePageModule,

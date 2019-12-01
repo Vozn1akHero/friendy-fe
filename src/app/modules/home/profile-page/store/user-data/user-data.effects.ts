@@ -8,6 +8,7 @@ import * as UserDataActions from './user-data.actions';
 
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
+import {UserDataService} from '../../services/user-data.service';
 
 @Injectable()
 export class MainUserDataEffects {
@@ -19,10 +20,10 @@ export class MainUserDataEffects {
       return !loaded
     }),
     mergeMap(([{payload}] : any) => {
-      return this.http.get(`/api/user/${payload.id}`, {observe: 'response'})
+      return this.userDataService.getData(payload.id)
         .pipe(
-          map(res => {
-            return ({ type: UserDataActions.SET_USER_DATA, payload: res.body })
+          map(value => {
+            return ({ type: UserDataActions.SET_USER_DATA, payload: value })
           })
         )
     })
@@ -32,6 +33,7 @@ export class MainUserDataEffects {
     private actions$: Actions,
     private http: HttpClient,
     private router: Router,
+    private userDataService : UserDataService,
     private store: Store<fromApp.AppState>
   ) {}
 }

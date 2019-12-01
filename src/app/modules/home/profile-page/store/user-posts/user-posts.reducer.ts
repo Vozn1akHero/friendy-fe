@@ -43,7 +43,7 @@ export function userPostsReducer(
     case UserPostsActions.REMOVE_POST_FROM_STATE:
       return {
         ...state,
-        posts: [...state.posts.filter(post => post.id !== action.payload.id)]
+        posts: [...state.posts.filter(post => post.postId !== action.payload.id)]
       };
     case UserPostsActions.LIKE_POST_IN_STATE:
       return {

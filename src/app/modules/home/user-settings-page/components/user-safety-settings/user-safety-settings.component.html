@@ -8,14 +8,14 @@
         <input [(ngModel)]="password" class="settings-panel-wrapper__input fr-input" id="password" required
                type="password">
       </div>
-      <div class="submit-btn-wrapper m-t-3">
+      <div class="submit-btn-wrapper">
         <button class="fr-btn-main-blue submit-btn" type="submit">
           Zapisz
         </button>
       </div>
     </form>
   </div>
-  <div class="settings-panel-wrapper">
+  <div class="settings-panel-wrapper fr-m-t-2">
     <form (submit)="onNewEmailSubmit()">
       <div class="settings-panel-wrapper__row">
         <label class="settings-panel-wrapper__label" for="email">
@@ -23,7 +23,7 @@
         </label>
         <input [(ngModel)]="email" class="settings-panel-wrapper__input fr-input" id="email" required type="text">
       </div>
-      <div class="submit-btn-wrapper m-t-3">
+      <div class="submit-btn-wrapper">
         <button class="fr-btn-main-blue submit-btn" type="submit">
           Zapisz
         </button>

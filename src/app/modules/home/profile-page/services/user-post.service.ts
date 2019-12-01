@@ -20,13 +20,13 @@ export class UserPostService {
     return this.http.post('/api/user-post', content, {observe: 'response'});
   }
 
-  current(startIndex: number){
-    return this.http.get(`/api/user-post/current?startIndex=${startIndex}&length=10`,
+  current(startIndex: number, length: number){
+    return this.http.get(`/api/user-post/current?startIndex=${startIndex}&length=${length}`,
       {observe: 'response'})
   }
 
-  getByUserId(id: number, startIndex: number){
-    return this.http.get(`/api/user-post?userId=${id}&startIndex=${startIndex}&length=10`,
+  getByUserId(id: number, startIndex: number, length: number){
+    return this.http.get(`/api/user-post?userId=${id}&startIndex=${startIndex}&length=${length}`,
       {observe: 'response'})
   }
 

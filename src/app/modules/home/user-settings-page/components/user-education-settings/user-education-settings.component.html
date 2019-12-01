@@ -1,0 +1,40 @@
+<div class="user-education-settings">
+  <div class="settings-panel-wrapper">
+    <form>
+      <div class="settings-panel-wrapper__row">
+        <label class="settings-panel-wrapper__label" for="school">
+          Szkoła
+        </label>
+        <input class="settings-panel-wrapper__input fr-input"
+               id="school"
+               type="text">
+      </div>
+      <div class="settings-panel-wrapper__row">
+        <label class="settings-panel-wrapper__label" for="university">
+          Uniwersytet
+        </label>
+        <input class="settings-panel-wrapper__input fr-input"
+               id="university"
+               type="text">
+      </div>
+      <div class="settings-panel-wrapper__row">
+        <label class="settings-panel-wrapper__label" for="education">
+          Wykształcenie
+        </label>
+        <span class="custom-dropdown">
+          <select class="light-grey-background" formControlName="education" id="education">
+            <option value="1">Średnie</option>
+            <option value="2">Wyższe</option>
+            <option value="3">Inne</option>
+          </select>
+        </span>
+      </div>
+      <div class="submit-btn-wrapper">
+        <button class="fr-btn-main-blue submit-btn" type="submit">
+          Zapisz
+        </button>
+      </div>
+    </form>
+  </div>
+
+</div>

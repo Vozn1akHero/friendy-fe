@@ -1,0 +1,154 @@
+@import '../../../../../../assets/sass/base/variables';
+
+
+.comment-item {
+  display: flex;
+  width: 30rem;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  position: relative;
+
+  &:hover{
+    .remove-post{
+      opacity: 1;
+    }
+  }
+
+  .upper-wrapper {
+    display: flex;
+
+    .content-wrapper{
+      width: 330px;
+
+      .text-content {
+        font-size: .8rem;
+        word-break: break-all;
+      }
+
+      .image{
+        margin-top: 1rem;
+        width: 100%;
+      }
+    }
+
+    .avatar-wrapper{
+      margin-right: 1rem;
+
+      .avatar {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        img {
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .remove-post{
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    color: $color-grey-dark;
+    opacity: 0;
+    transition: .2s;
+    background: none;
+    outline: none;
+    border: none;
+  }
+
+  .bottom-wrapper {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin-top: .5rem;
+    padding-left: 5rem;
+  }
+
+  .comments, .likes {
+    display: flex;
+    text-decoration: none;
+    background: none;
+    outline: none;
+    border: none;
+
+    svg {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+
+    span {
+      font-size: .6rem;
+      display: flex;
+      align-self: center;
+      margin-left: .3rem;
+    }
+  }
+
+  .unlike-post-btn{
+
+    svg{
+      transition: all .255s;
+    }
+    &:hover{
+      svg {
+        fill: $color-grey-light-2;
+      }
+    }
+  }
+
+  .like-user-post-btn{
+
+    svg{
+      transition: all .255s;
+    }
+    &:hover{
+      svg {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .comments {
+    svg {
+      fill: $color-grey-light-2;
+    }
+
+    span {
+      color: $color-grey-light-2;
+    }
+  }
+
+  .likes {
+    transform: translateX(2rem);
+
+    svg {
+      fill: $color-pink;
+    }
+
+    span {
+      color: $color-pink;
+    }
+  }
+
+  .date {
+    font-size: .6rem;
+    right: 1rem;
+    position: absolute;
+    align-self: center;
+    color: $color-grey-light-2;
+  }
+
+  .comment-responds-wrapper{
+    width: 100%;
+
+    .load-comment-responds-btn{
+      background: none;
+      border: none;
+      width: 100%;
+    }
+  }
+}

@@ -1,6 +1,4 @@
-<ng-template [ngIf]="showComments">
-  <router-outlet></router-outlet>
-</ng-template>
+<router-outlet></router-outlet>
 
 <app-new-avatar-modal *ngIf="profilePageModalsService.newAvatarModalOpened"
                       (newAvatarSubmitted)="newAvatarSubmitted()"

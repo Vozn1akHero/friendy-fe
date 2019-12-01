@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainpageComponent } from './modules/mainpage/mainpage.component';
 import { ProfilePageComponent } from './modules/home/profile-page/profile-page.component';
-import { NavigationComponent } from './layout/navigation/navigation.component';
 import { AuthGuard } from './auth.guard';
 import { EventsPageComponent } from './modules/home/events-page/events-page.component';
 import { FriendsPageComponent } from './modules/home/friends-page/friends-page.component';
@@ -13,8 +12,6 @@ import {UserSettingsPageComponent} from './modules/home/user-settings-page/user-
 import {EventComponent} from './modules/home/event-page/event-page.component';
 import {JoinupPageComponent} from './modules/auth/joinup-page/joinup-page.component';
 import {LoginPageComponent} from './modules/auth/login-page/login-page.component';
-import {CommonProfilePageComponent} from './modules/home/common-profile-page/common-profile-page.component';
-import {NotFoundPageComponent} from './modules/not-found/not-found-page.component';
 import {DialogPageComponent} from './modules/home/dialog-page/dialog-page.component';
 import {FriendsSearchPageComponent} from './modules/home/friends-search-page/friends-search-page.component';
 import {LoggedInResolver} from './logged-in.resolver';
@@ -28,6 +25,7 @@ import {IsEventAdminResolver} from './modules/home/event-page/resolvers/is-event
 import {EventParticipantsPageComponent} from './modules/home/event-participants-page/event-participants-page.component';
 import {PhotosPageComponent} from './modules/home/photos-page/photos-page.component';
 import {ChatDataResolver} from './modules/home/dialog-page/resolvers/chat-data.resolver';
+import {PostCommentsSubpageComponent} from './submodules/post-comments-subpage/post-comments-subpage.component';
 
 const routes: Routes = [
   {path: '',
@@ -57,13 +55,10 @@ const routes: Routes = [
           profileBelongingStatus: ProfileBelongingResolver
         },
         children: [
-          {path: 'comments', component: CommentsComponent }
+          {path: 'comments/:postId', component: PostCommentsSubpageComponent }
       ]},
 
       { path: 'profile/:id/photos', component: PhotosPageComponent },
-/*      {path: 'profile/:id', component: CommonProfilePageComponent, children: [
-          {path: 'comments', component: CommentsComponent }
-      ]},*/
 
       {path: 'events', component: EventsPageComponent},
 

@@ -26,4 +26,12 @@ export class UserSettingsNavComponent implements OnInit {
   navigateToSafetySettings(){
     this.router.navigate([this.activatedRoute], {queryParams: { 'sp': 'safety' }});
   }
+
+  navigateToEducationSettings() {
+    this.router.navigate([this.activatedRoute], {queryParams: { 'sp': 'education' }});
+  }
+
+  navigateToOtherSettings() {
+    this.router.navigate([this.activatedRoute], {queryParams: { 'sp': 'other' }});
+  }
 }
