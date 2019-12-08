@@ -9,9 +9,11 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-image: url('../../../assets/images/mainbg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    //background-image: url('../../../assets/images/mainbg.jpg');
+    //background: $color-blue;
+    background: linear-gradient(0.85turn, rgba($color-blue, .55), rgba($color-blue, 1));
+    //background-repeat: no-repeat;
+    //background-size: cover;
     z-index: -100;
   }
 

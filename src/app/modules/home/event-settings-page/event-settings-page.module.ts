@@ -12,6 +12,9 @@ import { ChosenEventSettingsSubpageComponent } from './components/chosen-event-s
 import { EventParticipantsComponent } from './components/event-participants-settings/event-participants/event-participants.component';
 import { EventParticipantComponent } from './components/event-participants-settings/event-participants/event-participant/event-participant.component';
 import { EventParticipantsSearchComponent } from './components/event-participants-settings/event-participants/event-participants-search/event-participants-search.component';
+import {IsEventCreatorResolver} from './resolvers/is-event-creator.resolver';
+import { EventAdminsComponent } from './components/event-admins-settings/event-admins/event-admins.component';
+import { EventAdminComponent } from './components/event-admins-settings/event-admins/event-admin/event-admin.component';
 
 
 @NgModule({
@@ -31,8 +34,12 @@ import { EventParticipantsSearchComponent } from './components/event-participant
     ChosenEventSettingsSubpageComponent,
     EventParticipantsComponent,
     EventParticipantComponent,
-    EventParticipantsSearchComponent
+    EventParticipantsSearchComponent,
+    EventAdminsComponent,
+    EventAdminComponent
   ],
-  exports: []
+  providers: [
+    IsEventCreatorResolver
+  ]
 })
 export class EventSettingsPageModule { }

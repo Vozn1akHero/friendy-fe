@@ -10,7 +10,7 @@
   <div class="joinup-form">
     <form (ngSubmit)="onSubmit()" [formGroup]="joinUpForm">
       <div class="base">
-        <input class="name"
+        <input class="name fr-input"
                formControlName="name"
                placeholder="Imię"
                name="name"
@@ -20,7 +20,7 @@
                 'bordered-onError': joinUpForm.get('name').touched && joinUpForm.get('name').invalid
                }">
 
-        <input class="surname"
+        <input class="surname fr-input"
                formControlName="surname"
                placeholder="Nazwisko"
                type="text"
@@ -28,7 +28,7 @@
                 'bordered-onError': joinUpForm.get('surname').touched && joinUpForm.get('surname').invalid
                }">
         <div>
-          <input class="city"
+          <input class="city fr-input"
                  formControlName="city"
                  placeholder="Miasto"
                  type="text"
@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="birthday">
-        <input class="birthday__year"
+        <input class="birthday__year fr-input"
                formControlName="birthYear"
                placeholder="Rok urodzin"
                type="number"
@@ -98,6 +98,7 @@
 
       <div class="email">
         <input formControlName="email"
+               class="fr-input"
                placeholder="Email"
                type="email"
                [ngClass]="{
@@ -112,6 +113,7 @@
       <div class="password">
         <input formControlName="password"
                placeholder="Hasło"
+               class="fr-input"
                type="password"
                [ngClass]="{
                 'bordered-onError': joinUpForm.get('password').touched && joinUpForm.get('password').invalid

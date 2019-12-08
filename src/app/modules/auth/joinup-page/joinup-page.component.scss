@@ -13,7 +13,7 @@
   height: 100vh;
   width: 100vw;
   z-index: 1000;
-  background-image: linear-gradient(0.85turn, rgba(#fff000, .55), rgba(#00baff, 1)), url('../../../../assets/images/mainbg.jpg');
+  background-image: linear-gradient(0.85turn, rgba(#fff000, .55), rgba(#00baff, 1));
 
   .logo {
     margin: 3rem;
@@ -25,11 +25,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    select {
-      height: 44px;
-      font-size: .85rem;
-    }
 
     form {
       background-color: $color-bg-light-grey;

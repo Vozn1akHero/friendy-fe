@@ -26,6 +26,7 @@ import {EventParticipantsPageComponent} from './modules/home/event-participants-
 import {PhotosPageComponent} from './modules/home/photos-page/photos-page.component';
 import {ChatDataResolver} from './modules/home/dialog-page/resolvers/chat-data.resolver';
 import {PostCommentsSubpageComponent} from './submodules/post-comments-subpage/post-comments-subpage.component';
+import {IsEventCreatorResolver} from './modules/home/event-settings-page/resolvers/is-event-creator.resolver';
 
 const routes: Routes = [
   {path: '',
@@ -47,7 +48,7 @@ const routes: Routes = [
     },
     canActivate: [AuthGuard],
     children: [
-      {path: '', redirectTo: 'home', pathMatch: 'full'},
+      {path: '', redirectTo: 'messages', pathMatch: 'full'},
 
       {path: 'profile/:id',
         component: ProfilePageComponent,
@@ -71,7 +72,8 @@ const routes: Routes = [
 
       { path: 'event/:id/settings',
         resolve: {
-          isEventAdmin: IsEventAdminResolver
+          isEventAdmin: IsEventAdminResolver,
+          isEventCreator: IsEventCreatorResolver
         },
         component: EventSettingsPageComponent },
 

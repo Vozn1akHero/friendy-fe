@@ -4,21 +4,21 @@
       <input [ngClass]="{
                   'bordered-onError': eventBasicSettingsForm.get('name').touched && eventBasicSettingsForm.get('name').invalid
                  }"
-             class="name"
+             class="name fr-input"
              formControlName="name"
              placeholder="Nazwa"
              type="text">
       <textarea [ngClass]="{
                   'bordered-onError': eventBasicSettingsForm.get('description').touched && eventBasicSettingsForm.get('description').invalid
                  }"
-                class="desc"
+                class="desc fr-input"
                 formControlName="description"
                 placeholder="Opis"></textarea>
 
       <input [ngClass]="{
                   'bordered-onError': eventBasicSettingsForm.get('city').touched && eventBasicSettingsForm.get('city').invalid
                  }"
-             class="city"
+             class="city fr-input"
              formControlName="city"
              placeholder="Miasto"
              type="text">
@@ -28,7 +28,7 @@
       <input [ngClass]="{
                 'bordered-onError': eventBasicSettingsForm.get('street').touched && eventBasicSettingsForm.get('street').invalid
                }"
-             class="street"
+             class="street fr-input"
              formControlName="street"
              placeholder="Ulica"
              type="text">
@@ -36,13 +36,13 @@
       <input [ngClass]="{
                 'bordered-onError': eventBasicSettingsForm.get('streetNumber').touched && eventBasicSettingsForm.get('streetNumber').invalid
                }"
-             class="number"
+             class="number fr-input"
              formControlName="streetNumber"
              placeholder="Numer"
              type="text">
     </div>
 
-    <div class="wrapper spec-wrapper">
+   <!-- <div class="wrapper spec-wrapper">
       <input [ngClass]="{
                 'bordered-onError': eventBasicSettingsForm.get('year').touched && eventBasicSettingsForm.get('year').invalid
                }"
@@ -77,9 +77,15 @@
              formControlName="day"
              placeholder="Dzień"
              type="number">
-    </div>
-
+    </div>-->
     <div class="wrapper spec-wrapper">
+      <app-calendar *ngIf="showCalendar"
+                    (onSelectDateEvent)="onSelectDate($event)"></app-calendar>
+      <input (click)="toggleCalendar()"
+             readonly="readonly"
+             id="birthday"
+             class="date fr-input"
+             type="text">
       <span class="custom-dropdown date-hour">
           <select [ngClass]="{
             'bordered-onError': eventBasicSettingsForm.get('hour').touched && eventBasicSettingsForm.get('hour').invalid
@@ -94,16 +100,17 @@
       <input [ngClass]="{
                 'bordered-onError': eventBasicSettingsForm.get('minute').touched && eventBasicSettingsForm.get('minute').invalid
                }"
-             class="date-minute"
-             formControlName="minute" placeholder="Minuta"
+             class="date-minute fr-input"
+             formControlName="minute"
+             placeholder="Minuta"
              type="number">
     </div>
 
-    <div class="wrapper">
+    <div class="wrapper spec-wrapper">
       <input [ngClass]="{
                   'bordered-onError': eventBasicSettingsForm.get('entryPrice').touched && eventBasicSettingsForm.get('entryPrice').invalid
                  }"
-             class="price"
+             class="price fr-input"
              formControlName="entryPrice"
              placeholder="Cena wejścia"
              type="number">
@@ -111,7 +118,7 @@
       <input [ngClass]="{
                   'bordered-onError': eventBasicSettingsForm.get('participantsAmount').touched && eventBasicSettingsForm.get('participantsAmount').invalid
                  }"
-             class="participants-amount"
+             class="participants-amount fr-input"
              formControlName="participantsAmount"
              placeholder="Maksymalna ilość uczestników"
              type="number">

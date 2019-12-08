@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
-import EventParticipant from '../models/event-participant-detailed.model';
 import {take} from 'rxjs/operators';
+import EventParticipantDetailed from '../models/event-participant-detailed.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +13,15 @@ export class EventParticipantService {
 
   constructor(private http: HttpClient) {}
 
-  private set eventParticipants(value : EventParticipant[]){
+  private set eventParticipants(value : EventParticipantDetailed[]){
     this._eventParticipants.next(value);
   }
 
-  private get eventParticipants() : EventParticipant[]{
+  private get eventParticipants() : EventParticipantDetailed[]{
     return this._eventParticipants.getValue();
   }
 
-  public get eventParticipants$() : Observable<EventParticipant[]>{
+  public get eventParticipants$() : Observable<EventParticipantDetailed[]>{
     return this._eventParticipants.asObservable();
   }
 
@@ -37,9 +37,9 @@ export class EventParticipantService {
     return this.http.get<any[]>(`api/event-participant/filter/${keyword}`, { observe: 'body' })
       .pipe(take(1))
       .subscribe(res => {
-        let eventParticipants: EventParticipant[] = [];
+        let eventParticipants: EventParticipantDetailed[] = [];
         res.map(value => {
-          eventParticipants.push(new EventParticipant(value.id, value.name, value.surname, value.avatarPath, value.isAdmin))
+          eventParticipants.push(new EventParticipantDetailed(value.id, value.name, value.surname, value.avatarPath, value.isAdmin))
         });
         this.eventParticipants = eventParticipants;
     })
@@ -50,9 +50,9 @@ export class EventParticipantService {
       {observe: 'body'})
       .pipe(take(1))
       .subscribe(res=>{
-      let eventParticipants: EventParticipant[] = [];
+      let eventParticipants: EventParticipantDetailed[] = [];
       res.map(value => {
-        eventParticipants.push(new EventParticipant(value.id, value.name, value.surname, value.avatarPath, value.isAdmin))
+        eventParticipants.push(new EventParticipantDetailed(value.id, value.name, value.surname, value.avatarPath, value.isAdmin))
       });
       this.eventParticipants = eventParticipants;
       this.eventParticipantsLoaded = true;

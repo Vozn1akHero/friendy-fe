@@ -37,30 +37,26 @@ export class ProfilePostItemComponent implements OnInit {
     })*/
   }
 
-/*  onRemovePostBtnClick(){
-    this.removePost.emit(this.post.id);
-  }*/
-
   onLikeOrUnlikePost(){
     if(this.post.isPostLikedByUser) this.onUnlikePost();
     else this.onLikePost();
   }
 
   onRemovePost(){
-    this.store.dispatch(new UserPostsActions.RemovePost({ id: this.post.id }))
+    this.store.dispatch(new UserPostsActions.RemovePost({ id: this.post.postId }))
   }
 
   onLikePost(){
-    this.store.dispatch(new UserPostsActions.LikePost({ id: this.post.id  }));
+    this.store.dispatch(new UserPostsActions.LikePost({ id: this.post.postId  }));
     this.post.isPostLikedByUser = true;
   }
 
   onUnlikePost(){
-    this.store.dispatch(new UserPostsActions.UnlikePost({ id: this.post.id  }));
+    this.store.dispatch(new UserPostsActions.UnlikePost({ id: this.post.postId  }));
     this.post.isPostLikedByUser = false;
   }
 
   onShowCommentsBtnClick(){
-    this.router.navigate([window.location.pathname, 'comments', this.post.id])
+    this.router.navigate([window.location.pathname, 'comments', this.post.postId])
   }
 }

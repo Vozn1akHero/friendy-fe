@@ -49,7 +49,7 @@ export function userPostsReducer(
       return {
         ...state,
         posts: [...state.posts.map(post => {
-          if(post.id === action.payload.id) {
+          if(post.postId == action.payload.id) {
             post.likesCount++;
           }
           return post;
@@ -59,7 +59,7 @@ export function userPostsReducer(
       return {
         ...state,
         posts: [...state.posts.map(post => {
-          if(post.id !== action.payload.id) {
+          if(post.postId === action.payload.id) {
             post.likesCount--;
           }
           return post;

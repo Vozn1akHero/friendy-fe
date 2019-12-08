@@ -16,11 +16,11 @@
        class="name">{{ friendData.name }} {{ friendData.surname }}
     </a>
 
-    <div class="online-status">
-        <ng-container>
-          <span class="user-is-online-text"> online</span>
-        </ng-container>
-    </div>
+    <ng-container>
+      <div class="online-status" *ngIf="friendData.onlineStatus">
+            <span class="user-is-online-text">online</span>
+      </div>
+    </ng-container>
 
     <hr>
 

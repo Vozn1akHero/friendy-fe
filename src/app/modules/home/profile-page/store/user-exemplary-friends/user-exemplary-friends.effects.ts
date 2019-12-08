@@ -16,19 +16,15 @@ export class UserExemplaryFriendsEffects {
   @Effect()
   profilePageGetExemplaryFriends = this.actions$.pipe(
     ofType(UserExemplaryFriendsActions.GET_EXEMPLARY_FRIENDS),
-    withLatestFrom(this.store$.select(state => state.profilePageUserExemplaryFriends.loaded)),
-    filter(([{payload}, loaded]) => {
-      return !loaded
-    }),
-    mergeMap(([{payload}] : any) => {
-      return this.exemplaryFriendsService.getByUserId(payload.id)
+    switchMap((payload: UserExemplaryFriendsActions.GetExemplaryFriends) => {
+      return this.exemplaryFriendsService.getByUserId(payload.payload.id)
         .pipe(
-          map((res: Array<any>) => {
+          map((res: any[]) => {
             if(res.length === 0){
               return ({ type: UserExemplaryFriendsActions.SET_EXEMPLARY_FRIENDS, payload: [] })
             }
             let exemplaryFriends : ExemplaryFriend[] = [];
-            Array(res).map((exemplaryFriend : any) => {
+            res.map((exemplaryFriend : any) => {
               const newExemplaryFriend : ExemplaryFriend = new ExemplaryFriend(exemplaryFriend[0].id,
                 exemplaryFriend[0].avatarPath);
               exemplaryFriends.push(newExemplaryFriend);

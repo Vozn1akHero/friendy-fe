@@ -1,0 +1,8 @@
+<div class="event-admins">
+  <div class="event-admins__list">
+    <ng-container *ngIf="(eventAdminsLoaded$ | async)">
+      <app-event-admin *ngFor="let eventAdmin of (eventAdmins$ | async)"
+                             [eventAdmin]="eventAdmin"></app-event-admin>
+    </ng-container>
+  </div>
+</div>

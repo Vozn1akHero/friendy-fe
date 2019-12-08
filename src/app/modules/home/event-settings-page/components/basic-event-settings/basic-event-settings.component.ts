@@ -22,12 +22,22 @@ export class BasicEventSettingsComponent implements OnInit {
     participantsAmount: new FormControl('', [Validators.required])
   });
 
+  showCalendar : boolean = false;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  toggleCalendar(){
+    this.showCalendar = !this.showCalendar;
+  }
+  
   onBasicChangesFormSubmit(){
 
+  }
+
+  onSelectDate($event: string) {
+    
   }
 }

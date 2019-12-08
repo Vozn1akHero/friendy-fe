@@ -8,11 +8,17 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class EventSettingsNavComponent implements OnInit {
   activatedRoute: string;
+  private isEventCreator: boolean;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute = window.location.pathname;
+    this.setIsEventCreator();
+  }
+
+  setIsEventCreator(){
+      this.isEventCreator = this.route.snapshot.data.isEventCreator;
   }
 
   navigateToBasicSettings(){

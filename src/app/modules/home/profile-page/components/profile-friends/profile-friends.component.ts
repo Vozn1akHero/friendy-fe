@@ -13,7 +13,7 @@ import {Observable, Subscription} from 'rxjs';
 export class ProfileFriendsComponent implements OnInit, OnDestroy {
   //@Input() exemplaryFriends: ExemplaryFriend[];
   exemplaryFriends: ExemplaryFriend[];
-  exemplaryFriendsLoaded$: Observable<boolean>;
+  exemplaryFriendsLoading$: Observable<boolean>;
   exemplaryFriendsSubscription: Subscription;
   @Input() isUserProfileOwner : boolean;
   @Input() userId : number;
@@ -25,13 +25,12 @@ export class ProfileFriendsComponent implements OnInit, OnDestroy {
   }
 
   getExemplaryFriends(){
-    this.exemplaryFriendsLoaded$ = this.store.select(state => state.profilePageUserExemplaryFriends.loaded);
+    this.exemplaryFriendsLoading$ = this.store.select(state => state.profilePageUserExemplaryFriends.loading);
     this.store.dispatch(new UserExemplaryFriends.GetExemplaryFriends({ id : this.userId }));
     this.exemplaryFriendsSubscription = this.store
       .select(state => state.profilePageUserExemplaryFriends.exemplaryFriends)
       .subscribe(exemplaryFriends => {
         this.exemplaryFriends = exemplaryFriends;
-        console.log(this.exemplaryFriends.length)
       })
   }
 

@@ -58,7 +58,7 @@ export class LikePost implements Action {
 export class LikePostInState implements Action {
   readonly type = LIKE_POST_IN_STATE;
 
-  constructor(public payload: any) {}
+  constructor(public payload: { id: number }) {}
 }
 
 export class UnlikePost implements Action {
@@ -70,7 +70,7 @@ export class UnlikePost implements Action {
 export class UnlikePostInState implements Action {
   readonly type = UNLIKE_POST_IN_STATE;
 
-  constructor(public payload: any) {}
+  constructor(public payload: { id: number }) {}
 }
 
 

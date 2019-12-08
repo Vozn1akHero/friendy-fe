@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
-import {switchMap, catchError, map, tap, withLatestFrom, concatMap, exhaustMap, filter, mergeMap} from 'rxjs/operators';
+import {switchMap, map, tap, withLatestFrom, filter, mergeMap} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-
 import * as UserPostsActions from './user-posts.actions';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {UserPostService} from '../../services/user-post.service';
 import Post from '../../models/post.model';
+import {of} from 'rxjs';
 
 
 @Injectable()
@@ -49,13 +49,18 @@ export class UserPostsEffects {
   profilePageRemovePost = this.actions$.pipe(
     ofType(UserPostsActions.REMOVE_POST),
     switchMap((payload: UserPostsActions.RemovePost) => {
-      return this.userPostService.delete(payload.payload.id)
+      /*return this.userPostService.delete(payload.payload.id)
         .pipe(
           map(() => {
             return ({ type: UserPostsActions.REMOVE_POST_FROM_STATE,
               payload: payload.payload.id })
           })
-        )
+        )*/
+      return of([1]).pipe(
+        map(() => {
+          return ({ type: UserPostsActions.REMOVE_POST_FROM_STATE,
+            payload: {id: payload.payload.id} })
+        }))
     })
   );
 
@@ -66,7 +71,7 @@ export class UserPostsEffects {
       return this.userPostService.like(payload.payload.id)
         .pipe(
           map(res => {
-            return ({ type: UserPostsActions.LIKE_POST_IN_STATE, payload: res })
+            return ({ type: UserPostsActions.LIKE_POST_IN_STATE, payload: {id: payload.payload.id} })
           })
         )
     })
@@ -79,7 +84,7 @@ export class UserPostsEffects {
       return this.userPostService.unlike(payload.payload.id)
         .pipe(
           map(res => {
-            return ({ type: UserPostsActions.UNLIKE_POST_IN_STATE, payload: res })
+            return ({ type: UserPostsActions.UNLIKE_POST_IN_STATE, payload: {id: payload.payload.id} })
           })
         )
     })

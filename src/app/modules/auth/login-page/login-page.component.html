@@ -13,6 +13,7 @@
         <input [ngClass]="{
                 'bordered-onError': loginForm.get('email').touched && loginForm.get('email').invalid
                }"
+               class="fr-input"
                formControlName="email"
                placeholder="Email"
                autofocus
@@ -23,6 +24,7 @@
         <input [ngClass]="{
                 'bordered-onError': loginForm.get('password').touched && loginForm.get('password').invalid
                }"
+               class="fr-input"
                formControlName="password"
                placeholder="Hasło"
                type="password">

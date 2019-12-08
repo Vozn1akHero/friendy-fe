@@ -11,6 +11,6 @@ export class EventAdminService {
   }
 
   isUserAdmin(eventId: number){
-    return this.http.get<boolean>(`api/event/is-admin/${eventId}`);
+    return this.http.get<boolean>(`api/event-admins/is-admin/${eventId}`);
   }
 }
