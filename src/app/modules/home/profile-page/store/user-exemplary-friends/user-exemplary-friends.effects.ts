@@ -25,8 +25,8 @@ export class UserExemplaryFriendsEffects {
             }
             let exemplaryFriends : ExemplaryFriend[] = [];
             res.map((exemplaryFriend : any) => {
-              const newExemplaryFriend : ExemplaryFriend = new ExemplaryFriend(exemplaryFriend[0].id,
-                exemplaryFriend[0].avatarPath);
+              const newExemplaryFriend : ExemplaryFriend = new ExemplaryFriend(exemplaryFriend.id,
+                exemplaryFriend.avatarPath);
               exemplaryFriends.push(newExemplaryFriend);
             });
             return ({ type: UserExemplaryFriendsActions.SET_EXEMPLARY_FRIENDS, payload: exemplaryFriends })
