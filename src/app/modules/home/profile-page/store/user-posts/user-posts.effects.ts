@@ -49,18 +49,13 @@ export class UserPostsEffects {
   profilePageRemovePost = this.actions$.pipe(
     ofType(UserPostsActions.REMOVE_POST),
     switchMap((payload: UserPostsActions.RemovePost) => {
-      /*return this.userPostService.delete(payload.payload.id)
+      return this.userPostService.delete(payload.payload.id)
         .pipe(
           map(() => {
             return ({ type: UserPostsActions.REMOVE_POST_FROM_STATE,
-              payload: payload.payload.id })
+              payload: {id: payload.payload.id} })
           })
-        )*/
-      return of([1]).pipe(
-        map(() => {
-          return ({ type: UserPostsActions.REMOVE_POST_FROM_STATE,
-            payload: {id: payload.payload.id} })
-        }))
+        )
     })
   );
 
@@ -70,8 +65,9 @@ export class UserPostsEffects {
     switchMap((payload: UserPostsActions.LikePost) => {
       return this.userPostService.like(payload.payload.id)
         .pipe(
-          map(res => {
-            return ({ type: UserPostsActions.LIKE_POST_IN_STATE, payload: {id: payload.payload.id} })
+          map(() => {
+            return ({ type: UserPostsActions.LIKE_POST_IN_STATE,
+              payload: {id: payload.payload.id} })
           })
         )
     })
@@ -83,8 +79,9 @@ export class UserPostsEffects {
     switchMap((payload: UserPostsActions.UnlikePost) => {
       return this.userPostService.unlike(payload.payload.id)
         .pipe(
-          map(res => {
-            return ({ type: UserPostsActions.UNLIKE_POST_IN_STATE, payload: {id: payload.payload.id} })
+          map(() => {
+            return ({ type: UserPostsActions.UNLIKE_POST_IN_STATE,
+              payload: {id: payload.payload.id} })
           })
         )
     })

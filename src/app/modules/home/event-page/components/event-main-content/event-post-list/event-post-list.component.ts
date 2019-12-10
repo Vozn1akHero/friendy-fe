@@ -13,10 +13,9 @@ import {EventAvatarService} from '../../../services/event-avatar.service';
   templateUrl: './event-post-list.component.html',
   styleUrls: ['./event-post-list.component.scss']
 })
-export class EventPostListComponent implements OnInit, OnDestroy {
-  posts: EventPost[];
-  postsSubscription: Subscription;
+export class EventPostListComponent implements OnInit {
   eventId:number;
+  eventPosts$: Observable<EventPost[]>;
   eventAvatar$: Observable<EventAvatar>;
   @Input() isEventAdmin: boolean;
 
@@ -28,17 +27,15 @@ export class EventPostListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.eventAvatar$ = this.eventAvatarService.eventAvatar$;
     this.eventId = +this.route.snapshot.paramMap.get("id");
-    this.getPosts();
+    this.getEventPosts();
+    this.setEventPosts();
   }
 
-  getPosts(){
-    this.postsSubscription = this.eventPostService.getByEventId(this.eventId, 1)
-      .subscribe(res => {
-        this.posts = res
-    })
+  getEventPosts(){
+    this.eventPostService.getByEventId(this.eventId, 1);
   }
 
-  ngOnDestroy(): void {
-    this.postsSubscription.unsubscribe();
+  setEventPosts(){
+    this.eventPosts$ = this.eventPostService.eventPosts$;
   }
 }

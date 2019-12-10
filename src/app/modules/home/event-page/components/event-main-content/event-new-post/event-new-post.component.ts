@@ -27,16 +27,10 @@ export class EventNewPostComponent implements OnInit, OnDestroy {
       const newPost: NewPost =
         new NewPost(this.newMessageContent.nativeElement.value, image.files[0]);
         this.eventPostService.create(newPost, +this.route.snapshot.paramMap.get("id"))
-        .subscribe(res => {
-          console.log(res);
-        })
     } else {
       const newPost: NewPost =
         new NewPost(this.newMessageContent.nativeElement.value, null);
         this.eventPostService.create(newPost, +this.route.snapshot.paramMap.get("id"))
-          .subscribe(res => {
-          console.log(res);
-        })
     }
   }
 

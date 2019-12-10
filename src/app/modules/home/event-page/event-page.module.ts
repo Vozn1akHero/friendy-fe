@@ -23,6 +23,9 @@ import { EventModalsComponent } from './components/event-modals/event-modals.com
 import { EventParticipantsPageComponent } from '../event-participants-page/event-participants-page.component';
 import {EventParticipantItemComponent} from '../event-participants-page/event-participant-item/event-participant-item.component';
 import {EventAvatarAlterComponent} from './components/event-header/event-info-panel/event-avatar/event-avatar-alter/event-avatar-alter.component';
+import { EventInfoPanelControlsComponent } from './components/event-header/event-info-panel/event-info-panel-controls/event-info-panel-controls.component';
+import { NonParticipantControlsComponent } from './components/event-header/event-info-panel/event-info-panel-controls/non-participant-controls/non-participant-controls.component';
+import { ParticipantControlsComponent } from './components/event-header/event-info-panel/event-info-panel-controls/participant-controls/participant-controls.component';
 
 @NgModule({
   imports: [
@@ -50,7 +53,10 @@ import {EventAvatarAlterComponent} from './components/event-header/event-info-pa
     EventModalsComponent,
     EventParticipantItemComponent,
     EventParticipantsPageComponent,
-    EventAvatarAlterComponent
+    EventAvatarAlterComponent,
+    EventInfoPanelControlsComponent,
+    NonParticipantControlsComponent,
+    ParticipantControlsComponent
   ],
   providers: [
     IsEventAdminResolver

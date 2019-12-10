@@ -1,0 +1,14 @@
+<div class="non-participant-controls">
+  <ng-container *ngIf="isParticipationRequestSentLoaded">
+    <ng-container *ngIf="isParticipationRequestSent; else noSentRequest">
+      <button class="non-participant-controls__btn--remove fr-btn-main-pink" (click)="onRemoveRequestBtnClick()">
+        Anuluj wniosek
+      </button>
+    </ng-container>
+    <ng-template #noSentRequest>
+      <button class="non-participant-controls__btn--send fr-btn-main-blue" (click)="onJoinUpBtnClick()">
+        <span>zgłoś udział</span>
+      </button>
+    </ng-template>
+  </ng-container>
+</div>

@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import EventPost from '../../../../models/event-post.model';
 import * as moment from 'moment';
 import {EventPostService} from '../../../../services/event-post.service';
-import {EventAvatarService} from '../../../../services/event-avatar.service';
 import EventAvatar from '../../../../models/event-avatar.model';
 import {Observable} from 'rxjs';
 
@@ -29,16 +28,16 @@ export class EventPostItemComponent implements OnInit {
   }
 
   onRemovePost(){
-    this.eventPostService.delete(this.post.postId);
+    this.eventPostService.delete(this.post.postId, this.post.eventId);
   }
 
   onLikePost(){
-    this.eventPostService.like(this.post.postId);
+    this.eventPostService.like(this.post.postId, this.post.eventId);
     this.post.isPostLikedByUser = true;
   }
 
   onUnlikePost(){
-    this.eventPostService.unlike(this.post.postId);
+    this.eventPostService.unlike(this.post.postId, this.post.eventId);
     this.post.isPostLikedByUser = false;
   }
 }

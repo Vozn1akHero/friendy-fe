@@ -1,45 +1,86 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import NewPost from '../models/new-post.model';
 import EventPost from '../models/event-post.model';
 import {map} from 'rxjs/operators';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {PostService} from '../../../../shared/services/post.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventPostService {
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private postService: PostService) {
+  }
 
-  create(post: NewPost, eventId: number){
+  get eventPosts$(): Observable<EventPost[]> {
+    return this._eventPosts.asObservable();
+  }
+
+  set newEventPost(value: EventPost) {
+    this._eventPosts.next([value, ...this._eventPosts.getValue()]);
+  }
+
+  private _eventPosts = new BehaviorSubject([]);
+
+  get eventPosts(): EventPost[] {
+    return this._eventPosts.getValue();
+  }
+
+  set eventPosts(value: EventPost[]) {
+    this._eventPosts.next(value);
+  }
+
+  create(post: NewPost, eventId: number) {
     const content = new FormData();
-    content.append("image", post.image);
-    content.append("content", post.content);
+    content.append('image', post.image);
+    content.append('content', post.content);
 
-    return this.http.post(`/api/event-post/${eventId}`,
-      content, {observe: 'response'});
+    this.http.post(`/api/event-post/${eventId}`,
+      content, {observe: 'response'}).subscribe((res: HttpResponse<any>) => {
+      this.newEventPost = new EventPost(res.body.id,
+        res.body.eventId, res.body.content, res.body.imagePath,
+        res.body.likesCount, res.body.commentsCount, res.body.postId,
+        res.body.isPostLikedByUser, res.body.date);
+    });
   }
 
-  current(startIndex: number){
+/*  current(startIndex: number) {
     return this.http.get(`/api/event-post/current?startIndex=${startIndex}&length=10`,
-      {observe: 'response'})
+      {observe: 'response'});
+  }*/
+
+  getByEventId(id: number, startIndex: number) {
+    this.http.get(`/api/event-post/${id}?startIndex=${startIndex}&length=10`, {observe: 'body'})
+      .subscribe((res: any[]) => {
+        let eventPosts: EventPost[] = [];
+        res.map(value => {
+          eventPosts.push(new EventPost(value.id,
+            value.eventId, value.content, value.imagePath,
+            value.likesCount, value.commentsCount, value.postId,
+            value.isPostLikedByUser, value.date));
+        });
+        this.eventPosts = eventPosts;
+      });
   }
 
-  getByEventId(id: number, startIndex: number){
-    return this.http.get<EventPost[]>(`/api/event-post?eventId=${id}&startIndex=${startIndex}&length=10`)
+  delete(postId: number, eventId: number) {
+    this.http.delete(`api/post/${postId}/event-post/${eventId}`, {observe: 'response'})
+      .subscribe(
+        (res: HttpResponse<any>) => {
+          this.eventPosts = [...this.eventPosts.filter(value => value.postId !== postId)];
+        },
+        error => {
+        });
   }
 
-  delete(id: number){
-    return this.http.delete(`/api/post/${id}`,
-      {observe: 'response'})
-  }
-
-  like(id: number){
-    return this.http.put(`/api/post/like/${id}`,
+  like(id: number, eventId: number) {
+    return this.http.put(`/api/post/like/${id}/event-post/${eventId}`,
       null, {responseType: 'text'});
   }
 
-  unlike(id: number){
-    return this.http.put(`/api/post/unlike/${id}`,
+  unlike(id: number, eventId: number) {
+    return this.http.put(`/api/post/unlike/${id}/event-post/${eventId}`,
       null, {responseType: 'text'});
   }
 }

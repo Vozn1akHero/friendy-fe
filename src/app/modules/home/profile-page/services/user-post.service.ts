@@ -30,18 +30,18 @@ export class UserPostService {
       {observe: 'response'})
   }
 
-  delete(id: number){
-    return this.http.delete(`/api/post/${id}`,
+  delete(postId: number){
+    return this.http.delete(`/api/post/${postId}/user-post`,
       {observe: 'response'})
   }
 
   like(id: number){
-    return this.http.put(`/api/post/like/${id}`,
+    return this.http.put(`/api/post/like/${id}/user-post`,
       null, {responseType: 'text'});
   }
 
   unlike(id: number){
-    return this.http.put(`/api/post/unlike/${id}`,
+    return this.http.put(`/api/post/unlike/${id}/user-post`,
       null, {responseType: 'text'});
   }
 }

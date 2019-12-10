@@ -50,6 +50,10 @@ export class EventParticipantService {
 
   constructor(private http: HttpClient) {}
 
+  onLeave(eventId: number, userId: number){
+    return this.http.delete(`api/event-participant/${userId}/leave/${eventId}`, { observe: 'response'});
+  }
+
   getExemplary(eventId){
     return this.http.get<any[]>(`api/event-participant/exemplary/${eventId}`, {observe: 'body'})
       .pipe(map(res => {

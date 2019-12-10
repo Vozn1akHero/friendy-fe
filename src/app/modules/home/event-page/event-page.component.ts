@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {OpenSettingsService} from './services/opensettings.service';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../core/ngrx/store/app.reducer';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-event',

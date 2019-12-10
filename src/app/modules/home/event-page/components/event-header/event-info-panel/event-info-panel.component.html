@@ -68,21 +68,7 @@
 
       <hr>
 
-      <div class="controls">
-        <a href="#">
-          <span>wypisz się</span>
-          <svg class="icon">
-            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
-          </svg>
-        </a>
-
-        <a href="#">
-          <span>wyłącz powiadomienia</span>
-          <svg class="icon">
-            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-notifications"></use>
-          </svg>
-        </a>
-      </div>
+      <app-event-info-panel-controls [eventId]="eventData.id"></app-event-info-panel-controls>
     </div>
   </div>
 </div>

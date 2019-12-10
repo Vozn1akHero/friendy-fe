@@ -43,13 +43,16 @@ export class LoginPageComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private router: Router,
-              private route : ActivatedRoute) {}
-
-  ngOnInit() {
-    const isLoggedIn = this.route.snapshot.data.isLoggedIn;
-    if(isLoggedIn) this.router.navigate(['/app/me']);
+              private route : ActivatedRoute) {
+    this.isLoggedIn();
   }
 
+  ngOnInit() {}
+
+  isLoggedIn(){
+    const isLoggedIn = this.route.snapshot.data.isLoggedIn;
+    if(isLoggedIn) this.router.navigate(['/app/home']);
+  }
 
   onLoginFormSubmit(){
     let userEmail = this.loginForm.get('email').value;
@@ -57,8 +60,8 @@ export class LoginPageComponent implements OnInit {
 
     this.authService.logIn(userEmail, userPassword)
     .subscribe(data => {
-      localStorage.setItem('SESSION_HASH', data.sessionHash);
-      this.router.navigate(['/app']);
+      //localStorage.setItem('SESSION_HASH', data.sessionHash);
+      this.router.navigate(['/app/home']);
     }, err => {
       this.incorrectAuthData = true;
     });

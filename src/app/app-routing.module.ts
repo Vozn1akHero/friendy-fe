@@ -27,6 +27,7 @@ import {PhotosPageComponent} from './modules/home/photos-page/photos-page.compon
 import {ChatDataResolver} from './modules/home/dialog-page/resolvers/chat-data.resolver';
 import {PostCommentsSubpageComponent} from './submodules/post-comments-subpage/post-comments-subpage.component';
 import {IsEventCreatorResolver} from './modules/home/event-settings-page/resolvers/is-event-creator.resolver';
+import {NotFoundPageComponent} from './modules/not-found/not-found-page.component';
 
 const routes: Routes = [
   {path: '',
@@ -103,9 +104,9 @@ const routes: Routes = [
       {path: 'settings', component: UserSettingsPageComponent}
   ]},
 
- /* {path: '404', component: NotFoundPageComponent},
+  {path: '404', component: NotFoundPageComponent},
 
-  {path: '**', redirectTo: '/404'}*/
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({

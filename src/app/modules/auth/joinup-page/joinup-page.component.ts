@@ -60,7 +60,7 @@ export class JoinupPageComponent implements OnInit {
 
   ngOnInit() {
     const isLoggedIn = this.route.snapshot.data.isLoggedIn;
-    if(isLoggedIn) this.router.navigate(['/app/me']);
+    if(isLoggedIn) this.router.navigate(['/app/profile']);
   }
 
   closeJoinUpPopup(){

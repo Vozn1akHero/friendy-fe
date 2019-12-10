@@ -3,10 +3,10 @@ export default class EventPost{
   eventId: number;
   content: string;
   imagePath: string;
-  likesCount: number = 0;
-  commentsCount: number = 0;
+  likesCount: number;
+  commentsCount: number;
   postId: number;
-  isPostLikedByUser: boolean = false;
+  isPostLikedByUser: boolean;
   date: Date;
 
   constructor(id: number,
@@ -21,7 +21,7 @@ export default class EventPost{
     this.id = id;
     this.eventId = eventId;
     this.content = content;
-    this.imagePath = imagePath != null && `http://localhost:5000/${imagePath}`;
+    this.imagePath = imagePath != null ? `http://localhost:5000/${imagePath}` : null;
     this.likesCount = likesCount;
     this.commentsCount = commentsCount;
     this.postId = postId;

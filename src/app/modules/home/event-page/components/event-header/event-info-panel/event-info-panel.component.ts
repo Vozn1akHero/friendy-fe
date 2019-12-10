@@ -1,6 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {OpenSettingsService} from '../../../services/opensettings.service';
 import EventShortened from '../../../models/event-shortened.model';
+import {EventParticipantService} from '../../../services/event-participant.service';
+import {UserIdService} from '../../../../../../shared/services/user-id.service';
+import {Router} from '@angular/router';
+import {Observable, Subscription} from 'rxjs';
+import {UserParticipationStatusService} from '../../../services/user-participation-status.service';
 
 @Component({
   selector: 'app-event-header-event-info',
@@ -13,6 +18,7 @@ export class EventInfoPanelComponent implements OnInit {
   settingsVariantModalOpened: boolean = false;
   settingsVariantModalOpenedBeingChanged: boolean = false;
   cursorOverVariantModal: boolean = false;
+
 
   constructor(private openSettingsService: OpenSettingsService) { }
 
@@ -62,4 +68,6 @@ export class EventInfoPanelComponent implements OnInit {
     this.settingsVariantModalOpened = false;
     this.openSettingsService.openedSettingsValueChanged = false;
   }
+
+
 }

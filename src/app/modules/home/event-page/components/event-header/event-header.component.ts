@@ -2,11 +2,9 @@ import {Component, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {Observable, Subscription} from 'rxjs';
-import Event from '../../../events-page/models/event.model';
 import EventShortened from '../../models/event-shortened.model';
 import * as EventPageEventDataActions from '../../store/event-data/event-data.actions';
 import {ActivatedRoute} from '@angular/router';
-import EventAvatar from '../../models/event-avatar.model';
 
 @Component({
   selector: 'app-event-header',
