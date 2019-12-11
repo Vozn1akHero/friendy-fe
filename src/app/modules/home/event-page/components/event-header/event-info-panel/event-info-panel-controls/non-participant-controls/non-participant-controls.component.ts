@@ -1,6 +1,6 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {EventParticipationRequestService} from '../../../../../services/event-participation-request.service';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-non-participant-controls',
@@ -11,38 +11,35 @@ export class NonParticipantControlsComponent implements OnInit, OnDestroy {
   @Input() userId: number;
   @Input() eventId: number;
 
-  isParticipationRequestSent: boolean;
-  isParticipationRequestSentLoaded: boolean = false;
-  isParticipationRequestSentSubscription: Subscription;
+  isParticipationRequestSent$: Observable<boolean>;
+  isParticipationRequestSentLoaded$: Observable<boolean>;
 
   constructor(private eventParticipationRequestService: EventParticipationRequestService) {}
 
   ngOnInit() {
     this.getRequestStatus();
+    this.setRequestStatus();
   }
 
   onJoinUpBtnClick() {
-    this.eventParticipationRequestService.send(this.eventId, this.userId).subscribe(value => {
-      this.isParticipationRequestSent = true;
-    })
+    this.eventParticipationRequestService.send(this.eventId, this.userId).subscribe();
   }
 
   onRemoveRequestBtnClick(){
-    this.eventParticipationRequestService.delete(this.eventId, this.userId).subscribe(value => {
-      this.isParticipationRequestSent = false;
-    })
+    this.eventParticipationRequestService.delete(this.eventId, this.userId).subscribe();
   }
 
   getRequestStatus(){
-    this.isParticipationRequestSentSubscription = this
-      .eventParticipationRequestService
-      .getStatus(this.eventId, this.userId).subscribe(value => {
-      this.isParticipationRequestSent = value.body as boolean;
-      this.isParticipationRequestSentLoaded = true;
-    })
+    this.eventParticipationRequestService
+      .getStatus(this.eventId, this.userId).subscribe()
+  }
+
+  setRequestStatus(){
+    this.isParticipationRequestSent$ = this.eventParticipationRequestService.sent$;
+    this.isParticipationRequestSentLoaded$ = this.eventParticipationRequestService.sentLoaded$;
   }
 
   ngOnDestroy(): void {
-    this.isParticipationRequestSentSubscription.unsubscribe();
+
   }
 }

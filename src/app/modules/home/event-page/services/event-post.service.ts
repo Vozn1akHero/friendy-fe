@@ -39,9 +39,15 @@ export class EventPostService {
     this.http.post(`/api/event-post/${eventId}`,
       content, {observe: 'response'}).subscribe((res: HttpResponse<any>) => {
       this.newEventPost = new EventPost(res.body.id,
-        res.body.eventId, res.body.content, res.body.imagePath,
-        res.body.likesCount, res.body.commentsCount, res.body.postId,
-        res.body.isPostLikedByUser, res.body.date);
+        res.body.eventId,
+        res.body.avatarPath,
+        res.body.content,
+        res.body.imagePath,
+        res.body.likesCount,
+        res.body.commentsCount,
+        res.body.postId,
+        res.body.isPostLikedByUser,
+        res.body.date);
     });
   }
 
@@ -56,9 +62,15 @@ export class EventPostService {
         let eventPosts: EventPost[] = [];
         res.map(value => {
           eventPosts.push(new EventPost(value.id,
-            value.eventId, value.content, value.imagePath,
-            value.likesCount, value.commentsCount, value.postId,
-            value.isPostLikedByUser, value.date));
+            value.eventId,
+            value.avatarPath,
+            value.content,
+            value.imagePath,
+            value.likesCount,
+            value.commentsCount,
+            value.postId,
+            value.isPostLikedByUser,
+            value.date));
         });
         this.eventPosts = eventPosts;
       });

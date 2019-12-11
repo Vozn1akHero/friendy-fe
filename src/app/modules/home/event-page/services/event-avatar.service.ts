@@ -23,12 +23,12 @@ export class EventAvatarService {
 
   constructor(private http: HttpClient) {}
 
-  get(eventId:number){
+  /*get(eventId:number){
     this.http.get(`api/event/${eventId}/avatar`, { responseType: 'text'})
       .subscribe((res) => {
         this.eventAvatar = new EventAvatar(res);
       })
-  }
+  }*/
 
   update(eventId: number, newAvatar: File) {
     const content = new FormData();

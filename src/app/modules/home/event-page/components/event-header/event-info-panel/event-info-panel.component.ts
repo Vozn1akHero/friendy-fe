@@ -1,11 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {OpenSettingsService} from '../../../services/opensettings.service';
 import EventShortened from '../../../models/event-shortened.model';
-import {EventParticipantService} from '../../../services/event-participant.service';
-import {UserIdService} from '../../../../../../shared/services/user-id.service';
 import {Router} from '@angular/router';
-import {Observable, Subscription} from 'rxjs';
-import {UserParticipationStatusService} from '../../../services/user-participation-status.service';
 
 @Component({
   selector: 'app-event-header-event-info',
@@ -15,17 +11,18 @@ import {UserParticipationStatusService} from '../../../services/user-participati
 export class EventInfoPanelComponent implements OnInit {
   @Input() activeSettings;
   @Input() eventData : EventShortened;
+  @Input() isEventAdmin: boolean;
   settingsVariantModalOpened: boolean = false;
   settingsVariantModalOpenedBeingChanged: boolean = false;
   cursorOverVariantModal: boolean = false;
 
 
-  constructor(private openSettingsService: OpenSettingsService) { }
+  constructor(private router: Router, private openSettingsService: OpenSettingsService) { }
 
   ngOnInit() {
   }
 
-  openEventSettingsModal(){
+  /*openEventSettingsModal(){
     if(!this.activeSettings) {
       this.settingsVariantModalOpenedBeingChanged = false;
       this.settingsVariantModalOpened = true;
@@ -67,7 +64,9 @@ export class EventInfoPanelComponent implements OnInit {
   closeBasicEventSettings(){
     this.settingsVariantModalOpened = false;
     this.openSettingsService.openedSettingsValueChanged = false;
+  }*/
+
+  navigateToSettings() {
+    this.router.navigate(["app/event", this.eventData.id, "settings"], {queryParams: {sp: 'basic'}})
   }
-
-
 }

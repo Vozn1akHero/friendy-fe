@@ -11,21 +11,23 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class EventHeaderBgComponent implements OnInit {
   @Input() activeSettings;
-  eventId: number;
+  @Input() backgroundUrl;
+  /*eventId: number;
   eventBackgroundLoaded$ : Observable<boolean>;
-  eventBackground$: Observable<EventBackground>;
+  eventBackground$: Observable<EventBackground>;*/
 
   constructor(private eventBackgroundService: EventBackgroundService,
               private router : ActivatedRoute) { }
 
   ngOnInit() {
-    this.eventId = +this.router.snapshot.paramMap.get("id");
+    console.log(this.backgroundUrl)
+    /*this.eventId = +this.router.snapshot.paramMap.get("id");
     this.setEventBackgroundLoaded();
     this.getEventBackground();
-    this.setEventBackground();
+    this.setEventBackground();*/
   }
 
-  getEventBackground(){
+  /*getEventBackground(){
     this.eventBackgroundService.get(this.eventId);
   }
 
@@ -35,5 +37,5 @@ export class EventHeaderBgComponent implements OnInit {
 
   setEventBackgroundLoaded(){
     this.eventBackgroundLoaded$ = this.eventBackgroundService.eventBackgroundLoaded$;
-  }
+  }*/
 }

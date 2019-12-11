@@ -6,11 +6,11 @@ import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import * as EventsPageUserEventsActions from '../../store/user-events/user-events.actions';
 
 @Component({
-  selector: 'app-user-default-event-list',
-  templateUrl: './user-default-event-list.component.html',
-  styleUrls: ['./user-default-event-list.component.scss']
+  selector: 'app-user-participating-event-list',
+  templateUrl: './user-participating-event-list.component.html',
+  styleUrls: ['./user-participating-event-list.component.scss']
 })
-export class UserDefaultEventListComponent implements OnInit, OnDestroy {
+export class UserParticipatingEventListComponent implements OnInit, OnDestroy {
   userEventsLoaded$: Observable<boolean>;
   events: Event[];
   eventsSubscription: Subscription;

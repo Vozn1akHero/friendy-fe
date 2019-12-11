@@ -1,3 +1,3 @@
 export enum EventType {
-    Administered, Participating
+    Administered, Participating, Nonparticipating
 }

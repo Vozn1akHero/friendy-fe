@@ -12,7 +12,6 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./event-header.component.scss']
 })
 export class EventHeaderComponent implements OnInit, OnDestroy {
-  @Input() activeSettings;
   @Input() isEventAdmin: boolean;
 
   eventDataLoading$: Observable<boolean>;

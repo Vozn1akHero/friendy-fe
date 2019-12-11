@@ -1,12 +1,13 @@
-<section class="events-page">
-  <app-event-creation *ngIf="this.eventCreationPopupOpened"
-                      (closeEventCreationPopup)="openOrCloseEventCreationPopup()">
-  </app-event-creation>
+<app-event-creation *ngIf="this.eventCreationPopupOpened"
+                    (closeEventCreationPopup)="openOrCloseEventCreationPopup()">
+</app-event-creation>
 
+<section class="events-page">
   <app-events-search-panel></app-events-search-panel>
 
   <section class="left-side-wrapper">
-    <app-user-event-list></app-user-event-list>
+    <app-search-event-list *ngIf="searchActivated"></app-search-event-list>
+    <app-user-event-list *ngIf="!searchActivated"></app-user-event-list>
   </section>
 
   <section class="right-side-wrapper">

@@ -12,7 +12,7 @@ export class EventsMineSearchComponent implements OnInit {
   @Output() searchEventsSubmit: EventEmitter<string> = new EventEmitter<string>();
   @Output() toggleInput: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private _renderer : Renderer2){}
+  constructor(){}
 
   ngOnInit() {
   }

@@ -1,5 +1,5 @@
 <div class="event-info-panel">
-  <div *ngIf="settingsVariantModalOpened"
+  <!--<div *ngIf="settingsVariantModalOpened"
        (mouseover)="cursorOverVariantModalOn()"
        (mouseleave)="cursorOverVariantModalOff()"
        class="settings-variant-modal">
@@ -11,33 +11,42 @@
     <a routerLink="settings" class="btn">
       Rozszerzone
     </a>
-  </div>
+  </div>-->
 
-  <div class="event-settings-controls">
-    <button *ngIf="activeSettings" class="accept-changes-btn">
-      <svg>
-        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-checkmark"></use>
-      </svg>
-    </button>
-    <button *ngIf="!activeSettings; else closeBasicEventSettingsBtn"
-            (mouseover)="openEventSettingsModal()"
-            (mouseleave)="closeEventSettingsModal()"
-            class="btn">
-      <svg>
-        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cog"></use>
-      </svg>
-    </button>
-    <ng-template #closeBasicEventSettingsBtn>
-      <button class="btn" (click)="closeBasicEventSettings()">
+  <ng-container *ngIf="isEventAdmin">
+    <div class="event-settings-controls">
+      <button (click)="navigateToSettings()"
+              class="btn">
         <svg>
-          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cog"></use>
         </svg>
       </button>
-    </ng-template>
-  </div>
+      <!--<button *ngIf="activeSettings" class="accept-changes-btn">
+        <svg>
+          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-checkmark"></use>
+        </svg>
+      </button>
+      <button *ngIf="!activeSettings; else closeBasicEventSettingsBtn"
+              (mouseover)="openEventSettingsModal()"
+              (mouseleave)="closeEventSettingsModal()"
+              class="btn">
+        <svg>
+          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cog"></use>
+        </svg>
+      </button>
+      <ng-template #closeBasicEventSettingsBtn>
+        <button class="btn" (click)="closeBasicEventSettings()">
+          <svg>
+            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+          </svg>
+        </button>
+      </ng-template>-->
+    </div>
+  </ng-container>
 
   <div class="wrapper">
     <app-event-avatar [eventId]="eventData.id"
+                      [avatarUrl]="eventData.avatarUrl"
                       [activeSettings]="activeSettings"></app-event-avatar>
 
     <div class="basic-info">
@@ -63,7 +72,7 @@
         <svg class="icon">
           <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-users1"></use>
         </svg>
-        <span>17/25 uczestników</span>
+        <span>{{ eventData.currentParticipantsAmount }}/{{ eventData.participantsAmount }} uczestników</span>
       </div>
 
       <hr>

@@ -16,19 +16,20 @@ export class EventAvatarComponent implements OnInit, OnDestroy {
   @Input() activeSettings;
   @Input() eventId: number;
 
-  avatar: Observable<EventAvatar>;
+  //avatar: Observable<EventAvatar>;
+  @Input() avatarUrl;
 
   constructor(private activatedRoute: ActivatedRoute,
               private eventAvatarService : EventAvatarService) { }
 
   ngOnInit() {
-    this.getEventAvatar();
+    //this.getEventAvatar();
   }
 
-  getEventAvatar() {
+ /* getEventAvatar() {
     this.eventAvatarService.get(this.eventId);
     this.avatar = this.eventAvatarService.eventAvatar$
-  }
+  }*/
 
   ngOnDestroy(): void {
 

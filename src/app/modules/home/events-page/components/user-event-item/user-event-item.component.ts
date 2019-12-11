@@ -8,12 +8,12 @@ import Event from '../../models/event.model';
 })
 export class UserEventItemComponent implements OnInit {
   @Input() eventData : Event;
-  @Input() enumType : string;
+  //@Input() enumType : string;
   @Input() chosenType: string;
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.eventData)
+
   }
 }

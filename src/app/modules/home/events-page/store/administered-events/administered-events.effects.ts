@@ -36,12 +36,12 @@ export class AdministeredEventsEffects {
 
   @Effect()
   filterAdministeredEvents = this.actions$.pipe(
-    ofType(AdministeredEventsActions.FILTER_ADMINISTERED_EVENTS),
-    switchMap((actionData: AdministeredEventsActions.FilterAdministeredEvents) => {
+    ofType(AdministeredEventsActions.FILTER_EVENTS),
+    switchMap((actionData: AdministeredEventsActions.FilterEvents) => {
       return this.eventsService.filterAdministeredEvents(actionData.payload.keyword)
         .pipe(
           map(res => {
-            return ({ type: AdministeredEventsActions.FILTER_ADMINISTERED_EVENTS,
+            return ({ type: AdministeredEventsActions.SET_FILTERED_EVENTS,
               payload: res })
           })
         )

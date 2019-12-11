@@ -15,16 +15,41 @@ import {EventType} from './enums/event-types.enum';
 })
 export class EventsPageComponent implements OnInit, OnDestroy {
   eventCreationPopupOpened = false;
-  searchSubpageActivated: boolean;
+  searchActivated: boolean;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-
+    this.checkSearchActivated();
   }
 
-  setSelectedSubpage(){
-    this.searchSubpageActivated = this.route.snapshot.queryParams.search_act == 'true';
+  checkSearchActivated(){
+    this.route.queryParams.subscribe(params => {
+      let param = params["keyword"];
+      let ev_t = params["ev_t"];
+      if(param != null && param.length > 0) {
+        this.searchActivated = true;
+      } else if(ev_t != null && param == null) {
+        if (ev_t !== 'administered'
+          && ev_t !== 'participating') {
+          this.router.navigate(['.'], {
+            queryParams: {
+              'ev_t': 'participating'
+            },
+            relativeTo: this.route
+          })
+        } else if(ev_t === 'administered' || ev_t === 'participating'){
+          this.searchActivated = false;
+        }
+      } else {
+        this.router.navigate(['.'], {
+          queryParams: {
+            'ev_t': 'participating'
+          },
+          relativeTo: this.route
+        })
+      }
+    })
   }
 
   openOrCloseEventCreationPopup() {

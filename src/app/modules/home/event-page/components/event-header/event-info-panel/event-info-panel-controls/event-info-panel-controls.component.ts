@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {UserIdService} from '../../../../../../../shared/services/user-id.service';
 import {Router} from '@angular/router';
 import {UserParticipationStatusService} from '../../../../services/user-participation-status.service';
@@ -15,9 +15,9 @@ export class EventInfoPanelControlsComponent implements OnInit, OnDestroy {
   @Input() eventId: number;
   userId: number;
 
-  isCurrentUserParticipant: boolean;
-  isCurrentUserParticipantLoaded: boolean = false;
-  isCurrentUserParticipantSubscription: Subscription;
+  isCurrentUserParticipant$: Observable<boolean>;
+  isCurrentUserParticipantLoaded$: Observable<boolean>;
+  //isCurrentUserParticipantSubscription: Subscription;
 
   constructor(private userIdService: UserIdService,
               private router: Router,
@@ -25,19 +25,25 @@ export class EventInfoPanelControlsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userId = this.userIdService.userId;
+    this.getUserParticipationStatus();
     this.setUserParticipationStatus();
   }
 
+  getUserParticipationStatus(){
+    this.eventParticipationStatusService
+      .getUserParticipationStatus(this.eventId).subscribe();
+  }
+
   setUserParticipationStatus(){
-    this.isCurrentUserParticipantSubscription = this.eventParticipationStatusService
-      .getUserParticipationStatus(this.eventId)
-      .subscribe(value => {
-        this.isCurrentUserParticipant = value.body as boolean;
-        this.isCurrentUserParticipantLoaded = true;
-      })
+    this.isCurrentUserParticipant$ = this.eventParticipationStatusService.isUserParticipant$;
+    this.isCurrentUserParticipantLoaded$ = this.eventParticipationStatusService.isUserParticipantLoaded$;
+  }
+
+  onStatusChangeByUser(status: boolean){
+
   }
 
   ngOnDestroy(): void {
-    this.isCurrentUserParticipantSubscription.unsubscribe();
+
   }
 }

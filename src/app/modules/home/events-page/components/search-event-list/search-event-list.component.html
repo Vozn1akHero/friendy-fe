@@ -1,3 +1,12 @@
-<p>
-  search-event-list works!
-</p>
+<div class="administered-events">
+  <ng-container *ngIf="(foundEvents$|async).length > 0; else noFoundEvents">
+    <app-user-event-item *ngFor="let eventData of (foundEvents$|async)"
+                         [eventData]="eventData"
+                         [chosenType]="'nonparticipating'"></app-user-event-item>
+  </ng-container>
+  <ng-template #noFoundEvents>
+    <span class="adm-list-empty-msg">
+      Nie udało się znaleźć wydarzeń
+    </span>
+  </ng-template>
+</div>

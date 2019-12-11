@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
-import {catchError, map} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {EventAdminService} from '../services/event-admin.service';
 

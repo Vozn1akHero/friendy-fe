@@ -11,7 +11,7 @@ export class EventDataService {
   }
 
   getEventData(id : number){
-    return this.http.get(`api/event/${id}/with-selected-fields?selectedFields=Id,Title,Street,StreetNumber,City,ParticipantsAmount,Date`, {
+    return this.http.get(`api/event/${id}`, {
       observe: 'body'
     }).pipe(
       map((res : any) => {
@@ -20,7 +20,10 @@ export class EventDataService {
             res.street,
             res.streetNumber,
             res.city,
+            res.avatarPath,
+            res.backgroundPath,
             res.participantsAmount,
+            res.currentParticipantsAmount,
             res.date);
         }
       ))

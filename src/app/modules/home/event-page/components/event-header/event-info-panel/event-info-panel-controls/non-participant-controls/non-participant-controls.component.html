@@ -1,6 +1,6 @@
 <div class="non-participant-controls">
-  <ng-container *ngIf="isParticipationRequestSentLoaded">
-    <ng-container *ngIf="isParticipationRequestSent; else noSentRequest">
+  <ng-container *ngIf="isParticipationRequestSentLoaded$|async">
+    <ng-container *ngIf="(isParticipationRequestSent$|async); else noSentRequest">
       <button class="non-participant-controls__btn--remove fr-btn-main-pink" (click)="onRemoveRequestBtnClick()">
         Anuluj wniosek
       </button>

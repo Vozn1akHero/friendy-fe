@@ -1,6 +1,7 @@
 export default class EventPost{
   id: number;
   eventId: number;
+  avatarUrl: string;
   content: string;
   imagePath: string;
   likesCount: number;
@@ -11,6 +12,7 @@ export default class EventPost{
 
   constructor(id: number,
               eventId: number,
+              avatarPath: string,
               content: string,
               imagePath: string,
               likesCount: any,
@@ -20,6 +22,7 @@ export default class EventPost{
               date: Date) {
     this.id = id;
     this.eventId = eventId;
+    this.avatarUrl = "http://localhost:5000/" + avatarPath;
     this.content = content;
     this.imagePath = imagePath != null ? `http://localhost:5000/${imagePath}` : null;
     this.likesCount = likesCount;
