@@ -10,6 +10,24 @@
   background: $color-bg-grey-footer;
   z-index: 10;
 
+  .controls{
+    visibility: hidden;
+  }
+
+  &__form{
+    .fr-input{
+      margin: 1rem;
+
+      &--name, &--city, &--street, &--street-number, &--date{
+        width: 100%;
+      }
+
+      &--participants-min, &--participants-max, &--price-min, &--price-max{
+        width: 50%;
+      }
+    }
+  }
+
   .inner-wrapper{
     width: 100%;
     height: 100%;

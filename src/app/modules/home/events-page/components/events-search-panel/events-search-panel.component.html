@@ -1,5 +1,68 @@
 <aside #panel class="event-search-panel">
   <div class="inner-wrapper">
+    <div #formControls class="controls fr-p-2">
+      <form class="event-search-panel__form
+       fr-flex-column
+       fr-flex-center-aligned" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+        <input class="fr-input fr-input--name"
+               formControlName="name"
+               placeholder="Nazwa"
+               type="text">
+        <input class="fr-input fr-input--city"
+               formControlName="city"
+               placeholder="Miasto"
+               type="text">
+
+        <div class="fr-d-flex fr-input--street">
+          <input class="fr-input"
+                 formControlName="street"
+                 placeholder="Ulica"
+                 type="text">
+          <input class="fr-input fr-input--street-number"
+                 formControlName="streetNumber"
+                 placeholder="Numer"
+                 type="text">
+        </div>
+
+        <div class="fr-flex-column">
+          <label>Cena wejścia</label>
+          <div class="fr-flex-row">
+            <input class="fr-input fr-input--price-min"
+                   formControlName="priceMin"
+                   placeholder="Od"
+                   type="text">
+            <input class="fr-input fr-input--price-max"
+                   formControlName="priceMax"
+                   placeholder="Do"
+                   type="text">
+          </div>
+        </div>
+
+        <div class="fr-flex-column">
+          <label>Ilość uczestników</label>
+          <div class="fr-flex-row">
+            <input class="fr-input fr-input--participants-min"
+                   formControlName="participantsAmountMin"
+                   placeholder="Od"
+                   type="text">
+            <input class="fr-input fr-input--participants-max"
+                   formControlName="participantsAmountMax"
+                   placeholder="Do"
+                   type="text">
+          </div>
+        </div>
+
+        <input class="fr-input fr-input--date"
+               formControlName="date"
+               placeholder="Data"
+               type="text">
+
+        <button type="submit" class="fr-btn-main-blue fr-m-t-2">
+          Szukaj
+        </button>
+      </form>
+    </div>
+
     <button (click)="onToggleBtnClick()"
             #toggleBtn
             class="toggle-btn">

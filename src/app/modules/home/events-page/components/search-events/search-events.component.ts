@@ -15,11 +15,20 @@ export class SearchEventsComponent implements OnInit {
   }
 
   searchEvents():void{
-    this.router.navigate(['.'], {
-      queryParams: {
-        keyword: this.searchInputText
-      },
-      relativeTo: this.route
-    })
+    if(this.searchInputText.length === 0){
+      this.router.navigate(['.'], {
+        queryParams: {
+          "ev_t": "participating"
+        },
+        relativeTo: this.route
+      })
+    } else {
+      this.router.navigate(['.'], {
+        queryParams: {
+          keyword: this.searchInputText
+        },
+        relativeTo: this.route
+      })
+    }
   }
 }

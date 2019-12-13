@@ -7,7 +7,7 @@ import Event from '../models/event.model';
 @Injectable({
   providedIn: 'root'
 })
-export class EventsService {
+export class UserEventsService {
   constructor(private http: HttpClient){}
 
   getLoggedInUserEvents(){

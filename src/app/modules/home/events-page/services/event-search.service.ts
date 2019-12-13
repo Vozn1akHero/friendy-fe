@@ -3,6 +3,7 @@ import {HttpClient, HttpResponse} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map, take} from 'rxjs/operators';
 import Event from '../models/event.model';
+import EventSearchCriteriaModel from '../models/event-search-criteria.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,13 @@ export class EventSearchService {
           event.date))
       });
       this.foundEvents = foundEvents;
+    }))
+  }
+
+  filterByCriteria(eventSearchCriteria: EventSearchCriteriaModel){
+    return this.http.get(`api/event-search/with-criteria?title=${eventSearchCriteria.title}`, {observe: 'response'})
+      .pipe(map((res : HttpResponse<any[]>) => {
+      console.log(res.body);
     }))
   }
 }

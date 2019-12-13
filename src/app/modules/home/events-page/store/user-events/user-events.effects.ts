@@ -7,7 +7,7 @@ import * as UserEventsActions from './user-events.actions';
 import {Action, Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import Event from '../../models/event.model';
-import {EventsService} from '../../services/events.service';
+import {UserEventsService} from '../../services/user-events.service';
 import * as AdministeredEventsActions from '../administered-events/administered-events.actions';
 import {of} from 'rxjs';
 import {AppState} from '../../../../../core/ngrx/store/app.reducer';
@@ -64,7 +64,7 @@ export class UserEventsEffects {
   constructor(
     private actions$: Actions,
     private http: HttpClient,
-    private eventsService : EventsService,
+    private eventsService : UserEventsService,
     private router: Router,
     private store$: Store<fromApp.AppState>
   ) {}

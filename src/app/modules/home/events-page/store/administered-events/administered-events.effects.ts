@@ -10,7 +10,7 @@ import {AppState} from '../../../../../core/ngrx/store/app.reducer';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import Event from '../../models/event.model';
-import {EventsService} from '../../services/events.service';
+import {UserEventsService} from '../../services/user-events.service';
 
 
 @Injectable()
@@ -51,7 +51,7 @@ export class AdministeredEventsEffects {
   constructor(
     private actions$: Actions,
     private http: HttpClient,
-    private eventsService : EventsService,
+    private eventsService : UserEventsService,
     private store: Store<fromApp.AppState>
   ) {}
 }
