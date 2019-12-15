@@ -68,7 +68,7 @@
     }
   }
 
-  .age {
+  .birthday {
     display: flex;
     margin: .5rem 0;
     background: white;
@@ -80,15 +80,15 @@
       margin-left: .5rem;
     }
 
-    #ageFrom{
+    &--min{
       margin-left: 1.5rem;
     }
 
-    #ageTo{
+    &--max{
       margin-left: 1rem;
     }
 
-    #ageFrom, #ageTo {
+    &--min, &--max {
       margin-bottom: 0 !important;
       width: 5rem;
       background: rgba(184,184,184,.05);

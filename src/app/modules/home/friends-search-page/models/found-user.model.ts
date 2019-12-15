@@ -8,6 +8,6 @@ export default class FoundUserModel {
     this.id = id;
     this.name = name;
     this.surname = surname;
-    this.avatar = "data:image/png;base64," + avatar;
+    this.avatar = "http://localhost:5000/" + avatar;
   }
 }

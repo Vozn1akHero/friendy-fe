@@ -1,4 +1,4 @@
-<div class="administered-events">
+<div class="search-event-list">
   <ng-container *ngIf="(foundEvents$|async).length > 0; else noFoundEvents">
     <app-user-event-item *ngFor="let eventData of (foundEvents$|async)"
                          [eventData]="eventData"

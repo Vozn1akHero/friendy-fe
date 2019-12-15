@@ -1,24 +1,24 @@
 <div class="user-event-list fr-light-grey-section-bg fr-p-b-1">
   <div>
     <div class="events-controls">
-      <button class="all-events-btn" (click)="showConcreteTypeOfEvents('participating')"
-              [ngClass]="{'activeButton': chosenSubpage == participatingType}">
+      <button class="all-events-btn" (click)="showConcreteTypeOfEventsFromComponent('participating')"
+              [ngClass]="{'activeButton': chosenSectionText == 'participating'}">
         Wszystkie wydarzenia
       </button>
 
-      <button class="my-events-btn" (click)="showConcreteTypeOfEvents('administered')"
-              [ngClass]="{'activeButton': chosenSubpage == administeredType}">
+      <button class="my-events-btn" (click)="showConcreteTypeOfEventsFromComponent('administered')"
+              [ngClass]="{'activeButton': chosenSectionText == 'administered'}">
         Moje wydarzenia
       </button>
     </div>
     <app-events-mine-search (searchEventsSubmit)="searchEvents($event)"></app-events-mine-search>
   </div>
 
-  <section *ngIf="chosenSubpage === participatingType">
+  <section *ngIf="chosenSectionText === 'participating'">
     <app-user-participating-event-list></app-user-participating-event-list>
   </section>
 
-  <section *ngIf="chosenSubpage === administeredType">
+  <section *ngIf="chosenSectionText === 'administered'">
     <app-user-administered-events-list></app-user-administered-events-list>
   </section>
 </div>

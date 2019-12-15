@@ -2,6 +2,7 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, V
 import {FormGroup, FormControl, Validators, Form} from '@angular/forms';
 import UserSearchModelDto from '../../models/user-search-dto.model';
 import {FriendsSearchService} from '../../services/friends-search.service';
+import {$e} from 'codelyzer/angular/styles/chars';
 
 @Component({
   selector: 'app-friends-search-form',
@@ -16,9 +17,9 @@ export class FriendsSearchFormComponent implements OnInit {
     education: new FormControl(''),
     school: new FormControl(null),
     university: new FormControl(null),
-    age: new FormGroup({
-      ageMin: new FormControl(0),
-      ageMax: new FormControl(0)
+    birthday: new FormGroup({
+      birthdayMin: new FormControl(null),
+      birthdayMax: new FormControl(null)
     }),
     gender: new FormControl(''),
     maritalStatus: new FormControl(''),
@@ -29,11 +30,16 @@ export class FriendsSearchFormComponent implements OnInit {
   });
 
   @Output() searchFormSubmitEmitter: EventEmitter<UserSearchModelDto> = new EventEmitter();
-
   @ViewChild('interestsInput') interestsInput;
   @ViewChild('dropdownWrapper') dropdownWrapperList : QueryList<ElementRef>;
 
+  @ViewChild('birthdayMin') birthdayMinInput : ElementRef<HTMLInputElement>;
+  @ViewChild('birthdayMax') birthdayMaxInput : ElementRef<HTMLInputElement>;
+  birthdayMinInputFocused: boolean = false;
+  birthdayMaxInputFocused: boolean = false;
+
   interests: string[] = [];
+  showCalendar: boolean = false;
 
   constructor(private friendsSearchService: FriendsSearchService) {
 
@@ -92,8 +98,8 @@ export class FriendsSearchFormComponent implements OnInit {
       +searchFormValue.education,
       searchFormValue.school,
       searchFormValue.university,
-      +searchFormValue.age.ageMin,
-      +searchFormValue.age.ageMax,
+      searchFormValue.birthday.birthdayMin,
+      searchFormValue.birthday.birthdayMax,
       +searchFormValue.gender,
       +searchFormValue.maritalStatus,
       +searchFormValue.religion,
@@ -102,7 +108,31 @@ export class FriendsSearchFormComponent implements OnInit {
       this.interests);
 
     if(!this.interestsInput.nativeElement.activeElement) {
+      console.log(userSearchModel)
       this.searchFormSubmitEmitter.emit(userSearchModel);
     }
+  }
+
+  onSelectBirthday($event){
+    if(this.birthdayMaxInputFocused){
+      this.birthdayMaxInput.nativeElement.value = $event;
+      this.showCalendar = false;
+    } else if (this.birthdayMinInputFocused){
+      this.birthdayMinInput.nativeElement.value = $event;
+      this.showCalendar = false;
+    }
+  }
+
+  setShowCalendar(){
+    this.showCalendar = true;
+  }
+
+  setBirthdayMinInputFocused(){
+    this.setShowCalendar();
+    this.birthdayMinInputFocused = true;
+  }
+  setBirthdayMaxInputFocused(){
+    this.setShowCalendar();
+    this.birthdayMaxInputFocused = true;
   }
 }

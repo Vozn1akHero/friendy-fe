@@ -24,10 +24,10 @@ export class FoundUserItemComponent implements OnInit, OnDestroy {
   constructor(private friendsSearchService: FriendsSearchService) { }
 
   ngOnInit() {
-    this.setFriendshipStatus();
+    //this.setFriendshipStatus();
   }
 
-  setFriendshipStatus(){
+  /*setFriendshipStatus(){
     this.friendshipStatusSubscription = this.friendsSearchService
       .checkIfFriendByUserId(this.foundUserData.id)
       .subscribe(response => {
@@ -93,7 +93,7 @@ export class FoundUserItemComponent implements OnInit, OnDestroy {
       default:
         break;
     }
-  }
+  }*/
 
   ngOnDestroy(): void {
     this.friendshipStatusSubscription.unsubscribe();

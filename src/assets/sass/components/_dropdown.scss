@@ -28,7 +28,7 @@
     }
   }
 
-  &::before, &::after {
+/*  &::before, &::after {
     content: "";
     position: absolute;
     pointer-events: none;
@@ -44,5 +44,5 @@
 
   &::after {
     color: rgba($color-grey-dark, .7);
-  }
+  }*/
 }

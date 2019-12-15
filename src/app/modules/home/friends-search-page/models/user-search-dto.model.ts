@@ -1,46 +1,46 @@
-export default class UserSearchModelDto {
-  Name: string;
-  Surname: string;
-  City: string;
-  Education: number;
-  School: string;
-  University: string;
-  AgeMin: number;
-  AgeMax: number;
-  Gender: number;
-  MaritalStatus: number;
-  Religion: number;
-  AlcoholOpinion: number;
-  SmokingOpinion: number;
-  Interests: string[];
+export default class UserSearchModel {
+  name: string;
+  surname: string;
+  city: string;
+  educationId: number;
+  school: string;
+  university: string;
+  birthdayMin: Date;
+  birthdayMax: Date;
+  genderId: number;
+  maritalStatusId: number;
+  religionId: number;
+  alcoholOpinionId: number;
+  smokingOpinionId: number;
+  interests: string[];
 
-  constructor(Name: string,
-              Surname: string,
-              City: string,
-              Education: number,
-              School: string,
-              University: string,
-              AgeMin: number,
-              AgeMax: number,
-              Gender: number,
-              MaritalStatus: number,
-              Religion: number,
-              AlcoholOpinion: number,
-              SmokingOpinion: number,
-              Interests: string[]) {
-    this.Name = Name;
-    this.Surname = Surname;
-    this.City = City;
-    this.Education = Education;
-    this.School = School;
-    this.University = University;
-    this.AgeMin = AgeMin;
-    this.AgeMax = AgeMax;
-    this.Gender = Gender;
-    this.MaritalStatus = MaritalStatus;
-    this.Religion = Religion;
-    this.AlcoholOpinion = AlcoholOpinion;
-    this.SmokingOpinion = SmokingOpinion;
-    this.Interests = Interests;
+  constructor(name: string,
+              surname: string,
+              city: string,
+              education: number,
+              school: string,
+              university: string,
+              birthdayMin: Date,
+              birthdayMax: Date,
+              genderId: number,
+              maritalStatus: number,
+              religion: number,
+              alcoholOpinion: number,
+              smokingOpinion: number,
+              interests: string[]) {
+    this.name = name;
+    this.surname = surname;
+    this.city = city;
+    this.educationId = education;
+    this.school = school;
+    this.university = university;
+    this.birthdayMin = birthdayMin;
+    this.birthdayMax = birthdayMax;
+    this.genderId = genderId;
+    this.maritalStatusId = maritalStatus;
+    this.religionId = religion;
+    this.alcoholOpinionId = alcoholOpinion;
+    this.smokingOpinionId = smokingOpinion;
+    this.interests = interests;
   }
 }

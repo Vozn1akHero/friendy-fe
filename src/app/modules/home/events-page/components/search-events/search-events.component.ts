@@ -1,5 +1,7 @@
 import {Component, OnInit, Output, EventEmitter, Renderer2, Input, ViewChild, ElementRef} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedSectionService} from '../../services/activated-section.service';
+import {EventSearchService} from '../../services/event-search.service';
 
 @Component({
   selector: 'app-search-events',
@@ -9,26 +11,17 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class SearchEventsComponent implements OnInit {
   searchInputText : string;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private activatedSectionService : ActivatedSectionService, private eventSearchService: EventSearchService) { }
 
   ngOnInit() {
   }
 
   searchEvents():void{
     if(this.searchInputText.length === 0){
-      this.router.navigate(['.'], {
-        queryParams: {
-          "ev_t": "participating"
-        },
-        relativeTo: this.route
-      })
+      this.activatedSectionService.setParticipatingSection();
     } else {
-      this.router.navigate(['.'], {
-        queryParams: {
-          keyword: this.searchInputText
-        },
-        relativeTo: this.route
-      })
+      this.eventSearchService.filterByKeyword(this.searchInputText).subscribe();
+      this.activatedSectionService.setNonparticipatingEvents();
     }
   }
 }

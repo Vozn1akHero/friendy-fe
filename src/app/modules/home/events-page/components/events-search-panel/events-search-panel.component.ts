@@ -2,6 +2,8 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import EventSearchCriteriaModel from '../../models/event-search-criteria.model';
 import {EventSearchService} from '../../services/event-search.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedSectionService} from '../../services/activated-section.service';
 
 @Component({
   selector: 'app-events-search-panel',
@@ -38,9 +40,13 @@ export class EventsSearchPanelComponent implements OnInit {
       formValue.participantAmountMax,
       formValue.date);
     this.eventSearchService.filterByCriteria(searchEventDto).subscribe();
+    this.activatedSectionService.setNonparticipatingEvents();
   }
 
-  constructor(private eventSearchService : EventSearchService) { }
+  constructor(private eventSearchService : EventSearchService,
+              private activatedSectionService : ActivatedSectionService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.panel.nativeElement.style.boxShadow = '0 0px 6px 0px rgba(0, 0, 0, 0.1)';

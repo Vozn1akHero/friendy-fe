@@ -10,23 +10,12 @@ import Event from '../../models/event.model';
   styleUrls: ['./search-event-list.component.scss']
 })
 export class SearchEventListComponent implements OnInit {
-  keyword: string;
   foundEvents$: Observable<Event[]>;
 
-  constructor(private route: ActivatedRoute, private eventSearchService : EventSearchService) { }
+  constructor(private eventSearchService : EventSearchService) { }
 
   ngOnInit() {
-    this.setKeyword();
-    this.searchEvents();
     this.getFoundEvents();
-  }
-
-  setKeyword(){
-    this.keyword = this.route.snapshot.queryParams.keyword;
-  }
-
-  searchEvents(){
-    this.eventSearchService.filterByKeyword(this.keyword).subscribe();
   }
 
   getFoundEvents(){

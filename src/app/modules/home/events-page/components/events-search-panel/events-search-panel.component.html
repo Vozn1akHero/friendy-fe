@@ -4,8 +4,8 @@
       <form class="event-search-panel__form
        fr-flex-column
        fr-flex-center-aligned" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-        <input class="fr-input fr-input--name"
-               formControlName="name"
+        <input class="fr-input fr-input--title"
+               formControlName="title"
                placeholder="Nazwa"
                type="text">
         <input class="fr-input fr-input--city"
@@ -28,11 +28,11 @@
           <label>Cena wejścia</label>
           <div class="fr-flex-row">
             <input class="fr-input fr-input--price-min"
-                   formControlName="priceMin"
+                   formControlName="entryPriceMin"
                    placeholder="Od"
                    type="text">
             <input class="fr-input fr-input--price-max"
-                   formControlName="priceMax"
+                   formControlName="entryPriceMax"
                    placeholder="Do"
                    type="text">
           </div>

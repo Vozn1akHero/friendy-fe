@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import UserSearchModelDto from '../models/user-search-dto.model';
 import {map} from 'rxjs/operators';
 import FoundUserModel from '../models/found-user.model';
@@ -12,8 +12,83 @@ export class FriendsSearchService {
   constructor(private http: HttpClient) {
   }
 
-  getUsersByCriteria(criteria: UserSearchModelDto) {
+  getUsersByCriteriaRA(criteria: UserSearchModelDto) {
     return this.http.post('/api/user-search/with-criteria', criteria, {observe: 'response'})
+      .pipe(map((res : HttpResponse<any[]>) => {
+        let userList = [];
+        res.body.map(user => {
+          userList.push(new FoundUserModel(user.id,
+            user.name,
+            user.surname,
+            user.avatar))
+        });
+        return userList;
+    }))
+  }
+
+  getUsersByCriteria(criteria: UserSearchModelDto) {
+    const body = {
+      "query" : {
+        "bool": {
+          "must": [
+            {
+              "match_phrase": {
+                "name": "Dmytro"
+              }
+            },
+            {
+              "match_phrase": {
+                "surname": "Vozniachuk"
+              }
+            },
+            {
+              "match_phrase": {
+                "city": "Gdańsk"
+              }
+            },
+            {
+              "range":{
+                "birthday": {
+                  "format": "dd.mm.yyyy",
+                  "gt": "10.12.1998",
+                  "lt": "11.12.2000"
+                }
+              }
+            },
+            {
+              "match": {
+                "userInterests.id": 1
+              }
+            },
+            {
+              "match": {
+                "userInterests.id": 2
+              }
+            }
+          ]
+        }
+      }
+    };
+
+    const bodyJson = JSON.stringify(body);
+
+    return this.http.get('http://localhost:9200/users/_search', {
+      params:{
+        source: bodyJson,
+        source_content_type: 'application/json'
+      },
+      observe: 'response' })
+      .pipe(map((res : HttpResponse<any[]>) => {
+        console.log(res.body);
+        let userList = [];
+        res.body.map(user => {
+          userList.push(new FoundUserModel(user.id,
+            user.name,
+            user.surname,
+            user.avatar))
+        });
+        return userList;
+      }))
   }
 
   getExemplaryUsers(firstIndex: number, lastIndex: number): Observable<FoundUserModel[]> {

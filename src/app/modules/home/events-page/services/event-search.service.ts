@@ -22,26 +22,34 @@ export class EventSearchService {
   filterByKeyword(keyword: string){
     return this.http.get(`api/event-search/${keyword}`,
       {observe: 'response'}).pipe(map((res:HttpResponse<any[]>) => {
-      let foundEvents : Event[] = [];
-      res.body.map(event => {
-        foundEvents.push(new Event(event.id,
-          event.title,
-          event.street,
-          event.streetNumber,
-          event.city,
-          event.avatarPath,
-          event.participantsAmount,
-          event.currentParticipantsAmount,
-          event.date))
-      });
-      this.foundEvents = foundEvents;
+      this.setEventsByResponse(res.body);
     }))
   }
 
   filterByCriteria(eventSearchCriteria: EventSearchCriteriaModel){
     return this.http.get(`api/event-search/with-criteria?title=${eventSearchCriteria.title}`, {observe: 'response'})
       .pipe(map((res : HttpResponse<any[]>) => {
-      console.log(res.body);
+        this.setEventsByResponse(res.body);
     }))
+/*    return this.http.get(`http://localhost:9200/events/event/_search?q=title:${eventSearchCriteria.title}`, {observe: 'response'})
+      .pipe(map((res : HttpResponse<any[]>) => {
+      console.log(res.body);
+    }))*/
+  }
+
+  private setEventsByResponse(response){
+    let foundEvents : Event[] = [];
+    response.map(event => {
+      foundEvents.push(new Event(event.id,
+        event.title,
+        event.street,
+        event.streetNumber,
+        event.city,
+        event.avatarPath,
+        event.participantsAmount,
+        event.currentParticipantsAmount,
+        event.date))
+    });
+    this.foundEvents = foundEvents;
   }
 }

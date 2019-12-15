@@ -5,20 +5,24 @@ import * as UserEventsPageEventsActions from '../../store/user-events/user-event
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
+import {SectionType} from '../../enums/section-type.enum';
+import {ActivatedSectionService} from '../../services/activated-section.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-user-event-list',
   templateUrl: './user-event-list.component.html',
   styleUrls: ['./user-event-list.component.scss']
 })
-export class UserEventListComponent implements OnInit{
-  chosenSubpage: EventType;
-  administeredType: EventType = EventType.Administered;
-  participatingType: EventType = EventType.Participating;
+export class UserEventListComponent implements OnInit, OnDestroy{
+  chosenSection: SectionType;
+  chosenSectionText: string;
+  searchActivatedSubscription: Subscription;
 
   constructor(private renderer: Renderer2,
               private router: Router,
               private activatedRoute: ActivatedRoute,
+              private activatedSectionService : ActivatedSectionService,
               private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
@@ -26,65 +30,52 @@ export class UserEventListComponent implements OnInit{
   }
 
   checkChosenSubpageEventType(){
-    this.activatedRoute.queryParams.subscribe(params => {
-      const chosenSubpage = params["ev_t"];
-      switch (chosenSubpage) {
-        case 'administered':
-          this.chosenSubpage = EventType.Administered;
-          break;
-        case 'participating':
-          this.chosenSubpage = EventType.Participating;
-      }
-    })
+    this.searchActivatedSubscription = this.activatedSectionService.activatedSection$.subscribe(value => {
+      this.chosenSection = value;
+      this.showConcreteTypeOfEvents();
+    });
   }
 
-  showConcreteTypeOfEvents(chosenSubpage) {
-    if(chosenSubpage === 'administered'){
-      this.router.navigate(['.'], { queryParams: {
-          'ev_t': 'administered'
-        },
-        relativeTo: this.activatedRoute })
-    } else if(chosenSubpage === 'participating') {
-      this.router.navigate(['.'], { queryParams: {
-          'ev_t': 'participating'
-        },
-        relativeTo: this.activatedRoute })
-    } else {
-      this.router.navigate(['.'], { queryParams: {
-          'ev_t': 'participating'
-        },
-        relativeTo: this.activatedRoute })
+  showConcreteTypeOfEvents() {
+    switch (this.chosenSection) {
+      case SectionType.AdministeredEvents:
+        this.chosenSectionText = 'administered';
+        break;
+      case SectionType.ParticipatingEvents:
+        this.chosenSectionText = 'participating';
+        break;
+    }
+  }
+
+  showConcreteTypeOfEventsFromComponent(chosenSectionText: string) {
+    switch (chosenSectionText) {
+      case 'administered':
+        this.chosenSectionText = 'administered';
+        break;
+      case 'participating':
+        this.chosenSectionText = 'participating';
+        break;
     }
   }
 
   searchEvents(keyword){
     if(keyword.length === 0){
-      if(this.chosenSubpage === EventType.Administered){
+      if(this.chosenSection === SectionType.AdministeredEvents){
         this.store.dispatch(new EventsPageAdministeredEventsActions.SetDefaultEvents());
-      } else if (this.chosenSubpage === EventType.Participating){
+      } else if (this.chosenSection === SectionType.ParticipatingEvents){
         this.store.dispatch(new UserEventsPageEventsActions.SetDefaultEvents());
       }
     }
-    if(this.chosenSubpage === EventType.Administered){
+    if(this.chosenSection === SectionType.AdministeredEvents){
       this.store.dispatch(new EventsPageAdministeredEventsActions
         .FilterEvents({ keyword }));
-      /*this.router.navigate(['.'], {
-        queryParams: {
-          sk: keyword,
-          'ev_t': 'administered'
-        },
-        relativeTo: this.activatedRoute
-      })*/
-    } else if (this.chosenSubpage === EventType.Participating){
+    } else if (this.chosenSection === SectionType.ParticipatingEvents){
       this.store.dispatch(new UserEventsPageEventsActions
         .FilterEvents({ keyword }));
-      /*this.router.navigate(['.'], {
-        queryParams: {
-          sk: keyword,
-          'ev_t': 'participating'
-        },
-        relativeTo: this.activatedRoute
-      })*/
     }
+  }
+
+  ngOnDestroy(): void {
+    this.searchActivatedSubscription.unsubscribe();
   }
 }
