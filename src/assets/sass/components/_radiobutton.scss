@@ -5,9 +5,8 @@
     position: relative;
     padding-left: 30px;
     cursor: pointer;
-    font-size: .85rem;
+    font-size: .8rem;
     user-select: none;
-  
 
   & input {
     position: absolute;
@@ -30,11 +29,6 @@
   & input:checked ~ .checkmark {
     background: linear-gradient(0.85turn, #fff000, #00baff);
 
-    &:after{
-      content: "\2022";
-      font-size: 2rem;
-      transform: translateY(-2.6px) translateX(-.6px);
-      color: $color-bg-grey-footer;
-    }
+
   }
 }

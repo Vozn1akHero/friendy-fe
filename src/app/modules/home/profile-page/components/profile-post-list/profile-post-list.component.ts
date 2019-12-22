@@ -23,6 +23,7 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
 
   userPostsSubscription: Subscription;
   userPosts: Post[];
+  userPostsLoaded$: Observable<boolean>;
 
   userAvatarUrl: string;
   userAvatarSubscription: Subscription;
@@ -30,16 +31,9 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
   constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
-    this.componentLoadedSubscription = combineLatest(
-      this.store.select(state => state.profilePageUserData.loaded),
-      this.store.select(state => state.profilePageUserAvatar.loaded),
-      this.store.select(state => state.profilePageUserPosts.loaded)
-    ).subscribe(([userDataLoaded, userAvatarLoaded, userPostsLoaded]) => {
-      this.componentLoaded = userDataLoaded && userAvatarLoaded && userPostsLoaded
-    });
+    this.userPostsLoaded$ = this.store.select(state => state.profilePageUserPosts.loaded);
 
     this.getUserPosts();
-    this.getUserAvatar();
   }
 
   getUserPosts() {
@@ -52,22 +46,21 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
       })
   }
 
-  getUserAvatar(){
+/*  getUserAvatar(){
     this.userAvatarSubscription = this.store.select(state => state.profilePageUserAvatar.avatarUrl)
       .subscribe(value => {
         this.userAvatarUrl = value;
     })
   }
 
-  /*getUserId(){
+  /!*getUserId(){
     this.userIdSubscription = this.store.select(state => state.profilePageUserData.user)
       .subscribe(value => {
         this.userId = value.id;
       })
-  }*/
+  }*!/*/
 
   ngOnDestroy(): void {
     this.userPostsSubscription.unsubscribe();
-    this.userAvatarSubscription.unsubscribe();
   }
 }

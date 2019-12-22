@@ -70,11 +70,9 @@ export class FriendsSearchService {
       }
     };
 
-    const bodyJson = JSON.stringify(body);
-
     return this.http.get('http://localhost:9200/users/_search', {
       params:{
-        source: bodyJson,
+        source: JSON.stringify(body),
         source_content_type: 'application/json'
       },
       observe: 'response' })

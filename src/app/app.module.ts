@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainpageComponent } from './modules/mainpage/mainpage.component';
 import { LoginPageComponent } from './modules/auth/login-page/login-page.component';
-import { JoinupPageComponent } from './modules/auth/joinup-page/joinup-page.component';
+import { JoinUpPageComponent } from './modules/auth/joinup-page/joinup-page.component';
 import { HomePageComponent } from './modules/home/home-page/home-page.component';
 import { HomeRecordItemComponent } from './modules/home/home-page/home-record-item/home-record-item.component';
 import { HomeUpcomingEventsComponent } from './modules/home/home-page/home-upcoming-events/home-upcoming-events.component';
@@ -54,7 +54,7 @@ import { UserEducationSettingsComponent } from './user-education-settings/user-e
     AppComponent,
     MainpageComponent,
     LoginPageComponent,
-    JoinupPageComponent,
+    JoinUpPageComponent,
     HomePageComponent,
     RegistrationSuccessPopUpComponent,
     HomeRecordItemComponent,
@@ -64,7 +64,6 @@ import { UserEducationSettingsComponent } from './user-education-settings/user-e
     UserEducationSettingsComponent,
   ],
   imports: [
-    ProfilePageModule,
     SharedModule,
     BrowserModule,
     MessagesPageModule,

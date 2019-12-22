@@ -21,12 +21,6 @@
   }
 
   .joinup-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    form {
       background-color: $color-bg-light-grey;
       width: 503px;
       box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.16);
@@ -36,13 +30,6 @@
       align-items: center;
       position: relative;
       transition: all .3s;
-    }
-
-    hr {
-      width: 417px;
-      margin-top: 1.6rem;
-      opacity: .3;
-    }
 
     .name, .surname {
       width: 201px;
@@ -62,49 +49,22 @@
     }
 
     .birthday {
-      margin-top: .7rem;
       display: flex;
       width: 417px;
       justify-content: space-between;
+      position: relative;
 
-      &__year {
-        width: 147px;
-      }
-
-      &__month {
-        width: 148px;
-
-        select {
-          width: inherit;
-        }
-      }
-
-      &__day {
-        width: 101px;
-
-        select {
-          width: inherit;
-
-          &::after {
-            right: 1.45em !important;
-          }
-        }
-
-      }
-
-      &__month, &__day {
-        &::after {
-          top: 40%;
-        }
+      &__calendar-icon{
+        background-image: url("../../../../assets/images/icon/calendar.svg");
+        position: absolute;
+        right: .7rem;
+        top: 1.4rem;
+        opacity: .5;
       }
     }
 
     .email input, .password input {
       width: 417px;
-    }
-
-    .email {
-      margin-top: .7rem;
     }
 
     .password {
@@ -117,9 +77,9 @@
       width: 417px;
       align-items: center;
 
-      p {
+      &__title {
         margin-right: 2rem;
-        font-size: .85rem;
+        font-size: .8rem;
       }
 
       .checkmark {

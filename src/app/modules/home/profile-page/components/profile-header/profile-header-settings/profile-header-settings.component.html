@@ -1,0 +1,15 @@
+<div class="profile-header-settings">
+      <button (click)="changeUserData()" *ngIf="activeSettings" class="confirm-changes-btn">
+        <svg>
+          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-checkmark"></use>
+        </svg>
+      </button>
+      <button (click)="toggleActiveSettings()" class="open-close-btn">
+        <svg [ngStyle]="{'visibility': !activeSettings ? 'visible' : 'hidden'}">
+          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cog"></use>
+        </svg>
+        <svg [ngStyle]="{'visibility': activeSettings ? 'visible' : 'hidden'}">
+          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+        </svg>
+      </button>
+</div>

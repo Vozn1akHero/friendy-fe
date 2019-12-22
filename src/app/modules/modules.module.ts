@@ -20,7 +20,7 @@ import { NewPhotoFormComponent } from './home/photos-page/components/photos-page
 import { BaseDataPanelComponent } from './home/photos-page/components/photos-page-header/base-data-panel/base-data-panel.component';
 import {EventSettingsPageModule} from './home/event-settings-page/event-settings-page.module';
 import {UserSettingsPageModule} from './home/user-settings-page/user-settings-page.module';
-import {PostCommentsSubpageModule} from '../submodules/post-comments-subpage/post-comments-subpage.module';
+import {PostCommentsPageModule} from './home/post-comments-page/post-comments-page.module';
 
 
 
@@ -39,7 +39,7 @@ import {PostCommentsSubpageModule} from '../submodules/post-comments-subpage/pos
     EventSettingsPageModule,
     FriendsSearchPageModule,
     UserSettingsPageModule,
-    PostCommentsSubpageModule
+    PostCommentsPageModule
   ],
   declarations: [
     NotFoundPageComponent,

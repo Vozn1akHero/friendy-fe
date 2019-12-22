@@ -1,28 +1,17 @@
-<router-outlet></router-outlet>
-
 <app-new-avatar-modal *ngIf="profilePageModalsService.newAvatarModalOpened"
                       (newAvatarSubmitted)="newAvatarSubmitted()"
-                      [newAvatar]="profilePageModalsService.newAvatar"></app-new-avatar-modal>
+                      [newAvatar]="profilePageModalsService.newAvatar">
+</app-new-avatar-modal>
 
-<section class="profile">
+<section class="profile-page">
   <app-profile-header [activeSettings]="activeSettings"
                       [userId]="userId"
-                      [isUserProfileOwner]="isUserProfileOwner"></app-profile-header>
+                      [isUserProfileOwner]="isUserProfileOwner">
+  </app-profile-header>
 
-  <section class="profile-main-content"
-       [ngStyle]="{'opacity': activeSettings ? '0.5' : '1',
-       'pointer-events': activeSettings ? 'none' : 'all'}">
-
-    <section class="profile-main-content__left-side-wrapper">
-      <app-profile-new-post *ngIf="isUserProfileOwner"></app-profile-new-post>
-
-      <app-profile-post-list [userId]="userId"
-                             [isUserProfileOwner]="isUserProfileOwner"></app-profile-post-list>
-    </section>
-
-    <section class="profile-main-content__right-side-wrapper">
-      <app-profile-friends [userId]="userId" [isUserProfileOwner]="isUserProfileOwner"></app-profile-friends>
-      <app-profile-photos [userId]="userId" [isUserProfileOwner]="isUserProfileOwner"></app-profile-photos>
-    </section>
-  </section>
+  <app-profile-under-header-content-wrapper [activeSettings]="activeSettings"
+                                            [userId]="userId"
+                                            [isUserProfileOwner]="isUserProfileOwner">
+  </app-profile-under-header-content-wrapper>
 </section>
+

@@ -1,0 +1,72 @@
+@import '../../../../../../../assets/sass/base/variables';
+
+.profile-avatar{
+  .profile-avatar-alter {
+    //display: none;
+    //visibility: hidden;
+    position: absolute;
+    width: 13rem;
+    height: 13rem;
+    top: -4rem;
+    left: 5.6rem;
+    /* border-radius: 50%; */
+    z-index: 1;
+
+    input[type=file] {
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      border-radius: 50%;
+      opacity: 0;
+
+      &:hover {
+        & + button {
+          background: rgba(0, 0, 0, .1555);
+        }
+      }
+    }
+
+    &-btn {
+      width: inherit;
+      height: inherit;
+      border-radius: 50%;
+      border: none;
+      background: rgba(0, 0, 0, .255);
+      transition: background-color .5s;
+
+      svg {
+        width: 40%;
+        height: 40%;
+        fill: $color-white;
+      }
+
+      span {
+        display: block;
+        font-size: 1rem;
+        color: $color-white;
+      }
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: -4rem;
+    //-webkit-clip-path: circle(50% at 50% 50%);
+    width: 13rem;
+    height: 13rem;
+    float: left;
+    border-radius: 50%;
+    overflow: hidden;
+    border: solid .3rem $color-white;
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 100%;
+    }
+  }
+}

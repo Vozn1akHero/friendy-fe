@@ -5,17 +5,18 @@
   <div class="upper-wrapper">
     <div class="avatar-wrapper">
       <figure class="avatar">
-        <img src="{{ userAvatarUrl }}" alt="user's avatar">
+        <img src="{{ post.avatarUrl }}" alt="">
       </figure>
     </div>
     <div class="content-wrapper">
       <p class="text-content">
         {{ post.content }}
       </p>
-      <img *ngIf="post.imagePath != null"
-           src="http://localhost:5000/{{ post.imagePath }}"
-           alt="#"
-           class="image"/>
+      <ng-container *ngIf="post.imageUrl != null">
+        <img src="{{ post.imageUrl }}"
+             alt="#"
+             class="image"/>
+      </ng-container>
     </div>
   </div>
 

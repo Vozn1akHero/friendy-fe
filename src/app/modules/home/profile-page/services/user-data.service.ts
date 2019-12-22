@@ -12,7 +12,17 @@ export class UserDataService {
   getData(id : number){
     return this.http.get(`/api/user/${id}`, {observe: 'body'})
       .pipe(map((res:any) => {
-        return new User(res.id, res.birthday, res.city, res.email, res.genderId, res.name, res.surname, res.profileBg, res.status);
+        return new User(res.id,
+          res.birthday,
+          res.city,
+          res.email,
+          res.avatar,
+          res.profileBg,
+          res.genderId,
+          res.name,
+          res.surname,
+          res.profileBg,
+          res.status);
     }))
   }
 }

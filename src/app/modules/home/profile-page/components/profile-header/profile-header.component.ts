@@ -40,16 +40,11 @@ export class ProfileHeaderComponent implements OnInit, OnDestroy {
       });
   }
 
-  openProfileInnerSettingsChild() {
-    this.activeSettings = !this.activeSettings;
-  }
-
-  changeUserData() {
-    console.log(this.userStatus, this.changedProfileAvatar, this.changedProfileBg);
+  toggleActiveSettings(value: boolean){
+    this.activeSettings = value;
   }
 
   ngOnDestroy(): void {
     this.userDataSubscription.unsubscribe();
-   // this.userAvatarSubscription.unsubscribe();
   }
 }

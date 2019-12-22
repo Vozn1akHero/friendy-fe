@@ -1,8 +1,9 @@
 export default class Post{
   id: number;
   userId: number;
+  avatarUrl: string;
   content: string;
-  imagePath: string;
+  imageUrl: string;
   likesCount: number = 0;
   commentsCount: number = 0;
   postId: number;
@@ -11,6 +12,7 @@ export default class Post{
 
   constructor(id: number,
               userId: number,
+              avatarPath: string,
               content: string,
               imagePath: string,
               likesCount: any,
@@ -20,8 +22,9 @@ export default class Post{
               date: Date) {
     this.id = id;
     this.userId = userId;
+    this.avatarUrl = `http://localhost:5000/${avatarPath}`;
     this.content = content;
-    this.imagePath = imagePath != null && `http://localhost:5000/${imagePath}`;
+    this.imageUrl = imagePath != null ? `http://localhost:5000/${imagePath}` : null;
     this.likesCount = likesCount;
     this.commentsCount = commentsCount;
     this.postId = postId;

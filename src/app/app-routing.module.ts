@@ -10,7 +10,7 @@ import { MessagesPageComponent } from './modules/home/messages-page/messages-pag
 import { CommentsComponent } from './shared/components/comments/comments.component';
 import {UserSettingsPageComponent} from './modules/home/user-settings-page/user-settings-page.component';
 import {EventComponent} from './modules/home/event-page/event-page.component';
-import {JoinupPageComponent} from './modules/auth/joinup-page/joinup-page.component';
+import {JoinUpPageComponent} from './modules/auth/joinup-page/joinup-page.component';
 import {LoginPageComponent} from './modules/auth/login-page/login-page.component';
 import {DialogPageComponent} from './modules/home/dialog-page/dialog-page.component';
 import {FriendsSearchPageComponent} from './modules/home/friends-search-page/friends-search-page.component';
@@ -25,7 +25,7 @@ import {IsEventAdminResolver} from './modules/home/event-page/resolvers/is-event
 import {EventParticipantsPageComponent} from './modules/home/event-participants-page/event-participants-page.component';
 import {PhotosPageComponent} from './modules/home/photos-page/photos-page.component';
 import {ChatDataResolver} from './modules/home/dialog-page/resolvers/chat-data.resolver';
-import {PostCommentsSubpageComponent} from './submodules/post-comments-subpage/post-comments-subpage.component';
+import {PostCommentsPageComponent} from './modules/home/post-comments-page/post-comments-page.component';
 import {IsEventCreatorResolver} from './modules/home/event-settings-page/resolvers/is-event-creator.resolver';
 import {NotFoundPageComponent} from './modules/not-found/not-found-page.component';
 
@@ -33,32 +33,37 @@ const routes: Routes = [
   {path: '',
     component: MainpageComponent,
     resolve: {isLoggedIn: LoggedInResolver}},
-
   {path: 'joinup',
-    component: JoinupPageComponent,
+    component: JoinUpPageComponent,
     resolve: {isLoggedIn: LoggedInResolver},
     data: { page: 'joinup' }},
   {path: 'login',
     component: LoginPageComponent,
     resolve: {isLoggedIn: LoggedInResolver},
     data: { page: 'login' }},
-
-  {path: 'app', component: WrapperComponent,
+  {path: 'app',
+    component: WrapperComponent,
     resolve: {
       profileId: ProfileIdResolver
     },
     canActivate: [AuthGuard],
     children: [
-      {path: '', redirectTo: 'messages', pathMatch: 'full'},
-
-      {path: 'profile/:id',
+      {path: '',
+        redirectTo: 'messages',
+        pathMatch: 'full'},
+      {
+        path: 'profile/:id',
         component: ProfilePageComponent,
         resolve: {
           profileBelongingStatus: ProfileBelongingResolver
+        }
+      },
+
+      {path: 'profile/:id/comments/:postId',
+        resolve: {
+          profileBelongingStatus: ProfileBelongingResolver
         },
-        children: [
-          {path: 'comments/:postId', component: PostCommentsSubpageComponent }
-      ]},
+        component: PostCommentsPageComponent },
 
       { path: 'profile/:id/photos', component: PhotosPageComponent },
 

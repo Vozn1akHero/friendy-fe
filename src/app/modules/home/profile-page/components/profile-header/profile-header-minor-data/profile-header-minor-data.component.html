@@ -1,0 +1,31 @@
+<div class="profile-header-minor-data">
+  <ng-container *ngIf="isUserProfileOwner">
+    <div *ngIf="activeSettings" class="profile-ui-settings">
+          <textarea #userStatus
+                    class="desc"
+                    placeholder="Co słychać?"
+                    type="text"></textarea>
+    </div>
+  </ng-container>
+
+  <h2 [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="name">
+    {{ name }} {{ surname }}
+  </h2>
+  <p *ngIf="status != null" [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="desc">
+    {{ status }}
+  </p>
+  <div [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="location">
+    <svg class="icon">
+      <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-location"></use>
+    </svg>
+    <span>
+        {{ city }}
+      </span>
+  </div>
+  <div [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="birthday">
+    <svg class="icon" aria-label="Data urodzenia">
+      <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-calendar"></use>
+    </svg>
+    <span>{{ birthday }}</span>
+  </div>
+</div>

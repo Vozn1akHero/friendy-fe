@@ -1,0 +1,17 @@
+<app-main-panel
+  [panelContent]="{
+  title: 'Zdjęcia',
+  icon: '../../../../assets/images/icon/symbol-defs.svg#icon-images',
+  link: activatedRoute + '/photos',
+  marginTop: true}">
+  <ng-container *ngIf="userPhotosLoaded">
+    <ng-container *ngIf="userPhotos.length > 0; else noPhotosMsg">
+      <app-profile-photos-item *ngFor="let photo of userPhotos" [photoContent]="photo"></app-profile-photos-item>
+    </ng-container>
+    <ng-template #noPhotosMsg>
+      <span class="fr-default-smaller-font">
+        Brak
+      </span>
+    </ng-template>
+  </ng-container>
+</app-main-panel>

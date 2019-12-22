@@ -1,0 +1,14 @@
+<div class="comments-list">
+  <ng-container *ngIf="(commentsLoaded$|async)">
+    <ng-container *ngIf="comments.length > 0; else noCommentsMsg">
+      <app-comment-item *ngFor="let comment of comments" [comment]="comment"></app-comment-item>
+    </ng-container>
+    <ng-template #noCommentsMsg>
+      <div class="fr-m-t-2 fr-p-l-2">
+        <span class="fr-default-smaller-font">
+          Brak komentarzy
+        </span>
+      </div>
+    </ng-template>
+  </ng-container>
+</div>

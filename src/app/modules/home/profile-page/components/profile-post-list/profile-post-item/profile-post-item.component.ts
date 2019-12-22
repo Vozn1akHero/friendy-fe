@@ -57,6 +57,6 @@ export class ProfilePostItemComponent implements OnInit {
   }
 
   onShowCommentsBtnClick(){
-    this.router.navigate([window.location.pathname, 'comments', this.post.postId])
+    this.router.navigate([window.location.pathname, 'comments', this.post.id ])
   }
 }

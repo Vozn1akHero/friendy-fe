@@ -1,0 +1,33 @@
+<section class="profile-bg">
+  <ng-container *ngIf="isUserProfileOwner">
+    <div *ngIf="activeSettings" class="profile-bg-alter">
+      <div class="profile-bg-alter-btn_info">
+        <svg>
+          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
+        </svg>
+        <span>
+        Zmień zdjęcie
+      </span>
+      </div>
+
+      <div class="profile-bg-alter-btn">
+        <input (change)="setNewProfileBackground($event)"
+               accept="image/jpeg, image/png"
+               name="filename"
+               type="file">
+        <div class="bg"></div>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="profile-bg__wrapper">
+    <figure [ngStyle]="{ background: backgroundUrl == null && '#f8f8f8' }">
+      <img
+        *ngIf="backgroundUrl != null"
+        [ngStyle]="{filter: activeSettings ? 'blur(5px)' : 'blur(0px)',
+         transform: activeSettings ? 'scale(1.1)' : 'scale(1)'}"
+        alt=""
+        src="{{ backgroundUrl }}">
+    </figure>
+  </div>
+</section>

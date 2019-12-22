@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import {switchMap, map, tap, withLatestFrom, filter, mergeMap} from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import * as UserPostsActions from './user-posts.actions';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {UserPostService} from '../../services/user-post.service';
 import Post from '../../models/post.model';
-import {of} from 'rxjs';
 
 
 @Injectable()
@@ -36,8 +35,20 @@ export class UserPostsEffects {
     mergeMap(([{payload}] : any) => {
       return this.userPostService.getByUserId(payload.userId, 0, 10)
         .pipe(
-          map(res => {
-            let posts : Post[] = res.body as Post[];
+          map((res: HttpResponse<any[]>) => {
+            let posts : Post[] = [];
+            res.body.map(value => {
+              posts.push(new Post(value.id,
+                value.userId,
+                value.avatar,
+                value.content,
+                value.imagePath,
+                value.likesCount,
+                value.commentsCount,
+                value.postId,
+                value.isPostLikedByUser,
+                value.date))
+            });
             return ({ type: UserPostsActions.SET_USER_POSTS,
               payload: posts })
           })
