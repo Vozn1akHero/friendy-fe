@@ -39,16 +39,18 @@
         {{ comment.likesCount }}
       </span>
     </button>
+
+    <button class="add-response-btn">
+      Odpowiedz
+    </button>
+
     <p class="date">
       {{ timePassed }}
     </p>
   </div>
 
-  <ng-container *ngIf="comment.commentsCount == 0">
-    <div class="comment-responds-wrapper fr-m-t-1">
-      <button class="load-comment-responds-btn">
-        Pokaż {{ comment.commentsCount }} {{ [2,3,4].indexOf(comment.commentsCount) === -1 ? 'komentarzy' : 'komentarze' }}
-      </button>
-    </div>
+  <ng-container *ngIf="comment.commentsCount > 0 && responsesShown">
+    <app-comment-response-list [commentId]="comment.id"
+    ></app-comment-response-list>
   </ng-container>
 </div>

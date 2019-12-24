@@ -10,6 +10,7 @@ import * as moment from "moment";
 export class CommentItemComponent implements OnInit {
   @Input() comment : CommentModel;
   timePassed: string;
+  responsesShown: boolean;
 
   constructor() { }
 
@@ -22,7 +23,7 @@ export class CommentItemComponent implements OnInit {
   }
 
   onShowCommentsBtnClick() {
-
+    this.responsesShown = true;
   }
 
   onLikeOrUnlikePost() {

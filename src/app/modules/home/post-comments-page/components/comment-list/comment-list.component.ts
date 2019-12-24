@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import CommentModel from '../../models/comment.model';
 import {Observable, Subscription} from 'rxjs';
-import PostCommentsService from '../../services/post-comments.service';
+import PostCommentService from '../../services/post-comment.service';
 
 @Component({
   selector: 'app-comment-list',
@@ -12,25 +12,32 @@ export class CommentListComponent implements OnInit, OnDestroy {
   @Input() postId: number;
   @Input() postType: number;
 
-  commentsLoaded$: Observable<boolean>;
-  commentsLoaded: boolean = false;
-  //comments$: Observable<CommentModel[]>;
+  commentsLoaded: boolean;
   comments: CommentModel[];
   commentsSubscription: Subscription;
+  commentsLoadedSubscription: Subscription;
 
-  constructor(private postCommentsService : PostCommentsService) { }
+  constructor(private postCommentService : PostCommentService) { }
 
   ngOnInit() {
+    this.setCommentsLoaded();
     this.getComments();
+    this.setComments();
   }
 
   getComments(){
-    this.commentsLoaded$ = this.postCommentsService.commentsLoaded$;
-    //this.comments$ = this.postCommentsService.getRange(this.postId, 0, 10);
-    this.commentsSubscription = this.postCommentsService.getRange(this.postId, 0, 10).subscribe(value => {
+    this.postCommentService.getRange(this.postId).subscribe();
+  }
+
+  setComments(){
+    this.commentsSubscription = this.postCommentService.comments$.subscribe(value => {
       this.comments = value;
-      //console.log(this.comments)
-      //this.commentsLoaded = true;
+    })
+  }
+
+  setCommentsLoaded(){
+    this.commentsLoadedSubscription = this.postCommentService.commentsLoaded$.subscribe(value => {
+      this.commentsLoaded = value;
     })
   }
 

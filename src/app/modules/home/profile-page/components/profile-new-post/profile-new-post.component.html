@@ -6,7 +6,8 @@
 -->
 
 <div class="new-post">
-  <form (submit)="onSubmit($event)">
+  <form class="new-post__form"
+        (submit)="onSubmit($event)">
     <textarea placeholder="Napisz wiadomość"
               #newMessageContent
               [minLength]="1"></textarea>

@@ -8,6 +8,8 @@ import {UserPostComponent} from './components/user-post/user-post.component';
 import {PostCommentsPageComponent} from './post-comments-page.component';
 import { NewCommentFormComponent } from './components/new-comment-form/new-comment-form.component';
 import {EventPostComponent} from './components/event-post/event-post.component';
+import { CommentResponseListComponent } from './components/comment-list/comment-response-list/comment-response-list.component';
+import { CommentResponseItemComponent } from './components/comment-list/comment-response-list/comment-response-item/comment-response-item.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import {EventPostComponent} from './components/event-post/event-post.component';
     EventPostComponent,
     CommentItemComponent,
     CommentListComponent,
-    NewCommentFormComponent
+    NewCommentFormComponent,
+    CommentResponseListComponent,
+    CommentResponseItemComponent
   ],
   providers: []
 })

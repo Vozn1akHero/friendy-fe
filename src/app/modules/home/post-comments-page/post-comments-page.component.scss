@@ -1,15 +1,6 @@
 .post-comments-page{
-  min-height: 100vh;
-  display: flex;
-
-  .left-wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40%;
-  }
-
-  .right-wrapper{
-    width: 60%;
+  .upper-wrapper{
+    background: white;
+    padding: 5rem;
   }
 }

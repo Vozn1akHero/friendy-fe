@@ -7,7 +7,6 @@ import { EventsPageComponent } from './modules/home/events-page/events-page.comp
 import { FriendsPageComponent } from './modules/home/friends-page/friends-page.component';
 import { HomePageComponent } from './modules/home/home-page/home-page.component';
 import { MessagesPageComponent } from './modules/home/messages-page/messages-page.component';
-import { CommentsComponent } from './shared/components/comments/comments.component';
 import {UserSettingsPageComponent} from './modules/home/user-settings-page/user-settings-page.component';
 import {EventComponent} from './modules/home/event-page/event-page.component';
 import {JoinUpPageComponent} from './modules/auth/joinup-page/joinup-page.component';
@@ -56,14 +55,15 @@ const routes: Routes = [
         component: ProfilePageComponent,
         resolve: {
           profileBelongingStatus: ProfileBelongingResolver
-        }
-      },
-
-      {path: 'profile/:id/comments/:postId',
-        resolve: {
-          profileBelongingStatus: ProfileBelongingResolver
         },
-        component: PostCommentsPageComponent },
+        children: [
+          {path: 'comments/:postId',
+            resolve: {
+              profileBelongingStatus: ProfileBelongingResolver
+            },
+            component: PostCommentsPageComponent },
+        ]
+      },
 
       { path: 'profile/:id/photos', component: PhotosPageComponent },
 

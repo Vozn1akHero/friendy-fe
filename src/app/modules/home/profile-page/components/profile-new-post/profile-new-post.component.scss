@@ -1,13 +1,16 @@
-@import '../../../../../../assets/sass/components/new-post';
-
+@import '../../../../../../assets/sass/base/variables';
 
 .new-post{
   width: 35rem;
   height: 12rem;
   background-color: $color-bg-grey-footer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 2rem;
 
-  form{
+  &__form{
     width: 85%;
 
     textarea{

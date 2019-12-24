@@ -96,10 +96,10 @@ export class FoundUserItemComponent implements OnInit, OnDestroy {
   }*/
 
   ngOnDestroy(): void {
-    this.friendshipStatusSubscription.unsubscribe();
+/*    this.friendshipStatusSubscription.unsubscribe();
 
     if(this.friendRequestStatusSubscription != null){
       this.friendRequestStatusSubscription.unsubscribe();
-    }
+    }*/
   }
 }

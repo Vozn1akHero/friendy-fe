@@ -1,3 +1,5 @@
+<router-outlet></router-outlet>
+
 <app-new-avatar-modal *ngIf="profilePageModalsService.newAvatarModalOpened"
                       (newAvatarSubmitted)="newAvatarSubmitted()"
                       [newAvatar]="profilePageModalsService.newAvatar">
@@ -14,4 +16,3 @@
                                             [isUserProfileOwner]="isUserProfileOwner">
   </app-profile-under-header-content-wrapper>
 </section>
-

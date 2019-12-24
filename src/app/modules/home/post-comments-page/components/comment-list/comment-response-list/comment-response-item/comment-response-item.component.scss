@@ -1,7 +1,6 @@
-@import '../../../../../../../assets/sass/base/variables';
+@import '../../../../../../../../assets/sass/base/variables';
 
-
-.comment-item {
+.comment-response-item {
   display: flex;
   width: 30rem;
   flex-direction: column;
@@ -68,7 +67,7 @@
     padding-left: 5rem;
   }
 
-  .comments, .likes {
+  .likes {
     display: flex;
     text-decoration: none;
     background: none;
@@ -101,10 +100,10 @@
   }
 
   .unlike-post-btn{
-
     svg{
       transition: all .255s;
     }
+
     &:hover{
       svg {
         fill: $color-grey-light-2;
@@ -113,7 +112,6 @@
   }
 
   .like-user-post-btn{
-
     svg{
       transition: all .255s;
     }
@@ -124,15 +122,6 @@
     }
   }
 
-  .comments {
-    svg {
-      fill: $color-grey-light-2;
-    }
-
-    span {
-      color: $color-grey-light-2;
-    }
-  }
 
   .likes {
     transform: translateX(2rem);
@@ -152,15 +141,5 @@
     position: absolute;
     align-self: center;
     color: $color-grey-light-2;
-  }
-
-  .comment-responds-wrapper{
-    width: 100%;
-
-    .load-comment-responds-btn{
-      background: none;
-      border: none;
-      width: 100%;
-    }
   }
 }
