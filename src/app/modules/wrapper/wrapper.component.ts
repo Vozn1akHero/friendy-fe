@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FriendRequestsModalService} from './services/friend-requests-modal.service';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
+import {UserIdService} from '../../shared/services/user-id.service';
 
 @Component({
   selector: 'app-wrapper',
@@ -11,20 +12,26 @@ import {Subscription} from 'rxjs';
 export class WrapperComponent implements OnInit, OnDestroy {
   friendRequestsModalOpened: boolean;
   friendRequestsModalOpenedSubscription: Subscription;
+  userIdLoaded$: Observable<boolean>;
 
   constructor(private route: ActivatedRoute,
+              private userIdService: UserIdService,
               private friendRequestsModalService : FriendRequestsModalService) {
     this.setFriendRequestModalValue();
   }
 
   ngOnInit() {
-
+    this.setUserIdLoaded();
   }
 
   setFriendRequestModalValue(){
     this.friendRequestsModalOpenedSubscription = this.friendRequestsModalService.modalOpened$.subscribe(value => {
       this.friendRequestsModalOpened = value;
     })
+  }
+
+  setUserIdLoaded(){
+    this.userIdLoaded$ = this.userIdService.userIdLoaded$;
   }
 
   openFriendRequestsModal(){

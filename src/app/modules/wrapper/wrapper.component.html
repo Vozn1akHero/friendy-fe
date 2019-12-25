@@ -1,12 +1,14 @@
 <div class="wrapper">
-  <app-friend-requests-modal *ngIf="friendRequestsModalOpened">
-  </app-friend-requests-modal>
+  <ng-container *ngIf="(userIdLoaded$ | async)">
+    <app-friend-requests-modal *ngIf="friendRequestsModalOpened">
+    </app-friend-requests-modal>
 
-  <app-navigation [friendRequestModalOpened]="friendRequestsModalOpened"
-                  (openFriendRequestsModalEmitter)="openFriendRequestsModal()"
-                  (closeFriendRequestsModalEmitter)="closeFriendRequestsModal()"></app-navigation>
+    <app-navigation [friendRequestModalOpened]="friendRequestsModalOpened"
+                    (openFriendRequestsModalEmitter)="openFriendRequestsModal()"
+                    (closeFriendRequestsModalEmitter)="closeFriendRequestsModal()"></app-navigation>
 
-  <section class="page">
-    <router-outlet></router-outlet>
-  </section>
+    <section class="subpage">
+      <router-outlet></router-outlet>
+    </section>
+  </ng-container>
 </div>

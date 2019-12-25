@@ -41,9 +41,7 @@ export class FriendsSearchFormComponent implements OnInit {
   interests: string[] = [];
   showCalendar: boolean = false;
 
-  constructor(private friendsSearchService: FriendsSearchService) {
-
-  }
+  constructor() {}
 
   ngOnInit() {
     this.addListenerOnDropdowns();
@@ -108,7 +106,6 @@ export class FriendsSearchFormComponent implements OnInit {
       this.interests);
 
     if(!this.interestsInput.nativeElement.activeElement) {
-      console.log(userSearchModel)
       this.searchFormSubmitEmitter.emit(userSearchModel);
     }
   }

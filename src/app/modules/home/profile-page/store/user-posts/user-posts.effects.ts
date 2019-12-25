@@ -28,12 +28,8 @@ export class UserPostsEffects {
   @Effect()
   profilePageGetUserPosts = this.actions$.pipe(
     ofType(UserPostsActions.GET_USER_POSTS),
-    withLatestFrom(this.store$.select(state => state.profilePageUserPosts.loaded)),
-    filter(([{payload}, loaded]) => {
-      return !loaded
-    }),
-    mergeMap(([{payload}] : any) => {
-      return this.userPostService.getByUserId(payload.userId, 0, 10)
+    switchMap((getUserPosts: UserPostsActions.GetUserPosts) => {
+      return this.userPostService.getByUserId(getUserPosts.payload.userId, 0, 10)
         .pipe(
           map((res: HttpResponse<any[]>) => {
             let posts : Post[] = [];

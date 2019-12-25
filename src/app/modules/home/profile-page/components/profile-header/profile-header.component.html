@@ -3,30 +3,11 @@
                           [activeSettings]="activeSettings"
                           [userId]="userId"></app-profile-background>
 
-  <div [ngStyle]="{'transform': activeSettings ? 'translateX(-85%)' : 'translateX(0)',
-    'background-image': activeSettings ? 'linear-gradient(0.45turn, #fff000, #00baff)' : 'linear-gradient(0.85turn, #fff000, #00baff)'}"
-       class="profile-user-info-panel__wrapper">
-    <div class="profile-user-info-panel">
-      <app-profile-avatar [isUserProfileOwner]="isUserProfileOwner"
+  <app-profile-info-panel [userId]="userId"
                           [activeSettings]="activeSettings"
-                          [avatarUrl]="userData.avatarUrl"
-                          [userId]="userId"></app-profile-avatar>
-
-      <app-profile-header-settings *ngIf="isUserProfileOwner"
-                                   (toggleActiveSettingsEmitter)="toggleActiveSettings($event)"></app-profile-header-settings>
-
-      <app-profile-header-minor-data
-        [activeSettings]="activeSettings"
-        [isUserProfileOwner]="isUserProfileOwner"
-        [name]="userData.name"
-        [surname]="userData.surname"
-        [status]="userData.status"
-        [city]="userData.city"
-        [birthday]="userData.birthday"></app-profile-header-minor-data>
-
-      <app-profile-header-friendship-controls *ngIf="!isUserProfileOwner" [userId]="userData.id">
-      </app-profile-header-friendship-controls>
-    </div>
-  </div>
+                          [isUserProfileOwner]="isUserProfileOwner"
+                          [userData]="userData"
+                          (toggleSettingsEm)="toggleActiveSettings($event)"
+  ></app-profile-info-panel>
 </header>
 

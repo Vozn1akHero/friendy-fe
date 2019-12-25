@@ -7,11 +7,11 @@ import * as fromApp from '../../../../../../core/ngrx/store/app.reducer';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-profile-post-item',
-  templateUrl: './profile-post-item.component.html',
-  styleUrls: ['./profile-post-item.component.scss']
+  selector: 'app-profile-post',
+  templateUrl: './profile-post.component.html',
+  styleUrls: ['./profile-post.component.scss']
 })
-export class ProfilePostItemComponent implements OnInit {
+export class ProfilePostComponent implements OnInit {
   @Input() post : Post;
   @Input() userAvatarUrl : string;
   @Input() userId : number;

@@ -1,11 +1,11 @@
-<section class="profile-post-list" *ngIf="userPostsLoaded$ | async">
+<section class="profile-post-list" *ngIf="!userPostsLoading">
   <span *ngIf="userPosts.length === 0">
     Brak wpisów
   </span>
 
-  <app-profile-post-item *ngFor="let post of userPosts"
-                         [isUserProfileOwner]="isUserProfileOwner"
-                         [post]="post"
-                         [userId]="userId">
-  </app-profile-post-item>
+  <app-profile-post *ngFor="let post of userPosts"
+                     [isUserProfileOwner]="isUserProfileOwner"
+                     [post]="post"
+                     [userId]="userId">
+  </app-profile-post>
 </section>

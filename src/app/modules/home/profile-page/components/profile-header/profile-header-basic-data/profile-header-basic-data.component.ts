@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-profile-header-minor-data',
-  templateUrl: './profile-header-minor-data.component.html',
-  styleUrls: ['./profile-header-minor-data.component.scss']
+  selector: 'app-profile-header-basic-data',
+  templateUrl: './profile-header-basic-data.component.html',
+  styleUrls: ['./profile-header-basic-data.component.scss']
 })
-export class ProfileHeaderMinorDataComponent implements OnInit {
+export class ProfileHeaderBasicDataComponent implements OnInit {
   @Input() activeSettings : boolean;
   @Input() isUserProfileOwner : boolean;
   @Input() name: string;

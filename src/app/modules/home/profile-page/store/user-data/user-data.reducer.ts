@@ -2,12 +2,12 @@ import * as UserActions from './user-data.actions'
 import User from '../../models/user.model';
 
 export interface State {
-  user: User;
+  profiles: {[id: number]: User};
   loaded: boolean;
 }
 
 const initialState: State = {
-  user: null,
+  profiles: [],
   loaded: false
 };
 
@@ -26,7 +26,7 @@ export function userDataReducer(
       return {
         ...state,
         loaded: true,
-        user: action.payload
+        profiles: {...state.profiles, ...action.payload}
       };
     default:
       return state;

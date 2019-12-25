@@ -4,6 +4,7 @@ import {FriendsSearchService} from './services/friends-search.service';
 import FoundUserModel from './models/found-user.model';
 import {Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {BasicSearchHistoryService} from './services/basic-search-history.service';
 
 @Component({
   selector: 'app-friends-search-page',
@@ -16,6 +17,7 @@ export class FriendsSearchPageComponent implements OnInit, OnDestroy {
 
   constructor(private renderer: Renderer2,
               private friendsSearchService: FriendsSearchService,
+              private basicSearchHistoryService : BasicSearchHistoryService,
               private route: ActivatedRoute) {}
 
   searchFormSubmit($event){
@@ -25,6 +27,11 @@ export class FriendsSearchPageComponent implements OnInit, OnDestroy {
       .subscribe(value => {
       this.userList = value;
     });
+
+    this.basicSearchHistoryService
+      .createEntry($event.name, $event.surname)
+      .subscribe()
+      .unsubscribe()
   }
 
   ngOnInit() {

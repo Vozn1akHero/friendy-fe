@@ -4,6 +4,9 @@ import * as UserPostsActions from '../../store/user-posts/user-posts.actions';
 import {combineLatest, Observable, Subscription} from 'rxjs';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
+import SubscriptionManager from '../../../../../shared/helpers/SubscriptionManager';
+import {take} from 'rxjs/operators';
+import {UserPostService} from '../../services/user-post.service';
 
 @Component({
   selector: 'app-profile-post-list',
@@ -11,56 +14,37 @@ import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
   styleUrls: ['./profile-post-list.component.scss']
 })
 export class ProfilePostListComponent implements OnInit, OnDestroy {
-/*  @Output() newPostEvent: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
-  @Output() removePost: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
-  @Output() likePost: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
-  @Output() unlikePost: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();*/
   @Input() isUserProfileOwner : boolean;
   @Input() userId: number;
 
-  componentLoadedSubscription: Subscription;
-  componentLoaded : boolean;
-
-  userPostsSubscription: Subscription;
   userPosts: Post[];
-  userPostsLoaded$: Observable<boolean>;
+  userPostsLoading: boolean;
 
-  userAvatarUrl: string;
-  userAvatarSubscription: Subscription;
-
-  constructor(private store: Store<fromApp.AppState>) { }
+  constructor(private store: Store<fromApp.AppState>,
+              private userPostService : UserPostService,
+              private subscriptionManager : SubscriptionManager) { }
 
   ngOnInit() {
-    this.userPostsLoaded$ = this.store.select(state => state.profilePageUserPosts.loaded);
-
+    this.setLoaded();
     this.getUserPosts();
+  }
+
+  setLoaded(){
+    this.subscriptionManager.add(this.store.select(state => state.profilePageUserPosts.loading)
+      .subscribe(value => {
+        this.userPostsLoading = value;
+      }));
   }
 
   getUserPosts() {
     this.store.dispatch(new UserPostsActions.GetUserPosts({ userId : this.userId }));
-    this.userPostsSubscription = this.store
-      .select(state => state.profilePageUserPosts.posts)
+    this.subscriptionManager.add(this.store.select(state => state.profilePageUserPosts.posts)
       .subscribe(userPosts => {
         this.userPosts = userPosts;
-        console.log(this.userPosts)
-      })
+      }));
   }
-
-/*  getUserAvatar(){
-    this.userAvatarSubscription = this.store.select(state => state.profilePageUserAvatar.avatarUrl)
-      .subscribe(value => {
-        this.userAvatarUrl = value;
-    })
-  }
-
-  /!*getUserId(){
-    this.userIdSubscription = this.store.select(state => state.profilePageUserData.user)
-      .subscribe(value => {
-        this.userId = value.id;
-      })
-  }*!/*/
 
   ngOnDestroy(): void {
-    this.userPostsSubscription.unsubscribe();
+    this.subscriptionManager.destroy();
   }
 }

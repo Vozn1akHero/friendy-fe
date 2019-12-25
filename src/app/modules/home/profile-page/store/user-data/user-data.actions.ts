@@ -14,7 +14,7 @@ export class GetUserData implements Action {
 export class SetUserData implements Action {
   readonly type = SET_USER_DATA;
 
-  constructor(public payload: User){}
+  constructor(public payload: {[id : number]: User}){}
 }
 
 export type Actions = SetUserData | GetUserData

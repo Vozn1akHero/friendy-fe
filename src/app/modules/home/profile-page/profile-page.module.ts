@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { ProfilePageComponent } from './profile-page.component';
 import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
 import { ProfileNewPostComponent } from './components/profile-new-post/profile-new-post.component';
-import { ProfilePostItemComponent } from './components/profile-post-list/profile-post-item/profile-post-item.component';
 import { ProfileExemplaryFriendsPanelComponent } from './components/profile-exemplary-friends-panel/profile-exemplary-friends-panel.component';
 import { ProfileExemplaryPhotosPanelComponent } from './components/profile-exemplary-photos-panel/profile-exemplary-photos-panel.component';
 import { ProfileExemplaryFriendComponent } from './components/profile-exemplary-friends-panel/profile-exemplary-friend/profile-exemplary-friend.component';
@@ -21,8 +20,10 @@ import {PostCommentsPageComponent} from '../post-comments-page/post-comments-pag
 import { ProfilePageRoutingModule } from './profile-page-routing.module';
 import {ProfileUnderHeaderContentWrapperComponent} from './components/profile-under-header-content-wrapper/profile-under-header-content-wrapper.component';
 import { ProfileHeaderFriendshipControlsComponent } from './components/profile-header/profile-header-friendship-controls/profile-header-friendship-controls.component';
-import { ProfileHeaderMinorDataComponent } from './components/profile-header/profile-header-minor-data/profile-header-minor-data.component';
 import { ProfileHeaderSettingsComponent } from './components/profile-header/profile-header-settings/profile-header-settings.component';
+import { ProfileInfoPanelComponent } from './components/profile-header/profile-info-panel/profile-info-panel.component';
+import {ProfilePostComponent} from './components/profile-post-list/profile-post/profile-post.component';
+import {ProfileHeaderBasicDataComponent} from './components/profile-header/profile-header-basic-data/profile-header-basic-data.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,7 @@ import { ProfileHeaderSettingsComponent } from './components/profile-header/prof
     ProfileHeaderComponent,
     ProfileNewPostComponent,
     ProfileUnderHeaderContentWrapperComponent,
-    ProfilePostItemComponent,
+    ProfilePostComponent,
     ProfileExemplaryFriendsPanelComponent,
     ProfileExemplaryPhotosPanelComponent,
     ProfileExemplaryFriendComponent,
@@ -47,8 +48,9 @@ import { ProfileHeaderSettingsComponent } from './components/profile-header/prof
     ProfileAvatarComponent,
     ProfileBackgroundComponent,
     ProfileHeaderFriendshipControlsComponent,
-    ProfileHeaderMinorDataComponent,
-    ProfileHeaderSettingsComponent
+    ProfileHeaderBasicDataComponent,
+    ProfileHeaderSettingsComponent,
+    ProfileInfoPanelComponent
   ],
   providers: [
     ProfileBelongingResolver

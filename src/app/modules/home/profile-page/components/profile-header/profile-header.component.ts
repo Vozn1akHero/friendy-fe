@@ -34,9 +34,9 @@ export class ProfileHeaderComponent implements OnInit, OnDestroy {
     this.store.dispatch(new UserDataActions.GetUserData({ id: this.userId }));
 
     this.userDataSubscription = this.store
-      .select(state => state.profilePageUserData.user)
+      .select(state => state.profilePageUserData.profiles)
       .subscribe(userData => {
-        this.userData = userData;
+        this.userData = userData[this.userId];
       });
   }
 

@@ -13,11 +13,7 @@ export class UserAvatarEffects {
   @Effect()
   getUserAvatar = this.actions$.pipe(
     ofType(UserAvatarActions.GET_USER_AVATAR),
-    withLatestFrom(this.store$.select(state => state.profilePageUserAvatar.loaded)),
-    filter(([{payload}, loaded]) => {
-      return !loaded
-    }),
-    mergeMap(([{payload}] : any) => {
+    switchMap(([{payload}] : any) => {
       return this.userAvatarService.getAvatarByUserId(payload.userId)
         .pipe(
           map(res => {

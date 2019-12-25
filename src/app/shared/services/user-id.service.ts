@@ -14,7 +14,7 @@ export class UserIdService{
     this._userId.next(value);
   }
 
-  get userId() : number{
+  public get userIdValue() : number{
     return this._userId.getValue();
   }
 
@@ -26,11 +26,15 @@ export class UserIdService{
     this._userIdLoaded.next(value);
   }
 
+  public get userIdLoaded$(){
+    return this._userIdLoaded.asObservable();
+  }
+
   getUserId(){
-    return this.http.get(`api/user/logged-in/with-selected-fields?selectedFields=Id`)
+    return this.http.get(`api/user/logged-in/with-selected-fields?selectedFields=Id`, {observe: 'response'})
       .pipe(take(1))
       .subscribe((res:any) => {
-        this.userId = res.id;
+        this.userId = res.body.id;
         this.userIdLoaded = true;
       })
   }

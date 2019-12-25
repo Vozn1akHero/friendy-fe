@@ -5,6 +5,7 @@ import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
 import * as signalR from'@aspnet/signalr';
 import {HubConnection} from '@aspnet/signalr';
+import {UserIdService} from '../../../../shared/services/user-id.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,9 @@ import {HubConnection} from '@aspnet/signalr';
 export class ProfilePageService {
   private connection : HubConnection;
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private userIdService: UserIdService){}
 
-  connectToSocket() {
+  /*connectToSocket() {
     this.connection = new signalR.HubConnectionBuilder()
       .withUrl("http://localhost:5000/profileHub", {
         skipNegotiation: true,
@@ -29,9 +30,10 @@ export class ProfilePageService {
     this.connection.on("Connected", (data) => {
       console.log(data);
     })
-  }
+  }*/
 
   getProfileBelongingStatus(id: number){
+    //return id === this.userIdService.userIdValue;
     return this.http.get(`api/user/profile-belonging/${id}`, {observe: 'response'})
       .pipe(
         map(res => {
