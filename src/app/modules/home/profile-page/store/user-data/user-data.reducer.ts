@@ -11,8 +11,6 @@ const initialState: State = {
   loaded: false
 };
 
-//export const selectUser = (state: State) => state.user;
-
 export function userDataReducer(
   state: State = initialState,
   action: UserActions.Actions
@@ -32,3 +30,4 @@ export function userDataReducer(
       return state;
   }
 }
+

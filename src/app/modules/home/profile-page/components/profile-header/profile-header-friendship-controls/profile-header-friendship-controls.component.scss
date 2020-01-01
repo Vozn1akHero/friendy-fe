@@ -1,33 +1,39 @@
 @import '../../../../../../../assets/sass/base/variables';
 
 .profile-header-friendship-controls{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
   text-decoration: none;
   margin-top: 1rem;
   font-size: .8rem;
 
-  .btn-with-icon{
-    color: $color-grey-light-2;
-    width: 1rem;
-    height: 1rem;
-    background: none;
+  .remove-request-btn, .add-new-friend-btn{
+    width: 2rem;
+    height: 2rem;
     border: none;
 
-    .control-icon {
+    .control-icon{
       width: 1rem;
       height: 1rem;
+    }
+  }
+
+  .remove-request-btn{
+    color: $color-grey-light-2;
+    background: none;
+
+    .control-icon {
       fill: $color-grey-light-2;
     }
   }
 
   .add-new-friend-btn{
-    border-radius: 3rem;
+    border-radius: 50%;
     background: $color-pink;
-    padding: .5rem 0;
-    width: 8rem;
-    color: white;
-    border: none;
+
+    .control-icon{
+      fill: $color-white;
+    }
   }
 }

@@ -8,20 +8,31 @@
                           [avatarUrl]="userData.avatarUrl"
                           [userId]="userId"></app-profile-avatar>
 
-      <app-profile-header-settings *ngIf="isUserProfileOwner"
-                                   (toggleActiveSettingsEmitter)="toggleActiveSettings($event)"></app-profile-header-settings>
+      <ng-container *ngIf="isUserProfileOwner; else notProfileOwner">
+        <app-profile-header-settings (toggleActiveSettingsEmitter)="toggleActiveSettings($event)"></app-profile-header-settings>
 
-      <app-profile-header-basic-data
-        [activeSettings]="activeSettings"
-        [isUserProfileOwner]="isUserProfileOwner"
-        [name]="userData.name"
-        [surname]="userData.surname"
-        [status]="userData.status"
-        [city]="userData.city"
-        [birthday]="userData.birthday"></app-profile-header-basic-data>
+        <app-profile-header-basic-data
+          [activeSettings]="activeSettings"
+          [isUserProfileOwner]="isUserProfileOwner"
+          [name]="userData.name"
+          [surname]="userData.surname"
+          [status]="userData.status"
+          [city]="userData.city"
+          [birthday]="userData.birthday"></app-profile-header-basic-data>
+      </ng-container>
+      <ng-template #notProfileOwner>
+            <app-profile-header-basic-data
+              [activeSettings]="activeSettings"
+              [isUserProfileOwner]="isUserProfileOwner"
+              [name]="userData.name"
+              [surname]="userData.surname"
+              [status]="userData.status"
+              [city]="userData.city"
+              [birthday]="userData.birthday"></app-profile-header-basic-data>
 
-      <app-profile-header-friendship-controls *ngIf="!isUserProfileOwner" [userId]="userData.id">
-      </app-profile-header-friendship-controls>
+            <app-profile-header-friendship-controls *ngIf="!isUserProfileOwner" [userId]="userData.id">
+            </app-profile-header-friendship-controls>
+      </ng-template>
     </div>
   </div>
 </section>

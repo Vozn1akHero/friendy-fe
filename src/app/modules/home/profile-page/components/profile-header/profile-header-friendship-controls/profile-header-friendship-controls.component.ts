@@ -40,7 +40,6 @@ export class ProfileHeaderFriendshipControlsComponent implements OnInit {
       .getFriendRequestStatus(this.userId)
       .subscribe(response => {
         this.friendRequestStatus = response.body as boolean;
-        console.log(this.friendRequestStatus)
       }, (error) => {
         alert(error);
       })

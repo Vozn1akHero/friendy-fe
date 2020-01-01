@@ -13,6 +13,18 @@
     border-radius: 6%;
     padding-top: 7rem;
     color: #010101;
+
+    .profile-info-bottom-wrapper-not-owner{
+      display: flex;
+
+      .left{
+        width: 60%;
+      }
+
+      .right{
+        width: 40%;
+      }
+    }
   }
 
   .wrapper {

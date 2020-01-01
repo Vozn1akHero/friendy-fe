@@ -1,11 +1,14 @@
 <section class="profile-post-list" *ngIf="!userPostsLoading">
-  <span *ngIf="userPosts.length === 0">
-    Brak wpisów
-  </span>
-
-  <app-profile-post *ngFor="let post of userPosts"
-                     [isUserProfileOwner]="isUserProfileOwner"
-                     [post]="post"
-                     [userId]="userId">
-  </app-profile-post>
+  <ng-container *ngIf="userPosts.length > 0; else noPosts">
+    <app-profile-post *ngFor="let post of userPosts"
+                      [isUserProfileOwner]="isUserProfileOwner"
+                      [post]="post"
+                      [userId]="userId">
+    </app-profile-post>
+  </ng-container>
+  <ng-template #noPosts>
+      <span class="fr-default-smaller-font">
+        Brak wpisów
+      </span>
+  </ng-template>
 </section>

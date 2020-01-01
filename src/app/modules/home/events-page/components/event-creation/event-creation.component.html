@@ -11,7 +11,7 @@
                   'bordered-onError': eventCreationForm.get('name').touched && eventCreationForm.get('name').invalid
                  }"
              class="fr-input name"
-             formControlName="name"
+             formControlName="title"
              placeholder="Nazwa"
              type="text">
       <textarea [ngClass]="{
@@ -49,40 +49,17 @@
     </div>
 
     <div class="wrapper spec-wrapper">
-      <input [ngClass]="{
-                'bordered-onError': eventCreationForm.get('year').touched && eventCreationForm.get('year').invalid
+      <app-calendar *ngIf="calendarVisible"
+                    (onSelectDateEvent)="setDate($event)"></app-calendar>
+      <input
+        [ngClass]="{
+                'bordered-onError': eventCreationForm.get('streetNumber').touched && eventCreationForm.get('streetNumber').invalid
                }"
-             class="fr-input date-year"
-             formControlName="year"
-             placeholder="Rok"
-             type="number">
-      <span class="custom-dropdown date-month">
-                <select [ngClass]="{
-                'bordered-onError': eventCreationForm.get('month').touched && eventCreationForm.get('month').invalid
-               }"
-                        formControlName="month">
-                <option hidden value="">Miesiąc</option>
-                <option value="1">styczeń</option>
-                <option value="2">luty</option>
-                <option value="3">marzec</option>
-                <option value="4">kwiecień</option>
-                <option value="5">maj</option>
-                <option value="6">czerwiec</option>
-                <option value="7">lipiec</option>
-                <option value="8">sierpień</option>
-                <option value="9">wrzesień</option>
-                <option value="10">październik</option>
-                <option value="11">listopad</option>
-                <option value="12">grudzień</option>
-                </select>
-            </span>
-      <input [ngClass]="{
-                'bordered-onError': eventCreationForm.get('day').touched && eventCreationForm.get('day').invalid
-               }"
-             class="fr-input date-day"
-             formControlName="day"
-             placeholder="Dzień"
-             type="number">
+        (click)="showCalendar()"
+        class="fr-input"
+        placeholder="Data"
+        type="text"
+        formControlName="date">
     </div>
 
     <div class="wrapper spec-wrapper">

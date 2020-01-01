@@ -1,6 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {EventParticipationRequestService} from '../../../../../services/event-participation-request.service';
 import {Observable, Subscription} from 'rxjs';
+import SubscriptionManager from '../../../../../../../../shared/helpers/SubscriptionManager';
 
 @Component({
   selector: 'app-non-participant-controls',
@@ -14,7 +15,8 @@ export class NonParticipantControlsComponent implements OnInit, OnDestroy {
   isParticipationRequestSent$: Observable<boolean>;
   isParticipationRequestSentLoaded$: Observable<boolean>;
 
-  constructor(private eventParticipationRequestService: EventParticipationRequestService) {}
+  constructor(private eventParticipationRequestService: EventParticipationRequestService,
+              private subscriptionManager : SubscriptionManager) {}
 
   ngOnInit() {
     this.getRequestStatus();
@@ -30,8 +32,8 @@ export class NonParticipantControlsComponent implements OnInit, OnDestroy {
   }
 
   getRequestStatus(){
-    this.eventParticipationRequestService
-      .getStatus(this.eventId, this.userId).subscribe()
+    this.subscriptionManager.add(this.eventParticipationRequestService
+      .getStatus(this.eventId, this.userId).subscribe());
   }
 
   setRequestStatus(){
@@ -40,6 +42,6 @@ export class NonParticipantControlsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-
+    this.subscriptionManager.destroy();
   }
 }

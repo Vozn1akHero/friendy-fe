@@ -1,6 +1,13 @@
 <section class="event-post-list">
-  <app-event-post-item *ngFor="let post of (eventPosts$|async)"
-                       [post]="post"
-                       [isEventAdmin]="isEventAdmin"
-                       [eventAvatar$]="eventAvatar$"></app-event-post-item>
+  <ng-container *ngIf="(eventPosts$|async).length > 0; else noPosts">
+    <app-event-post-item *ngFor="let post of (eventPosts$|async)"
+                         [post]="post"
+                         [isEventAdmin]="isEventAdmin"
+                         [eventAvatar$]="eventAvatar$"></app-event-post-item>
+  </ng-container>
+  <ng-template #noPosts>
+    <span class="fr-default-smaller-font">
+      Lista wpisów jest pusta
+    </span>
+  </ng-template>
 </section>

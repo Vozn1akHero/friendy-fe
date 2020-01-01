@@ -13,29 +13,25 @@
             (click)="onSendFriendRequestBtnClick()"
             (mouseleave)="closeButtonHoverInfoModal('addFriendRequestButton')"
             (mouseover)="openButtonHoverInfoModal('addFriendRequestButton')"
-            class="btn add-new-friend-btn">
-      &lt;!&ndash;<svg class="control-icon">
-      <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-plus"></use>
-    </svg>
+            class="add-new-friend-btn">
+      <svg class="control-icon">
+       <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-plus"></use>
+      </svg>
       <app-button-hover-info-modal *ngIf="addFriendRequestBtnInfoModalOpened">
         Dodaj do znajomych
-      </app-button-hover-info-modal>&ndash;&gt;
-      Dodaj do znajomych
+      </app-button-hover-info-modal>
     </button>
     <ng-template #removeFriendRequest>
       <button (click)="onRemoveFriendRequestBtnClick()"
               (mouseleave)="closeButtonHoverInfoModal('removeFriendRequestButton')"
               (mouseover)="openButtonHoverInfoModal('removeFriendRequestButton')"
-              class="btn-with-icon remove-request-btn">
+              class="remove-request-btn">
         <svg class="control-icon">
           <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
         </svg>
         <app-button-hover-info-modal *ngIf="removeFriendRequestBtnInfoModalOpened">
           Anuluj prośbę o dodanie do znajomych
         </app-button-hover-info-modal>
-        &lt;!&ndash;<span class="btn__text">
-              Anuluj prośbę
-            </span>&ndash;&gt;
       </button>
     </ng-template>
   </ng-container>

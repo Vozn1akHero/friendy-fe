@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {UserParticipationStatusService} from '../../../../services/user-participation-status.service';
 import {EventParticipantService} from '../../../../services/event-participant.service';
 import {EventParticipationRequestService} from '../../../../services/event-participation-request.service';
+import SubscriptionManager from '../../../../../../../shared/helpers/SubscriptionManager';
 
 @Component({
   selector: 'app-event-info-panel-controls',
@@ -21,17 +22,18 @@ export class EventInfoPanelControlsComponent implements OnInit, OnDestroy {
 
   constructor(private userIdService: UserIdService,
               private router: Router,
+              private subscriptionManager : SubscriptionManager,
               private eventParticipationStatusService: UserParticipationStatusService) { }
 
   ngOnInit() {
-    this.userId = this.userIdService.userId;
+    this.userId = this.userIdService.userIdValue;
     this.getUserParticipationStatus();
     this.setUserParticipationStatus();
   }
 
   getUserParticipationStatus(){
-    this.eventParticipationStatusService
-      .getUserParticipationStatus(this.eventId).subscribe();
+    this.subscriptionManager.add(this.eventParticipationStatusService
+      .getUserParticipationStatus(this.eventId).subscribe());
   }
 
   setUserParticipationStatus(){
@@ -44,6 +46,6 @@ export class EventInfoPanelControlsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-
+    this.subscriptionManager.destroy();
   }
 }

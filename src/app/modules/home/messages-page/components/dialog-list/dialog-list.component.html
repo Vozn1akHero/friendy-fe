@@ -1,5 +1,10 @@
 <section class="dialog-list" *ngIf="exemplaryMessagesLoaded$ | async">
-  <app-message *ngFor="let exemplaryMessage of exemplaryMessages"
-               [exemplaryMessage]="exemplaryMessage">
-  </app-message>
+  <ng-container *ngIf="exemplaryMessages.length > 0; else noDialogs">
+    <app-message *ngFor="let exemplaryMessage of exemplaryMessages"
+                 [exemplaryMessage]="exemplaryMessage">
+    </app-message>
+  </ng-container>
+  <ng-template #noDialogs>
+    <span class="fr-default-smaller-font">Historia wiadomości jest pusta</span>
+  </ng-template>
 </section>

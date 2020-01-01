@@ -27,7 +27,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {SharedModule} from './shared/shared.module';
 import {ModulesModule} from './modules/modules.module';
 import {ProfilePageModule} from './modules/home/profile-page/profile-page.module';
-import {UserDataEffects} from './modules/home/common-profile-page/store/user-data/user-data.effects';
+
 
 
 
@@ -37,7 +37,7 @@ import {UserFriendsEffects} from './modules/home/friends-page/store/user-friends
 import {UserEventsEffects} from './modules/home/events-page/store/user-events/user-events.effects';
 import {AdministeredEventsEffects} from './modules/home/events-page/store/administered-events/administered-events.effects';
 import {UserAvatarEffects} from './modules/home/profile-page/store/user-avatar/user-avatar.effects';
-import {MainUserDataEffects} from './modules/home/profile-page/store/user-data/user-data.effects';
+import {UserDataEffects} from './modules/home/profile-page/store/user-data/user-data.effects';
 import {UserExemplaryFriendsEffects} from './modules/home/profile-page/store/user-exemplary-friends/user-exemplary-friends.effects';
 import {ExemplaryMessagesEffects} from './modules/home/messages-page/store/exemplary-messages/exemplary-messages.effects';
 import {MessagesPageModule} from './modules/home/messages-page/messages-page.module';
@@ -79,7 +79,7 @@ import { UserEducationSettingsComponent } from './user-education-settings/user-e
       EventDataEffects,
       DialogMessagesEffects,
       ExemplaryMessagesEffects,
-      MainUserDataEffects,
+      UserDataEffects,
       UserAvatarEffects,
       UserExemplaryFriendsEffects,
       UserDataEffects,

@@ -12,6 +12,7 @@ import { SentFriendRequestListComponent } from './components/friend-requests-mod
 import {ProfileIdResolver} from './resolvers/profile-id.resolver';
 import {FriendRequestItemComponent} from './components/friend-requests-modal/components/friend-request-item/friend-request-item.component';
 import {SharedModule} from '../../shared/shared.module';
+import { ErrorModalComponent } from './components/error-modal/error-modal.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {SharedModule} from '../../shared/shared.module';
     FriendRequestsModalComponent,
     ReceivedFriendRequestListComponent,
     FriendRequestItemComponent,
-    SentFriendRequestListComponent
+    SentFriendRequestListComponent,
+    ErrorModalComponent
   ],
   providers: [
     FriendRequestsModalService,

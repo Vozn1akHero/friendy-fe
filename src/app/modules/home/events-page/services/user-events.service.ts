@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {map, take} from 'rxjs/operators';
-import * as AdministeredEventsActions from '../store/administered-events/administered-events.actions';
 import Event from '../models/event.model';
 
 @Injectable({

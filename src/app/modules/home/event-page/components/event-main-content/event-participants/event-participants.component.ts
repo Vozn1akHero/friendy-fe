@@ -1,15 +1,16 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 import {EventParticipantService} from '../../../services/event-participant.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import EventExemplaryParticipant from '../../../models/event-exemplary-participant.model';
+import SubscriptionManager from '../../../../../../shared/helpers/SubscriptionManager';
 
 @Component({
   selector: 'app-event-participants',
   templateUrl: './event-participants.component.html',
   styleUrls: ['./event-participants.component.scss']
 })
-export class EventParticipantsComponent implements OnInit {
+export class EventParticipantsComponent implements OnInit, OnDestroy {
   @Input() isEventAdmin: boolean;
   eventExemplaryParticipantsLoaded$: Observable<boolean>;
   eventExemplaryParticipants$: Observable<EventExemplaryParticipant[]>;
@@ -18,6 +19,7 @@ export class EventParticipantsComponent implements OnInit {
 
   constructor(private route : ActivatedRoute,
               private router: Router,
+              private subscriptionManager : SubscriptionManager,
               private eventParticipantService : EventParticipantService) { }
 
   ngOnInit() {
@@ -30,7 +32,9 @@ export class EventParticipantsComponent implements OnInit {
   }
 
   getExemplaryParticipants(){
-    this.eventParticipantService.getExemplary(this.eventId);
+    this.subscriptionManager.add(this
+      .eventParticipantService
+      .getExemplary(this.eventId).subscribe());
   }
 
   setExemplaryParticipants(){
@@ -39,5 +43,9 @@ export class EventParticipantsComponent implements OnInit {
 
   setExemplaryParticipantsLoaded(){
     this.eventExemplaryParticipantsLoaded$ = this.eventParticipantService.eventExemplaryParticipantsLoaded$;
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionManager.destroy();
   }
 }

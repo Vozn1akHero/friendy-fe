@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
-import {switchMap, catchError, map, tap, withLatestFrom, take, concatMap, exhaustMap, mergeMap, filter} from 'rxjs/operators';
+import { map, take, mergeMap, filter} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-
 import * as UserDataActions from './user-data.actions';
-
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {UserDataService} from '../../services/user-data.service';
 import User from '../../models/user.model';
 
 @Injectable()
-export class MainUserDataEffects {
+export class UserDataEffects {
   @Effect()
   getUser = this.actions$.pipe(
     ofType(UserDataActions.GET_USER_DATA),
@@ -42,7 +40,6 @@ export class MainUserDataEffects {
   constructor(
     private actions$: Actions,
     private http: HttpClient,
-    private router: Router,
     private userDataService : UserDataService,
     private store: Store<fromApp.AppState>
   ) {}

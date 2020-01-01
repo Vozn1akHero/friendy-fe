@@ -21,7 +21,6 @@ export class EventPostListComponent implements OnInit {
 
   constructor(private eventPostService : EventPostService,
               private eventAvatarService : EventAvatarService,
-              private store: Store<fromApp.AppState>,
               private route: ActivatedRoute) { }
 
   ngOnInit() {

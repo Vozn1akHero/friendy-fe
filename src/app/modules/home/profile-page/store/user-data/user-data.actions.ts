@@ -18,3 +18,4 @@ export class SetUserData implements Action {
 }
 
 export type Actions = SetUserData | GetUserData
+
