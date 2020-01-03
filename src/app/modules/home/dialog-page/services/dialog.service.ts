@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import ChatFriendBasicData from '../models/interlocutor-data.model';
 import MessageInChat from '../models/message-in-chat.model';
 import NewMessageInChat from '../models/new-message-in-chat.model';

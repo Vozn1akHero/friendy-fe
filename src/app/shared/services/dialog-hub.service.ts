@@ -15,7 +15,6 @@ import {BehaviorSubject} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class DialogHubService {
-  private dialogHubConnection: HubConnection;
   private _connected = new BehaviorSubject(false);
 
   private set connected(value : boolean) {
@@ -26,6 +25,12 @@ export class DialogHubService {
     return this._connected.asObservable();
   }
 
+  private dialogHubConnection: HubConnection;
+  constructor(private http: HttpClient,
+              private userIdService: UserIdService,
+              private store: Store<fromApp.AppState>) {
+    this.connectToDialogHub();
+  }
   private connectToDialogHub() {
     this.dialogHubConnection = new signalR.HubConnectionBuilder()
       .withUrl('http://localhost:5000/dialogHub', {
@@ -41,12 +46,6 @@ export class DialogHubService {
         console.log('Connection to dialogHub started');
       })
       .catch(err => console.log('Error while starting connection: ' + err))
-  }
-
-  constructor(private http: HttpClient,
-              private userIdService: UserIdService,
-              private store: Store<fromApp.AppState>) {
-    this.connectToDialogHub();
   }
 
   listenToNewLastMessage(){
@@ -79,14 +78,13 @@ export class DialogHubService {
     });
   }
 
+  joinGroup(groupName: string){
+    this.dialogHubConnection.invoke('JoinGroup', groupName).then(() => {});
+  }
+
   sendNewMessage(groupName: string, message: NewMessageInChat){
     this.dialogHubConnection.invoke('SendMessageToUser', message).then(res => {
       console.log(res);
     })
-  }
-
-  joinGroup(groupName: string){
-    console.log(groupName);
-    this.dialogHubConnection.invoke('JoinGroup', groupName).then(() => {});
   }
 }

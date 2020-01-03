@@ -59,3 +59,9 @@
 .fr-default-smaller-font{
   font-size: .8rem;
 }
+
+.fr-hover-text-decoration{
+  &:hover{
+    text-decoration: underline !important;
+  }
+}

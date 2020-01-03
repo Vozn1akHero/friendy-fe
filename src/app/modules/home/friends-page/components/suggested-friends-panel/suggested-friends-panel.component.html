@@ -5,6 +5,18 @@
             icon: '../../../../../assets/images/icon/symbol-defs.svg#icon-users1',
             link: null
           }">
-    <!--          <app-suggested-friends-item></app-suggested-friends-item>-->
+    <ng-container *ngIf="suggestedFriendsLoaded$ | async">
+      <ng-container *ngIf="(suggestedFriends$|async).length>0;else noSuggestedFriends">
+        <app-suggested-friends-item *ngFor="let suggestedFriend of
+        (suggestedFriends$|async)"
+          [suggestedFriend]="suggestedFriend"></app-suggested-friends-item>
+      </ng-container>
+      <ng-template #noSuggestedFriends>
+        <span class="fr-default-smaller-font">
+          Nie masz zalecanych znajomych
+        </span>
+      </ng-template>
+    </ng-container>
+    <!--          -->
   </app-main-panel>
 </section>

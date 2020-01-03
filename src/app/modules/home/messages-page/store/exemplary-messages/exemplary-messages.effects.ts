@@ -8,7 +8,7 @@ import * as ExemplaryMessagesActions from './exemplary-messages.actions';
 import {Action, Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {ExemplaryMessagesService} from '../../services/exemplary-messages.service';
-import ExemplaryMessage from '../../models/exemplary-message.model';
+
 
 @Injectable()
 export class ExemplaryMessagesEffects {
@@ -31,9 +31,7 @@ export class ExemplaryMessagesEffects {
 
   constructor(
     private actions$: Actions,
-    private http: HttpClient,
     private exemplaryMessagesService: ExemplaryMessagesService,
-    private router: Router,
     private store$: Store<fromApp.AppState>
   ) {}
 }

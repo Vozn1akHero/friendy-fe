@@ -39,8 +39,8 @@ export class UserDataEffects {
 
   constructor(
     private actions$: Actions,
-    private http: HttpClient,
     private userDataService : UserDataService,
     private store: Store<fromApp.AppState>
   ) {}
 }
+
