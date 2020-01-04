@@ -3,6 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {FriendRequestsModalService} from './services/friend-requests-modal.service';
 import {Observable, Subscription} from 'rxjs';
 import {UserIdService} from '../../shared/services/user-id.service';
+import {UserStatusService} from './services/user-status.service';
+import SubscriptionManager from '../../shared/helpers/SubscriptionManager';
 
 @Component({
   selector: 'app-wrapper',
@@ -13,8 +15,11 @@ export class WrapperComponent implements OnInit, OnDestroy {
   friendRequestsModalOpened: boolean;
   friendRequestsModalOpenedSubscription: Subscription;
   userIdLoaded$: Observable<boolean>;
+  connectedToStatusHub: boolean = false;
 
   constructor(private route: ActivatedRoute,
+              private userStatusService : UserStatusService,
+              private subscriptionManager : SubscriptionManager,
               private userIdService: UserIdService,
               private friendRequestsModalService : FriendRequestsModalService) {
     this.setFriendRequestModalValue();
@@ -22,6 +27,18 @@ export class WrapperComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.setUserIdLoaded();
+    this.setConnectedStatus();
+  }
+
+  setConnectedStatus(){
+    this.subscriptionManager.add(this.userStatusService.connected$.subscribe(connected => {
+      if(connected){
+        this.userStatusService.setConnectedState(this.route.snapshot.data["profileId"]);
+      }
+    }));
+    this.subscriptionManager.add(this.userStatusService.connectedMethodExecuted$.subscribe(value => {
+      this.connectedToStatusHub = value;
+    }))
   }
 
   setFriendRequestModalValue(){
@@ -44,6 +61,7 @@ export class WrapperComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.subscriptionManager.destroy();
     this.friendRequestsModalOpenedSubscription.unsubscribe();
   }
 }

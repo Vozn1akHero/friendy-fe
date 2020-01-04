@@ -4,6 +4,7 @@ import User from '../../models/user.model';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import * as UserDataActions from '../../store/user-data/user-data.actions';
+import {UserStatusService} from '../../services/user-status.service';
 
 @Component({
   selector: 'app-profile-header',
@@ -23,10 +24,14 @@ export class ProfileHeaderComponent implements OnInit, OnDestroy {
   userDataLoaded$: Observable<boolean>;
   userDataSubscription: Subscription;
 
-  constructor(private store: Store<fromApp.AppState>) {}
+  isUserOnline: boolean;
+
+  constructor(private store: Store<fromApp.AppState>,
+              private userStatusService : UserStatusService) {}
 
   ngOnInit() {
     this.getUserData();
+    this.getUserStatus();
   }
 
   getUserData(){
@@ -38,6 +43,12 @@ export class ProfileHeaderComponent implements OnInit, OnDestroy {
       .subscribe(userData => {
         this.userData = userData[this.userId];
       });
+  }
+
+  getUserStatus(){
+    this.userStatusService.get(this.userId).subscribe(value => {
+      this.isUserOnline = value.body as boolean;
+    })
   }
 
   toggleActiveSettings(value: boolean){

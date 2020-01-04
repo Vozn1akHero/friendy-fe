@@ -16,7 +16,13 @@
     </div>
   </ng-container>
   <figure class="profile-avatar__wrapper">
-    <img alt=""
-         src="{{ avatarUrl }}">
+      <ng-container *ngIf="isUserOnline">
+        <div class="is-online">
+          <span class="circle">
+            &#9679;
+          </span>
+        </div>
+      </ng-container>
+    <img alt="" src="{{ avatarUrl }}">
   </figure>
 </div>

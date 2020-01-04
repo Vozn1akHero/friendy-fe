@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <ng-container *ngIf="(userIdLoaded$ | async)">
+  <ng-container *ngIf="(userIdLoaded$ | async) && connectedToStatusHub">
     <app-friend-requests-modal *ngIf="friendRequestsModalOpened">
     </app-friend-requests-modal>
 

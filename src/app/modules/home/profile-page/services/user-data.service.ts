@@ -10,9 +10,9 @@ export class UserDataService {
   constructor(private http: HttpClient){}
 
   getData(id : number){
-    return this.http.get(`/api/user/${id}`, {observe: 'body'})
+    return this.http.get(`/api/user/${id}/extended`, {observe: 'body'})
       .pipe(map((res:any) => {
-        return new User(res.id,
+        const user = new User(res.id,
           res.birthday,
           res.city,
           res.email,
@@ -22,7 +22,10 @@ export class UserDataService {
           res.name,
           res.surname,
           res.profileBg,
+          res.isOnline,
           res.status);
+        console.log(user)
+        return user;
     }))
   }
 }

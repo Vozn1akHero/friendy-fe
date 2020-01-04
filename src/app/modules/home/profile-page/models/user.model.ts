@@ -11,6 +11,7 @@ export default class User {
   name: string;
   surname: string;
   profileBg: string;
+  isOnline: boolean;
   status: string;
 
   constructor(id: number,
@@ -23,6 +24,7 @@ export default class User {
               name: string,
               surname: string,
               profileBg: string,
+              isOnline: boolean,
               status: string) {
     this.id = id;
     this.birthday = moment(birthday).format("DD.MM.YYYY");
@@ -34,6 +36,7 @@ export default class User {
     this.name = name;
     this.surname = surname;
     this.profileBg = profileBg;
+    this.isOnline = isOnline;
     this.status = status;
   }
 }

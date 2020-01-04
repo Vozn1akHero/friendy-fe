@@ -6,6 +6,7 @@
       <app-profile-avatar [isUserProfileOwner]="isUserProfileOwner"
                           [activeSettings]="activeSettings"
                           [avatarUrl]="userData.avatarUrl"
+                          [isUserOnline]="isUserOnline"
                           [userId]="userId"></app-profile-avatar>
 
       <ng-container *ngIf="isUserProfileOwner; else notProfileOwner">

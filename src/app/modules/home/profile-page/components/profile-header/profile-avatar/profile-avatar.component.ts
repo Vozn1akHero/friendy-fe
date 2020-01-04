@@ -11,6 +11,7 @@ export class ProfileAvatarComponent implements OnInit, OnDestroy {
   @Input() activeSettings: boolean;
   @Input() isUserProfileOwner : boolean;
   @Input() avatarUrl: string;
+  @Input() isUserOnline: boolean;
 
   newAvatarModalOpened: boolean = false;
 

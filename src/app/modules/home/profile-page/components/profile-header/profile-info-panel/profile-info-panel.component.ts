@@ -11,6 +11,7 @@ export class ProfileInfoPanelComponent implements OnInit {
   @Input() activeSettings: boolean;
   @Input() isUserProfileOwner : boolean;
   @Input() userId: number;
+  @Input() isUserOnline: boolean;
   @Output() toggleSettingsEm: EventEmitter<boolean> = new EventEmitter();
 
   constructor() { }

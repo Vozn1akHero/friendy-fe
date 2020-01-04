@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProfilePageModalsService} from './services/profile-page-modals.service';
-import {VisitedProfileForRsService} from './services/visited-profile-for-rs.service';
 import {take} from 'rxjs/operators';
 
 @Component({
@@ -20,15 +19,13 @@ export class ProfilePageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private profilePageModalsService: ProfilePageModalsService,
-              private visitedProfileForRsService : VisitedProfileForRsService) {
+              private profilePageModalsService: ProfilePageModalsService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit() {
     this.setUserId();
     this.setIsUserProfileOwner();
-    this.createVisitation();
   }
 
 
@@ -40,14 +37,6 @@ export class ProfilePageComponent implements OnInit {
 
   setIsUserProfileOwner(){
     this.isUserProfileOwner = this.route.snapshot.data.profileBelongingStatus;
-  }
-
-  createVisitation(){
-    if(!this.isUserProfileOwner){
-      this.visitedProfileForRsService
-        .create(this.userId)
-        .pipe(take(1)).subscribe();
-    }
   }
 
   newAvatarSubmitted(){
