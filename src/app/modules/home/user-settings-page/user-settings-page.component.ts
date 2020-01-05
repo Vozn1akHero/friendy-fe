@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserDataService} from './services/user-data.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-user-settings',
@@ -8,7 +9,11 @@ import {UserDataService} from './services/user-data.service';
   styleUrls: ['./user-settings-page.component.scss']
 })
 export class UserSettingsPageComponent implements OnInit {
-  constructor(private router : Router, private route: ActivatedRoute, private userData: UserDataService) {
+  dataLoaded$: Observable<boolean>;
+
+  constructor(private router : Router,
+              private route: ActivatedRoute,
+              private userDataService: UserDataService) {
     this.route.queryParams.subscribe(value => {
       if(value.sp == null || Array.of("basic",
         "interests",
@@ -20,7 +25,12 @@ export class UserSettingsPageComponent implements OnInit {
     })
   }
 
+  getLoaded(){
+    this.dataLoaded$ = this.userDataService.loaded$;
+  }
+
   ngOnInit() {
-    this.userData.getLoggedInUserData();
+    this.userDataService.getLoggedInUserData();
+    this.getLoaded();
   }
 }

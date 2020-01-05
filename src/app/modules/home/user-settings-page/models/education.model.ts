@@ -3,9 +3,9 @@ export default class EducationModel {
   university: string;
   school: string;
 
-  constructor(educationId: number, university: string, school: string) {
+  constructor(educationId: number) {
     this.educationId = educationId;
-    this.university = university;
-    this.school = school;
+    /*this.university = university;
+    this.school = school;*/
   }
 }

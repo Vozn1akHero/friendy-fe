@@ -46,8 +46,8 @@ export class ProfileHeaderComponent implements OnInit, OnDestroy {
   }
 
   getUserStatus(){
-    this.userStatusService.get(this.userId).subscribe(value => {
-      this.isUserOnline = value.body as boolean;
+    this.userStatusService.get(this.userId).subscribe((value:any) => {
+      this.isUserOnline = value.body.status as boolean;
     })
   }
 

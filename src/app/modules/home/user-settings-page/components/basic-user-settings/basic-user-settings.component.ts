@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import EducationModel from '../../models/education.model';
+import SubscriptionManager from '../../../../../shared/helpers/SubscriptionManager';
+import {UserDataService} from '../../services/user-data.service';
+import BasicUserDataModel from '../../models/basic-user-data.model';
 
 @Component({
   selector: 'app-basic-user-settings',
@@ -7,7 +11,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./basic-user-settings.component.scss']
 })
 export class BasicUserSettingsComponent implements OnInit {
-  userBasicSettings = new FormGroup({
+  userBasicSettingsForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     surname: new FormControl('', [Validators.required]),
     birthday: new FormControl('', [Validators.required])
@@ -15,20 +19,40 @@ export class BasicUserSettingsComponent implements OnInit {
 
   showCalendar: boolean = false;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
   toggleCalendar(){
     this.showCalendar = !this.showCalendar;
   }
 
   onSelectBirthday($event){
-
+    this.userBasicSettingsForm.setValue({birthday: $event});
   }
 
-  userBasicSettingsSubmit(){
+  basicUserData: BasicUserDataModel;
 
+  updateEducationData(){
+    const basicUserData = new BasicUserDataModel(this.basicUserData.id,
+      this.userBasicSettingsForm.value.name,
+      this.userBasicSettingsForm.value.surname,
+      this.userBasicSettingsForm.value.birthday);
+    this.subscriptionManager.add(this.userDataService.updateBasicData(basicUserData).subscribe(value => {
+
+    }))
+  }
+
+  constructor(private subscriptionManager: SubscriptionManager,
+              private userDataService : UserDataService) { }
+
+  ngOnInit() {
+    this.getEducationData();
+  }
+
+  getEducationData(){
+    this.subscriptionManager.add(this.userDataService.userBasicData$.subscribe(value => {
+      this.basicUserData = value;
+    }))
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionManager.destroy();
   }
 }

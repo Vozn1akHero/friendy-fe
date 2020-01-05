@@ -1,12 +1,12 @@
 export default class AdditionalInfoModel {
-  constructor(familyStatusId: number, religionId: number, smokingAttitudeId: number, alcoholAttitudeId: number) {
-    this.familyStatusId = familyStatusId;
+  constructor(maritalStatusId: number, religionId: number, smokingAttitudeId: number, alcoholAttitudeId: number) {
+    this.maritalStatusId = maritalStatusId;
     this.religionId = religionId;
     this.smokingAttitudeId = smokingAttitudeId;
     this.alcoholAttitudeId = alcoholAttitudeId;
   }
 
-  familyStatusId: number;
+  maritalStatusId: number;
   religionId: number;
   smokingAttitudeId: number;
   alcoholAttitudeId: number;

@@ -1,17 +1,23 @@
 <section class="basic-user-settings">
     <div class="settings-panel-wrapper">
-      <form (submit)="userBasicSettingsSubmit()" [formGroup]="userBasicSettings">
+      <form [formGroup]="userBasicSettingsForm">
         <div class="settings-panel-wrapper__row">
           <label class="settings-panel-wrapper__label" for="name">
             Imię
           </label>
-          <input id="name" class="settings-panel-wrapper__input fr-input" type="text">
+          <input id="name"
+                 [value]="basicUserData.name"
+                 class="settings-panel-wrapper__input fr-input"
+                 type="text">
         </div>
         <div class="settings-panel-wrapper__row">
           <label class="settings-panel-wrapper__label" for="surname">
             Nazwisko
           </label>
-          <input id="surname" class="settings-panel-wrapper__input fr-input" type="text">
+          <input id="surname"
+                 [value]="basicUserData.surname"
+                 class="settings-panel-wrapper__input fr-input"
+                 type="text">
         </div>
         <div class="settings-panel-wrapper__row">
           <label class="settings-panel-wrapper__label" for="birthday">
@@ -21,12 +27,14 @@
                         (onSelectDateEvent)="onSelectBirthday($event)"></app-calendar>
           <input (click)="toggleCalendar()"
                  readonly="readonly"
+                 [value]="basicUserData.birthday"
                  id="birthday"
                  class="settings-panel-wrapper__input fr-input"
                  type="text">
         </div>
         <div class="submit-btn-wrapper">
-          <button class="fr-btn-main-blue submit-btn" type="submit">
+          <button class="fr-btn-main-blue submit-btn"
+                  (click)="updateEducationData()">
             Zapisz
           </button>
         </div>

@@ -1,15 +1,19 @@
 <section class="user-other-settings">
   <div class="settings-panel-wrapper">
-    <form>
+    <form [formGroup]="addInfForm">
       <div class="settings-panel-wrapper__row">
         <label class="settings-panel-wrapper__label" for="maritalStatus">
           Status rodzinny
         </label>
         <span class="custom-dropdown light-grey-background">
-          <select class="light-grey-background" formControlName="maritalStatus" id="maritalStatus">
-            <option value="1">Żonaty</option>
-            <option value="2">Zaręczony</option>
-            <option value="3">Inne</option>
+          <select class="light-grey-background"
+                  [value]="additionalUserData.maritalStatusId"
+                  formControlName="maritalStatus"
+                  id="maritalStatus">
+            <option value="1">Kawaler/Panna</option>
+            <option value="2">Żonaty/Mężatka</option>
+            <option value="3">Rozwiedziony/Rozwiedziona</option>
+            <option value="4">Wdowiec/Wdowa</option>
           </select>
         </span>
       </div>
@@ -18,7 +22,10 @@
           Religia
         </label>
         <span class="custom-dropdown light-grey-background">
-          <select class="light-grey-background" formControlName="religion" id="religion">
+          <select class="light-grey-background"
+                  [value]="additionalUserData.religionId"
+                  formControlName="religion"
+                  id="religion">
             <option value="1">Katolicyzm</option>
             <option value="2">Prałowsawie</option>
             <option value="3">Islam</option>
@@ -31,7 +38,10 @@
           Stosunek do alkoholu
         </label>
         <span class="custom-dropdown">
-          <select class="light-grey-background" formControlName="alcoholAttitude" id="alcoholAttitude">
+          <select class="light-grey-background"
+                  [value]="additionalUserData.alcoholAttitudeId"
+                  formControlName="alcoholAttitude"
+                  id="alcoholAttitude">
             <option value="1">Negatywny</option>
             <option value="2">Pozytywny</option>
             <option value="3">Neutralny</option>
@@ -43,7 +53,10 @@
           Stosunek do palenia
         </label>
         <span class="custom-dropdown">
-          <select class="light-grey-background" formControlName="smokingAttitude" id="smokingAttitude">
+          <select class="light-grey-background"
+                  [value]="additionalUserData.smokingAttitudeId"
+                  formControlName="smokingAttitude"
+                  id="smokingAttitude">
             <option value="1">Negatywny</option>
             <option value="2">Pozytywny</option>
             <option value="3">Neutralny</option>
@@ -51,7 +64,8 @@
         </span>
       </div>
       <div class="submit-btn-wrapper">
-        <button class="fr-btn-main-blue submit-btn" type="submit">
+        <button class="fr-btn-main-blue submit-btn"
+                (click)="updateEducationData()">
           Zapisz
         </button>
       </div>

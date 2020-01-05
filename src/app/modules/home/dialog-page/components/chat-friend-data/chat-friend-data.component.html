@@ -3,14 +3,19 @@
     <section>
       <a [routerLink]="['/app/profile', interlocutorData.friendId]">
         <figure>
-          <img src="{{ interlocutorData.avatarUrl }}" alt="">
+          <img alt="" src="{{ interlocutorData.avatarUrl }}">
         </figure>
       </a>
       <section>
-          <a [routerLink]="['/app/profile', interlocutorData.friendId]">
-            {{ interlocutorData.name }} {{ interlocutorData.surname }}
-          </a>
-          <p>w sieci ERROR minut temu</p>
+        <a [routerLink]="['/app/profile', interlocutorData.friendId]">
+          {{ interlocutorData.name }} {{ interlocutorData.surname }}
+        </a>
+        <ng-container *ngIf="status; else offline">
+          <p>dostępny</p>
+        </ng-container>
+        <ng-template #offline>
+          <p>ostatnio dostępny {{ lastTimeOnline }}</p>
+        </ng-template>
       </section>
     </section>
   </div>
