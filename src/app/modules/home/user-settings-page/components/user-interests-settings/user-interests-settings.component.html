@@ -1,23 +1,26 @@
 <section class="user-interests-settings">
   <div class="settings-panel-wrapper">
     <form>
-      <div class="settings-panel-wrapper__row">
-        <label class="settings-panel-wrapper__label" for="interests">
-          Zainteresowania
-        </label>
-        <input class="settings-panel-wrapper__input fr-input"
-               id="interests"
-               type="text">
-      </div>
-      <div class="current-interests">
-        <div *ngFor="let interest of (userInterests$ | async);" class="current-interests__item">
+      <div class="settings-panel-wrapper__controls-wrapper">
+        <div class="settings-panel-wrapper__row">
+          <label class="settings-panel-wrapper__label" for="interests">
+            Zainteresowania
+          </label>
+          <input class="settings-panel-wrapper__input fr-input"
+                 id="interests"
+                 type="text">
+        </div>
+        <div class="current-interests">
+          <div *ngFor="let interest of (userInterests$ | async);"
+               class="current-interests__item">
           <span>
             {{ interest.title }}
           </span>
-          <button class="current-interests__remove-btn"
-                  (click)="removeInterest(interest.id)">
-            &times;
-          </button>
+            <button (click)="removeInterest(interest.id)"
+                    class="current-interests__remove-btn">
+              &times;
+            </button>
+          </div>
         </div>
       </div>
       <div class="submit-btn-wrapper">

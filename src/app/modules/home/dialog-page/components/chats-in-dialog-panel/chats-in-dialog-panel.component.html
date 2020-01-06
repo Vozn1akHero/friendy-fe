@@ -4,6 +4,16 @@
   icon: '../../../../../assets/images/icon/symbol-defs.svg#icon-users1',
   link: null}">
 
-  <app-chats-in-dialog-item></app-chats-in-dialog-item>
+  <ng-container *ngIf="loaded">
+    <ng-container *ngIf="chats.length > 0; else noFriends">
+      <app-chats-in-dialog-item
+        *ngFor="let chat of chats" [data]="chat"></app-chats-in-dialog-item>
+    </ng-container>
+    <ng-template #noFriends>
+      <span class="fr-default-smaller-font">
+        Lista znajomych jest pusta
+      </span>
+    </ng-template>
+  </ng-container>
 
 </app-main-panel>

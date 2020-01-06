@@ -1,8 +1,8 @@
 <div class="item">
-  <a href="#" class="avatar">
+  <a [routerLink]="['/app/dialog?to=', data.id]" class="avatar">
     <figure>
-      <img src="../../../assets/images/test/adult-background-beard-941693.jpg" alt="">
+      <img src="{{ data.avatarUrl }}" alt="">
     </figure>
   </a>
-  <a href="#">Vladimir Putin</a>
+  <a [routerLink]="['/app/dialog?to=', data.id]">{{data.name}} {{data.surname}}</a>
 </div>

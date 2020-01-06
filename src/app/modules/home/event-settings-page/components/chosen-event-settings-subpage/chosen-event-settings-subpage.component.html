@@ -1,7 +1,17 @@
 <section class="chosen-event-settings-subpage">
+  <header class="header color-dark-grey fr-m-b-1">
+    <ng-container [ngSwitch]="chosenSubpage">
+      <h1 *ngSwitchCase="1" class="title">Podstawowe</h1>
+      <h1 *ngSwitchCase="2" class="title">Uczestnicy</h1>
+      <h1 *ngSwitchCase="3" class="title">Administratorzy</h1>
+    </ng-container>
+  </header>
   <ng-container [ngSwitch]="chosenSubpage">
-    <app-basic-event-settings *ngSwitchCase="1"></app-basic-event-settings>
-    <app-event-participants-settings *ngSwitchCase="2"></app-event-participants-settings>
-    <app-event-admins-settings *ngSwitchCase="3"></app-event-admins-settings>
+    <app-basic-event-settings [eventId]="eventId"
+                              *ngSwitchCase="1"></app-basic-event-settings>
+    <app-event-participants-settings [eventId]="eventId"
+      *ngSwitchCase="2"></app-event-participants-settings>
+    <app-event-admins-settings [eventId]="eventId"
+      *ngSwitchCase="3"></app-event-admins-settings>
   </ng-container>
 </section>

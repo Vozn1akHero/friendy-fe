@@ -1,133 +1,161 @@
 <div class="basic-event-settings">
-  <form (ngSubmit)="onBasicChangesFormSubmit()" [formGroup]="eventBasicSettingsForm" class="event-creation-form">
-    <div class="wrapper">
-      <input [ngClass]="{
-                  'bordered-onError': eventBasicSettingsForm.get('name').touched && eventBasicSettingsForm.get('name').invalid
-                 }"
-             class="name fr-input"
-             formControlName="name"
-             placeholder="Nazwa"
-             type="text">
-      <textarea [ngClass]="{
+  <ng-container *ngIf="loaded">
+    <div class="settings-panel-wrapper">
+      <form [formGroup]="eventBasicSettingsForm" class="event-creation-form">
+        <div class="settings-panel-wrapper__controls-wrapper">
+          <div class="settings-panel-wrapper__row">
+            <label class="settings-panel-wrapper__label" for="title">
+              Nazwa
+            </label>
+            <input [ngClass]="{
+                    'bordered-onError':
+                    eventBasicSettingsForm.get('title').touched
+                     && eventBasicSettingsForm.get('title').invalid
+                   }"
+                   [value]="eventData.title"
+                   class="fr-input settings-panel-wrapper__input"
+                   formControlName="title"
+                   id="title"
+                   placeholder="Nazwa"
+                   type="text">
+          </div>
+          <div class="settings-panel-wrapper__row">
+            <label class="settings-panel-wrapper__label" for="description">
+              Opis
+            </label>
+            <textarea [ngClass]="{
                   'bordered-onError': eventBasicSettingsForm.get('description').touched && eventBasicSettingsForm.get('description').invalid
                  }"
-                class="desc fr-input"
-                formControlName="description"
-                placeholder="Opis"></textarea>
+                      [value]="eventData.description"
+                      class="desc fr-input settings-panel-wrapper__textarea"
+                      formControlName="description"
+                      id="description"
+                      placeholder="Opis"></textarea>
+          </div>
 
-      <input [ngClass]="{
+          <div class="settings-panel-wrapper__row">
+            <label class="settings-panel-wrapper__label" for="city">
+              Miasto
+            </label>
+            <input [ngClass]="{
                   'bordered-onError': eventBasicSettingsForm.get('city').touched && eventBasicSettingsForm.get('city').invalid
                  }"
-             class="city fr-input"
-             formControlName="city"
-             placeholder="Miasto"
-             type="text">
-    </div>
+                   [value]="eventData.city"
+                   class="city fr-input settings-panel-wrapper__input"
+                   formControlName="city"
+                   id="city"
+                   placeholder="Miasto"
+                   type="text">
+          </div>
 
-    <div class="wrapper spec-wrapper">
-      <input [ngClass]="{
-                'bordered-onError': eventBasicSettingsForm.get('street').touched && eventBasicSettingsForm.get('street').invalid
-               }"
-             class="street fr-input"
-             formControlName="street"
-             placeholder="Ulica"
-             type="text">
+          <div class="settings-panel-wrapper__row">
+            <label class="settings-panel-wrapper__label">
+              Adres
+            </label>
+            <div class="settings-panel-wrapper__wrapper">
+              <input [ngClass]="{
+                  'bordered-onError': eventBasicSettingsForm.get('street').touched
+                  && eventBasicSettingsForm.get('street').invalid
+                 }"
+                     [value]="eventData.street"
+                     class="street settings-panel-wrapper__input fr-input"
+                     formControlName="street"
+                     placeholder="Ulica"
+                     type="text">
 
-      <input [ngClass]="{
-                'bordered-onError': eventBasicSettingsForm.get('streetNumber').touched && eventBasicSettingsForm.get('streetNumber').invalid
-               }"
-             class="number fr-input"
-             formControlName="streetNumber"
-             placeholder="Numer"
-             type="text">
-    </div>
+              <input [ngClass]="{
+                  'bordered-onError': eventBasicSettingsForm.get('streetNumber').touched
+                   && eventBasicSettingsForm.get('streetNumber').invalid
+                 }"
+                     [value]="eventData.streetNumber"
+                     class="number settings-panel-wrapper__input fr-input"
+                     formControlName="streetNumber"
+                     placeholder="Numer"
+                     type="text">
+            </div>
+          </div>
 
-   <!-- <div class="wrapper spec-wrapper">
-      <input [ngClass]="{
-                'bordered-onError': eventBasicSettingsForm.get('year').touched && eventBasicSettingsForm.get('year').invalid
-               }"
-             class="date-year"
-             formControlName="year"
-             placeholder="Rok"
-             type="number">
-      <span class="custom-dropdown date-month">
-                <select [ngClass]="{
-                'bordered-onError': eventBasicSettingsForm.get('month').touched && eventBasicSettingsForm.get('month').invalid
-               }"
-                        formControlName="month">
-                <option hidden value="">Miesiąc</option>
-                <option value="1">styczeń</option>
-                <option value="2">luty</option>
-                <option value="3">marzec</option>
-                <option value="4">kwiecień</option>
-                <option value="5">maj</option>
-                <option value="6">czerwiec</option>
-                <option value="7">lipiec</option>
-                <option value="8">sierpień</option>
-                <option value="9">wrzesień</option>
-                <option value="10">październik</option>
-                <option value="11">listopad</option>
-                <option value="12">grudzień</option>
-                </select>
+          <div class="settings-panel-wrapper__row">
+            <label class="settings-panel-wrapper__label">
+              Data
+            </label>
+            <div class="settings-panel-wrapper__wrapper">
+              <app-calendar (onSelectDateEvent)="onSelectDate($event)"
+                            *ngIf="showCalendar"></app-calendar>
+              <input (click)="toggleCalendar()"
+                     [ngClass]="{
+              'bordered-onError': eventBasicSettingsForm.get('date').touched &&
+                eventBasicSettingsForm.get('date').invalid
+              }"
+                     [value]="eventData.date"
+                     class="date settings-panel-wrapper__input fr-input"
+                     formControlName="date"
+                     id="birthday"
+                     readonly="readonly"
+                     type="text">
+              <span class="custom-dropdown hour">
+              <select [ngClass]="{
+              'bordered-onError': eventBasicSettingsForm.get('hour').touched
+              && eventBasicSettingsForm.get('hour').invalid
+             }" [value]="eventData.hour" class="settings-panel-wrapper__input"
+                      formControlName="hour">
+                <option hidden value="">Godzina</option>
+                <option
+                  *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,00]"
+                  value="{{number}}">
+                    {{number}}
+                </option>
+              </select>
             </span>
-      <input [ngClass]="{
-                'bordered-onError': eventBasicSettingsForm.get('day').touched && eventBasicSettingsForm.get('day').invalid
+              <input [ngClass]="{
+                'bordered-onError': eventBasicSettingsForm.get('minute').touched
+                 && eventBasicSettingsForm.get('minute').invalid
                }"
-             class="date-day"
-             formControlName="day"
-             placeholder="Dzień"
-             type="number">
-    </div>-->
-    <div class="wrapper spec-wrapper">
-      <app-calendar *ngIf="showCalendar"
-                    (onSelectDateEvent)="onSelectDate($event)"></app-calendar>
-      <input (click)="toggleCalendar()"
-             readonly="readonly"
-             id="birthday"
-             class="date fr-input"
-             type="text">
-      <span class="custom-dropdown date-hour">
-          <select [ngClass]="{
-            'bordered-onError': eventBasicSettingsForm.get('hour').touched && eventBasicSettingsForm.get('hour').invalid
-           }" formControlName="hour">
-              <option hidden value="">Godzina</option>
-              <option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,00]"
-                      value="{{number}}">
-                  {{number}}
-              </option>
-          </select>
-      </span>
-      <input [ngClass]="{
-                'bordered-onError': eventBasicSettingsForm.get('minute').touched && eventBasicSettingsForm.get('minute').invalid
-               }"
-             class="date-minute fr-input"
-             formControlName="minute"
-             placeholder="Minuta"
-             type="number">
-    </div>
+                     [value]="eventData.minute"
+                     class="minute settings-panel-wrapper__input fr-input"
+                     formControlName="minute"
+                     placeholder="Minuta"
+                     type="number">
+            </div>
+          </div>
 
-    <div class="wrapper spec-wrapper">
-      <input [ngClass]="{
-                  'bordered-onError': eventBasicSettingsForm.get('entryPrice').touched && eventBasicSettingsForm.get('entryPrice').invalid
+          <div class="settings-panel-wrapper__row">
+            <label class="settings-panel-wrapper__label">
+              Cena wejścia
+            </label>
+            <input [ngClass]="{
+                  'bordered-onError': eventBasicSettingsForm.get('entryPrice').touched
+                   && eventBasicSettingsForm.get('entryPrice').invalid
                  }"
-             class="price fr-input"
-             formControlName="entryPrice"
-             placeholder="Cena wejścia"
-             type="number">
-      <!--        <input type="number" formControlName="eventSubject" class="subject" placeholder="Tematyka">-->
-      <input [ngClass]="{
-                  'bordered-onError': eventBasicSettingsForm.get('participantsAmount').touched && eventBasicSettingsForm.get('participantsAmount').invalid
-                 }"
-             class="participants-amount fr-input"
-             formControlName="participantsAmount"
-             placeholder="Maksymalna ilość uczestników"
-             type="number">
-    </div>
+                   [value]="eventData.entryPrice"
+                   class="price settings-panel-wrapper__input fr-input"
+                   formControlName="entryPrice"
+                   placeholder="Cena wejścia"
+                   type="number">
+          </div>
 
-    <button [disabled]="eventBasicSettingsForm.invalid"
-            type="submit"
-            class="changes-submit-btn">
-      Zapisz
-    </button>
-  </form>
+          <div class="settings-panel-wrapper__row">
+            <label class="settings-panel-wrapper__label">
+              Ilość uczestników
+            </label>
+            <input [ngClass]="{
+                  'bordered-onError': eventBasicSettingsForm.get('participantsAmount').touched
+                  && eventBasicSettingsForm.get('participantsAmount').invalid
+                 }"
+                   [value]="eventData.participantsAmount"
+                   class="participants-amount settings-panel-wrapper__input fr-input"
+                   formControlName="participantsAmount"
+                   placeholder="Maksymalna ilość uczestników"
+                   type="number">
+          </div>
+        </div>
+        <div class="submit-btn-wrapper">
+          <button (click)="onBasicChangesFormSubmit()"
+                  class="fr-btn-main-blue submit-btn">
+            Zapisz
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-container>
 </div>

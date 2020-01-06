@@ -10,7 +10,7 @@ export class UserEventsService {
   constructor(private http: HttpClient){}
 
   getLoggedInUserEvents(){
-    return this.http.get('/api/event/user/loggedin',
+    return this.http.get('/api/event/user/active',
       {observe: 'body'}).pipe(
       map((res:any[]) => {
       let events : Event[] = [];
@@ -30,7 +30,7 @@ export class UserEventsService {
   }
 
   getAdministeredEvents(){
-    return this.http.get('/api/event/user/loggedin/administered',
+    return this.http.get('/api/event/user/active/administered',
       {observe: 'body'}).pipe(
       map((res:any[]) => {
       let administeredEvents : Event[] = [];

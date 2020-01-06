@@ -1,8 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import EventBackground from '../../../models/event-background.model';
 import {EventBackgroundService} from '../../../services/event-background.service';
-import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-event-header-bg',
@@ -12,30 +9,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class EventHeaderBgComponent implements OnInit {
   @Input() activeSettings;
   @Input() backgroundUrl;
-  /*eventId: number;
-  eventBackgroundLoaded$ : Observable<boolean>;
-  eventBackground$: Observable<EventBackground>;*/
 
-  constructor(private eventBackgroundService: EventBackgroundService,
-              private router : ActivatedRoute) { }
+
+  constructor(private eventBackgroundService: EventBackgroundService) { }
 
   ngOnInit() {
-    console.log(this.backgroundUrl)
-    /*this.eventId = +this.router.snapshot.paramMap.get("id");
-    this.setEventBackgroundLoaded();
-    this.getEventBackground();
-    this.setEventBackground();*/
-  }
 
-  /*getEventBackground(){
-    this.eventBackgroundService.get(this.eventId);
   }
-
-  setEventBackground(){
-    this.eventBackground$ = this.eventBackgroundService.eventBackground$;
-  }
-
-  setEventBackgroundLoaded(){
-    this.eventBackgroundLoaded$ = this.eventBackgroundService.eventBackgroundLoaded$;
-  }*/
 }

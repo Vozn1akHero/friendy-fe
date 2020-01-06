@@ -11,8 +11,8 @@
           <app-event-photos-item *ngFor="let photo of (photos$|async)" [photo]="photo"></app-event-photos-item>
         </ng-container>
         <ng-template #noPhotos>
-          <span class="panel-empty-warning">
-            Pusto
+          <span class="fr-default-smaller-font">
+            Lista zdjęć jest pusta
           </span>
         </ng-template>
       </ng-container>

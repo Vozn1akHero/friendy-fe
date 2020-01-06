@@ -9,8 +9,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class NewMessagePanelComponent implements OnInit {
   newMessage: FormGroup = new FormGroup(
     {
-      chosenFriend: new FormControl(null, [Validators.required]),
-      messageContent: new FormControl(null, [Validators.required])
+      chosenFriend: new FormControl('', [Validators.required]),
+      messageContent: new FormControl('', [Validators.required])
     }
   );
 

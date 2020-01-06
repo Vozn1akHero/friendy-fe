@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-event-admins-settings',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event-admins-settings.component.scss']
 })
 export class EventAdminsSettingsComponent implements OnInit {
+  @Input() eventId : number;
 
   constructor() { }
 

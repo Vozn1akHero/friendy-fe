@@ -25,7 +25,9 @@ export class BasicUserSettingsComponent implements OnInit {
   }
 
   onSelectBirthday($event){
-    this.userBasicSettingsForm.setValue({birthday: $event});
+    this.userBasicSettingsForm.get('birthday').setValue($event);
+    this.showCalendar = false;
+    this.basicUserData.birthday = $event;
   }
 
   basicUserData: BasicUserDataModel;

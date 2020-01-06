@@ -3,7 +3,6 @@ import {HttpClient, HttpResponse} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map, take} from 'rxjs/operators';
 import Event from '../models/event.model';
-import EventSearchCriteriaModel from '../models/event-search-criteria.model';
 
 @Injectable({
   providedIn: 'root'

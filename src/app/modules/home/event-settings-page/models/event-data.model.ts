@@ -1,31 +1,37 @@
 export default class EventDataModel {
   id: number;
   title: string;
+  description: string;
   street: string;
   streetNumber: string;
   city: string;
-  avatarPath: string;
   participantsAmount: number;
-  currentParticipantsAmount: number;
   date: Date;
+  hour: number;
+  minute: number;
+  entryPrice: number;
 
   constructor(id: number,
               title: string,
+              description: string,
               street: string,
               streetNumber: string,
               city: string,
-              avatar: string,
               participantsAmount: number,
-              currentParticipantsAmount: number,
-              date: Date) {
+              date: Date,
+              hour: number,
+              minute: number,
+              entryPrice: number) {
     this.id = id;
     this.title = title;
+    this.description = description;
     this.street = street;
     this.streetNumber = streetNumber;
     this.city = city;
-    this.avatarPath = "http://localhost:5000/" + avatar;
     this.participantsAmount = participantsAmount;
-    this.currentParticipantsAmount = currentParticipantsAmount;
     this.date = date;
+    this.hour = hour;
+    this.minute = minute;
+    this.entryPrice = entryPrice;
   }
 }

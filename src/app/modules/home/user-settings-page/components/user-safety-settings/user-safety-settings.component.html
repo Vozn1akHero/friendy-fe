@@ -1,5 +1,6 @@
 <div class="user-safety-settings">
   <div class="settings-panel-wrapper">
+    <div class="settings-panel-wrapper__controls-wrapper">
       <div class="settings-panel-wrapper__row">
         <label class="settings-panel-wrapper__label" for="password">
           Hasło
@@ -10,25 +11,30 @@
                required
                type="password">
       </div>
-      <div class="submit-btn-wrapper">
-        <button class="fr-btn-main-blue submit-btn"
-                (click)="onNewPasswordSubmit()">
-          Zapisz
-        </button>
-      </div>
+    </div>
+    <div class="submit-btn-wrapper">
+      <button (click)="onNewPasswordSubmit()"
+              class="fr-btn-main-blue submit-btn">
+        Zapisz
+      </button>
+    </div>
   </div>
   <div class="settings-panel-wrapper fr-m-t-2">
+    <div class="settings-panel-wrapper__controls-wrapper">
       <div class="settings-panel-wrapper__row">
         <label class="settings-panel-wrapper__label" for="email">
           Email
         </label>
-        <input [(ngModel)]="email" class="settings-panel-wrapper__input fr-input" id="email" required type="text">
+        <input [(ngModel)]="email"
+               class="settings-panel-wrapper__input fr-input" id="email"
+               required type="text">
       </div>
-      <div class="submit-btn-wrapper">
-        <button class="fr-btn-main-blue submit-btn"
-                (click)="onNewEmailSubmit()">
-          Zapisz
-        </button>
-      </div>
+    </div>
+    <div class="submit-btn-wrapper">
+      <button (click)="onNewEmailSubmit()"
+              class="fr-btn-main-blue submit-btn">
+        Zapisz
+      </button>
+    </div>
   </div>
 </div>

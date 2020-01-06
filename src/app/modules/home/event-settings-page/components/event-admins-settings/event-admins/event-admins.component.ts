@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {EventAdminsService} from '../../../services/event-admins.service';
@@ -12,9 +12,9 @@ import EventAdminModel from '../../../models/event-admin.model';
 export class EventAdminsComponent implements OnInit {
   eventAdmins$: Observable<EventAdminModel[]>;
   eventAdminsLoaded$: Observable<boolean>;
+  @Input() eventId : number;
 
-  constructor(private eventAdminsComponent: EventAdminsService,
-              private route: ActivatedRoute) { }
+  constructor(private eventAdminsComponent: EventAdminsService) { }
 
   ngOnInit() {
     this.setEventAdminsLoaded();
@@ -23,7 +23,7 @@ export class EventAdminsComponent implements OnInit {
   }
 
   getEventAdmins(){
-    this.eventAdminsComponent.get(this.route.snapshot.params.id);
+    this.eventAdminsComponent.get(this.eventId);
   }
 
   setEventAdmins(){

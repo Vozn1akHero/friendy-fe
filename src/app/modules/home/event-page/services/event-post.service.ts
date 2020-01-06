@@ -77,13 +77,11 @@ export class EventPostService {
   }
 
   delete(postId: number, eventId: number) {
-    this.http.delete(`api/post/${postId}/event-post/${eventId}`, {observe: 'response'})
-      .subscribe(
+    return this.http.delete(`api/post/${postId}/event-post/${eventId}`, {observe: 'response'})
+      .pipe(map(
         (res: HttpResponse<any>) => {
           this.eventPosts = [...this.eventPosts.filter(value => value.postId !== postId)];
-        },
-        error => {
-        });
+        }));
   }
 
   like(id: number, eventId: number) {

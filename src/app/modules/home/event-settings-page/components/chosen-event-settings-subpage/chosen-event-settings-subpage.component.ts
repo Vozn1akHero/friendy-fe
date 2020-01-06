@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ChosenEventSettingsSubpageComponent implements OnInit {
   chosenSubpage: number;
+  eventId: number;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -24,7 +25,9 @@ export class ChosenEventSettingsSubpageComponent implements OnInit {
       } else if(value.sp === "admins"){
         this.chosenSubpage = 3;
       }
-    })
+    });
+
+    this.eventId = this.route.snapshot.params.id;
   }
 }
 

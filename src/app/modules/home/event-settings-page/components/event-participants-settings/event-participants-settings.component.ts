@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-event-participants-settings',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event-participants-settings.component.scss']
 })
 export class EventParticipantsSettingsComponent implements OnInit {
+  @Input() eventId : number;
 
   constructor() { }
 

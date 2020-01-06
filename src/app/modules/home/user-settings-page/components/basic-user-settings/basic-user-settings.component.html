@@ -1,35 +1,39 @@
 <section class="basic-user-settings">
-    <div class="settings-panel-wrapper">
-      <form [formGroup]="userBasicSettingsForm">
+  <div class="settings-panel-wrapper">
+    <form [formGroup]="userBasicSettingsForm">
+      <div class="settings-panel-wrapper__controls-wrapper">
         <div class="settings-panel-wrapper__row">
           <label class="settings-panel-wrapper__label" for="name">
             Imię
           </label>
-          <input id="name"
-                 [value]="basicUserData.name"
+          <input [value]="basicUserData.name"
                  class="settings-panel-wrapper__input fr-input"
+                 formControlName="name"
+                 id="name"
                  type="text">
         </div>
         <div class="settings-panel-wrapper__row">
           <label class="settings-panel-wrapper__label" for="surname">
             Nazwisko
           </label>
-          <input id="surname"
-                 [value]="basicUserData.surname"
+          <input [value]="basicUserData.surname"
                  class="settings-panel-wrapper__input fr-input"
+                 formControlName="surname"
+                 id="surname"
                  type="text">
         </div>
         <div class="settings-panel-wrapper__row">
           <label class="settings-panel-wrapper__label" for="birthday">
             Data urodzenia
           </label>
-          <app-calendar *ngIf="showCalendar"
-                        (onSelectDateEvent)="onSelectBirthday($event)"></app-calendar>
+          <app-calendar (onSelectDateEvent)="onSelectBirthday($event)"
+                        *ngIf="showCalendar"></app-calendar>
           <input (click)="toggleCalendar()"
-                 readonly="readonly"
                  [value]="basicUserData.birthday"
-                 id="birthday"
                  class="settings-panel-wrapper__input fr-input"
+                 formControlName="birthday"
+                 id="birthday"
+                 readonly="readonly"
                  type="text">
         </div>
         <div class="settings-panel-wrapper__row">
@@ -57,12 +61,13 @@
             </label>
           </div>
         </div>
-        <div class="submit-btn-wrapper">
-          <button class="fr-btn-main-blue submit-btn"
-                  (click)="updateEducationData()">
-            Zapisz
-          </button>
-        </div>
-      </form>
-    </div>
+      </div>
+      <div class="submit-btn-wrapper">
+        <button (click)="updateEducationData()"
+                class="fr-btn-main-blue submit-btn">
+          Zapisz
+        </button>
+      </div>
+    </form>
+  </div>
 </section>

@@ -14,7 +14,6 @@ export class EventModalsComponent implements OnInit {
   ngOnInit() {
     this.route.queryParamMap.subscribe(value => {
       this.queryParams = value;
-      console.log(this.queryParams)
     })
   }
 }

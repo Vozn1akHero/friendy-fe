@@ -40,7 +40,7 @@ export class EventBackgroundService {
   update(eventId: number, newBackground: File) {
     const content = new FormData();
     content.append("newBackground", newBackground);
-    return this.http.put(`/api/event/${eventId}/background`, content, {responseType: 'text'})
+    return this.http.put(`/api/event-data/${eventId}/background`, content, {responseType: 'text'})
       .subscribe(res => {
         this.eventBackground = new EventBackground(res);
     })

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {EventParticipantService} from '../../../services/event-participant.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
@@ -12,9 +12,9 @@ import EventParticipantDetailed from '../../../models/event-participant-detailed
 export class EventParticipantsComponent implements OnInit {
   eventParticipants$: Observable<EventParticipantDetailed[]>;
   eventParticipantsLoaded$: Observable<boolean>;
+  @Input() eventId: number;
 
-  constructor(private eventParticipantService: EventParticipantService,
-              private route: ActivatedRoute) { }
+  constructor(private eventParticipantService: EventParticipantService) { }
 
   ngOnInit() {
     this.setEventParticipantsLoaded();
@@ -23,7 +23,7 @@ export class EventParticipantsComponent implements OnInit {
   }
 
   getEventParticipants(){
-    this.eventParticipantService.getRange(this.route.snapshot.params.id, 1, 10);
+    this.eventParticipantService.getRange(this.eventId, 1, 10);
   }
 
   setEventParticipants(){

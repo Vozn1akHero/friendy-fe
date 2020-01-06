@@ -33,6 +33,6 @@ export class EventAvatarService {
   update(eventId: number, newAvatar: File) {
     const content = new FormData();
     content.append("newAvatar", newAvatar);
-    return this.http.put(`/api/event/${eventId}/avatar`, content, {responseType: 'text'});
+    return this.http.put(`/api/event-data/${eventId}/avatar`, content, {responseType: 'text'});
   }
 }
