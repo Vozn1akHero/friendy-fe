@@ -1,29 +1,23 @@
-<app-event-creation *ngIf="this.eventCreationPopupOpened"
+<app-event-creation *ngIf="eventCreationPopupOpened"
                     (closeEventCreationPopup)="openOrCloseEventCreationPopup()">
 </app-event-creation>
 
 <section class="events-page">
   <app-events-search-panel></app-events-search-panel>
 
-  <section class="left-side-wrapper">
-    <app-search-event-list *ngIf="searchActivated"></app-search-event-list>
-    <app-user-event-list *ngIf="!searchActivated"></app-user-event-list>
-  </section>
+  <app-event-list-wrapper [searchActivated]="searchActivated"></app-event-list-wrapper>
 
   <section class="right-side-wrapper">
     <section class="new-event">
-      <button class="new-event__btn" (click)="openOrCloseEventCreationPopup()">
+      <hr class="left-line">
+      <button class="new-event__btn"
+              (click)="openOrCloseEventCreationPopup()">
         Utwórz wydarzenie
       </button>
+      <hr class="right-line">
     </section>
 
-    <section class="search-events">
-      <app-search-events></app-search-events>
-
-      <div class="suggested-friends">
-        <app-suggested-events-item></app-suggested-events-item>
-      </div>
-    </section>
+    <app-suggested-events-panel></app-suggested-events-panel>
   </section>
 </section>
 

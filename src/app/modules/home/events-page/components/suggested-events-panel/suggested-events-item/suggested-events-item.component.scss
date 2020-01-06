@@ -1,11 +1,12 @@
-@import '../../../../../../assets/sass/base/variables';
+@import '../../../../../../../assets/sass/base/variables';
 
 .suggested-event{
   display: flex;
   margin-bottom: 1.5rem;
   background: $color-white;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   width: 25.25rem;
+  border-radius: 2rem;
 
   .avatar{
     padding-top: 1rem;

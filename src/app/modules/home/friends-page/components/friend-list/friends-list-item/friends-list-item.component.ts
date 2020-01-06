@@ -7,15 +7,11 @@ import {Router} from '@angular/router';
   templateUrl: './friends-list-item.component.html',
   styleUrls: ['./friends-list-item.component.scss']
 })
-export class FriendsListItemComponent implements OnInit {
+export class FriendsListItemComponent {
   @Input() friendData: Friend;
   @Output() removeFriendEvent: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(private router : Router) { }
-
-  ngOnInit() {
-    console.log(this.friendData)
-  }
 
   navigateToDialog(){
     this.router.navigate(['/app/dialog'], {

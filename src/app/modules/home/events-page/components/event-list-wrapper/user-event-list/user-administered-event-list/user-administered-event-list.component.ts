@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import Event from '../../models/event.model';
+import Event from '../../../../models/event.model';
 import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
-import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
-import * as EventsPageAdministeredEventsActions from '../../store/administered-events/administered-events.actions';
+import * as fromApp from '../../../../../../../core/ngrx/store/app.reducer';
+import * as EventsPageAdministeredEventsActions from '../../../../store/administered-events/administered-events.actions';
 
 @Component({
   selector: 'app-user-administered-events-list',

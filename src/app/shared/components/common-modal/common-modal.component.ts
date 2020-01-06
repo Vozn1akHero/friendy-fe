@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -27,10 +27,23 @@ import {animate, style, transition, trigger} from '@angular/animations';
     ])
   ]
 })
-export class CommonModalComponent implements OnInit {
+export class CommonModalComponent implements OnInit, OnDestroy {
+  @ViewChild("commonModal") commonModal;
+
   constructor() { }
 
   ngOnInit() {
+    const body = document.querySelector("body");
+    body.style.overflowY = 'hidden';
+    const y = window.scrollY;
+    this.commonModal.nativeElement.style.top = y + 'px';
+      window.scrollTo({
+      top: y
+    });
   }
 
+  ngOnDestroy(): void {
+    const body = document.querySelector("body");
+    body.style.overflowY = 'scroll';
+  }
 }

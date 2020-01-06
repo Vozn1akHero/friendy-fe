@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {EventSearchService} from '../../services/event-search.service';
+import {EventSearchService} from '../../../services/event-search.service';
 import {Observable} from 'rxjs';
-import Event from '../../models/event.model';
+import Event from '../../../models/event.model';
 
 @Component({
   selector: 'app-search-event-list',

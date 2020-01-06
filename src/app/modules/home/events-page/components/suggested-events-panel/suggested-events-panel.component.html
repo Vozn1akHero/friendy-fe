@@ -1,0 +1,17 @@
+<section class="suggested-events-panel">
+  <app-search-events></app-search-events>
+
+  <hr class="line">
+
+  <div class="suggested-events-wrapper">
+    <div class="intro-text-wrapper">
+      <span class="location-icon"></span>
+      <span class="text fr-default-smaller-font">Wydarzenia w twoim
+        mieście</span>
+    </div>
+    <app-suggested-events-item
+      *ngFor="let event of (exemplaryEvents$|async)"
+      [eventData]="event"
+    ></app-suggested-events-item>
+  </div>
+</section>

@@ -20,7 +20,8 @@ export class FriendsSearchService {
           userList.push(new FoundUserModel(user.id,
             user.name,
             user.surname,
-            user.avatar))
+            user.avatar,
+            user.city))
         });
         return userList;
     }))
@@ -75,6 +76,9 @@ export class FriendsSearchService {
         source: JSON.stringify(body),
         source_content_type: 'application/json'
       },
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
       observe: 'response' })
       .pipe(map((res : HttpResponse<any[]>) => {
         console.log(res.body);
@@ -83,7 +87,8 @@ export class FriendsSearchService {
           userList.push(new FoundUserModel(user.id,
             user.name,
             user.surname,
-            user.avatar))
+            user.avatar,
+            user.city))
         });
         return userList;
       }))

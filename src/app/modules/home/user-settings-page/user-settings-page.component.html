@@ -4,8 +4,7 @@
   </header>
   <div class="inner-wrapper">
     <app-user-settings-nav></app-user-settings-nav>
-    <ng-container *ngIf="(dataLoaded$ | async)">
-      <app-chosen-user-settings-subpage></app-chosen-user-settings-subpage>
-    </ng-container>
+    <app-chosen-user-settings-subpage *ngIf="(dataLoaded$ | async)">
+    </app-chosen-user-settings-subpage>
   </div>
 </section>

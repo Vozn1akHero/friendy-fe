@@ -5,8 +5,10 @@
       icon: '../../../../assets/images/icon/symbol-defs.svg#icon-users1',
       link: '/app/friends'}">
     <ng-container *ngIf="exemplaryFriends.length > 0; else noFriendsMsg">
-      <app-profile-friends-item *ngFor="let exemplaryFriend of exemplaryFriends"
-                                [exemplaryFriend]="exemplaryFriend"></app-profile-friends-item>
+      <div class="fr-flex-row">
+        <app-profile-friends-item *ngFor="let exemplaryFriend of exemplaryFriends"
+                                  [exemplaryFriend]="exemplaryFriend"></app-profile-friends-item>
+      </div>
     </ng-container>
     <ng-template #noFriendsMsg>
       <span class="fr-default-smaller-font">

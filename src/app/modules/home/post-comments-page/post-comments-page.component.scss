@@ -1,8 +1,13 @@
-.post-comments-page{
+.post-comments-modal{
   .upper-wrapper{
     background: white;
     padding: 5rem;
     overflow-y: scroll;
-    height: 60vh;
+    min-height: 20vh;
+    max-height: 60vh;
+
+    &::-webkit-scrollbar{
+      display: none;
+    }
   }
 }

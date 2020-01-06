@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
-import Event from '../../models/event.model';
+import Event from '../../../../models/event.model';
 import {Store} from '@ngrx/store';
-import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
-import * as EventsPageUserEventsActions from '../../store/user-events/user-events.actions';
+import * as fromApp from '../../../../../../../core/ngrx/store/app.reducer';
+import * as EventsPageUserEventsActions from '../../../../store/user-events/user-events.actions';
 
 @Component({
   selector: 'app-user-participating-event-list',

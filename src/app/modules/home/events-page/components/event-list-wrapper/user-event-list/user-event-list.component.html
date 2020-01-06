@@ -1,13 +1,15 @@
-<div class="user-event-list fr-light-grey-section-bg fr-p-b-1">
-  <div>
+<div class="user-event-list fr-p-b-1">
+  <div class="controls-wrapper">
     <div class="events-controls">
       <button class="all-events-btn" (click)="showConcreteTypeOfEventsFromComponent('participating')"
-              [ngClass]="{'activeButton': chosenSectionText == 'participating'}">
+              [ngClass]="{'active-btn': chosenSectionText ==
+              'participating'}">
         Wszystkie wydarzenia
       </button>
 
       <button class="my-events-btn" (click)="showConcreteTypeOfEventsFromComponent('administered')"
-              [ngClass]="{'activeButton': chosenSectionText == 'administered'}">
+              [ngClass]="{'active-btn': chosenSectionText ==
+              'administered'}">
         Moje wydarzenia
       </button>
     </div>

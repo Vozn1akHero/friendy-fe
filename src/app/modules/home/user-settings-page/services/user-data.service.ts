@@ -85,8 +85,11 @@ export class UserDataService{
   getLoggedInUserData(){
     this.http.get(`api/user/logged-in/extended`, {observe: 'body'})
       .pipe(take(1), retry(3)).subscribe((res:any) => {
-        console.log(res)
-        this.userBasicData = new BasicUserDataModel(res.id, res.name, res.surname, res.birthday);
+        this.userBasicData = new BasicUserDataModel(res.id,
+          res.name,
+          res.surname,
+          res.birthday,
+          res.genderId);
         this.userInterests = [...res.userInterests
           .map(value => new UserInterestModel(value.id, value.title))];
         this.userEducation = new EducationModel(res.educationId);

@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FriendsSearchInputComponent} from './components/friends-search-input/friends-search-input.component';
 import { FriendListComponent } from './components/friend-list/friend-list.component';
 import {SuggestedFriendsPanelComponent} from './components/suggested-friends-panel/suggested-friends-panel.component';
+import { FriendsSearchControlsComponent } from './components/friends-search-controls/friends-search-controls.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {SuggestedFriendsPanelComponent} from './components/suggested-friends-pan
     FriendsListItemComponent,
     FriendsSearchInputComponent,
     FriendListComponent,
-    SuggestedFriendsPanelComponent
+    SuggestedFriendsPanelComponent,
+    FriendsSearchControlsComponent
   ],
   exports: []
 })

@@ -14,7 +14,8 @@ export class BasicUserSettingsComponent implements OnInit {
   userBasicSettingsForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     surname: new FormControl('', [Validators.required]),
-    birthday: new FormControl('', [Validators.required])
+    birthday: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required])
   });
 
   showCalendar: boolean = false;
@@ -33,7 +34,8 @@ export class BasicUserSettingsComponent implements OnInit {
     const basicUserData = new BasicUserDataModel(this.basicUserData.id,
       this.userBasicSettingsForm.value.name,
       this.userBasicSettingsForm.value.surname,
-      this.userBasicSettingsForm.value.birthday);
+      this.userBasicSettingsForm.value.birthday,
+      this.userBasicSettingsForm.value.gender);
     this.subscriptionManager.add(this.userDataService.updateBasicData(basicUserData).subscribe(value => {
 
     }))
@@ -49,6 +51,7 @@ export class BasicUserSettingsComponent implements OnInit {
   getEducationData(){
     this.subscriptionManager.add(this.userDataService.userBasicData$.subscribe(value => {
       this.basicUserData = value;
+      this.basicUserData.birthday = value.birthday.split('T')[0];
     }))
   }
 

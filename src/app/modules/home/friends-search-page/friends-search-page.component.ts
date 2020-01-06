@@ -43,7 +43,8 @@ export class FriendsSearchPageComponent implements OnInit, OnDestroy {
       this.userList.push(new FoundUserModel(user.id,
         user.name,
         user.surname,
-        user.avatar))
+        user.avatar,
+        user.city))
     });
   }
 

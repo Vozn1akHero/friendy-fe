@@ -1,5 +1,4 @@
-import {Component, OnInit, Input, Renderer2, Output, EventEmitter} from '@angular/core';
-import {EventType} from '../../enums/event-types.enum';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-events-mine-search',

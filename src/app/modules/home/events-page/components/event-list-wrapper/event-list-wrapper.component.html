@@ -1,0 +1,4 @@
+<div class="event-list-wrapper fr-light-grey-section-bg">
+  <app-search-event-list *ngIf="searchActivated"></app-search-event-list>
+  <app-user-event-list *ngIf="!searchActivated"></app-user-event-list>
+</div>

@@ -27,18 +27,17 @@ export class SuggestedFriendsService {
   private _suggestedFriendsLoaded = new BehaviorSubject(false);
 
   get(){
-    if(this._suggestedFriends.getValue().length === 0)
-    return this.http.get(`api/friendship-recommendation/recommendations`, {observe: 'response'})
-      .pipe(map((res: HttpResponse<any[]>) => {
-        let suggestedFriends : SuggestedFriendModel[] = [];
-        res.body.map(value => {
-          suggestedFriends.push(new SuggestedFriendModel(value.potentialFriend.id,
-            value.potentialFriend.avatar,
-            value.potentialFriend.name,
-            value.potentialFriend.surname))
-        });
-        this.suggestedFriends = suggestedFriends;
-        this.suggestedFriendsLoaded = true;
-    }))
+      return this.http.get(`api/friendship-recommendation/recommendations`, {observe: 'response'})
+        .pipe(map((res: HttpResponse<any[]>) => {
+          let suggestedFriends : SuggestedFriendModel[] = [];
+          res.body.map(value => {
+            suggestedFriends.push(new SuggestedFriendModel(value.potentialFriend.id,
+              value.potentialFriend.avatar,
+              value.potentialFriend.name,
+              value.potentialFriend.surname))
+          });
+          this.suggestedFriends = suggestedFriends;
+          this.suggestedFriendsLoaded = true;
+        }))
   }
 }

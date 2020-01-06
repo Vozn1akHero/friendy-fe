@@ -9,9 +9,24 @@
 
       <textarea cols="32"
                 rows="6"
+                class="fr-m-t-2"
                 formControlName="messageContent"
                 placeholder="Napisz wiadomość"></textarea>
-  
-      <button [disabled]="newMessage.valid" type="submit">Wyślij</button>
+
+      <div class="controls-wrapper">
+        <div class="file-btn-wrapper">
+          <svg>
+            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
+          </svg>
+
+          <input type="file"
+                 name="filename"
+                 #image
+                 accept="image/jpeg, image/png"
+                 style="opacity: 0;">
+        </div>
+
+        <button [disabled]="newMessage.valid" type="submit">Wyślij</button>
+      </div>
   </form>
 </div>

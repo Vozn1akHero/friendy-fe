@@ -23,8 +23,4 @@ export class FriendsPageComponent implements OnInit {
   ngOnInit() {
 
   }
-
-  searchFriends(searchTerm) {
-    this.store.dispatch(new UserFriendsActions.FilterFriends({keyword: searchTerm}));
-  }
 }

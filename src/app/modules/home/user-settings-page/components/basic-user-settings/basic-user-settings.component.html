@@ -32,6 +32,31 @@
                  class="settings-panel-wrapper__input fr-input"
                  type="text">
         </div>
+        <div class="settings-panel-wrapper__row">
+          <label class="settings-panel-wrapper__label">
+            Płeć
+          </label>
+          <div class="settings-panel-wrapper__wrapper">
+            <label class="container container-male">
+              <span class="gender-title">mężczyzna</span>
+              <input [checked]="basicUserData.genderId === 1"
+                     formControlName="gender"
+                     name="gender"
+                     type="radio"
+                     value="1">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container fr-m-l-1 container-female">
+              <span class="gender-title">kobieta</span>
+              <input [checked]="basicUserData.genderId === 2"
+                     formControlName="gender"
+                     name="gender"
+                     type="radio"
+                     value="2">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
         <div class="submit-btn-wrapper">
           <button class="fr-btn-main-blue submit-btn"
                   (click)="updateEducationData()">

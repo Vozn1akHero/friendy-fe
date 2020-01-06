@@ -1,8 +1,6 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild} from '@angular/core';
 import {FormGroup, FormControl, Validators, Form} from '@angular/forms';
 import UserSearchModelDto from '../../models/user-search-dto.model';
-import {FriendsSearchService} from '../../services/friends-search.service';
-import {$e} from 'codelyzer/angular/styles/chars';
 
 @Component({
   selector: 'app-friends-search-form',

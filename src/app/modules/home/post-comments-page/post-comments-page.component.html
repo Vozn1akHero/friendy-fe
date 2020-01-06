@@ -1,17 +1,15 @@
 <app-common-modal>
-  <div class="post-comments-page">
-    <!--<app-post [postId]="postId"></app-post>-->
-    <div class="modal-wrapper">
-      <div class="upper-wrapper">
-        <ng-container [ngSwitch]="postType">
-          <app-user-post *ngSwitchCase="1" [postId]="postId"></app-user-post>
-          <app-event-post *ngSwitchCase="2" [postId]="postId"></app-event-post>
-        </ng-container>
-        <app-comment-list [postId]="postId" [postType]="postType"></app-comment-list>
-      </div>
-      <div class="form-wrapper">
-        <app-new-comment-form [postId]="postId"></app-new-comment-form>
-      </div>
+  <!--<app-post [postId]="postId"></app-post>-->
+  <div class="post-comments-modal">
+    <div class="upper-wrapper">
+      <ng-container [ngSwitch]="postType">
+        <app-user-post *ngSwitchCase="1" [postId]="postId"></app-user-post>
+        <app-event-post *ngSwitchCase="2" [postId]="postId"></app-event-post>
+      </ng-container>
+      <app-comment-list [postId]="postId" [postType]="postType"></app-comment-list>
+    </div>
+    <div class="form-wrapper">
+      <app-new-comment-form [postId]="postId"></app-new-comment-form>
     </div>
   </div>
 </app-common-modal>

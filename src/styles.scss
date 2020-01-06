@@ -10,7 +10,7 @@
 @import 'assets/sass/components/radiobutton';
 @import 'assets/sass/components/fr-btn-main-blue';
 @import 'assets/sass/components/fr-btn-main-pink';
-@import 'assets/sass/components/settings-panel-wrapper';
+//@import 'assets/sass/components/settings-panel-wrapper';
 
 
 *{
@@ -18,11 +18,6 @@
     margin: 0;
     font-family: 'Montserrat', sans-serif;
 }
-
-/*body, input[type=button], button, select, input, textarea{
-    font-family: 'Montserrat', sans-serif;
-}*/
-
 
 select{
   &:hover{
@@ -78,22 +73,5 @@ button{
   &:disabled{
     background: $color-grey-for-disabled-btn !important;
     pointer-events: none;
-  }
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-
-  &-track{
-    background: $color-bg-grey-footer;
-  }
-
-  &-thumb{
-    background: $color-bg-light-grey-2;
-    border-radius: 5px;
-
-    &:hover{
-      background: $color-grey-dark;
-    }
   }
 }

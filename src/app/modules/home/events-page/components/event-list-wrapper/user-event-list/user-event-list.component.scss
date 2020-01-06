@@ -1,24 +1,29 @@
-@import '../../../../../../assets/sass/base/variables';
+@import '../../../../../../../assets/sass/base/variables';
 
 .user-event-list{
+  .controls-wrapper {
+    position: sticky;
+    top: 0;
+    background: $color-bg-grey-footer;
+    padding: 1rem 0;
+    z-index: 1;
+  }
+
   .events-controls {
     display: flex;
 
     .all-events-btn, .my-events-btn {
       width: 50%;
       height: 3rem;
-
       border: none;
       background: none;
-
       display: flex;
       justify-content: center;
       align-items: center;
-
       font-size: .85rem;
-      color: $color-grey-dark;
-
+      color: $color-white;
       transition: all .2s;
+      background: rgba($color-grey-light, .5);
 
       &:hover {
         background: $color-bg-light-grey-2;
@@ -26,7 +31,17 @@
       }
     }
 
-    .activeButton {
+    .all-events-btn{
+      border-top-left-radius: 2rem;
+      border-bottom-left-radius: 2rem;
+    }
+
+    .my-events-btn{
+      border-top-right-radius: 2rem;
+      border-bottom-right-radius: 2rem;
+    }
+
+    .active-btn {
       color: white;
       background: #00baff;
 

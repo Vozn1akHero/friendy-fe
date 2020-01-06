@@ -3,7 +3,6 @@
 @import "../../../../../../assets/sass/components/fr-input";
 
 .new-message-panel {
-  margin-top: 1.5rem;
   width: 320px;
   background-color: $color-bg-light-grey;
 
@@ -32,24 +31,58 @@
       padding: 1rem;
     }
 
-    button[type="submit"] {
-      margin: 1rem 0;
-      border: none;
-      height: 3rem;
-      width: 10rem;
-      border-radius: 3rem;
-      background: $color-blue;
-      font-weight: 700;
-      color: white;
-      font-size: .85rem;
-      align-self: center;
+    .controls-wrapper {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+      width: calc(100% - 42px);
+      align-items: center;
 
-      &:hover {
-        cursor: pointer;
+      .file-btn-wrapper {
+        position: relative;
+
+        input {
+          opacity: 0;
+          width: 24px;
+          height: 24px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          font-size: 0;
+          cursor: pointer;
+        }
+
+        svg {
+          display: flex;
+          align-self: center;
+          border: none;
+          outline: none;
+          background: none;
+          width: 1.5rem;
+          height: 1.5rem;
+          fill: $color-grey-light-2;
+        }
       }
 
-      &:focus {
-        outline: none;
+      button[type="submit"] {
+        margin: 1rem 0;
+        border: none;
+        height: 3rem;
+        width: 10rem;
+        border-radius: 3rem;
+        background: $color-blue;
+        font-weight: 700;
+        color: white;
+        font-size: .85rem;
+        align-self: center;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &:focus {
+          outline: none;
+        }
       }
     }
   }

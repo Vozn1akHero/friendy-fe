@@ -6,7 +6,9 @@
   marginTop: true}">
   <ng-container *ngIf="userPhotosLoaded">
     <ng-container *ngIf="userPhotos.length > 0; else noPhotosMsg">
-      <app-profile-photos-item *ngFor="let photo of userPhotos" [photoContent]="photo"></app-profile-photos-item>
+      <div class="fr-flex-row">
+        <app-profile-photos-item *ngFor="let photo of userPhotos" [photoContent]="photo"></app-profile-photos-item>
+      </div>
     </ng-container>
     <ng-template #noPhotosMsg>
       <span class="fr-default-smaller-font">

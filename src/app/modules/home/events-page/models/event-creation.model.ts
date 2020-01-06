@@ -6,10 +6,8 @@ export default class EventCreationModel {
   city: string;
   participantsAmount: number;
   date: Date;
-  hour: number;
-  minute: number;
 
-  constructor(title: string, description: string, street: string, streetNumber: string, city: string, participantsAmount: number, date: Date, hour: number, minute: number) {
+  constructor(title: string, description: string, street: string, streetNumber: string, city: string, participantsAmount: number, date: Date) {
     this.title = title;
     this.description = description;
     this.street = street;
@@ -17,7 +15,5 @@ export default class EventCreationModel {
     this.city = city;
     this.participantsAmount = participantsAmount;
     this.date = date;
-    this.hour = hour;
-    this.minute = minute;
   }
 }

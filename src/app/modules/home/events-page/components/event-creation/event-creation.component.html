@@ -1,14 +1,15 @@
 <app-common-modal>
-  <form (ngSubmit)="onSubmit()" [formGroup]="eventCreationForm" class="event-creation-form">
+  <form [formGroup]="eventCreationForm" class="event-creation-form">
     <button (click)="closePopup()" class="close-btn">
       <svg class="close-icon">
-        <use xlink:href="../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+        <use
+          xlink:href="../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
       </svg>
     </button>
 
     <div class="wrapper">
       <input [ngClass]="{
-                  'bordered-onError': eventCreationForm.get('name').touched && eventCreationForm.get('name').invalid
+                  'bordered-onError': eventCreationForm.get('title').touched && eventCreationForm.get('title').invalid
                  }"
              class="fr-input name"
              formControlName="title"
@@ -48,29 +49,30 @@
              type="text">
     </div>
 
-    <div class="wrapper spec-wrapper">
-      <app-calendar *ngIf="calendarVisible"
-                    (onSelectDateEvent)="setDate($event)"></app-calendar>
+    <div class="wrapper spec-wrapper date-wrapper">
+      <app-calendar (onSelectDateEvent)="setDate($event)"
+                    *ngIf="calendarVisible"></app-calendar>
       <input
-        [ngClass]="{
-                'bordered-onError': eventCreationForm.get('streetNumber').touched && eventCreationForm.get('streetNumber').invalid
-               }"
         (click)="showCalendar()"
-        class="fr-input"
+        [ngClass]="{
+                'bordered-onError': eventCreationForm.get('date').touched &&
+                eventCreationForm.get('date').invalid
+               }"
+        [value]="eventCreationForm.get('date').value"
+        class="fr-input date-input"
+        formControlName="date"
         placeholder="Data"
-        type="text"
-        formControlName="date">
-    </div>
+        type="text">
 
-    <div class="wrapper spec-wrapper">
-            <span class="custom-dropdown date-hour">
+      <span class="custom-dropdown hour-span">
                 <select [ngClass]="{
                 'bordered-onError': eventCreationForm.get('hour').touched && eventCreationForm.get('hour').invalid
                }"
                         formControlName="hour">
                 <option hidden value="">Godzina</option>
-                <option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,00]"
-                        value="{{number}}">
+                <option
+                  *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,00]"
+                  value="{{number}}">
                     {{number}}
                 </option>
                 </select>
@@ -79,7 +81,7 @@
       <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('minute').touched && eventCreationForm.get('minute').invalid
                }"
-             class="fr-input date-minute"
+             class="fr-input minute-input"
              formControlName="minute" placeholder="Minuta"
              type="number">
     </div>
@@ -90,6 +92,7 @@
                  }"
              class="fr-input price"
              formControlName="entryPrice"
+             min="0"
              placeholder="Cena wejścia"
              type="number">
       <!--        <input type="number" formControlName="eventSubject" class="subject" placeholder="Tematyka">-->
@@ -98,12 +101,14 @@
                  }"
              class="fr-input participants-amount"
              formControlName="participantsAmount"
+             min="0"
              placeholder="Maksymalna ilość uczestników"
              type="number">
     </div>
 
-    <button [disabled]="eventCreationForm.invalid"
-            type="submit">
+    <button (click)="onSubmit()"
+            [disabled]="eventCreationForm.invalid"
+            class="create-event-btn">
       Utwórz
     </button>
   </form>

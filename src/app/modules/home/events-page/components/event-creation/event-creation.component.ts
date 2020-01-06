@@ -4,6 +4,7 @@ import {EventCreationService} from '../../services/event-creation.service';
 import EventCreationModel from '../../models/event-creation.model';
 import SubscriptionManager from '../../../../../shared/helpers/SubscriptionManager';
 import {Router} from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-event-creation',
@@ -34,8 +35,8 @@ export class EventCreationComponent implements OnDestroy {
               private subscriptionManager : SubscriptionManager){}
 
   setDate(date: string){
-    this.eventCreationForm.setValue({date});
     this.calendarVisible = false;
+    this.eventCreationForm.controls['date'].setValue(date);
   }
 
   closePopup(){
@@ -44,17 +45,16 @@ export class EventCreationComponent implements OnDestroy {
 
   onSubmit(){
     const formVal = this.eventCreationForm.value;
+    const date = moment(`${formVal.date} ${formVal.hour}:${formVal.minute}:00`,'DD.MM.YYYY HH:mm:ss').toDate();
     const event : EventCreationModel = new EventCreationModel(formVal.title,
       formVal.description,
       formVal.street,
       formVal.streetNumber,
       formVal.city,
       formVal.participantsAmount,
-      formVal.date,
-      formVal.hour,
-      formVal.minute);
-    this.subscriptionManager.add(this.eventCreationService.create(event).subscribe(value => {
-      this.router.navigate(['/api/event', value.id])
+      date);
+    this.subscriptionManager.add(this.eventCreationService.create(event).subscribe((value: any) => {
+      this.router.navigate(['/app/event', value.id])
     }));
   }
 

@@ -1,12 +1,11 @@
 import {Component, OnDestroy, OnInit, Renderer2} from '@angular/core';
-import {EventType} from '../../enums/event-types.enum';
-import * as EventsPageAdministeredEventsActions from '../../store/administered-events/administered-events.actions';
-import * as UserEventsPageEventsActions from '../../store/user-events/user-events.actions';
+import * as EventsPageAdministeredEventsActions from '../../../store/administered-events/administered-events.actions';
+import * as UserEventsPageEventsActions from '../../../store/user-events/user-events.actions';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
-import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
-import {SectionType} from '../../enums/section-type.enum';
-import {ActivatedSectionService} from '../../services/activated-section.service';
+import * as fromApp from '../../../../../../core/ngrx/store/app.reducer';
+import {SectionType} from '../../../enums/section-type.enum';
+import {ActivatedSectionService} from '../../../services/activated-section.service';
 import {Subscription} from 'rxjs';
 
 @Component({

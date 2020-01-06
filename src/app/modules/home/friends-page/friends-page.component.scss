@@ -1,5 +1,5 @@
 @import '../../../../assets/sass/base/variables';
-@import '../../../../assets/sass/components/checkbox';
+@import '../../../../assets/sass/base/animations';
 @import '../../../../assets/sass/abstracts/mixins';
 
 
@@ -40,38 +40,63 @@
     }
   }
 
-  .friends-search{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 1rem;
-    width: 100%;
-
-    div{
-      display: flex;
-      justify-content: space-between;
-      padding: 1rem 2.5rem 0 2.5rem;
-    }
-  }
 
   .friends-search-wrapper{
     height: 5rem;
+    position: relative;
+
+    hr{
+      position: absolute;
+      width: 15%;
+      z-index: -1;
+      top: 0;
+      transform: translateY(24px);
+    }
+
+    .left-line{
+      left: 0;
+    }
+
+    .right-line{
+      right: 0;
+    }
 
     &__link{
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto;
-      border: none;
-      background: linear-gradient(0.85turn, #fff000, #00baff);
-      color: #fff;
-      font-weight: 700;
-      height: 2.6rem;
+      color: rgba($color-grey-dark, .7);
+      width: 70%;
+      border: 1px solid rgba($color-grey-dark, .6);
+      font-weight: 300;
+      height: 3rem;
       text-decoration: none;
-      width: 12rem;
-      border-radius: 2rem;
       transition: all .3s;
       font-size: .85rem;
+      position: relative;
+      border-radius: 2rem;
+
+      &:before{
+        content: "";
+        width: 0;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-radius: 2rem;
+        z-index: -1;
+        height: 100%;
+        background: linear-gradient(0.85turn, $color-blue, $color-yellow);
+      }
+      &:hover{
+        box-shadow: 0 0.1875rem 0.1875rem $color-bg-grey-footer;
+        color: $color-white;
+
+        &:before{
+          animation: search-friends-btn-hover-animation linear .1s 1 normal;
+          width: 100%;
+        }
+      }
     }
   }
 
@@ -81,6 +106,7 @@
     width: 52%;
     height: fit-content;
     background: $color-bg-grey-footer;
+    border-radius: 1rem;
   }
 
   &__right-side-wrapper {

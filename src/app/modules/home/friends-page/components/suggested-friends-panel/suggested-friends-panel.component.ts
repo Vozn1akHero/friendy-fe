@@ -3,6 +3,7 @@ import {SuggestedFriendsService} from '../../services/suggested-friends.service'
 import SubscriptionManager from '../../../../../shared/helpers/SubscriptionManager';
 import {Observable} from 'rxjs';
 import SuggestedFriendModel from '../../models/suggested-friend.model';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-suggested-friends-panel',
@@ -22,7 +23,16 @@ export class SuggestedFriendsPanelComponent implements OnInit, OnDestroy {
   }
 
   getSuggestedFriends(){
-    this.subscriptionManager.add(this.suggestedFriendsService.get().subscribe());
+    this.subscriptionManager.add(
+      this.suggestedFriendsService
+        .suggestedFriendsLoaded$
+        .pipe(take(1))
+        .subscribe(value => {
+        if (!value){
+          this.suggestedFriendsService.get().subscribe()
+        }
+      })
+    );
   }
 
   setSuggestedFriends(){
