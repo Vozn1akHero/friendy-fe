@@ -5,6 +5,7 @@ import {Observable, Subscription} from 'rxjs';
 import {UserIdService} from '../../shared/services/user-id.service';
 import {UserStatusService} from './services/user-status.service';
 import SubscriptionManager from '../../shared/helpers/SubscriptionManager';
+import {InfoModalService} from '../../shared/components/info-modal/info-modal.service';
 
 @Component({
   selector: 'app-wrapper',
@@ -16,12 +17,15 @@ export class WrapperComponent implements OnInit, OnDestroy {
   friendRequestsModalOpenedSubscription: Subscription;
   userIdLoaded$: Observable<boolean>;
   connectedToStatusHub: boolean = false;
+  infoModalOpened$: Observable<boolean>;
 
   constructor(private route: ActivatedRoute,
+              private successModalService : InfoModalService,
               private userStatusService : UserStatusService,
               private subscriptionManager : SubscriptionManager,
               private userIdService: UserIdService,
               private friendRequestsModalService : FriendRequestsModalService) {
+    this.infoModalOpened$ = this.successModalService.opened$;
     this.setFriendRequestModalValue();
   }
 
@@ -42,7 +46,9 @@ export class WrapperComponent implements OnInit, OnDestroy {
   }
 
   setFriendRequestModalValue(){
-    this.friendRequestsModalOpenedSubscription = this.friendRequestsModalService.modalOpened$.subscribe(value => {
+    this.friendRequestsModalOpenedSubscription = this.friendRequestsModalService
+      .modalOpened$
+      .subscribe(value => {
       this.friendRequestsModalOpened = value;
     })
   }

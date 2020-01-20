@@ -2,25 +2,49 @@
   <div class="settings-panel-wrapper">
     <form>
       <div class="settings-panel-wrapper__controls-wrapper">
-        <div class="settings-panel-wrapper__row">
-          <label class="settings-panel-wrapper__label" for="interests">
-            Zainteresowania
-          </label>
-          <input class="settings-panel-wrapper__input fr-input"
-                 id="interests"
-                 type="text">
-        </div>
-        <div class="current-interests">
-          <div *ngFor="let interest of (userInterests$ | async);"
-               class="current-interests__item">
-          <span>
-            {{ interest.title }}
-          </span>
-            <button (click)="removeInterest(interest.id)"
-                    class="current-interests__remove-btn">
-              &times;
-            </button>
+        <div class="upper-wrapper">
+          <div class="settings-panel-wrapper__row">
+            <label class="settings-panel-wrapper__label" for="interest-input">
+              Dodaj zainteresowanie
+            </label>
+            <div class="settings-panel-wrapper__input-wrapper">
+              <input class="settings-panel-wrapper__input fr-input"
+                     id="interest-input"
+                     #interestInputRef
+                     (input)="onInterestsInputChange()"
+                     type="text">
+              <div *ngIf="interestInputValue.length > 0"
+                   class="found-interests-popup">
+                <button class="item-btn"
+                        (click)="selectInterest(interest.id)"
+                        *ngFor="let interest of foundInterests">
+                  {{ interest.title }}
+                </button>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div class="current-interests">
+          <ng-container *ngIf="userInterestsLoaded">
+            <div *ngFor="let interest of userInterests"
+                 class="item">
+              <span class="title">
+                {{ interest.title }}
+              </span>
+
+              <input type="range"
+                     min="1"
+                     max="10"
+                     value="{{ interest.wage }}"
+                     class="wage-slider">
+
+              <button (click)="removeInterest(interest.id)"
+                      class="remove-btn">
+                &times;
+              </button>
+            </div>
+          </ng-container>
         </div>
       </div>
       <div class="submit-btn-wrapper">

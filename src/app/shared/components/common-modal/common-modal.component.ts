@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -12,16 +12,8 @@ import {animate, style, transition, trigger} from '@angular/animations';
           opacity: '0'
         }),
         animate(
-          '300ms ease-in',
+          '122ms ease-in',
           style({ opacity: '1' })
-        )
-      ]), transition(':leave', [
-        style({
-          opacity: '1'
-        }),
-        animate(
-          '300ms ease-out',
-          style({ opacity: '0' })
         )
       ])
     ])
@@ -29,8 +21,11 @@ import {animate, style, transition, trigger} from '@angular/animations';
 })
 export class CommonModalComponent implements OnInit, OnDestroy {
   @ViewChild("commonModal") commonModal;
+  @Output() closeEmitter: EventEmitter<void>;
 
-  constructor() { }
+  constructor() {
+    this.closeEmitter = new EventEmitter();
+  }
 
   ngOnInit() {
     const body = document.querySelector("body");
@@ -45,5 +40,9 @@ export class CommonModalComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     const body = document.querySelector("body");
     body.style.overflowY = 'scroll';
+  }
+
+  closePopup() {
+    this.closeEmitter.emit();
   }
 }

@@ -61,6 +61,7 @@ export class LoginPageComponent implements OnInit {
     this.authService.logIn(userEmail, userPassword)
     .subscribe(data => {
       //localStorage.setItem('SESSION_HASH', data.sessionHash);
+      console.log(1);
       this.router.navigate(['/app/home']);
     }, err => {
       this.incorrectAuthData = true;

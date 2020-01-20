@@ -11,6 +11,7 @@ import { CommonModalComponent } from './components/common-modal/common-modal.com
 import { ButtonHoverInfoModalComponent } from './components/button-hover-info-modal/button-hover-info-modal.component';
 import { TransparentBgModalComponent } from './components/transparent-bg-modal/transparent-bg-modal.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { InfoModalComponent } from './components/info-modal/info-modal.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     ButtonHoverInfoModalComponent,
     TransparentBgModalComponent,
     CalendarComponent,
+    InfoModalComponent,
   ],
   exports: [
     NewMessageFormComponent,
@@ -39,6 +41,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     ButtonHoverInfoModalComponent,
     TransparentBgModalComponent,
     CalendarComponent,
+    InfoModalComponent,
   ]
 })
 

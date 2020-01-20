@@ -8,7 +8,7 @@
       Nieprawidłowe hasło lub login
     </span>
 
-    <form (ngSubmit)="onLoginFormSubmit()" [formGroup]="loginForm">
+    <form [formGroup]="loginForm">
       <div class="email">
         <input [ngClass]="{
                 'bordered-onError': loginForm.get('email').touched && loginForm.get('email').invalid
@@ -30,7 +30,10 @@
                type="password">
       </div>
 
-      <button class="submit-btn" type="submit">Zaloguj</button>
+      <button class="submit-btn"
+              (click)="onLoginFormSubmit()">
+        Zaloguj
+      </button>
 
       <div class="pass-recovery">
         <p class="pass-recovery--text">zapomniałeś(aś) hasła?</p>

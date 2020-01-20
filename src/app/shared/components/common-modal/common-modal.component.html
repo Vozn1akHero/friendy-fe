@@ -1,5 +1,15 @@
 <div @anim #commonModal class="common-modal">
-  <div class="common-modal__wrapper">
-    <ng-content></ng-content>
+  <div (click)="closePopup()"
+       class="invisible-bg"></div>
+  <div class="wrapper">
+    <div class="content">
+      <button (click)="closePopup()" class="close-btn">
+        <svg class="close-icon">
+          <use
+            xlink:href="../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
+        </svg>
+      </button>
+      <ng-content></ng-content>
+    </div>
   </div>
 </div>

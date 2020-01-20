@@ -2,14 +2,23 @@
   <div class="settings-panel-wrapper">
     <div class="settings-panel-wrapper__controls-wrapper">
       <div class="settings-panel-wrapper__row">
-        <label class="settings-panel-wrapper__label" for="password">
+        <label class="settings-panel-wrapper__label">
           Hasło
         </label>
-        <input [(ngModel)]="password"
-               class="settings-panel-wrapper__input fr-input"
-               id="password"
-               required
-               type="password">
+        <div class="settings-panel-wrapper__column-wrap">
+          <input [(ngModel)]="oldPassword"
+                 class="settings-panel-wrapper__input fr-m-b-1 fr-input"
+                 id="old-password"
+                 placeholder="Stare hasło"
+                 required
+                 type="password">
+          <input [(ngModel)]="newPassword"
+                 class="settings-panel-wrapper__input fr-input"
+                 id="new-password"
+                 placeholder="Nowe hasło"
+                 required
+                 type="password">
+        </div>
       </div>
     </div>
     <div class="submit-btn-wrapper">
@@ -26,8 +35,9 @@
           Email
         </label>
         <input [(ngModel)]="email"
+               type="email"
                class="settings-panel-wrapper__input fr-input" id="email"
-               required type="text">
+               required>
       </div>
     </div>
     <div class="submit-btn-wrapper">

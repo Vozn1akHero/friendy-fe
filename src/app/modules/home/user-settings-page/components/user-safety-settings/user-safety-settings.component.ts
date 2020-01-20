@@ -9,25 +9,26 @@ import UserSafetyModel from '../../models/user-safety.model';
   styleUrls: ['./user-safety-settings.component.scss']
 })
 export class UserSafetySettingsComponent implements OnInit, OnDestroy {
-  password: string;
+  newPassword: string;
+  oldPassword: string;
   email: string;
 
-  constructor(private userDataService : UserDataService,
-              private subscriptionManager : SubscriptionManager) { }
+  constructor(private userDataService: UserDataService,
+              private subscriptionManager: SubscriptionManager) {
+  }
 
   ngOnInit() {
     this.getEmail();
   }
 
-  getEmail(){
+  getEmail() {
     this.subscriptionManager.add(this.userDataService.userSafety$.subscribe((value: UserSafetyModel) => {
-      console.log(value);
       this.email = value.email;
-    }))
+    }));
   }
 
   onNewPasswordSubmit() {
-    this.subscriptionManager.add(this.userDataService.updatePassword(this.password).subscribe());
+    this.subscriptionManager.add(this.userDataService.updatePassword(this.oldPassword, this.newPassword).subscribe());
   }
 
   onNewEmailSubmit() {

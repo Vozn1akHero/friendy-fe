@@ -1,22 +1,24 @@
 <div class="chat-data">
   <div class="user-data">
-    <section>
-      <a [routerLink]="['/app/profile', interlocutorData.friendId]">
-        <figure>
+
+      <a class="avatar-link" [routerLink]="['/app/profile',
+      interlocutorData.friendId]">
+        <figure class="avatar-figure">
           <img alt="" src="{{ interlocutorData.avatarUrl }}">
         </figure>
       </a>
-      <section>
-        <a [routerLink]="['/app/profile', interlocutorData.friendId]">
+      <div class="md-wrapper">
+        <a class="md-link" [routerLink]="['/app/profile',
+        interlocutorData.friendId]">
           {{ interlocutorData.name }} {{ interlocutorData.surname }}
         </a>
         <ng-container *ngIf="status; else offline">
-          <p>dostępny</p>
+          <p class="cur-status">dostępny</p>
         </ng-container>
         <ng-template #offline>
-          <p>ostatnio dostępny {{ lastTimeOnline }}</p>
+          <p class="cur-status">ostatnio dostępny {{ lastTimeOnline }}</p>
         </ng-template>
-      </section>
-    </section>
+      </div>
+
   </div>
 </div>

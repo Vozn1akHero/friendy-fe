@@ -2,30 +2,81 @@
 @import "../../../../../../assets/sass/components/settings-panel-wrapper";
 
 
-.user-interests-settings{
-  .current-interests{
-    padding: 0 .5rem;
+.user-interests-settings {
+  .upper-wrapper{
+    min-height: 7rem;
+  }
 
-    &__item{
-      float: left;
-      min-width: 5rem;
-      width: fit-content;
-      padding: .455rem;
-      background: $color-pink-lighter;
-      color: white;
+  .found-interests-popup{
+    .item-btn{
+      border: none;
+      background: $color-pink;
+      color: $color-white;
+      height: 2rem;
+      margin: 1rem;
+      padding: 0 1rem;
+    }
+  }
+
+  .current-interests {
+    padding: 0 .5rem;
+    width: 70%;
+    margin-top: 2rem;
+
+    .item {
       font-size: .8rem;
       margin: .5rem;
-    }
+      display: flex;
+      align-items: center;
 
-    &__remove-btn{
-      width: 1.5rem;
-      height: 1.5rem;
-      margin-left: .5rem;
-      border-radius: 50%;
-      background: none;
-      border: 1.5px solid white;
-      color: white;
-      font-weight: 700;
+      .title{
+        color: $color-grey-dark;
+        margin-right: 1rem;
+      }
+
+      .wage-slider {
+        -webkit-appearance: none;
+        width: 50%;
+        height: 1rem;
+        border-radius: 1rem;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+      }
+
+      .wage-slider:hover {
+        opacity: 1;
+      }
+
+      .wage-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: $color-pink-lighter;
+        cursor: pointer;
+      }
+
+      .wage-slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: darken($color-pink-lighter, .1);
+        cursor: pointer;
+      }
+
+      .remove-btn {
+        width: 2rem;
+        height: 2rem;
+        margin-left: .5rem;
+        border-radius: 50%;
+        border: 1.5px solid white;
+        color: white;
+        font-weight: 700;
+        background: $color-pink-lighter;
+      }
     }
   }
 }

@@ -1,0 +1,11 @@
+<app-common-modal (closeEmitter)="closePopup()">
+  <div class="success-modal">
+    <p class="message">
+      {{ message$ | async }}
+    </p>
+    <div class="bottom-wrapper">
+      <button (click)="closePopup()"
+              class="close-btn fr-btn-main-pink">Zamknij</button>
+    </div>
+  </div>
+</app-common-modal>
