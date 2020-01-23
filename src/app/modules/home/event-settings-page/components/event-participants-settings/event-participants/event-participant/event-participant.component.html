@@ -4,7 +4,8 @@
       <img src="{{ eventParticipant.avatarUrl }}" alt="">
     </a>
   </figure>
-  <a class="basic-data-link" [routerLink]="['/app/profile', eventParticipant.id]">
+  <a class="basic-data-link fr-hover-text-decoration" [routerLink]="['/app/profile',
+  eventParticipant.id]">
     {{ eventParticipant.name }} {{ eventParticipant.surname }}
   </a>
   <div class="controls-wrapper">

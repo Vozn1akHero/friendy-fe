@@ -15,6 +15,10 @@ import { EventParticipantsSearchComponent } from './components/event-participant
 import {IsEventCreatorResolver} from './resolvers/is-event-creator.resolver';
 import { EventAdminsComponent } from './components/event-admins-settings/event-admins/event-admins.component';
 import { EventAdminComponent } from './components/event-admins-settings/event-admins/event-admin/event-admin.component';
+import { BannedUsersSettingsComponent } from './components/banned-users-settings/banned-users-settings.component';
+import {BannedParticipantComponent} from './components/banned-users-settings/banned-participants/banned-participant/banned-participant.component';
+import {BannedParticipantsComponent} from './components/banned-users-settings/banned-participants/banned-participants.component';
+import {BannedParticipantsSearchComponent} from './components/banned-users-settings/banned-participants/banned-participants-search/banned-participants-search.component';
 
 
 @NgModule({
@@ -36,7 +40,12 @@ import { EventAdminComponent } from './components/event-admins-settings/event-ad
     EventParticipantComponent,
     EventParticipantsSearchComponent,
     EventAdminsComponent,
-    EventAdminComponent
+    EventAdminComponent,
+    BannedUsersSettingsComponent,
+    BannedParticipantComponent,
+    BannedParticipantsComponent,
+    BannedUsersSettingsComponent,
+    BannedParticipantsSearchComponent
   ],
   providers: [
     IsEventCreatorResolver

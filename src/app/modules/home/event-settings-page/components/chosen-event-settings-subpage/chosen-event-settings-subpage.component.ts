@@ -9,25 +9,30 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ChosenEventSettingsSubpageComponent implements OnInit {
   chosenSubpage: number;
   eventId: number;
+  subpagesArr: string[];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {
+    this.subpagesArr = ["basic", "participants", "banned-participants", "admins"];
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(value => {
-      if(value.sp == null || Array.of("basic", "participants", "admins").indexOf(value.sp) === -1){
+      if(value.sp == null || this.checkSubpageExistence(value.sp)){
         window.location.replace(`${window.location.origin}/app/event/${+this.route.snapshot.params.id}/settings?sp=basic`)
       }
 
-      if(value.sp === "basic"){
-        this.chosenSubpage = 1;
-      } else if(value.sp === "participants"){
-        this.chosenSubpage = 2;
-      } else if(value.sp === "admins"){
-        this.chosenSubpage = 3;
-      }
+      this.setChosenSubpage(value.sp);
     });
 
     this.eventId = this.route.snapshot.params.id;
+  }
+
+  checkSubpageExistence(param: string){
+    return this.subpagesArr.indexOf(param) === -1;
+  }
+
+  setChosenSubpage(param:string){
+    this.chosenSubpage = this.subpagesArr.indexOf(param) + 1;
   }
 }
 

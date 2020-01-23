@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {take} from 'rxjs/operators';
+import {map, take} from 'rxjs/operators';
 import EventParticipantDetailed from '../models/event-participant-detailed.model';
+import EventBannedParticipantModel from '../models/event-banned-participant.model';
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +58,21 @@ export class EventParticipantService {
       this.eventParticipants = eventParticipants;
       this.eventParticipantsLoaded = true;
     })
+  }
+
+  getBanned(eventId: number){
+    return this.http.get(`api/event-participant/${eventId}/banned`, {observe: 'response'})
+      .pipe(map((res: HttpResponse<any[]>) => {
+        let bannedParticipants : EventBannedParticipantModel[] = [];
+        res.body.map(value => {
+          bannedParticipants.push(new EventBannedParticipantModel(value.id, value.name, value.surname, value.avatarPath));
+        });
+        return bannedParticipants;
+      }))
+  }
+
+  unbanParticipant(eventId: number, userId: number){
+    return this.http.post(`api/event-participant/${userId}/unban/${eventId}`,
+      {}, {observe: 'response'});
   }
 }

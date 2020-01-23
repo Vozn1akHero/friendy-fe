@@ -1,6 +1,6 @@
 @import '../../../../../../../../assets/sass/base/variables';
 
-.event-participant{
+.banned-participant{
   display: flex;
   width: 28rem;
   background: white;
@@ -32,7 +32,7 @@
     transform: translateY(25%);
   }
 
-  .participant-remove-btn, .participant-ban-btn{
+  .participant-unban-btn{
     width: 5rem;
     height: 1.75rem;
     border-radius: 3rem;
@@ -41,10 +41,4 @@
     display: block;
   }
 
-  .participant-remove-btn{
-    margin-top: .5rem;
-  }
-  .participant-ban-btn{
-
-  }
 }

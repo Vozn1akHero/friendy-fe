@@ -22,6 +22,10 @@
     flex-direction: column;
     width: 100%;
     align-items: flex-end;
+
+    &>*:not(:last-child){
+      margin-bottom: 1rem;
+    }
   }
 
   &__label{
@@ -30,9 +34,9 @@
     color: $color-grey-dark;
   }
 
-  &__input, &__textarea{
+  &__input, &__textarea, &__dropdown{
     background: $color-bg-grey-footer;
-    width: 60%;
+    width: 30vw;
     min-width: 30rem;
   }
 

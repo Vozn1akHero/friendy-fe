@@ -1,0 +1,36 @@
+@import '../../../../../../../../assets/sass/base/variables';
+
+
+.banned-participants-search{
+  display: flex;
+  margin-top: 2rem;
+
+  .banned-participants-search-input{
+    height: 39px;
+    width: 20vw;
+    outline: none;
+    border: none;
+    padding-left: 1rem;
+    transition: all .3s;
+  }
+
+  .submit-btn{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+
+    width: 39px;
+    height: 39px;
+    border: none;
+    background: $color-pink;
+
+    .icon {
+      display: flex;
+      align-self: center;
+      width: 19px;
+      height: 19px;
+      fill: $color-white;
+    }
+  }
+}
+

@@ -52,7 +52,7 @@
             <label class="settings-panel-wrapper__label">
               Adres
             </label>
-            <div class="settings-panel-wrapper__wrapper">
+            <div class="settings-panel-wrapper__column-wrap">
               <input [ngClass]="{
                   'bordered-onError': eventBasicSettingsForm.get('street').touched
                   && eventBasicSettingsForm.get('street').invalid
@@ -79,7 +79,7 @@
             <label class="settings-panel-wrapper__label">
               Data
             </label>
-            <div class="settings-panel-wrapper__wrapper">
+            <div class="settings-panel-wrapper__column-wrap">
               <app-calendar (onSelectDateEvent)="onSelectDate($event)"
                             *ngIf="showCalendar"></app-calendar>
               <input (click)="toggleCalendar()"
@@ -93,7 +93,9 @@
                      id="birthday"
                      readonly="readonly"
                      type="text">
-              <span class="custom-dropdown hour">
+
+              <span
+                class="custom-dropdown settings-panel-wrapper__dropdown hour">
               <select [ngClass]="{
               'bordered-onError': eventBasicSettingsForm.get('hour').touched
               && eventBasicSettingsForm.get('hour').invalid
@@ -107,6 +109,7 @@
                 </option>
               </select>
             </span>
+
               <input [ngClass]="{
                 'bordered-onError': eventBasicSettingsForm.get('minute').touched
                  && eventBasicSettingsForm.get('minute').invalid

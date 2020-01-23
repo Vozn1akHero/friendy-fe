@@ -9,7 +9,7 @@ export default class EventAdminModel {
     this.id = id;
     this.name = name;
     this.surname = surname;
-    this.avatarUrl = avatarUrl;
+    this.avatarUrl = "http://localhost:5000/"+avatarUrl;
     this.isEventCreator = isEventCreator;
   }
 }
