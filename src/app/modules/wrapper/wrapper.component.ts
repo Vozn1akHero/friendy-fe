@@ -18,6 +18,8 @@ export class WrapperComponent implements OnInit, OnDestroy {
   userIdLoaded$: Observable<boolean>;
   connectedToStatusHub: boolean = false;
   infoModalOpened$: Observable<boolean>;
+  receivedFriendRequestsAmount: number;
+
 
   constructor(private route: ActivatedRoute,
               private successModalService : InfoModalService,
@@ -32,6 +34,7 @@ export class WrapperComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.setUserIdLoaded();
     this.setConnectedStatus();
+    this.getSentFriendRequests();
   }
 
   setConnectedStatus(){
@@ -55,6 +58,14 @@ export class WrapperComponent implements OnInit, OnDestroy {
 
   setUserIdLoaded(){
     this.userIdLoaded$ = this.userIdService.userIdLoaded$;
+  }
+
+  getSentFriendRequests() {
+    this.friendRequestsModalService
+      .getReceivedFriendRequests();
+    this.subscriptionManager.add(this.friendRequestsModalService.receivedFriendRequests$.subscribe(value => {
+      this.receivedFriendRequestsAmount = value.length;
+    }))
   }
 
   openFriendRequestsModal(){

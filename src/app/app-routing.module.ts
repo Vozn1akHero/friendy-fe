@@ -51,6 +51,10 @@ const routes: Routes = [
         redirectTo: 'messages',
         pathMatch: 'full'},
       {
+        path: 'profile',
+        component: ProfilePageComponent
+      },
+      {
         path: 'profile/:id',
         component: ProfilePageComponent,
         resolve: {

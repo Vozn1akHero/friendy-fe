@@ -23,6 +23,10 @@
     width: 100%;
     align-items: flex-end;
 
+    &--aligned-left{
+      align-items: flex-start;
+    }
+
     &>*:not(:last-child){
       margin-bottom: 1rem;
     }

@@ -10,6 +10,8 @@ export default class EventDataModel {
   hour: number;
   minute: number;
   entryPrice: number;
+  avatarUrl: string;
+  backgroundUrl: string;
 
   constructor(id: number,
               title: string,
@@ -21,7 +23,9 @@ export default class EventDataModel {
               date: Date,
               hour: number,
               minute: number,
-              entryPrice: number) {
+              entryPrice: number,
+              avatarUrl: string,
+              backgroundUrl: string ) {
     this.id = id;
     this.title = title;
     this.description = description;
@@ -33,5 +37,7 @@ export default class EventDataModel {
     this.hour = hour;
     this.minute = minute;
     this.entryPrice = entryPrice;
+    this.avatarUrl = avatarUrl && "http://localhost:5000/" + avatarUrl;
+    this.backgroundUrl = backgroundUrl && "http://localhost:5000/" +  backgroundUrl;
   }
 }

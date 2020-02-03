@@ -15,7 +15,7 @@ export class MainPanelComponent {
   };
 
   @Input() panelStyles = {
-    width: '379px'
+    width: '100%'
   };
 
   @Input() contentSecStyles : {[p:string]: string};

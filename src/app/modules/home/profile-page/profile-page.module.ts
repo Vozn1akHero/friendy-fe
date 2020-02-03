@@ -24,9 +24,12 @@ import { ProfileHeaderSettingsComponent } from './components/profile-header/prof
 import { ProfileInfoPanelComponent } from './components/profile-header/profile-info-panel/profile-info-panel.component';
 import {ProfilePostComponent} from './components/profile-post-list/profile-post/profile-post.component';
 import {ProfileHeaderBasicDataComponent} from './components/profile-header/profile-header-basic-data/profile-header-basic-data.component';
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {ScrollableListNotifierService} from "../../../shared/services/scrollable-list-notifier.service";
 
 @NgModule({
   imports: [
+    InfiniteScrollModule,
     CommonModule,
     SharedModule,
     //ProfilePageRoutingModule,
@@ -53,7 +56,8 @@ import {ProfileHeaderBasicDataComponent} from './components/profile-header/profi
     ProfileInfoPanelComponent
   ],
   providers: [
-    ProfileBelongingResolver
+    ProfileBelongingResolver,
+    ScrollableListNotifierService
   ]
 })
 

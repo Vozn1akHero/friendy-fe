@@ -18,8 +18,8 @@ export class AuthGuard implements CanActivate {
     return this.authService
       .isLoggedIn()
       .pipe(
-        map(response=> {
-          if(response.status == 200){
+        map(response => {
+          if(response.status === 200){
             return true;
           }
         }),

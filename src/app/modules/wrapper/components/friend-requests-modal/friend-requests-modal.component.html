@@ -20,8 +20,7 @@
       </app-sent-friend-request-list>
 
       <app-received-friend-request-list *ngIf="chosenSubpage === 'received-requests'
-      && (sentFriendRequestsLoaded$ | async)
-        && (receivedFriendRequestsLoaded$ | async)" [receivedFriendRequests]="(receivedFriendRequests | async)">
+      && (receivedFriendRequestsLoaded$ | async)" [receivedFriendRequests]="(receivedFriendRequests | async)">
       </app-received-friend-request-list>
     </div>
   </div>

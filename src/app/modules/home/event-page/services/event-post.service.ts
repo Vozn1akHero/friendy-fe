@@ -28,7 +28,7 @@ export class EventPostService {
   }
 
   set eventPosts(value: EventPost[]) {
-    this._eventPosts.next(value);
+    this._eventPosts.next([...this._eventPosts.getValue(), ...value]);
   }
 
   create(post: NewPost, eventId: number) {
@@ -56,9 +56,9 @@ export class EventPostService {
       {observe: 'response'});
   }*/
 
-  getByEventId(id: number, startIndex: number) {
-    this.http.get(`/api/event-post/${id}?startIndex=${startIndex}&length=10`, {observe: 'body'})
-      .subscribe((res: any[]) => {
+  getByEventId(id: number, page: number) {
+    return this.http.get(`/api/event-post/paginate/${id}/${page}`, {observe: 'body'})
+      .pipe(map((res: any[]) => {
         let eventPosts: EventPost[] = [];
         res.map(value => {
           eventPosts.push(new EventPost(value.id,
@@ -73,7 +73,7 @@ export class EventPostService {
             value.date));
         });
         this.eventPosts = eventPosts;
-      });
+      }))
   }
 
   delete(postId: number, eventId: number) {

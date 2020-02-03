@@ -1,12 +1,5 @@
-<app-common-modal>
+<app-common-modal (closeEmitter)="closePopup()">
   <form [formGroup]="eventCreationForm" class="event-creation-form">
-    <button (click)="closePopup()" class="close-btn">
-      <svg class="close-icon">
-        <use
-          xlink:href="../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
-      </svg>
-    </button>
-
     <div class="wrapper">
       <input [ngClass]="{
                   'bordered-onError': eventCreationForm.get('title').touched && eventCreationForm.get('title').invalid

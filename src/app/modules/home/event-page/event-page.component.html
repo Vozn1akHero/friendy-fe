@@ -1,6 +1,10 @@
 <app-event-modals></app-event-modals>
 
-<div class="event-page">
+<div class="event-page"
+     infiniteScroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="50"
+     (scrolled)="updateList()">
   <app-event-header [isEventAdmin]="isEventAdmin"></app-event-header>
 
   <app-event-main-content [isEventAdmin]="isEventAdmin"></app-event-main-content>

@@ -25,28 +25,48 @@ export class UserPostsEffects {
     })
   );
 
+  buildPosts(res: any[]){
+    let posts : Post[] = [];
+    res.map(value => {
+      posts.push(new Post(value.id,
+        value.userId,
+        value.avatar,
+        value.content,
+        value.imagePath,
+        value.likesCount,
+        value.commentsCount,
+        value.postId,
+        value.isPostLikedByUser,
+        value.date))
+    });
+    return posts;
+  }
+
   @Effect()
   profilePageGetUserPosts = this.actions$.pipe(
     ofType(UserPostsActions.GET_USER_POSTS),
-    switchMap((getUserPosts: UserPostsActions.GetUserPosts) => {
-      return this.userPostService.getByUserId(getUserPosts.payload.userId, 0, 10)
+    withLatestFrom(this.store$.select(e => e.profilePageUserPosts.posts)),
+    switchMap(([action, posts] : [UserPostsActions.GetUserPosts, any[]]) => {
+      return this.userPostService.getLast(action.payload.userId, 5)
         .pipe(
           map((res: HttpResponse<any[]>) => {
-            let posts : Post[] = [];
-            res.body.map(value => {
-              posts.push(new Post(value.id,
-                value.userId,
-                value.avatar,
-                value.content,
-                value.imagePath,
-                value.likesCount,
-                value.commentsCount,
-                value.postId,
-                value.isPostLikedByUser,
-                value.date))
-            });
             return ({ type: UserPostsActions.SET_USER_POSTS,
-              payload: posts })
+              payload: this.buildPosts(res.body) })
+          })
+        )
+    })
+  );
+
+  @Effect()
+  startFulfillingUserPosts = this.actions$.pipe(
+    ofType(UserPostsActions.START_FULFILLING_USER_POSTS),
+    withLatestFrom(this.store$.select(e => e.profilePageUserPosts.posts)),
+    switchMap(([action, posts] : [UserPostsActions.GetUserPosts, Post[]]) => {
+      return this.userPostService.getByUserId(action.payload.userId, posts[posts.length - 1].id,5)
+        .pipe(
+          map((res: HttpResponse<any[]>) => {
+            return ({ type: UserPostsActions.FULFILL_USER_POSTS,
+              payload: this.buildPosts(res.body) })
           })
         )
     })

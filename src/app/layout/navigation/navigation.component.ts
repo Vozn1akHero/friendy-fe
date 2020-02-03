@@ -14,6 +14,7 @@ export class NavigationComponent implements OnInit {
   @Output() openFriendRequestsModalEmitter: EventEmitter<void> = new EventEmitter();
   @Output() closeFriendRequestsModalEmitter: EventEmitter<void> = new EventEmitter();
   profileId$: Observable<number>;
+  @Input() receivedFriendRequestsAmount: number;
 
   constructor(private router: Router,
               private userIdService : UserIdService,

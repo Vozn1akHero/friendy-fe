@@ -4,5 +4,13 @@
 @import "../../../../../../assets/sass/components/settings-panel-wrapper";
 
 .basic-event-settings {
+  .current-avatar{
+    width: 6rem;
+    height: 6rem;
+  }
 
+  .current-background{
+    width: 11rem;
+    height: 5rem;
+  }
 }

@@ -1,0 +1,13 @@
+@import "../../../../../assets/sass/base/variables";
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+
+  .label{
+    font-size: .8rem;
+    font-weight: 600;
+    color: $color-grey-dark;
+  }
+}

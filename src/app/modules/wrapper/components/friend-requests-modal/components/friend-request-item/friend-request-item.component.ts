@@ -24,7 +24,7 @@ export class FriendRequestItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.friendRequest)
+
   }
 
 }

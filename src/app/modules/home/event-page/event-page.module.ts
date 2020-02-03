@@ -26,9 +26,12 @@ import {EventAvatarAlterComponent} from './components/event-header/event-info-pa
 import { EventInfoPanelControlsComponent } from './components/event-header/event-info-panel/event-info-panel-controls/event-info-panel-controls.component';
 import { NonParticipantControlsComponent } from './components/event-header/event-info-panel/event-info-panel-controls/non-participant-controls/non-participant-controls.component';
 import { ParticipantControlsComponent } from './components/event-header/event-info-panel/event-info-panel-controls/participant-controls/participant-controls.component';
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {ScrollableListNotifierService} from "../../../shared/services/scrollable-list-notifier.service";
 
 @NgModule({
   imports: [
+    InfiniteScrollModule,
     CommonModule,
     SharedModule,
     FormsModule,
@@ -59,7 +62,8 @@ import { ParticipantControlsComponent } from './components/event-header/event-in
     ParticipantControlsComponent
   ],
   providers: [
-    IsEventAdminResolver
+    IsEventAdminResolver,
+    ScrollableListNotifierService
   ]
 })
 export class EventPageModule { }

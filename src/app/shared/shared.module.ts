@@ -12,6 +12,15 @@ import { ButtonHoverInfoModalComponent } from './components/button-hover-info-mo
 import { TransparentBgModalComponent } from './components/transparent-bg-modal/transparent-bg-modal.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { InfoModalComponent } from './components/info-modal/info-modal.component';
+import { ScrollableListComponent } from './components/scrollable-list/scrollable-list.component';
+import { SettingsPanelWrapperComponent } from './components/settings-panel/settings-panel-wrapper/settings-panel-wrapper.component';
+import {ControlsWrapperInSettingsPanelComponent} from "./components/settings-panel/controls-wrapper-in-settings-panel/controls-wrapper-in-settings-panel.component";
+import {RowInSettingsPanelComponent} from "./components/settings-panel/row-in-settings-panel/row-in-settings-panel.component";
+import {RowContentInSettingsPanelComponent} from "./components/settings-panel/row-content-in-settings-panel/row-content-in-settings-panel.component";
+import {SettingsPanelInputComponent} from "./components/settings-panel/settings-panel-input/settings-panel-input.component";
+import { SettingsPanelFormComponent } from './components/settings-panel/settings-panel-form/settings-panel-form.component';
+import {SettingsPanelTextareaComponent} from "./components/settings-panel/settings-panel-textarea/settings-panel-textarea.component";
+import {SettingsPanelDropdownComponent} from "./components/settings-panel/settings-panel-dropdown/settings-panel-dropdown.component";
 
 
 @NgModule({
@@ -31,6 +40,15 @@ import { InfoModalComponent } from './components/info-modal/info-modal.component
     TransparentBgModalComponent,
     CalendarComponent,
     InfoModalComponent,
+    ScrollableListComponent,
+    SettingsPanelWrapperComponent,
+    ControlsWrapperInSettingsPanelComponent,
+    RowInSettingsPanelComponent,
+    RowContentInSettingsPanelComponent,
+    SettingsPanelInputComponent,
+    SettingsPanelFormComponent,
+    SettingsPanelTextareaComponent,
+    SettingsPanelDropdownComponent
   ],
   exports: [
     NewMessageFormComponent,
@@ -42,6 +60,15 @@ import { InfoModalComponent } from './components/info-modal/info-modal.component
     TransparentBgModalComponent,
     CalendarComponent,
     InfoModalComponent,
+    ScrollableListComponent,
+    SettingsPanelWrapperComponent,
+    ControlsWrapperInSettingsPanelComponent,
+    RowInSettingsPanelComponent,
+    RowContentInSettingsPanelComponent,
+    SettingsPanelInputComponent,
+    SettingsPanelFormComponent,
+    SettingsPanelTextareaComponent,
+    SettingsPanelDropdownComponent
   ]
 })
 

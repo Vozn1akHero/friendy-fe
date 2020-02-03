@@ -10,19 +10,20 @@ import {FriendRequestsModalService} from '../../services/friend-requests-modal.s
   styleUrls: ['./friend-requests-modal.component.scss']
 })
 export class FriendRequestsModalComponent implements OnInit, OnDestroy {
-  chosenSubpage: string = "received-requests";
+  chosenSubpage: string;
 
   receivedFriendRequests: Observable<ReceivedFriendRequestModel[]>;
-/*  receivedFriendRequestsSubscription: Subscription;*/
   receivedFriendRequestsLoaded$: Observable<boolean>;
 
   sentFriendRequests: Observable<SentFriendRequestModel[]>;
-/*  sentFriendRequestsSubscription: Subscription;*/
   sentFriendRequestsLoaded$:  Observable<boolean>;
 
-  constructor(private friendRequestsModalService: FriendRequestsModalService) { }
+  constructor(private friendRequestsModalService: FriendRequestsModalService) {
+    this.chosenSubpage = "received-requests";
+  }
 
   ngOnInit() {
+    this.getReceivedFriendRequests();
   }
 
   onReceivedFriendRequestsBtnClick(){
@@ -36,8 +37,6 @@ export class FriendRequestsModalComponent implements OnInit, OnDestroy {
   }
 
   getReceivedFriendRequests() {
-    this.friendRequestsModalService
-      .getReceivedFriendRequests();
     this.receivedFriendRequestsLoaded$ = this.friendRequestsModalService.receivedFriendRequestsLoaded$;
     this.receivedFriendRequests = this.friendRequestsModalService.receivedFriendRequests$;
   }

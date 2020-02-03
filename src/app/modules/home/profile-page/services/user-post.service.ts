@@ -30,6 +30,11 @@ export class UserPostService {
       {observe: 'response'})
   }
 
+  getLast(id: number, length: number){
+    return this.http.get(`/api/user-post/last?userId=${id}&length=${length}`,
+      {observe: 'response'})
+  }
+
   delete(postId: number){
     return this.http.delete(`/api/post/${postId}/user-post`,
       {observe: 'response'})

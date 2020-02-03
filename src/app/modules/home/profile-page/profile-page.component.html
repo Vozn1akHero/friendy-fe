@@ -5,15 +5,21 @@
                       [newAvatar]="profilePageModalsService.newAvatar">
 </app-new-avatar-modal>
 
-<section class="profile-page">
-  <app-profile-header [activeSettings]="activeSettings"
-                      [userId]="userId"
-                      [isUserProfileOwner]="isUserProfileOwner">
-  </app-profile-header>
+  <section class="profile-page"
+           infiniteScroll
+           [infiniteScrollDistance]="2"
+           [infiniteScrollThrottle]="50"
+           (scrolled)="updateList()">
 
-  <app-profile-under-header-content-wrapper [activeSettings]="activeSettings"
-                                            [userId]="userId"
-                                            [isUserProfileOwner]="isUserProfileOwner">
-  </app-profile-under-header-content-wrapper>
-</section>
+      <app-profile-header [activeSettings]="activeSettings"
+                          [userId]="userId"
+                          [isUserProfileOwner]="isUserProfileOwner">
+      </app-profile-header>
+
+      <app-profile-under-header-content-wrapper [activeSettings]="activeSettings"
+                                                [userId]="userId"
+                                                [isUserProfileOwner]="isUserProfileOwner">
+      </app-profile-under-header-content-wrapper>
+  </section>
+
 

@@ -1,0 +1,8 @@
+@import "../../../../../assets/sass/base/variables";
+
+textarea{
+  background: $color-bg-grey-footer;
+  width: 30vw;
+  resize: none;
+  height: 10rem;
+}

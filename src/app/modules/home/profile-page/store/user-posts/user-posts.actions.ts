@@ -12,6 +12,8 @@ export const UNLIKE_POST = '[Profile Page] Unlike Post Start';
 export const UNLIKE_POST_IN_STATE = '[Profile Page] Unlike Post In State';
 export const GET_USER_POSTS = '[Profile Page] Get User Posts';
 export const SET_USER_POSTS = '[Profile Page] Set User Posts';
+export const START_FULFILLING_USER_POSTS = '[Profile Page] Start Fulfilling User Posts';
+export const FULFILL_USER_POSTS = '[Profile Page] Fulfill User Posts';
 
 export class SetAddedPost implements Action {
   readonly type = SET_ADDED_POST;
@@ -23,6 +25,18 @@ export class AddPost implements Action {
   readonly type = ADD_POST;
 
   constructor(public payload: NewPost) {}
+}
+
+export class StartFulfillingUserPosts implements Action {
+  readonly type = START_FULFILLING_USER_POSTS;
+
+  constructor(public payload: { userId: number }) {}
+}
+
+export class FulfillUserPosts implements Action {
+  readonly type = FULFILL_USER_POSTS;
+
+  constructor(public payload: Post[]) {}
 }
 
 export class GetUserPosts implements Action {
@@ -81,6 +95,8 @@ export type UserPostsActions = SetAddedPost
   | RemovePost
   | RemovePostFromState
   | LikePost
+  | StartFulfillingUserPosts
+  | FulfillUserPosts
   | LikePostInState
   | UnlikePost
   | UnlikePostInState;

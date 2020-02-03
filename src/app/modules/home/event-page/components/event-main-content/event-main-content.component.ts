@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./event-main-content.component.scss']
 })
 export class EventMainContentComponent implements OnInit {
-  @Input() activeSettings;
+  @Input() activeSettings: any;
   @Input() isEventAdmin: boolean;
 
   constructor() { }

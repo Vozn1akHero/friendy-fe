@@ -19,7 +19,7 @@
              class="image"
              alt="Friendy logo">
     </a>
-   
+
     <div class="links">
         <div class="links__item profile">
             <a [routerLink]="['/app/profile', (this.profileId$|async)]">
@@ -38,7 +38,7 @@
             </a>
             <button (click)="toggleFriendRequestsModal()"
                     class="friends__open-requests-modal-btn friends__open-requests-modal-btn--new">
-              1
+              {{ receivedFriendRequestsAmount }}
             </button>
         </div>
         <div class="links__item messages">
@@ -73,7 +73,7 @@
               <span>Dom</span>
             </a>
         </div>-->
-      
+
     </div>
 
     <app-footer></app-footer>

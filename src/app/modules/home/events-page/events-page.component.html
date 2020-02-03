@@ -5,9 +5,11 @@
 <section class="events-page">
   <app-events-search-panel></app-events-search-panel>
 
-  <app-event-list-wrapper [searchActivated]="searchActivated"></app-event-list-wrapper>
+  <div class="left-side-wrapper">
+    <app-event-list-wrapper [searchActivated]="searchActivated"></app-event-list-wrapper>
+  </div>
 
-  <section class="right-side-wrapper">
+  <div class="right-side-wrapper">
     <section class="new-event">
       <hr class="left-line">
       <button class="new-event__btn"
@@ -18,6 +20,6 @@
     </section>
 
     <app-suggested-events-panel></app-suggested-events-panel>
-  </section>
+  </div>
 </section>
 

@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {map, take} from 'rxjs/operators';
 import EventDataModel from '../models/event-data.model';
 import * as moment from 'moment';
+import NewEventDataModel from "../models/new-event-data.model";
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +28,23 @@ export class EventDataService {
           date,
           hour,
           minute,
-          res.entryPrice);
+          res.entryPrice, res.avatar, res.background);
     }))
   }
 
-  update(data: EventDataModel){
+  update(data: NewEventDataModel){
     return this.http.put(`api/event/${data.id}`, {data});
+  }
+
+  changeAvatarById(id: number, file: File){
+    const content = new FormData();
+    content.append("image", file);
+    return this.http.put('/api/event/${id}/avatar', content, {observe: 'response'});
+  }
+
+  changeBackgroundById(id: number, file: File){
+    const content = new FormData();
+    content.append("image", file);
+    return this.http.put('/api/event/${id}/background', content, {observe: 'response'});
   }
 }

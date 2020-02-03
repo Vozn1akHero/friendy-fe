@@ -51,7 +51,7 @@ export class LoginPageComponent implements OnInit {
 
   isLoggedIn(){
     const isLoggedIn = this.route.snapshot.data.isLoggedIn;
-    if(isLoggedIn) this.router.navigate(['/app/home']);
+    if(isLoggedIn) this.router.navigate(['/app/profile']);
   }
 
   onLoginFormSubmit(){
@@ -61,8 +61,7 @@ export class LoginPageComponent implements OnInit {
     this.authService.logIn(userEmail, userPassword)
     .subscribe(data => {
       //localStorage.setItem('SESSION_HASH', data.sessionHash);
-      console.log(1);
-      this.router.navigate(['/app/home']);
+      this.router.navigate(['/app/profile']);
     }, err => {
       this.incorrectAuthData = true;
     });

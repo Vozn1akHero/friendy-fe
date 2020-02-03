@@ -44,6 +44,8 @@ import {MessagesPageModule} from './modules/home/messages-page/messages-page.mod
 import {EventDataEffects} from './modules/home/event-page/store/event-data/event-data.effects';
 import {DialogMessagesEffects} from './modules/home/dialog-page/store/dialog-messages/dialog-messages.effects';
 import {LoggedInResolver} from './logged-in.resolver';
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
+
 
 
 
