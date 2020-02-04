@@ -15,18 +15,20 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 })
 export class SettingsPanelTextareaComponent implements ControlValueAccessor {
   @Input() invalid: boolean;
+  @Input() initValue: any;
   //@ViewChild() d
   textVal: string;
   _value;
 
-  changeValue(){
-    this.propagateChange(this.textVal);
+  changeValue($event){
+    this.propagateChange($event.target.value);
   }
 
   propagateChange = (_: any) => {};
 
   registerOnChange(fn) {
     this.propagateChange = fn;
+    this.propagateChange(this.initValue);
   }
 
   registerOnTouched(fn: any): void {
@@ -34,8 +36,7 @@ export class SettingsPanelTextareaComponent implements ControlValueAccessor {
 
   writeValue(val){
     if(val){
-      this._value = val;
-      this.propagateChange(this._value);
+      this.propagateChange(val);
     }
   }
 }

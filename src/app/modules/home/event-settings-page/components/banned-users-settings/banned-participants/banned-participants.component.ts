@@ -30,11 +30,14 @@ export class BannedParticipantsComponent implements OnInit {
     })
   }
 
-  unbanParticipant($event: EventBannedParticipantModel) {
-    this.eventParticipantService.unbanParticipant(this.eventId, $event.id)
-      .pipe(take(1))
+  unbanParticipant(id: number) {
+    this.eventParticipantService.unbanParticipant(this.eventId, id)
       .subscribe(res => {
 
       })
+  }
+
+  searchParticipants(value : string){
+    this.eventParticipantService.filterByKeyword(value);
   }
 }

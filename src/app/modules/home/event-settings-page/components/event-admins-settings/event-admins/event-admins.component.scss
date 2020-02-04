@@ -1,6 +1,9 @@
 .event-admins{
   &__list{
-    padding-left: 5rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 2vh;
+    grid-row-gap: 2vw;
   }
 }

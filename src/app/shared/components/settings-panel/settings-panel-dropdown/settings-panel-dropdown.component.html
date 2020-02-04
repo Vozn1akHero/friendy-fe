@@ -1,5 +1,5 @@
 <span class="dropdown custom-dropdown" [ngStyle]="additionalStyles">
-  <select (change)="changeValue()" [(ngModel)]="selectedOption"
+  <select (change)="changeValue($event)"
           [ngClass]="{
   'bordered-onError': invalid
  }"

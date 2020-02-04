@@ -33,4 +33,12 @@ export class EventAdminsComponent implements OnInit {
   setEventAdminsLoaded(){
     this.eventAdminsLoaded$ = this.eventAdminsComponent.eventAdminsLoaded$;
   }
+
+  searchAdmins(value){
+    this.eventAdminsComponent.filterByKeyword(value);
+  }
+
+  remove(id: number){
+
+  }
 }

@@ -13,7 +13,7 @@ export const REMOVE_FRIEND_FROM_STATE = '[Friends Page] Remove Friend From State
 export class GetFriends implements Action {
   readonly type = GET_FRIENDS;
 
-  constructor(public payload: {firstIndex: number, length: number}) {}
+  constructor(public payload: {page: number}) {}
 }
 
 export class SetFriends implements Action {

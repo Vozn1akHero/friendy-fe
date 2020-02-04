@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {DialogHubService} from '../../../shared/services/dialog-hub.service';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {ScrollableListNotifierService} from "../../../shared/services/scrollable-list-notifier.service";
 
 @Component({
   selector: 'app-dialog-page',
@@ -21,6 +22,7 @@ export class DialogPageComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject();
 
   constructor(private route: ActivatedRoute,
+              private scrollableListNotifierService : ScrollableListNotifierService,
               private dialogHubService: DialogHubService) {}
 
   ngOnInit() {
@@ -44,5 +46,9 @@ export class DialogPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  updateMessages() {
+    this.scrollableListNotifierService.notify();
   }
 }

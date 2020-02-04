@@ -27,8 +27,8 @@ export class FriendsService {
       )
   }
 
-  getFriendsRange(firstIndex : number, length: number){
-    return this.http.get(`/api/friend/range/logged-in?firstIndex=${firstIndex}&length=${length}`,
+  getFriends(page : number){
+    return this.http.get(`/api/friend/paginate/logged-in/${page}`,
       {observe: 'body'}).pipe(map((res:any[]) => {
       let friends : Friend[] = [];
       res.map((friend:any) => {

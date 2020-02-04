@@ -21,6 +21,7 @@ import {SettingsPanelInputComponent} from "./components/settings-panel/settings-
 import { SettingsPanelFormComponent } from './components/settings-panel/settings-panel-form/settings-panel-form.component';
 import {SettingsPanelTextareaComponent} from "./components/settings-panel/settings-panel-textarea/settings-panel-textarea.component";
 import {SettingsPanelDropdownComponent} from "./components/settings-panel/settings-panel-dropdown/settings-panel-dropdown.component";
+import {SettingsPanelSelectComponent} from "./components/settings-panel/settings-panel-select/settings-panel-select.component";
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {SettingsPanelDropdownComponent} from "./components/settings-panel/settin
     SettingsPanelInputComponent,
     SettingsPanelFormComponent,
     SettingsPanelTextareaComponent,
-    SettingsPanelDropdownComponent
+    SettingsPanelDropdownComponent,
+    SettingsPanelSelectComponent
   ],
   exports: [
     NewMessageFormComponent,
@@ -68,7 +70,8 @@ import {SettingsPanelDropdownComponent} from "./components/settings-panel/settin
     SettingsPanelInputComponent,
     SettingsPanelFormComponent,
     SettingsPanelTextareaComponent,
-    SettingsPanelDropdownComponent
+    SettingsPanelDropdownComponent,
+    SettingsPanelSelectComponent
   ]
 })
 

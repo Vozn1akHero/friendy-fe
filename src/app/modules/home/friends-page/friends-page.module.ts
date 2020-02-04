@@ -11,6 +11,8 @@ import {FriendsSearchInputComponent} from './components/friends-search-input/fri
 import { FriendListComponent } from './components/friend-list/friend-list.component';
 import {SuggestedFriendsPanelComponent} from './components/suggested-friends-panel/suggested-friends-panel.component';
 import { FriendsSearchControlsComponent } from './components/friends-search-controls/friends-search-controls.component';
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {ScrollableListNotifierService} from "../../../shared/services/scrollable-list-notifier.service";
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { FriendsSearchControlsComponent } from './components/friends-search-cont
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InfiniteScrollModule
   ],
   declarations: [
     FriendsPageComponent,
@@ -29,6 +32,9 @@ import { FriendsSearchControlsComponent } from './components/friends-search-cont
     FriendListComponent,
     SuggestedFriendsPanelComponent,
     FriendsSearchControlsComponent
+  ],
+  providers: [
+    ScrollableListNotifierService
   ],
   exports: []
 })

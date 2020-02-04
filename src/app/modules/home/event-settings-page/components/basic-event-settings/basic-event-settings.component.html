@@ -198,12 +198,42 @@
   <ng-container *ngIf="loaded">
     <app-settings-panel-wrapper>
       <form [formGroup]="eventBasicSettingsForm">
-
         <app-controls-wrapper-in-settings-panel (formSubmitEmitter)="onBasicChangesFormSubmit()">
+          <app-row-in-settings-panel [label]="'Zdjęcie grupowe'">
+            <app-row-content-in-settings-panel>
+              <figure class="current-avatar">
+                <img src="{{ eventData.avatarUrl }}" alt="">
+              </figure>
+              <input type="file"
+                     name="avatar"
+                     #avatar
+                     accept="image/jpeg, image/png">
+            </app-row-content-in-settings-panel>
+          </app-row-in-settings-panel>
+
+          <app-row-in-settings-panel [label]="'Tło'">
+            <app-row-content-in-settings-panel>
+              <ng-container *ngIf="eventData.backgroundUrl; else nullBg">
+                <figure class="current-background">
+                  <img src="{{ eventData.backgroundUrl }}" alt="">
+                </figure>
+              </ng-container>
+              <ng-template #nullBg>
+                <figure class="current-background" [ngStyle]="{ background: 'rgb(248, 248, 248)' }">
+                </figure>
+              </ng-template>
+              <input type="file"
+                     name="background"
+                     #background
+                     accept="image/jpeg, image/png">
+            </app-row-content-in-settings-panel>
+          </app-row-in-settings-panel>
+
           <app-row-in-settings-panel [label]="'Nazwa'">
             <app-row-content-in-settings-panel>
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('title').touched
                      && eventBasicSettingsForm.get('title').invalid"
+                                        [initValue]="eventData.title"
                                         formControlName="title"></app-settings-panel-input>
             </app-row-content-in-settings-panel>
           </app-row-in-settings-panel>
@@ -212,6 +242,7 @@
             <app-row-content-in-settings-panel>
               <app-settings-panel-textarea [invalid]="eventBasicSettingsForm.get('description').touched
                      && eventBasicSettingsForm.get('description').invalid"
+                                           [initValue]="eventData.description"
                                            formControlName="description"></app-settings-panel-textarea>
             </app-row-content-in-settings-panel>
           </app-row-in-settings-panel>
@@ -220,6 +251,7 @@
             <app-row-content-in-settings-panel>
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('city').touched
                      && eventBasicSettingsForm.get('city').invalid"
+                                        [initValue]="eventData.city"
                                         formControlName="city"></app-settings-panel-input>
             </app-row-content-in-settings-panel>
           </app-row-in-settings-panel>
@@ -229,8 +261,10 @@
               <app-settings-panel-input [additionalStyles]="{width: '21vw'}"
                                         [invalid]="eventBasicSettingsForm.get('street').touched
                      && eventBasicSettingsForm.get('street').invalid"
+                                        [initValue]="eventData.street"
                                         formControlName="street"></app-settings-panel-input>
               <app-settings-panel-input [additionalStyles]="{width: '7vw'}"
+                                        [initValue]="eventData.streetNumber"
                                         [invalid]="eventBasicSettingsForm.get('streetNumber').touched
                      && eventBasicSettingsForm.get('streetNumber').invalid"
                                         formControlName="streetNumber"></app-settings-panel-input>
@@ -245,6 +279,7 @@
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('date').touched
                      && eventBasicSettingsForm.get('date').invalid"
                                         [additionalStyles]="{width: '18vw'}"
+                                        [initValue]="eventData.date"
                                         formControlName="date"></app-settings-panel-input>
 
               <app-settings-panel-dropdown [initValue]="eventData.hour"
@@ -257,6 +292,7 @@
 
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('minute').touched
                      && eventBasicSettingsForm.get('minute').invalid"
+                                        [initValue]="eventData.minute"
                                         [additionalStyles]="{width: '8vw'}"
                                         formControlName="minute"></app-settings-panel-input>
             </app-row-content-in-settings-panel>
@@ -266,6 +302,7 @@
             <app-row-content-in-settings-panel>
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('entryPrice').touched
                      && eventBasicSettingsForm.get('entryPrice').invalid"
+                                        [initValue]="eventData.entryPrice"
                                         formControlName="entryPrice"></app-settings-panel-input>
             </app-row-content-in-settings-panel>
           </app-row-in-settings-panel>
@@ -274,11 +311,11 @@
             <app-row-content-in-settings-panel>
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('participantsAmount').touched
                      && eventBasicSettingsForm.get('participantsAmount').invalid"
+                                        [initValue]="eventData.participantsAmount"
                                         formControlName="participantsAmount"></app-settings-panel-input>
             </app-row-content-in-settings-panel>
           </app-row-in-settings-panel>
         </app-controls-wrapper-in-settings-panel>
-
       </form>
     </app-settings-panel-wrapper>
   </ng-container>

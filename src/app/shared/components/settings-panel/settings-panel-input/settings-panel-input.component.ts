@@ -1,4 +1,14 @@
-import {Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
@@ -13,20 +23,25 @@ import {ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR} fro
     }
   ]
 })
-export class SettingsPanelInputComponent implements ControlValueAccessor {
+export class SettingsPanelInputComponent implements ControlValueAccessor, OnInit{
   @Input() invalid: boolean;
-  inputVal: string;
-  _value;
+  @Input() initValue: any;
   @Input() additionalStyles;
+  @ViewChild('input') input: ElementRef;
 
-  changeValue(){
-    this.propagateChange(this.inputVal);
+  changeValue($event){
+    this.propagateChange($event.target.value);
   }
 
   propagateChange = (_: any) => {};
 
   registerOnChange(fn) {
     this.propagateChange = fn;
+    this.propagateChange(this.initValue);
+    /*if (this._value == null) {
+      this._value = this.initValue;
+      this.propagateChange(this.initValue);
+    }*/
   }
 
   registerOnTouched(fn: any): void {
@@ -34,8 +49,11 @@ export class SettingsPanelInputComponent implements ControlValueAccessor {
 
   writeValue(val){
     if(val){
-      this._value = val;
-      this.propagateChange(this._value);
+      this.propagateChange(val);
     }
+  }
+
+  ngOnInit(): void {
+    this.input.nativeElement.value = this.initValue;
   }
 }

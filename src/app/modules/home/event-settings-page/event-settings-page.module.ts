@@ -19,6 +19,10 @@ import { BannedUsersSettingsComponent } from './components/banned-users-settings
 import {BannedParticipantComponent} from './components/banned-users-settings/banned-participants/banned-participant/banned-participant.component';
 import {BannedParticipantsComponent} from './components/banned-users-settings/banned-participants/banned-participants.component';
 import {BannedParticipantsSearchComponent} from './components/banned-users-settings/banned-participants/banned-participants-search/banned-participants-search.component';
+import { ParticipantsCommonListComponent } from './components/shared/participants-common-list/participants-common-list.component';
+import { ParticipantComponent } from './components/shared/participants-common-list/participant/participant.component';
+import { ParticipantsSearchComponent } from './components/shared/participants-common-list/participants-search/participants-search.component';
+import { ParticipantListButtonComponent } from './components/shared/participants-common-list/participant-list-button/participant-list-button.component';
 
 
 @NgModule({
@@ -45,7 +49,11 @@ import {BannedParticipantsSearchComponent} from './components/banned-users-setti
     BannedParticipantComponent,
     BannedParticipantsComponent,
     BannedUsersSettingsComponent,
-    BannedParticipantsSearchComponent
+    BannedParticipantsSearchComponent,
+    ParticipantsCommonListComponent,
+    ParticipantComponent,
+    ParticipantsSearchComponent,
+    ParticipantListButtonComponent
   ],
   providers: [
     IsEventCreatorResolver

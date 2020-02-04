@@ -2,5 +2,5 @@
        class="fr-input"
        [ngStyle]="additionalStyles"
        [ngClass]="{'bordered-onError': invalid}"
-       (change)="changeValue()"
-       [(ngModel)]="inputVal" />
+       (change)="changeValue($event)"
+       #input />

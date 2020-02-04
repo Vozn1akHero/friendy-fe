@@ -1,10 +1,18 @@
-<div class="event-participants">
-  <app-event-participants-search></app-event-participants-search>
-
-  <div class="event-participants__list">
-    <ng-container *ngIf="(eventParticipantsLoaded$ | async)">
-      <app-event-participant *ngFor="let eventParticipant of (eventParticipants$ | async)"
-                             [eventParticipant]="eventParticipant"></app-event-participant>
-    </ng-container>
-  </div>
-</div>
+<app-participants-common-list (searchEmitter)="searchParticipants($event)">
+  <ng-container *ngIf="(eventParticipantsLoaded$ | async)">
+    <app-participant *ngFor="let eventParticipant of (eventParticipants$ | async)"
+                     [id]="eventParticipant.id"
+                     [avatarUrl]="eventParticipant.avatarUrl"
+                     [name]="eventParticipant.name"
+                     [surname]="eventParticipant.surname">
+      <app-participant-list-button (action)="remove($event)"
+                                   [userId]="eventParticipant.id">
+        Usuń
+      </app-participant-list-button>
+      <app-participant-list-button (action)="ban($event)"
+                                   [userId]="eventParticipant.id">
+        Zablokuj
+      </app-participant-list-button>
+    </app-participant>
+  </ng-container>
+</app-participants-common-list>

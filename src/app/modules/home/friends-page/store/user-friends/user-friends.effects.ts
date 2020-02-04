@@ -13,7 +13,7 @@ import {FriendsService} from '../../services/friends.service';
 
 @Injectable()
 export class UserFriendsEffects {
-  @Effect()
+  /*@Effect()
   getFriends = this.actions$.pipe(
     ofType(UserFriendsActions.GET_FRIENDS),
     withLatestFrom(this.store.select(e=>e.friendsPageUserFriends.loaded)),
@@ -23,6 +23,18 @@ export class UserFriendsEffects {
     mergeMap(([{payload}] : any) => {
       return this.friendsService.getFriendsRange(payload.firstIndex,
         payload.length)
+        .pipe(
+          map(res => {
+            return ({type: UserFriendsActions.SET_FRIENDS, payload: res})
+          })
+        )
+    })
+  );*/
+  @Effect()
+  getFriends = this.actions$.pipe(
+    ofType(UserFriendsActions.GET_FRIENDS),
+    switchMap(([{payload}] : any) => {
+      return this.friendsService.getFriends(payload.page)
         .pipe(
           map(res => {
             return ({type: UserFriendsActions.SET_FRIENDS, payload: res})

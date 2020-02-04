@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {EventParticipantService} from '../../../services/event-participant.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
@@ -13,6 +13,7 @@ export class EventParticipantsComponent implements OnInit {
   eventParticipants$: Observable<EventParticipantDetailed[]>;
   eventParticipantsLoaded$: Observable<boolean>;
   @Input() eventId: number;
+  @ViewChild('searchInput') searchInput;
 
   constructor(private eventParticipantService: EventParticipantService) { }
 
@@ -32,5 +33,17 @@ export class EventParticipantsComponent implements OnInit {
 
   setEventParticipantsLoaded(){
     this.eventParticipantsLoaded$ = this.eventParticipantService.eventParticipantsLoaded$;
+  }
+
+  searchParticipants(value){
+    this.eventParticipantService.filterByKeyword(value);
+  }
+
+  remove(id: number){
+
+  }
+
+  ban(id: number){
+
   }
 }

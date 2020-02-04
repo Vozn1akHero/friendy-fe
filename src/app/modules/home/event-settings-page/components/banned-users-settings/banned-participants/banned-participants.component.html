@@ -1,11 +1,14 @@
-<div class="banned-participants">
-  <app-banned-participants-search></app-banned-participants-search>
-
-  <div class="banned-participants__list">
-    <ng-container *ngIf="loaded">
-      <app-banned-participant *ngFor="let bannedParticipant of bannedUsers"
-                              (unbanParticipantEmitter)="unbanParticipant($event)"
-                             [bannedParticipant]="bannedParticipant"></app-banned-participant>
-    </ng-container>
-  </div>
-</div>
+<app-participants-common-list (searchEmitter)="searchParticipants($event)">
+  <ng-container *ngIf="loaded">
+    <app-participant *ngFor="let bannedParticipant of bannedUsers"
+                     [id]="bannedParticipant.id"
+                     [avatarUrl]="bannedParticipant.avatarUrl"
+                     [name]="bannedParticipant.name"
+                     [surname]="bannedParticipant.surname">
+      <app-participant-list-button (action)="unbanParticipant($event)"
+                                   [userId]="bannedParticipant.id">
+        Odblokuj
+      </app-participant-list-button>
+    </app-participant>
+  </ng-container>
+</app-participants-common-list>

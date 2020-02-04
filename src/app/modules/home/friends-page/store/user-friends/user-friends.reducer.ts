@@ -27,7 +27,7 @@ export function userFriendsReducer(
     case UserFriendsActions.SET_FRIENDS:
       return {
         ...state,
-        friends: action.payload,
+        friends: [...state.friends, ...action.payload],
         loaded: true
       };
     case UserFriendsActions.REMOVE_FRIEND_FROM_STATE:

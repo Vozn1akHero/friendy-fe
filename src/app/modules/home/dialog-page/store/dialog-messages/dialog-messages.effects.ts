@@ -20,7 +20,7 @@ export class DialogMessagesEffects {
       return !loaded;
     }),
     mergeMap(([{payload}]: any) => {
-      return this.dialogService.getMessagesInDialog(payload.to, payload.startIndex, payload.length)
+      return this.dialogService.getMessagesInDialog(payload.to, payload.page)
         .pipe(
           map(response => {
             return new DialogActions.SetDialog(response);

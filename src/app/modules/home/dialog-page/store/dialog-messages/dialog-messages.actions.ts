@@ -10,7 +10,7 @@ export const SET_ADDED_MESSAGE = '[Messages Page] Set Added Message';
 export class GetDialog implements Action {
   readonly type = GET_DIALOG;
 
-  constructor(public payload: {to: number, startIndex: number, length: number}){}
+  constructor(public payload: {to: number, page: number}){}
 }
 
 export class SetDialog implements Action {

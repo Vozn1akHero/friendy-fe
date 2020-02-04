@@ -1,4 +1,8 @@
-<div class="friends">
+<div class="friends"
+     infiniteScroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="50"
+     (scrolled)="updateFriendList()">
   <section class="friends__left-side-wrapper">
     <app-friends-search-controls></app-friends-search-controls>
 

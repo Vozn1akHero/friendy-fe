@@ -1,4 +1,7 @@
-<section class="dialog-page">
+<section class="dialog-page" infiniteScroll
+         [infiniteScrollDistance]="2"
+         [infiniteScrollThrottle]="50"
+         (scrolledUp)="updateMessages()">
 <!--  <a [routerLink]="['/app/messages']"
      class="dialog-page__back-anchor">&#8592; Wróć</a>-->
 <!--  <section class="dialog-page__wrapper&#45;&#45;1">

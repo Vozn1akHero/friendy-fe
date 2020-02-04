@@ -14,6 +14,8 @@ import { AppRoutingModule } from '../../../app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InterlocutorDataResolver} from './resolvers/interlocutor-data.resolver';
 import {ChatDataResolver} from './resolvers/chat-data.resolver';
+import {ScrollableListNotifierService} from "../../../shared/services/scrollable-list-notifier.service";
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import {ChatDataResolver} from './resolvers/chat-data.resolver';
     SharedModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InfiniteScrollModule
   ],
   declarations: [
     DialogPageComponent,
@@ -35,7 +38,8 @@ import {ChatDataResolver} from './resolvers/chat-data.resolver';
   ],
   providers: [
     InterlocutorDataResolver,
-    ChatDataResolver
+    ChatDataResolver,
+    ScrollableListNotifierService
   ]
 })
 

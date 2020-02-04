@@ -1,4 +1,4 @@
 <textarea class="fr-input"
           [ngClass]="{'bordered-onError': invalid}"
-          (change)="changeValue()"
-          [(ngModel)]="textVal"></textarea>
+          (change)="changeValue($event)"
+          [value]="initValue"></textarea>

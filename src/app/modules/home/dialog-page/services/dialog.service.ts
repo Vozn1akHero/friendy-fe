@@ -13,8 +13,20 @@ import ChatData from '../models/chat-data.model';
 export class DialogService {
   constructor(private http: HttpClient){}
 
-  getMessagesInDialog(to: number, startIndex: number, length: number) : Observable<MessageInChat[]>{
+  /*getMessagesInDialog(to: number, startIndex: number, length: number) : Observable<MessageInChat[]>{
     return this.http.get(`/api/chat/${to}?startIndex=${startIndex}&length=${length}`)
+      .pipe(
+        map((response : any[]) => {
+          let arr : MessageInChat[] = [];
+          response.map(value => {
+            arr.push(new MessageInChat(value.content, value.imagePath, value.userId, value.date))
+          });
+          return arr;
+        }))
+  }*/
+
+  getMessagesInDialog(to: number, page: number) : Observable<MessageInChat[]>{
+    return this.http.get(`/api/chat/${to}/page/${page}`)
       .pipe(
         map((response : any[]) => {
           let arr : MessageInChat[] = [];

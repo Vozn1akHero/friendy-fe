@@ -1,0 +1,34 @@
+@import '../../../../../../../../assets/sass/base/variables';
+@import '../../../../../../../../assets/sass/base/icons';
+
+.participants-search{
+  display: flex;
+  margin-top: 2rem;
+
+  .participants-search-input{
+    height: 39px;
+    width: 20vw;
+    outline: none;
+    border: none;
+    padding-left: 1rem;
+    transition: all .3s;
+  }
+
+  .submit-btn{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+
+    width: 39px;
+    height: 39px;
+    border: none;
+    background: $color-pink;
+
+    .search-icon {
+      width: 19px;
+      height: 19px;
+      background: url($search-icon) no-repeat;
+    }
+  }
+}
+

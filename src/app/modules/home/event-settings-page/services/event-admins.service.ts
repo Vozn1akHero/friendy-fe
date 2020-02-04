@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {take} from 'rxjs/operators';
 import EventAdminModel from '../models/event-admin.model';
+import EventParticipantDetailed from "../models/event-participant-detailed.model";
 
 @Injectable({
   providedIn: 'root'
@@ -54,5 +55,17 @@ export class EventAdminsService {
         this.removeAdminById(adminId);
       }
     })
+  }
+
+  filterByKeyword(keyword: string){
+    return this.http.get<any[]>(`api/event-admins/filter/${keyword}`, { observe: 'body' })
+      .pipe(take(1))
+      .subscribe(res => {
+        let eventAdmins: EventAdminModel[] = [];
+        res.map(value => {
+          eventAdmins.push(new EventAdminModel(value.id, value.name, value.surname, value.avatar, value.isEventCreator))
+        });
+        this.eventAdmins = eventAdmins;
+      })
   }
 }

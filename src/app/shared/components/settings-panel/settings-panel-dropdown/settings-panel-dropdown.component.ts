@@ -19,17 +19,16 @@ export class SettingsPanelDropdownComponent implements ControlValueAccessor {
   @Input() placeholder: string;
   @Input() options: any[];
   @Input() additionalStyles;
-  selectedOption: any;
-  _value;
 
-  changeValue(){
-    this.propagateChange(this.selectedOption);
+  changeValue($event){
+    this.propagateChange($event.target.value);
   }
 
   propagateChange = (_: any) => {};
 
   registerOnChange(fn) {
     this.propagateChange = fn;
+    this.propagateChange(this.initValue);
   }
 
   registerOnTouched(fn: any): void {
@@ -37,8 +36,7 @@ export class SettingsPanelDropdownComponent implements ControlValueAccessor {
 
   writeValue(val){
     if(val){
-      this._value = val;
-      this.propagateChange(this._value);
+      this.propagateChange(val);
     }
   }
 }
