@@ -1,4 +1,8 @@
-<section class="messages">
+<section class="messages"
+         infiniteScroll
+         [infiniteScrollDistance]="2"
+         [infiniteScrollThrottle]="50"
+         (scrolled)="updateList()">
   <div class="left-sec-wrapper">
     <app-dialog-list></app-dialog-list>
   </div>

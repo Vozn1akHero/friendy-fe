@@ -38,8 +38,7 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
   ],
   providers: [
     InterlocutorDataResolver,
-    ChatDataResolver,
-    ScrollableListNotifierService
+    ChatDataResolver
   ]
 })
 

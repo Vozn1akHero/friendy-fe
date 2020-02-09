@@ -29,7 +29,7 @@ export class EventsPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  openOrCloseEventCreationPopup() {
+  toggleEventCreationPopup() {
     this.eventCreationPopupOpened = !this.eventCreationPopupOpened;
   }
 

@@ -4,7 +4,8 @@ import {ScrollableListNotifierService} from "../../../shared/services/scrollable
 @Component({
   selector: 'app-friends',
   templateUrl: './friends-page.component.html',
-  styleUrls: ['./friends-page.component.scss']
+  styleUrls: ['./friends-page.component.scss'],
+  providers: [ScrollableListNotifierService]
 })
 export class FriendsPageComponent implements OnInit {
   constructor(private scrollableListNotifierService : ScrollableListNotifierService) {}

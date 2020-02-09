@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import UserPostModel from '../../models/user-post.model';
-import PostDataService from '../../services/post-data.service';
-import {HttpResponse} from '@angular/common/http';
-import {take} from 'rxjs/operators';
 import * as moment from 'moment';
+import {ActivatedRoute} from '@angular/router';
+import {Store} from '@ngrx/store';
+import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
+import * as UserPostsActions from '../../../profile-page/store/user-posts/user-posts.actions';
 
 @Component({
   selector: 'app-user-post',
@@ -16,38 +17,23 @@ export class UserPostComponent implements OnInit {
   @Input() postId: number;
   timePassed: string;
 
-  constructor(private postDataService: PostDataService) {
-
-  }
+  constructor(private router : ActivatedRoute, private store: Store<fromApp.AppState>) {}
 
   ngOnInit() {
-    this.getUserPostData();
+    this.postData = this.router.snapshot.data.post;
+    this.timePassed = moment(this.postData.date).fromNow();
+    this.postDataLoaded = true;
   }
 
-  getUserPostData(){
-    this.postDataService.getUserPostData(this.postId)
-      .pipe(take(1))
-      .subscribe((res: HttpResponse<any>) => {
-      this.postData = new UserPostModel(res.body.id,
-        res.body.userId,
-        res.body.content,
-        res.body.imagePath,
-        res.body.likesCount,
-        res.body.commentsCount,
-        res.body.postId,
-        res.body.isPostLikedByUser,
-        res.body.avatar,
-        res.body.date);
-        this.timePassed = moment(res.body.date).fromNow();
-        this.postDataLoaded = true;
-    });
+  onLikePost(postId: number){
+    this.store.dispatch(new UserPostsActions.LikePost({ id: postId  }));
   }
 
-  onShowCommentsBtnClick() {
-
+  onUnlikePost(postId: number){
+    this.store.dispatch(new UserPostsActions.UnlikePost({ id: postId  }));
   }
 
-  onLikeOrUnlikePost() {
-
+  onRemovePost(postId: number){
+    this.store.dispatch(new UserPostsActions.RemovePost({ id: postId }))
   }
 }

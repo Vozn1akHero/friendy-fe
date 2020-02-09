@@ -1,46 +1,10 @@
 <div class="event-info-panel">
-  <!--<div *ngIf="settingsVariantModalOpened"
-       (mouseover)="cursorOverVariantModalOn()"
-       (mouseleave)="cursorOverVariantModalOff()"
-       class="settings-variant-modal">
-    <button (click)="openBasicEventSettings()"
-            class="btn">
-      Podstawowe
-    </button>
-    <hr>
-    <a routerLink="settings" class="btn">
-      Rozszerzone
-    </a>
-  </div>-->
-
   <ng-container *ngIf="isEventAdmin">
     <div class="event-settings-controls">
       <button (click)="navigateToSettings()"
               class="btn">
-        <svg>
-          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cog"></use>
-        </svg>
+        <span class="icon fr-span-icon"></span>
       </button>
-      <!--<button *ngIf="activeSettings" class="accept-changes-btn">
-        <svg>
-          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-checkmark"></use>
-        </svg>
-      </button>
-      <button *ngIf="!activeSettings; else closeBasicEventSettingsBtn"
-              (mouseover)="openEventSettingsModal()"
-              (mouseleave)="closeEventSettingsModal()"
-              class="btn">
-        <svg>
-          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cog"></use>
-        </svg>
-      </button>
-      <ng-template #closeBasicEventSettingsBtn>
-        <button class="btn" (click)="closeBasicEventSettings()">
-          <svg>
-            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-cancel-circle"></use>
-          </svg>
-        </button>
-      </ng-template>-->
     </div>
   </ng-container>
 
@@ -55,24 +19,19 @@
       </p>
 
       <div class="location">
-        <svg class="icon">
-          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-location"></use>
-        </svg>
-        <span>{{ eventData.street }}, {{ eventData.streetNumber }}, {{ eventData.city }}</span>
+        <span class="icon fr-span-icon"></span>
+        <label>{{ eventData.street }} {{ eventData.streetNumber }}, {{ eventData.city }}</label>
       </div>
 
       <div class="date">
-        <svg class="icon">
-          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-calendar"></use>
-        </svg>
-        <span>{{ eventData.date }}</span>
+        <span class="icon fr-span-icon"></span>
+        <label>{{ eventData.date }}</label>
       </div>
 
       <div class="participants">
-        <svg class="icon">
-          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-users1"></use>
-        </svg>
-        <span>{{ eventData.currentParticipantsAmount }}/{{ eventData.participantsAmount }} uczestników</span>
+        <span class="icon fr-span-icon"></span>
+        <label>{{ eventData.currentParticipantsAmount }}/{{
+          eventData.participantsAmount }} uczestników</label>
       </div>
 
       <hr>

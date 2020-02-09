@@ -1,14 +1,19 @@
-<div *ngIf="(userEventsLoaded$ | async)"
-     class="participating-events">
-  <ng-container *ngIf="events.length > 0; else eventListEmptyMsg">
-    <app-user-event-item *ngFor="let eventData of events"
-                         [eventData]="eventData"
-                         [chosenType]="'participating'"></app-user-event-item>
-  </ng-container>
-  <ng-template #eventListEmptyMsg>
+<div class="participating-events">
+  <ng-container *ngIf="(userEventsLoaded$ | async); else loader">
+    <ng-container *ngIf="events.length > 0; else eventListEmptyMsg">
+      <app-user-event-item *ngFor="let eventData of events"
+                           [chosenType]="'participating'"
+                           [eventData]="eventData"
+                           [showControls]="true"></app-user-event-item>
+    </ng-container>
+    <ng-template #eventListEmptyMsg>
     <span class="event-list-empty-msg">
       Nie bierzesz udziału w żadnym wydarzeniu
     </span>
+    </ng-template>
+  </ng-container>
+  <ng-template #loader>
+    <app-loader></app-loader>
   </ng-template>
 </div>
 

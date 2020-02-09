@@ -28,21 +28,7 @@ export class EventPostComponent implements OnInit {
   }
 
   getEventPostData() {
-    this.postDataService.getEventPostData(this.postId)
-      .pipe(take(1)).subscribe((res: HttpResponse<any>) => {
-      this.postData = new EventPostModel(res.body.id,
-        res.body.eventId,
-        res.body.content,
-        res.body.imagePath,
-        res.body.likesCount,
-        res.body.commentsCount,
-        res.body.postId,
-        res.body.isPostLikedByUser,
-        res.body.avatar,
-        res.body.date);
-      this.timePassed = moment(this.postData.date).fromNow();
-      this.postDataLoaded = true;
-    });
+    //this.postData
   }
 
   onLikeOrUnlikePost() {

@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
-import InterlocutorDataModel from '../models/interlocutor-data.model';
 import {DialogService} from '../services/dialog.service';
 import ChatData from '../models/chat-data.model';
 

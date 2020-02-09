@@ -2,20 +2,21 @@
   <app-main-panel
     [panelContent]="{
     title: 'Zdjęcia',
-    icon: '../../../../assets/images/icon/symbol-defs.svg#icon-images',
+    iconClass: 'images-icon',
     link: activatedRoute + '/photos',
-    marginTop: true}" [panelStyles]="{ width: '17rem' }" [contentSecStyles]="{ 'flex-direction': 'row !important' }">
-    <div [ngStyle]="{ display: 'flex', flexDirection: 'row' }">
-      <ng-container *ngIf="(photosLoaded$ | async)">
-        <ng-container *ngIf="(photos$|async).length > 0; else noPhotos">
-          <app-event-photos-item *ngFor="let photo of (photos$|async)" [photo]="photo"></app-event-photos-item>
-        </ng-container>
-        <ng-template #noPhotos>
-          <span class="fr-default-smaller-font">
-            Lista zdjęć jest pusta
-          </span>
-        </ng-template>
+    marginTop: true}"
+    [panelStyles]="{ width: '17rem' }"
+    [contentColumned]="false">
+    <ng-container *ngIf="(photosLoaded$ | async)">
+      <ng-container *ngIf="(photos$|async).length > 0; else noPhotos">
+        <app-event-photos-item *ngFor="let photo of (photos$|async)"
+                               [photo]="photo"></app-event-photos-item>
       </ng-container>
-    </div>
+      <ng-template #noPhotos>
+        <span class="fr-default-smaller-font">
+          Lista zdjęć jest pusta
+        </span>
+      </ng-template>
+    </ng-container>
   </app-main-panel>
 </section>

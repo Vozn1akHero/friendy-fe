@@ -2,13 +2,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import {switchMap, catchError, map, tap, withLatestFrom, filter, mergeMap} from 'rxjs/operators';
-import { of } from 'rxjs';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 
 import * as UserFriendsActions from './user-friends.actions';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
-import Friend from '../../models/friend.model';
 import {FriendsService} from '../../services/friends.service';
 
 @Injectable()
@@ -31,10 +29,23 @@ export class UserFriendsEffects {
     })
   );*/
   @Effect()
+  getStartList = this.actions$.pipe(
+    ofType(UserFriendsActions.GET_START_FRIEND_LIST),
+    switchMap(() => {
+      return this.friendsService.getFriends(1)
+        .pipe(
+          map(res => {
+            return ({type: UserFriendsActions.SET_START_FRIEND_LIST, payload: res})
+          })
+        )
+    })
+  );
+
+  @Effect()
   getFriends = this.actions$.pipe(
     ofType(UserFriendsActions.GET_FRIENDS),
-    switchMap(([{payload}] : any) => {
-      return this.friendsService.getFriends(payload.page)
+    switchMap((getFriends: UserFriendsActions.GetFriends) => {
+      return this.friendsService.getFriends(getFriends.payload.page)
         .pipe(
           map(res => {
             return ({type: UserFriendsActions.SET_FRIENDS, payload: res})

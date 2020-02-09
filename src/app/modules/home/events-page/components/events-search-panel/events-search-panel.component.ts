@@ -2,7 +2,6 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import EventSearchCriteriaModel from '../../models/event-search-criteria.model';
 import {EventSearchService} from '../../services/event-search.service';
-import {ActivatedRoute, Router} from '@angular/router';
 import {ActivatedSectionService} from '../../services/activated-section.service';
 
 @Component({
@@ -39,31 +38,29 @@ export class EventsSearchPanelComponent implements OnInit {
       formValue.participantAmountMin,
       formValue.participantAmountMax,
       formValue.date);
-    this.eventSearchService.filterByCriteria(searchEventDto).subscribe();
+    this.eventSearchService.filterByCriteria(searchEventDto).subscribe(() => {});
     this.activatedSectionService.setNonparticipatingEvents();
   }
 
   constructor(private eventSearchService : EventSearchService,
-              private activatedSectionService : ActivatedSectionService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+              private activatedSectionService : ActivatedSectionService) { }
 
   ngOnInit() {
     this.panel.nativeElement.style.boxShadow = '0 0px 6px 0px rgba(0, 0, 0, 0.1)';
-    this.panel.nativeElement.style.toggleBtn = '0 0px 6px 0px rgba(0, 0, 0, 0.1)';
+    this.toggleBtn.nativeElement.style.boxShadow = '0 0px 6px 0px rgba(0, 0, 0, 0.1)';
   }
 
   onToggleBtnClick(){
     if(this.eventSearchPanelExpanded) {
       this.panel.nativeElement.style.width = '2rem';
       this.panel.nativeElement.style.boxShadow = '0 0px 6px 0px rgba(0, 0, 0, 0.1)';
-      this.panel.nativeElement.style.toggleBtn = '0 0px 6px 0px rgba(0, 0, 0, 0.1)';
+      this.toggleBtn.nativeElement.style.boxShadow = '0 0px 6px 0px rgba(0, 0, 0, 0.1)';
       this.eventSearchPanelExpanded = false;
       this.formControls.nativeElement.style.visibility='hidden';
     } else {
       this.panel.nativeElement.style.width = '492px';
-      this.panel.nativeElement.style.boxShadow = 'none';
-      this.panel.nativeElement.style.toggleBtn = 'none';
+      this.panel.nativeElement.style.boxShadow = 'rgba(0, 0, 0, 0.2) 0px 0px 20px 0px';
+      this.toggleBtn.nativeElement.style.boxShadow = 'rgba(0, 0, 0, 0.2) 0px 0px 20px 0px';
       this.eventSearchPanelExpanded = true;
       this.formControls.nativeElement.style.visibility='visible';
     }

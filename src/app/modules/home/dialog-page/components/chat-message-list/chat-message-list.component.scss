@@ -3,15 +3,22 @@
 .chat-message-list{
   display: flex;
   padding: 2rem 2rem 1rem 2.5rem;
-  flex-direction: column;
-  height: 65vh;
+  height: 66vh;
   overflow-y: scroll;
   position: relative;
-
+  flex-direction: column-reverse;
 
   &::-webkit-scrollbar {
     //width: .62rem;
     opacity: 0;
+  }
+
+  .empty-list{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /*&::-webkit-scrollbar-track {

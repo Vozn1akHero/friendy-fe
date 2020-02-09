@@ -5,18 +5,26 @@ import {Component, Input, OnInit} from '@angular/core';
   templateUrl: './main-panel.component.html',
   styleUrls: ['./main-panel.component.scss']
 })
-export class MainPanelComponent {
-  @Input() panelContent = {
+export class MainPanelComponent implements OnInit {
+  @Input() panelContent:any = {
     title: null,
     icon: null,
     link: null,
+    iconClass: null,
     queryParams: null,
     marginTop: false
   };
-
   @Input() panelStyles = {
     width: '100%'
   };
+  @Input() contentColumned: boolean = true;
+  @Input() contentStyles;
+  contentAllStyles;
 
-  @Input() contentSecStyles : {[p:string]: string};
+  ngOnInit(): void {
+    this.contentAllStyles = {
+      flexDirection: this.contentColumned ? 'column': 'row',
+      ...this.contentStyles
+    };
+  }
 }

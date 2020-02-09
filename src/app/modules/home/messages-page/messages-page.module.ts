@@ -10,6 +10,8 @@ import { SharedModule } from '../../../shared/shared.module';
 import { AppRoutingModule } from '../../../app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DialogListComponent} from './components/dialog-list/dialog-list.component';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import {ScrollableListNotifierService} from '../../../shared/services/scrollable-list-notifier.service';
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import {DialogListComponent} from './components/dialog-list/dialog-list.componen
     SharedModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InfiniteScrollModule
   ],
   declarations: [
     MessageComponent,

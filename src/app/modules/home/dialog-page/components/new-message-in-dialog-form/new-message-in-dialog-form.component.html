@@ -1,22 +1,27 @@
 <div class="new-message-in-dialog">
   <form (ngSubmit)="newMessageEvent()">
-    <textarea placeholder="Napisz wiadomość"
-              #newMessageContent
-              [minLength]="1"></textarea>
-    <div>
-      <div class="file-btn-wrapper">
-        <svg>
-          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
-        </svg>
+    <div class="left-wrapper">
+      <textarea placeholder="Napisz wiadomość"
+                #newMessageContent></textarea>
 
-        <input type="file"
-               name="filename"
-               #image
-               accept="image/jpeg, image/png"
-               style="opacity: 0;">
+      <div class="controls">
+        <div class="file-btn-wrapper">
+          <svg>
+            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
+          </svg>
+
+          <input type="file"
+                 name="filename"
+                 #image
+                 accept="image/jpeg, image/png"
+                 style="opacity: 0;">
+        </div>
       </div>
-
-      <button type="submit">Wyślij</button>
+    </div>
+    <div class="submit-btn-wrapper">
+      <button type="submit">
+        <span class="icon fr-span-icon"></span>
+      </button>
     </div>
   </form>
 </div>

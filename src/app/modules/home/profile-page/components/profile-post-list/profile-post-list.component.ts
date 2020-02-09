@@ -7,6 +7,7 @@ import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import SubscriptionManager from '../../../../../shared/helpers/SubscriptionManager';
 import {take} from 'rxjs/operators';
 import {UserPostService} from '../../services/user-post.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile-post-list',
@@ -21,6 +22,7 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
   userPostsLoading: boolean;
 
   constructor(private store: Store<fromApp.AppState>,
+              private router: Router,
               private userPostService : UserPostService,
               private subscriptionManager : SubscriptionManager) { }
 
@@ -43,6 +45,22 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
         this.userPosts = userPosts;
       }));
   }
+
+  onRemovePost(postId: number){
+    this.store.dispatch(new UserPostsActions.RemovePost({ id: postId }))
+  }
+
+  onLikePost(postId: number){
+    this.store.dispatch(new UserPostsActions.LikePost({ id: postId  }));
+  }
+
+  onUnlikePost(postId: number){
+    this.store.dispatch(new UserPostsActions.UnlikePost({ id: postId  }));
+  }
+
+/*  redirectToComments(postId: number){
+    this.router.navigate([window.location.pathname, 'comments', postId ])
+  }*/
 
   ngOnDestroy(): void {
     this.subscriptionManager.destroy();

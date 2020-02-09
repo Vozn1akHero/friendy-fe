@@ -22,7 +22,6 @@ import {ProfileUnderHeaderContentWrapperComponent} from './components/profile-un
 import { ProfileHeaderFriendshipControlsComponent } from './components/profile-header/profile-header-friendship-controls/profile-header-friendship-controls.component';
 import { ProfileHeaderSettingsComponent } from './components/profile-header/profile-header-settings/profile-header-settings.component';
 import { ProfileInfoPanelComponent } from './components/profile-header/profile-info-panel/profile-info-panel.component';
-import {ProfilePostComponent} from './components/profile-post-list/profile-post/profile-post.component';
 import {ProfileHeaderBasicDataComponent} from './components/profile-header/profile-header-basic-data/profile-header-basic-data.component';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import {ScrollableListNotifierService} from "../../../shared/services/scrollable-list-notifier.service";
@@ -40,7 +39,6 @@ import {ScrollableListNotifierService} from "../../../shared/services/scrollable
     ProfileHeaderComponent,
     ProfileNewPostComponent,
     ProfileUnderHeaderContentWrapperComponent,
-    ProfilePostComponent,
     ProfileExemplaryFriendsPanelComponent,
     ProfileExemplaryPhotosPanelComponent,
     ProfileExemplaryFriendComponent,
@@ -56,8 +54,7 @@ import {ScrollableListNotifierService} from "../../../shared/services/scrollable
     ProfileInfoPanelComponent
   ],
   providers: [
-    ProfileBelongingResolver,
-    ScrollableListNotifierService
+    ProfileBelongingResolver
   ]
 })
 

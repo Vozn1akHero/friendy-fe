@@ -1,4 +1,5 @@
 @import '../../../assets/sass/base/variables';
+@import '../../../assets/sass/base/icons';
 
 @keyframes a-hover {
   0% {
@@ -26,8 +27,12 @@
       border: none;
       margin-right: 1rem;
 
+      .icon{
+        background: url($logout-icon);
+      }
+
       &:hover {
-        svg {
+        .icon {
           transform: translateX(2px);
         }
       }
@@ -37,19 +42,15 @@
       width: 26px;
       height: 26px;
 
-      svg {
+      .icon {
         width: 100%;
         height: 100%;
-        fill: $color-white;
-        transition: transform .3s;
       }
     }
 
     .settings-btn {
-      &:hover {
-        svg {
-          transform: rotate(90deg);
-        }
+      .icon{
+        background-image: url($settings-icon);
       }
     }
   }
@@ -73,7 +74,17 @@
       transition: transform .4s;
     }
 
+    .profile{
+      .icon{
+        background: url($user-icon);
+      }
+    }
+
     .friends{
+      .icon{
+        background: url($group-icon);
+      }
+
       &__open-requests-modal-btn{
         margin-left: 1rem;
         width: 1.8rem;
@@ -95,23 +106,33 @@
       }
     }
 
+    .messages{
+      .icon{
+        background: url($bubble-icon);
+      }
+    }
+
+    .events{
+      .icon{
+        background: url($calendar-icon);
+      }
+    }
+
     &__item {
       display: flex;
-      //align-items: baseline;
       margin-bottom: 1.5rem;
 
       a {
         display: flex;
-        flex-direction: row;
-        align-items: baseline;
+        align-items: center;
         font-size: .81rem;
         color: $color-white;
         text-decoration: none;
 
-        span {
-          display: flex;
-          align-self: center;
-          margin-left: 1rem;
+        .icon {
+          width: 36px;
+          height: 34px;
+          margin-right: 1rem;
         }
 
         &:hover {
@@ -121,17 +142,7 @@
             transform: translateX(-.5rem);
           }
         }
-
-
       }
-
-    }
-
-    .icon {
-      display: flex;
-      width: 36px;
-      height: 34px;
-      fill: $color-white;
     }
   }
 }

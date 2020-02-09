@@ -13,7 +13,6 @@ import { EventParticipantsComponent } from './components/event-main-content/even
 import { EventPhotosComponent } from './components/event-main-content/event-photos/event-photos.component';
 import { EventNewPostComponent } from './components/event-main-content/event-new-post/event-new-post.component';
 import { EventAvatarComponent } from './components/event-header/event-info-panel/event-avatar/event-avatar.component';
-import { EventPostItemComponent } from './components/event-main-content/event-post-list/event-post-item/event-post-item.component';
 import { EventParticipantsItemComponent } from './components/event-main-content/event-participants/event-participants-item/event-participants-item.component';
 import { EventPhotosItemComponent } from './components/event-main-content/event-photos/event-photos-item/event-photos-item.component';
 import { EventHeaderBgAlterComponent } from './components/event-header/event-header-bg/event-header-bg-alter/event-header-bg-alter.component';
@@ -47,7 +46,6 @@ import {ScrollableListNotifierService} from "../../../shared/services/scrollable
     EventPhotosComponent,
     EventNewPostComponent,
     EventAvatarComponent,
-    EventPostItemComponent,
     EventParticipantsItemComponent,
     EventPhotosItemComponent,
     EventHeaderBgAlterComponent,
@@ -62,8 +60,7 @@ import {ScrollableListNotifierService} from "../../../shared/services/scrollable
     ParticipantControlsComponent
   ],
   providers: [
-    IsEventAdminResolver,
-    ScrollableListNotifierService
+    IsEventAdminResolver
   ]
 })
 export class EventPageModule { }

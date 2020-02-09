@@ -20,21 +20,10 @@ export class EventNewPostComponent implements OnInit, OnDestroy {
 
   ngOnInit() {}
 
-  onSubmit($event) {
-    $event.preventDefault();
-    const image = this.image.nativeElement;
-    if(image.files && image.files[0]){
-      const newPost: NewPost =
-        new NewPost(this.newMessageContent.nativeElement.value, image.files[0]);
-        this.eventPostService.create(newPost, +this.route.snapshot.paramMap.get("id"))
-    } else {
-      const newPost: NewPost =
-        new NewPost(this.newMessageContent.nativeElement.value, null);
-        this.eventPostService.create(newPost, +this.route.snapshot.paramMap.get("id"))
-    }
+  onSubmit(newPost) {
+    this.eventPostService.create(newPost, +this.route.snapshot.paramMap.get("id"))
   }
 
   ngOnDestroy(): void {
-    //this.newPostSubscription.unsubscribe();
   }
 }

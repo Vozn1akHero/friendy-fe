@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {EventSearchService} from '../../../services/event-search.service';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import Event from '../../../models/event.model';
 
 @Component({
@@ -9,8 +8,11 @@ import Event from '../../../models/event.model';
   templateUrl: './search-event-list.component.html',
   styleUrls: ['./search-event-list.component.scss']
 })
-export class SearchEventListComponent implements OnInit {
-  foundEvents$: Observable<Event[]>;
+export class SearchEventListComponent implements OnInit, OnDestroy {
+  foundEvents: Event[];
+  foundEventsSub: Subscription;
+  loaded: boolean = false;
+  foundEventsLengthText: string;
 
   constructor(private eventSearchService : EventSearchService) { }
 
@@ -19,6 +21,15 @@ export class SearchEventListComponent implements OnInit {
   }
 
   getFoundEvents(){
-    this.foundEvents$ = this.eventSearchService.foundEvents$;
+    this.foundEventsSub = this.eventSearchService.foundEvents$.subscribe(value => {
+      this.foundEvents = value;
+      this.foundEventsLengthText = `Znaleziono ${value.length} 
+      ${[2,3,4].indexOf(value.length) === -1 ? 'wydarzeń' : 'wydarzenia'}`;
+      this.loaded = true;
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.foundEventsSub.unsubscribe();
   }
 }

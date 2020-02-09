@@ -3,9 +3,10 @@
     [panelContent]="{
       title: 'Uczestnicy',
       link: this.activatedRoute + '/participants',
-      icon: '../../../../assets/images/icon/symbol-defs.svg#icon-users1',
-      marginTop: true}" [panelStyles]="{ width: '17rem' }">
-
+      iconClass: 'people-icon',
+      marginTop: true}"
+    [contentColumned]="false"
+    [panelStyles]="{ width: '17rem' }">
     <ng-container *ngIf="(eventExemplaryParticipantsLoaded$ | async)">
       <ng-container *ngIf="(eventExemplaryParticipants$ | async).length > 0; else noParticipants;">
         <app-event-participants-item *ngFor="let eventParticipant of (eventExemplaryParticipants$ | async)"
@@ -17,6 +18,5 @@
           </span>
       </ng-template>
     </ng-container>
-
   </app-main-panel>
 </section>

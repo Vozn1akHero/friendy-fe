@@ -9,7 +9,8 @@ import {ScrollableListNotifierService} from "../../../shared/services/scrollable
 @Component({
   selector: 'app-event',
   templateUrl: './event-page.component.html',
-  styleUrls: ['./event-page.component.scss']
+  styleUrls: ['./event-page.component.scss'],
+  providers: [ScrollableListNotifierService]
 })
 export class EventComponent implements OnInit, OnDestroy {
   isEventAdmin: boolean;

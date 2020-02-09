@@ -1,14 +1,15 @@
 <section class="profile-post-list" *ngIf="!userPostsLoading">
   <ng-container *ngIf="userPosts.length > 0; else noPosts">
-    <app-profile-post *ngFor="let post of userPosts"
-                      [isUserProfileOwner]="isUserProfileOwner"
-                      [post]="post"
-                      [userId]="userId">
-    </app-profile-post>
+    <app-post-item *ngFor="let post of userPosts"
+                   [post]="post"
+                   (removePostEmitter)="onRemovePost($event)"
+                   (likePostEmitter)="onLikePost($event)"
+                   (unlikePostEmitter)="onUnlikePost($event)"
+                   [removeBtnVisible]="isUserProfileOwner"></app-post-item>
   </ng-container>
   <ng-template #noPosts>
-      <span class="fr-default-smaller-font">
-        Brak wpisów
-      </span>
+    <span class="fr-default-smaller-font">
+      Brak wpisów
+    </span>
   </ng-template>
 </section>

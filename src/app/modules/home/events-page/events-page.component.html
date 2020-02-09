@@ -1,5 +1,5 @@
 <app-event-creation *ngIf="eventCreationPopupOpened"
-                    (closeEventCreationPopup)="openOrCloseEventCreationPopup()">
+                    (closeEventCreationPopup)="toggleEventCreationPopup()">
 </app-event-creation>
 
 <section class="events-page">
@@ -10,15 +10,9 @@
   </div>
 
   <div class="right-side-wrapper">
-    <section class="new-event">
-      <hr class="left-line">
-      <button class="new-event__btn"
-              (click)="openOrCloseEventCreationPopup()">
-        Utwórz wydarzenie
-      </button>
-      <hr class="right-line">
-    </section>
-
+    <app-event-creation-btn-wrapper
+      (popupEmitter)="toggleEventCreationPopup()"></app-event-creation-btn-wrapper>
+    <app-search-all-events-by-keyword></app-search-all-events-by-keyword>
     <app-suggested-events-panel></app-suggested-events-panel>
   </div>
 </section>

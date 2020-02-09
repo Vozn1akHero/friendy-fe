@@ -1,31 +1,39 @@
 <aside #panel class="event-search-panel">
   <div class="inner-wrapper">
     <div #formControls class="controls fr-p-2">
-      <form class="event-search-panel__form
-       fr-flex-column
-       fr-flex-center-aligned" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-        <input class="fr-input fr-input--title"
-               formControlName="title"
-               placeholder="Nazwa"
-               type="text">
-        <input class="fr-input fr-input--city"
-               formControlName="city"
-               placeholder="Miasto"
-               type="text">
-
-        <div class="fr-d-flex fr-input--street">
-          <input class="fr-input"
-                 formControlName="street"
-                 placeholder="Ulica"
-                 type="text">
-          <input class="fr-input fr-input--street-number"
-                 formControlName="streetNumber"
-                 placeholder="Numer"
+      <form (ngSubmit)="onSubmit()"
+            [formGroup]="searchForm"
+            class="form">
+        <div class="row">
+          <input class="fr-input fr-input--title"
+                 formControlName="title"
+                 placeholder="Nazwa"
                  type="text">
         </div>
 
-        <div class="fr-flex-column">
-          <label>Cena wejścia</label>
+        <div class="row">
+          <input class="fr-input fr-input--city"
+                 formControlName="city"
+                 placeholder="Miasto"
+                 type="text">
+        </div>
+
+        <div class="row fr-flex-column fr-input--address">
+          <label class="input-label">Adres</label>
+          <div class="fr-flex-row">
+            <input class="fr-input fr-input--street"
+                   formControlName="street"
+                   placeholder="Ulica"
+                   type="text">
+            <input class="fr-input fr-input--street-number"
+                   formControlName="streetNumber"
+                   placeholder="Numer"
+                   type="text">
+          </div>
+        </div>
+
+        <div class="row fr-flex-column">
+          <label class="input-label">Cena wejścia</label>
           <div class="fr-flex-row">
             <input class="fr-input fr-input--price-min"
                    formControlName="entryPriceMin"
@@ -38,8 +46,10 @@
           </div>
         </div>
 
-        <div class="fr-flex-column">
-          <label>Ilość uczestników</label>
+        <div class="row fr-flex-column">
+          <label class="input-label">
+            Ilość uczestników
+          </label>
           <div class="fr-flex-row">
             <input class="fr-input fr-input--participants-min"
                    formControlName="participantsAmountMin"
@@ -52,19 +62,21 @@
           </div>
         </div>
 
-        <input class="fr-input fr-input--date"
-               formControlName="date"
-               placeholder="Data"
-               type="text">
+        <div class="row">
+          <input class="fr-input fr-input--date"
+                 formControlName="date"
+                 placeholder="Data"
+                 type="text">
+        </div>
 
-        <button type="submit" class="fr-btn-main-blue fr-m-t-2">
+        <button class="fr-btn-main-blue fr-m-t-2" type="submit">
           Szukaj
         </button>
       </form>
     </div>
 
-    <button (click)="onToggleBtnClick()"
-            #toggleBtn
+    <button #toggleBtn
+            (click)="onToggleBtnClick()"
             class="toggle-btn">
       <ng-container *ngIf="eventSearchPanelExpanded">
         &#8250;

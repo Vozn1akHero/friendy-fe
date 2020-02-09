@@ -10,7 +10,7 @@ export class ExemplaryChatsService {
   constructor(private http: HttpClient){}
 
   get(){
-    return this.http.get(`/api/friend/range/logged-in?firstIndex=1&length=10`,
+    return this.http.get(`/api/friend/range/logged-in?startIndex=1&length=3`,
       {observe: 'body'}).pipe(map((res:any[]) => {
       let friends : ExemplaryChatModel[] = [];
       res.map((friend:any) => {

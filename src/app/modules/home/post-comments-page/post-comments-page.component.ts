@@ -10,7 +10,8 @@ export class PostCommentsPageComponent implements OnInit {
   @Input() postId: number;
   @Input() postType: number;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.postId = this.route.snapshot.params.postId;

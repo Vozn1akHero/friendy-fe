@@ -2,10 +2,10 @@
   <app-main-panel
     [panelContent]="{
             title: 'Proponowani znajomi',
-            icon: '../../../../../assets/images/icon/symbol-defs.svg#icon-users1',
+            iconClass: 'people-icon',
             link: null
           }">
-    <ng-container *ngIf="suggestedFriendsLoaded$ | async">
+    <ng-container *ngIf="suggestedFriendsLoaded$ | async; else loader">
       <ng-container *ngIf="(suggestedFriends$|async).length>0;else noSuggestedFriends">
         <app-suggested-friends-item *ngFor="let suggestedFriend of
         (suggestedFriends$|async)"
@@ -17,6 +17,8 @@
         </span>
       </ng-template>
     </ng-container>
-    <!--          -->
+    <ng-template #loader>
+      <app-loader></app-loader>
+    </ng-template>
   </app-main-panel>
 </section>

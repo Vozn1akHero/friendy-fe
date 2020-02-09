@@ -4,13 +4,12 @@ import NewPost from '../models/new-post.model';
 import EventPost from '../models/event-post.model';
 import {map} from 'rxjs/operators';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {PostService} from '../../../../shared/services/post.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventPostService {
-  constructor(private http: HttpClient, private postService: PostService) {
+  constructor(private http: HttpClient) {
   }
 
   get eventPosts$(): Observable<EventPost[]> {
@@ -28,6 +27,10 @@ export class EventPostService {
   }
 
   set eventPosts(value: EventPost[]) {
+    this._eventPosts.next(value);
+  }
+
+  set fillEventPosts(value: EventPost[]) {
     this._eventPosts.next([...this._eventPosts.getValue(), ...value]);
   }
 
@@ -51,11 +54,6 @@ export class EventPostService {
     });
   }
 
-/*  current(startIndex: number) {
-    return this.http.get(`/api/event-post/current?startIndex=${startIndex}&length=10`,
-      {observe: 'response'});
-  }*/
-
   getByEventId(id: number, page: number) {
     return this.http.get(`/api/event-post/paginate/${id}/${page}`, {observe: 'body'})
       .pipe(map((res: any[]) => {
@@ -72,14 +70,14 @@ export class EventPostService {
             value.isPostLikedByUser,
             value.date));
         });
-        this.eventPosts = eventPosts;
-      }))
+        this.fillEventPosts = eventPosts;
+      }));
   }
 
   delete(postId: number, eventId: number) {
     return this.http.delete(`api/post/${postId}/event-post/${eventId}`, {observe: 'response'})
       .pipe(map(
-        (res: HttpResponse<any>) => {
+        () => {
           this.eventPosts = [...this.eventPosts.filter(value => value.postId !== postId)];
         }));
   }

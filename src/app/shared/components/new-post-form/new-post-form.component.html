@@ -1,0 +1,18 @@
+<div class="new-post">
+  <form class="form" (ngSubmit)="onSubmit()">
+    <textarea placeholder="Napisz wiadomość"
+              #newMessageContent
+              [minLength]="1"></textarea>
+    <div class="bottom-wrapper">
+      <div class="file-btn-wrapper">
+        <span class="icon fr-span-icon"></span>
+        <input type="file"
+               name="filename"
+               #image
+               accept="image/jpeg, image/png"
+               style="opacity: 0;">
+      </div>
+      <button type="submit">Wyślij</button>
+    </div>
+  </form>
+</div>

@@ -27,6 +27,7 @@ import {ChatDataResolver} from './modules/home/dialog-page/resolvers/chat-data.r
 import {PostCommentsPageComponent} from './modules/home/post-comments-page/post-comments-page.component';
 import {IsEventCreatorResolver} from './modules/home/event-settings-page/resolvers/is-event-creator.resolver';
 import {NotFoundPageComponent} from './modules/not-found/not-found-page.component';
+import {PostDataResolver} from './modules/home/post-comments-page/resolvers/post-data.resolver';
 
 const routes: Routes = [
   {path: '',
@@ -63,7 +64,8 @@ const routes: Routes = [
         children: [
           {path: 'comments/:postId',
             resolve: {
-              profileBelongingStatus: ProfileBelongingResolver
+              profileBelongingStatus: ProfileBelongingResolver,
+              post: PostDataResolver
             },
             component: PostCommentsPageComponent },
         ]

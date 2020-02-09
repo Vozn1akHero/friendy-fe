@@ -4,5 +4,6 @@
       <img src="{{ data.avatarUrl }}" alt="">
     </figure>
   </a>
-  <a [routerLink]="['/app/dialog?to=', data.id]">{{data.name}} {{data.surname}}</a>
+  <a class="fr-hover-text-decoration" [routerLink]="['/app/dialog?to=', data.id]">{{data.name}}
+    {{data.surname}}</a>
 </div>

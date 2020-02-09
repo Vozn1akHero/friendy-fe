@@ -57,6 +57,4 @@ export default class CommentResponseService {
         this.commentResponses = comments;
       }));
   }
-
-
 }

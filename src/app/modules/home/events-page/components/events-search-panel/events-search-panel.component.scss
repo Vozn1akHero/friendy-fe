@@ -14,16 +14,33 @@
     visibility: hidden;
   }
 
-  &__form{
-    .fr-input{
-      margin: 1rem;
+  .form{
+    display: flex;
+    flex-direction: column;
 
-      &--title, &--city, &--street, &--street-number, &--date{
-        width: 100%;
+    .row{
+      margin-top: 1rem;
+
+      .input-label{
+        font-size: .8rem;
+        margin-bottom: .3rem;
       }
 
-      &--participants-min, &--participants-max, &--price-min, &--price-max{
-        width: 50%;
+      .fr-input{
+        &--street{ width: 70%; }
+        &--street-number{width: 30%;}
+
+        &--title, &--city, &--date{
+          width: 100%;
+        }
+
+        &--participants-min, &--participants-max, &--price-min, &--price-max{
+          width: 50%;
+        }
+
+        &--street-number, &--participants-max, &--price-max{
+          margin-left: 1rem;
+        }
       }
     }
   }

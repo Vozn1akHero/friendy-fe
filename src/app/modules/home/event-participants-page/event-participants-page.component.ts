@@ -3,11 +3,13 @@ import EventParticipantListItem from '../event-page/models/event-participant-lis
 import {EventParticipantService} from '../event-page/services/event-participant.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
+import {ScrollableListNotifierService} from '../../../shared/services/scrollable-list-notifier.service';
 
 @Component({
   selector: 'app-event-participants-page',
   templateUrl: './event-participants-page.component.html',
-  styleUrls: ['./event-participants-page.component.sass']
+  styleUrls: ['./event-participants-page.component.sass'],
+  providers: [ScrollableListNotifierService]
 })
 export class EventParticipantsPageComponent implements OnInit {
   participants$: Observable<EventParticipantListItem[]>;

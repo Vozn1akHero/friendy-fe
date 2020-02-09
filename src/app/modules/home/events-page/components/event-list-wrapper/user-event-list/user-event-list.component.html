@@ -13,14 +13,16 @@
         Moje wydarzenia
       </button>
     </div>
+
     <app-events-mine-search (searchEventsSubmit)="searchEvents($event)"></app-events-mine-search>
   </div>
 
-  <section *ngIf="chosenSectionText === 'participating'">
-    <app-user-participating-event-list></app-user-participating-event-list>
-  </section>
-
-  <section *ngIf="chosenSectionText === 'administered'">
-    <app-user-administered-events-list></app-user-administered-events-list>
-  </section>
+  <div class="list-wrapper">
+    <ng-container [ngSwitch]="chosenSectionText">
+      <app-user-participating-event-list *ngSwitchCase="'participating'"
+      ></app-user-participating-event-list>
+      <app-user-administered-events-list
+        *ngSwitchCase="'administered'"></app-user-administered-events-list>
+    </ng-container>
+  </div>
 </div>

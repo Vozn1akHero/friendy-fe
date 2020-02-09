@@ -10,6 +10,7 @@ import { NewCommentFormComponent } from './components/new-comment-form/new-comme
 import {EventPostComponent} from './components/event-post/event-post.component';
 import { CommentResponseListComponent } from './components/comment-list/comment-response-list/comment-response-list.component';
 import { CommentResponseItemComponent } from './components/comment-list/comment-response-list/comment-response-item/comment-response-item.component';
+import {PostDataResolver} from './resolvers/post-data.resolver';
 
 
 @NgModule({
@@ -28,7 +29,9 @@ import { CommentResponseItemComponent } from './components/comment-list/comment-
     CommentResponseListComponent,
     CommentResponseItemComponent
   ],
-  providers: []
+  providers: [
+    PostDataResolver
+  ]
 })
 export class PostCommentsPageModule {
 }

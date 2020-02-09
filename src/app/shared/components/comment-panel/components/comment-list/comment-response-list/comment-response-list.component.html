@@ -1,0 +1,6 @@
+<div class="comment-response-list">
+  <ng-container *ngIf="loaded">
+    <app-comment-response-item *ngFor="let commentResponse of commentResponses"
+                               [commentResponse]="commentResponse"></app-comment-response-item>
+  </ng-container>
+</div>

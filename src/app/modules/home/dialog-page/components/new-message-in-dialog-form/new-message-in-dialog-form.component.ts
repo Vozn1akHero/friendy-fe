@@ -35,10 +35,12 @@ export class NewMessageInDialogFormComponent implements OnInit {
         chatId: this.chatId, receiverId: this.receiverId, newMessage: newMessage
       }))
     } else {
-      const newMessage : NewMessageInChat = new NewMessageInChat(textFieldValue, null);
-      this.store.dispatch(new DialogActions.AddNewMessage({
-        chatId: this.chatId, receiverId: this.receiverId, newMessage: newMessage
-      }))
+      if(textFieldValue.length>0){
+        const newMessage : NewMessageInChat = new NewMessageInChat(textFieldValue, null);
+        this.store.dispatch(new DialogActions.AddNewMessage({
+          chatId: this.chatId, receiverId: this.receiverId, newMessage: newMessage
+        }))
+      }
     }
   }
 }

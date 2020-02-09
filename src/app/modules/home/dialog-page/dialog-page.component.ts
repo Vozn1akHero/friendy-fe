@@ -9,11 +9,13 @@ import {ScrollableListNotifierService} from "../../../shared/services/scrollable
 @Component({
   selector: 'app-dialog-page',
   templateUrl: './dialog-page.component.html',
-  styleUrls: ['./dialog-page.component.scss']
+  styleUrls: ['./dialog-page.component.scss'],
+  providers: [ScrollableListNotifierService]
 })
 export class DialogPageComponent implements OnInit, OnDestroy {
   newMessage : FormGroup = new FormGroup({
-    newMessageContent: new FormControl('', [Validators.required, Validators.minLength(1)]),
+    newMessageContent: new FormControl('',
+      [Validators.required, Validators.minLength(1)]),
     image: new FormControl('')
   });
 
@@ -46,9 +48,5 @@ export class DialogPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  }
-
-  updateMessages() {
-    this.scrollableListNotifierService.notify();
   }
 }

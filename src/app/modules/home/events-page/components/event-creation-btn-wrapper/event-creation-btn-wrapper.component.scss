@@ -1,0 +1,60 @@
+@import '../../../../../../assets/sass/base/variables';
+
+.new-event {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  hr{
+    position: absolute;
+    width: 15%;
+    z-index: -1;
+    top: 0;
+    transform: translateY(24px);
+  }
+
+  .left-line{
+    left: 0;
+  }
+
+  .right-line{
+    right: 0;
+  }
+
+  &__btn {
+    margin: 0 auto;
+    color: rgba($color-grey-dark, .7);
+    width: 70%;
+    border: 1px solid rgba($color-grey-dark, .6);
+    font-weight: 300;
+    height: 3rem;
+    text-decoration: none;
+    transition: all .3s;
+    font-size: .85rem;
+    position: relative;
+    background: none;
+    border-radius: 2rem;
+
+    &:before{
+      content: "";
+      width: 0;
+      position: absolute;
+      border-radius: 2rem;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      height: 100%;
+      background: linear-gradient(0.85turn, $color-blue, $color-yellow);
+    }
+    &:hover{
+      box-shadow: 0 0.1875rem 0.1875rem $color-bg-grey-footer;
+      color: $color-white;
+
+      &:before{
+        animation: search-friends-btn-hover-animation linear .1s 1 normal;
+        width: 100%;
+      }
+    }
+  }
+}

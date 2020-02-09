@@ -14,9 +14,10 @@ export class FriendsListItemComponent {
   constructor(private router : Router) { }
 
   navigateToDialog(){
+    const id = this.friendData.id;
     this.router.navigate(['/app/dialog'], {
       queryParams: {
-        to: this.friendData.id
+        to: id
       }
     })
   }

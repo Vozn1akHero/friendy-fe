@@ -19,7 +19,7 @@ export class ExemplaryMessagesEffects {
       return !loaded;
     }),
     mergeMap(([{payload}] : any) => {
-      return this.exemplaryMessagesService.getExemplaryMessages(payload.startIndex, payload.length)
+      return this.exemplaryMessagesService.getExemplaryMessages(payload.page)
         .pipe(
           map(messages => {
             return new ExemplaryMessagesActions.SetExemplaryMessages(messages);

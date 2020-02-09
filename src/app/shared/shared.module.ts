@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 
-import { NewMessageFormComponent } from './components/new-message-form/new-message-form.component';
+import { NewPostFormComponent } from './components/new-post-form/new-post-form.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { MiniSearchInputComponent } from './components/mini-search-input/mini-search-input.component';
 import { MainPanelComponent } from './components/main-panel/main-panel.component';
@@ -22,6 +22,10 @@ import { SettingsPanelFormComponent } from './components/settings-panel/settings
 import {SettingsPanelTextareaComponent} from "./components/settings-panel/settings-panel-textarea/settings-panel-textarea.component";
 import {SettingsPanelDropdownComponent} from "./components/settings-panel/settings-panel-dropdown/settings-panel-dropdown.component";
 import {SettingsPanelSelectComponent} from "./components/settings-panel/settings-panel-select/settings-panel-select.component";
+import { PanelForEntryPresentingComponent } from './components/panel-for-entry-presenting/panel-for-entry-presenting.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { PostItemComponent } from './components/post-item/post-item.component';
+import {SharedComponentsModule} from './components/shared-components.module';
 
 
 @NgModule({
@@ -29,49 +33,14 @@ import {SettingsPanelSelectComponent} from "./components/settings-panel/settings
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedComponentsModule
   ],
   declarations: [
-    NewMessageFormComponent,
-    SearchInputComponent,
-    MiniSearchInputComponent,
-    MainPanelComponent,
-    CommonModalComponent,
-    ButtonHoverInfoModalComponent,
-    TransparentBgModalComponent,
-    CalendarComponent,
-    InfoModalComponent,
-    ScrollableListComponent,
-    SettingsPanelWrapperComponent,
-    ControlsWrapperInSettingsPanelComponent,
-    RowInSettingsPanelComponent,
-    RowContentInSettingsPanelComponent,
-    SettingsPanelInputComponent,
-    SettingsPanelFormComponent,
-    SettingsPanelTextareaComponent,
-    SettingsPanelDropdownComponent,
-    SettingsPanelSelectComponent
+
   ],
   exports: [
-    NewMessageFormComponent,
-    SearchInputComponent,
-    MiniSearchInputComponent,
-    MainPanelComponent,
-    CommonModalComponent,
-    ButtonHoverInfoModalComponent,
-    TransparentBgModalComponent,
-    CalendarComponent,
-    InfoModalComponent,
-    ScrollableListComponent,
-    SettingsPanelWrapperComponent,
-    ControlsWrapperInSettingsPanelComponent,
-    RowInSettingsPanelComponent,
-    RowContentInSettingsPanelComponent,
-    SettingsPanelInputComponent,
-    SettingsPanelFormComponent,
-    SettingsPanelTextareaComponent,
-    SettingsPanelDropdownComponent,
-    SettingsPanelSelectComponent
+    SharedComponentsModule
   ]
 })
 

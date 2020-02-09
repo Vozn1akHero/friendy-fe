@@ -11,10 +11,9 @@
     display: flex;
     margin-bottom: 1rem;
 
-    svg{
+    .icon{
       width: 20px;
       height: 18px;
-      fill: $color-grey-light-2;
     }
 
     .section-link{
@@ -37,6 +36,5 @@
 
   .content{
     display: flex;
-    flex-direction: column;
   }
 }

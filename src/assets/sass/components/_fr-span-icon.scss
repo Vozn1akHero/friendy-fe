@@ -1,6 +1,7 @@
 .fr-span-icon{
+  display: block;
   width: 1.35rem;
   height: 1.35rem;
-  background-size: contain;
-  background-repeat: no-repeat;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
 }

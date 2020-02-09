@@ -1,3 +1,21 @@
 <div class="event-admins-settings">
-  <app-event-admins [eventId]="eventId"></app-event-admins>
+  <app-participants-common-list (searchEmitter)="searchAdmins($event)">
+    <ng-container *ngIf="(eventAdminsLoaded$ | async); else loader">
+      <app-participant *ngFor="let eventAdmin of (eventAdmins$ | async)"
+                       [id]="eventAdmin.id"
+                       [avatarUrl]="eventAdmin.avatarUrl"
+                       [name]="eventAdmin.name"
+                       [surname]="eventAdmin.surname">
+        <ng-container *ngIf="!eventAdmin.isEventCreator">
+          <app-participant-list-button (action)="remove($event)"
+                                       [userId]="eventAdmin.id">
+            Usuń
+          </app-participant-list-button>
+        </ng-container>
+      </app-participant>
+    </ng-container>
+    <ng-template #loader>
+      <app-loader></app-loader>
+    </ng-template>
+  </app-participants-common-list>
 </div>

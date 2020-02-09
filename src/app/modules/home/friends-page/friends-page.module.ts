@@ -13,6 +13,7 @@ import {SuggestedFriendsPanelComponent} from './components/suggested-friends-pan
 import { FriendsSearchControlsComponent } from './components/friends-search-controls/friends-search-controls.component';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import {ScrollableListNotifierService} from "../../../shared/services/scrollable-list-notifier.service";
+import { FriendsSearchBtnComponent } from './components/friends-search-btn/friends-search-btn.component';
 
 
 @NgModule({
@@ -31,10 +32,8 @@ import {ScrollableListNotifierService} from "../../../shared/services/scrollable
     FriendsSearchInputComponent,
     FriendListComponent,
     SuggestedFriendsPanelComponent,
-    FriendsSearchControlsComponent
-  ],
-  providers: [
-    ScrollableListNotifierService
+    FriendsSearchControlsComponent,
+    FriendsSearchBtnComponent
   ],
   exports: []
 })

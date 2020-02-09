@@ -1,4 +1,5 @@
 @import '../../../../../../assets/sass/base/variables';
+@import '../../../../../../assets/sass/base/icons';
 
 .friends-search-input{
   display: flex;
@@ -37,13 +38,10 @@
     border-radius: 1rem;
     transform: translateX(-1rem);
 
-    svg{
-      display: flex;
-      align-self: center;
+    .search-icon{
       width: 19px;
       height: 19px;
-
-      fill: $color-white;
+      background: url($search-icon) no-repeat;
     }
   }
 }

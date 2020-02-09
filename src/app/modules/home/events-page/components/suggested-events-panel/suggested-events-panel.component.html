@@ -1,17 +1,15 @@
 <section class="suggested-events-panel">
-  <app-search-events></app-search-events>
-
-  <hr class="line">
-
-  <div class="suggested-events-wrapper">
-    <div class="intro-text-wrapper">
-      <span class="location-icon"></span>
-      <span class="text fr-default-smaller-font">Wydarzenia w twoim
-        mieście</span>
-    </div>
-    <app-suggested-events-item
-      *ngFor="let event of (exemplaryEvents$|async)"
-      [eventData]="event"
-    ></app-suggested-events-item>
-  </div>
+  <app-main-panel
+    [panelContent]="{
+      title: 'Wydarzenia w twoim mieście',
+      link: null,
+      iconClass: 'icon-location',
+      marginTop: true}"
+    [contentColumned]="true">
+    <app-user-event-item *ngFor="let event of (exemplaryEvents$|async); let i
+     = index"
+                         [styles]="{padding: '0 .5rem'}"
+                         [showControls]="false"
+                         [eventData]="event"></app-user-event-item>
+  </app-main-panel>
 </section>

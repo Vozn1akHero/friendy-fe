@@ -6,6 +6,8 @@ import {UserIdService} from "../../../shared/services/user-id.service";
 import {Store} from "@ngrx/store";
 import * as fromApp from "../../../core/ngrx/store/app.reducer";
 import * as UserPostsActions from "./store/user-posts/user-posts.actions";
+import {Title} from '@angular/platform-browser';
+import {ScrollableListNotifierService} from '../../../shared/services/scrollable-list-notifier.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -14,7 +16,8 @@ import * as UserPostsActions from "./store/user-posts/user-posts.actions";
     display: flex;
     position: relative;
     flex-direction: column;
-  }`]
+  }`],
+  providers: [ScrollableListNotifierService]
 })
 export class ProfilePageComponent implements OnInit {
   activeSettings : boolean = false;
@@ -25,6 +28,7 @@ export class ProfilePageComponent implements OnInit {
               private router: Router,
               private userIdService: UserIdService,
               private store: Store<fromApp.AppState>,
+              private titleService: Title,
               private profilePageModalsService: ProfilePageModalsService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -40,7 +44,6 @@ export class ProfilePageComponent implements OnInit {
     this.setUserId();
     this.setIsUserProfileOwner();
   }
-
 
   setUserId(){
     this.route.paramMap.subscribe(params => {

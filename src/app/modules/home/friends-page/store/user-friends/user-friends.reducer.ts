@@ -19,6 +19,17 @@ export function userFriendsReducer(
   action: UserFriendsActions.UserFriendsActions
 ) {
   switch (action.type) {
+    case UserFriendsActions.GET_START_FRIEND_LIST:
+      return {
+        ...state,
+        loading: true
+      };
+    case UserFriendsActions.SET_START_FRIEND_LIST:
+      return {
+        ...state,
+        friends: action.payload,
+        loaded: true
+      };
     case UserFriendsActions.GET_FRIENDS:
       return {
         ...state,
@@ -28,7 +39,7 @@ export function userFriendsReducer(
       return {
         ...state,
         friends: [...state.friends, ...action.payload],
-        loaded: true
+        loading: false
       };
     case UserFriendsActions.REMOVE_FRIEND_FROM_STATE:
       return {

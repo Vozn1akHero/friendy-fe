@@ -6,7 +6,6 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./events-mine-search.component.scss']
 })
 export class EventsMineSearchComponent implements OnInit {
-  //@Input() typeOfEventsToShow : EventType;
   eventsSearchTerm: string;
   @Output() searchEventsSubmit: EventEmitter<string> = new EventEmitter<string>();
   @Output() toggleInput: EventEmitter<boolean> = new EventEmitter();

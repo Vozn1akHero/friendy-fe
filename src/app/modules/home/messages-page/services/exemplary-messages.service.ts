@@ -10,8 +10,8 @@ import ExemplaryMessage from '../models/exemplary-message.model';
 export class ExemplaryMessagesService {
   constructor(private http: HttpClient){}
 
-  getExemplaryMessages(startIndex: number, length: number){
-    return this.http.get(`/api/chat/last-messages?startIndex=${startIndex}&length=${length}`,
+  getExemplaryMessages(page: number){
+    return this.http.get(`/api/chat/last-messages/paginate?page=${page}`,
       {observe: 'body'}).pipe(map((response : any[]) => {
           let messages : ExemplaryMessage[] = [];
           response.map((res : any) => {

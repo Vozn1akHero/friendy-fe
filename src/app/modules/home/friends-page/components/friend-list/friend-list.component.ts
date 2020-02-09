@@ -17,19 +17,21 @@ export class FriendListComponent implements OnInit, OnDestroy {
   friendListSubscription: Subscription;
   scrollSubscription: Subscription;
 
-  constructor(private store: Store<fromApp.AppState>, private scrollableListNotifierService : ScrollableListNotifierService) { }
+  constructor(private store: Store<fromApp.AppState>,
+              private scrollableListNotifierService : ScrollableListNotifierService) { }
 
   ngOnInit() {
-    this.store.dispatch(new UserFriendsActions.GetFriends({page: 1}));
+    this.getStartFriendList();
+    this.setListScrollListener();
+  }
 
+  getStartFriendList(){
+    this.store.dispatch(new UserFriendsActions.GetStartFriendList());
     this.friendsLoaded$ = this.store.select(state => state.friendsPageUserFriends.loaded);
-
     this.friendListSubscription = this.store.select(state => state.friendsPageUserFriends.friends)
       .subscribe(value => {
         this.friendList = value;
       });
-
-    this.setListScrollListener();
   }
 
   setListScrollListener(){

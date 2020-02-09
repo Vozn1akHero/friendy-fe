@@ -1,10 +1,9 @@
 <app-main-panel
   [panelContent]="{
   title: 'Czaty',
-  icon: '../../../../../assets/images/icon/symbol-defs.svg#icon-users1',
+  iconClass: 'people-icon',
   link: null}">
-
-  <ng-container *ngIf="loaded">
+  <ng-container *ngIf="loaded; else loader">
     <ng-container *ngIf="chats.length > 0; else noFriends">
       <app-chats-in-dialog-item
         *ngFor="let chat of chats" [data]="chat"></app-chats-in-dialog-item>
@@ -15,5 +14,7 @@
       </span>
     </ng-template>
   </ng-container>
-
+  <ng-template #loader>
+    <app-loader></app-loader>
+  </ng-template>
 </app-main-panel>
