@@ -5,35 +5,33 @@
 
   .upper-wrapper{
     width: 100%;
-    height: 3rem;
+    height: 5rem;
     position: relative;
 
     .back-btn{
       border: 0;
       outline: none;
       background: none;
-      width: 20%;
-      transition: .255s background;
+      width: 25%;
       height: 100%;
       display: flex;
       align-items: center;
       padding-left: 2rem;
 
       &:hover{
-        background: rgba($color-bg-light-grey-2, .3);
+        background: linear-gradient(90deg, rgba($color-bg-light-grey-2, 0.4), white);
       }
 
       .back-arrow{
         font-size: 1.5rem;
-        position: absolute;
         color: $color-bg-light-grey-2;
-        top: 8px;
       }
 
       .base-avatar{
-        width: 2rem;
+        width: 3rem;
+        height: 3rem;
         border-radius: 50%;
-        margin-left: 1.5rem;
+        margin-left: 1rem;
       }
 
       .base-title{

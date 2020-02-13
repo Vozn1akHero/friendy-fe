@@ -1,46 +1,46 @@
 @import '../../../../../assets/sass/base/variables';
 
-.friend-requests-modal{
-    background: white;
-    box-shadow: 0 2rem 4rem 0 rgba(black,.3);
-    height: 100%;
+.friend-requests-modal {
+  background: white;
+  box-shadow: 0 2rem 4rem 0 rgba(black, .3);
+  height: 100%;
+  border-radius: 3rem;
 
-    .controls-wrapper{
-      display: flex;
-      height: 12%;
+  .controls-wrapper {
+    display: flex;
+    height: 15%;
 
-      .btn{
-        width: 50%;
-        border: none;
-        background: white;
-        color: $color-grey-dark;
-      }
-
-      .chosen-subpage-btn{
-        color: white;
-        background: $color-pink;
-      }
-
-      /*    .received-friend-requests-btn{
-            border-top-left-radius: $panel-border-radius;
-          }
-
-          .sent-friend-requests-btn{
-            border-top-right-radius: $panel-border-radius;
-          }*/
+    .btn {
+      width: 50%;
+      border: none;
+      background: white;
+      color: $color-grey-dark;
     }
 
-    .friend-requests-list-wrapper{
-      //height: 90%;
-      //background-color: $color-bg-grey-footer;
-      padding: 1rem 2rem;
-      min-height: 88%;
-      overflow-y: scroll;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      &::-webkit-scrollbar{
-        opacity: 0;
-      }
+    .chosen-subpage-btn {
+      color: white;
+      background: $color-pink;
     }
+
+    .received-friend-requests-btn {
+      border-top-left-radius: 3rem;
+    }
+
+    .sent-friend-requests-btn {
+      border-top-right-radius: 3rem;
+    }
+  }
+
+  .friend-requests-list-wrapper {
+    padding: 1rem 2rem;
+    min-height: 85%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &::-webkit-scrollbar {
+      opacity: 0;
+    }
+  }
 }

@@ -24,10 +24,8 @@ import {IsEventAdminResolver} from './modules/home/event-page/resolvers/is-event
 import {EventParticipantsPageComponent} from './modules/home/event-participants-page/event-participants-page.component';
 import {PhotosPageComponent} from './modules/home/photos-page/photos-page.component';
 import {ChatDataResolver} from './modules/home/dialog-page/resolvers/chat-data.resolver';
-import {PostCommentsPageComponent} from './modules/home/post-comments-page/post-comments-page.component';
 import {IsEventCreatorResolver} from './modules/home/event-settings-page/resolvers/is-event-creator.resolver';
 import {NotFoundPageComponent} from './modules/not-found/not-found-page.component';
-import {PostDataResolver} from './modules/home/post-comments-page/resolvers/post-data.resolver';
 
 const routes: Routes = [
   {path: '',
@@ -60,15 +58,7 @@ const routes: Routes = [
         component: ProfilePageComponent,
         resolve: {
           profileBelongingStatus: ProfileBelongingResolver
-        },
-        children: [
-          {path: 'comments/:postId',
-            resolve: {
-              profileBelongingStatus: ProfileBelongingResolver,
-              post: PostDataResolver
-            },
-            component: PostCommentsPageComponent },
-        ]
+        }
       },
 
       { path: 'profile/:id/photos', component: PhotosPageComponent },
@@ -106,8 +96,11 @@ const routes: Routes = [
 
       {path: 'messages', component: MessagesPageComponent},
 
-      {path: 'dialog',
+      {path: 'dialog', component: DialogPageComponent},
+
+      {path: 'dialog/:id',
         component: DialogPageComponent,
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
         resolve: {interlocutorData: InterlocutorDataResolver,
           profileId: ProfileIdResolver,
           chatData: ChatDataResolver }},

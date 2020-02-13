@@ -16,6 +16,7 @@ import {InterlocutorDataResolver} from './resolvers/interlocutor-data.resolver';
 import {ChatDataResolver} from './resolvers/chat-data.resolver';
 import {ScrollableListNotifierService} from "../../../shared/services/scrollable-list-notifier.service";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import { ChatFriendMainDataComponent } from './components/chat-friend-main-data/chat-friend-main-data.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
     ChatFriendDataComponent,
     ChatsInDialogPanelComponent,
     ChatMessageItemComponent,
-    ChatsInDialogItemComponent
+    ChatsInDialogItemComponent,
+    ChatFriendMainDataComponent
   ],
   providers: [
     InterlocutorDataResolver,

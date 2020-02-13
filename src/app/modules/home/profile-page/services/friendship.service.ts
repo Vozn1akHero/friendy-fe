@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +9,18 @@ import {HttpClient} from '@angular/common/http';
 export class FriendshipService {
   constructor(private http: HttpClient){}
 
-  checkIfFriendByUserId(userId : number){
+  checkIfFriendByUserId(userId : number) : Observable<boolean>{
     return this.http.get(`api/friend/friendship-status/?id=${userId}`,
-      {observe: 'response'})
+      {observe: 'body'}).pipe(map((value: boolean) => {
+      return value;
+    }))
   }
 
-  getFriendRequestStatus(userId: number){
+  getFriendRequestStatus(userId: number) : Observable<boolean>{
     return this.http.get(`api/friend/request/status/?receiverId=${userId}`,
-      {observe: 'response'})
+      {observe: 'body'}).pipe(map((value: boolean) => {
+        return value;
+    }))
   }
 
   sendFriendRequest(id: number){

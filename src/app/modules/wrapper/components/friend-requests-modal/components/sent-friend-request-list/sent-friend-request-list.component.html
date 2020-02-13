@@ -1,9 +1,21 @@
 <section class="sent-friend-request-list">
-  <span class="list-is-empty-text"
-        *ngIf="sentFriendRequests.length === 0; else friendRequestList">
-    Lista wysłanych prośb o dodanie do znajomych jest pusta
-  </span>
-  <ng-template #friendRequestList>
-    <app-friend-request-item *ngFor="let friendRequest of sentFriendRequests" [friendRequest]="friendRequest"></app-friend-request-item>
+  <ng-container
+    *ngIf="sentFriendRequestsLoaded$|async; else loader">
+    <ng-container *ngIf="(sentFriendRequests|async).length > 0; else
+    friendRequestListEmpty">
+      <app-friend-request-item *ngFor="let friendRequest of
+      (sentFriendRequests|async)"
+                              [friendRequest]="friendRequest"></app-friend-request-item>
+    </ng-container>
+    <ng-template #friendRequestListEmpty>
+      <span class="list-is-empty-text">
+          Lista otrzymanych prośb o dodanie do znajomych jest pusta
+      </span>
+    </ng-template>
+  </ng-container>
+  <ng-template #loader>
+    <div class="loader-wrap">
+      <app-loader></app-loader>
+    </div>
   </ng-template>
 </section>

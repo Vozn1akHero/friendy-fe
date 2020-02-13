@@ -9,6 +9,6 @@ export class ChatDataResolver implements Resolve<ChatData> {
 
   resolve(route: ActivatedRouteSnapshot) {
     return this.dialogService
-      .getChatData(route.queryParams.to);
+      .getChatData(route.params.id);
   }
 }

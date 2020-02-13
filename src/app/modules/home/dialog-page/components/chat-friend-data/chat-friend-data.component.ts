@@ -13,7 +13,6 @@ import SubscriptionManager from '../../../../../shared/helpers/SubscriptionManag
 export class ChatFriendDataComponent implements OnInit, OnDestroy {
   interlocutorData: InterlocutorDataModel;
   lastTimeOnline: string;
-  status: boolean;
 
   constructor(private route: ActivatedRoute,
    private subscriptionManager : SubscriptionManager,
@@ -29,9 +28,7 @@ export class ChatFriendDataComponent implements OnInit, OnDestroy {
       .get(this.interlocutorData.friendId)
       .subscribe(((value:any) => {
         const status : boolean = value.body.status;
-        if(status){
-          this.status = true;
-        } else {
+        if(!status){
           this.lastTimeOnline = moment(value.body.connectionEnd).fromNow();
         }
     })))

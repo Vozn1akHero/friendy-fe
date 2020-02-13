@@ -2,20 +2,25 @@
 
 .profile-header-friendship-controls{
   position: absolute;
-  right: 1rem;
-  bottom: 1rem;
+  right: 2rem;
+  bottom: 1.5rem;
   text-decoration: none;
   margin-top: 1rem;
   font-size: .8rem;
 
-  .remove-request-btn, .add-new-friend-btn{
+  .remove-request-btn, .add-new-friend-btn, .send-msg-btn{
     width: 2rem;
     height: 2rem;
     border: none;
 
-    .control-icon{
-      width: 1rem;
-      height: 1rem;
+    .icon{
+
+    }
+  }
+
+  .send-msg-btn{
+    .icon{
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 2c8.837 0 16 5.82 16 13s-7.163 13-16 13c-0.849 0-1.682-0.054-2.495-0.158-3.437 3.437-7.539 4.053-11.505 4.144v-0.841c2.142-1.049 4-2.961 4-5.145 0-0.305-0.024-0.604-0.068-0.897-3.619-2.383-5.932-6.024-5.932-10.103 0-7.18 7.163-13 16-13z'%3E%3C/path%3E%3C/svg%3E");
     }
   }
 
@@ -23,8 +28,8 @@
     color: $color-grey-light-2;
     background: none;
 
-    .control-icon {
-      fill: $color-grey-light-2;
+    .icon {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z'%3E%3C/path%3E%3Cpath d='M21 8l-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z'%3E%3C/path%3E%3C/svg%3E");
     }
   }
 
@@ -32,8 +37,8 @@
     border-radius: 50%;
     background: $color-pink;
 
-    .control-icon{
-      fill: $color-white;
+    .icon{
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M15.5 6h-5.5v-5.5c0-0.276-0.224-0.5-0.5-0.5h-3c-0.276 0-0.5 0.224-0.5 0.5v5.5h-5.5c-0.276 0-0.5 0.224-0.5 0.5v3c0 0.276 0.224 0.5 0.5 0.5h5.5v5.5c0 0.276 0.224 0.5 0.5 0.5h3c0.276 0 0.5-0.224 0.5-0.5v-5.5h5.5c0.276 0 0.5-0.224 0.5-0.5v-3c0-0.276-0.224-0.5-0.5-0.5z'%3E%3C/path%3E%3C/svg%3E");
     }
   }
 }

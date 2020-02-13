@@ -9,12 +9,11 @@ import {FriendshipService} from '../../../services/friendship.service';
 })
 export class ProfileHeaderFriendshipControlsComponent implements OnInit {
   @Input() userId: number;
-
+  loaded: boolean = false;
   removeFriendRequestBtnInfoModalOpened: boolean;
   addFriendRequestBtnInfoModalOpened: boolean;
   friendshipStatus: boolean = false;
   friendshipStatusSubscription: Subscription;
-
   friendRequestStatus: boolean = false;
   friendRequestStatusSubscription: Subscription;
 
@@ -27,41 +26,46 @@ export class ProfileHeaderFriendshipControlsComponent implements OnInit {
   setFriendshipStatus(){
     this.friendshipStatusSubscription = this.friendshipService
       .checkIfFriendByUserId(this.userId)
-      .subscribe(response => {
-        this.friendshipStatus = response.body as boolean;
+      .subscribe(value => {
+        this.finalFriendshipStatus = value;
+
         if(!this.friendshipStatus){
           this.setFriendRequestStatus();
         }
       })
   }
 
+  set finalFriendshipStatus(value: boolean){
+    this.friendshipStatus = value;
+    this.loaded = true;
+  }
+
+  set finalFriendRequestStatus(value: boolean){
+    this.friendRequestStatus = value;
+    this.loaded = true;
+  }
+
   setFriendRequestStatus(){
     this.friendRequestStatusSubscription = this.friendshipService
       .getFriendRequestStatus(this.userId)
-      .subscribe(response => {
-        this.friendRequestStatus = response.body as boolean;
-      }, (error) => {
-        alert(error);
+      .subscribe(value => {
+        this.finalFriendRequestStatus = value;
       })
   }
 
   onSendFriendRequestBtnClick(){
     this.friendRequestStatusSubscription = this.friendshipService
       .sendFriendRequest(this.userId)
-      .subscribe(response => {
+      .subscribe(() => {
         this.friendRequestStatus = true;
-      }, (error) => {
-        alert(error);
       })
   }
 
   onRemoveFriendRequestBtnClick(){
     this.friendRequestStatusSubscription = this.friendshipService
       .removeFriendRequest(this.userId)
-      .subscribe(response => {
+      .subscribe(() => {
         this.friendRequestStatus = false;
-      }, (error) => {
-        alert(error);
       })
   }
 
@@ -90,5 +94,4 @@ export class ProfileHeaderFriendshipControlsComponent implements OnInit {
         break;
     }
   }
-
 }

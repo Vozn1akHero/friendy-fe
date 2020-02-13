@@ -1,7 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ExemplaryChatsService} from '../../services/exemplary-chats.service';
-import ExemplaryChatModel from '../../models/exemplary-chat.model';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
+import {Store} from '@ngrx/store';
+import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
+import {ScrollableListNotifierService} from '../../../../../shared/services/scrollable-list-notifier.service';
+import * as DialogListActions from '../../store/dialog-list/dialog-list.actions';
+import DialogModel from '../../models/dialog.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-chats-in-dialog-panel',
@@ -9,24 +13,42 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./chats-in-dialog-panel.component.scss']
 })
 export class ChatsInDialogPanelComponent implements OnInit, OnDestroy {
-  loaded: boolean = false;
-  chats: ExemplaryChatModel[];
-  chatsSubscription: Subscription;
+  dialogListLoaded$: Observable<boolean>;
+  dialogListSubscription: Subscription;
+  dialogList: DialogModel[];
+  updateListNotifierSubscription: Subscription;
 
-  constructor(private exemplaryChatsService : ExemplaryChatsService) { }
-
-  ngOnInit() {
-    this.get();
+  constructor(private store: Store<fromApp.AppState>,
+              private router : Router,
+              private scrollableListNotifierService: ScrollableListNotifierService) {
   }
 
-  get(){
-    this.chatsSubscription = this.exemplaryChatsService.get().subscribe(value => {
-      this.chats = value;
-      this.loaded = true;
-    })
+  ngOnInit() {
+    this.getExemplaryMessages();
+    this.updateList();
+  }
+
+  getExemplaryMessages() {
+    this.dialogListLoaded$ = this.store
+      .select(state => state.dialogPageDialogList.loaded);
+    this.store.dispatch(new DialogListActions.GetDialogList({page: 1}));
+    this.dialogListSubscription = this.store.select(state => state.dialogPageDialogList.dialogList)
+      .subscribe(dialogList => {
+        this.dialogList = dialogList;
+      });
+  }
+
+  updateList() {
+    this.updateListNotifierSubscription = this.scrollableListNotifierService.endReached$.subscribe(value => {
+      if (value) {
+        this.store.dispatch(new DialogListActions.GetDialogList({page: this.scrollableListNotifierService.currentPage}));
+        this.scrollableListNotifierService.setDefaultValue();
+      }
+    });
   }
 
   ngOnDestroy(): void {
-    this.chatsSubscription.unsubscribe();
+    this.dialogListSubscription.unsubscribe();
+    this.updateListNotifierSubscription.unsubscribe();
   }
 }

@@ -11,13 +11,18 @@ import SentFriendRequestModel from '../../../../models/sent-friend-request.model
   styleUrls: ['./received-friend-request-list.component.scss']
 })
 export class ReceivedFriendRequestListComponent implements OnInit {
-  @Input() receivedFriendRequests: ReceivedFriendRequestModel[];
+  receivedFriendRequests: Observable<ReceivedFriendRequestModel[]>;
+  receivedFriendRequestsLoaded$: Observable<boolean>;
 
-  constructor() {
+  constructor(private friendRequestsModalService: FriendRequestsModalService) {
+  }
+
+  getReceivedFriendRequests() {
+    this.receivedFriendRequestsLoaded$ = this.friendRequestsModalService.receivedFriendRequestsLoaded$;
+    this.receivedFriendRequests = this.friendRequestsModalService.receivedFriendRequests$;
   }
 
   ngOnInit() {
-
+    this.getReceivedFriendRequests();
   }
-
 }

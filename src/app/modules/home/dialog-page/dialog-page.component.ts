@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {DialogHubService} from '../../../shared/services/dialog-hub.service';
 import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {ScrollableListNotifierService} from "../../../shared/services/scrollable-list-notifier.service";
 
 @Component({
@@ -18,31 +18,34 @@ export class DialogPageComponent implements OnInit, OnDestroy {
       [Validators.required, Validators.minLength(1)]),
     image: new FormControl('')
   });
-
-  interlocutorId: string;
-  chatId: string;
+  interlocutorSelected$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private unsubscribe$ = new Subject();
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private scrollableListNotifierService : ScrollableListNotifierService,
-              private dialogHubService: DialogHubService) {}
+              private dialogHubService: DialogHubService) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.interlocutorSelected$.next(this.route.snapshot.params.id != null);
+  }
 
   ngOnInit() {
-    this.interlocutorId = this.route.snapshot.queryParams.to;
-    this.chatId = this.route.snapshot.data.chatData.id;
-
     this.activateDialogHub();
   }
 
   activateDialogHub(){
-    this.dialogHubService.connected$
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((value) => {
-        if(value){
-          this.dialogHubService.joinGroup(this.chatId);
-          this.dialogHubService.listenToNewMessage();
-        }
-      })
+    this.interlocutorSelected$.pipe(takeUntil(this.unsubscribe$)).subscribe(value => {
+      if(value){
+        this.dialogHubService.connected$
+          .pipe(takeUntil(this.unsubscribe$))
+          .subscribe((value) => {
+            if(value){
+              this.dialogHubService.joinGroup(this.route.snapshot.data.chatData.id);
+              this.dialogHubService.listenToNewMessage();
+            }
+          })
+      }
+    })
   }
 
   ngOnDestroy(): void {

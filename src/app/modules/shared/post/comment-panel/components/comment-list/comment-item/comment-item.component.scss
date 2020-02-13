@@ -1,0 +1,138 @@
+@import '../../../../../../../../assets/sass/base/variables';
+
+
+.comment-item {
+  display: flex;
+  //width: 30rem;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  position: relative;
+
+  &:hover{
+    .remove-post{
+      opacity: 1;
+    }
+  }
+
+  .upper-wrapper {
+    display: flex;
+
+    .content-wrapper{
+      width: 330px;
+      background: $color-bg-grey-footer;
+      padding: 1rem;
+      border-radius: 1rem;
+
+      .text-content {
+        font-size: .8rem;
+        word-break: break-all;
+      }
+
+      .image{
+        margin-top: 1rem;
+        width: 100%;
+      }
+    }
+
+    .avatar-wrapper{
+      margin-right: 1rem;
+
+      .avatar {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        img {
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .bottom-wrapper {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin-top: .75rem;
+    padding-left: 4rem;
+  }
+
+  .likes-btn {
+    display: flex;
+    text-decoration: none;
+    background: none;
+    outline: none;
+    border: none;
+    position: absolute;
+    right: 50px;
+    bottom: 22px;
+
+    .icon {
+      height: 1rem;
+      width: 1rem;
+    }
+
+    .btn-text {
+      font-size: .6rem;
+      display: flex;
+      align-self: center;
+      margin-left: .3rem;
+    }
+  }
+
+  .unlike-post-btn{
+    .icon{
+      transition: all .255s;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23b5b5b5'%3E%3Cpath d='M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z'%3E%3C/path%3E%3C/svg%3E%0A");
+    }
+
+    &:hover{
+      .icon{
+        opacity: .7;
+      }
+    }
+  }
+
+  .like-user-post-btn{
+    .icon{
+      transition: all .255s;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23e83962'%3E%3Cpath d='M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z'%3E%3C/path%3E%3C/svg%3E%0A");
+    }
+
+    &:hover{
+      .icon {
+        filter: brightness(1.1);
+      }
+    }
+  }
+
+  .show-comments-btn{
+    color: $color-blue;
+  }
+
+  .show-comments-btn, .remove-response-btn, .respond-btn{
+    font-size: .65rem;
+    font-weight: 500;
+    text-decoration: none;
+    background: none;
+    outline: none;
+    border: none;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
+  .remove-response-btn, .respond-btn{
+    margin-left: 1rem;
+  }
+
+  .date {
+    font-size: .6rem;
+    right: 1rem;
+    position: absolute;
+    align-self: center;
+    color: $color-grey-light-2;
+  }
+}

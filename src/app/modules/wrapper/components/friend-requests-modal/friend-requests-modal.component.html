@@ -14,13 +14,11 @@
     </div>
 
     <div class="friend-requests-list-wrapper">
-      <app-sent-friend-request-list *ngIf="chosenSubpage === 'sent-requests'
-      && (sentFriendRequestsLoaded$ | async)
-       && (sentFriendRequestsLoaded$ | async)" [sentFriendRequests]="(sentFriendRequests | async)">
+      <app-sent-friend-request-list *ngIf="chosenSubpage === 'sent-requests'">
       </app-sent-friend-request-list>
 
-      <app-received-friend-request-list *ngIf="chosenSubpage === 'received-requests'
-      && (receivedFriendRequestsLoaded$ | async)" [receivedFriendRequests]="(receivedFriendRequests | async)">
+      <app-received-friend-request-list *ngIf="chosenSubpage ===
+      'received-requests'">
       </app-received-friend-request-list>
     </div>
   </div>

@@ -26,7 +26,7 @@ import { EventInfoPanelControlsComponent } from './components/event-header/event
 import { NonParticipantControlsComponent } from './components/event-header/event-info-panel/event-info-panel-controls/non-participant-controls/non-participant-controls.component';
 import { ParticipantControlsComponent } from './components/event-header/event-info-panel/event-info-panel-controls/participant-controls/participant-controls.component';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
-import {ScrollableListNotifierService} from "../../../shared/services/scrollable-list-notifier.service";
+import {PostModule} from '../../shared/post/post.module';
 
 @NgModule({
   imports: [
@@ -35,7 +35,9 @@ import {ScrollableListNotifierService} from "../../../shared/services/scrollable
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InfiniteScrollModule,
+    PostModule
   ],
   declarations: [
     EventComponent,

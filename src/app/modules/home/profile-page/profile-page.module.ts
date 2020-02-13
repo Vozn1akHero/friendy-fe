@@ -16,22 +16,20 @@ import {ProfileBelongingResolver} from './resolvers/profile-belonging.resolver';
 import { NewAvatarModalComponent } from './components/new-avatar-modal/new-avatar-modal.component';
 import { ProfileAvatarComponent } from './components/profile-header/profile-avatar/profile-avatar.component';
 import { ProfileBackgroundComponent } from './components/profile-header/profile-background/profile-background.component';
-import {PostCommentsPageComponent} from '../post-comments-page/post-comments-page.component';
-import { ProfilePageRoutingModule } from './profile-page-routing.module';
 import {ProfileUnderHeaderContentWrapperComponent} from './components/profile-under-header-content-wrapper/profile-under-header-content-wrapper.component';
 import { ProfileHeaderFriendshipControlsComponent } from './components/profile-header/profile-header-friendship-controls/profile-header-friendship-controls.component';
 import { ProfileHeaderSettingsComponent } from './components/profile-header/profile-header-settings/profile-header-settings.component';
 import { ProfileInfoPanelComponent } from './components/profile-header/profile-info-panel/profile-info-panel.component';
 import {ProfileHeaderBasicDataComponent} from './components/profile-header/profile-header-basic-data/profile-header-basic-data.component';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
-import {ScrollableListNotifierService} from "../../../shared/services/scrollable-list-notifier.service";
+import {PostModule} from '../../shared/post/post.module';
 
 @NgModule({
   imports: [
     InfiniteScrollModule,
     CommonModule,
     SharedModule,
-    //ProfilePageRoutingModule,
+    PostModule,
     AppRoutingModule
   ],
   declarations: [

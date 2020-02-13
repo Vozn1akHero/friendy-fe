@@ -1,25 +1,27 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit } from '@angular/core';
+import {AfterViewInit, Component, Input, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
 import Post from '../../models/post.model';
 import * as UserPostsActions from '../../store/user-posts/user-posts.actions';
-import {combineLatest, Observable, Subscription} from 'rxjs';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import SubscriptionManager from '../../../../../shared/helpers/SubscriptionManager';
-import {take} from 'rxjs/operators';
 import {UserPostService} from '../../services/user-post.service';
 import {Router} from '@angular/router';
+import {PostItemComponent} from '../../../../shared/post/post-item/post-item.component';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-profile-post-list',
   templateUrl: './profile-post-list.component.html',
   styleUrls: ['./profile-post-list.component.scss']
 })
-export class ProfilePostListComponent implements OnInit, OnDestroy {
+export class ProfilePostListComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() isUserProfileOwner : boolean;
   @Input() userId: number;
-
-  userPosts: Post[];
-  userPostsLoading: boolean;
+  @ViewChildren(PostItemComponent) postRefs: QueryList<PostItemComponent>;
+  /*userPosts: Post[];
+  userPostsLoading: boolean;*/
+  posts$: Observable<Post[]>;
+  loaded$: Observable<boolean>;
 
   constructor(private store: Store<fromApp.AppState>,
               private router: Router,
@@ -27,23 +29,21 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
               private subscriptionManager : SubscriptionManager) { }
 
   ngOnInit() {
-    this.setLoaded();
+    //this.setLoaded();
     this.getUserPosts();
   }
 
-  setLoaded(){
+  /*setLoaded(){
     this.subscriptionManager.add(this.store.select(state => state.profilePageUserPosts.loading)
       .subscribe(value => {
         this.userPostsLoading = value;
       }));
-  }
+  }*/
 
   getUserPosts() {
+    this.loaded$ = this.store.select(state => state.profilePageUserPosts.loaded);
     this.store.dispatch(new UserPostsActions.GetUserPosts({ userId : this.userId }));
-    this.subscriptionManager.add(this.store.select(state => state.profilePageUserPosts.posts)
-      .subscribe(userPosts => {
-        this.userPosts = userPosts;
-      }));
+    this.posts$ = this.store.select(state => state.profilePageUserPosts.posts);
   }
 
   onRemovePost(postId: number){
@@ -64,5 +64,9 @@ export class ProfilePostListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptionManager.destroy();
+  }
+
+  ngAfterViewInit(): void {
+
   }
 }

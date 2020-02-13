@@ -1,0 +1,21 @@
+<div class="comments-list">
+  <ng-container *ngIf="(commentsLoaded$|async); else loader">
+    <!--<h3 class="fr-m-t-2 fr-p-l-2">
+      {{ comments.length }}  {{ [2,3,4].indexOf(comments.length) === -1 ?
+      'komentarzy' : 'komentarze' }}
+    </h3>
+    <ng-container *ngIf="comments.length > 0">
+      <app-comment-item *ngFor="let comment of comments" [comment]="comment">
+      </app-comment-item>
+    </ng-container>-->
+    <app-comment-item *ngFor="let comment of (comments$|async)"
+                      (actResponseToPostEmitter)="activateResponseToPostTyping($event)"
+                      (likeEmitter)="like($event)"
+                      (unlikeEmitter)="unlike($event)"
+                      [comment]="comment">
+    </app-comment-item>
+  </ng-container>
+  <ng-template #loader>
+    <app-loader></app-loader>
+  </ng-template>
+</div>

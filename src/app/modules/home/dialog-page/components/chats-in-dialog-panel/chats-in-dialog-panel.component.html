@@ -1,3 +1,24 @@
+<div class="chats-in-dialog">
+  <div class="items">
+    <ng-container *ngIf="(dialogListLoaded$|async); else loader">
+      <ng-container *ngIf="dialogList.length > 0; else noDialogs">
+        <app-chats-in-dialog-item
+          *ngFor="let dialog of dialogList"
+          [data]="dialog"></app-chats-in-dialog-item>
+      </ng-container>
+      <ng-template #noDialogs>
+        <span class="fr-default-smaller-font">
+          Lista rozmów jest pusta
+        </span>
+      </ng-template>
+    </ng-container>
+    <ng-template #loader>
+      <app-loader></app-loader>
+    </ng-template>
+  </div>
+</div>
+
+<!--
 <app-main-panel
   [panelContent]="{
   title: 'Czaty',
@@ -18,3 +39,4 @@
     <app-loader></app-loader>
   </ng-template>
 </app-main-panel>
+-->

@@ -24,7 +24,7 @@ import {SettingsPanelDropdownComponent} from "./components/settings-panel/settin
 import {SettingsPanelSelectComponent} from "./components/settings-panel/settings-panel-select/settings-panel-select.component";
 import { PanelForEntryPresentingComponent } from './components/panel-for-entry-presenting/panel-for-entry-presenting.component';
 import { LoaderComponent } from './components/loader/loader.component';
-import { PostItemComponent } from './components/post-item/post-item.component';
+import { PostItemComponent } from '../modules/shared/post/post-item/post-item.component';
 import {SharedComponentsModule} from './components/shared-components.module';
 
 

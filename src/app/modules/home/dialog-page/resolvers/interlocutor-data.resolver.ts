@@ -9,6 +9,6 @@ export class InterlocutorDataResolver implements Resolve<ChatFriendBasicData> {
 
   resolve(route: ActivatedRouteSnapshot) {
     return this.dialogService
-      .getChatFriendData(route.queryParams.to);
+      .getChatFriendData(route.params.id);
   }
 }

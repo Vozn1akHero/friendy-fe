@@ -11,13 +11,13 @@
         interlocutorData.friendId]">
           {{ interlocutorData.name }} {{ interlocutorData.surname }}
         </a>
-        <ng-container *ngIf="status; else offline">
+        <ng-container *ngIf="interlocutorData.isOnline; else offline">
           <p class="cur-status">dostępny</p>
         </ng-container>
         <ng-template #offline>
           <p class="cur-status">ostatnio dostępny {{ lastTimeOnline }}</p>
         </ng-template>
       </div>
-
   </div>
+  <hr class="bottom-line">
 </div>

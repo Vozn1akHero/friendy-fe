@@ -38,8 +38,6 @@ export class UserExemplaryFriendsEffects {
   constructor(
     private actions$: Actions,
     private http: HttpClient,
-    private exemplaryFriendsService: ExemplaryFriendsService,
-    private router: Router,
-    private store$: Store<fromApp.AppState>
+    private exemplaryFriendsService: ExemplaryFriendsService
   ) {}
 }

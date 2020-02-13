@@ -3,8 +3,6 @@ import {BaseDataService} from '../../../services/base-data.service';
 import {Router} from '@angular/router';
 import BaseData from '../../../models/base-data.model';
 import {Observable} from 'rxjs';
-import * as moment from 'moment';
-import Base = moment.unitOfTime.Base;
 
 @Component({
   selector: 'app-base-data-panel',
@@ -12,7 +10,8 @@ import Base = moment.unitOfTime.Base;
   styleUrls: ['./base-data-panel.component.scss']
 })
 export class BaseDataPanelComponent implements OnInit {
-  baseData: Observable<BaseData>;
+  baseData$: Observable<BaseData>;
+  baseDataLoaded$: Observable<boolean>;
   @Input() id: number;
 
   constructor(private baseDataService : BaseDataService,
@@ -20,7 +19,8 @@ export class BaseDataPanelComponent implements OnInit {
 
   ngOnInit() {
     this.getBaseData();
-    this.baseData = this.baseDataService.baseData$;
+    this.baseData$ = this.baseDataService.baseData$;
+    this.baseDataLoaded$ = this.baseDataService.loaded$;
   }
 
   getBaseData(){

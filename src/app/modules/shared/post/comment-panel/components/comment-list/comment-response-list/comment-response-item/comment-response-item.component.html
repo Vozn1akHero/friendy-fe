@@ -1,0 +1,45 @@
+<div class="comment-response-item">
+  <!--  <button *ngIf="isUserProfileOwner" class="remove-post" (click)="onRemoveComment()">
+      &#10006;
+    </button>-->
+  <div class="upper-wrapper">
+    <div class="avatar-wrapper">
+      <a class="avatar-link" [routerLink]="['/app/profile', commentResponse.authorId]">
+        <figure class="avatar">
+            <img src="{{ commentResponse.authorAvatarUrl }}" alt="user's avatar">
+        </figure>
+      </a>
+    </div>
+    <div class="content-wrapper">
+      <p class="text-content">
+        {{ commentResponse.content }}
+      </p>
+      <!--<img *ngIf="commentResponse.imagePath != null"
+           src="http://localhost:5000/{{ post.imagePath }}"
+           alt="#"
+           class="image"/>-->
+    </div>
+  </div>
+
+  <div class="bottom-wrapper">
+    <button class="add-response-btn" (click)="onRespondBtnClick()">
+      Odpowiedz
+    </button>
+    <button class="remove-response-btn">
+      Usuń
+    </button>
+    <button class="likes-btn"
+            [ngClass]="commentResponse.isCommentLikedByUser ?
+            'unlike-post-btn' :
+            'like-user-post-btn'"
+            (click)="onLikeOrUnlike()">
+      <span class="icon fr-span-icon"></span>
+      <span class="btn-text">
+        {{ commentResponse.likesCount }}
+      </span>
+    </button>
+    <p class="date">
+      {{ timePassed }}
+    </p>
+  </div>
+</div>

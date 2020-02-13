@@ -45,6 +45,10 @@ import {EventDataEffects} from './modules/home/event-page/store/event-data/event
 import {DialogMessagesEffects} from './modules/home/dialog-page/store/dialog-messages/dialog-messages.effects';
 import {LoggedInResolver} from './logged-in.resolver';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {DialogListEffects} from './modules/home/dialog-page/store/dialog-list/dialog-list.effects';
+import {commentPanelReducerMap} from './modules/shared/post/comment-panel/store/reducers';
+import CommentResponseEffects from './modules/shared/post/comment-panel/store/comment-response/comment-response.effects';
+import PostCommentEffects from './modules/shared/post/comment-panel/store/post-comment/post-comment.effects';
 
 
 
@@ -76,7 +80,9 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([
       //UserEffects,
-      EventDataEffects,
+      CommentResponseEffects,
+      PostCommentEffects,
+      CommentResponseEffects,
       DialogMessagesEffects,
       ExemplaryMessagesEffects,
       UserDataEffects,
@@ -86,7 +92,8 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
       UserPostsEffects,
       UserFriendsEffects,
       UserEventsEffects,
-      AdministeredEventsEffects
+      AdministeredEventsEffects,
+      DialogListEffects
     ]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),

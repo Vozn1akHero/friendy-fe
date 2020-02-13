@@ -1,4 +1,8 @@
-<div class="photos-page">
+<div class="photos-page"
+     infiniteScroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="50"
+     (scrolled)="updateList()">
   <app-photos-page-header [id]="id"></app-photos-page-header>
   <app-photos-list [id]="id" [chosenSubpage]="chosenSubpage"></app-photos-list>
 </div>

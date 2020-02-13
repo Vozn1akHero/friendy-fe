@@ -10,10 +10,12 @@ import {Router} from '@angular/router';
 })
 export class MessageComponent implements OnInit {
   @Input() exemplaryMessage: ExemplaryMessage;
+  messageCutContent: string;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
+
   }
 
   navigateToDialog(){

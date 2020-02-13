@@ -29,7 +29,6 @@ export class DialogService {
     return this.http.get(`/api/chat/${to}/page/${page}`)
       .pipe(
         map((res : any[]) => {
-          console.log(res);
           let arr : MessageInChat[] = [];
           res.map(value => {
             arr.push(new MessageInChat(value.content, value.imagePath, value.userId, value.date))
@@ -49,13 +48,16 @@ export class DialogService {
   }
 
   getChatFriendData(receiverId: number) : Observable<ChatFriendBasicData>{
-    return this.http.get(`/api/user/${receiverId}/with-selected-fields?selectedFields=Id,Name,Surname,Avatar`)
+    return this.http.get(`/api/user/${receiverId}/extended`)
       .pipe(
         map((res : any) => {
           return new ChatFriendBasicData(res.id,
             res.name,
             res.surname,
-            res.avatar);
+            res.avatar,
+            res.city,
+            res.birthday,
+            res.isOnline);
       }))
   }
 

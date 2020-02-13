@@ -1,0 +1,57 @@
+<div class="comment-item fr-m-t-2">
+<!--  <button *ngIf="isUserProfileOwner" class="remove-post" (click)="onRemoveComment()">
+    &#10006;
+  </button>-->
+  <div class="upper-wrapper">
+    <div class="avatar-wrapper">
+      <a class="avatar-link" [routerLink]="['/app/profile', comment.authorId]">
+        <figure class="avatar">
+          <img src="{{ comment.authorAvatarUrl }}" alt="user's avatar">
+        </figure>
+      </a>
+    </div>
+    <div class="content-wrapper">
+      <p class="text-content">
+        {{ comment.content }}
+      </p>
+      <!--<img *ngIf="comment.imagePath != null"
+           src="http://localhost:5000/{{ post.imagePath }}"
+           alt="#"
+           class="image"/>-->
+    </div>
+  </div>
+
+  <div class="bottom-wrapper">
+    <button (click)="onShowCommentsBtnClick()" class="show-comments-btn">
+        Pokaż {{ comment.commentsCount }} odpowiedzi
+    </button>
+
+    <button class="respond-btn" (click)="onRespondBtnClick()">
+      Odpowiedz
+    </button>
+
+    <button class="remove-btn">
+      Usuń
+    </button>
+
+    <p class="date">
+      {{ timePassed }}
+    </p>
+
+    <button class="likes-btn"
+            [ngClass]="comment.isCommentLikedByUser ?
+            'unlike-post-btn' :
+            'like-user-post-btn'"
+            (click)="onLikeOrUnlikePost()">
+      <span class="icon fr-span-icon"></span>
+      <span class="btn-text">
+        {{ comment.likesCount }}
+      </span>
+    </button>
+  </div>
+
+  <ng-container *ngIf="comment.commentsCount > 0 && responsesShown">
+    <app-comment-response-list [commentId]="comment.id"
+    ></app-comment-response-list>
+  </ng-container>
+</div>

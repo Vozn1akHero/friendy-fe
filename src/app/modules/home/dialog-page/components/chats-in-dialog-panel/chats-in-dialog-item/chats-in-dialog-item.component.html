@@ -1,9 +1,31 @@
 <div class="item">
-  <a [routerLink]="['/app/dialog?to=', data.id]" class="avatar">
-    <figure>
-      <img src="{{ data.avatarUrl }}" alt="">
-    </figure>
-  </a>
-  <a class="fr-hover-text-decoration" [routerLink]="['/app/dialog?to=', data.id]">{{data.name}}
-    {{data.surname}}</a>
+  <div class="left-wrap">
+    <a [routerLink]="['/app/dialog', data.interlocutorId]" class="avatar">
+      <figure>
+        <img alt="" src="{{ data.interlocutorAvatar }}">
+      </figure>
+    </a>
+  </div>
+
+  <div class="right-wrap">
+    <a [routerLink]="['/app/dialog', data.interlocutorId]"
+       class="user-data fr-hover-text-decoration">{{data.interlocutorName}}
+      {{data.interlocutorSurname}}</a>
+
+    <a [routerLink]="['/app/dialog', data.interlocutorId]" class="content">
+      <ng-container *ngIf="data.writtenByRequestIssuer; else writtenByFriend">
+        <div class="written-by-user-msg-wrapper">
+          <span class="msg-text-content fr-hover-text-decoration">
+            {{ cutMsgContent }}
+          </span>
+          <img alt="" class="own-avatar" src="{{ data.avatarUrl }}">
+        </div>
+      </ng-container>
+      <ng-template #writtenByFriend>
+          <span class="msg-text-content fr-hover-text-decoration">
+           {{ cutMsgContent }}
+          </span>
+      </ng-template>
+    </a>
+  </div>
 </div>

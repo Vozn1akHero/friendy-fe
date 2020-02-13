@@ -1,0 +1,25 @@
+<div class="chat-friend-main-data">
+  <div class="wrap">
+    <a [routerLink]="['/app/profile',
+      interlocutorData.friendId]" class="avatar-link">
+      <figure class="avatar-figure">
+        <img alt="" src="{{ interlocutorData.avatarUrl }}">
+      </figure>
+    </a>
+    <a [routerLink]="['/app/profile',
+        interlocutorData.friendId]" class="md-link fr-hover-text-decoration">
+      {{ interlocutorData.name }} {{ interlocutorData.surname }}
+    </a>
+    <div class="add-wrap">
+      <div class="city">
+        <span class="icon fr-span-icon"></span>
+        <span class="text">{{ interlocutorData.city }}</span>
+      </div>
+
+      <div class="birthday">
+        <span class="icon fr-span-icon"></span>
+        <span class="text">{{ interlocutorData.birthday }}</span>
+      </div>
+    </div>
+  </div>
+</div>

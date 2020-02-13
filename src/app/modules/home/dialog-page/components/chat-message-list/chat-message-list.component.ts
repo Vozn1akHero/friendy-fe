@@ -35,15 +35,15 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
   getDialog(){
     this.store.dispatch(new DialogActions.GetInitialDialog({
-      to: this.route.snapshot.queryParams.to
+      to: this.route.snapshot.params.id
     }));
   }
 
   setMessageList(){
-    this.messagesLoaded$ = this.store.select(e => e.messagesPageDialog.loaded);
-    this.messagesLoading$ = this.store.select(e => e.messagesPageDialog.loading);
+    this.messagesLoaded$ = this.store.select(e => e.dialogPageDialog.loaded);
+    this.messagesLoading$ = this.store.select(e => e.dialogPageDialog.loading);
     this.messages$ = this.store
-      .select(e => e.messagesPageDialog.messagesInDialog);
+      .select(e => e.dialogPageDialog.messagesInDialog);
   }
 
   setProfileId(){
@@ -58,7 +58,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
     this.scrollSubscription = this.scrollableListNotifierService.endReached$.subscribe(value => {
       if(value){
         this.store.dispatch(new DialogActions.GetDialog({
-          to: this.route.snapshot.queryParams.to,
+          to: this.route.snapshot.params.id,
           page: this.scrollableListNotifierService.currentPage
         }));
         this.scrollableListNotifierService.setDefaultValue();
