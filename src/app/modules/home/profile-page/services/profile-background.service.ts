@@ -7,10 +7,6 @@ import {HttpClient} from '@angular/common/http';
 export class ProfileBackgroundService {
   constructor(private http: HttpClient){}
 
-  getByUserId(id:number){
-    return this.http.get(`/api/user/${id}/background`, {responseType: 'text'});
-  }
-
   update(newBackground:File){
     const content = new FormData();
     content.append("newBackground", newBackground);

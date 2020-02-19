@@ -26,10 +26,6 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {EffectsModule} from '@ngrx/effects';
 import {SharedModule} from './shared/shared.module';
 import {ModulesModule} from './modules/modules.module';
-import {ProfilePageModule} from './modules/home/profile-page/profile-page.module';
-
-
-
 
 import {UserPostsEffects} from './modules/home/profile-page/store/user-posts/user-posts.effects';
 
@@ -49,9 +45,9 @@ import {DialogListEffects} from './modules/home/dialog-page/store/dialog-list/di
 import {commentPanelReducerMap} from './modules/shared/post/comment-panel/store/reducers';
 import CommentResponseEffects from './modules/shared/post/comment-panel/store/comment-response/comment-response.effects';
 import PostCommentEffects from './modules/shared/post/comment-panel/store/post-comment/post-comment.effects';
-
-
-
+import {ParticipationEffects} from './modules/home/event-page/store/participation/participation.effects';
+import {EventDataEffects as SPEventDataEffects}  from './modules/home/event-settings-page/store/event-data/event-data.effects';
+import {ParticipationRequestEffects} from './modules/home/event-settings-page/store/participation-request/participation-request.effects';
 
 
 @NgModule({
@@ -93,7 +89,11 @@ import PostCommentEffects from './modules/shared/post/comment-panel/store/post-c
       UserFriendsEffects,
       UserEventsEffects,
       AdministeredEventsEffects,
-      DialogListEffects
+      DialogListEffects,
+      EventDataEffects,
+      ParticipationEffects,
+      SPEventDataEffects,
+      ParticipationRequestEffects
     ]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),

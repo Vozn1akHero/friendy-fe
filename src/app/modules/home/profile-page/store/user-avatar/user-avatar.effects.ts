@@ -10,7 +10,7 @@ import {UserAvatarService} from '../../services/user-avatar.service';
 
 @Injectable()
 export class UserAvatarEffects {
-  @Effect()
+  /*@Effect()
   getUserAvatar = this.actions$.pipe(
     ofType(UserAvatarActions.GET_USER_AVATAR),
     switchMap(([{payload}] : any) => {
@@ -22,7 +22,7 @@ export class UserAvatarEffects {
         }));
       }
     )
-  );
+  );*/
 
   @Effect()
   updateUserAvatar = this.actions$.pipe(

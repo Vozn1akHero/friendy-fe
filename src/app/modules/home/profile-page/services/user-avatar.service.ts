@@ -10,9 +10,9 @@ export class UserAvatarService {
 
   constructor(private http: HttpClient){}
 
-  getAvatarByUserId(id:number){
+/*  getAvatarByUserId(id:number){
     return this.http.get(`/api/user/${id}/avatar`, {responseType: 'text'});
-  }
+  }*/
 
   updateAvatar(newAvatar:File){
     const content = new FormData();

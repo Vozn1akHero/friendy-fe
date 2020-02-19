@@ -86,31 +86,19 @@ export class UserPostsEffects {
     })
   );
 
-  @Effect()
+  @Effect({dispatch: false})
   profilePageLikePost = this.actions$.pipe(
     ofType(UserPostsActions.LIKE_POST),
     switchMap((payload: UserPostsActions.LikePost) => {
       return this.userPostService.like(payload.payload.id)
-        .pipe(
-          map(() => {
-            return ({ type: UserPostsActions.LIKE_POST_IN_STATE,
-              payload: {id: payload.payload.id} })
-          })
-        )
     })
   );
 
-  @Effect()
+  @Effect({dispatch: false})
   profilePageUnlikePost = this.actions$.pipe(
     ofType(UserPostsActions.UNLIKE_POST),
     switchMap((payload: UserPostsActions.UnlikePost) => {
       return this.userPostService.unlike(payload.payload.id)
-        .pipe(
-          map(() => {
-            return ({ type: UserPostsActions.UNLIKE_POST_IN_STATE,
-              payload: {id: payload.payload.id} })
-          })
-        )
     })
   );
 

@@ -12,9 +12,8 @@ import {ScrollableListNotifierService} from "../../../../../shared/services/scro
   styleUrls: ['./friend-list.component.scss']
 })
 export class FriendListComponent implements OnInit, OnDestroy {
-  friendList: FriendModel[];
+  friendList$: Observable<FriendModel[]>;
   friendsLoaded$: Observable<boolean>;
-  friendListSubscription: Subscription;
   scrollSubscription: Subscription;
 
   constructor(private store: Store<fromApp.AppState>,
@@ -28,10 +27,7 @@ export class FriendListComponent implements OnInit, OnDestroy {
   getStartFriendList(){
     this.store.dispatch(new UserFriendsActions.GetStartFriendList());
     this.friendsLoaded$ = this.store.select(state => state.friendsPageUserFriends.loaded);
-    this.friendListSubscription = this.store.select(state => state.friendsPageUserFriends.friends)
-      .subscribe(value => {
-        this.friendList = value;
-      });
+    this.friendList$ = this.store.select(state => state.friendsPageUserFriends.friends);
   }
 
   setListScrollListener(){
@@ -48,7 +44,6 @@ export class FriendListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.friendListSubscription.unsubscribe();
     this.scrollSubscription.unsubscribe();
   }
 }

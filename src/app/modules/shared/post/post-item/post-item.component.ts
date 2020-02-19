@@ -14,15 +14,16 @@ import * as moment from 'moment';
 export class PostItemComponent implements OnInit {
   @Input() post : any;
   timePassed : string;
-  @Input() removeBtnVisible: boolean = false;
+  @Input() userId: number;
+  @Input() privilegedToDeleteRelatedEntries: boolean|never;
+  //@Input() removeBtnVisible: boolean = false;
   @Output() likePostEmitter: EventEmitter<number> = new EventEmitter();
   @Output() unlikePostEmitter: EventEmitter<number> = new EventEmitter();
   @Output() removePostEmitter: EventEmitter<number> = new EventEmitter();
   @Output() redirectToCommentsEmitter: EventEmitter<number> = new EventEmitter();
   commentsShowed: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  constructor(private eventPostService : EventPostService,
-              private subscriptionManager : SubscriptionManager) { }
+  constructor(private subscriptionManager : SubscriptionManager) { }
 
   ngOnInit() {
     this.timePassed = moment(this.post.date).fromNow();

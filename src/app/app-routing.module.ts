@@ -92,9 +92,9 @@ const routes: Routes = [
       {path: 'friends-search', component: FriendsSearchPageComponent,
         resolve: { startingUserList: ExemplaryUsersResolver }},
 
-      {path: 'home', component: HomePageComponent},
+      /*{path: 'home', component: HomePageComponent},
 
-      {path: 'messages', component: MessagesPageComponent},
+      {path: 'messages', component: MessagesPageComponent},*/
 
       {path: 'dialog', component: DialogPageComponent},
 

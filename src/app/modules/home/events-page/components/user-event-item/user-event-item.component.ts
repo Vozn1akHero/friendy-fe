@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import Event from '../../models/event.model';
 
 @Component({
@@ -11,10 +11,20 @@ export class UserEventItemComponent implements OnInit {
   @Input() showControls: boolean;
   @Input() chosenType: string;
   @Input() styles;
+  @Output() leaveEventEmitter: EventEmitter<number> = new EventEmitter();
+  @Output() applyEventEmitter: EventEmitter<number> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
 
+  }
+
+  leave() {
+    this.leaveEventEmitter.emit(this.eventData.id);
+  }
+
+  apply() {
+    this.applyEventEmitter.emit(this.eventData.id);
   }
 }

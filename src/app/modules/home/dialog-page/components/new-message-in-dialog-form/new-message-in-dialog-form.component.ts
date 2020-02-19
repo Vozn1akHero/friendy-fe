@@ -22,15 +22,13 @@ export class NewMessageInDialogFormComponent implements OnInit {
 
   ngOnInit() {
     this.chatId = this.route.snapshot.data.chatData.id;
-    this.receiverId = this.route.snapshot.queryParams.to;
+    this.receiverId = this.route.snapshot.data.interlocutorData.friendId;
   }
 
   newMessageEvent() {
     const textFieldValue : string = this.newMessageContent.nativeElement.value;
-    const image = this.image.nativeElement;
-    if(image.files && image.files[0]){
-      this.imageFile = image.files[0];
-      const newMessage : NewMessageInChat = new NewMessageInChat(textFieldValue, image.files[0]);
+    if(this.imageFile){
+      const newMessage : NewMessageInChat = new NewMessageInChat(textFieldValue, this.imageFile);
       this.store.dispatch(new DialogActions.AddNewMessage({
         chatId: this.chatId, receiverId: this.receiverId, newMessage: newMessage
       }))
@@ -42,6 +40,15 @@ export class NewMessageInDialogFormComponent implements OnInit {
         }))
       }
     }
+  }
+
+  onImageSelection() {
+    this.imageFile = this.image.nativeElement.files[0];
+  }
+
+  removeSelectedImage() {
+    this.imageFile = null;
+    this.image.nativeElement.value = '';
   }
 }
 

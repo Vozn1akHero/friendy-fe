@@ -5,8 +5,16 @@
 .new-avatar-modal {
   background-color: $color-bg-light-grey;
   box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.16);
-  padding: 3rem 4rem;
+  padding: 1rem;
   position: relative;
   text-align: center;
   transition: all .3s;
+
+  .avatar-wrap{
+
+  }
+
+  .bottom-wrapper{
+    margin-top: 1rem;
+  }
 }

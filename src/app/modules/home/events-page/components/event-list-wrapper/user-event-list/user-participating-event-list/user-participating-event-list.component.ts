@@ -32,6 +32,14 @@ export class UserParticipatingEventListComponent implements OnInit, OnDestroy {
       });
   }
 
+  leave(id: number) {
+    this.store.dispatch(new EventsPageUserEventsActions.LeaveEvent({id}))
+  }
+
+  apply(id: number) {
+
+  }
+
   ngOnDestroy(): void {
     this.eventsSubscription.unsubscribe();
   }

@@ -8,7 +8,7 @@ export interface State {
 }
 
 const initialState: State = {
-  comments: null,
+  comments: {},
   loading: false,
   loaded: false
 };
@@ -54,6 +54,19 @@ export function postCommentsReducer(
             return e;
           })];
           return state.comments;
+        }()
+      };
+    case PostCommentActions.FINALIZE_CREATION:
+      return {
+        ...state,
+        comments: function() {
+          console.log(1);
+          return {
+            ...state.comments,
+            ...{
+              [action.payload.postId]: [...state.comments[action.payload.postId], action.payload]
+            }
+          }
         }()
       };
     default:

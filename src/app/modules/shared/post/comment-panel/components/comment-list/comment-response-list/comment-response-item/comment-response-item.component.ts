@@ -10,15 +10,17 @@ import CommentResponseModel from '../../../../models/comment-response.model';
 })
 export class CommentResponseItemComponent implements OnInit {
   @Input() commentResponse: CommentResponseModel;
-  @Output() actResponseToCommentEmitter: EventEmitter<number> = new EventEmitter();
+  @Output() actResponseToResponseEmitter: EventEmitter<number> = new EventEmitter();
   timePassed: string;
   @Output() likeEmitter: EventEmitter<number> = new EventEmitter();
   @Output() unlikeEmitter: EventEmitter<number> = new EventEmitter();
+  @Input() userId: number;
+  @Input() privilegedToDeleteRelatedEntries: boolean|never;
 
   constructor() {}
 
   onRespondBtnClick(){
-    this.actResponseToCommentEmitter.emit(this.commentResponse.id);
+    this.actResponseToResponseEmitter.emit(this.commentResponse.id);
   }
 
   ngOnInit() {

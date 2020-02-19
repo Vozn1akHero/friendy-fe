@@ -5,9 +5,7 @@ import {map, take} from 'rxjs/operators';
 import EventParticipantDetailed from '../models/event-participant-detailed.model';
 import EventBannedParticipantModel from '../models/event-banned-participant.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class EventParticipantService {
   private _eventParticipants = new BehaviorSubject([]);
   private _eventParticipantsLoaded = new BehaviorSubject(false);

@@ -5,9 +5,7 @@ import EventPost from '../models/event-post.model';
 import {map} from 'rxjs/operators';
 import {BehaviorSubject, Observable} from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class EventPostService {
   constructor(private http: HttpClient) {
   }
@@ -33,6 +31,8 @@ export class EventPostService {
   set fillEventPosts(value: EventPost[]) {
     this._eventPosts.next([...this._eventPosts.getValue(), ...value]);
   }
+
+  loaded$ = new BehaviorSubject(false);
 
   create(post: NewPost, eventId: number) {
     const content = new FormData();
@@ -71,6 +71,7 @@ export class EventPostService {
             value.date));
         });
         this.fillEventPosts = eventPosts;
+        this.loaded$.next(true);
       }));
   }
 

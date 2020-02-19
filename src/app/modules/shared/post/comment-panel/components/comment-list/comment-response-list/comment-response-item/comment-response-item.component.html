@@ -12,6 +12,11 @@
     </div>
     <div class="content-wrapper">
       <p class="text-content">
+        <span class="user-data"
+              *ngIf="commentResponse.responseToCommentId != null">
+          {{commentResponse.commentAuthorName +
+        " " + commentResponse.commentAuthorSurname + ","}}
+        </span>
         {{ commentResponse.content }}
       </p>
       <!--<img *ngIf="commentResponse.imagePath != null"
@@ -25,7 +30,8 @@
     <button class="add-response-btn" (click)="onRespondBtnClick()">
       Odpowiedz
     </button>
-    <button class="remove-response-btn">
+    <button *ngIf="userId===commentResponse.authorId||privilegedToDeleteRelatedEntries"
+            class="remove-response-btn">
       Usuń
     </button>
     <button class="likes-btn"

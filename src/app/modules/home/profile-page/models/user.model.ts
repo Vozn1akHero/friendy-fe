@@ -1,4 +1,5 @@
 import * as moment from 'moment';
+import {SessionModel} from '../../../../shared/models/session.model';
 
 export default class User {
   id: number;
@@ -11,7 +12,7 @@ export default class User {
   name: string;
   surname: string;
   profileBg: string;
-  isOnline: boolean;
+  session: SessionModel;
   status: string;
 
   constructor(id: number,
@@ -24,7 +25,7 @@ export default class User {
               name: string,
               surname: string,
               profileBg: string,
-              isOnline: boolean,
+              session: SessionModel,
               status: string) {
     this.id = id;
     this.birthday = moment(birthday).format("DD.MM.YYYY");
@@ -36,7 +37,7 @@ export default class User {
     this.name = name;
     this.surname = surname;
     this.profileBg = profileBg;
-    this.isOnline = isOnline;
+    this.session = session;
     this.status = status;
   }
 }

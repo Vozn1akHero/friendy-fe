@@ -9,7 +9,7 @@ export interface State {
 
 const initialState: State = {
   loading: false,
-  commentResponses: null,
+  commentResponses: {},
   loaded: false
 };
 

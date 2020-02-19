@@ -11,6 +11,7 @@ import {UserEventsService} from '../../services/user-events.service';
 import * as AdministeredEventsActions from '../administered-events/administered-events.actions';
 import {of} from 'rxjs';
 import {AppState} from '../../../../../core/ngrx/store/app.reducer';
+import {EventParticipationService} from '../../services/event-participation.service';
 
 
 
@@ -60,11 +61,23 @@ export class UserEventsEffects {
     }))
   );
 
+  @Effect() leaveEvent = this.actions$.pipe(
+    ofType(UserEventsActions.LEAVE_EVENT),
+/*    tap((action: UserEventsActions.LeaveEvent) => ({ type: UserEventsActions.REMOVE_FROM_STATE,
+      payload: action.payload.id })),*/
+    switchMap(((action: UserEventsActions.LeaveEvent) => {
+      return this.eventParticipationService.leaveById(action.payload.id)/*.pipe(map((res:any) => {
+        return ({ type: UserEventsActions.REMOVE_FROM_STATE,
+          payload: action.payload.id })
+      }))*/
+    }))
+  );
 
   constructor(
     private actions$: Actions,
     private http: HttpClient,
     private eventsService : UserEventsService,
+    private eventParticipationService: EventParticipationService,
     private router: Router,
     private store$: Store<fromApp.AppState>
   ) {}

@@ -36,7 +36,6 @@ export class UserStatusService {
     this._userStatusHub
       .start()
       .then(() => {
-        console.log('Connection to userstatushub started');
         this.connected = true;
       })
       .catch(err => console.log('Error while starting connection: ' + err))
@@ -50,7 +49,6 @@ export class UserStatusService {
     this._userStatusHub.invoke("ConnectUser", userId)
       .then(res => {
         this.connectedMethodExecuted = true;
-        console.log(res);
       })
   }
 }

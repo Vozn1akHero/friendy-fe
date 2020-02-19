@@ -1,10 +1,9 @@
-import {Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, ViewChild, ElementRef, OnDestroy} from '@angular/core';
+import {Component, OnInit, Input, ViewChild, ElementRef, OnDestroy} from '@angular/core';
 import {Observable, of, Subscription} from 'rxjs';
 import User from '../../models/user.model';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import * as UserDataActions from '../../store/user-data/user-data.actions';
-import {UserStatusService} from '../../services/user-status.service';
 
 @Component({
   selector: 'app-profile-header',
@@ -21,34 +20,30 @@ export class ProfileHeaderComponent implements OnInit, OnDestroy {
   @ViewChild('changedProfileAvatar') changedProfileAvatar: ElementRef;
 
   userData: User;
-  userDataLoaded$: Observable<boolean>;
+  userDataLoaded: boolean;
   userDataSubscription: Subscription;
 
   isUserOnline: boolean;
 
-  constructor(private store: Store<fromApp.AppState>,
-              private userStatusService : UserStatusService) {}
+  constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit() {
     this.getUserData();
-    this.getUserStatus();
   }
 
   getUserData(){
-    this.userDataLoaded$ = this.store.select(state => state.profilePageUserData.loaded);
     this.store.dispatch(new UserDataActions.GetUserData({ id: this.userId }));
 
     this.userDataSubscription = this.store
       .select(state => state.profilePageUserData.profiles)
       .subscribe(userData => {
-        this.userData = userData[this.userId];
+        const data = userData[this.userId];
+        if(data){
+          this.userDataLoaded = true;
+          this.userData = userData[this.userId];
+          this.isUserOnline = userData[this.userId].session.sessionEnd == null;
+        }
       });
-  }
-
-  getUserStatus(){
-    this.userStatusService.get(this.userId).subscribe((value:any) => {
-      this.isUserOnline = value.body.status as boolean;
-    })
   }
 
   toggleActiveSettings(value: boolean){

@@ -9,15 +9,24 @@ import NewPost from '../../../modules/home/profile-page/models/new-post.model';
 })
 export class NewPostFormComponent {
   @Output() event : EventEmitter<Object> = new EventEmitter<Object>();
+  selectedImage: File;
   @ViewChild('image') image;
   @ViewChild('newMessageContent') newMessageContent;
 
   onSubmit() {
-    const image = this.image.nativeElement;
-    if(image.files && image.files[0]){
-      this.event.emit(new NewPost(this.newMessageContent.nativeElement.value, image.files[0]));
+    if(this.selectedImage){
+      this.event.emit(new NewPost(this.newMessageContent.nativeElement.value, this.selectedImage));
     } else {
       this.event.emit(new NewPost(this.newMessageContent.nativeElement.value, null));
     }
+  }
+
+  removeSelectedImage() {
+    this.selectedImage = null;
+    this.image.nativeElement.value = '';
+  }
+
+  onImageSelection() {
+    this.selectedImage = this.image.nativeElement.files[0];
   }
 }

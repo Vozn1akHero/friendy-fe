@@ -23,6 +23,7 @@ import {InfoModalComponent} from './info-modal/info-modal.component';
 import {CommonModalComponent} from './common-modal/common-modal.component';
 import {TransparentBgModalComponent} from './transparent-bg-modal/transparent-bg-modal.component';
 import {RouterModule} from '@angular/router';
+import { MiniLoaderComponent } from './mini-loader/mini-loader.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import {RouterModule} from '@angular/router';
     SettingsPanelDropdownComponent,
     SettingsPanelSelectComponent,
     PanelForEntryPresentingComponent,
-    LoaderComponent
+    LoaderComponent,
+    MiniLoaderComponent
   ],
   exports: [
     NewPostFormComponent,
@@ -76,7 +78,8 @@ import {RouterModule} from '@angular/router';
     SettingsPanelDropdownComponent,
     SettingsPanelSelectComponent,
     PanelForEntryPresentingComponent,
-    LoaderComponent
+    LoaderComponent,
+    MiniLoaderComponent
   ]
 })
 

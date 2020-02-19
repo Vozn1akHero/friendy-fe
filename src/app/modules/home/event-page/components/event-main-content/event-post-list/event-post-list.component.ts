@@ -37,6 +37,7 @@ export class EventPostListComponent implements OnInit, OnDestroy {
   }
 
   setEventPosts(){
+    this.eventPostsLoaded$ = this.eventPostService.loaded$;
     this.eventPosts$ = this.eventPostService.eventPosts$;
   }
 

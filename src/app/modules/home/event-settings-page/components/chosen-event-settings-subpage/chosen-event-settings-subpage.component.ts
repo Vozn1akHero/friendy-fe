@@ -12,7 +12,7 @@ export class ChosenEventSettingsSubpageComponent implements OnInit {
   subpagesArr: string[];
 
   constructor(private route: ActivatedRoute) {
-    this.subpagesArr = ["basic", "participants", "banned-participants", "admins"];
+    this.subpagesArr = ["basic", "participants", "requests", "banned-participants", "admins"];
   }
 
   ngOnInit() {

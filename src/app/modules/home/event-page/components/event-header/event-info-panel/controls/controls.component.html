@@ -1,0 +1,22 @@
+<div class="controls">
+  <ng-container *ngIf="(participationStatusLoaded$ | async)">
+    <ng-container [ngSwitch]="(participationStatus$|async)">
+      <ng-container *ngSwitchCase="participantStatus">
+        <app-participant-controls
+          (leaveEmitter)="leave()"></app-participant-controls>
+      </ng-container>
+      <ng-container *ngSwitchCase="nonParticipantStatus">
+        <app-non-participant-controls
+          (removeRequestEmitter)="removeParticipationRequest()"
+          (sendRequestEmitter)="sendParticipationRequest()"
+          [participationStatus$]="participationStatus$"
+        ></app-non-participant-controls>
+      </ng-container>
+      <ng-container *ngSwitchCase="bannedParticipantStatus">
+        <span>
+          Zbanowano Cię w tym wydarzeniu
+        </span>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>

@@ -26,6 +26,19 @@
       border-bottom-left-radius: 1rem;
       border-bottom-right-radius: 1rem;*/
 
+      .submit-btn{
+        border: none;
+        width: 5rem;
+        height: 1.75rem;
+        border-radius: 3rem;
+        outline: none;
+        display: block;
+        float: right;
+        transform: translateY(-13px);
+        color: white;
+        background: $color-blue;
+      }
+
       .inner-wrapper {
 
       }

@@ -12,6 +12,7 @@ export default class CommentResponseModel {
   commentId: number;
   isCommentLikedByUser: boolean;
   date: Date;
+  responseToCommentId?: number;
 
   constructor(id: number,
               authorId: number,
@@ -25,7 +26,8 @@ export default class CommentResponseModel {
               commentAuthorSurname: string,
               commentId: number,
               isCommentLikedByUser: boolean,
-              date: Date) {
+              date: Date,
+              responseToCommentId?: number) {
     this.id = id;
     this.authorId = authorId;
     this.authorName = authorName;
@@ -39,5 +41,6 @@ export default class CommentResponseModel {
     this.commentId = commentId;
     this.isCommentLikedByUser = isCommentLikedByUser;
     this.date = date;
+    this.responseToCommentId = responseToCommentId;
   }
 }

@@ -1,6 +1,6 @@
 <div class="post-wrapper">
   <div class="post-item">
-    <button *ngIf="removeBtnVisible"
+    <button *ngIf="privilegedToDeleteRelatedEntries"
             class="remove-post"
             (click)="onRemovePost()">
       &#10006;
@@ -50,6 +50,7 @@
 
   <div *ngIf="(commentsShowed|async)"
        class="comments-wrapper">
-    <app-comment-panel [postId]="post.postId"></app-comment-panel>
+    <app-comment-panel [privilegedToDeleteRelatedEntries]="privilegedToDeleteRelatedEntries"
+                       [postId]="post.postId"></app-comment-panel>
   </div>
 </div>

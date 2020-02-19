@@ -1,13 +1,10 @@
-export class NewCommentResponseModel {
-  postId: number;
+import NewCommentModel from './new-comment.model';
+
+export class NewCommentResponseModel extends NewCommentModel{
   commentId: number;
-  content: string;
-  image: File;
 
   constructor(postId: number, commentId: number, content: string, image: File) {
-    this.postId = postId;
+    super(postId, content, image);
     this.commentId = commentId;
-    this.content = content;
-    this.image = image;
   }
 }

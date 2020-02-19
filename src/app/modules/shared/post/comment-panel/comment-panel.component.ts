@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
 import PostCommentService from './services/post-comment.service';
 import CommentResponseService from './services/comment-response.service';
 import {NewCommentOrResponseService} from './services/new-comment-or-response.service';
+import {ActivatedRoute} from '@angular/router';
+import {UserIdService} from '../../../../shared/services/user-id.service';
 
 @Component({
   selector: 'app-comment-panel',
@@ -14,12 +15,17 @@ import {NewCommentOrResponseService} from './services/new-comment-or-response.se
 })
 export class CommentPanelComponent implements OnInit {
   @Input() postId: number;
-  @Input() postType: number;
+  userId: number;
+  //@Input() postType: number;
+  @Input() privilegedToDeleteRelatedEntries: boolean | never;
+  postType: number;
+  //panelType: number;
 
-  constructor() { }
+  constructor(private userIdService: UserIdService) {
+    this.userId = this.userIdService.userIdValue;
+  }
 
   ngOnInit() {
-    //this.postId = this.route.snapshot.params.postId;
     this.setPostType();
   }
 

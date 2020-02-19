@@ -37,4 +37,12 @@ export class UserAdministeredEventListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.administeredEventsSubscription.unsubscribe();
   }
+
+  leave($event: number) {
+
+  }
+
+  apply($event: number) {
+
+  }
 }

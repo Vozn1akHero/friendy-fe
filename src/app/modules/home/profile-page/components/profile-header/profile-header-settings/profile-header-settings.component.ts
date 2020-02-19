@@ -19,7 +19,7 @@ export class ProfileHeaderSettingsComponent implements OnInit {
     this.toggleActiveSettingsEmitter.emit(this.activeSettings);
   }
 
-  changeUserData() {
+  submitChanges() {
     //console.log(this.userStatus, this.changedProfileAvatar, this.changedProfileBg);
   }
 }

@@ -16,11 +16,13 @@ import {AppRoutingModule} from '../../../../app-routing.module';
 import CommentResponseService from './services/comment-response.service';
 import PostCommentService from './services/post-comment.service';
 import {AppState} from './store/reducers';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     //ProfilePageRoutingModule,
     SharedModule,
     AppRoutingModule,

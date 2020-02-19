@@ -1,12 +1,13 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import CommentModel from '../../models/comment.model';
-import {Observable, Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store/reducers';
 import * as PostCommentActions from '../../store/post-comment/post-comment.actions';
-import * as commentSelectors from '../../store/selectors'
-import {distinctUntilChanged, filter, takeUntil} from 'rxjs/operators';
+import * as commentSelectors from '../../store/selectors';
+import {distinctUntilChanged} from 'rxjs/operators';
 import {NewCommentOrResponseService} from '../../services/new-comment-or-response.service';
+import {CommentType} from '../../../comment-type.enum';
 
 @Component({
   selector: 'app-comment-list',
@@ -16,6 +17,8 @@ import {NewCommentOrResponseService} from '../../services/new-comment-or-respons
 export class CommentListComponent implements OnInit {
   @Input() postId: number;
   @Input() postType: number;
+  @Input() userId: number;
+  @Input() privilegedToDeleteRelatedEntries: boolean|never;
   commentsLoaded$: Observable<boolean>;
   comments$: Observable<CommentModel[]>;
 
@@ -26,10 +29,21 @@ export class CommentListComponent implements OnInit {
     this.getComments();
   }
 
-  activateResponseToPostTyping(commentId: number){
-    this.newCommentOrResponseService.responseTarget = {responseToComment: true,
+  activateResponseToPostTyping(){
+    /*this.newCommentOrResponseService.responseTarget = {responseToComment: true,
       responseToResponse: false,
-      targetId: commentId};
+      target: {
+        mainCommentId: commentId,
+        responseId: null
+      }};*/
+    this.newCommentOrResponseService.commentType = CommentType.PostComment;
+    this.newCommentOrResponseService.initData = {postId: this.postId};
+  }
+
+  activateResponseToCommentTyping(commentId: number){
+    this.newCommentOrResponseService.commentType = CommentType.ResponseToComment;
+    this.newCommentOrResponseService.initData = {postId: this.postId,
+      commentId: commentId};
   }
 
   getComments(){

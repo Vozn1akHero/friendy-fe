@@ -22,7 +22,9 @@
   </div>
 
   <div class="bottom-wrapper">
-    <button (click)="onShowCommentsBtnClick()" class="show-comments-btn">
+    <button (click)="onShowCommentsBtnClick()"
+            *ngIf="comment.commentsCount>0"
+            class="show-comments-btn">
         Pokaż {{ comment.commentsCount }} odpowiedzi
     </button>
 
@@ -30,7 +32,8 @@
       Odpowiedz
     </button>
 
-    <button class="remove-btn">
+    <button *ngIf="comment.authorId === userId || privilegedToDeleteRelatedEntries"
+            class="remove-btn">
       Usuń
     </button>
 
@@ -52,6 +55,8 @@
 
   <ng-container *ngIf="comment.commentsCount > 0 && responsesShown">
     <app-comment-response-list [commentId]="comment.id"
+                               [postId]="comment.postId"
+                               [privilegedToDeleteRelatedEntries]="privilegedToDeleteRelatedEntries"
     ></app-comment-response-list>
   </ng-container>
 </div>

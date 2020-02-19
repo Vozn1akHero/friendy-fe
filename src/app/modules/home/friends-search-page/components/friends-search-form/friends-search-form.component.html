@@ -19,8 +19,8 @@
       </span>
     </div>
 
-    <input class="school" formControlName="school" placeholder="Szkoła" type="text">
-    <input class="university" formControlName="university" placeholder="Uniwersytet" type="text">
+<!--    <input class="school" formControlName="school" placeholder="Szkoła" type="text">
+    <input class="university" formControlName="university" placeholder="Uniwersytet" type="text">-->
 
     <div class="birthday" formGroupName="birthday">
       <app-calendar *ngIf="showCalendar"
@@ -113,18 +113,25 @@
     </div>
 
     <div class="interests">
-      <input (keypress)="addNewInterest($event)"
-             #interestsInput
-             class="interests__input"
+      <input (keypress)="findInterestsByKeyword($event)"
+             class="input"
              formControlName="interests"
              placeholder="Zainteresowania (maks. 5)" type="text">
+      <div class="found-interests" *ngIf="foundInterests.length>0">
+        <button *ngFor="let foundInterest of foundInterests"
+                (click)="addNewInterest(foundInterest.id)"
+                class="item">
+          {{ foundInterest.title }}
+        </button>
+      </div>
       <div class="inserted-interests">
-        <div *ngFor="let interest of interests; let i = index" class="inserted-interests__item">
+        <div *ngFor="let selectedInterest of selectedInterests"
+             class="item">
           <span>
-            {{ interest }}
+            {{ selectedInterest.title }}
           </span>
-          <button class="inserted-interests__remove-btn"
-                  (click)="removeInsertedInterest(i)">
+          <button class="remove-btn"
+                  (click)="removeInsertedInterest(selectedInterest.id)">
             &times;
           </button>
         </div>

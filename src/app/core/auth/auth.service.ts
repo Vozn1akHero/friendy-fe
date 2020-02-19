@@ -7,30 +7,32 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  readonly API_URL = 'http://localhost:5000';
+
   constructor(private _router: Router,
               private http: HttpClient) {}
 
   isLoggedIn() {
-    return this.http.get('/api/auth/status', {observe: 'response'});
+    return this.http.get(`/auth/status`, {observe: 'response'});
   }
 
   logOut() {
-    this.http.post('/api/auth/logout', null, {observe: 'response'})
+    this.http.post(`/auth/logout`, null, {observe: 'response'})
       .subscribe(response => {
         if (response.status == 200){
-          this._router.navigate(['']);
+          this._router.navigate(['/login']);
         }
     })
   }
 
   logIn(email: String, password: String) : Observable<any> {
-    return this.http.post('/api/auth/authenticate', {
+    return this.http.post(`/auth/authenticate`, {
         email, password
       }, {responseType: 'json'});
   }
 
   joinUp(newUser) : Observable<any> {
-    return this.http.post('/api/auth/create',
+    return this.http.post(`/auth/create`,
       newUser,
       {observe: 'response'});
   }

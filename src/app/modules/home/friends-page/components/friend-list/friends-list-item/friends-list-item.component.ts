@@ -11,17 +11,6 @@ export class FriendsListItemComponent {
   @Input() friendData: Friend;
   @Output() removeFriendEvent: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor(private router : Router) { }
-
-  navigateToDialog(){
-    const id = this.friendData.id;
-    this.router.navigate(['/app/dialog'], {
-      queryParams: {
-        to: id
-      }
-    })
-  }
-
   removeFriend(){
     this.removeFriendEvent.emit(this.friendData.id);
   }

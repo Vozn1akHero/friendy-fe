@@ -18,6 +18,10 @@
       .text-content {
         font-size: .8rem;
         word-break: break-all;
+
+        .user-data{
+          color: $color-blue;
+        }
       }
 
       .image{

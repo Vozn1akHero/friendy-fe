@@ -1,9 +1,7 @@
 @import '../../../../../../../../assets/sass/base/variables';
 
-
 .comment-item {
   display: flex;
-  //width: 30rem;
   flex-direction: column;
   margin-bottom: 3rem;
   position: relative;
@@ -112,7 +110,11 @@
     color: $color-blue;
   }
 
-  .show-comments-btn, .remove-response-btn, .respond-btn{
+  .show-comments-btn, .respond-btn, .remove-btn{
+    margin-right: 1rem;
+  }
+
+  .show-comments-btn, .remove-btn, .respond-btn{
     font-size: .65rem;
     font-weight: 500;
     text-decoration: none;
@@ -122,10 +124,6 @@
     &:hover{
       text-decoration: underline;
     }
-  }
-
-  .remove-response-btn, .respond-btn{
-    margin-left: 1rem;
   }
 
   .date {

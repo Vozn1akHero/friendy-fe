@@ -3,13 +3,14 @@ import {
   ElementRef,
   EventEmitter,
   forwardRef,
-  Input,
+  Input, OnDestroy,
   OnInit,
   Output,
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Observable, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-settings-panel-input',
@@ -23,11 +24,13 @@ import {ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR} fro
     }
   ]
 })
-export class SettingsPanelInputComponent implements ControlValueAccessor, OnInit{
+export class SettingsPanelInputComponent implements ControlValueAccessor, OnInit, OnDestroy{
   @Input() invalid: boolean;
   @Input() initValue: any;
+  @Input() value$: Observable<any>;
   @Input() additionalStyles;
   @ViewChild('input') input: ElementRef;
+  valueSubscription: Subscription;
 
   changeValue($event){
     this.propagateChange($event.target.value);
@@ -38,10 +41,6 @@ export class SettingsPanelInputComponent implements ControlValueAccessor, OnInit
   registerOnChange(fn) {
     this.propagateChange = fn;
     this.propagateChange(this.initValue);
-    /*if (this._value == null) {
-      this._value = this.initValue;
-      this.propagateChange(this.initValue);
-    }*/
   }
 
   registerOnTouched(fn: any): void {
@@ -54,6 +53,19 @@ export class SettingsPanelInputComponent implements ControlValueAccessor, OnInit
   }
 
   ngOnInit(): void {
-    this.input.nativeElement.value = this.initValue;
+    if(this.value$!=null) {
+      this.valueSubscription = this.value$.subscribe(value => {
+        this.input.nativeElement.value = value
+      });
+    } else {
+      this.input.nativeElement.value = this.initValue;
+    }
+  }
+
+  ngOnDestroy(): void {
+    if(this.valueSubscription!=null) this.valueSubscription.unsubscribe();
+  }
+
+  setDisabledState(isDisabled: boolean): void {
   }
 }

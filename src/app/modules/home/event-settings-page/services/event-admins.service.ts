@@ -5,9 +5,7 @@ import {take} from 'rxjs/operators';
 import EventAdminModel from '../models/event-admin.model';
 import EventParticipantDetailed from "../models/event-participant-detailed.model";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class EventAdminsService {
   private _eventAdmins = new BehaviorSubject([]);
   private _eventAdminsLoaded = new BehaviorSubject(false);

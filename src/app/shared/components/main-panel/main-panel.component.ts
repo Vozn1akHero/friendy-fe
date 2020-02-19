@@ -20,6 +20,7 @@ export class MainPanelComponent implements OnInit {
   @Input() contentColumned: boolean = true;
   @Input() contentStyles;
   contentAllStyles;
+  @Input() forSubjectEntries: boolean = false;
 
   ngOnInit(): void {
     this.contentAllStyles = {

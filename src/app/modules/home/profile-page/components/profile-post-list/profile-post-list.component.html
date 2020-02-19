@@ -6,7 +6,7 @@
                      (removePostEmitter)="onRemovePost($event)"
                      (likePostEmitter)="onLikePost($event)"
                      (unlikePostEmitter)="onUnlikePost($event)"
-                     [removeBtnVisible]="isUserProfileOwner"></app-post-item>
+                     [privilegedToDeleteRelatedEntries]="isUserProfileOwner"></app-post-item>
     </ng-container>
     <ng-template #noPosts>
     <span class="fr-default-smaller-font">

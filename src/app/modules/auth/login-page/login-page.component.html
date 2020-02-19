@@ -4,9 +4,9 @@
   </a>
 
   <div class="login-form-wrapper">
-    <span *ngIf="incorrectAuthData" class="incorrect-data-text">
-      Nieprawidłowe hasło lub login
-    </span>
+    <span *ngIf="incorrectAuthData" class="incorrect-data-text fr-default-smaller-font">
+        Nieprawidłowe hasło lub login
+      </span>
 
     <form [formGroup]="loginForm">
       <div class="email">
@@ -35,10 +35,10 @@
         Zaloguj
       </button>
 
-      <div class="pass-recovery">
-        <p class="pass-recovery--text">zapomniałeś(aś) hasła?</p>
-        <a class="pass-recovery--link">wtedy kliknij tu</a>
-      </div>
+      <!--<div class="pass-recovery">
+        <p class="pass-recovery&#45;&#45;text">zapomniałeś(aś) hasła?</p>
+        <a class="pass-recovery&#45;&#45;link">wtedy kliknij tu</a>
+      </div>-->
     </form>
   </div>
 </div>

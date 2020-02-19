@@ -67,7 +67,7 @@ export class DialogHubService {
 
   listenToNewMessage(){
     this.dialogHubConnection.on('SendMessageToUser', (message : any) => {
-      if(message.userId !== this.userIdService.userId){
+      if(message.userId !== this.userIdService.userIdValue){
         this.store.dispatch(new DialogActions.SetAddedMessage(new MessageInChatModel(
           message.content,
           message.imagePath,

@@ -24,14 +24,7 @@ export class ChatFriendDataComponent implements OnInit, OnDestroy {
   }
 
   getStatus(){
-    this.subscriptionManager.add(this.userStatusService
-      .get(this.interlocutorData.friendId)
-      .subscribe(((value:any) => {
-        const status : boolean = value.body.status;
-        if(!status){
-          this.lastTimeOnline = moment(value.body.connectionEnd).fromNow();
-        }
-    })))
+    if(this.interlocutorData.session.sessionEnd==null) this.lastTimeOnline = moment(this.interlocutorData.session.sessionEnd).fromNow();
   }
 
   ngOnDestroy(): void {

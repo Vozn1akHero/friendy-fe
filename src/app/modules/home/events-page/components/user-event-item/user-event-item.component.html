@@ -35,7 +35,9 @@
           <ng-container *ngIf="chosenType === 'participating'
           || chosenType === 'administered'; else nonparticipatingEventControls">
             <button class="btn leave-event-btn">
-              <span class="text fr-hover-text-decoration">wypisz się</span>
+              <span class="text fr-hover-text-decoration"
+                    (click)="leave()">wypisz
+                się</span>
               <span class="icon icon-close"></span>
             </button>
             <!--<button class="btn notifications-off-btn">
@@ -44,7 +46,7 @@
             </button>-->
           </ng-container>
           <ng-template #nonparticipatingEventControls>
-            <button class="btn fr-btn-main-blue">
+            <button class="btn fr-btn-main-blue" (click)="apply()">
               <span class="text">Złóż wniosek</span>
             </button>
           </ng-template>

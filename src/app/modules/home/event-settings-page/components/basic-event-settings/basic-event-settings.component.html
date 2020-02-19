@@ -1,12 +1,12 @@
 <div class="basic-event-settings">
-  <ng-container *ngIf="loaded; else loader">
+  <ng-container *ngIf="(loaded$|async); else loader">
     <app-settings-panel-wrapper>
       <form [formGroup]="eventBasicSettingsForm">
         <app-controls-wrapper-in-settings-panel (formSubmitEmitter)="onBasicChangesFormSubmit()">
           <app-row-in-settings-panel [label]="'Zdjęcie grupowe'">
             <app-row-content-in-settings-panel>
               <figure class="current-avatar">
-                <img src="{{ eventData.avatarUrl }}" alt="">
+                <img src="{{ (eventData$|async).avatarUrl }}" alt="">
               </figure>
               <input type="file"
                      name="avatar"
@@ -17,9 +17,9 @@
 
           <app-row-in-settings-panel [label]="'Tło'">
             <app-row-content-in-settings-panel>
-              <ng-container *ngIf="eventData.backgroundUrl; else nullBg">
+              <ng-container *ngIf="(eventData$|async).backgroundUrl; else nullBg">
                 <figure class="current-background">
-                  <img src="{{ eventData.backgroundUrl }}" alt="">
+                  <img src="{{ (eventData$|async).backgroundUrl }}" alt="">
                 </figure>
               </ng-container>
               <ng-template #nullBg>
@@ -37,7 +37,7 @@
             <app-row-content-in-settings-panel>
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('title').touched
                      && eventBasicSettingsForm.get('title').invalid"
-                                        [initValue]="eventData.title"
+                                        [initValue]="(eventData$|async).title"
                                         formControlName="title"></app-settings-panel-input>
             </app-row-content-in-settings-panel>
           </app-row-in-settings-panel>
@@ -46,7 +46,7 @@
             <app-row-content-in-settings-panel>
               <app-settings-panel-textarea [invalid]="eventBasicSettingsForm.get('description').touched
                      && eventBasicSettingsForm.get('description').invalid"
-                                           [initValue]="eventData.description"
+                                           [initValue]="(eventData$|async).description"
                                            formControlName="description"></app-settings-panel-textarea>
             </app-row-content-in-settings-panel>
           </app-row-in-settings-panel>
@@ -55,7 +55,7 @@
             <app-row-content-in-settings-panel>
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('city').touched
                      && eventBasicSettingsForm.get('city').invalid"
-                                        [initValue]="eventData.city"
+                                        [initValue]="(eventData$|async).city"
                                         formControlName="city"></app-settings-panel-input>
             </app-row-content-in-settings-panel>
           </app-row-in-settings-panel>
@@ -65,10 +65,10 @@
               <app-settings-panel-input [additionalStyles]="{width: '21vw'}"
                                         [invalid]="eventBasicSettingsForm.get('street').touched
                      && eventBasicSettingsForm.get('street').invalid"
-                                        [initValue]="eventData.street"
+                                        [initValue]="(eventData$|async).street"
                                         formControlName="street"></app-settings-panel-input>
               <app-settings-panel-input [additionalStyles]="{width: '7vw'}"
-                                        [initValue]="eventData.streetNumber"
+                                        [initValue]="(eventData$|async).streetNumber"
                                         [invalid]="eventBasicSettingsForm.get('streetNumber').touched
                      && eventBasicSettingsForm.get('streetNumber').invalid"
                                         formControlName="streetNumber"></app-settings-panel-input>
@@ -82,11 +82,12 @@
 
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('date').touched
                      && eventBasicSettingsForm.get('date').invalid"
+                                        (focusin)="toggleCalendar()"
                                         [additionalStyles]="{width: '18vw'}"
-                                        [initValue]="eventData.date"
+                                        [value$]="currentEventDate"
                                         formControlName="date"></app-settings-panel-input>
 
-              <app-settings-panel-dropdown [initValue]="eventData.hour"
+              <app-settings-panel-dropdown [initValue]="(eventData$|async).hour"
                                            [invalid]="eventBasicSettingsForm.get('hour').touched
                      && eventBasicSettingsForm.get('hour').invalid"
                                            [options]="[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,00]"
@@ -96,7 +97,7 @@
 
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('minute').touched
                      && eventBasicSettingsForm.get('minute').invalid"
-                                        [initValue]="eventData.minute"
+                                        [initValue]="(eventData$|async).minute"
                                         [additionalStyles]="{width: '8vw'}"
                                         formControlName="minute"></app-settings-panel-input>
             </app-row-content-in-settings-panel>
@@ -106,7 +107,7 @@
             <app-row-content-in-settings-panel>
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('entryPrice').touched
                      && eventBasicSettingsForm.get('entryPrice').invalid"
-                                        [initValue]="eventData.entryPrice"
+                                        [initValue]="(eventData$|async).entryPrice"
                                         formControlName="entryPrice"></app-settings-panel-input>
             </app-row-content-in-settings-panel>
           </app-row-in-settings-panel>
@@ -115,14 +116,14 @@
             <app-row-content-in-settings-panel>
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('participantsAmount').touched
                      && eventBasicSettingsForm.get('participantsAmount').invalid"
-                                        [initValue]="eventData.participantsAmount"
+                                        [initValue]="(eventData$|async).participantsAmount"
                                         formControlName="participantsAmount"></app-settings-panel-input>
             </app-row-content-in-settings-panel>
           </app-row-in-settings-panel>
         </app-controls-wrapper-in-settings-panel>
       </form>
     </app-settings-panel-wrapper>
-  </ng-container  >
+  </ng-container >
   <ng-template #loader>
     <app-loader></app-loader>
   </ng-template>

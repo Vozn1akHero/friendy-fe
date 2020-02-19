@@ -15,9 +15,10 @@ import * as fromFriendsPageUserFriends from '../../../modules/home/friends-page/
 import * as fromEventsPageUserEvents from '../../../modules/home/events-page/store/user-events/user-events.reducer';
 import * as fromEventsPageAdministeredEvents from '../../../modules/home/events-page/store/administered-events/administered-events.reducer';
 
-import * as fromEventPageEventData from '../../../modules/home/event-page/store/event-data/event-data.reducer';
+//import * as fromEventPageEventData from '../../../modules/home/event-page/store/event-data/event-data.reducer';
 import {commentPanelReducerMap} from '../../../modules/shared/post/comment-panel/store/reducers';
-
+import {eventPageReducerMap} from '../../../modules/home/event-page/store/reducers'
+import {eventSettingsPageReducerMap} from '../../../modules/home/event-settings-page/store/reducers'
 
 /*import * as postCommentsPanelComments from '../../../shared/components/comment-panel/store/post-comment/post-comment.reducer';
 import * as postCommentsPanelCommentResponses from '../../../shared/components/comment-panel/store/comment-response/comment-response.reducer';*/
@@ -44,7 +45,8 @@ export interface AppState {
   eventsPageAdministeredEvents: fromEventsPageAdministeredEvents.State;
 
   //event page
-  eventPageEventData: fromEventPageEventData.State
+  //eventPageEventData: fromEventPageEventData.State
+
 
   //responses
 }
@@ -71,6 +73,7 @@ export const appReducer: ActionReducerMap<AppState> = {
   eventsPageAdministeredEvents: fromEventsPageAdministeredEvents.administeredEventsReducer,
 
   //event page
-  eventPageEventData: fromEventPageEventData.eventDataReducer,
-  ...commentPanelReducerMap
+  ...eventPageReducerMap,
+  ...commentPanelReducerMap,
+  ...eventSettingsPageReducerMap
 };

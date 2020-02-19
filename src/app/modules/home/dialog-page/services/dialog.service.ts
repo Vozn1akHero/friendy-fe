@@ -13,18 +13,6 @@ import ChatData from '../models/chat-data.model';
 export class DialogService {
   constructor(private http: HttpClient){}
 
-  /*getMessagesInDialog(to: number, startIndex: number, length: number) : Observable<MessageInChat[]>{
-    return this.http.get(`/api/chat/${to}?startIndex=${startIndex}&length=${length}`)
-      .pipe(
-        map((response : any[]) => {
-          let arr : MessageInChat[] = [];
-          response.map(value => {
-            arr.push(new MessageInChat(value.content, value.imagePath, value.userId, value.date))
-          });
-          return arr;
-        }))
-  }*/
-
   getMessagesInDialog(to: number, page: number) : Observable<MessageInChat[]>{
     return this.http.get(`/api/chat/${to}/page/${page}`)
       .pipe(
@@ -41,9 +29,10 @@ export class DialogService {
     return this.http.get(`api/chat/data-by-interlocutors/${receiverId}`)
       .pipe(
         map((res : any) => {
+          console.log(res);
           return new ChatData(res.id,
-            res.firstParticipantId,
-            res.secondParticipantId);
+            res.firstInterlocutor.id,
+            res.secondInterlocutor.id);
         }))
   }
 
@@ -57,7 +46,7 @@ export class DialogService {
             res.avatar,
             res.city,
             res.birthday,
-            res.isOnline);
+            res.session);
       }))
   }
 

@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 export class UserStatusService {
   constructor(private http: HttpClient){}
 
-  get(id: number){
+  /*get(id: number){
     return this.http.get(`api/user/is-online/${id}`, {observe: 'response'})
-  }
+  }*/
 }

@@ -1,20 +1,23 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, QueryList, ViewChild} from '@angular/core';
 import {FormGroup, FormControl, Validators, Form} from '@angular/forms';
 import UserSearchModelDto from '../../models/user-search-dto.model';
+import {Subscription} from 'rxjs';
+import UserInterestModel from '../../models/user-interest.model';
+import {FriendsSearchService} from '../../services/friends-search.service';
 
 @Component({
   selector: 'app-friends-search-form',
   templateUrl: './friends-search-form.component.html',
   styleUrls: ['./friends-search-form.component.scss']
 })
-export class FriendsSearchFormComponent implements OnInit {
+export class FriendsSearchFormComponent implements OnInit, OnDestroy {
   searchForm = new FormGroup({
     name: new FormControl(null),
     surname: new FormControl(null),
     city: new FormControl(null),
     education: new FormControl(''),
-    school: new FormControl(null),
-    university: new FormControl(null),
+    /*    school: new FormControl(null),
+        university: new FormControl(null),*/
     birthday: new FormGroup({
       birthdayMin: new FormControl(null),
       birthdayMax: new FormControl(null)
@@ -26,66 +29,67 @@ export class FriendsSearchFormComponent implements OnInit {
     smokingAttitude: new FormControl(''),
     interests: new FormControl([])
   });
+  foundInterestsSub: Subscription;
+  foundInterests: UserInterestModel[] = [];
 
   @Output() searchFormSubmitEmitter: EventEmitter<UserSearchModelDto> = new EventEmitter();
   @ViewChild('interestsInput') interestsInput;
-  @ViewChild('dropdownWrapper') dropdownWrapperList : QueryList<ElementRef>;
+  @ViewChild('dropdownWrapper') dropdownWrapperList: QueryList<ElementRef>;
 
-  @ViewChild('birthdayMin') birthdayMinInput : ElementRef<HTMLInputElement>;
-  @ViewChild('birthdayMax') birthdayMaxInput : ElementRef<HTMLInputElement>;
+  @ViewChild('birthdayMin') birthdayMinInput: ElementRef<HTMLInputElement>;
+  @ViewChild('birthdayMax') birthdayMaxInput: ElementRef<HTMLInputElement>;
   birthdayMinInputFocused: boolean = false;
   birthdayMaxInputFocused: boolean = false;
 
   interests: string[] = [];
+  selectedInterests: UserInterestModel[] = [];
   showCalendar: boolean = false;
 
-  constructor() {}
+  constructor(private friendsSearchService: FriendsSearchService,) {
+  }
 
   ngOnInit() {
     this.addListenerOnDropdowns();
   }
 
-  addNewInterest($event) : void{
-    if (($event.which && $event.which == 13) || ($event.keyCode && $event.keyCode == 13)) {
-      if(this.interests.length <= 5) {
-        this.interests.push($event.target.value);
-        $event.target.value = '';
-      }
-    }
+  addNewInterest(id: number): void {
+    const el = this.foundInterests.find(e => e.id === id);
+    if(this.selectedInterests.indexOf(el) === -1) this.selectedInterests.push(el);
   }
 
-  removeInsertedInterest(index : number){
-    console.log("exc")
-    //this.interests.splice(index, 1);
+  removeInsertedInterest(id: number) {
+    this.selectedInterests.splice(this
+      .selectedInterests
+      .indexOf(this.selectedInterests.find(e => e.id == id)), 1);
   }
 
-  addListenerOnDropdowns() : void{
-    const dropDowns = document.querySelectorAll(".dropdown-wrapper");
+  addListenerOnDropdowns(): void {
+    const dropDowns = document.querySelectorAll('.dropdown-wrapper');
     dropDowns.forEach((element) => {
-      element.addEventListener('mouseover', (event)=>{
-        const target : HTMLTextAreaElement = <HTMLTextAreaElement>event.currentTarget;
-        const selector = "."+target.classList.item(1) + " .custom-dropdown select";
-        if(document.querySelector(selector).classList.contains("ng-dirty")){
-          const boxSelector : HTMLElement = document
-            .querySelector("." + target.classList.item(1) + " .box");
+      element.addEventListener('mouseover', (event) => {
+        const target: HTMLTextAreaElement = <HTMLTextAreaElement> event.currentTarget;
+        const selector = '.' + target.classList.item(1) + ' .custom-dropdown select';
+        if (document.querySelector(selector).classList.contains('ng-dirty')) {
+          const boxSelector: HTMLElement = document
+            .querySelector('.' + target.classList.item(1) + ' .box');
           boxSelector.style.visibility = 'visible';
           boxSelector.style.opacity = '1';
         }
       });
 
-      element.addEventListener('mouseleave', (event)=>{
-        const target : HTMLTextAreaElement = <HTMLTextAreaElement>event.currentTarget;
-        const boxSelector : HTMLElement = document
-          .querySelector("." + target.classList.item(1) + " .box");
+      element.addEventListener('mouseleave', (event) => {
+        const target: HTMLTextAreaElement = <HTMLTextAreaElement> event.currentTarget;
+        const boxSelector: HTMLElement = document
+          .querySelector('.' + target.classList.item(1) + ' .box');
         boxSelector.style.opacity = '0';
-        setTimeout(()=>{
+        setTimeout(() => {
           boxSelector.style.visibility = 'hidden';
         }, 1500);
       });
     });
   }
 
-  searchSubmit(){
+  searchSubmit() {
     const searchFormValue = this.searchForm.value;
 
     const userSearchModel = new UserSearchModelDto(searchFormValue.name,
@@ -103,31 +107,45 @@ export class FriendsSearchFormComponent implements OnInit {
       +searchFormValue.smokingAttitude,
       this.interests);
 
-    if(!this.interestsInput.nativeElement.activeElement) {
+    if (!this.interestsInput.nativeElement.activeElement) {
       this.searchFormSubmitEmitter.emit(userSearchModel);
     }
   }
 
-  onSelectBirthday($event){
-    if(this.birthdayMaxInputFocused){
+  onSelectBirthday($event) {
+    if (this.birthdayMaxInputFocused) {
       this.birthdayMaxInput.nativeElement.value = $event;
       this.showCalendar = false;
-    } else if (this.birthdayMinInputFocused){
+    } else if (this.birthdayMinInputFocused) {
       this.birthdayMinInput.nativeElement.value = $event;
       this.showCalendar = false;
     }
   }
 
-  setShowCalendar(){
+  findInterestsByKeyword($event) {
+    this.foundInterestsSub = this.friendsSearchService
+      .findInterestsByKeyword($event.target.value).subscribe((res: any[]) => {
+        this.foundInterests = [];
+        res.map(value => {
+          this.foundInterests.push(new UserInterestModel(value.id, value.title));
+        });
+      });
+  }
+
+  setShowCalendar() {
     this.showCalendar = true;
   }
 
-  setBirthdayMinInputFocused(){
+  setBirthdayMinInputFocused() {
     this.setShowCalendar();
     this.birthdayMinInputFocused = true;
   }
-  setBirthdayMaxInputFocused(){
+
+  setBirthdayMaxInputFocused() {
     this.setShowCalendar();
     this.birthdayMaxInputFocused = true;
+  }
+
+  ngOnDestroy(): void {
   }
 }

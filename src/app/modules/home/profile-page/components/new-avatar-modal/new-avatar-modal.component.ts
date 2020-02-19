@@ -3,6 +3,7 @@ import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import * as UserAvatarActions from '../../store/user-avatar/user-avatar.actions';
+import {ProfilePageModalsService} from '../../services/profile-page-modals.service';
 
 @Component({
   selector: 'app-new-avatar-modal',
@@ -16,6 +17,7 @@ export class NewAvatarModalComponent implements OnInit {
   newAvatarBytes: SafeResourceUrl;
 
   constructor(private _sanitizer: DomSanitizer,
+              private profilePageModalsService: ProfilePageModalsService,
               private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
@@ -30,5 +32,10 @@ export class NewAvatarModalComponent implements OnInit {
   updateAvatarSubmit(){
     this.store.dispatch(new UserAvatarActions.UpdateUserAvatar(this.newAvatar));
     this.newAvatarSubmitted.emit();
+  }
+
+  closeModal() {
+    this.profilePageModalsService.newAvatar = null;
+    this.profilePageModalsService.newAvatarModalOpened = false;
   }
 }

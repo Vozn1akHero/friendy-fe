@@ -9,6 +9,7 @@ import * as CommentResponseActions from '../../../store/comment-response/comment
 import * as commentSelectors from '../../../store/selectors';
 import {NewCommentOrResponseService} from '../../../services/new-comment-or-response.service';
 import * as PostCommentActions from '../../../store/post-comment/post-comment.actions';
+import {CommentType} from '../../../../comment-type.enum';
 
 @Component({
   selector: 'app-comment-response-list',
@@ -17,6 +18,9 @@ import * as PostCommentActions from '../../../store/post-comment/post-comment.ac
 })
 export class CommentResponseListComponent implements OnInit, OnDestroy {
   @Input() commentId: number;
+  @Input() postId: number;
+  @Input() userId: number;
+  @Input() privilegedToDeleteRelatedEntries: boolean|never;
   commentResponses$: Observable<CommentResponseModel[]>;
   loaded$: Observable<boolean>;
 
@@ -28,10 +32,11 @@ export class CommentResponseListComponent implements OnInit, OnDestroy {
     this.getCommentResponses();
   }
 
-  activateResponseToCommentTyping(commentId: number){
-    this.newCommentOrResponseService.responseTarget = {responseToComment: true,
-      responseToResponse: true,
-      targetId: commentId};
+  activateResponseToResponseTyping(responseId: number){
+    this.newCommentOrResponseService.commentType = CommentType.ResponseToCommentResponse;
+    this.newCommentOrResponseService.initData = {
+      postId: this.postId, commentId: this.commentId, responseToCommentId: responseId
+    };
   }
 
   getCommentResponses() {

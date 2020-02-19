@@ -18,6 +18,7 @@ import { SuggestedEventsPanelComponent } from './components/suggested-events-pan
 import { EventListWrapperComponent } from './components/event-list-wrapper/event-list-wrapper.component';
 import { SearchAllEventsByKeywordComponent } from './components/search-all-events-by-keyword/search-all-events-by-keyword.component';
 import { EventCreationBtnWrapperComponent } from './components/event-creation-btn-wrapper/event-creation-btn-wrapper.component';
+import {EventParticipationService} from './services/event-participation.service';
 
 @NgModule({
   imports: [
@@ -45,6 +46,9 @@ import { EventCreationBtnWrapperComponent } from './components/event-creation-bt
     SearchAllEventsByKeywordComponent,
     EventCreationBtnWrapperComponent
   ],
-  exports: []
+  exports: [],
+  providers:[
+    EventParticipationService
+  ]
 })
 export class EventsPageModule { }

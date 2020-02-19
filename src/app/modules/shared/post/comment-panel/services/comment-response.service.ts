@@ -5,6 +5,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import CommentResponseModel from '../models/comment-response.model';
 import NewCommentModel from '../models/new-comment.model';
 import {NewCommentResponseModel} from '../models/new-comment-response.model';
+import NewResponseToResponseModel from '../models/new-response-to-response.model';
 
 @Injectable({providedIn: 'root'})
 export default class CommentResponseService {
@@ -46,7 +47,14 @@ export default class CommentResponseService {
   }
 
   create(commentResponse: NewCommentResponseModel){
-    return this.http.post(`api/comment-response/${commentResponse.commentId}`, {observe: 'body'})
+    return this.http.post(`api/comment-response`, commentResponse, {observe: 'body'})
+      .pipe(map((res: any) => {
+        return this.convertToCommentResponseByResBody(res);
+      }));
+  }
+
+  createResponseToResponse(responseToResponse: NewResponseToResponseModel){
+    return this.http.post(`api/comment-response/to-response`, responseToResponse,{observe: 'body'})
       .pipe(map((res: any) => {
         return this.convertToCommentResponseByResBody(res);
       }));
@@ -65,6 +73,7 @@ export default class CommentResponseService {
       res.commentAuthorSurname,
       res.commentId,
       res.isCommentLikedByUser,
-      res.date);
+      res.date,
+      res.responseToCommentId);
   }
 }

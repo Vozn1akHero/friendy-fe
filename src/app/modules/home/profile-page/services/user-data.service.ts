@@ -12,7 +12,7 @@ export class UserDataService {
   getData(id : number){
     return this.http.get(`/api/user/${id}/extended`, {observe: 'body'})
       .pipe(map((res:any) => {
-        const user = new User(res.id,
+        return new User(res.id,
           res.birthday,
           res.city,
           res.email,
@@ -22,10 +22,8 @@ export class UserDataService {
           res.name,
           res.surname,
           res.profileBg,
-          res.isOnline,
+          res.session,
           res.status);
-        console.log(user)
-        return user;
     }))
   }
 }

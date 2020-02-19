@@ -9,17 +9,14 @@ import {Moment} from 'moment';
 })
 export class CalendarComponent implements OnInit {
   @Output() onSelectDateEvent: EventEmitter<string> = new EventEmitter();
-
   daysInCurMonth: number;
   firstDayOfMonth: number;
-  //chosenDate: Date;
   chosenDate: string;
   chosenDay: number;
   chosenMonth: number;
   chosenMonthText: string;
   chosenYear: number;
-  //readonly startDate: Date = moment(new Date(), "DD.MM.YYYY").toDate();
-  readonly startDate = moment().format("DD.MM.YYYY");
+  readonly startDate = moment().format("YYYY-MM-DD");
   daysOfMonth: [[{ number: number, title: string, date: Moment }]];
 
   constructor() {
@@ -36,11 +33,11 @@ export class CalendarComponent implements OnInit {
   }
 
   setAddtValues(){
-    this.daysInCurMonth = moment(this.chosenDate, "DD.MM.YYYY").daysInMonth();
-    this.firstDayOfMonth = moment(this.chosenDate, "DD.MM.YYYY").startOf('month').weekday() + 1;
-    this.chosenYear = moment(this.chosenDate, "DD.MM.YYYY").year();
-    this.chosenMonth = moment(this.chosenDate, "DD.MM.YYYY").month();
-    this.chosenDay = moment(this.chosenDate, "DD.MM.YYYY").day();
+    this.daysInCurMonth = moment(this.chosenDate, "YYYY-MM-DD").daysInMonth();
+    this.firstDayOfMonth = moment(this.chosenDate, "YYYY-MM-DD").startOf('month').weekday() + 1;
+    this.chosenYear = moment(this.chosenDate, "YYYY-MM-DD").year();
+    this.chosenMonth = moment(this.chosenDate, "YYYY-MM-DD").month();
+    this.chosenDay = moment(this.chosenDate, "YYYY-MM-DD").day();
     this.chosenMonthText = moment().month(this.chosenMonth).format('MMMM');
     this.daysOfMonth = this.divideArray();
   }
@@ -64,7 +61,7 @@ export class CalendarComponent implements OnInit {
       let curDayIndex = emptyElArr.length > 0 ? index + emptyElArr.length : index + 1; //+1
       //new week
       if(curDayIndex % 7 !== 0){
-        const date = moment(new Date(this.chosenYear, this.chosenMonth, value), "DD.MM.YYYY");
+        const date = moment(new Date(this.chosenYear, this.chosenMonth, value), "YYYY-MM-DD");
         const chosenDay = date.format('dd');
         daysOfWeek.push({
           number: value,
@@ -74,7 +71,7 @@ export class CalendarComponent implements OnInit {
       } else if(curDayIndex % 7 === 0){
         daysOfMonth.push(daysOfWeek);
         daysOfWeek = [];
-        const date = moment(new Date(this.chosenYear, this.chosenMonth, value), "DD.MM.YYYY");
+        const date = moment(new Date(this.chosenYear, this.chosenMonth, value), "YYYY-MM-DD");
         const chosenDay = date.format('dd');
         daysOfWeek.push({
           number: value,
@@ -85,7 +82,7 @@ export class CalendarComponent implements OnInit {
 
       if(index + 1 - days === 0){
         if(daysOfWeek.length === 0){
-          const date = moment(new Date(this.chosenYear, this.chosenMonth, value), "DD.MM.YYYY");
+          const date = moment(new Date(this.chosenYear, this.chosenMonth, value), "YYYY-MM-DD");
           const chosenDay = date.format('dd');
           daysOfWeek.push({
             number: value,
@@ -101,30 +98,31 @@ export class CalendarComponent implements OnInit {
   }
 
   setPreviousMonth(){
-    this.chosenDate = moment(this.chosenDate, "DD.MM.YYYY")
-      .subtract(1, 'months').format("DD.MM.YYYY");
+    this.chosenDate = moment(this.chosenDate, "YYYY-MM-DD")
+      .subtract(1, 'months').format("YYYY-MM-DD");
     this.setAddtValues();
   }
 
   setNextMonth(){
-    this.chosenDate = moment(this.chosenDate, "DD.MM.YYYY")
-      .add(1, 'months').format("DD.MM.YYYY");
+    this.chosenDate = moment(this.chosenDate, "YYYY-MM-DD")
+      .add(1, 'months').format("YYYY-MM-DD");
     this.setAddtValues();
   }
 
   setPreviousYear(){
-    this.chosenDate = moment(this.chosenDate, "DD.MM.YYYY")
-      .subtract(1, 'years').format("DD.MM.YYYY");
+    this.chosenDate = moment(this.chosenDate, "YYYY-MM-DD")
+      .subtract(1, 'years').format("YYYY-MM-DD");
     this.setAddtValues();
   }
 
   setNextYear(){
-    this.chosenDate = moment(this.chosenDate, "DD.MM.YYYY")
-      .add(1, 'years').format("DD.MM.YYYY");
+    this.chosenDate = moment(this.chosenDate, "YYYY-MM-DD")
+      .add(1, 'years').format("YYYY-MM-DD");
     this.setAddtValues();
   }
 
   onDateSelect(day:{ number: number, title: string, date: Moment }){
-    this.onSelectDateEvent.emit(day.date.format("DD.MM.YYYY"));
+    console.log(1, day.date.format("YYYY-MM-DD"))
+    this.onSelectDateEvent.emit(day.date.format("YYYY-MM-DD"));
   }
 }

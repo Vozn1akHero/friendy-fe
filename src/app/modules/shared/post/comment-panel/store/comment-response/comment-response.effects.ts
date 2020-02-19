@@ -41,17 +41,24 @@ export default class CommentResponseEffects {
     })
   );
 
+  @Effect() createResponseToResponse = this.actions$.pipe(
+    ofType(CommentResponseActions.CREATE_RESPONSE_TO_RESPONSE),
+    switchMap((action: CommentResponseActions.CreateResponseToResponse) => {
+      return this.commentResponseService.createResponseToResponse(action.payload)
+        .pipe(map((res: CommentResponseModel) => {
+          return new CommentResponseActions.FinalizeCreationResponseToResponse(res);
+        }));
+    })
+  );
+
   @Effect() like = this.actions$.pipe(
     ofType(CommentResponseActions.LIKE),
     tap((action: CommentResponseActions.Like)=>
-      this.store$.dispatch(new CommentResponseActions.LikeInState({parentCommentId: action.payload.parentCommentId,
-                                                                           id: action.payload.id}))
+       this.store$.dispatch(new CommentResponseActions.LikeInState({parentCommentId: action.payload.parentCommentId,
+          id: action.payload.id}))
     ),
     switchMap((action: CommentResponseActions.Like) => {
       return this.commentResponseService.like(action.payload.id)
-        .pipe(map((res:any)=>{
-
-        }))
     })
   );
 

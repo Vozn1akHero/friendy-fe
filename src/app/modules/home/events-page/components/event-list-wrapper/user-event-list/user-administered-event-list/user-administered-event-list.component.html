@@ -3,6 +3,8 @@
     <ng-container
       *ngIf="administeredEvents.length > 0; else admEventListEmptyMsg">
       <app-user-event-item *ngFor="let eventData of administeredEvents"
+                           (leaveEventEmitter)="leave($event)"
+                           (applyEventEmitter)="apply($event)"
                            [chosenType]="'administered'"
                            [eventData]="eventData"
                            [showControls]="true"></app-user-event-item>

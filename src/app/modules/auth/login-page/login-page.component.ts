@@ -1,9 +1,11 @@
-import {Component, OnInit, EventEmitter, Output, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, AfterViewInit, ElementRef, ViewChild, OnDestroy} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {animate, style, transition, trigger} from '@angular/animations';
 import {AuthService} from '../../../core/auth/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpResponse} from '@angular/common/http';
+import {Subscription} from 'rxjs';
+import SubscriptionManager from '../../../shared/helpers/SubscriptionManager';
 
 @Component({
   selector: 'app-login-section',
@@ -31,7 +33,7 @@ import {HttpResponse} from '@angular/common/http';
     ])
   ]
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent implements OnInit, OnDestroy {
   incorrectAuthData = false;
 
   loginForm = new FormGroup({
@@ -43,6 +45,7 @@ export class LoginPageComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private router: Router,
+              private subscriptionManager : SubscriptionManager,
               private route : ActivatedRoute) {
     this.isLoggedIn();
   }
@@ -58,12 +61,16 @@ export class LoginPageComponent implements OnInit {
     let userEmail = this.loginForm.get('email').value;
     let userPassword = this.loginForm.get('password').value;
 
-    this.authService.logIn(userEmail, userPassword)
+    this.subscriptionManager.add(this.authService.logIn(userEmail, userPassword)
     .subscribe(data => {
       //localStorage.setItem('SESSION_HASH', data.sessionHash);
       this.router.navigate(['/app/profile']);
     }, err => {
       this.incorrectAuthData = true;
-    });
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionManager.destroy();
   }
 }

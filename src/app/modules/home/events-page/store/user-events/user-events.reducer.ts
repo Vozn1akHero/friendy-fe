@@ -44,6 +44,11 @@ export function userEventsReducer(
         loading: false,
         events: action.payload
       };
+    case UserEventsActions.LEAVE_EVENT:
+      return {
+        ...state,
+        events: [...state.events.filter(e=>e.id!==action.payload.id)]
+      };
     default:
       return state;
   }

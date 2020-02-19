@@ -8,8 +8,10 @@ import * as moment from "moment";
   styleUrls: ['./comment-item.component.scss']
 })
 export class CommentItemComponent implements OnInit {
+  @Input() userId: number;
+  @Input() privilegedToDeleteRelatedEntries: boolean|never;
   @Input() comment : CommentModel;
-  @Output() actResponseToPostEmitter: EventEmitter<number> = new EventEmitter();
+  @Output() actResponseToCommentEmitter: EventEmitter<number> = new EventEmitter();
   @Output() likeEmitter: EventEmitter<number> = new EventEmitter();
   @Output() unlikeEmitter: EventEmitter<number> = new EventEmitter();
   timePassed: string;
@@ -22,7 +24,7 @@ export class CommentItemComponent implements OnInit {
   }
 
   onRespondBtnClick(){
-    this.actResponseToPostEmitter.emit(this.comment.id);
+    this.actResponseToCommentEmitter.emit(this.comment.id);
   }
 
   onRemoveComment() {
@@ -30,6 +32,7 @@ export class CommentItemComponent implements OnInit {
   }
 
   like(){
+    console.log(this.comment)
     this.likeEmitter.emit(this.comment.id);
   }
 

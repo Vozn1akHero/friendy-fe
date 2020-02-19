@@ -7,8 +7,8 @@ export default class NewEventDataModel {
   city: string;
   participantsAmount: number;
   date: Date;
-  hour: number;
-  minute: number;
+/*  hour: number;
+  minute: number;*/
   entryPrice: number;
 
   constructor(id: number,
@@ -19,8 +19,8 @@ export default class NewEventDataModel {
               city: string,
               participantsAmount: number,
               date: Date,
-              hour: number,
-              minute: number,
+              /*hour: number,
+              minute: number,*/
               entryPrice: number) {
     this.id = id;
     this.title = title;
@@ -30,8 +30,8 @@ export default class NewEventDataModel {
     this.city = city;
     this.participantsAmount = participantsAmount;
     this.date = date;
-    this.hour = hour;
-    this.minute = minute;
+    /*this.hour = hour;
+    this.minute = minute;*/
     this.entryPrice = entryPrice;
   }
 }

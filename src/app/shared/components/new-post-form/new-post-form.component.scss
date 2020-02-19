@@ -34,8 +34,23 @@
       margin-top: 1rem;
       width: calc(100% - 42px);
 
+      .selected-file{
+        float: left;
+        margin-left: 1rem;
+
+        .remove-btn{
+          border: none;
+          border-radius: 50%;
+          background: $color-pink;
+          color: white;
+          width: 1.2rem;
+          height: 1.2rem;
+        }
+      }
+
       .file-btn-wrapper{
         position: relative;
+        float: left;
 
         input{
           opacity: 0;

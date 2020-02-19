@@ -9,9 +9,11 @@
       </app-comment-item>
     </ng-container>-->
     <app-comment-item *ngFor="let comment of (comments$|async)"
-                      (actResponseToPostEmitter)="activateResponseToPostTyping($event)"
+                      (actResponseToCommentEmitter)="activateResponseToCommentTyping($event)"
                       (likeEmitter)="like($event)"
                       (unlikeEmitter)="unlike($event)"
+                      [userId]="userId"
+                      [privilegedToDeleteRelatedEntries]="privilegedToDeleteRelatedEntries"
                       [comment]="comment">
     </app-comment-item>
   </ng-container>

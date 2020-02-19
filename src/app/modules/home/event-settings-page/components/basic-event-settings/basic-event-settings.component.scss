@@ -7,10 +7,23 @@
   .current-avatar{
     width: 6rem;
     height: 6rem;
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
   }
 
   .current-background{
     width: 11rem;
     height: 5rem;
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }

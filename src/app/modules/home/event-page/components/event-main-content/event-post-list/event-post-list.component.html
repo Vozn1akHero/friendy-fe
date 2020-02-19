@@ -1,18 +1,23 @@
 <section class="event-post-list">
-  <ng-container *ngIf="(eventPosts$|async).length > 0; else noPosts">
-    <app-post-item *ngFor="let post of (eventPosts$|async)"
-                   [post]="post"
-                   (removePostEmitter)="onRemovePost($event)"
-                   (likePostEmitter)="onLikePost($event)"
-                   (unlikePostEmitter)="onUnlikePost($event)"
-                   (redirectToCommentsEmitter)="redirectToComments($event)"
-                   [removeBtnVisible]="isEventAdmin"></app-post-item>
-  </ng-container>
-  <ng-template #noPosts>
-    <div class="fr-flex-fully-centered">
+  <ng-container *ngIf="(eventPostsLoaded$|async); else loader">
+    <ng-container *ngIf="(eventPosts$|async).length > 0; else noPosts">
+      <app-post-item *ngFor="let post of (eventPosts$|async)"
+                     [post]="post"
+                     (removePostEmitter)="onRemovePost($event)"
+                     (likePostEmitter)="onLikePost($event)"
+                     (unlikePostEmitter)="onUnlikePost($event)"
+                     (redirectToCommentsEmitter)="redirectToComments($event)"
+                     [privilegedToDeleteRelatedEntries]="isEventAdmin"></app-post-item>
+    </ng-container>
+    <ng-template #noPosts>
+      <div class="fr-flex-fully-centered">
       <span class="fr-default-smaller-font">
         Lista wpisów jest pusta
       </span>
-    </div>
+      </div>
+    </ng-template>
+  </ng-container>
+  <ng-template #loader>
+    <app-loader></app-loader>
   </ng-template>
 </section>

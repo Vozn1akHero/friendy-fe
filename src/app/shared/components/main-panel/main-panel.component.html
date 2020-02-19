@@ -15,7 +15,8 @@
       <p>{{panelContent.title}}</p>
     </ng-template>
   </div>
-  <div class="content" [ngStyle]="contentAllStyles">
+  <div class="content" [ngClass]="{'for-subject-entries': forSubjectEntries}"
+       [ngStyle]="contentAllStyles">
     <ng-content></ng-content>
   </div>
 </div>

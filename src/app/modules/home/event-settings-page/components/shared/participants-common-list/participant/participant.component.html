@@ -1,12 +1,14 @@
 <div class="participant">
-  <figure class="avatar-wrapper">
-    <a class="avatar-link" [routerLink]="['/app/profile', id]">
-      <img src="{{ avatarUrl }}" alt="">
+  <div class="md-wrap">
+    <figure class="avatar-wrapper">
+      <a class="avatar-link" [routerLink]="['/app/profile', id]">
+        <img src="{{ avatarUrl }}" alt="">
+      </a>
+    </figure>
+    <a class="basic-data-link fr-hover-text-decoration" [routerLink]="['/app/profile', id]">
+      {{ name }} {{ surname }}
     </a>
-  </figure>
-  <a class="basic-data-link fr-hover-text-decoration" [routerLink]="['/app/profile', id]">
-    {{ name }} {{ surname }}
-  </a>
+  </div>
   <div class="controls-wrapper">
     <ng-content></ng-content>
   </div>

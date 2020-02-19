@@ -6,8 +6,9 @@
     link: activatedRoute + '/photos',
     marginTop: true}"
     [panelStyles]="{ width: '17rem' }"
+    [forSubjectEntries]="true"
     [contentColumned]="false">
-    <ng-container *ngIf="(photosLoaded$ | async)">
+    <ng-container *ngIf="(photosLoaded$ | async); else loader">
       <ng-container *ngIf="(photos$|async).length > 0; else noPhotos">
         <app-event-photos-item *ngFor="let photo of (photos$|async)"
                                [photo]="photo"></app-event-photos-item>
@@ -18,5 +19,8 @@
         </span>
       </ng-template>
     </ng-container>
+    <ng-template #loader>
+      <app-loader></app-loader>
+    </ng-template>
   </app-main-panel>
 </section>

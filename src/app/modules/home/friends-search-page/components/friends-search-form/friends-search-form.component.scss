@@ -144,11 +144,27 @@
   }
 
   .interests {
-    &__input {
-      width: 100%
+    .input {
+      width: 100%;
+      margin-bottom: 0;
+    }
+    .found-interests{
+      display: flex;
+      flex-direction: column;
+      background: white;
+
+      .item{
+        background: transparent;
+        border: none;
+        padding: .5rem 0;
+
+        &:hover{
+          text-decoration: underline;
+        }
+      }
     }
     .inserted-interests{
-      &__item{
+      .item{
         &:not(:last-child){
           margin-right: .5rem;
         }
@@ -161,7 +177,7 @@
         font-size: .8rem;
         margin-top: .5rem;
       }
-      &__remove-btn{
+      .remove-btn{
         width: 1.5rem;
         height: 1.5rem;
         margin-left: .5rem;

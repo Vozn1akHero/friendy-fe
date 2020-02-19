@@ -54,26 +54,6 @@ export function userPostsReducer(
         ...state,
         posts: [...state.posts.filter(post => post.postId !== action.payload.id)]
       };
-    case UserPostsActions.LIKE_POST_IN_STATE:
-      return {
-        ...state,
-        posts: [...state.posts.map(post => {
-          if(post.postId == action.payload.id) {
-            post.likesCount++;
-          }
-          return post;
-        })]
-      };
-    case UserPostsActions.UNLIKE_POST_IN_STATE:
-      return {
-        ...state,
-        posts: [...state.posts.map(post => {
-          if(post.postId === action.payload.id) {
-            post.likesCount--;
-          }
-          return post;
-        })]
-      };
     default:
       return state;
   }

@@ -3,14 +3,15 @@ import {ActivatedRoute} from '@angular/router';
 import {OpenSettingsService} from './services/opensettings.service';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../core/ngrx/store/app.reducer';
-import {Observable, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {ScrollableListNotifierService} from "../../../shared/services/scrollable-list-notifier.service";
+import {EventPostService} from './services/event-post.service';
 
 @Component({
   selector: 'app-event',
   templateUrl: './event-page.component.html',
   styleUrls: ['./event-page.component.scss'],
-  providers: [ScrollableListNotifierService]
+  providers: [ScrollableListNotifierService, EventPostService]
 })
 export class EventComponent implements OnInit, OnDestroy {
   isEventAdmin: boolean;

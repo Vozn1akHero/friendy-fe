@@ -12,7 +12,7 @@ export class FriendsSearchService {
   constructor(private http: HttpClient) {
   }
 
-  getUsersByCriteriaRA(criteria: UserSearchModelDto) {
+  getUsersByCriteria(criteria: UserSearchModelDto) {
     return this.http.post('/api/user-search/with-criteria', criteria, {observe: 'response'})
       .pipe(map((res : HttpResponse<any[]>) => {
         let userList = [];
@@ -27,49 +27,52 @@ export class FriendsSearchService {
     }))
   }
 
-  getUsersByCriteria(criteria: UserSearchModelDto) {
-    const body = {
+  findInterestsByKeyword(keyword: string){
+    return this.http.get(`/api/user-search/interests?q=${keyword}`)
+  }
+
+  /*getUsersByCriteria(criteria: UserSearchModelDto) {
+/!*    let body = {
       "query" : {
         "bool": {
           "must": [
             {
               "match_phrase": {
-                "name": "Dmytro"
+                "name": `${criteria.name}`
               }
             },
             {
               "match_phrase": {
-                "surname": "Vozniachuk"
+                "surname": `${criteria.surname}`
               }
             },
             {
               "match_phrase": {
-                "city": "Gdańsk"
+                "city": `${criteria.city}`
               }
             },
             {
               "range":{
                 "birthday": {
                   "format": "dd.mm.yyyy",
-                  "gt": "10.12.1998",
-                  "lt": "11.12.2000"
+                  "gt": `${criteria.birthdayMin}`,
+                  "lt": `${criteria.birthdayMax}`
                 }
-              }
-            },
-            {
-              "match": {
-                "userInterests.id": 1
-              }
-            },
-            {
-              "match": {
-                "userInterests.id": 2
               }
             }
           ]
         }
       }
     };
+
+    /!*let intBody : object[] = [];
+    criteria.interests.forEach(value => {
+      intBody.push({
+        "match": {
+          "userInterests.id": `${value.id}`
+        }
+      })
+    });*!/!*!/
 
     return this.http.get('http://localhost:9200/users/_search', {
       params:{
@@ -92,7 +95,7 @@ export class FriendsSearchService {
         });
         return userList;
       }))
-  }
+  }*/
 
   getExemplaryUsers(firstIndex: number, lastIndex: number): Observable<FoundUserModel[]> {
     return this.http.get(`/api/user-search/exemplary/?firstIndex=${firstIndex}&lastIndex=${lastIndex}`)

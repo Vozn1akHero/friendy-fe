@@ -14,7 +14,6 @@ export class DialogListService {
     return this.http.get(`/api/chat/last-messages/paginate?page=${page}`,
       {observe: 'body'}).pipe(map((response : any[]) => {
           let messages : DialogModel[] = [];
-          console.log(response)
           response.map((res : any) => {
             const chat = new DialogModel(res.content,
               res.senderId,

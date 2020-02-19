@@ -15,6 +15,12 @@ import { ParticipantsCommonListComponent } from './components/shared/participant
 import { ParticipantComponent } from './components/shared/participants-common-list/participant/participant.component';
 import { ParticipantsSearchComponent } from './components/shared/participants-common-list/participants-search/participants-search.component';
 import { ParticipantListButtonComponent } from './components/shared/participants-common-list/participant-list-button/participant-list-button.component';
+import {EventAdminsService} from './services/event-admins.service';
+import {EventCreationService} from '../events-page/services/event-creation.service';
+import {EventDataService} from './services/event-data.service';
+import {EventParticipantService} from './services/event-participant.service';
+import { ParticipantRequestsSettingsComponent } from './components/participant-requests-settings/participant-requests-settings.component';
+import {EventParticipationRequestService} from './services/event-participation-request.service';
 
 
 @NgModule({
@@ -37,10 +43,16 @@ import { ParticipantListButtonComponent } from './components/shared/participants
     ParticipantsCommonListComponent,
     ParticipantComponent,
     ParticipantsSearchComponent,
-    ParticipantListButtonComponent
+    ParticipantListButtonComponent,
+    ParticipantRequestsSettingsComponent
   ],
   providers: [
-    IsEventCreatorResolver
+    IsEventCreatorResolver,
+    EventAdminsService,
+    EventCreationService,
+    EventDataService,
+    EventParticipationRequestService,
+    EventParticipantService
   ]
 })
 export class EventSettingsPageModule { }

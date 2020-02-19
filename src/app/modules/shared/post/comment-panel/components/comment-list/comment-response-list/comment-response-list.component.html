@@ -1,9 +1,11 @@
 <div class="comment-response-list">
   <ng-container *ngIf="(loaded$|async); else loader">
-    <app-comment-response-item (actResponseToCommentEmitter)="activateResponseToCommentTyping($event)"
+    <app-comment-response-item (actResponseToResponseEmitter)="activateResponseToResponseTyping($event)"
                                *ngFor="let commentResponse of (commentResponses$|async)"
                                (likeEmitter)="like($event)"
                                (unlikeEmitter)="unlike($event)"
+                               [userId]="userId"
+                               [privilegedToDeleteRelatedEntries]="privilegedToDeleteRelatedEntries"
                                [commentResponse]="commentResponse"></app-comment-response-item>
   </ng-container>
   <ng-template #loader>

@@ -1,0 +1,24 @@
+<div class="banned-participants-settings">
+  <app-participants-common-list (searchEmitter)="search($event)">
+    <ng-container *ngIf="(loaded$|async); else loader">
+      <app-participant *ngFor="let participationRequest of
+      (participationRequests$|async)"
+                       [id]="participationRequest.id"
+                       [avatarUrl]="participationRequest.avatar"
+                       [name]="participationRequest.name"
+                       [surname]="participationRequest.surname">
+        <app-participant-list-button (action)="confirmRequest($event)"
+                                     [userId]="participationRequest.id">
+          Potwierdź
+        </app-participant-list-button>
+        <app-participant-list-button (action)="removeRequest($event)"
+                                     [userId]="participationRequest.id">
+          Usuń
+        </app-participant-list-button>
+      </app-participant>
+    </ng-container>
+    <ng-template #loader>
+      <app-loader></app-loader>
+    </ng-template>
+  </app-participants-common-list>
+</div>

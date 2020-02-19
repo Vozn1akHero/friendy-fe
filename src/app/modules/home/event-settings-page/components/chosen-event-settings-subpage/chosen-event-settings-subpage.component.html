@@ -3,8 +3,9 @@
     <ng-container [ngSwitch]="chosenSubpage">
       <h1 *ngSwitchCase="1" class="title">Podstawowe</h1>
       <h1 *ngSwitchCase="2" class="title">Uczestnicy</h1>
-      <h1 *ngSwitchCase="3" class="title">Zablokowani uczestnicy</h1>
-      <h1 *ngSwitchCase="4" class="title">Administratorzy</h1>
+      <h1 *ngSwitchCase="3" class="title">Prośby o dodanie</h1>
+      <h1 *ngSwitchCase="4" class="title">Zablokowani uczestnicy</h1>
+      <h1 *ngSwitchCase="5" class="title">Administratorzy</h1>
     </ng-container>
   </header>
   <ng-container [ngSwitch]="chosenSubpage">
@@ -12,9 +13,12 @@
                               *ngSwitchCase="1"></app-basic-event-settings>
     <app-event-participants-settings [eventId]="eventId"
       *ngSwitchCase="2"></app-event-participants-settings>
+    <app-participant-requests-settings [eventId]="eventId"
+                                       *ngSwitchCase="3">
+    </app-participant-requests-settings>
     <app-banned-users-settings [eventId]="eventId"
-      *ngSwitchCase="3"></app-banned-users-settings>
+      *ngSwitchCase="4"></app-banned-users-settings>
     <app-event-admins-settings [eventId]="eventId"
-      *ngSwitchCase="4"></app-event-admins-settings>
+      *ngSwitchCase="5"></app-event-admins-settings>
   </ng-container>
 </section>

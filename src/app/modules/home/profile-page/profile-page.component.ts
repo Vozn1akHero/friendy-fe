@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProfilePageModalsService} from './services/profile-page-modals.service';
-import {take} from 'rxjs/operators';
 import {UserIdService} from "../../../shared/services/user-id.service";
 import {Store} from "@ngrx/store";
 import * as fromApp from "../../../core/ngrx/store/app.reducer";

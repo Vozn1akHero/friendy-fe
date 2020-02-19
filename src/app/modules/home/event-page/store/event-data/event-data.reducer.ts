@@ -3,15 +3,13 @@ import EventShortened from '../../models/event-shortened.model';
 
 
 export interface State {
-  events: EventShortened[];
-  loading: boolean;
-  loaded: boolean;
-}
+  events: {[id: string]: EventShortened};
+  loaded: {[id: string]:boolean};
+  }
 
 const initialState: State = {
-  events: [],
-  loading: false,
-  loaded: false
+  events: {},
+  loaded: {}
 };
 
 export function eventDataReducer(
@@ -21,14 +19,23 @@ export function eventDataReducer(
   switch (action.type) {
     case EventDataActions.GET_EVENT_DATA:
       return {
-        ...state,
-        loading: true
+        ...state
       };
     case EventDataActions.SET_EVENT_DATA:
       return {
         ...state,
-        events: [...state.events, action.payload],
-        loading: false
+        events: {
+          ...state.events,
+          ...{
+            [action.payload.id]: action.payload
+          }
+        },
+        loaded: {
+          ...state.loaded,
+          ...{
+            [action.payload.id]: true
+          }
+        }
       };
     default:
       return state;

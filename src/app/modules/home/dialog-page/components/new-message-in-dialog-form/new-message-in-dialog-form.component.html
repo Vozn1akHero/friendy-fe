@@ -6,16 +6,23 @@
                 #newMessageContent></textarea>
 
       <div class="controls">
-        <div class="file-btn-wrapper">
-          <svg>
-            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
-          </svg>
+        <div class="image-wrap">
+          <div class="file-btn-wrapper">
+            <span class="icon fr-span-icon"></span>
 
-          <input type="file"
-                 name="filename"
-                 #image
-                 accept="image/jpeg, image/png"
-                 style="opacity: 0;">
+            <input type="file"
+                   name="filename"
+                   (change)="onImageSelection()"
+                   #image
+                   accept="image/jpeg, image/png"
+                   style="opacity: 0;">
+          </div>
+          <div class="selected-file" *ngIf="imageFile!=null">
+            <span class="title fr-default-smaller-font">
+              {{ imageFile.name }}
+            </span>
+            <button (click)="removeSelectedImage()" class="remove-btn">&times;</button>
+          </div>
         </div>
       </div>
     </div>

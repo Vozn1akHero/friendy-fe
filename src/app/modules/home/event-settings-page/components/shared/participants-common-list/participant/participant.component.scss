@@ -2,12 +2,17 @@
 
 .participant{
   display: flex;
-  min-width: 25rem;
-  width: 28vw;
+  min-width: 26rem;
   background: white;
   padding: 1rem;
   border-radius: 3rem;
   position: relative;
+  justify-content: space-between;
+
+  .md-wrap{
+    width: 75%;
+    display: flex;
+  }
 
   .avatar-wrapper{
     width: 6rem;
@@ -25,15 +30,16 @@
     margin-top: 1rem;
     color: $color-blue;
     text-decoration: none;
+    word-wrap: break-word;
+    word-break: break-word;
   }
 
   .controls-wrapper{
-    position: absolute;
-    right: 2rem;
-    transform: translateY(25%);
+    width: 25%;
+    transform: translateY(10px);
 
-    &::ng-deep button:not(:first-child){
-      margin-top: 1rem;
+    ::ng-deep button{
+      margin-bottom: .5rem;
     }
   }
 }

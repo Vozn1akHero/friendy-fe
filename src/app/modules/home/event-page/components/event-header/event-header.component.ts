@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
+import {AppState} from '../../store/reducers';
 import {Observable, Subscription} from 'rxjs';
 import EventShortened from '../../models/event-shortened.model';
 import * as EventPageEventDataActions from '../../store/event-data/event-data.actions';
@@ -11,39 +11,24 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './event-header.component.html',
   styleUrls: ['./event-header.component.scss']
 })
-export class EventHeaderComponent implements OnInit, OnDestroy {
+export class EventHeaderComponent implements OnInit {
   @Input() isEventAdmin: boolean;
-
-  eventDataLoading$: Observable<boolean>;
-  eventData: EventShortened = null;
-  eventDataSubscription: Subscription;
-
+  eventDataLoaded$: Observable<boolean>;
+  eventData$: Observable<EventShortened>;
   eventId: number;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private store: Store<fromApp.AppState>){}
+              private store: Store<AppState>){}
 
   ngOnInit(): void {
-    this.eventDataLoading$ = this.store.select(state => state.eventPageEventData.loading);
-
+    //this.eventDataLoaded$ = this.store.select(state => state.eventPageEventData.loaded);
     this.eventId = +this.activatedRoute.snapshot.paramMap.get("id");
-
     this.getEventData();
   }
 
   getEventData(){
-    this.eventDataSubscription = this.store.select(state => state.eventPageEventData.events)
-      .subscribe(events => {
-        const found = events.find(e => e.id === this.eventId);
-        if(found == null){
-          this.store.dispatch(new EventPageEventDataActions.GetEventData({id: this.eventId}));
-        } else {
-          this.eventData = found;
-        }
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.eventDataSubscription.unsubscribe();
+    this.store.dispatch(new EventPageEventDataActions.GetEventData({id: this.eventId}));
+    this.eventData$ = this.store.select(e=>e.eventPageEventData.events[this.eventId]);
+    this.eventDataLoaded$ = this.store.select(e=>e.eventPageEventData.loaded[this.eventId]);
   }
 }

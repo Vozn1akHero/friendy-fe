@@ -7,6 +7,8 @@ import {AppState} from '../../store/reducers';
 import * as CommentResponseActions from '../../store/comment-response/comment-response.actions';
 import * as PostCommentActions from '../../store/post-comment/post-comment.actions';
 import {NewCommentResponseModel} from '../../models/new-comment-response.model';
+import NewResponseToResponseModel from '../../models/new-response-to-response.model';
+import {CommentType} from '../../../comment-type.enum';
 
 @Component({
   selector: 'app-new-comment-form',
@@ -16,29 +18,48 @@ import {NewCommentResponseModel} from '../../models/new-comment-response.model';
 export class NewCommentFormComponent implements OnInit {
   @ViewChild('image') image;
   @ViewChild('textAreaElement') textAreaElement: ElementRef;
+  @ViewChild('formElement') form: ElementRef;
   @Input() postId: number;
 
   constructor(private store: Store<AppState>,
-              private newCommentOrResponseService : NewCommentOrResponseService) {}
+              private newCommentOrResponseService: NewCommentOrResponseService) {
+  }
 
   ngOnInit() {
     autosize(this.textAreaElement.nativeElement);
+    this.newCommentOrResponseService.commentType = CommentType.PostComment;
+    this.newCommentOrResponseService.initData = {postId: this.postId};
   }
 
   onSubmit() {
     const content = this.textAreaElement.nativeElement.value;
     const image = this.image.nativeElement.files[0];
-    if(this.newCommentOrResponseService.responseTarget.responseToComment){
-      const newComment : NewCommentResponseModel = new NewCommentResponseModel(this.postId,
-        this.newCommentOrResponseService.responseTarget.targetId, content, image);
+    if (this.newCommentOrResponseService.commentType
+      === CommentType.ResponseToComment) {
+      const {postId, commentId} = this.newCommentOrResponseService.responseToCommentInitData;
+      const newComment: NewCommentResponseModel = new NewCommentResponseModel(postId,
+        commentId, content, image);
       this.store.dispatch(new CommentResponseActions.Create(newComment));
-    } else if(this.newCommentOrResponseService.responseTarget.responseToComment){
-
-    }
-    else{
-      const newComment: NewCommentModel =
-        new NewCommentModel(this.postId, this.textAreaElement.nativeElement.value);
+    } else if (this.newCommentOrResponseService.commentType
+      === CommentType.ResponseToCommentResponse) {
+      const {postId, commentId, responseToCommentId} = this.newCommentOrResponseService.responseToResponseInitData;
+      const res: NewResponseToResponseModel = new NewResponseToResponseModel(postId,
+         responseToCommentId,
+        commentId,
+        content,
+        image);
+      this.store.dispatch(new CommentResponseActions.CreateResponseToResponse(res));
+    } else {
+      const newComment: NewCommentModel = new NewCommentModel(this.newCommentOrResponseService.commentToPostInitData.postId,
+        content, image);
       this.store.dispatch(new PostCommentActions.Create(newComment));
+    }
+  }
+
+  onKeypress($event: KeyboardEvent) {
+    if ($event.keyCode === 13) {
+      //this.form.nativeElement.submit();
+      this.onSubmit();
     }
   }
 }

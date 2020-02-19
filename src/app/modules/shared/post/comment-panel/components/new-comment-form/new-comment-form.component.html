@@ -1,5 +1,6 @@
 <div class="new-comment">
-  <form class="form" (submit)="onSubmit($event)">
+  <form class="form"
+        #formElement>
     <textarea placeholder="Napisz komentarz"
               class="new-comment-ta"
               #textAreaElement
@@ -14,6 +15,8 @@
                  accept="image/jpeg, image/png"
                  style="opacity: 0;">
         </div>
+        <button class="submit-btn"
+                (click)="onSubmit()">Wyślij</button>
       </div>
     </div>
   </form>

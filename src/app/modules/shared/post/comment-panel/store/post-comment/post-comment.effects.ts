@@ -1,12 +1,8 @@
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Injectable} from '@angular/core';
-import {Store} from '@ngrx/store';
-import * as fromApp from '../../../../../../core/ngrx/store/app.reducer';
 import * as PostCommentsActions from './post-comment.actions';
-import {map, switchMap} from 'rxjs/operators';
+import {map, switchMap, tap} from 'rxjs/operators';
 import PostCommentService from '../../services/post-comment.service';
-import CommentModel from '../../models/comment.model';
-import {of} from 'rxjs';
 
 @Injectable()
 export default class PostCommentEffects {
@@ -54,4 +50,13 @@ export default class PostCommentEffects {
         }))
     })
   );
+
+  @Effect() create = this.actions$.pipe(
+    ofType(PostCommentsActions.CREATE),
+    switchMap((action: PostCommentsActions.Create)=>{
+      return this.postCommentService.create(action.payload).pipe(map((res)=>{
+        return new PostCommentsActions.FinalizeCreation(res);
+      }))
+    })
+  )
 }

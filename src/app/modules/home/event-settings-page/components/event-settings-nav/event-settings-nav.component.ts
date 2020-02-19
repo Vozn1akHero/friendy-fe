@@ -33,6 +33,10 @@ export class EventSettingsNavComponent implements OnInit {
     this.router.navigate([this.activatedRoute], {queryParams: { 'sp': 'admins' }});
   }
 
+  navigateToRequests(){
+    this.router.navigate([this.activatedRoute], {queryParams: { 'sp': 'requests' }});
+  }
+
   navigateToBannedParticipantsSettings() {
     this.router.navigate([this.activatedRoute], {queryParams: { 'sp': 'banned-participants' }});
   }

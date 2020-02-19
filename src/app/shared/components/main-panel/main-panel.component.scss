@@ -37,4 +37,10 @@
   .content{
     display: flex;
   }
+
+  .for-subject-entries{
+    ::ng-deep > * {
+      margin-right: .5rem;
+    }
+  }
 }
