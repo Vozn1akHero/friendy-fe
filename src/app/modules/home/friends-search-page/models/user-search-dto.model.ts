@@ -1,3 +1,5 @@
+import UserInterestModel from './user-interest.model';
+
 export default class UserSearchModel {
   name: string;
   surname: string;
@@ -12,7 +14,7 @@ export default class UserSearchModel {
   religionId: number;
   alcoholOpinionId: number;
   smokingOpinionId: number;
-  interests: string[];
+  interests: UserInterestModel[];
 
   constructor(name: string,
               surname: string,
@@ -27,7 +29,7 @@ export default class UserSearchModel {
               religion: number,
               alcoholOpinion: number,
               smokingOpinion: number,
-              interests: string[]) {
+              interests: UserInterestModel[]) {
     this.name = name;
     this.surname = surname;
     this.city = city;

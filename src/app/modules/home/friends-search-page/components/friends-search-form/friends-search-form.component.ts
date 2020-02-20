@@ -16,8 +16,6 @@ export class FriendsSearchFormComponent implements OnInit, OnDestroy {
     surname: new FormControl(null),
     city: new FormControl(null),
     education: new FormControl(''),
-    /*    school: new FormControl(null),
-        university: new FormControl(null),*/
     birthday: new FormGroup({
       birthdayMin: new FormControl(null),
       birthdayMax: new FormControl(null)
@@ -105,11 +103,9 @@ export class FriendsSearchFormComponent implements OnInit, OnDestroy {
       +searchFormValue.religion,
       +searchFormValue.alcoholAttitude,
       +searchFormValue.smokingAttitude,
-      this.interests);
+      this.selectedInterests);
 
-    if (!this.interestsInput.nativeElement.activeElement) {
-      this.searchFormSubmitEmitter.emit(userSearchModel);
-    }
+    this.searchFormSubmitEmitter.emit(userSearchModel);
   }
 
   onSelectBirthday($event) {
