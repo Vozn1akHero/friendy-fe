@@ -8,7 +8,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 import { MiniSearchInputComponent } from './components/mini-search-input/mini-search-input.component';
 import { MainPanelComponent } from './components/main-panel/main-panel.component';
 import { CommonModalComponent } from './components/common-modal/common-modal.component';
-import { ButtonHoverInfoModalComponent } from './components/button-hover-info-modal/button-hover-info-modal.component';
+import { ButtonHoverInfoPopoverComponent } from './components/button-hover-info-popover/button-hover-info-popover.component';
 import { TransparentBgModalComponent } from './components/transparent-bg-modal/transparent-bg-modal.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { InfoModalComponent } from './components/info-modal/info-modal.component';

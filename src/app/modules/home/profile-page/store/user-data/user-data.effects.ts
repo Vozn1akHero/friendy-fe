@@ -8,6 +8,7 @@ import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {UserDataService} from '../../services/user-data.service';
 import User from '../../models/user.model';
+import {AppState} from '../reducers';
 
 @Injectable()
 export class UserDataEffects {
@@ -40,7 +41,7 @@ export class UserDataEffects {
   constructor(
     private actions$: Actions,
     private userDataService : UserDataService,
-    private store: Store<fromApp.AppState>
+    private store: Store<AppState>
   ) {}
 }
 

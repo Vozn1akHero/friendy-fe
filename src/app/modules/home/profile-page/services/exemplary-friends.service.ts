@@ -7,8 +7,8 @@ import {HttpClient} from '@angular/common/http';
 export class ExemplaryFriendsService {
   constructor(private http: HttpClient){}
 
-  getByUserId(id : number){
-    return this.http.get(`/api/friend/exemplary/${id}`,
+  getByUserId(id : number, page: number){
+    return this.http.get(`/api/friend/paginate/${id}?page=${page}`,
       {observe: 'body'});
   }
 }

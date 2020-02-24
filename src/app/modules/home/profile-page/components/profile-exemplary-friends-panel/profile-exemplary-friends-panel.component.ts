@@ -4,6 +4,7 @@ import * as UserExemplaryFriends from '../../store/user-exemplary-friends/user-e
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {Observable, Subscription} from 'rxjs';
+import {AppState} from '../../store/reducers';
 
 @Component({
   selector: 'profile-exemplary-friends-panel',
@@ -18,7 +19,7 @@ export class ProfileExemplaryFriendsPanelComponent implements OnInit, OnDestroy 
   @Input() isUserProfileOwner : boolean;
   @Input() userId : number;
 
-  constructor(private store: Store<fromApp.AppState>) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
     this.getExemplaryFriends();

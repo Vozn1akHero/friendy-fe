@@ -1,35 +1,31 @@
 <div class="profile-header-friendship-controls">
-  <ng-container *ngIf="loaded; else loader">
-    <a *ngIf="friendshipStatus"
-       class="send-msg-btn"
-       [routerLink]="['/app/dialog', this.userId]">
-      <span class="icon fr-span-icon"></span>
-    </a>
+  <ng-container *ngIf="(loaded$|async); else loader">
+    <ng-container *ngIf="(friendshipStatus$|async) === 0; else noFriend">
+      <a class="send-msg-btn"
+         [routerLink]="['/app/dialog', this.userId]">
+        <span class="icon fr-span-icon"></span>
+      </a>
+    </ng-container>
 
-    <ng-container *ngIf="!friendshipStatus">
+    <ng-template #noFriend>
       <button (click)="onSendFriendRequestBtnClick()"
-              (mouseleave)="closeButtonHoverInfoModal('addFriendRequestButton')"
-              (mouseover)="openButtonHoverInfoModal('addFriendRequestButton')"
-              *ngIf="!friendRequestStatus; else removeFriendRequest"
+              (mouseleave)="removeSendRequestPopover()"
+              (mouseover)="showSendRequestPopover()"
+              *ngIf="(friendshipStatus$|async) === 1; else removeRequestPopoverWrap"
               class="add-new-friend-btn">
         <span class="icon fr-span-icon"></span>
-        <app-button-hover-info-modal *ngIf="addFriendRequestBtnInfoModalOpened">
-          Dodaj do znajomych
-        </app-button-hover-info-modal>
+        <ng-template #sendRequestPopoverRef></ng-template>
       </button>
-      <ng-template #removeFriendRequest>
+      <ng-template #removeRequestPopoverWrap>
         <button (click)="onRemoveFriendRequestBtnClick()"
-                (mouseleave)="closeButtonHoverInfoModal('removeFriendRequestButton')"
-                (mouseover)="openButtonHoverInfoModal('removeFriendRequestButton')"
+                (mouseleave)="removeRequestPopover()"
+                (mouseover)="showRequestPopover()"
                 class="remove-request-btn">
           <span class="icon fr-span-icon"></span>
-          <app-button-hover-info-modal
-            *ngIf="removeFriendRequestBtnInfoModalOpened">
-            Anuluj prośbę o dodanie do znajomych
-          </app-button-hover-info-modal>
+          <ng-template #removeRequestPopoverRef></ng-template>
         </button>
       </ng-template>
-    </ng-container>
+    </ng-template>
   </ng-container>
   <ng-template #loader>
     <app-loader></app-loader>

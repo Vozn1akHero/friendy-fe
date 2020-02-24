@@ -7,6 +7,7 @@ import * as UserAvatarActions from './user-avatar.actions';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {UserAvatarService} from '../../services/user-avatar.service';
+import {AppState} from '../reducers';
 
 @Injectable()
 export class UserAvatarEffects {
@@ -43,6 +44,6 @@ export class UserAvatarEffects {
     private http: HttpClient,
     private userAvatarService: UserAvatarService,
     private router: Router,
-    private store$: Store<fromApp.AppState>
+    private store$: Store<AppState>
   ) {}
 }

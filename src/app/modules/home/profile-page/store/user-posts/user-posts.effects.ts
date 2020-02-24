@@ -8,6 +8,7 @@ import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {UserPostService} from '../../services/user-post.service';
 import Post from '../../models/post.model';
+import {AppState} from '../reducers';
 
 
 @Injectable()
@@ -47,7 +48,7 @@ export class UserPostsEffects {
     ofType(UserPostsActions.GET_USER_POSTS),
     withLatestFrom(this.store$.select(e => e.profilePageUserPosts.posts)),
     switchMap(([action, posts] : [UserPostsActions.GetUserPosts, any[]]) => {
-      return this.userPostService.getLast(action.payload.userId, 5)
+      return this.userPostService.getWithPagination(action.payload.userId, action.payload.page)
         .pipe(
           map((res: HttpResponse<any[]>) => {
             return ({ type: UserPostsActions.SET_USER_POSTS,
@@ -57,7 +58,7 @@ export class UserPostsEffects {
     })
   );
 
-  @Effect()
+  /*@Effect()
   startFulfillingUserPosts = this.actions$.pipe(
     ofType(UserPostsActions.START_FULFILLING_USER_POSTS),
     withLatestFrom(this.store$.select(e => e.profilePageUserPosts.posts)),
@@ -71,6 +72,7 @@ export class UserPostsEffects {
         )
     })
   );
+*/
 
   @Effect()
   profilePageRemovePost = this.actions$.pipe(
@@ -107,6 +109,6 @@ export class UserPostsEffects {
     private http: HttpClient,
     private userPostService: UserPostService,
     private router: Router,
-    private store$: Store<fromApp.AppState>
+    private store$: Store<AppState>
   ) {}
 }

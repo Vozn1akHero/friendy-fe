@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import * as moment from 'moment';
 import 'moment/locale/pl';
 
@@ -7,17 +7,19 @@ import 'moment/locale/pl';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  @ViewChild('appWrapper') appWrapper;
+
   constructor() {
     moment.locale('pl');
   }
 
-  closeModalOnBodyClickListener(){
-    document.body.addEventListener('click', (e) => {
+  ngOnInit(): void {
+    /*document.addEventListener('click', e => {
       const modal = document.getElementsByClassName('f-modal')[0];
       if(modal != null){
         modal.classList.add('f-modal-hidden')
       }
-    })
+    })*/
   }
 }

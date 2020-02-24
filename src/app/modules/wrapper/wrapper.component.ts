@@ -14,12 +14,10 @@ import {InfoModalService} from '../../shared/components/info-modal/info-modal.se
 })
 export class WrapperComponent implements OnInit, OnDestroy {
   friendRequestsModalOpened: boolean;
-  friendRequestsModalOpenedSubscription: Subscription;
   userIdLoaded$: Observable<boolean>;
   connectedToStatusHub: boolean = false;
   infoModalOpened$: Observable<boolean>;
   receivedFriendRequestsAmount: number;
-
 
   constructor(private route: ActivatedRoute,
               private successModalService : InfoModalService,
@@ -49,11 +47,13 @@ export class WrapperComponent implements OnInit, OnDestroy {
   }
 
   setFriendRequestModalValue(){
-    this.friendRequestsModalOpenedSubscription = this.friendRequestsModalService
-      .modalOpened$
-      .subscribe(value => {
-      this.friendRequestsModalOpened = value;
-    })
+    this.subscriptionManager.add(
+      this.friendRequestsModalService
+        .modalOpened$
+        .subscribe(value => {
+          this.friendRequestsModalOpened = value;
+        })
+    )
   }
 
   setUserIdLoaded(){
@@ -79,6 +79,5 @@ export class WrapperComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptionManager.destroy();
-    this.friendRequestsModalOpenedSubscription.unsubscribe();
   }
 }

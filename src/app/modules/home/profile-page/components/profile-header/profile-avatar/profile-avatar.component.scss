@@ -48,7 +48,13 @@
     }
   }
 
-  &__wrapper {
+  .avatar-loader{
+    background: #f8f8f8;
+    height: 1rem;
+    width: 100%;
+  }
+
+  &__wrapper, .avatar-loader {
     position: absolute;
     left: 0;
     right: 0;

@@ -26,23 +26,23 @@ export class AddPost implements Action {
 
   constructor(public payload: NewPost) {}
 }
-
+/*
 export class StartFulfillingUserPosts implements Action {
   readonly type = START_FULFILLING_USER_POSTS;
 
-  constructor(public payload: { userId: number }) {}
+  constructor(public payload: { userId: number, page: number }) {}
 }
 
 export class FulfillUserPosts implements Action {
   readonly type = FULFILL_USER_POSTS;
 
   constructor(public payload: Post[]) {}
-}
+}*/
 
 export class GetUserPosts implements Action {
   readonly type = GET_USER_POSTS;
 
-  constructor(public payload: { userId: number }) {}
+  constructor(public payload: { userId: number, page: number }) {}
 }
 
 export class SetUserPosts implements Action {
@@ -95,8 +95,8 @@ export type UserPostsActions = SetAddedPost
   | RemovePost
   | RemovePostFromState
   | LikePost
-  | StartFulfillingUserPosts
-  | FulfillUserPosts
+/*  | StartFulfillingUserPosts
+  | FulfillUserPosts*/
   | LikePostInState
   | UnlikePost
   | UnlikePostInState;

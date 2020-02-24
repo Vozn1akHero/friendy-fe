@@ -8,7 +8,7 @@ import {LoaderComponent} from './loader/loader.component';
 import {SettingsPanelWrapperComponent} from './settings-panel/settings-panel-wrapper/settings-panel-wrapper.component';
 import {CalendarComponent} from './calendar/calendar.component';
 import {MainPanelComponent} from './main-panel/main-panel.component';
-import {ButtonHoverInfoModalComponent} from './button-hover-info-modal/button-hover-info-modal.component';
+import {ButtonHoverInfoPopoverComponent} from './button-hover-info-popover/button-hover-info-popover.component';
 import {ControlsWrapperInSettingsPanelComponent} from './settings-panel/controls-wrapper-in-settings-panel/controls-wrapper-in-settings-panel.component';
 import {SettingsPanelDropdownComponent} from './settings-panel/settings-panel-dropdown/settings-panel-dropdown.component';
 import {NewPostFormComponent} from './new-post-form/new-post-form.component';
@@ -39,7 +39,7 @@ import { MiniLoaderComponent } from './mini-loader/mini-loader.component';
     MiniSearchInputComponent,
     MainPanelComponent,
     CommonModalComponent,
-    ButtonHoverInfoModalComponent,
+    ButtonHoverInfoPopoverComponent,
     TransparentBgModalComponent,
     CalendarComponent,
     InfoModalComponent,
@@ -63,7 +63,7 @@ import { MiniLoaderComponent } from './mini-loader/mini-loader.component';
     MiniSearchInputComponent,
     MainPanelComponent,
     CommonModalComponent,
-    ButtonHoverInfoModalComponent,
+    ButtonHoverInfoPopoverComponent,
     TransparentBgModalComponent,
     CalendarComponent,
     InfoModalComponent,
@@ -80,6 +80,9 @@ import { MiniLoaderComponent } from './mini-loader/mini-loader.component';
     PanelForEntryPresentingComponent,
     LoaderComponent,
     MiniLoaderComponent
+  ],
+  entryComponents: [
+    ButtonHoverInfoPopoverComponent
   ]
 })
 

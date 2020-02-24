@@ -8,7 +8,6 @@ import { ProfileExemplaryFriendsPanelComponent } from './components/profile-exem
 import { ProfileExemplaryPhotosPanelComponent } from './components/profile-exemplary-photos-panel/profile-exemplary-photos-panel.component';
 import { ProfileExemplaryFriendComponent } from './components/profile-exemplary-friends-panel/profile-exemplary-friend/profile-exemplary-friend.component';
 import { ProfilePhotosItemComponent } from './components/profile-exemplary-photos-panel/profile-photos-item/profile-photos-item.component';
-
 import { SharedModule } from '../../../shared/shared.module';
 import { AppRoutingModule } from '../../../app-routing.module';
 import { ProfilePostListComponent } from './components/profile-post-list/profile-post-list.component';
@@ -19,7 +18,6 @@ import { ProfileBackgroundComponent } from './components/profile-header/profile-
 import {ProfileUnderHeaderContentWrapperComponent} from './components/profile-under-header-content-wrapper/profile-under-header-content-wrapper.component';
 import { ProfileHeaderFriendshipControlsComponent } from './components/profile-header/profile-header-friendship-controls/profile-header-friendship-controls.component';
 import { ProfileHeaderSettingsComponent } from './components/profile-header/profile-header-settings/profile-header-settings.component';
-import { ProfileInfoPanelComponent } from './components/profile-header/profile-info-panel/profile-info-panel.component';
 import {ProfileHeaderBasicDataComponent} from './components/profile-header/profile-header-basic-data/profile-header-basic-data.component';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import {PostModule} from '../../shared/post/post.module';
@@ -48,8 +46,7 @@ import {PostModule} from '../../shared/post/post.module';
     ProfileBackgroundComponent,
     ProfileHeaderFriendshipControlsComponent,
     ProfileHeaderBasicDataComponent,
-    ProfileHeaderSettingsComponent,
-    ProfileInfoPanelComponent
+    ProfileHeaderSettingsComponent
   ],
   providers: [
     ProfileBelongingResolver

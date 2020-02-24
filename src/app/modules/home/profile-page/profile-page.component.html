@@ -1,25 +1,23 @@
-<router-outlet></router-outlet>
-
 <app-new-avatar-modal *ngIf="profilePageModalsService.newAvatarModalOpened"
                       (newAvatarSubmitted)="newAvatarSubmitted()"
                       [newAvatar]="profilePageModalsService.newAvatar">
 </app-new-avatar-modal>
 
-  <section class="profile-page"
-           infiniteScroll
-           [infiniteScrollDistance]="2"
-           [infiniteScrollThrottle]="50"
-           (scrolled)="updateList()">
+<section class="profile-page"
+         infiniteScroll
+         [infiniteScrollDistance]="2"
+         [infiniteScrollThrottle]="50"
+         (scrolled)="updateList()">
 
-      <app-profile-header [activeSettings]="activeSettings"
-                          [userId]="userId"
-                          [isUserProfileOwner]="isUserProfileOwner">
-      </app-profile-header>
+    <app-profile-header [activeSettings]="activeSettings"
+                        [userId]="userId"
+                        [isUserProfileOwner]="isUserProfileOwner">
+    </app-profile-header>
 
-      <app-profile-under-header-content-wrapper [activeSettings]="activeSettings"
-                                                [userId]="userId"
-                                                [isUserProfileOwner]="isUserProfileOwner">
-      </app-profile-under-header-content-wrapper>
-  </section>
+    <app-profile-under-header-content-wrapper [activeSettings]="activeSettings"
+                                              [userId]="userId"
+                                              [isUserProfileOwner]="isUserProfileOwner">
+    </app-profile-under-header-content-wrapper>
+</section>
 
 

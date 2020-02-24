@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
+import {Component, ComponentFactoryResolver, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Observable} from 'rxjs';
 import {FriendshipService} from '../../../services/friendship.service';
+import {ButtonHoverInfoPopoverComponent} from '../../../../../../shared/components/button-hover-info-popover/button-hover-info-popover.component';
 
 @Component({
   selector: 'app-profile-header-friendship-controls',
@@ -9,89 +10,66 @@ import {FriendshipService} from '../../../services/friendship.service';
 })
 export class ProfileHeaderFriendshipControlsComponent implements OnInit {
   @Input() userId: number;
-  loaded: boolean = false;
-  removeFriendRequestBtnInfoModalOpened: boolean;
-  addFriendRequestBtnInfoModalOpened: boolean;
-  friendshipStatus: boolean = false;
-  friendshipStatusSubscription: Subscription;
-  friendRequestStatus: boolean = false;
-  friendRequestStatusSubscription: Subscription;
+  loaded$: Observable<boolean>;
+  friendshipStatus$: Observable<number>;
+  @ViewChild('removeRequestPopoverRef', {read: ViewContainerRef}) removeRequestPopoverRef;
+  @ViewChild('sendRequestPopoverRef', {read: ViewContainerRef}) sendRequestPopoverRef;
 
-  constructor(private friendshipService : FriendshipService) { }
+
+  constructor(private friendshipService : FriendshipService,
+              private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
     this.setFriendshipStatus();
   }
 
   setFriendshipStatus(){
-    this.friendshipStatusSubscription = this.friendshipService
-      .checkIfFriendByUserId(this.userId)
-      .subscribe(value => {
-        this.finalFriendshipStatus = value;
-
-        if(!this.friendshipStatus){
-          this.setFriendRequestStatus();
-        }
-      })
-  }
-
-  set finalFriendshipStatus(value: boolean){
-    this.friendshipStatus = value;
-    this.loaded = true;
-  }
-
-  set finalFriendRequestStatus(value: boolean){
-    this.friendRequestStatus = value;
-    this.loaded = true;
-  }
-
-  setFriendRequestStatus(){
-    this.friendRequestStatusSubscription = this.friendshipService
-      .getFriendRequestStatus(this.userId)
-      .subscribe(value => {
-        this.finalFriendRequestStatus = value;
-      })
+    this.friendshipStatus$ = this.friendshipService.friendshipStatus$;
+    this.loaded$ = this.friendshipService.loaded$;
+    this.friendshipService.getFriendshipStatus(this.userId);
   }
 
   onSendFriendRequestBtnClick(){
-    this.friendRequestStatusSubscription = this.friendshipService
+    this.friendshipService
       .sendFriendRequest(this.userId)
       .subscribe(() => {
-        this.friendRequestStatus = true;
+
       })
   }
 
   onRemoveFriendRequestBtnClick(){
-    this.friendRequestStatusSubscription = this.friendshipService
+    this.friendshipService
       .removeFriendRequest(this.userId)
       .subscribe(() => {
-        this.friendRequestStatus = false;
+        //this.friendRequestStatus = false;
       })
   }
 
-  openButtonHoverInfoModal(option){
-    switch (option) {
-      case 'removeFriendRequestButton':
-        this.removeFriendRequestBtnInfoModalOpened = true;
-        break;
-      case 'addFriendRequestButton':
-        this.addFriendRequestBtnInfoModalOpened = true;
-        break;
-      default:
-        break;
+  showRequestPopover() : void {
+    if(this.removeRequestPopoverRef.length===0) {
+      const factory = this.componentFactoryResolver
+        .resolveComponentFactory(ButtonHoverInfoPopoverComponent);
+      const componentRef = this.removeRequestPopoverRef.createComponent(factory);
+      componentRef.instance.text = "Anuluj prośbę o dodanie do znajomych";
+      componentRef.changeDetectorRef.detectChanges();
     }
   }
 
-  closeButtonHoverInfoModal(option){
-    switch (option) {
-      case 'removeFriendRequestButton':
-        this.removeFriendRequestBtnInfoModalOpened = false;
-        break;
-      case 'addFriendRequestButton':
-        this.addFriendRequestBtnInfoModalOpened = false;
-        break;
-      default:
-        break;
+  removeRequestPopover() : void {
+    this.removeRequestPopoverRef.clear();
+  }
+
+  showSendRequestPopover(){
+    if(this.sendRequestPopoverRef.length===0){
+      const factory = this.componentFactoryResolver
+        .resolveComponentFactory(ButtonHoverInfoPopoverComponent);
+      const componentRef = this.sendRequestPopoverRef.createComponent(factory);
+      componentRef.instance.text = "Dodaj do znajomych";
+      componentRef.changeDetectorRef.detectChanges();
     }
+  }
+
+  removeSendRequestPopover(){
+    this.sendRequestPopoverRef.clear();
   }
 }

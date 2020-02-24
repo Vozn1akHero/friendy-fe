@@ -1,31 +1,64 @@
 <div class="profile-header-minor-data">
   <ng-container *ngIf="isUserProfileOwner">
     <div *ngIf="activeSettings" class="profile-ui-settings">
-          <textarea #userStatus
-                    class="desc"
-                    placeholder="Co słychać?"
-                    type="text"></textarea>
+        <textarea #userStatus
+                  class="desc"
+                  placeholder="Co słychać?"
+                  type="text"></textarea>
     </div>
   </ng-container>
 
-  <h2 [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="name">
-    {{ name }} {{ surname }}
-  </h2>
-  <p *ngIf="status != null" [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="desc">
-    {{ status }}
-  </p>
-  <div [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="location">
-    <svg class="icon">
-      <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-location"></use>
-    </svg>
-    <span>
-        {{ city }}
-      </span>
+  <div class="wrap-1">
+    <ng-container *ngIf="!(userDataLoaded$|async); else actNameSurname">
+      <div class="text-loader"></div>
+    </ng-container>
+    <ng-template #actNameSurname>
+      <h2 [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="name">
+        {{ name }} {{ surname }}
+      </h2>
+    </ng-template>
   </div>
-  <div [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="birthday">
-    <svg class="icon" aria-label="Data urodzenia">
-      <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-calendar"></use>
-    </svg>
-    <span>{{ birthday }}</span>
+
+  <div class="wrap-2">
+    <ng-container *ngIf="!(userDataLoaded$|async); else actStatus">
+      <div class="text-loader"></div>
+    </ng-container>
+    <ng-template #actStatus>
+      <p *ngIf="status != null" [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="desc">
+        {{ status }}
+      </p>
+    </ng-template>
+  </div>
+
+  <div class="wrap-3">
+    <div [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="location">
+      <svg class="icon">
+        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-location"></use>
+      </svg>
+      <ng-container *ngIf="!(userDataLoaded$|async); else actCity">
+        <div class="text-loader"></div>
+      </ng-container>
+      <ng-template #actCity>
+        <span>
+          {{ city }}
+        </span>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="wrap-4">
+    <div [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="birthday">
+      <svg class="icon" aria-label="Data urodzenia">
+        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-calendar"></use>
+      </svg>
+      <ng-container *ngIf="!(userDataLoaded$|async); else actBirthday">
+        <div class="text-loader"></div>
+      </ng-container>
+      <ng-template #actBirthday>
+        <span>
+          <span>{{ birthday }}</span>
+        </span>
+      </ng-template>
+    </div>
   </div>
 </div>

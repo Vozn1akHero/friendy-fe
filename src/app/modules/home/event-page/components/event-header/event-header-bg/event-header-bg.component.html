@@ -1,5 +1,6 @@
 <!--<app-event-header-bg-alter [eventId]="eventId" [activeSettings]="activeSettings"></app-event-header-bg-alter>-->
 
 <div class="event-bg"
-     [ngStyle]="{ 'background': 'url('+backgroundUrl+')' }">
+     [ngStyle]="{ 'background': backgroundUrl == null ? '#f8f8f8' :
+      'url('+backgroundUrl+')' }">
 </div>

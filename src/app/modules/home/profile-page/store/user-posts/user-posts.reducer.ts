@@ -26,17 +26,8 @@ export function userPostsReducer(
     case UserPostsActions.SET_USER_POSTS:
       return {
         ...state,
-        posts: action.payload,
+        posts: [...action.payload, ...state.posts],
         loaded: true
-      };
-    case UserPostsActions.START_FULFILLING_USER_POSTS:
-      return {
-        ...state
-      };
-    case UserPostsActions.FULFILL_USER_POSTS:
-      return {
-        ...state,
-        posts: [...state.posts, ...action.payload]
       };
     case UserPostsActions.ADD_POST:
       return {

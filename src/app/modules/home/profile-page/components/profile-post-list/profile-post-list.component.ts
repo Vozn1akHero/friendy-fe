@@ -8,6 +8,8 @@ import {UserPostService} from '../../services/user-post.service';
 import {Router} from '@angular/router';
 import {PostItemComponent} from '../../../../shared/post/post-item/post-item.component';
 import {Observable} from 'rxjs';
+import {AppState} from '../../store/reducers';
+import {ScrollableListNotifierService} from '../../../../../shared/services/scrollable-list-notifier.service';
 
 @Component({
   selector: 'app-profile-post-list',
@@ -23,26 +25,21 @@ export class ProfilePostListComponent implements OnInit, OnDestroy, AfterViewIni
   posts$: Observable<Post[]>;
   loaded$: Observable<boolean>;
 
-  constructor(private store: Store<fromApp.AppState>,
+  constructor(private store: Store<AppState>,
               private router: Router,
               private userPostService : UserPostService,
+              private scrollableListNotifierService: ScrollableListNotifierService,
               private subscriptionManager : SubscriptionManager) { }
 
   ngOnInit() {
     //this.setLoaded();
     this.getUserPosts();
+    this.setListScrollListener();
   }
-
-  /*setLoaded(){
-    this.subscriptionManager.add(this.store.select(state => state.profilePageUserPosts.loading)
-      .subscribe(value => {
-        this.userPostsLoading = value;
-      }));
-  }*/
 
   getUserPosts() {
     this.loaded$ = this.store.select(state => state.profilePageUserPosts.loaded);
-    this.store.dispatch(new UserPostsActions.GetUserPosts({ userId : this.userId }));
+    this.store.dispatch(new UserPostsActions.GetUserPosts({ userId : this.userId, page: 1 }));
     this.posts$ = this.store.select(state => state.profilePageUserPosts.posts);
   }
 
@@ -56,6 +53,16 @@ export class ProfilePostListComponent implements OnInit, OnDestroy, AfterViewIni
 
   onUnlikePost(postId: number){
     this.store.dispatch(new UserPostsActions.UnlikePost({ id: postId  }));
+  }
+
+  setListScrollListener(){
+    this.subscriptionManager.add(this.scrollableListNotifierService.endReached$.subscribe(value => {
+      if(value){
+        this.store.dispatch(new UserPostsActions.GetUserPosts({ userId : this.userId,
+          page: this.scrollableListNotifierService.currentPage }));
+        this.scrollableListNotifierService.setDefaultValue();
+      }
+    }))
   }
 
 /*  redirectToComments(postId: number){

@@ -1,5 +1,6 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ProfilePageModalsService} from '../../../services/profile-page-modals.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-profile-avatar',
@@ -12,6 +13,7 @@ export class ProfileAvatarComponent implements OnInit, OnDestroy {
   @Input() isUserProfileOwner : boolean;
   @Input() avatarUrl: string;
   @Input() isUserOnline: boolean;
+  @Input() userDataLoaded$: Observable<boolean>;
 
   newAvatarModalOpened: boolean = false;
 

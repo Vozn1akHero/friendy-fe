@@ -28,6 +28,7 @@ export class ProfilePageComponent implements OnInit {
               private userIdService: UserIdService,
               private store: Store<fromApp.AppState>,
               private titleService: Title,
+              private scrollableListNotifierService : ScrollableListNotifierService,
               private profilePageModalsService: ProfilePageModalsService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -59,6 +60,6 @@ export class ProfilePageComponent implements OnInit {
   }
 
   updateList() {
-    this.store.dispatch(new UserPostsActions.StartFulfillingUserPosts({ userId : this.userId }));
+    this.scrollableListNotifierService.notify();
   }
 }

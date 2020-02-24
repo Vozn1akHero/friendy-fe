@@ -29,10 +29,14 @@ export class UserPostService {
     return this.http.get(`/api/user-post?userId=${id}&startIndex=${startIndex}&length=${length}`,
       {observe: 'response'})
   }
-
+/*
   getLast(id: number, length: number){
     return this.http.get(`/api/user-post/last?userId=${id}&length=${length}`,
       {observe: 'response'})
+  }*/
+
+  getWithPagination(id: number, page: number){
+    return this.http.get(`api/user-post/range?userId=${id}&page=${page}`, {observe: 'response'})
   }
 
   delete(postId: number){

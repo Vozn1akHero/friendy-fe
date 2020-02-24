@@ -1,21 +1,27 @@
 <div class="profile-avatar">
-  <ng-container *ngIf="isUserProfileOwner">
-    <div *ngIf="activeSettings" class="profile-avatar-alter">
-      <input (change)="showNewAvatarModal($event)"
-             accept="image/jpeg, image/png"
-             name="filename"
-             type="file">
-      <button class="profile-avatar-alter-btn">
-        <svg>
-          <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
-        </svg>
-        <span>
+  <ng-container *ngIf="userDataLoaded$|async">
+    <ng-container *ngIf="isUserProfileOwner">
+      <div *ngIf="activeSettings" class="profile-avatar-alter">
+        <input (change)="showNewAvatarModal($event)"
+               accept="image/jpeg, image/png"
+               name="filename"
+               type="file">
+        <button class="profile-avatar-alter-btn">
+          <svg>
+            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
+          </svg>
+          <span>
             Zmień zdjęcie
           </span>
-      </button>
-    </div>
+        </button>
+      </div>
+    </ng-container>
   </ng-container>
-  <figure class="profile-avatar__wrapper">
+
+  <figure *ngIf="!(userDataLoaded$|async); else actAvatar" class="avatar-loader">
+  </figure>
+  <ng-template #actAvatar>
+    <figure class="profile-avatar__wrapper">
       <ng-container *ngIf="isUserOnline">
         <div class="is-online">
           <span class="circle">
@@ -23,6 +29,7 @@
           </span>
         </div>
       </ng-container>
-    <img alt="" src="{{ avatarUrl }}">
-  </figure>
+      <img alt="" src="{{ avatarUrl }}">
+    </figure>
+  </ng-template>
 </div>

@@ -9,34 +9,37 @@
   </ng-container>
 
   <div class="wrapper">
-    <app-event-avatar [eventId]="eventData.id"
-                      [avatarUrl]="eventData.avatarUrl"
+    <app-event-avatar [eventId]="(eventData$|async)?.id"
+                      [avatarUrl]="(eventData$|async)?.avatarUrl"
                       [activeSettings]="activeSettings"></app-event-avatar>
 
     <div class="basic-info">
       <p class="title">
-        {{ eventData.title }}
+        {{ (eventData$|async)?.title }}
       </p>
 
       <div class="location">
         <span class="icon fr-span-icon"></span>
-        <label>{{ eventData.street }} {{ eventData.streetNumber }}, {{ eventData.city }}</label>
+        <label>{{ (eventData$|async)?.street }} {{
+          (eventData$|async)?.streetNumber }}, {{
+          (eventData$|async)?.city }}</label>
       </div>
 
       <div class="date">
         <span class="icon fr-span-icon"></span>
-        <label>{{ eventData.date }}</label>
+        <label>{{ (eventData$|async)?.date }}</label>
       </div>
 
       <div class="participants">
         <span class="icon fr-span-icon"></span>
-        <label>{{ eventData.currentParticipantsAmount }}/{{
-          eventData.participantsAmount }} uczestników</label>
+        <label>{{ (eventData$|async)?.currentParticipantsAmount }}/{{
+          (eventData$|async)?.participantsAmount }} uczestników</label>
       </div>
 
       <hr>
 
-      <app-event-info-panel-controls [eventId]="eventData.id"></app-event-info-panel-controls>
+      <app-event-info-panel-controls
+        [eventId]="eventId"></app-event-info-panel-controls>
     </div>
   </div>
 </div>

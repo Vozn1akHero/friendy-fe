@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-profile-header-basic-data',
@@ -13,6 +14,8 @@ export class ProfileHeaderBasicDataComponent implements OnInit {
   @Input() status: string;
   @Input() city: string;
   @Input() birthday: string;
+  @Input() userDataLoaded$: Observable<boolean>;
+  @Input() userId: number;
 
   constructor() { }
 
