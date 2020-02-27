@@ -1,0 +1,172 @@
+<div class="friends-search">
+  <form [formGroup]="searchForm">
+    <div class="row">
+      <input class="fr-input name" formControlName="name" placeholder="Imię"
+             type="text">
+      <input class="fr-input surname" formControlName="surname" placeholder="Nazwisko"
+             type="text">
+    </div>
+
+    <hr class="row-underline">
+
+    <div class="row">
+      <input class="fr-input city" formControlName="city" placeholder="Miasto"
+             type="text">
+    </div>
+    <hr class="row-underline">
+    <div class="row">
+      <div class="dropdown-wrapper dropdown-wrapper--1">
+        <div class="box box__sb">
+          Wykształcenie
+        </div>
+        <span class="custom-dropdown">
+        <select formControlName="education">
+          <option hidden value="">Wykształcenie</option>
+          <option value="1">Wyższe</option>
+          <option value="2">Średnie</option>
+          <option value="3">Inne</option>
+        </select>
+      </span>
+      </div>
+    </div>
+    <hr class="row-underline">
+    <!--    <input class="school" formControlName="school" placeholder="Szkoła" type="text">
+        <input class="university" formControlName="university" placeholder="Uniwersytet" type="text">-->
+
+    <div class="row">
+      <div class="labeled-row birthday" formGroupName="birthday">
+        <app-calendar (onSelectDateEvent)="onSelectBirthday($event)"
+                      *ngIf="showCalendar"></app-calendar>
+        <p class="label">Data urodzenia</p>
+        <div class="content-wrap">
+          <input #birthdayMin
+                 (focus)="setBirthdayMinInputFocused()"
+                 class="fr-input
+                 birthday--min"
+                 formControlName="birthdayMin"
+                 placeholder="Od"
+                 type="text">
+
+          <input #birthdayMax
+                 (focus)="setBirthdayMaxInputFocused()"
+                 class="fr-input
+                 birthday--max"
+                 formControlName="birthdayMax"
+                 placeholder="Do"
+                 type="text">
+        </div>
+      </div>
+    </div>
+    <hr class="row-underline">
+
+    <div class="row">
+      <div class="gender dropdown-wrapper">
+        <div class="box box__sb">
+          Płeć
+        </div>
+        <span class="custom-dropdown">
+        <select formControlName="gender">
+          <option hidden value="">Płeć</option>
+          <option value="1">M</option>
+          <option value="2">K</option>
+        </select>
+      </span>
+      </div>
+    </div>
+
+    <hr class="row-underline">
+
+    <div class="row additional-data-wrap">
+      <div class="dropdown-wrapper
+     dropdown-wrapper--2">
+        <div class="box box__sb">
+          Status rodzinny
+        </div>
+        <span class="custom-dropdown">
+          <select formControlName="maritalStatus">
+            <option hidden value="">Status rodzinny</option>
+            <option value="1">Kawaler/Panna</option>
+            <option value="2">Żonaty/Mężatka</option>
+            <option value="3">Rozwiedziony/Rozwiedziona</option>
+            <option value="4">Wdowiec/Wdowa</option>
+          </select>
+        </span>
+      </div>
+
+      <div class="dropdown-wrapper dropdown-wrapper--3">
+        <div class="box box__sb">
+          Religia
+        </div>
+        <span class="custom-dropdown">
+      <select formControlName="religion">
+        <option hidden value="">Religia</option>
+        <option value="1">Katolicyzm</option>
+        <option value="2">Prawosławie</option>
+        <option value="3">Islam</option>
+        <option value="4">Inna</option>
+      </select>
+    </span>
+      </div>
+
+      <div class="dropdown-wrapper dropdown-wrapper--4">
+        <div class="box box__sb">
+          Stosunek do alkoholu
+        </div>
+        <span class="custom-dropdown">
+        <select formControlName="alcoholAttitude">
+          <option hidden value="">Stosunek do alkoholu</option>
+          <option value="1">Negatywny</option>
+          <option value="2">Pozytywny</option>
+          <option value="3">Neutralny</option>
+        </select>
+      </span>
+      </div>
+
+      <div class="dropdown-wrapper dropdown-wrapper--5">
+        <div class="box box__sb">
+          Stosunek do palenia
+        </div>
+        <span class="custom-dropdown">
+        <select formControlName="smokingAttitude">
+          <option hidden value="">Stosunek do palenia</option>
+          <option value="1">Negatywny</option>
+          <option value="2">Pozytywny</option>
+          <option value="3">Neutralny</option>
+        </select>
+      </span>
+      </div>
+    </div>
+
+    <hr class="row-underline">
+
+    <div class="row">
+      <div class="interests">
+        <input (keypress)="findInterestsByKeyword($event)"
+               class="fr-input input"
+               formControlName="interests"
+               placeholder="Zainteresowania (maks. 5)" type="text">
+        <div *ngIf="foundInterests.length>0" class="found-interests">
+          <button (click)="addNewInterest(foundInterest.id)"
+                  *ngFor="let foundInterest of foundInterests"
+                  class="item">
+            {{ foundInterest.title }}
+          </button>
+        </div>
+        <div class="inserted-interests">
+          <div *ngFor="let selectedInterest of selectedInterests"
+               class="item">
+          <span>
+            {{ selectedInterest.title }}
+          </span>
+            <button (click)="removeInsertedInterest(selectedInterest.id)"
+                    class="remove-btn">
+              &times;
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button (click)="searchSubmit()" type="submit">Szukaj</button>
+  </form>
+</div>

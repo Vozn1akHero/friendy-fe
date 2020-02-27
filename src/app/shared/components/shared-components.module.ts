@@ -18,12 +18,14 @@ import {SettingsPanelSelectComponent} from './settings-panel/settings-panel-sele
 import {RowContentInSettingsPanelComponent} from './settings-panel/row-content-in-settings-panel/row-content-in-settings-panel.component';
 import {SettingsPanelFormComponent} from './settings-panel/settings-panel-form/settings-panel-form.component';
 import {ScrollableListComponent} from './scrollable-list/scrollable-list.component';
-import {PanelForEntryPresentingComponent} from './panel-for-entry-presenting/panel-for-entry-presenting.component';
 import {InfoModalComponent} from './info-modal/info-modal.component';
 import {CommonModalComponent} from './common-modal/common-modal.component';
 import {TransparentBgModalComponent} from './transparent-bg-modal/transparent-bg-modal.component';
 import {RouterModule} from '@angular/router';
 import { MiniLoaderComponent } from './mini-loader/mini-loader.component';
+import { PostLoaderComponent } from './post-loader/post-loader.component';
+import {ContentLoaderModule} from '@ngneat/content-loader';
+import { UserItemComponent } from './user-item/user-item.component';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { MiniLoaderComponent } from './mini-loader/mini-loader.component';
     CommonModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ContentLoaderModule
   ],
   declarations: [
     NewPostFormComponent,
@@ -53,9 +56,10 @@ import { MiniLoaderComponent } from './mini-loader/mini-loader.component';
     SettingsPanelTextareaComponent,
     SettingsPanelDropdownComponent,
     SettingsPanelSelectComponent,
-    PanelForEntryPresentingComponent,
     LoaderComponent,
-    MiniLoaderComponent
+    MiniLoaderComponent,
+    PostLoaderComponent,
+    UserItemComponent
   ],
   exports: [
     NewPostFormComponent,
@@ -77,9 +81,10 @@ import { MiniLoaderComponent } from './mini-loader/mini-loader.component';
     SettingsPanelTextareaComponent,
     SettingsPanelDropdownComponent,
     SettingsPanelSelectComponent,
-    PanelForEntryPresentingComponent,
     LoaderComponent,
-    MiniLoaderComponent
+    MiniLoaderComponent,
+    PostLoaderComponent,
+    UserItemComponent
   ],
   entryComponents: [
     ButtonHoverInfoPopoverComponent

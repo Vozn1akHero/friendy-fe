@@ -10,6 +10,7 @@ import {commentPanelReducerMap} from '../../../modules/shared/post/comment-panel
 import {eventPageReducerMap} from '../../../modules/home/event-page/store/reducers'
 import {eventSettingsPageReducerMap} from '../../../modules/home/event-settings-page/store/reducers'
 import {profilePageReducerMap} from '../../../modules/home/profile-page/store/reducers'
+import {friendsSearchPageReducerMap} from '../../../modules/home/friends-page/store/reducers'
 
 export interface AppState {
   //friends page
@@ -54,5 +55,6 @@ export const appReducer: ActionReducerMap<AppState> = {
   //event page
   ...eventPageReducerMap,
   ...commentPanelReducerMap,
-  ...eventSettingsPageReducerMap
+  ...eventSettingsPageReducerMap,
+  ...friendsSearchPageReducerMap
 };

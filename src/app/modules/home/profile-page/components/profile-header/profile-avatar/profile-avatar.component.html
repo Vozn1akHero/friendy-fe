@@ -18,8 +18,14 @@
     </ng-container>
   </ng-container>
 
-  <figure *ngIf="!(userDataLoaded$|async); else actAvatar" class="avatar-loader">
-  </figure>
+  <!--<figure *ngIf="!(userDataLoaded$|async); else actAvatar" class="avatar-loader">
+  </figure>-->
+  <div *ngIf="!(userDataLoaded$|async); else actAvatar"
+       class="wrap-for-loader">
+    <content-loader height="400" width="400">
+      <svg:circle cx="200" cy="200" r="212" />
+    </content-loader>
+  </div>
   <ng-template #actAvatar>
     <figure class="profile-avatar__wrapper">
       <ng-container *ngIf="isUserOnline">

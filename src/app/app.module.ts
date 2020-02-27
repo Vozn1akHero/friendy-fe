@@ -13,7 +13,7 @@ import { HomeRecordItemComponent } from './modules/home/home-page/home-record-it
 import { HomeUpcomingEventsComponent } from './modules/home/home-page/home-upcoming-events/home-upcoming-events.component';
 import { HomeStatsComponent } from './modules/home/home-page/home-stats/home-stats.component';
 import { HomeUpcomingEventsItemComponent } from './modules/home/home-page/home-upcoming-events/home-upcoming-events-item/home-upcoming-events-item.component';
-
+import { ContentLoaderModule } from '@ngneat/content-loader';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {RegistrationSuccessPopUpComponent} from './modules/auth/joinup-page/components/registration-success-pop-up/registration-success-pop-up.component';
@@ -48,6 +48,7 @@ import PostCommentEffects from './modules/shared/post/comment-panel/store/post-c
 import {ParticipationEffects} from './modules/home/event-page/store/participation/participation.effects';
 import {EventDataEffects as SPEventDataEffects}  from './modules/home/event-settings-page/store/event-data/event-data.effects';
 import {ParticipationRequestEffects} from './modules/home/event-settings-page/store/participation-request/participation-request.effects';
+import {UserListEffects} from './modules/home/friends-page/store/user-list/user-list.effects';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import {ParticipationRequestEffects} from './modules/home/event-settings-page/st
     HomeStatsComponent,
     HomeUpcomingEventsItemComponent,
   ],
+
   imports: [
     SharedModule,
     BrowserModule,
@@ -75,6 +77,7 @@ import {ParticipationRequestEffects} from './modules/home/event-settings-page/st
     ModulesModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([
+      UserListEffects,
       //UserEffects,
       CommentResponseEffects,
       PostCommentEffects,

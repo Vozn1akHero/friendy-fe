@@ -1,9 +1,18 @@
 <div class="friends-list">
   <ng-container *ngIf="(friendsLoaded$ | async); else friendListLoading">
-    <ng-container *ngIf="(friendList$|async).length > 0; else friendListEmptyMsg">
-      <app-friends-list-item *ngFor="let friend of (friendList$|async)"
-                             (removeFriendEvent)="removeFriend($event)"
-                             [friendData]="friend"></app-friends-list-item>
+    <ng-container
+      *ngIf="(friendList$|async).length > 0; else friendListEmptyMsg">
+      <div *ngFor="let friend of (friendList$|async)"
+           class="user">
+        <app-user-item (removeFriendEmitter)="removeFriend($event)"
+                       [friendshipStatusIndex]="0"
+                       [avatar]="friend.avatarUrl"
+                       [isUserOnline]="friend.onlineStatus"
+                       [name]="friend.name"
+                       [surname]="friend.surname"
+                       [id]="friend.id"></app-user-item>
+        <hr class="underline">
+      </div>
     </ng-container>
     <ng-template #friendListEmptyMsg>
       <span>

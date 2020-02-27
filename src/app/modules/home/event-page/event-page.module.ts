@@ -20,7 +20,6 @@ import {EventPostListComponent} from './components/event-main-content/event-post
 import {IsEventAdminResolver} from './resolvers/is-event-admin.resolver';
 import { EventParticipantsPageComponent } from '../event-participants-page/event-participants-page.component';
 import {EventParticipantItemComponent} from '../event-participants-page/event-participant-item/event-participant-item.component';
-import {EventAvatarAlterComponent} from './components/event-header/event-info-panel/event-avatar/event-avatar-alter/event-avatar-alter.component';
 import { ControlsComponent } from './components/event-header/event-info-panel/controls/controls.component';
 import { NonParticipantControlsComponent } from './components/event-header/event-info-panel/controls/non-participant-controls/non-participant-controls.component';
 import { ParticipantControlsComponent } from './components/event-header/event-info-panel/controls/participant-controls/participant-controls.component';
@@ -54,7 +53,6 @@ import {PostModule} from '../../shared/post/post.module';
     EventPostListComponent,
     EventParticipantItemComponent,
     EventParticipantsPageComponent,
-    EventAvatarAlterComponent,
     ControlsComponent,
     NonParticipantControlsComponent,
     ParticipantControlsComponent

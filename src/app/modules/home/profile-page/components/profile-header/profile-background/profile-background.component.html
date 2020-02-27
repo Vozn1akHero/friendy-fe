@@ -2,13 +2,13 @@
   <ng-container *ngIf="(userDataLoaded$|async)">
     <ng-container *ngIf="isUserProfileOwner">
       <div *ngIf="activeSettings" class="profile-bg-alter">
-        <div class="profile-bg-alter-btn_info">
+        <div class="btn-info">
           <svg>
             <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
           </svg>
           <span>
-        Zmień zdjęcie
-      </span>
+            Zmień zdjęcie
+          </span>
         </div>
 
         <div class="profile-bg-alter-btn">
@@ -22,19 +22,17 @@
     </ng-container>
   </ng-container>
 
-  <div class="profile-bg__wrapper">
-    <figure *ngIf="!(userDataLoaded$|async); else actBg">
-      <figure [ngStyle]="{ background: '#f8f8f8' }"></figure>
-    </figure>
+  <div class="wrapper">
+    <div *ngIf="!(userDataLoaded$|async); else actBg"
+         class="wrap-for-loader">
+      <div [ngStyle]="{ background: '#f8f8f8' }"></div>
+    </div>
     <ng-template #actBg>
-      <figure [ngStyle]="{ background: backgroundUrl == null && '#f8f8f8' }">
-        <img
-          *ngIf="backgroundUrl != null"
-          [ngStyle]="{filter: activeSettings ? 'blur(5px)' : 'blur(0px)',
-         transform: activeSettings ? 'scale(1.1)' : 'scale(1)'}"
-          alt=""
-          src="{{ backgroundUrl }}">
-      </figure>
+      <div class="act-bg act-bg--null" *ngIf="backgroundUrl == null"></div>
+      <div class="act-bg" *ngIf="backgroundUrl != null"
+           [style.background]="'url('+ backgroundUrl +')'"
+           [ngStyle]="{filter: activeSettings ? 'blur(5px)' : 'blur(0px)',
+         transform: activeSettings ? 'scale(1.1)' : 'scale(1)'}"></div>
     </ng-template>
   </div>
 </section>

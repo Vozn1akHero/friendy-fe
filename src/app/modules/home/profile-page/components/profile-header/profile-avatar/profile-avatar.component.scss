@@ -48,13 +48,17 @@
     }
   }
 
+  .wrap-for-loader{
+
+  }
+
   .avatar-loader{
     background: #f8f8f8;
     height: 1rem;
     width: 100%;
   }
 
-  &__wrapper, .avatar-loader {
+  &__wrapper, .avatar-loader, .wrap-for-loader {
     position: absolute;
     left: 0;
     right: 0;
@@ -64,12 +68,12 @@
     //-webkit-clip-path: circle(50% at 50% 50%);
     width: 13rem;
     height: 13rem;
-    float: left;
+    //float: left;
     border-radius: 50%;
     overflow: hidden;
     border: solid .3rem $color-white;
-    display: flex;
-    justify-content: center;
+    /*display: flex;
+    justify-content: center;*/
 
     .is-online{
       position: absolute;

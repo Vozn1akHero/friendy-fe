@@ -2,6 +2,9 @@
 
 .profile-header{
   .profile-info-wrap {
+    width: 100%;
+    position: relative;
+
     .content{
       display: flex;
       width: 97%;
@@ -35,7 +38,7 @@
       height: 372px;
       background-image: linear-gradient(0.85turn, $color-yellow, $color-blue);
       position: absolute;
-      top: 8rem;
+      top: -17rem;
       left: 0;
       right: 0;
       margin-left: auto;

@@ -7,7 +7,7 @@ import SubscriptionManager from '../../../../../shared/helpers/SubscriptionManag
 import {UserPostService} from '../../services/user-post.service';
 import {Router} from '@angular/router';
 import {PostItemComponent} from '../../../../shared/post/post-item/post-item.component';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {AppState} from '../../store/reducers';
 import {ScrollableListNotifierService} from '../../../../../shared/services/scrollable-list-notifier.service';
 
@@ -20,8 +20,6 @@ export class ProfilePostListComponent implements OnInit, OnDestroy, AfterViewIni
   @Input() isUserProfileOwner : boolean;
   @Input() userId: number;
   @ViewChildren(PostItemComponent) postRefs: QueryList<PostItemComponent>;
-  /*userPosts: Post[];
-  userPostsLoading: boolean;*/
   posts$: Observable<Post[]>;
   loaded$: Observable<boolean>;
 
@@ -32,14 +30,13 @@ export class ProfilePostListComponent implements OnInit, OnDestroy, AfterViewIni
               private subscriptionManager : SubscriptionManager) { }
 
   ngOnInit() {
-    //this.setLoaded();
     this.getUserPosts();
     this.setListScrollListener();
   }
 
   getUserPosts() {
-    this.loaded$ = this.store.select(state => state.profilePageUserPosts.loaded);
     this.store.dispatch(new UserPostsActions.GetUserPosts({ userId : this.userId, page: 1 }));
+    this.loaded$ = this.store.select(state => state.profilePageUserPosts.loaded);
     this.posts$ = this.store.select(state => state.profilePageUserPosts.posts);
   }
 

@@ -10,7 +10,6 @@ export class EventHeaderBgComponent implements OnInit {
   @Input() activeSettings;
   @Input() backgroundUrl;
 
-
   constructor(private eventBackgroundService: EventBackgroundService) { }
 
   ngOnInit() {

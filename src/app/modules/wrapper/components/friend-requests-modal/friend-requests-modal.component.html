@@ -1,5 +1,9 @@
-<app-transparent-bg-modal>
-  <div class="friend-requests-modal">
+<app-common-modal (closeEmitter)="close()">
+  <div @anim class="friend-requests-modal">
+    <div class="header-wrap">
+      <button (click)="close()" class="close-btn">&times;</button>
+    </div>
+
     <div class="controls-wrapper">
       <button (click)="onReceivedFriendRequestsBtnClick()"
               [ngClass]="chosenSubpage === 'received-requests' && 'chosen-subpage-btn'"
@@ -22,4 +26,4 @@
       </app-received-friend-request-list>
     </div>
   </div>
-</app-transparent-bg-modal>
+</app-common-modal>

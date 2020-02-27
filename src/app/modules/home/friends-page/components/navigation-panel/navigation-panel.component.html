@@ -1,0 +1,21 @@
+<div class="navigation-panel">
+  <ul>
+    <li>
+      <a [routerLink]="['/app/friends']" class="link
+      all-friends
+      fr-hover-text-decoration">
+        Wszyscy znajomi
+      </a>
+    </li>
+    <hr class="underline">
+    <li>
+      <a [routerLink]="['/app/friends']" [queryParams]="{act: 'search'}"
+         class="link
+         user-search
+         fr-hover-text-decoration">
+        Wyszukiwanie znajomych
+      </a>
+    </li>
+    <hr class="line">
+  </ul>
+</div>

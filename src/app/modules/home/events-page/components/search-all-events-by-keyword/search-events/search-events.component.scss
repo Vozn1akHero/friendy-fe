@@ -8,11 +8,10 @@
   position: relative;
 
   .search-input-wrapper {
-    display: flex;
-
     .search-events-input {
       height: 45px;
-      width: 20vw;
+      width: 13rem;
+      float: left;
       border-bottom-left-radius: 1rem;
       border-top-left-radius: 1rem;
       outline: none;

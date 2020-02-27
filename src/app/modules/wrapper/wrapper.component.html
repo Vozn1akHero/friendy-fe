@@ -2,13 +2,13 @@
   <app-info-modal *ngIf="(infoModalOpened$ | async)"></app-info-modal>
 
   <ng-container *ngIf="(userIdLoaded$ | async) && connectedToStatusHub">
-    <app-friend-requests-modal *ngIf="friendRequestsModalOpened">
+    <app-friend-requests-modal *ngIf="friendRequestsModalOpened"
+                               (closeModalEmitter)="closeFriendRequestsModal()">
     </app-friend-requests-modal>
 
     <app-navigation [friendRequestModalOpened]="friendRequestsModalOpened"
                     [receivedFriendRequestsAmount]="receivedFriendRequestsAmount"
-                    (openFriendRequestsModalEmitter)="openFriendRequestsModal()"
-                    (closeFriendRequestsModalEmitter)="closeFriendRequestsModal()"></app-navigation>
+                    (openFriendRequestsModalEmitter)="openFriendRequestsModal()"></app-navigation>
 
     <section class="subpage">
       <router-outlet></router-outlet>

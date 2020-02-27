@@ -1,13 +1,14 @@
 .profile-bg{
+  position: relative;
+
   .profile-bg-alter {
     position: absolute;
     top: 0;
-    left: 0;
-    width: calc(100vw - 320px);
-    height: 25rem;
+    width: 100%;
+    height: 100%;
     z-index: 1;
 
-    &-btn {
+    .profile-bg-alter-btn {
       width: 100%;
       height: 100%;
 
@@ -38,8 +39,7 @@
       }
     }
 
-
-    &-btn_info {
+    .btn-info {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -64,21 +64,17 @@
     }
   }
 
-  &__wrapper {
+  .wrapper {
     position: relative;
-    width: calc(100vw - 320px);
     height: 25rem;
-    /*background: url('../../../assets/images/test/clouds-lake-lake-mcdonald-259881.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;*/
     overflow: hidden;
 
-    figure {
-      width: inherit;
+    .act-bg{
+      width: 100%;
       height: 100%;
 
-      img {
-        width: 100%;
+      &--null{
+        background: #f8f8f8;
       }
     }
   }

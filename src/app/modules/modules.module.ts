@@ -9,7 +9,6 @@ import {FriendsPageModule} from './home/friends-page/friends-page.module';
 import {EventsPageModule} from './home/events-page/events-page.module';
 import {EventPageModule} from './home/event-page/event-page.module';
 import {DialogPageModule} from './home/dialog-page/dialog-page.module';
-import {FriendsSearchPageModule} from './home/friends-search-page/friends-search-page.module';
 import {WrapperModule} from './wrapper/wrapper.module';
 import {EventSettingsPageModule} from './home/event-settings-page/event-settings-page.module';
 import {UserSettingsPageModule} from './home/user-settings-page/user-settings-page.module';
@@ -29,7 +28,6 @@ import {SharedModulesModule} from './shared/shared-modules.module';
     DialogPageModule,
     WrapperModule,
     EventSettingsPageModule,
-    FriendsSearchPageModule,
     UserSettingsPageModule,
     PhotosPageModule
   ],

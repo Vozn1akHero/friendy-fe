@@ -8,38 +8,49 @@
     </div>
   </ng-container>
 
-  <div class="wrap-1">
+  <div class="name-wrap">
     <ng-container *ngIf="!(userDataLoaded$|async); else actNameSurname">
-      <div class="text-loader"></div>
+      <div class="wrap-for-loader">
+        <content-loader>
+          <svg:rect rx="3" ry="3" width="450" height="30" />
+        </content-loader>
+      </div>
     </ng-container>
     <ng-template #actNameSurname>
-      <h2 [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="name">
-        {{ name }} {{ surname }}
-      </h2>
+        <h2 [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="name">
+          {{ name }} {{ surname }}
+        </h2>
     </ng-template>
   </div>
 
-  <div class="wrap-2">
+  <div class="status-wrap">
     <ng-container *ngIf="!(userDataLoaded$|async); else actStatus">
-      <div class="text-loader"></div>
+      <div class="wrap-for-loader">
+        <content-loader>
+          <svg:rect x="0" y="0" rx="3" ry="3" width="450" height="30" />
+        </content-loader>
+      </div>
     </ng-container>
     <ng-template #actStatus>
-      <p *ngIf="status != null" [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="desc">
-        {{ status }}
-      </p>
+        <p *ngIf="status != null" [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}"
+           class="desc">
+          {{ status }}
+        </p>
     </ng-template>
   </div>
 
   <div class="wrap-3">
     <div [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="location">
-      <svg class="icon">
-        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-location"></use>
-      </svg>
+      <span class="fr-span-icon icon"></span>
       <ng-container *ngIf="!(userDataLoaded$|async); else actCity">
-        <div class="text-loader"></div>
+        <div class="wrap-for-loader--alongside-icon">
+          <content-loader>
+            <svg:rect x="0" y="0" rx="3" ry="3" width="450" height="30" />
+          </content-loader>
+        </div>
       </ng-container>
       <ng-template #actCity>
-        <span>
+        <span class="text-by-icon">
           {{ city }}
         </span>
       </ng-template>
@@ -48,14 +59,16 @@
 
   <div class="wrap-4">
     <div [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="birthday">
-      <svg class="icon" aria-label="Data urodzenia">
-        <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-calendar"></use>
-      </svg>
+      <span class="fr-span-icon icon"></span>
       <ng-container *ngIf="!(userDataLoaded$|async); else actBirthday">
-        <div class="text-loader"></div>
+        <div class="wrap-for-loader--alongside-icon">
+          <content-loader>
+            <svg:rect x="0" y="0" rx="3" ry="3" width="450" height="30" />
+          </content-loader>
+        </div>
       </ng-container>
       <ng-template #actBirthday>
-        <span>
+        <span class="text-by-icon">
           <span>{{ birthday }}</span>
         </span>
       </ng-template>

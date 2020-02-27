@@ -36,7 +36,7 @@ export class UserPostService {
   }*/
 
   getWithPagination(id: number, page: number){
-    return this.http.get(`api/user-post/range?userId=${id}&page=${page}`, {observe: 'response'})
+    return this.http.get(`api/user-post/paginate?userId=${id}&page=${page}`, {observe: 'response'})
   }
 
   delete(postId: number){

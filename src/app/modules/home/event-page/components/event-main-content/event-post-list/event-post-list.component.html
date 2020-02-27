@@ -1,5 +1,5 @@
 <section class="event-post-list">
-  <ng-container *ngIf="(eventPostsLoaded$|async); else loader">
+  <ng-container *ngIf="(eventPostsLoaded$|async); else loading">
     <ng-container *ngIf="(eventPosts$|async).length > 0; else noPosts">
       <app-post-item *ngFor="let post of (eventPosts$|async)"
                      [post]="post"
@@ -17,7 +17,10 @@
       </div>
     </ng-template>
   </ng-container>
-  <ng-template #loader>
-    <app-loader></app-loader>
+  <ng-template #loading>
+    <div class="loader-wrap">
+      <app-post-loader></app-post-loader>
+      <app-post-loader></app-post-loader>
+    </div>
   </ng-template>
 </section>

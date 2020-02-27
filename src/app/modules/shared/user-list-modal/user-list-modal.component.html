@@ -1,0 +1,16 @@
+<app-common-modal>
+  <div class="user-list-modal">
+    <div class="header">
+      {{  }}
+    </div>
+    <div class="content"
+         (scrolled)="updateList()"
+         [infiniteScrollDistance]="2"
+         [infiniteScrollThrottle]="50"
+         infiniteScroll>
+      <app-user *ngFor="let user of data" [id]="user.id"
+                [name]="user.name" [surname]="user.surname"
+                [avatar]="user.avatar"></app-user>
+    </div>
+  </div>
+</app-common-modal>

@@ -31,7 +31,7 @@ export class ProfileExemplaryFriendsPanelComponent implements OnInit, OnDestroy 
     this.exemplaryFriendsSubscription = this.store
       .select(state => state.profilePageUserExemplaryFriends.exemplaryFriends)
       .subscribe(exemplaryFriends => {
-        this.exemplaryFriends = exemplaryFriends;
+        this.exemplaryFriends = exemplaryFriends.slice(0, 3);
       })
   }
 

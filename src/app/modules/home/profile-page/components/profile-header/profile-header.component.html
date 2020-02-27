@@ -1,8 +1,8 @@
 <header class="profile-header">
-  <app-profile-background [isUserProfileOwner]="isUserProfileOwner"
-                          [activeSettings]="activeSettings"
-                          [userDataLoaded$]="userDataLoaded$"
+  <app-profile-background [activeSettings]="activeSettings"
                           [backgroundUrl]="(userData$|async)?.backgroundUrl"
+                          [isUserProfileOwner]="isUserProfileOwner"
+                          [userDataLoaded$]="userDataLoaded$"
                           [userId]="userId"></app-profile-background>
 
   <section class="profile-info-wrap">
@@ -10,26 +10,27 @@
       'background-image': activeSettings ? 'linear-gradient(0.45turn, #fff000, #00baff)' : 'linear-gradient(0.85turn, #fff000, #00baff)'}"
          class="wrapper">
       <div class="content">
-        <app-profile-avatar [isUserProfileOwner]="isUserProfileOwner"
-                            [activeSettings]="activeSettings"
-                            [userDataLoaded$]="userDataLoaded$"
+        <app-profile-avatar [activeSettings]="activeSettings"
                             [avatarUrl]="(userData$|async)?.avatarUrl"
                             [isUserOnline]="(userData$|async)?.session.sessionEnd == null"
+                            [isUserProfileOwner]="isUserProfileOwner"
+                            [userDataLoaded$]="userDataLoaded$"
                             [userId]="userId"></app-profile-avatar>
 
         <ng-container *ngIf="isUserProfileOwner; else notProfileOwner">
-          <app-profile-header-settings (toggleActiveSettingsEmitter)="toggleActiveSettings($event)"></app-profile-header-settings>
+          <app-profile-header-settings
+            (toggleActiveSettingsEmitter)="toggleActiveSettings($event)"></app-profile-header-settings>
         </ng-container>
 
         <app-profile-header-basic-data
           [activeSettings]="activeSettings"
+          [birthday]="(userData$|async)?.birthday"
+          [city]="(userData$|async)?.city"
           [isUserProfileOwner]="isUserProfileOwner"
           [name]="(userData$|async)?.name"
-          [surname]="(userData$|async)?.surname"
-          [userDataLoaded$]="userDataLoaded$"
           [status]="(userData$|async)?.status"
-          [city]="(userData$|async)?.city"
-          [birthday]="(userData$|async)?.birthday"></app-profile-header-basic-data>
+          [surname]="(userData$|async)?.surname"
+          [userDataLoaded$]="userDataLoaded$"></app-profile-header-basic-data>
 
         <ng-template #notProfileOwner>
           <app-profile-header-friendship-controls

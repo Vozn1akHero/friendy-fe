@@ -3,7 +3,8 @@
     [panelContent]="{
             title: 'Proponowani znajomi',
             iconClass: 'people-icon',
-            link: null
+            link: null,
+            marginTop: true
           }">
     <ng-container *ngIf="suggestedFriendsLoaded$ | async; else loader">
       <ng-container *ngIf="(suggestedFriends$|async).length>0;else noSuggestedFriends">

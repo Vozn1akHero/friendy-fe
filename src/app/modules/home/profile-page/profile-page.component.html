@@ -1,23 +1,41 @@
-<app-new-avatar-modal *ngIf="profilePageModalsService.newAvatarModalOpened"
-                      (newAvatarSubmitted)="newAvatarSubmitted()"
+<app-new-avatar-modal (newAvatarSubmitted)="newAvatarSubmitted()"
+                      *ngIf="profilePageModalsService.newAvatarModalOpened"
                       [newAvatar]="profilePageModalsService.newAvatar">
 </app-new-avatar-modal>
 
-<section class="profile-page"
-         infiniteScroll
+<section (scrolled)="updateList()"
          [infiniteScrollDistance]="2"
          [infiniteScrollThrottle]="50"
-         (scrolled)="updateList()">
+         class="profile-page"
+         infiniteScroll>
 
-    <app-profile-header [activeSettings]="activeSettings"
-                        [userId]="userId"
-                        [isUserProfileOwner]="isUserProfileOwner">
-    </app-profile-header>
+  <app-profile-header [activeSettings]="activeSettings"
+                      [isUserProfileOwner]="isUserProfileOwner"
+                      [userId]="userId">
+  </app-profile-header>
 
-    <app-profile-under-header-content-wrapper [activeSettings]="activeSettings"
-                                              [userId]="userId"
-                                              [isUserProfileOwner]="isUserProfileOwner">
-    </app-profile-under-header-content-wrapper>
+  <div [ngStyle]="{'opacity': activeSettings ? '0.5' : '1',
+       'pointer-events': activeSettings ? 'none' : 'all'}"
+       class="under-header-content-wrapper">
+    <div class="left-wrapper">
+      <app-profile-new-post *ngIf="isUserProfileOwner"></app-profile-new-post>
+
+      <app-profile-post-list [isUserProfileOwner]="isUserProfileOwner"
+                             [userId]="userId"></app-profile-post-list>
+    </div>
+
+    <div class="right-wrapper">
+      <profile-exemplary-friends-panel [isUserProfileOwner]="isUserProfileOwner"
+                                       [userId]="userId"></profile-exemplary-friends-panel>
+      <profile-exemplary-photos-panel [isUserProfileOwner]="isUserProfileOwner"
+                                      [userId]="userId"></profile-exemplary-photos-panel>
+    </div>
+  </div>
+
+  <!--<app-profile-under-header-content-wrapper [activeSettings]="activeSettings"
+                                            [userId]="userId"
+                                            [isUserProfileOwner]="isUserProfileOwner">
+  </app-profile-under-header-content-wrapper>-->
 </section>
 
 

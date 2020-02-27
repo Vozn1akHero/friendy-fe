@@ -14,6 +14,7 @@ export class ButtonHoverInfoPopoverComponent{
     'padding': '1rem',
     'background': 'white',
     'color': 'black',
-    'box-shadow': '0 0 5px 0 #b5b5b5'
+    'box-shadow': '0 0 5px 0 #b5b5b5',
+    'z-index': '1000'
   };
 }

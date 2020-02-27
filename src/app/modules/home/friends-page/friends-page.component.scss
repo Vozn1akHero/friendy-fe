@@ -17,17 +17,26 @@
     }
   }
 
-  &__left-side-wrapper {
+  .left-wrap {
     display: flex;
     flex-direction: column;
     width: 50%;
     height: fit-content;
-    background: $color-bg-grey-footer;
-    border-radius: 1rem;
+
+    .whole-section-wrap{
+      border-radius: 1rem;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
   }
 
-  &__right-side-wrapper {
-    width: 20%;
+  .right-wrap {
+    width: 22%;
     margin-left: 5rem;
+
+    .wrap{
+      &--suggested{
+        margin-bottom: 2rem;
+      }
+    }
   }
 }

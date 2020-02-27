@@ -1,4 +1,5 @@
-<section class="suggested-events-panel">
+<section *ngIf="(exemplaryEvents$|async).length > 0"
+         class="suggested-events-panel">
   <app-main-panel
     [panelContent]="{
       title: 'Wydarzenia w twoim mieście',
@@ -6,8 +7,7 @@
       iconClass: 'icon-location',
       marginTop: true}"
     [contentColumned]="true">
-    <app-user-event-item *ngFor="let event of (exemplaryEvents$|async); let i
-     = index"
+    <app-user-event-item *ngFor="let event of (exemplaryEvents$|async);"
                          [styles]="{padding: '0 .5rem'}"
                          [showControls]="false"
                          [eventData]="event"></app-user-event-item>

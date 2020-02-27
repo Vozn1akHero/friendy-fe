@@ -3,16 +3,28 @@
      [infiniteScrollDistance]="2"
      [infiniteScrollThrottle]="50"
      (scrolled)="updateFriendList()">
-  <section class="friends__left-side-wrapper">
-    <app-friends-search-controls></app-friends-search-controls>
-
-    <app-friend-list></app-friend-list>
+  <section class="left-wrap">
+    <div class="whole-section-wrap">
+      <app-friends-search-controls></app-friends-search-controls>
+      <ng-container *ngIf="!(searchActivated$|async)">
+        <app-friend-list></app-friend-list>
+      </ng-container>
+      <ng-container *ngIf="(searchActivated$|async)">
+        <app-found-users-list></app-found-users-list>
+      </ng-container>
+    </div>
   </section>
 
-  <section class="friends__right-side-wrapper">
-    <app-friends-search-btn></app-friends-search-btn>
+  <section class="right-wrap">
+    <app-navigation-panel></app-navigation-panel>
 
-    <app-suggested-friends-panel></app-suggested-friends-panel>
+    <div *ngIf="!(searchActivated$|async)">
+      <app-suggested-friends-panel></app-suggested-friends-panel>
+    </div>
+
+    <app-friends-search-panel *ngIf="(searchActivated$|async)"
+      (searchFormSubmitEmitter)="searchFormSubmit($event)">
+    </app-friends-search-panel>
   </section>
 </div>
 

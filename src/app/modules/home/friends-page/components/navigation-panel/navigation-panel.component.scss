@@ -1,0 +1,41 @@
+@import '../../../../../../assets/sass/base/variables';
+
+.navigation-panel{
+  display: flex;
+  flex-direction: column;
+  font-size: .85rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+
+  .link{
+    font-size: .83rem;
+    text-decoration: none;
+    color: $color-grey-dark;
+  }
+
+  .line{
+    height: 2.6rem;
+    width: 1px;
+    background: $color-blue;
+    position: absolute;
+    left: -25px;
+    border: none;
+    top: 0;
+    transition: .3s ease-in-out;
+  }
+
+  ul{
+    position: relative;
+    list-style: none;
+
+    li:nth-of-type(2):hover ~ .line {
+      margin-top: 32px;
+    }
+  }
+
+  .underline{
+    margin: 1rem 0;
+    opacity: .2;
+  }
+}

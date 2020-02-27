@@ -2,9 +2,6 @@
      [ngStyle]="panelStyles"
      [style.margin-top]="panelContent.marginTop ? '2rem' : '0px'">
   <div class="header">
-    <!--<svg>
-      <use attr.xlink:href="{{panelContent.icon}}"></use>
-    </svg>-->
     <span class="icon fr-span-icon" [ngClass]="panelContent.iconClass"></span>
     <ng-container *ngIf="panelContent.link !== null; else standardText">
         <a routerLink="{{panelContent.link}}"

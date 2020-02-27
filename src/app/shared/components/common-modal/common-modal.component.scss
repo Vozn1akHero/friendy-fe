@@ -1,8 +1,8 @@
 @import '../../../../assets/sass/base/variables';
 
 .common-modal {
-  display: flex;
-  justify-content: center;
+  /*display: flex;
+  justify-content: center;*/
   height: 100vh;
   width: 100vw;
   z-index: 1000;
@@ -41,8 +41,8 @@
   }
 
   .wrapper {
-    display: flex;
+    /*display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;*/
   }
 }

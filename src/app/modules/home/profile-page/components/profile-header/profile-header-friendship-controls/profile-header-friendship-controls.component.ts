@@ -15,7 +15,6 @@ export class ProfileHeaderFriendshipControlsComponent implements OnInit {
   @ViewChild('removeRequestPopoverRef', {read: ViewContainerRef}) removeRequestPopoverRef;
   @ViewChild('sendRequestPopoverRef', {read: ViewContainerRef}) sendRequestPopoverRef;
 
-
   constructor(private friendshipService : FriendshipService,
               private componentFactoryResolver: ComponentFactoryResolver) { }
 

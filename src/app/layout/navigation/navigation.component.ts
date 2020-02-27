@@ -12,7 +12,6 @@ import {Observable} from 'rxjs';
 export class NavigationComponent implements OnInit {
   @Input() friendRequestModalOpened:boolean;
   @Output() openFriendRequestsModalEmitter: EventEmitter<void> = new EventEmitter();
-  @Output() closeFriendRequestsModalEmitter: EventEmitter<void> = new EventEmitter();
   profileId$: Observable<number>;
   @Input() receivedFriendRequestsAmount: number;
 
@@ -24,12 +23,8 @@ export class NavigationComponent implements OnInit {
     this.setProfileId();
   }
 
-  toggleFriendRequestsModal(){
-    if(this.friendRequestModalOpened){
-      this.closeFriendRequestsModalEmitter.emit();
-    } else{
-      this.openFriendRequestsModalEmitter.emit();
-    }
+  showFriendRequestsModal(){
+    this.openFriendRequestsModalEmitter.emit();
   }
 
   setProfileId(){

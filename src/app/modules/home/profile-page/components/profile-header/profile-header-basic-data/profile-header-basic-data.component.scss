@@ -19,6 +19,18 @@
     }
   }
 
+  .wrap-for-loader{
+    min-width: 100px;
+    height: 11px;
+
+    &--alongside-icon{
+      min-width: 90px;
+      height: 8px;
+      margin-left: .5rem;
+      transform: translateY(.6rem);
+    }
+  }
+
   .name {
     font-size: 1.5rem;
   }
@@ -28,25 +40,35 @@
     align-content: center;
     justify-content: center;
 
-    svg {
+    .icon {
       width: 1.5rem;
       height: 1.5rem;
     }
 
-    span {
-      display: flex;
-      align-self: center;
+    .text-by-icon {
       font-size: .8rem;
-      margin-left: .4rem;
+      margin-left: .5rem;
+      transform: translateY(.6rem);
     }
+  }
+
+  .status-wrap{
+    margin-top: 1rem;
   }
 
   .location {
     margin-top: 2rem;
+
+    .icon{
+      background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ctitle%3Elocation%3C/title%3E%3Cpath d='M8 0c-2.761 0-5 2.239-5 5 0 5 5 11 5 11s5-6 5-11c0-2.761-2.239-5-5-5zM8 8c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z'%3E%3C/path%3E%3C/svg%3E");
+    }
   }
 
   .birthday {
     margin-top: 1rem;
-  }
 
+    .icon{
+      background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ctitle%3Ecalendar%3C/title%3E%3Cpath d='M5 6h2v2h-2zM8 6h2v2h-2zM11 6h2v2h-2zM2 12h2v2h-2zM5 12h2v2h-2zM8 12h2v2h-2zM5 9h2v2h-2zM8 9h2v2h-2zM11 9h2v2h-2zM2 9h2v2h-2zM13 0v1h-2v-1h-7v1h-2v-1h-2v16h15v-16h-2zM14 15h-13v-11h13v11z'%3E%3C/path%3E%3C/svg%3E%0A");
+    }
+  }
 }

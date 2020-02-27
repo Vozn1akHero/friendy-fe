@@ -3,32 +3,61 @@
 .friend-requests-modal {
   background: white;
   box-shadow: 0 2rem 4rem 0 rgba(black, .3);
-  height: 100%;
-  border-radius: 3rem;
+  height: 100vh;
+  width: 35rem;
+  position: absolute;
+  left: 0;
+
+  .header-wrap{
+    height: 3.755rem;
+    border-bottom: 1px solid gray;
+    width: 100%;
+    position: relative;
+  }
+
+  .close-btn{
+    position: absolute;
+    right: 15px;
+    top: 11px;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: none;
+    outline: none;
+    color: $color-grey-dark;
+    transition: all .3s;
+    font-size: 2rem;
+    border: none;
+
+    &:hover{
+      background: rgba($color-grey-dark, .05);
+    }
+  }
 
   .controls-wrapper {
     display: flex;
-    height: 15%;
+    height: 6%;
 
     .btn {
       width: 50%;
       border: none;
       background: white;
       color: $color-grey-dark;
+      font-size: .87rem;
     }
 
     .chosen-subpage-btn {
-      color: white;
-      background: $color-pink;
+      border-bottom: 1px solid $color-blue;
+      //background: $color-pink;
     }
 
-    .received-friend-requests-btn {
+    /*.received-friend-requests-btn {
       border-top-left-radius: 3rem;
     }
 
     .sent-friend-requests-btn {
       border-top-right-radius: 3rem;
-    }
+    }*/
   }
 
   .friend-requests-list-wrapper {

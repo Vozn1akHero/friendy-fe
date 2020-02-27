@@ -21,14 +21,8 @@ import {PostItemModule} from './post-item/post-item.module';
 @NgModule({
   imports: [
     CommonModule,
-    //ProfilePageRoutingModule,
     SharedModule,
     AppRoutingModule,
-    /*StoreModule.forRoot(commentPanelReducerMap),
-    EffectsModule.forRoot([
-      CommentResponseEffects,
-      PostCommentEffects
-    ]),*/
     FormsModule,
     ReactiveFormsModule,
     CommentPanelModule,

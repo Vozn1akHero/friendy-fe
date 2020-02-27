@@ -4,20 +4,7 @@ import {animate, style, transition, trigger} from '@angular/animations';
 @Component({
   selector: 'app-common-modal',
   templateUrl: './common-modal.component.html',
-  styleUrls: ['./common-modal.component.scss'],
-  animations: [
-    trigger('anim', [
-      transition(':enter', [
-        style({
-          opacity: '0'
-        }),
-        animate(
-          '122ms ease-in',
-          style({ opacity: '1' })
-        )
-      ])
-    ])
-  ]
+  styleUrls: ['./common-modal.component.scss']
 })
 export class CommonModalComponent implements OnInit, OnDestroy {
   @ViewChild("commonModal") commonModal;

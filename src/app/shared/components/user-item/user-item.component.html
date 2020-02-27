@@ -1,0 +1,80 @@
+<div class="user" [ngStyle]="styles">
+  <ng-container *ngIf="friendshipStatusIndex === 0">
+    <button (mouseover)="showMenu()"
+            (mouseleave)="hideMenu()"
+            class="show-menu-btn">
+      &#8250;
+    </button>
+    <div #menu
+         class="menu">
+      <button class="remove-btn fr-hover-text-decoration"
+              (click)="removeFriend()">
+        Usuń ze znajomych
+      </button>
+      <hr class="line">
+    </div>
+  </ng-container>
+
+  <div class="avatar">
+    <a [routerLink]="['/app/profile', id]">
+      <figure>
+        <img src="{{ avatar }}" alt="friend's avatar">
+        <ng-container *ngIf="isUserOnline">
+          <div class="is-online">
+            <span class="circle">
+              &#9679;
+            </span>
+          </div>
+        </ng-container>
+      </figure>
+    </a>
+  </div>
+
+  <div class="info">
+    <a [routerLink]="['/app/profile', id]"
+       class="name">
+      {{ name }} {{ surname }}
+    </a>
+
+    <div *ngIf="city != null"
+         class="row-info city-wrap">
+      <span class="icon fr-span-icon"></span>
+      <span class="text-by-icon city">
+        {{ city }}
+      </span>
+    </div>
+
+    <ng-container *ngIf="friendshipStatusIndex !== 4">
+
+
+      <div class="controls-wrapper">
+        <ng-container *ngIf="friendshipStatusIndex === 0; else noFriend">
+          <a class="send-msg-btn"
+             [routerLink]="['/app/dialog', id]">
+            <span class="icon fr-span-icon"></span>
+          </a>
+        </ng-container>
+
+        <ng-template #noFriend>
+          <button (click)="onSendFriendRequestBtnClick()"
+                  (mouseleave)="removeSendRequestPopover()"
+                  (mouseover)="showSendRequestPopover()"
+                  *ngIf="friendshipStatusIndex === 1; else removeRequestPopoverWrap"
+                  class="add-new-friend-btn">
+            <span class="icon fr-span-icon"></span>
+            <ng-template #sendRequestPopoverRef></ng-template>
+          </button>
+          <ng-template #removeRequestPopoverWrap>
+            <button (click)="onRemoveFriendRequestBtnClick()"
+                    (mouseleave)="removeRequestPopover()"
+                    (mouseover)="showRequestPopover()"
+                    class="remove-request-btn">
+              <span class="icon fr-span-icon"></span>
+              <ng-template #removeRequestPopoverRef></ng-template>
+            </button>
+          </ng-template>
+        </ng-template>
+      </div>
+    </ng-container>
+  </div>
+</div>

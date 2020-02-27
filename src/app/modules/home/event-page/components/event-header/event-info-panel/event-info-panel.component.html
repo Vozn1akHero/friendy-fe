@@ -1,45 +1,83 @@
 <div class="event-info-panel">
-  <ng-container *ngIf="isEventAdmin">
-    <div class="event-settings-controls">
-      <button (click)="navigateToSettings()"
-              class="btn">
-        <span class="icon fr-span-icon"></span>
-      </button>
-    </div>
-  </ng-container>
+  <div class="fade-bg">
+    <div class="grey-bg-wrap">
+      <ng-container *ngIf="isEventAdmin">
+        <div class="event-settings-controls">
+          <button (click)="navigateToSettings()"
+                  class="btn">
+            <span class="icon fr-span-icon"></span>
+          </button>
+        </div>
+      </ng-container>
 
-  <div class="wrapper">
-    <app-event-avatar [eventId]="(eventData$|async)?.id"
-                      [avatarUrl]="(eventData$|async)?.avatarUrl"
-                      [activeSettings]="activeSettings"></app-event-avatar>
+      <div class="wrapper">
+        <app-event-avatar [activeSettings]="activeSettings"
+                          [avatarUrl]="(eventData$|async)?.avatarUrl"
+                          [eventId]="(eventData$|async)?.id"></app-event-avatar>
 
-    <div class="basic-info">
-      <p class="title">
-        {{ (eventData$|async)?.title }}
-      </p>
+        <div class="basic-info">
+          <div class="title-wrap">
+            <div *ngIf="!(eventDataLoaded$|async); else actTitle"
+                 class="wrap-for-loader">
+              <content-loader>
+                <svg:rect height="30" rx="3" ry="3" width="450" x="0" y="0"/>
+              </content-loader>
+            </div>
+            <ng-template #actTitle>
+              <p class="title">
+                {{ (eventData$|async)?.title }}
+              </p>
+            </ng-template>
+          </div>
 
-      <div class="location">
-        <span class="icon fr-span-icon"></span>
-        <label>{{ (eventData$|async)?.street }} {{
-          (eventData$|async)?.streetNumber }}, {{
-          (eventData$|async)?.city }}</label>
+          <div class="location">
+            <div *ngIf="!(eventDataLoaded$|async); else actAddress"
+                 class="wrap-for-loader">
+              <content-loader>
+                <svg:rect height="30" rx="3" ry="3" width="450" x="0" y="0"/>
+              </content-loader>
+            </div>
+            <ng-template #actAddress>
+              <span class="icon fr-span-icon"></span>
+              <label>{{ (eventData$|async)?.street }} {{
+                (eventData$|async)?.streetNumber }}, {{
+                (eventData$|async)?.city }}</label>
+            </ng-template>
+          </div>
+
+          <div class="date">
+            <div *ngIf="!(eventDataLoaded$|async); else actDate"
+                 class="wrap-for-loader">
+              <content-loader>
+                <svg:rect height="30" rx="3" ry="3" width="450" x="0" y="0"/>
+              </content-loader>
+            </div>
+            <ng-template #actDate>
+              <span class="icon fr-span-icon"></span>
+              <label>{{ (eventData$|async)?.date }}</label>
+            </ng-template>
+          </div>
+
+          <div class="participants">
+            <div *ngIf="!(eventDataLoaded$|async); else actParticipants"
+                 class="wrap-for-loader">
+              <content-loader>
+                <svg:rect height="30" rx="3" ry="3" width="450" x="0" y="0"/>
+              </content-loader>
+            </div>
+            <ng-template #actParticipants>
+              <span class="icon fr-span-icon"></span>
+              <label>{{ (eventData$|async)?.currentParticipantsAmount }}/{{
+                (eventData$|async)?.participantsAmount }} uczestników</label>
+            </ng-template>
+          </div>
+
+          <hr>
+
+          <app-event-info-panel-controls
+            [eventId]="eventId"></app-event-info-panel-controls>
+        </div>
       </div>
-
-      <div class="date">
-        <span class="icon fr-span-icon"></span>
-        <label>{{ (eventData$|async)?.date }}</label>
-      </div>
-
-      <div class="participants">
-        <span class="icon fr-span-icon"></span>
-        <label>{{ (eventData$|async)?.currentParticipantsAmount }}/{{
-          (eventData$|async)?.participantsAmount }} uczestników</label>
-      </div>
-
-      <hr>
-
-      <app-event-info-panel-controls
-        [eventId]="eventId"></app-event-info-panel-controls>
     </div>
   </div>
 </div>

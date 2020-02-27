@@ -14,6 +14,7 @@ export class EventInfoPanelComponent implements OnInit {
   @Input() eventData$ : Observable<EventShortened>;
   @Input() eventId: number;
   @Input() isEventAdmin: boolean;
+  @Input() eventDataLoaded$: Observable<boolean>;
 
   constructor(private router: Router) { }
 

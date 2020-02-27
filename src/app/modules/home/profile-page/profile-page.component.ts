@@ -11,11 +11,7 @@ import {ScrollableListNotifierService} from '../../../shared/services/scrollable
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
-  styles: [`.profile-page {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-  }`],
+  styleUrls: ['./profile-page.component.scss'],
   providers: [ScrollableListNotifierService]
 })
 export class ProfilePageComponent implements OnInit {

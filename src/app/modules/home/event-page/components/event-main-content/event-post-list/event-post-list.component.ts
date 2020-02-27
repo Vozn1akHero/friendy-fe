@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {EventPostService} from '../../../services/event-post.service';
 import EventPost from '../../../models/event-post.model';
-import {Observable, Subscription} from 'rxjs';
+import {Observable, of, Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EventAvatarService} from '../../../services/event-avatar.service';
 import {ScrollableListNotifierService} from "../../../../../../shared/services/scrollable-list-notifier.service";
@@ -33,7 +33,7 @@ export class EventPostListComponent implements OnInit, OnDestroy {
   }
 
   getEventPosts(){
-    this.eventPostService.getByEventId(this.eventId, 1).subscribe()
+    this.eventPostService.getByEventId(this.eventId, 1)
   }
 
   setEventPosts(){
@@ -45,22 +45,22 @@ export class EventPostListComponent implements OnInit, OnDestroy {
     this.subscriptionManager.add(this.scrollableListNotifierService.endReached$.subscribe(value => {
       if(value){
         this.eventPostService
-          .getByEventId(this.eventId, this.scrollableListNotifierService.currentPage).subscribe();
+          .getByEventId(this.eventId, this.scrollableListNotifierService.currentPage);
         this.scrollableListNotifierService.setDefaultValue();
       }
     }))
   }
 
   onRemovePost(postId: number){
-    this.subscriptionManager.add(this.eventPostService.delete(postId, this.eventId).subscribe());
+    this.eventPostService.delete(postId, this.eventId);
   }
 
   onLikePost(postId: number){
-    this.subscriptionManager.add(this.eventPostService.like(postId, this.eventId).subscribe());
+    this.eventPostService.like(postId, this.eventId);
   }
 
   onUnlikePost(postId: number){
-    this.subscriptionManager.add(this.eventPostService.unlike(postId, this.eventId).subscribe());
+    this.eventPostService.unlike(postId, this.eventId);
   }
 
   ngOnDestroy(): void {

@@ -12,10 +12,8 @@ import {EventComponent} from './modules/home/event-page/event-page.component';
 import {JoinUpPageComponent} from './modules/auth/joinup-page/joinup-page.component';
 import {LoginPageComponent} from './modules/auth/login-page/login-page.component';
 import {DialogPageComponent} from './modules/home/dialog-page/dialog-page.component';
-import {FriendsSearchPageComponent} from './modules/home/friends-search-page/friends-search-page.component';
 import {LoggedInResolver} from './logged-in.resolver';
 import {InterlocutorDataResolver} from './modules/home/dialog-page/resolvers/interlocutor-data.resolver';
-import {ExemplaryUsersResolver} from './modules/home/friends-search-page/resolvers/exemplary-users.resolver';
 import {WrapperComponent} from './modules/wrapper/wrapper.component';
 import {ProfileBelongingResolver} from './modules/home/profile-page/resolvers/profile-belonging.resolver';
 import {ProfileIdResolver} from './modules/wrapper/resolvers/profile-id.resolver';
@@ -89,8 +87,6 @@ const routes: Routes = [
 
       {path: 'friends', component: FriendsPageComponent},
 
-      {path: 'friends-search', component: FriendsSearchPageComponent,
-        resolve: { startingUserList: ExemplaryUsersResolver }},
 
       /*{path: 'home', component: HomePageComponent},
 

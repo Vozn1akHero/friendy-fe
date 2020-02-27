@@ -1,8 +1,9 @@
-<header class="event-header" *ngIf="(eventDataLoaded$ | async)">
+<header class="event-header">
   <app-event-header-bg
     [backgroundUrl]="(eventData$|async)?.backgroundUrl"></app-event-header-bg>
 
   <app-event-header-event-info [isEventAdmin]="isEventAdmin"
                                [eventId]="eventId"
+                               [eventDataLoaded$]="eventDataLoaded$"
                                [eventData$]="eventData$"></app-event-header-event-info>
 </header>

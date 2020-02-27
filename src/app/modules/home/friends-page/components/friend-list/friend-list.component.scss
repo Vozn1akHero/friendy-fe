@@ -1,7 +1,15 @@
+@import '../../../../../../assets/sass/base/variables';
+
 .friends-list{
   width: 100%;
   display: flex;
   margin-top: 2rem;
   flex-direction: column;
   align-items: center;
+  border-radius: 1rem;
+
+  .underline{
+    opacity: .2;
+    margin: .75rem 0;
+  }
 }

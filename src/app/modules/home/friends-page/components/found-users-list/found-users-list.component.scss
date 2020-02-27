@@ -1,0 +1,17 @@
+@import '../../../../../../assets/sass/base/variables';
+
+.found-users-search-list{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: flex-start;
+  margin: 0 auto;
+  border-radius: 1rem;
+  padding-top: 1.5rem;
+
+  .underline{
+    opacity: .2;
+
+  }
+}

@@ -72,7 +72,7 @@ export class EventPostService {
         });
         this.fillEventPosts = eventPosts;
         this.loaded$.next(true);
-      }));
+      })).toPromise();
   }
 
   delete(postId: number, eventId: number) {
@@ -80,16 +80,16 @@ export class EventPostService {
       .pipe(map(
         () => {
           this.eventPosts = [...this.eventPosts.filter(value => value.postId !== postId)];
-        }));
+        })).toPromise();
   }
 
   like(id: number, eventId: number) {
     return this.http.put(`/api/post/like/${id}/event-post/${eventId}`,
-      null, {responseType: 'text'});
+      null, {responseType: 'text'}).toPromise();
   }
 
   unlike(id: number, eventId: number) {
     return this.http.put(`/api/post/unlike/${id}/event-post/${eventId}`,
-      null, {responseType: 'text'});
+      null, {responseType: 'text'}).toPromise();
   }
 }

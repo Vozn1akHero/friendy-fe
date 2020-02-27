@@ -11,8 +11,47 @@
     height: 4rem;
     font-size: .8rem;
 
-    &:hover{
+    /*&:hover{
       box-shadow: inset 0px -1px 0 $color-blue;
-    }
+    }*/
+  }
+
+  ul{
+    display: flex;
+    list-style: none;
+    position: relative;
+    height: 100%;
+  }
+
+  li:nth-of-type(2):hover ~ hr {
+    margin-left: 7.4rem;
+    width: 4rem;
+  }
+
+  li:nth-of-type(3):hover ~ hr {
+    margin-left: 13rem;
+    width: 7rem;
+  }
+
+  li:nth-of-type(4):hover ~ hr {
+    margin-left: 21.5rem;
+    width: 2.5rem;
+  }
+
+  li:nth-of-type(5):hover ~ hr {
+    margin-left: 25.4rem;
+    width: 7rem;
+  }
+
+  hr {
+    position: absolute;
+    bottom: 0;
+    left: 27px;
+    height: 1px;
+    width: 5.8rem;
+    margin: 0;
+    background: $color-blue;
+    border: none;
+    transition: .3s ease-in-out;
   }
 }

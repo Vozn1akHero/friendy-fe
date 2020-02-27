@@ -1,17 +1,31 @@
 <nav class="user-settings-nav fr-border-right">
-  <button class="fr-m-l-2 fr-m-r-1 fr-m-t-1 fr-m-b-1 link-btn" (click)="navigateToBasicSettings()">
-    Podstawowe
-  </button>
-  <button class="link-btn fr-m-1" (click)="navigateToEducationSettings()">
-    Edukacja
-  </button>
-  <button class="link-btn fr-m-1" (click)="navigateToInterestsSettings()">
-    Zainteresowania
-  </button>
-  <button class="link-btn fr-m-1" (click)="navigateToOtherSettings()">
-    Inne
-  </button>
-  <button class="link-btn fr-m-1" (click)="navigateToSafetySettings()">
-    Bezpieczeństwo
-  </button>
+  <ul class="list">
+    <li>
+      <button (click)="navigateToBasicSettings()"
+              class="fr-m-l-2 fr-m-r-1 fr-m-t-1 fr-m-b-1 link-btn">
+        Podstawowe
+      </button>
+    </li>
+    <li>
+      <button (click)="navigateToEducationSettings()" class="link-btn fr-m-1">
+        Edukacja
+      </button>
+    </li>
+    <li class="">
+      <button (click)="navigateToInterestsSettings()" class="link-btn fr-m-1">
+        Zainteresowania
+      </button>
+    </li>
+    <li class="">
+      <button (click)="navigateToOtherSettings()" class="link-btn fr-m-1">
+        Inne
+      </button>
+    </li>
+    <li class="">
+      <button (click)="navigateToSafetySettings()" class="link-btn fr-m-1">
+        Bezpieczeństwo
+      </button>
+    </li>
+    <hr/>
+  </ul>
 </nav>
