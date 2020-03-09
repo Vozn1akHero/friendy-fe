@@ -1,9 +1,11 @@
+import City from '../../../../shared/models/city.model';
+
 export default class EventShortened {
   id: number;
   title: string;
   street: string;
   streetNumber: string;
-  city: string;
+  city: City;
   avatarUrl: string;
   backgroundUrl: string;
   participantsAmount: number;
@@ -14,7 +16,7 @@ export default class EventShortened {
               title: string,
               street: string,
               streetNumber: string,
-              city: string,
+              city: City,
               avatarPath: string,
               backgroundPath: string,
               participantsAmount: number,

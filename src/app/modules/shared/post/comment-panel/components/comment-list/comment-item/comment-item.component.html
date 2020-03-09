@@ -11,6 +11,11 @@
       </a>
     </div>
     <div class="content-wrapper">
+      <a [routerLink]="['/app/profile', comment.authorId]"
+         class="title-link
+         fr-hover-text-decoration">
+        {{ comment.authorName }} {{ comment.authorSurname }}
+      </a>
       <p class="text-content">
         {{ comment.content }}
       </p>
@@ -23,16 +28,30 @@
 
   <div class="bottom-wrapper">
     <button (click)="onShowCommentsBtnClick()"
-            *ngIf="comment.commentsCount>0"
             class="show-comments-btn">
-        Pokaż {{ comment.commentsCount }} odpowiedzi
+      <span class="icon fr-span-icon"></span>
+      <span class="btn-text">
+        {{ comment.commentsCount }}
+      </span>
+    </button>
+
+    <button class="likes-btn"
+            [ngClass]="comment.isCommentLikedByUser ?
+            'unlike-btn' :
+            'like-btn'"
+            (click)="onLikeOrUnlikePost()">
+      <span class="icon fr-span-icon"></span>
+      <span class="btn-text">
+        {{ comment.likesCount }}
+      </span>
     </button>
 
     <button class="respond-btn" (click)="onRespondBtnClick()">
       Odpowiedz
     </button>
 
-    <button *ngIf="comment.authorId === userId || privilegedToDeleteRelatedEntries"
+    <button *ngIf="comment.authorId === userId
+     || privilegedToDeleteRelatedEntries"
             class="remove-btn">
       Usuń
     </button>
@@ -40,17 +59,6 @@
     <p class="date">
       {{ timePassed }}
     </p>
-
-    <button class="likes-btn"
-            [ngClass]="comment.isCommentLikedByUser ?
-            'unlike-post-btn' :
-            'like-user-post-btn'"
-            (click)="onLikeOrUnlikePost()">
-      <span class="icon fr-span-icon"></span>
-      <span class="btn-text">
-        {{ comment.likesCount }}
-      </span>
-    </button>
   </div>
 
   <ng-container *ngIf="comment.commentsCount > 0 && responsesShown">

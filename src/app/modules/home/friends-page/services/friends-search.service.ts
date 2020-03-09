@@ -38,9 +38,7 @@ export class FriendsSearchService {
       }))
   }
 
-  findInterestsByKeyword(keyword: string){
-    return this.http.get(`/api/user-search/interests?q=${keyword}`)
-  }
+
 
   getExemplaryUsers(firstIndex: number, lastIndex: number): Observable<FoundUserModel[]> {
     return this.http.get(`/api/user-search/exemplary/?firstIndex=${firstIndex}&lastIndex=${lastIndex}`)

@@ -4,7 +4,6 @@ import {map} from 'rxjs/operators';
 import EventDataModel from '../models/event-data.model';
 import * as moment from 'moment';
 import NewEventDataModel from "../models/new-event-data.model";
-import {any} from 'codelyzer/util/function';
 
 @Injectable()
 export class EventDataService {

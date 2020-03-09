@@ -13,8 +13,7 @@ import {InfoModalService} from '../../../../shared/components/info-modal/info-mo
   providedIn: 'root'
 })
 export class UserDataService {
-  constructor(private http: HttpClient,
-              private infoModalService: InfoModalService) {
+  constructor(private http: HttpClient) {
   }
 
   get loaded$() {
@@ -104,11 +103,11 @@ export class UserDataService {
         res.name,
         res.surname,
         res.birthday,
-        res.genderId);
+        res.genderId,
+        res.city);
       this.userInterests = [...res.userInterests
         .map(value => new UserInterestModel(value.id, value.title, value.wage))];
       this.userEducation = new EducationModel(res.educationId);
-      //this.userEducation = new EducationModel(res.education.id, res.education.title);
       this.userAdditionalInfo = new AdditionalInfoModel(res.maritalStatusId,
         res.religionId,
         res.smokingAttitudeId,
@@ -122,16 +121,18 @@ export class UserDataService {
     return this.http.put(`api/user-data-update/education`,
       {id: value.educationId}).pipe(map(() => {
       this.userEducation = value;
-      this.infoModalService.openWithMessage('Dane zostały zmienione');
     }));
   }
 
   updateBasicData(value: BasicUserDataModel) {
     return this.http.put(`api/user-data-update/basic`,
-      {name: value.name, surname: value.surname, birthday: value.birthday})
+      {name: value.name,
+        surname: value.surname,
+        cityId: value.city.id,
+        genderId: value.genderId,
+        birthday: value.birthday})
       .pipe(map(() => {
         this.userBasicData = value;
-        this.infoModalService.openWithMessage('Dane zostały zmienione');
       }));
   }
 
@@ -139,7 +140,6 @@ export class UserDataService {
     return this.http.put(`api/user-data-update/additional`,
       {value}).pipe(map(() => {
       this.userAdditionalInfo = value;
-      this.infoModalService.openWithMessage('Dane zostały zmienione');
     }));
   }
 
@@ -147,21 +147,14 @@ export class UserDataService {
     return this.http.put(`api/user-data-update/email`,
       {email: value}).pipe(map(() => {
       this.userSafety.email = value;
-      this.infoModalService.openWithMessage('Email został zmieniony');
-    }), catchError(_ => {
-      console.log(123131);
-      console.log(_);
-        if(_.error === 'PREVIOUS PASSWORD IS NOT CORRECT'){
-          this.infoModalService.openWithMessage('Stare hasło nie jest prawidłowe');
-        }
-        return throwError(_.error);
     }));
   }
 
   updatePassword(oldPassword: string, newPassword: string) {
     return this.http.put(`api/user-data-update/password`,
       {oldPassword, newPassword}).pipe(map(() => {
-      this.infoModalService.openWithMessage('Hasło zostało zmienione');
+    }), catchError(_ => {
+      return throwError(_.error);
     }));
   }
 }

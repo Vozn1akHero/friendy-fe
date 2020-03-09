@@ -8,9 +8,9 @@
     [contentColumned]="false"
     [forSubjectEntries]="true"
     [panelStyles]="{ width: '17rem' }">
-    <ng-container *ngIf="(eventExemplaryParticipantsLoaded$ | async); else loader">
-      <ng-container *ngIf="(eventExemplaryParticipants$ | async).length > 0; else noParticipants;">
-        <app-event-participants-item *ngFor="let eventParticipant of (eventExemplaryParticipants$ | async)"
+    <ng-container *ngIf="loaded; else loader">
+      <ng-container *ngIf="eventExemplaryParticipants.length > 0; else noParticipants;">
+        <app-event-participants-item *ngFor="let eventParticipant of eventExemplaryParticipants"
                                      [eventParticipant]="eventParticipant"></app-event-participants-item>
       </ng-container>
       <ng-template #noParticipants>

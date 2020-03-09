@@ -1,11 +1,19 @@
 <div class="photos">
   <ng-container *ngIf="loaded$|async; else loader">
     <ng-container *ngIf="(photos$ | async).length>0; else noPhotos">
-      <app-photos-item *ngFor="let photo of (photos$ | async)" [photo]="photo"></app-photos-item>
+      <app-photos-item *ngFor="let photo of (photos$ | async)"
+                       [chosenSubpage]="chosenSubpage"
+                       [editable]="editable"
+                       (deleteEventPhotoEmitter)="deleteEventPhoto($event)"
+                       (deleteUserPhotoEmitter)="deleteUserPhoto($event)"
+                       (openInModalEmitter)="openImageInModal($event)"
+                       [photo]="photo"></app-photos-item>
     </ng-container>
     <ng-template #noPhotos>
       <div class="no-photos-wrap">
-        <span>Lista zdjęć jest pusta</span>
+        <span class="fr-default-smaller-font">
+          Lista zdjęć jest pusta
+        </span>
       </div>
     </ng-template>
   </ng-container>

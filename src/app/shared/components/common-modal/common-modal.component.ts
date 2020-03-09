@@ -1,5 +1,4 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
-import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-common-modal',

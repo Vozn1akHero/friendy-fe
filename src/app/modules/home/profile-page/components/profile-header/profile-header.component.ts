@@ -31,6 +31,9 @@ export class ProfileHeaderComponent implements OnInit {
 
     this.userData$ = this.store
       .select(state => state.profilePageUserData.profiles[this.userId]);
+    /*this.userData$.subscribe(value => {
+      console.log(value)
+    })*/
     this.userDataLoaded$ = this.store
       .select(state => state.profilePageUserData.profiles[this.userId] !== null);
   }

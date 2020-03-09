@@ -1,0 +1,70 @@
+@import '../../../../../../../../assets/sass/base/variables';
+
+.item {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
+  .left-wrap{
+    width: 18%;
+    min-width: 3.5rem;
+  }
+
+  .right-wrap{
+    width: 82%;
+  }
+
+  .avatar {
+    figure {
+      width: 3.1rem;
+      height: 3.1rem;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+
+      img {
+        height: 100%;
+      }
+    }
+  }
+
+  .user-data {
+    display: block;
+    text-decoration: none;
+    color: $color-blue;
+    font-size: .8rem;
+    margin-top: .5rem;
+    font-weight: 500;
+    word-break: break-word;
+  }
+
+  .content {
+    display: block;
+    width: 100%;
+    background: $color-bg-grey-footer;
+    border-radius: 1rem;
+    padding: 10px 1rem 0 1rem;
+    text-decoration: none;
+    height: 3rem;
+    margin-top: 8px;
+
+    .written-by-user-msg-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .own-avatar {
+        width: 2rem;
+        border-radius: 50%;
+      }
+    }
+
+    .msg-text-content {
+      text-decoration: none;
+      font-size: .8rem;
+      word-break: break-all;
+      color: $color-grey-dark;
+      transition: all .1s;
+    }
+  }
+}

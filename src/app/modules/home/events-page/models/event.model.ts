@@ -7,6 +7,7 @@ export default class Event {
   avatarPath: string;
   participantsAmount: number;
   currentParticipantsAmount: number;
+  isUserParticipant: boolean;
   date: Date;
 
   constructor(id: number,
@@ -17,6 +18,7 @@ export default class Event {
               avatar: string,
               participantsAmount: number,
               currentParticipantsAmount: number,
+              isUserParticipant: boolean,
               date: Date) {
     this.id = id;
     this.title = title;
@@ -26,6 +28,7 @@ export default class Event {
     this.avatarPath = "http://localhost:5000/" + avatar;
     this.participantsAmount = participantsAmount;
     this.currentParticipantsAmount = currentParticipantsAmount;
+    this.isUserParticipant = isUserParticipant;
     this.date = date;
   }
 }

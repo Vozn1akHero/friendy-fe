@@ -1,15 +1,31 @@
 @import '../../../../../../assets/sass/base/variables';
 
 .chosen-event-settings-subpage{
-  float: left;
-  width: 80%;
+  float: right;
+  width: 70%;
   min-height: 100vh;
   padding-top: 1.5rem;
   padding-left: 3rem;
-  background-color: $color-bg-light-grey;
+  z-index: -1;
+ // background-color: $color-bg-light-grey;
 
   .header{
-    padding: 1.5rem 2rem;
+    padding: 0.5rem 2rem;
+    .title{
+      color: white;
+      font-weight: 400;
+      font-size: 1.2rem;
+    }
+  }
+
+  .header-bg{
+    position: absolute;
+    height: 11rem;
+    width: 100%;
+    background: #40b4e5;
+    left: 0;
+    z-index: -1;
+    top: 4.55rem;
   }
 }
 

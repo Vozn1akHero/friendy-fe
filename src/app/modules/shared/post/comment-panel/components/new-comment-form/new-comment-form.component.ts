@@ -20,6 +20,7 @@ export class NewCommentFormComponent implements OnInit {
   @ViewChild('textAreaElement') textAreaElement: ElementRef;
   @ViewChild('formElement') form: ElementRef;
   @Input() postId: number;
+  typingActive: boolean;
 
   constructor(private store: Store<AppState>,
               private newCommentOrResponseService: NewCommentOrResponseService) {
@@ -61,5 +62,9 @@ export class NewCommentFormComponent implements OnInit {
       //this.form.nativeElement.submit();
       this.onSubmit();
     }
+  }
+
+  toggleTypingActive() {
+    this.typingActive = !this.typingActive;
   }
 }

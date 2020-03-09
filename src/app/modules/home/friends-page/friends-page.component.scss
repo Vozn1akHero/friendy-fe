@@ -5,7 +5,7 @@
 
 .friends {
   display: flex;
-  width: calc(100vw - #{$navigation-width});
+  @include min-width-page();
   padding-top: 5rem;
   justify-content: center;
 
@@ -25,7 +25,7 @@
 
     .whole-section-wrap{
       border-radius: 1rem;
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: $color-bg-grey-footer;
     }
   }
 

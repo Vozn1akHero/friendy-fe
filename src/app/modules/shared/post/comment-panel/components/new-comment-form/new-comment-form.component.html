@@ -3,9 +3,13 @@
         #formElement>
     <textarea placeholder="Napisz komentarz"
               class="new-comment-ta"
+              (focus)="toggleTypingActive()"
+              (focusout)="toggleTypingActive()"
+              [ngStyle]="{height: typingActive ? '80px' : '4em', borderRadius:
+              typingActive ? '1rem' : '2rem'}"
               #textAreaElement
               [minLength]="1"></textarea>
-    <div class="controls">
+    <div *ngIf="typingActive" class="controls">
       <div class="inner-wrapper">
         <div class="file-btn-wrapper">
           <span class="icon fr-span-icon"></span>

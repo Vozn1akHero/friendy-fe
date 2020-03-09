@@ -1,12 +1,22 @@
 @import '../../../../../../assets/sass/base/variables';
 
 .event-settings-nav{
+  box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+  transform: translate(2rem, 2rem);
   float: left;
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  width: 20rem;
+  height: 43vh;
   padding-top: 2rem;
+  position: fixed;
+  background: white;
+  z-index: 1;
+
+  .list{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+  }
 
   .link-btn{
     background: none;
@@ -14,8 +24,44 @@
     border: none;
     height: 4rem;
     font-size: .8rem;
-    &:hover{
-      text-decoration: underline;
-    }
+  }
+
+  ul{
+    display: flex;
+    list-style: none;
+    position: relative;
+    height: 100%;
+  }
+
+  li:nth-of-type(1):hover ~ hr {
+    margin-top: 0 !important;
+  }
+
+  li:nth-of-type(2):hover ~ hr {
+    margin-top: 4.4rem !important;
+  }
+
+  li:nth-of-type(3):hover ~ hr {
+    margin-top: 8.4rem !important;
+  }
+
+  li:nth-of-type(4):hover ~ hr {
+    margin-top: 12.5rem !important;
+  }
+
+  li:nth-of-type(5):hover ~ hr {
+    margin-top: 16.6rem !important;
+  }
+
+  hr {
+    position: absolute;
+    right: 0;
+    height: 3rem;
+    border: none;
+    transition: .3s ease-in-out;
+    width: 5px;
+    border-radius: 5rem;
+    margin: 0;
+    background: #e83962d6;
   }
 }

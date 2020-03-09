@@ -1,15 +1,28 @@
 @import '../../../../../../assets/sass/base/variables';
 
 .chat-message-list{
-  display: flex;
   padding: 2rem 2rem 1rem 2.5rem;
   height: 71vh;
   overflow-y: scroll;
   position: relative;
-  flex-direction: column-reverse;
+
+  &:hover{
+    &::-webkit-scrollbar-thumb {
+      background: #C0CCDD;
+      border-radius: 1rem;
+      border: 5px solid transparent;
+      background-clip: content-box;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      background: rgba(black, .02);
+      background-clip: content-box;
+    }
+  }
 
   &::-webkit-scrollbar {
-    //width: .62rem;
     opacity: 0;
   }
 
@@ -22,19 +35,13 @@
   }
 
   &::-webkit-scrollbar-track {
-    /*box-shadow: inset 0 0 5px $color-bg-light-grey;
-    border-radius: .2rem;*/
-   // background-image: url("../../../../../../assets/images/scrollbar-black-line.png");
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    background: rgba(black, .02);
-    background-clip: content-box;
+    background: white;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #C0CCDD;
+    background: rgba(black, .02);
     border-radius: 1rem;
-    transition: .5s background;
+    transition: .5s;
     border: 5px solid transparent;
     background-clip: content-box;
   }

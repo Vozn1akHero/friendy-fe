@@ -1,4 +1,4 @@
-import UserInterestModel from './user-interest.model';
+import UserInterestModel from '../../../../shared/models/user-interest.model';
 
 export default class UserSearchCriteriaModel {
   name: string;

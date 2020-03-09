@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-participants-search',
@@ -6,7 +6,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
   styleUrls: ['./participants-search.component.scss']
 })
 export class ParticipantsSearchComponent implements OnInit {
-  @ViewChild('searchInput') searchInput;
+  @Output() emitInputValue : EventEmitter<string> = new EventEmitter();
+  inputValue: string = "";
 
   constructor() { }
 
@@ -14,6 +15,6 @@ export class ParticipantsSearchComponent implements OnInit {
   }
 
   searchParticipants() {
-    //this.searchInput.nativeElement.textContent
+    this.emitInputValue.emit(this.inputValue);
   }
 }

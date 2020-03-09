@@ -23,6 +23,7 @@ export class UserEventsService {
           event.avatarPath,
           event.participantsAmount,
           event.currentParticipantsAmount,
+          true,
           event.date))
       });
       return events;
@@ -43,6 +44,7 @@ export class UserEventsService {
           event.avatarPath,
           event.participantsAmount,
           event.currentParticipantsAmount,
+          true,
           event.date))
       });
       return administeredEvents;
@@ -63,6 +65,7 @@ export class UserEventsService {
             event.avatarPath,
             event.participantsAmount,
             event.currentParticipantsAmount,
+            true,
             event.date))
         });
         return administeredEvents;
@@ -82,6 +85,7 @@ export class UserEventsService {
           event.avatarPath,
           event.participantsAmount,
           event.currentParticipantsAmount,
+          true,
           event.date))
       });
       return events;

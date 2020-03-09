@@ -1,6 +1,8 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import * as moment from 'moment';
 import 'moment/locale/pl';
+import {InfoModalService} from './shared/components/info-modal/info-modal.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,17 +11,24 @@ import 'moment/locale/pl';
 })
 export class AppComponent implements OnInit{
   @ViewChild('appWrapper') appWrapper;
+  infoModalOpened$: Observable<boolean>;
 
-  constructor() {
+  constructor(private infoModalService : InfoModalService) {
     moment.locale('pl');
   }
 
   ngOnInit(): void {
-    /*document.addEventListener('click', e => {
-      const modal = document.getElementsByClassName('f-modal')[0];
-      if(modal != null){
-        modal.classList.add('f-modal-hidden')
+    this.infoModalOpened$ = this.infoModalService.opened$;
+    document.addEventListener('click', e => {
+      const el = e.target as HTMLElement;
+      if(!el.classList.contains("fr-popover")) {
+        const popovers = document.getElementsByClassName('fr-popover');
+        if (popovers.length > 0) {
+          [].slice.call(popovers).map(value => {
+            value.style.display = 'none'
+          });
+        }
       }
-    })*/
+    })
   }
 }

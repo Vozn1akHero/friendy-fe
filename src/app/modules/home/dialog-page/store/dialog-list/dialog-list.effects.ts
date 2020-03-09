@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, Effect } from '@ngrx/effects';
-import {switchMap, catchError, map, tap, withLatestFrom, take, filter, mergeMap, exhaustMap, mapTo, concatMap} from 'rxjs/operators';
+import {map, tap, withLatestFrom, take, filter, mergeMap, exhaustMap, mapTo, concatMap} from 'rxjs/operators';
 import * as DialogListActions from './dialog-list.actions';
 import {DialogListService} from '../../services/dialog-list.service';
 import {Store} from '@ngrx/store';
-import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
+import {AppState} from '../reducers';
 
 @Injectable()
 export class DialogListEffects {
   @Effect() getDialogList = this.actions$.pipe(
     ofType(DialogListActions.GET_DIALOG_LIST),
-    withLatestFrom(this.store.select(e=>e.dialogPageDialogList.loaded)),
+    withLatestFrom(this.store.select(e=>e.fromDialogPageDialogList.loaded)),
     filter(([{payload}, loaded]) => {
       return !loaded
     }),
@@ -28,6 +28,6 @@ export class DialogListEffects {
   constructor(
     private actions$: Actions,
     private dialogListService: DialogListService,
-    private store: Store<fromApp.AppState>
+    private store: Store<AppState>
   ) {}
 }

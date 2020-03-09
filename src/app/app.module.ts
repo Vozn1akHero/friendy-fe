@@ -49,6 +49,7 @@ import {ParticipationEffects} from './modules/home/event-page/store/participatio
 import {EventDataEffects as SPEventDataEffects}  from './modules/home/event-settings-page/store/event-data/event-data.effects';
 import {ParticipationRequestEffects} from './modules/home/event-settings-page/store/participation-request/participation-request.effects';
 import {UserListEffects} from './modules/home/friends-page/store/user-list/user-list.effects';
+import {ContactsEffects} from './modules/home/dialog-page/store/contacts/contacts.effects';
 
 
 @NgModule({
@@ -78,7 +79,7 @@ import {UserListEffects} from './modules/home/friends-page/store/user-list/user-
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([
       UserListEffects,
-      //UserEffects,
+      ContactsEffects,
       CommentResponseEffects,
       PostCommentEffects,
       CommentResponseEffects,

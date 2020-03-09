@@ -20,6 +20,4 @@ export class EventsSearchPanelService {
   private _panelOpened = new BehaviorSubject(false);
 
   constructor(private http: HttpClient){}
-
-
 }

@@ -26,6 +26,12 @@ export function userPostsReducer(
     case UserPostsActions.SET_USER_POSTS:
       return {
         ...state,
+        loaded: true,
+        posts: action.payload
+      };
+    case UserPostsActions.FULFILL_USER_POSTS:
+      return {
+        ...state,
         posts: [...action.payload, ...state.posts],
         loaded: true
       };

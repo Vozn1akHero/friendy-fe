@@ -12,8 +12,8 @@ import SubscriptionManager from '../../../../../../shared/helpers/SubscriptionMa
 })
 export class EventParticipantsComponent implements OnInit, OnDestroy {
   @Input() isEventAdmin: boolean;
-  eventExemplaryParticipantsLoaded$: Observable<boolean>;
-  eventExemplaryParticipants$: Observable<EventExemplaryParticipant[]>;
+  loaded: boolean;
+  eventExemplaryParticipants: EventExemplaryParticipant[];
   activatedRoute: string;
   eventId: number;
 
@@ -25,25 +25,18 @@ export class EventParticipantsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.eventId = this.route.snapshot.params.id;
     this.activatedRoute = this.router.url;
-
-    this.setExemplaryParticipantsLoaded();
     this.getExemplaryParticipants();
-    this.setExemplaryParticipants();
   }
 
   getExemplaryParticipants(){
     this.subscriptionManager.add(this
       .eventParticipantService
-      .getExemplary(this.eventId).subscribe());
+      .getRange(this.eventId, 1, 3).subscribe(value => {
+        this.eventExemplaryParticipants = value;
+        this.loaded = true;
+      }));
   }
 
-  setExemplaryParticipants(){
-    this.eventExemplaryParticipants$ = this.eventParticipantService.eventExemplaryParticipants$;
-  }
-
-  setExemplaryParticipantsLoaded(){
-    this.eventExemplaryParticipantsLoaded$ = this.eventParticipantService.eventExemplaryParticipantsLoaded$;
-  }
 
   ngOnDestroy(): void {
     this.subscriptionManager.destroy();

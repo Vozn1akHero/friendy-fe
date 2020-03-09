@@ -1,22 +1,12 @@
-<div class="dialog-page">
+<div class="dialog-page" *ngIf="loaded">
   <div class="wrapper-1">
     <hr class="vertical-line">
-    <app-chats-in-dialog-panel></app-chats-in-dialog-panel>
+    <app-dialog-nav></app-dialog-nav>
   </div>
-  <ng-container *ngIf="(interlocutorSelected$|async); else noInterlocutorSelected">
-    <div class="wrapper-2 act-dialog">
-      <app-chat-friend-data></app-chat-friend-data>
-      <app-chat-message-list></app-chat-message-list>
-      <app-new-message-in-dialog-form></app-new-message-in-dialog-form>
-    </div>
-    <!--<div class="wrapper-3">
-      <hr class="vertical-line">
-      <app-chat-friend-main-data></app-chat-friend-main-data>
-    </div>-->
-  </ng-container>
-  <ng-template #noInterlocutorSelected>
-    <div class="no-interlocutor-selected-wrap">
-      <span class="fr-default-smaller-font">Wybierz rozmówcę</span>
-    </div>
-  </ng-template>
+  <div class="wrapper-2 act-dialog">
+    <app-chat-friend-data [userId]="userId"
+                          [interlocutorData]="interlocutorData"></app-chat-friend-data>
+    <app-chat-message-list [userId]="userId"></app-chat-message-list>
+    <app-new-message-in-dialog-form [interlocutorData]="interlocutorData"></app-new-message-in-dialog-form>
+  </div>
 </div>

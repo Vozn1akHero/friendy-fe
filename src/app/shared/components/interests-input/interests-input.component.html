@@ -1,0 +1,15 @@
+<div class="interests-input">
+  <input type="text"
+         placeholder="Zainteresowanie"
+         [ngStyle]="styles"
+         class="fr-input"
+         #inputElement>
+  <ul *ngIf="resultsVisible && foundInterests.length>0"
+      class="fr-popover fr-input-results-popover">
+    <li class="fr-input-results-popover__item"
+        (click)="onClick(interest)"
+        *ngFor="let interest of foundInterests">
+      {{ interest.title }}
+    </li>
+  </ul>
+</div>

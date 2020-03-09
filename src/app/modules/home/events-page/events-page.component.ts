@@ -13,6 +13,7 @@ export class EventsPageComponent implements OnInit, OnDestroy {
   eventCreationPopupOpened = false;
   searchActivated: boolean;
   searchActivatedSubscription: Subscription;
+  chosenSubpageIndex: number;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -24,9 +25,13 @@ export class EventsPageComponent implements OnInit, OnDestroy {
   }
 
   checkSearchActivated(){
-    this.searchActivatedSubscription = this.activatedSectionService.activatedSection$.subscribe(value => {
+    /*this.searchActivatedSubscription = this.activatedSectionService.activatedSection$.subscribe(value => {
       this.searchActivated = value === SectionType.NonparticipatingEvents;
-    });
+    });*/
+    this.route.queryParams.subscribe(queryParams => {
+      const searchAct = queryParams["act"];
+      this.searchActivated = searchAct && searchAct === 'search';
+    })
   }
 
   toggleEventCreationPopup() {

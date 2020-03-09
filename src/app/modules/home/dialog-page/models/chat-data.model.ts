@@ -1,11 +1,15 @@
+import InterlocutorDataModel from './interlocutor-data.model';
+
 export default class ChatData {
   id: number;
-  firstInterlocutorId: number;
-  secondInterlocutorId: number;
+  firstInterlocutor: InterlocutorDataModel;
+  secondInterlocutor: InterlocutorDataModel;
 
-  constructor(id: number, firstInterlocutorId: number, secondInterlocutorId: number) {
+  constructor(id: number,
+              firstInterlocutor: InterlocutorDataModel,
+              secondInterlocutor: InterlocutorDataModel) {
     this.id = id;
-    this.firstInterlocutorId = firstInterlocutorId;
-    this.secondInterlocutorId = secondInterlocutorId;
+    this.firstInterlocutor = firstInterlocutor;
+    this.secondInterlocutor = secondInterlocutor;
   }
 }

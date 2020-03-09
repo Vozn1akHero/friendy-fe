@@ -1,9 +1,7 @@
 import {Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, QueryList, ViewChild} from '@angular/core';
 import {FormGroup, FormControl, Validators, Form} from '@angular/forms';
 import UserSearchModelDto from '../../models/user-search-criteria.model';
-import {Subscription} from 'rxjs';
-import UserInterestModel from '../../models/user-interest.model';
-import {FriendsSearchService} from '../../services/friends-search.service';
+import UserInterestModel from '../../../../../shared/models/user-interest.model';
 
 @Component({
   selector: 'app-friends-search-form',
@@ -27,32 +25,27 @@ export class FriendsSearchFormComponent implements OnInit, OnDestroy {
     smokingAttitude: new FormControl(''),
     interests: new FormControl([])
   });
-  foundInterestsSub: Subscription;
-  foundInterests: UserInterestModel[] = [];
-
   @Output() searchFormSubmitEmitter: EventEmitter<UserSearchModelDto> = new EventEmitter();
   @ViewChild('interestsInput') interestsInput;
   @ViewChild('dropdownWrapper') dropdownWrapperList: QueryList<ElementRef>;
-
   @ViewChild('birthdayMin') birthdayMinInput: ElementRef<HTMLInputElement>;
   @ViewChild('birthdayMax') birthdayMaxInput: ElementRef<HTMLInputElement>;
   birthdayMinInputFocused: boolean = false;
   birthdayMaxInputFocused: boolean = false;
-
   interests: string[] = [];
   selectedInterests: UserInterestModel[] = [];
   showCalendar: boolean = false;
 
-  constructor(private friendsSearchService: FriendsSearchService,) {
+  constructor() {
   }
 
   ngOnInit() {
     this.addListenerOnDropdowns();
   }
 
-  addNewInterest(id: number): void {
-    const el = this.foundInterests.find(e => e.id === id);
-    if(this.selectedInterests.indexOf(el) === -1) this.selectedInterests.push(el);
+  addNewInterest(value: UserInterestModel): void {
+    if(this.selectedInterests.indexOf(value) === -1)
+      this.selectedInterests.push(value);
   }
 
   removeInsertedInterest(id: number) {
@@ -94,8 +87,6 @@ export class FriendsSearchFormComponent implements OnInit, OnDestroy {
       searchFormValue.surname,
       searchFormValue.city,
       searchFormValue.education === '' ? null : +searchFormValue.education,
-/*      searchFormValue.school,
-      searchFormValue.university,*/
       searchFormValue.birthday.birthdayMin,
       searchFormValue.birthday.birthdayMax,
       searchFormValue.gender === '' ? null : +searchFormValue.gender,
@@ -116,16 +107,6 @@ export class FriendsSearchFormComponent implements OnInit, OnDestroy {
       this.birthdayMinInput.nativeElement.value = $event;
       this.showCalendar = false;
     }
-  }
-
-  findInterestsByKeyword($event) {
-    this.foundInterestsSub = this.friendsSearchService
-      .findInterestsByKeyword($event.target.value).subscribe((res: any[]) => {
-        this.foundInterests = [];
-        res.map(value => {
-          this.foundInterests.push(new UserInterestModel(value.id, value.title));
-        });
-      });
   }
 
   setShowCalendar() {

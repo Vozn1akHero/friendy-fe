@@ -1,0 +1,55 @@
+.fr-input-results-popover{
+    width: 100%;
+    min-height: 1.5rem;
+    max-height: 6rem;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 1000;
+
+    &__item{
+      text-align: center;
+      list-style: none;
+      font-size: .8rem;
+      height: 1.5rem;
+      vertical-align: middle;
+      line-height: 1.5rem;
+      &:hover{
+        background: $color-bg-grey-footer;
+        cursor: pointer;
+      }
+    }
+
+    &:hover{
+      &::-webkit-scrollbar-thumb {
+        background: #C0CCDD;
+        border-radius: 1rem;
+        border: 5px solid transparent;
+        background-clip: content-box;
+      }
+
+      &::-webkit-scrollbar-track {
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        background: rgba(black, .02);
+        background-clip: content-box;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      opacity: 0;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: white;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(black, .02);
+      border-radius: 1rem;
+      transition: .5s;
+      border: 5px solid transparent;
+      background-clip: content-box;
+    }
+}

@@ -1,0 +1,16 @@
+.photo-view{
+  position: relative;
+  margin: 4rem 0;
+
+  .image-wrap{
+    margin: 0 auto;
+    width: fit-content;
+  }
+
+  img{
+    border-radius: 2rem;
+    max-width: 42rem;
+    max-height: 40rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+}

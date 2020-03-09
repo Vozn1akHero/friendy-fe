@@ -28,12 +28,12 @@
           <span class="text">{{ eventData.currentParticipantsAmount }} z {{ eventData.participantsAmount }} uczestników</span>
       </div>
 
-      <ng-container *ngIf="showControls">
+
         <hr>
 
         <div class="controls">
-          <ng-container *ngIf="chosenType === 'participating'
-          || chosenType === 'administered'; else nonparticipatingEventControls">
+          <ng-container *ngIf="eventData.isUserParticipant; else
+          nonparticipatingEventControls">
             <button class="btn leave-event-btn">
               <span class="text fr-hover-text-decoration"
                     (click)="leave()">wypisz
@@ -51,6 +51,6 @@
             </button>
           </ng-template>
         </div>
-      </ng-container>
+
     </div>
   </div>

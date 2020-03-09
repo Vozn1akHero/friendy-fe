@@ -1,8 +1,24 @@
 <div class="search-event-list">
-  <ng-container *ngIf="loaded">
-    <span class="fr-default-smaller-font">{{foundEventsLengthText}}</span>
+  <app-search-events (activateSearchEmitter)="getFoundEvents()"></app-search-events>
+  <ng-container *ngIf="loaded; else initialState">
+    <!--<span *ngIf="searchActive"
+          class="found-events-amount-text fr-default-smaller-font">{{foundEventsLengthText}}</span>-->
+    <ng-container *ngIf="foundEvents.length > 0; else noEventsFound">
       <app-user-event-item *ngFor="let eventData of foundEvents"
-                           [eventData]="eventData"
-                           [showControls]="false"></app-user-event-item>
+                           [eventData]="eventData"></app-user-event-item>
+    </ng-container>
+    <ng-template #noEventsFound>
+      <div class="empty-list-wrap">
+        <span>
+          Nie znaleziono wydarzeń
+        </span>
+      </div>
+    </ng-template>
   </ng-container>
+  <ng-template #initialState>
+    <div class="initial-state">
+      <span class="search-icon"></span>
+      <span class="bottom-text">Wpisz słowo kluczowe aby szukać wydarzeń</span>
+    </div>
+  </ng-template>
 </div>

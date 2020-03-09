@@ -9,7 +9,7 @@ export class ExemplaryPhotosService {
   }
 
   getExemplary(userId: number){
-    return this.http.get(`api/user-photo/range?startIndex=0&length=3&userId=${userId}`,
+    return this.http.get(`api/user-photo/${userId}/page/1?length=3`,
       {observe: 'response'})
   }
 }

@@ -1,0 +1,17 @@
+<div class="city-input">
+  <input type="text"
+         placeholder="Miasto"
+         (focusout)="rewriteValue()"
+         [value]="value ? value.title : ''"
+         [ngStyle]="styles"
+         class="fr-input"
+          #inputElement>
+  <ul *ngIf="resultsVisible && foundCities.length>0"
+      class="fr-popover fr-input-results-popover">
+    <li class="fr-input-results-popover__item"
+        (click)="onClick(city)"
+        *ngFor="let city of foundCities">
+      {{ city.title }}
+    </li>
+  </ul>
+</div>

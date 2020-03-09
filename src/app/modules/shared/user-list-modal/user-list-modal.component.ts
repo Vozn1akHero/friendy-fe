@@ -6,6 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./user-list-modal.component.scss']
 })
 export class UserListModalComponent implements OnInit {
+  @Input() title: string;
   @Input() typeIndex: number;
   @Input() data: {
     id: number,

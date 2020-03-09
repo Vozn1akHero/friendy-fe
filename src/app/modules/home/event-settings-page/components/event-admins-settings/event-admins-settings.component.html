@@ -1,5 +1,25 @@
+<app-participants-modal *ngIf="modalVisible"
+                        [eventId]="eventId"
+                        (addNewAdminEmitter)="add($event)"
+                        (hideModal)="toggleParticipantsModal()"></app-participants-modal>
+
 <div class="event-admins-settings">
+  <div class="btn-list-wrap">
+    <ul class="btn-list">
+      <li>
+        <button (click)="toggleParticipantsModal()"
+                class="btn-list__btn">
+          Dodaj
+        </button>
+      </li>
+    </ul>
+  </div>
+
   <app-participants-common-list (searchEmitter)="searchAdmins($event)">
+    <!--<button class="add-admin-btn fr-btn-main-blue"
+            (click)="toggleParticipantsModal()">
+      Dodaj administratora
+    </button>-->
     <ng-container *ngIf="(eventAdminsLoaded$ | async); else loader">
       <app-participant *ngFor="let eventAdmin of (eventAdmins$ | async)"
                        [id]="eventAdmin.id"
@@ -7,7 +27,7 @@
                        [name]="eventAdmin.name"
                        [surname]="eventAdmin.surname">
         <ng-container *ngIf="!eventAdmin.isEventCreator">
-          <app-participant-list-button (action)="remove($event)"
+          <app-participant-list-button (action)="removeById($event)"
                                        [userId]="eventAdmin.id">
             Usuń
           </app-participant-list-button>

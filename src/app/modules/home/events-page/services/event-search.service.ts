@@ -19,22 +19,19 @@ export class EventSearchService {
 
   constructor(private http: HttpClient){}
 
-  filterByKeyword(keyword: string){
-    return this.http.get(`api/event-search/${keyword}`,
+  filterByKeyword(keyword: string, page: number, size: number){
+    return this.http.get(`api/event-search/${keyword}?page=${page}&size=${size}`,
       {observe: 'response'}).pipe(map((res:HttpResponse<any[]>) => {
       this.setEventsByResponse(res.body);
     }))
   }
 
   filterByCriteria(eventSearchCriteria: EventSearchCriteriaModel){
-    return this.http.get(`api/event-search/with-criteria?title=${eventSearchCriteria.title}`, {observe: 'response'})
+    return this.http.get(`api/event-search/with-criteria?title=${eventSearchCriteria.title}`,
+      {observe: 'response'})
       .pipe(map((res : HttpResponse<any[]>) => {
         this.setEventsByResponse(res.body);
     }))
-/*    return this.http.get(`http://localhost:9200/events/event/_search?q=title:${eventSearchCriteria.title}`, {observe: 'response'})
-      .pipe(map((res : HttpResponse<any[]>) => {
-      console.log(res.body);
-    }))*/
   }
 
   private setEventsByResponse(response){
@@ -46,6 +43,7 @@ export class EventSearchService {
         event.streetNumber,
         event.city,
         event.avatarPath,
+        event.issuerIsParticipant,
         event.participantsAmount,
         event.currentParticipantsAmount,
         event.date))

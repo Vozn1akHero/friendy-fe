@@ -11,6 +11,7 @@ import {eventPageReducerMap} from '../../../modules/home/event-page/store/reduce
 import {eventSettingsPageReducerMap} from '../../../modules/home/event-settings-page/store/reducers'
 import {profilePageReducerMap} from '../../../modules/home/profile-page/store/reducers'
 import {friendsSearchPageReducerMap} from '../../../modules/home/friends-page/store/reducers'
+import {dialogPageReducerMap} from '../../../modules/home/dialog-page/store/reducers';
 
 export interface AppState {
   //friends page
@@ -20,8 +21,8 @@ export interface AppState {
   messagesPageExemplaryMessages: fromMessagesPageExemplaryMessages.State;
   
   //dialog
-  dialogPageDialog: fromDialogPageDialogMessages.State;
-  dialogPageDialogList: fromDialogPageDialogList.State;
+ /* dialogPageDialog: fromDialogPageDialogMessages.State;
+  dialogPageDialogList: fromDialogPageDialogList.State;*/
 
   //events page
   eventsPageUserEvents: fromEventsPageUserEvents.State;
@@ -45,16 +46,16 @@ export const appReducer: ActionReducerMap<AppState> = {
   messagesPageExemplaryMessages: fromMessagesPageExemplaryMessages.exemplaryMessagesReducer,
   
   //dialog page
-  dialogPageDialog: fromDialogPageDialogMessages.dialogMessagesReducer,
-  dialogPageDialogList: fromDialogPageDialogList.dialogListReducer,
+  /*dialogPageDialog: fromDialogPageDialogMessages.dialogMessagesReducer,
+  dialogPageDialogList: fromDialogPageDialogList.dialogListReducer,*/
 
   //events page
   eventsPageUserEvents: fromEventsPageUserEvents.userEventsReducer,
   eventsPageAdministeredEvents: fromEventsPageAdministeredEvents.administeredEventsReducer,
 
-  //event page
   ...eventPageReducerMap,
   ...commentPanelReducerMap,
   ...eventSettingsPageReducerMap,
-  ...friendsSearchPageReducerMap
+  ...friendsSearchPageReducerMap,
+  ...dialogPageReducerMap
 };

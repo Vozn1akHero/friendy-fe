@@ -6,8 +6,8 @@
 <section (scrolled)="updateList()"
          [infiniteScrollDistance]="2"
          [infiniteScrollThrottle]="50"
-         class="profile-page"
-         infiniteScroll>
+         infiniteScroll
+         class="profile-page">
 
   <app-profile-header [activeSettings]="activeSettings"
                       [isUserProfileOwner]="isUserProfileOwner"

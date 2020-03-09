@@ -1,4 +1,6 @@
 .event-admins-settings{
+  position: relative;
+
   /*.event-admins{
     &__list{
       margin-top: 2rem;
@@ -8,4 +10,37 @@
       grid-row-gap: 2vw;
     }
   }*/
+
+  .btn-list-wrap{
+    position: absolute;
+    top: -1rem;
+    right: 5rem;
+  }
+
+  .btn-list{
+    box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+    height: 4rem;
+    background: white;
+    width: 15rem;
+    list-style: none;
+
+    li{
+      margin: 0 auto;
+    }
+
+    &__btn{
+      background: none;
+      outline: none;
+      border: none;
+      height: 4rem;
+      font-size: .8rem;
+      width: 100%;
+    }
+  }
+
+  .add-admin-btn{
+    position: absolute;
+    right: 80px;
+    top: -80px;
+  }
 }

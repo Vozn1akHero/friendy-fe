@@ -3,16 +3,10 @@
 .participant{
   display: flex;
   min-width: 26rem;
-  background: white;
   padding: 1rem;
-  border-radius: 3rem;
+  border-radius: 1rem;
   position: relative;
   justify-content: space-between;
-
-  .md-wrap{
-    width: 75%;
-    display: flex;
-  }
 
   .avatar-wrapper{
     width: 6rem;
@@ -25,21 +19,33 @@
   }
 
   .basic-data-link{
-    margin-left: 1rem;
     font-size: .85rem;
-    margin-top: 1rem;
     color: $color-blue;
     text-decoration: none;
     word-wrap: break-word;
     word-break: break-word;
   }
 
+  .left-wrap{
+    width: 70%;
+    position: relative;
+  }
+
+  .cw-line{
+    margin-top: 1.5rem;
+    height: 1px;
+    border: none;
+    background-color: #b5b5b5;
+    width: 100%;
+    opacity: .2;
+  }
+
   .controls-wrapper{
-    width: 25%;
-    transform: translateY(10px);
+    margin-top: 1rem;
+    display: flex;
 
     ::ng-deep button{
-      margin-bottom: .5rem;
+      margin-right: .5rem;
     }
   }
 }

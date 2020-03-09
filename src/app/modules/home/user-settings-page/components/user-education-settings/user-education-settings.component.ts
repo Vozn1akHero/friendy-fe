@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserDataService} from '../../services/user-data.service';
 import SubscriptionManager from '../../../../../shared/helpers/SubscriptionManager';
 import EducationModel from '../../models/education.model';
+import {InfoModalService} from '../../../../../shared/components/info-modal/info-modal.service';
 
 @Component({
   selector: 'app-user-education-settings',
@@ -21,11 +22,12 @@ export class UserEducationSettingsComponent implements OnInit, OnDestroy {
   updateEducationData(){
     const newEducation = new EducationModel(this.userEducationForm.value.education);
     this.subscriptionManager.add(this.userDataService.updateEducationData(newEducation).subscribe(value => {
-
+      this.infoModalService.openWithMessage("Dane zostały zmienione")
     }))
   }
 
   constructor(private subscriptionManager: SubscriptionManager,
+              private infoModalService: InfoModalService,
               private userDataService : UserDataService) { }
 
   ngOnInit() {

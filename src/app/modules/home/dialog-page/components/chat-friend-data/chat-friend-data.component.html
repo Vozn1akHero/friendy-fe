@@ -1,17 +1,17 @@
 <div class="chat-data">
   <div class="user-data">
       <a class="avatar-link" [routerLink]="['/app/profile',
-      interlocutorData.friendId]">
+      interlocutorData.id]">
         <figure class="avatar-figure">
-          <img alt="" src="{{ interlocutorData.avatarUrl }}">
+          <img alt="" src="{{ interlocutorData.avatar }}">
         </figure>
       </a>
       <div class="md-wrapper">
         <a class="md-link fr-hover-text-decoration" [routerLink]="['/app/profile',
-        interlocutorData.friendId]">
+        interlocutorData.id]">
           {{ interlocutorData.name }} {{ interlocutorData.surname }}
         </a>
-        <ng-container *ngIf="interlocutorData.isOnline; else offline">
+        <ng-container *ngIf="isOnline; else offline">
           <p class="cur-status">dostępny</p>
         </ng-container>
         <ng-template #offline>

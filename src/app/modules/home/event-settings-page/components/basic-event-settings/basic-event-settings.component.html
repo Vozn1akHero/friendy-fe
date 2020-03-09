@@ -53,21 +53,20 @@
 
           <app-row-in-settings-panel [label]="'Miasto'">
             <app-row-content-in-settings-panel>
-              <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('city').touched
-                     && eventBasicSettingsForm.get('city').invalid"
-                                        [initValue]="(eventData$|async).city"
-                                        formControlName="city"></app-settings-panel-input>
+              <app-city-input [styles]="{ background: '#fafafa'}"
+                              [value]="(eventData$|async).city"
+                              (onCitySelectEmitter)="onCitySelect($event)"></app-city-input>
             </app-row-content-in-settings-panel>
           </app-row-in-settings-panel>
 
           <app-row-in-settings-panel [label]="'Adres'">
             <app-row-content-in-settings-panel>
-              <app-settings-panel-input [additionalStyles]="{width: '21vw'}"
+              <app-settings-panel-input [additionalStyles]="{width: '18rem'}"
                                         [invalid]="eventBasicSettingsForm.get('street').touched
                      && eventBasicSettingsForm.get('street').invalid"
                                         [initValue]="(eventData$|async).street"
                                         formControlName="street"></app-settings-panel-input>
-              <app-settings-panel-input [additionalStyles]="{width: '7vw'}"
+              <app-settings-panel-input [additionalStyles]="{width: '6rem'}"
                                         [initValue]="(eventData$|async).streetNumber"
                                         [invalid]="eventBasicSettingsForm.get('streetNumber').touched
                      && eventBasicSettingsForm.get('streetNumber').invalid"
@@ -83,7 +82,7 @@
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('date').touched
                      && eventBasicSettingsForm.get('date').invalid"
                                         (focusin)="toggleCalendar()"
-                                        [additionalStyles]="{width: '18vw'}"
+                                        [additionalStyles]="{width: '12rem'}"
                                         [value$]="currentEventDate"
                                         formControlName="date"></app-settings-panel-input>
 
@@ -92,13 +91,13 @@
                      && eventBasicSettingsForm.get('hour').invalid"
                                            [options]="[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,00]"
                                            [placeholder]="'Godzina'"
-                                           [additionalStyles]="{width: '8vw'}"
+                                           [additionalStyles]="{width: '6rem'}"
                                            formControlName="hour"></app-settings-panel-dropdown>
 
               <app-settings-panel-input [invalid]="eventBasicSettingsForm.get('minute').touched
                      && eventBasicSettingsForm.get('minute').invalid"
                                         [initValue]="(eventData$|async).minute"
-                                        [additionalStyles]="{width: '8vw'}"
+                                        [additionalStyles]="{width: '6rem'}"
                                         formControlName="minute"></app-settings-panel-input>
             </app-row-content-in-settings-panel>
           </app-row-in-settings-panel>

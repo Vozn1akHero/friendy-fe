@@ -1,0 +1,15 @@
+<div class="dialog-nav color-dark-grey">
+  <div class="header-wrap">
+    <h3>Wiadomości</h3>
+  </div>
+  <div class="inp-comp-wrap">
+    <app-dialog-search-input
+      (showContactsEmitter)="toggleContacts()"
+      (hideContactsEmitter)="toggleContacts()"></app-dialog-search-input>
+  </div>
+  <ng-container [ngSwitch]="contactsShown">
+    <app-chats-in-dialog-panel
+      *ngSwitchCase="false"></app-chats-in-dialog-panel>
+    <app-contacts *ngSwitchCase="true"></app-contacts>
+  </ng-container>
+</div>

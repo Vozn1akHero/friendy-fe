@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {EventSearchService} from '../../../services/event-search.service';
-import {Observable, Subscription} from 'rxjs';
+import {ReplaySubject, Subscription} from 'rxjs';
 import Event from '../../../models/event.model';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-event-list',
@@ -10,26 +11,35 @@ import Event from '../../../models/event.model';
 })
 export class SearchEventListComponent implements OnInit, OnDestroy {
   foundEvents: Event[];
-  foundEventsSub: Subscription;
+  destroyed$ : ReplaySubject<boolean> = new ReplaySubject(1);
+  searchActive: boolean = false;
   loaded: boolean = false;
   foundEventsLengthText: string;
 
   constructor(private eventSearchService : EventSearchService) { }
 
   ngOnInit() {
-    this.getFoundEvents();
+    this.getInitialEventList();
+  }
+
+  getInitialEventList(){
+
   }
 
   getFoundEvents(){
-    this.foundEventsSub = this.eventSearchService.foundEvents$.subscribe(value => {
+    this.eventSearchService.foundEvents$
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(value => {
       this.foundEvents = value;
       this.foundEventsLengthText = `Znaleziono ${value.length} 
       ${[2,3,4].indexOf(value.length) === -1 ? 'wydarzeń' : 'wydarzenia'}`;
       this.loaded = true;
+      this.searchActive = true;
     })
   }
 
   ngOnDestroy(): void {
-    this.foundEventsSub.unsubscribe();
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 }

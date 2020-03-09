@@ -1,144 +1,153 @@
 @import '../../../../../../assets/sass/base/variables';
 @import '../../../../../../assets/sass/components/dropdown';
 
-.event-creation-form {
+
+.event-creation-wrap {
+  width: 35rem;
+  margin: 10% auto 0;
   background-color: $color-bg-light-grey;
   box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.16);
-  padding: 3rem 4rem;
-  position: relative;
-  text-align: center;
   transition: all .3s;
-  border-radius: 2rem;
 
-  select {
-    height: 44px;
-  }
-
-  /*.close-btn {
-    position: absolute;
-    border: none;
-    width: 2.3rem;
-    height: 2.3rem;
-    border-radius: 50%;
-    background: $color-pink;
-    right: -0.5rem;
-    top: -0.5rem;
-
-    .close-icon {
-      transform: translateY(1px);
-      width: 55%;
-      height: 55%;
-      fill: white;
-    }
-  }*/
-
-  .name, .desc, .city, .price, .subject, .participants-amount {
+  .header-wrap {
+    height: 3.755rem;
+    border-bottom: 1px solid gray;
     width: 100%;
-    display: block;
-    margin-top: .7rem;
+    position: relative;
   }
 
-  .desc {
-    padding: 1.1rem 1.05rem;
-    height: 5rem;
-    resize: none;
+  .close-btn {
+    position: absolute;
+    right: 15px;
+    top: 11px;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: none;
+    outline: none;
+    color: $color-grey-dark;
+    transition: all .3s;
+    font-size: 2rem;
+    border: none;
+
+    &:hover {
+      background: rgba($color-grey-dark, .05);
+    }
   }
 
-  .wrapper {
-    margin: 0 auto;
-  }
+  .event-creation-form {
+    position: relative;
+    text-align: center;
+    padding: 3rem 4rem;
 
-  .spec-wrapper {
-    display: flex;
-    margin-top: .7rem !important;
-    width: 417px;
-    justify-content: space-between;
-  }
-
-  .street {
-    width: 65%;
-  }
-
-  .number {
-    width: 35%;
-    margin-left: .5rem;
-  }
-
-  .date-wrapper{
-    .date-input{
-      width: 50%;
+    .name, .desc, .city, .price, .subject, .participants-amount {
+      width: 100%;
+      display: block;
+      margin-top: .7rem;
     }
 
-    .hour-span, .minute-input{
-      width: 25%;
+    .desc {
+      padding: 1.1rem 1.05rem;
+      height: 5rem;
+      resize: none;
+    }
+
+    .wrapper {
+      margin: 0 auto;
+    }
+
+    .spec-wrapper {
+      display: flex;
+      margin-top: .7rem !important;
+      width: 417px;
+      justify-content: space-between;
+    }
+
+    .street {
+      width: 65%;
+    }
+
+    .number {
+      width: 35%;
       margin-left: .5rem;
     }
+
+    .date-wrapper {
+      .date-input {
+        width: 50%;
+      }
+
+      .hour-span, .minute-input {
+        width: 25%;
+        margin-left: .5rem;
+      }
+    }
+
+    /*  .date {
+        &-year {
+          width: 33%;
+        }
+
+        &-month {
+          select {
+            width: inherit;
+          }
+        }
+
+        &-day {
+          width: 33%;
+
+          select {
+            width: inherit;
+
+            &::after {
+              right: 1.45em !important;
+            }
+          }
+        }
+
+        &-month, &-day {
+          &::after {
+            top: 40%;
+          }
+        }
+
+        &-hour {
+          width: 50%;
+
+          select {
+            width: 100%;
+
+            &::after {
+
+              top: 40%;
+            }
+          }
+        }
+
+        &-minute {
+          width: 47%;
+        }
+      }*/
   }
 
-/*  .date {
-    &-year {
-      width: 33%;
+  .create-event-btn {
+    margin-top: 2.5rem;
+    border: none;
+    height: 3rem;
+    width: 10rem;
+    border-radius: 3rem;
+    background: $color-blue;
+    font-weight: 700;
+    color: white;
+    font-size: .85rem;
+
+    &:hover {
+      cursor: pointer;
     }
 
-    &-month {
-      select {
-        width: inherit;
-      }
+    &:focus {
+      outline: none;
     }
-
-    &-day {
-      width: 33%;
-
-      select {
-        width: inherit;
-
-        &::after {
-          right: 1.45em !important;
-        }
-      }
-    }
-
-    &-month, &-day {
-      &::after {
-        top: 40%;
-      }
-    }
-
-    &-hour {
-      width: 50%;
-
-      select {
-        width: 100%;
-
-        &::after {
-
-          top: 40%;
-        }
-      }
-    }
-
-    &-minute {
-      width: 47%;
-    }
-  }*/
-}
-
-.create-event-btn {
-  margin-top: 2.5rem;
-  border: none;
-  height: 3rem;
-  width: 10rem;
-  border-radius: 3rem;
-  background: $color-blue;
-  font-weight: 700;
-  color: white;
-  font-size: .85rem;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:focus {
-    outline: none;
   }
 }

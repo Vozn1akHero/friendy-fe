@@ -43,21 +43,12 @@
       border: none;
       background: white;
       color: $color-grey-dark;
-      font-size: .87rem;
+      font-size: .84rem;
     }
 
     .chosen-subpage-btn {
       border-bottom: 1px solid $color-blue;
-      //background: $color-pink;
     }
-
-    /*.received-friend-requests-btn {
-      border-top-left-radius: 3rem;
-    }
-
-    .sent-friend-requests-btn {
-      border-top-right-radius: 3rem;
-    }*/
   }
 
   .friend-requests-list-wrapper {

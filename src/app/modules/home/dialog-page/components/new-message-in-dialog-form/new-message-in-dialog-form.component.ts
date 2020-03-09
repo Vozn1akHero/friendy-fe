@@ -4,6 +4,7 @@ import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import * as DialogActions from '../../store/dialog-messages/dialog-messages.actions';
 import {ActivatedRoute} from '@angular/router';
+import InterlocutorDataModel from '../../models/interlocutor-data.model';
 
 @Component({
   selector: 'app-new-message-in-dialog-form',
@@ -16,13 +17,13 @@ export class NewMessageInDialogFormComponent implements OnInit {
   @ViewChild('newMessageContent') newMessageContent;
   newMessage: NewMessageInChat;
   chatId: number;
-  receiverId: number;
+  //receiverId: number;
+  @Input() interlocutorData: InterlocutorDataModel;
 
   constructor(private store: Store<fromApp.AppState>, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.chatId = this.route.snapshot.data.chatData.id;
-    this.receiverId = this.route.snapshot.data.interlocutorData.friendId;
   }
 
   newMessageEvent() {
@@ -30,13 +31,13 @@ export class NewMessageInDialogFormComponent implements OnInit {
     if(this.imageFile){
       const newMessage : NewMessageInChat = new NewMessageInChat(textFieldValue, this.imageFile);
       this.store.dispatch(new DialogActions.AddNewMessage({
-        chatId: this.chatId, receiverId: this.receiverId, newMessage: newMessage
+        chatId: this.chatId, receiverId: this.interlocutorData.id, newMessage: newMessage
       }))
     } else {
       if(textFieldValue.length>0){
         const newMessage : NewMessageInChat = new NewMessageInChat(textFieldValue, null);
         this.store.dispatch(new DialogActions.AddNewMessage({
-          chatId: this.chatId, receiverId: this.receiverId, newMessage: newMessage
+          chatId: this.chatId, receiverId: this.interlocutorData.id, newMessage: newMessage
         }))
       }
     }

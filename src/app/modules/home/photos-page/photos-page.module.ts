@@ -7,9 +7,9 @@ import {AppRoutingModule} from '../../../app-routing.module';
 import {PhotosPageComponent} from './photos-page.component';
 import {PhotosComponent} from './components/photos/photos.component';
 import {PhotosItemComponent} from './components/photos/photos-item/photos-item.component';
-import {PhotosPageHeaderComponent} from './components/photos-page-header/photos-page-header.component';
-import {NewPhotoFormComponent} from './components/photos-page-header/new-photo-form/new-photo-form.component';
-import {BaseDataPanelComponent} from './components/photos-page-header/base-data-panel/base-data-panel.component';
+import {NewPhotoButtonComponent} from './components/new-photo-button/new-photo-button.component';
+import {BaseDataPanelComponent} from './components/base-data-panel/base-data-panel.component';
+import { PhotoViewComponent } from './components/photo-view/photo-view.component';
 
 @NgModule({
   imports: [
@@ -25,19 +25,16 @@ import {BaseDataPanelComponent} from './components/photos-page-header/base-data-
     PhotosPageComponent,
     PhotosComponent,
     PhotosItemComponent,
-    PhotosPageHeaderComponent,
-    NewPhotoFormComponent,
-    BaseDataPanelComponent
+    NewPhotoButtonComponent,
+    BaseDataPanelComponent,
+    PhotoViewComponent
   ],
   exports: [
     PhotosPageComponent,
     PhotosComponent,
     PhotosItemComponent,
-    PhotosPageHeaderComponent,
-    NewPhotoFormComponent,
+    NewPhotoButtonComponent,
     BaseDataPanelComponent
   ]
 })
-export default class PhotosPageModule {
-
-}
+export class PhotosPageModule {}

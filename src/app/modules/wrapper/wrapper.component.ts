@@ -5,7 +5,7 @@ import {Observable, Subscription} from 'rxjs';
 import {UserIdService} from '../../shared/services/user-id.service';
 import {UserStatusService} from './services/user-status.service';
 import SubscriptionManager from '../../shared/helpers/SubscriptionManager';
-import {InfoModalService} from '../../shared/components/info-modal/info-modal.service';
+import {FullScreenImageService} from '../../shared/services/full-screen-image.service';
 
 @Component({
   selector: 'app-wrapper',
@@ -16,16 +16,16 @@ export class WrapperComponent implements OnInit, OnDestroy {
   friendRequestsModalOpened: boolean;
   userIdLoaded$: Observable<boolean>;
   connectedToStatusHub: boolean = false;
-  infoModalOpened$: Observable<boolean>;
   receivedFriendRequestsAmount: number;
+  fullScreenImageModalVisible$: Observable<boolean>;
+  photoEditorVisible$: Observable<boolean>;
 
   constructor(private route: ActivatedRoute,
-              private successModalService : InfoModalService,
               private userStatusService : UserStatusService,
               private subscriptionManager : SubscriptionManager,
               private userIdService: UserIdService,
+              private fullScreenImageService : FullScreenImageService,
               private friendRequestsModalService : FriendRequestsModalService) {
-    this.infoModalOpened$ = this.successModalService.opened$;
     this.setFriendRequestModalValue();
   }
 
@@ -33,6 +33,7 @@ export class WrapperComponent implements OnInit, OnDestroy {
     this.setUserIdLoaded();
     this.setConnectedStatus();
     this.getSentFriendRequests();
+    this.fullScreenImageModalVisible$ = this.fullScreenImageService.visible$;
   }
 
   setConnectedStatus(){

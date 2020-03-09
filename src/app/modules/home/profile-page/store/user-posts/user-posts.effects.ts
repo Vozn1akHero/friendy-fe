@@ -5,7 +5,6 @@ import {switchMap, map, tap, withLatestFrom, filter, mergeMap} from 'rxjs/operat
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import * as UserPostsActions from './user-posts.actions';
 import {Store} from '@ngrx/store';
-import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {UserPostService} from '../../services/user-post.service';
 import Post from '../../models/post.model';
 import {AppState} from '../reducers';
@@ -46,13 +45,18 @@ export class UserPostsEffects {
   @Effect()
   profilePageGetUserPosts = this.actions$.pipe(
     ofType(UserPostsActions.GET_USER_POSTS),
-    withLatestFrom(this.store$.select(e => e.profilePageUserPosts.posts)),
-    switchMap(([action, posts] : [UserPostsActions.GetUserPosts, any[]]) => {
+    //withLatestFrom(this.store$.select(e => e.profilePageUserPosts.posts)),
+    switchMap((action : UserPostsActions.GetUserPosts) => {
       return this.userPostService.getWithPagination(action.payload.userId, action.payload.page)
         .pipe(
           map((res: HttpResponse<any[]>) => {
-            return ({ type: UserPostsActions.SET_USER_POSTS,
-              payload: this.buildPosts(res.body) })
+            const payload = this.buildPosts(res.body);
+            if(action.payload.page === 1){
+              return ({ type: UserPostsActions.SET_USER_POSTS,
+                payload })
+            }
+            else return ({ type: UserPostsActions.FULFILL_USER_POSTS,
+              payload })
           })
         )
     })

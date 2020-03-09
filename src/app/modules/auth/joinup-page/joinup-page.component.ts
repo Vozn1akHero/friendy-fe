@@ -3,6 +3,8 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {animate, group, query, style, transition, trigger} from '@angular/animations';
 import {AuthService} from '../../../core/auth/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import City from '../../../shared/models/city.model';
+import {InfoModalService} from '../../../shared/components/info-modal/info-modal.service';
 
 
 @Component({
@@ -24,7 +26,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   ]
 })
 
-export class JoinUpPageComponent implements OnInit {
+export class JoinUpPageComponent {
   emailInputAvailability = true;
   onRegistrationSuccessPopupVisibility = false;
   calendarVisible = false;
@@ -63,12 +65,12 @@ export class JoinUpPageComponent implements OnInit {
   });
 
   @Output() closePopUp = new EventEmitter();
+  chosenCity: City;
 
   constructor(private authService: AuthService,
               private router: Router,
-              private route : ActivatedRoute) {}
-
-  ngOnInit() {
+              private infoModalService : InfoModalService,
+              private route : ActivatedRoute) {
     this.checkIfLoggedIn();
   }
 
@@ -81,7 +83,7 @@ export class JoinUpPageComponent implements OnInit {
     const newUser = {
       name: this.joinUpForm.value.name,
       surname: this.joinUpForm.value.surname,
-      city: this.joinUpForm.value.city,
+      cityId: this.chosenCity.id,
       birthday: this.joinUpForm.value.birthday,
       genderId: this.joinUpForm.value.gender === "male" ? 1 : 2,
       email: this.joinUpForm.value.email,
@@ -90,7 +92,7 @@ export class JoinUpPageComponent implements OnInit {
 
     this.authService.joinUp(newUser).subscribe((res) => {
         if(res.status == 200){
-          this.onRegistrationSuccessPopupVisibility = true;
+          this.infoModalService.openWithMessage("Rejestracja się powiodła")
         }
       }, error => {
       if(error.status == 409 && error.error == "Email is already taken"){
@@ -141,5 +143,12 @@ export class JoinUpPageComponent implements OnInit {
       }
       this.joinUpForm.controls['password'].setErrors({'invalid': true});
     }
+  }
+
+  onCitySelect(city: City) {
+    this.joinUpForm.get('city').setValue(city.title);
+    //this.joinUpForm.setValue({city: city.title});
+    this.joinUpForm.get('city').setErrors({invalid: false});
+    this.chosenCity = city;
   }
 }

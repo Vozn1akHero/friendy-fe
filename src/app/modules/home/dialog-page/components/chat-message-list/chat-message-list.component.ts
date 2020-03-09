@@ -1,35 +1,45 @@
-import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit, QueryList,
+  ViewChild, ViewChildren
+} from '@angular/core';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
 import {Observable, Subscription} from 'rxjs';
 import MessageInChatModel from '../../models/message-in-chat.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import * as DialogActions from '../../store/dialog-messages/dialog-messages.actions';
-import {UserIdService} from '../../../../../shared/services/user-id.service';
 import {ScrollableListNotifierService} from "../../../../../shared/services/scrollable-list-notifier.service";
+import {AppState} from '../../store/reducers';
 
 @Component({
   selector: 'app-chat-message-list',
   templateUrl: './chat-message-list.component.html',
   styleUrls: ['./chat-message-list.component.scss']
 })
-export class MessagesComponent implements OnInit, OnDestroy {
+export class MessagesComponent implements OnInit, OnDestroy, AfterViewInit{
   messagesLoaded$ : Observable<boolean>;
   messagesLoading$ : Observable<boolean>;
   messages: MessageInChatModel[];
   messages$: Observable<MessageInChatModel[]>;
-  profileId: number;
   scrollSubscription: Subscription;
+  @Input() userId: number;
+  @ViewChild('messagesEnd') messagesEnd;
+  @ViewChild('messageList') messageList;
+  //@ViewChild('listWrap') listWrap;
+  @ViewChildren('messageItemComponent') messageItemComponents: QueryList<any>;
 
-  constructor(private store: Store<fromApp.AppState>,
+  constructor(private store: Store<AppState>,
               private scrollableListNotifierService : ScrollableListNotifierService,
-              private profileIdService: UserIdService,
+              private router: Router,
               private route : ActivatedRoute) { }
 
   ngOnInit() {
     this.getDialog();
     this.setMessageList();
-    this.setProfileId();
     this.setListScrollListener();
   }
 
@@ -40,14 +50,10 @@ export class MessagesComponent implements OnInit, OnDestroy {
   }
 
   setMessageList(){
-    this.messagesLoaded$ = this.store.select(e => e.dialogPageDialog.loaded);
-    this.messagesLoading$ = this.store.select(e => e.dialogPageDialog.loading);
+    this.messagesLoaded$ = this.store.select(e => e.fromDialogPageDialogMessages.loaded);
+    this.messagesLoading$ = this.store.select(e => e.fromDialogPageDialogMessages.loading);
     this.messages$ = this.store
-      .select(e => e.dialogPageDialog.messagesInDialog);
-  }
-
-  setProfileId(){
-    this.profileId = this.profileIdService.userIdValue;
+      .select(e => e.fromDialogPageDialogMessages.messagesInDialog);
   }
 
   updateMessages(){
@@ -68,5 +74,15 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.scrollSubscription.unsubscribe();
+  }
+
+  ngAfterViewInit(): void {
+    this.messageItemComponents.changes.subscribe(this.scrollToBottom);
+  }
+
+  scrollToBottom(){
+    try {
+      this.messageList.nativeElement.scrollTop = this.messageList.nativeElement.scrollHeight;
+    } catch(err) { }
   }
 }

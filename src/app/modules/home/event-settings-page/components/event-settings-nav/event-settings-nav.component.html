@@ -1,19 +1,33 @@
 <nav class="event-settings-nav">
-  <button class="link-btn" (click)="navigateToBasicSettings()">
-    Podstawowe
-  </button>
-  <button class="link-btn" (click)="navigateToParticipantsSettings()">
-    Użytkownicy
-  </button>
-  <button class="link-btn" (click)="navigateToRequests()">
-    Prośby o dodanie
-  </button>
-  <button class="link-btn" (click)="navigateToBannedParticipantsSettings()">
-    Zablokowani uczestnicy
-  </button>
-  <ng-container *ngIf="isEventCreator">
-    <button class="link-btn" (click)="navigateToAdminsSettings()">
-      Zarządzający
-    </button>
-  </ng-container>
+  <ul class="list">
+    <li>
+      <button class="link-btn" (click)="navigateToBasicSettings()">
+        Podstawowe
+      </button>
+    </li>
+    <li>
+      <button class="link-btn" (click)="navigateToParticipantsSettings()">
+        Użytkownicy
+      </button>
+    </li>
+    <li>
+      <button class="link-btn" (click)="navigateToRequests()">
+        Prośby o dodanie
+      </button>
+    </li>
+    <li>
+      <button class="link-btn" (click)="navigateToBannedParticipantsSettings()">
+        Zablokowani uczestnicy
+      </button>
+    </li>
+    <ng-container *ngIf="isEventCreator">
+      <li class="admins-link">
+        <button class="link-btn" (click)="navigateToAdminsSettings()">
+          Zarządzający
+        </button>
+
+      </li>
+    </ng-container>
+    <hr [ngStyle]="{marginTop: lineMarginTop+'rem'}"/>
+  </ul>
 </nav>

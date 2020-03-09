@@ -1,7 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import EventAdminModel from '../../models/event-admin.model';
 import {EventAdminsService} from '../../services/event-admins.service';
+import EventParticipantDetailedModel from '../../models/event-participant-detailed.model';
+import {ScrollableListNotifierService} from '../../../../../shared/services/scrollable-list-notifier.service';
 
 @Component({
   selector: 'app-event-admins-settings',
@@ -12,32 +14,56 @@ export class EventAdminsSettingsComponent implements OnInit {
   eventAdmins$: Observable<EventAdminModel[]>;
   eventAdminsLoaded$: Observable<boolean>;
   @Input() eventId : number;
+  modalVisible: boolean;
+  searchKeyword: string = "";
+  scrollableSub: Subscription;
 
-  constructor(private eventAdminsComponent: EventAdminsService) { }
+  constructor(private eventAdminsService: EventAdminsService,
+              private scrollableListNotifierService: ScrollableListNotifierService) { }
 
   ngOnInit() {
-    this.setEventAdminsLoaded();
     this.getEventAdmins();
-    this.setEventAdmins();
+    this.setScrollListener();
   }
 
   getEventAdmins(){
-    this.eventAdminsComponent.get(this.eventId);
+    this.eventAdminsService.getRange(this.eventId, 1, 20);
+    this.eventAdmins$ = this.eventAdminsService.eventAdmins$;
+    this.eventAdminsLoaded$ = this.eventAdminsService.eventAdminsLoaded$;
   }
 
-  setEventAdmins(){
-    this.eventAdmins$ = this.eventAdminsComponent.eventAdmins$;
-  }
-
-  setEventAdminsLoaded(){
-    this.eventAdminsLoaded$ = this.eventAdminsComponent.eventAdminsLoaded$;
+  setScrollListener(){
+    this.scrollableSub = this.scrollableListNotifierService.endReached$.subscribe(value => {
+      if(value){
+        const page = this.scrollableListNotifierService.currentPage;
+        if(this.searchKeyword.length > 0){
+          this.eventAdminsService.filterByKeyword(this.eventId, this.searchKeyword, page, 20);
+        } else {
+          this.eventAdminsService.getRange(this.eventId, page, 20);
+        }
+        this.scrollableListNotifierService.setDefaultValue();
+      }
+    })
   }
 
   searchAdmins(value){
-    this.eventAdminsComponent.filterByKeyword(value);
+    this.searchKeyword = value;
+    if(this.searchKeyword.length>0){
+      this.eventAdminsService.filterByKeyword(this.eventId, value, 1, 20);
+    } else {
+      this.eventAdminsService.getRange(this.eventId, 1, 20);
+    }
   }
 
-  remove(id: number){
+  removeById(id: number){
+    this.eventAdminsService.deleteById(this.eventId, id);
+  }
 
+  add(user: EventParticipantDetailedModel){
+    this.eventAdminsService.create(this.eventId, user);
+  }
+
+  toggleParticipantsModal() {
+    this.modalVisible = !this.modalVisible;
   }
 }

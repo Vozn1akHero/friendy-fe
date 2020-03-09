@@ -1,14 +1,14 @@
-<div class="user" [ngStyle]="styles">
+<div [ngStyle]="styles" class="user">
   <ng-container *ngIf="friendshipStatusIndex === 0">
-    <button (mouseover)="showMenu()"
-            (mouseleave)="hideMenu()"
+    <button (mouseleave)="hideMenu()"
+            (mouseover)="showMenu()"
             class="show-menu-btn">
       &#8250;
     </button>
     <div #menu
          class="menu">
-      <button class="remove-btn fr-hover-text-decoration"
-              (click)="removeFriend()">
+      <button (click)="removeFriend()"
+              class="remove-btn fr-hover-text-decoration">
         Usuń ze znajomych
       </button>
       <hr class="line">
@@ -18,7 +18,7 @@
   <div class="avatar">
     <a [routerLink]="['/app/profile', id]">
       <figure>
-        <img src="{{ avatar }}" alt="friend's avatar">
+        <img alt="friend's avatar" src="{{ avatar }}">
         <ng-container *ngIf="isUserOnline">
           <div class="is-online">
             <span class="circle">
@@ -37,20 +37,19 @@
     </a>
 
     <div *ngIf="city != null"
-         class="row-info city-wrap">
-      <span class="icon fr-span-icon"></span>
-      <span class="text-by-icon city">
+         class="row-info city">
+      <span class="icon city__icon fr-span-icon"></span>
+      <span class="text-by-icon city__title">
         {{ city }}
       </span>
     </div>
 
     <ng-container *ngIf="friendshipStatusIndex !== 4">
-
-
+      <hr class="cw-line">
       <div class="controls-wrapper">
         <ng-container *ngIf="friendshipStatusIndex === 0; else noFriend">
-          <a class="send-msg-btn"
-             [routerLink]="['/app/dialog', id]">
+          <a [routerLink]="['/app/dialog', id]"
+             class="send-msg-btn">
             <span class="icon fr-span-icon"></span>
           </a>
         </ng-container>

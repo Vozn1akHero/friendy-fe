@@ -1,18 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import {EventAdminsService} from './services/event-admins.service';
-import {EventCreationService} from '../events-page/services/event-creation.service';
-import {EventDataService} from './services/event-data.service';
-import {EventParticipantService} from './services/event-participant.service';
-import {EventParticipationRequestService} from './services/event-participation-request.service';
+import {ScrollableListNotifierService} from '../../../shared/services/scrollable-list-notifier.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-event-settings-page',
   templateUrl: './event-settings-page.component.html',
-  styleUrls: ['./event-settings-page.component.scss']
+  styleUrls: ['./event-settings-page.component.scss'],
+  providers: [
+    ScrollableListNotifierService
+  ]
 })
 export class EventSettingsPageComponent implements OnInit {
-  constructor() { }
+  previousQueryParam: string;
+  currentQueryParam: string;
 
-  ngOnInit() {}
+  constructor(private route: ActivatedRoute,
+              private scrollableListNotifierService: ScrollableListNotifierService) { }
 
+  ngOnInit() {
+    this.route.params.subscribe(params=>{
+      this.scrollableListNotifierService.reset();
+    })
+  }
+
+  updateList() {
+    console.log(1)
+    this.scrollableListNotifierService.notify();
+  }
 }

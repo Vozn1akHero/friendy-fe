@@ -1,7 +1,8 @@
 <div class="wrapper">
-  <app-info-modal *ngIf="(infoModalOpened$ | async)"></app-info-modal>
-
   <ng-container *ngIf="(userIdLoaded$ | async) && connectedToStatusHub">
+    <app-full-screen-image
+      *ngIf="(fullScreenImageModalVisible$|async)"></app-full-screen-image>
+
     <app-friend-requests-modal *ngIf="friendRequestsModalOpened"
                                (closeModalEmitter)="closeFriendRequestsModal()">
     </app-friend-requests-modal>

@@ -9,6 +9,7 @@ import {BehaviorSubject, Observable, Subject, Subscription} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../store/reducers';
 import * as EventDataActions from '../../store/event-data/event-data.actions'
+import City from '../../../../../shared/models/city.model';
 
 @Component({
   selector: 'app-basic-event-settings',
@@ -29,7 +30,7 @@ export class BasicEventSettingsComponent implements OnInit, OnDestroy {
     participantsAmount: new FormControl('', [Validators.required])
   });
   showCalendar : boolean = false;
-  eventData: EventDataModel;
+  //eventData: EventDataModel;
   hour: number;
   minute: number;
   loaded: boolean = false;
@@ -37,10 +38,9 @@ export class BasicEventSettingsComponent implements OnInit, OnDestroy {
   @ViewChild('avatar') avatar : ElementRef;
   @ViewChild('background') background : ElementRef;
   currentEventDate: BehaviorSubject<string>;
-
+  chosenCityId: number;
   eventData$: Observable<EventDataModel>;
   loaded$: Observable<boolean>;
-  //possibleHoursOpt: number[] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,0];
 
   constructor(private subscriptionManager : SubscriptionManager,
               private store: Store<AppState>) { }
@@ -59,7 +59,10 @@ export class BasicEventSettingsComponent implements OnInit, OnDestroy {
     this.loaded$ = this.store.select(e=>e.eventSettingsPageBasicData.loaded);
     this.subscriptionManager.add(this.store.select(e=>e.eventSettingsPageBasicData.eventBasicData[this.eventId])
       .subscribe(value => {
-        if(value) this.currentEventDate = new BehaviorSubject(value.date.toString())
+        if(value) {
+          this.currentEventDate = new BehaviorSubject(value.date.toString());
+          this.chosenCityId = value.city.id;
+        }
     }))
   }
 
@@ -90,7 +93,7 @@ export class BasicEventSettingsComponent implements OnInit, OnDestroy {
       formData.description,
       formData.street,
       formData.streetNumber,
-      formData.city,
+      this.chosenCityId,
       formData.participantsAmount,
       date,
       formData.entryPrice);
@@ -111,5 +114,10 @@ export class BasicEventSettingsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptionManager.destroy();
+  }
+
+  onCitySelect(city: City) {
+    this.eventBasicSettingsForm.setValue({city: city.title})
+    this.chosenCityId = city.id;
   }
 }

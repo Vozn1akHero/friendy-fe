@@ -4,7 +4,7 @@ export default class NewEventDataModel {
   description: string;
   street: string;
   streetNumber: string;
-  city: string;
+  cityId: number;
   participantsAmount: number;
   date: Date;
 /*  hour: number;
@@ -16,7 +16,7 @@ export default class NewEventDataModel {
               description: string,
               street: string,
               streetNumber: string,
-              city: string,
+              cityId: number,
               participantsAmount: number,
               date: Date,
               /*hour: number,
@@ -27,7 +27,7 @@ export default class NewEventDataModel {
     this.description = description;
     this.street = street;
     this.streetNumber = streetNumber;
-    this.city = city;
+    this.cityId = cityId;
     this.participantsAmount = participantsAmount;
     this.date = date;
     /*this.hour = hour;

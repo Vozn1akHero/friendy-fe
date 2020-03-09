@@ -4,6 +4,7 @@ import BasicUserDataModel from '../../models/basic-user-data.model';
 import SubscriptionManager from '../../../../../shared/helpers/SubscriptionManager';
 import {UserDataService} from '../../services/user-data.service';
 import AdditionalInfoModel from '../../models/additional-info.model';
+import {InfoModalService} from '../../../../../shared/components/info-modal/info-modal.service';
 
 @Component({
   selector: 'app-user-other-settings',
@@ -26,11 +27,12 @@ export class UserOtherSettingsComponent implements OnInit {
       this.addInfForm.value.smokingAttitude,
       this.addInfForm.value.alcoholAttitude);
     this.subscriptionManager.add(this.userDataService.updateAdditionalData(addData).subscribe(value => {
-
+      this.infoModalService.openWithMessage("Dane zostały zmienione")
     }))
   }
 
   constructor(private subscriptionManager: SubscriptionManager,
+              private infoModalService: InfoModalService,
               private userDataService : UserDataService) { }
 
   ngOnInit() {

@@ -1,63 +1,67 @@
 <app-common-modal (closeEmitter)="closePopup()">
-  <form [formGroup]="eventCreationForm" class="event-creation-form">
-    <div class="wrapper">
-      <input [ngClass]="{
+  <div class="event-creation-wrap">
+    <div class="header-wrap">
+      <button (click)="closePopup()" class="close-btn">&times;</button>
+    </div>
+    <form [formGroup]="eventCreationForm" class="event-creation-form">
+      <div class="wrapper">
+        <input [ngClass]="{
                   'bordered-onError': eventCreationForm.get('title').touched && eventCreationForm.get('title').invalid
                  }"
-             class="fr-input name"
-             formControlName="title"
-             placeholder="Nazwa"
-             type="text">
-      <textarea [ngClass]="{
+               class="fr-input name"
+               formControlName="title"
+               placeholder="Nazwa"
+               type="text">
+        <textarea [ngClass]="{
                   'bordered-onError': eventCreationForm.get('description').touched && eventCreationForm.get('description').invalid
                  }"
-                class="fr-input desc"
-                formControlName="description"
-                placeholder="Opis"></textarea>
+                  class="fr-input desc"
+                  formControlName="description"
+                  placeholder="Opis"></textarea>
 
-      <input [ngClass]="{
+        <input [ngClass]="{
                   'bordered-onError': eventCreationForm.get('city').touched && eventCreationForm.get('city').invalid
                  }"
-             class="fr-input city"
-             formControlName="city"
-             placeholder="Miasto"
-             type="text">
-    </div>
+               class="fr-input city"
+               formControlName="city"
+               placeholder="Miasto"
+               type="text">
+      </div>
 
-    <div class="wrapper spec-wrapper">
-      <input [ngClass]="{
+      <div class="wrapper spec-wrapper">
+        <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('street').touched && eventCreationForm.get('street').invalid
                }"
-             class="fr-input street"
-             formControlName="street"
-             placeholder="Ulica"
-             type="text">
+               class="fr-input street"
+               formControlName="street"
+               placeholder="Ulica"
+               type="text">
 
-      <input [ngClass]="{
+        <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('streetNumber').touched && eventCreationForm.get('streetNumber').invalid
                }"
-             class="fr-input number"
-             formControlName="streetNumber"
-             placeholder="Numer"
-             type="text">
-    </div>
+               class="fr-input number"
+               formControlName="streetNumber"
+               placeholder="Numer"
+               type="text">
+      </div>
 
-    <div class="wrapper spec-wrapper date-wrapper">
-      <app-calendar (onSelectDateEvent)="setDate($event)"
-                    *ngIf="calendarVisible"></app-calendar>
-      <input
-        (click)="showCalendar()"
-        [ngClass]="{
+      <div class="wrapper spec-wrapper date-wrapper">
+        <app-calendar (onSelectDateEvent)="setDate($event)"
+                      *ngIf="calendarVisible"></app-calendar>
+        <input
+          (click)="showCalendar()"
+          [ngClass]="{
                 'bordered-onError': eventCreationForm.get('date').touched &&
                 eventCreationForm.get('date').invalid
                }"
-        [value]="eventCreationForm.get('date').value"
-        class="fr-input date-input"
-        formControlName="date"
-        placeholder="Data"
-        type="text">
+          [value]="eventCreationForm.get('date').value"
+          class="fr-input date-input"
+          formControlName="date"
+          placeholder="Data"
+          type="text">
 
-      <span class="custom-dropdown hour-span">
+        <span class="custom-dropdown hour-span">
                 <select [ngClass]="{
                 'bordered-onError': eventCreationForm.get('hour').touched && eventCreationForm.get('hour').invalid
                }"
@@ -71,38 +75,39 @@
                 </select>
             </span>
 
-      <input [ngClass]="{
+        <input [ngClass]="{
                 'bordered-onError': eventCreationForm.get('minute').touched && eventCreationForm.get('minute').invalid
                }"
-             class="fr-input minute-input"
-             formControlName="minute" placeholder="Minuta"
-             type="number">
-    </div>
+               class="fr-input minute-input"
+               formControlName="minute" placeholder="Minuta"
+               type="number">
+      </div>
 
-    <div class="wrapper">
-      <input [ngClass]="{
+      <div class="wrapper">
+        <input [ngClass]="{
                   'bordered-onError': eventCreationForm.get('entryPrice').touched && eventCreationForm.get('entryPrice').invalid
                  }"
-             class="fr-input price"
-             formControlName="entryPrice"
-             min="0"
-             placeholder="Cena wejścia"
-             type="number">
-      <!--        <input type="number" formControlName="eventSubject" class="subject" placeholder="Tematyka">-->
-      <input [ngClass]="{
+               class="fr-input price"
+               formControlName="entryPrice"
+               min="0"
+               placeholder="Cena wejścia"
+               type="number">
+        <!--        <input type="number" formControlName="eventSubject" class="subject" placeholder="Tematyka">-->
+        <input [ngClass]="{
                   'bordered-onError': eventCreationForm.get('participantsAmount').touched && eventCreationForm.get('participantsAmount').invalid
                  }"
-             class="fr-input participants-amount"
-             formControlName="participantsAmount"
-             min="0"
-             placeholder="Maksymalna ilość uczestników"
-             type="number">
-    </div>
+               class="fr-input participants-amount"
+               formControlName="participantsAmount"
+               min="0"
+               placeholder="Maksymalna ilość uczestników"
+               type="number">
+      </div>
 
-    <button (click)="onSubmit()"
-            [disabled]="eventCreationForm.invalid"
-            class="create-event-btn">
-      Utwórz
-    </button>
-  </form>
+      <button (click)="onSubmit()"
+              [disabled]="eventCreationForm.invalid"
+              class="create-event-btn">
+        Utwórz
+      </button>
+    </form>
+  </div>
 </app-common-modal>

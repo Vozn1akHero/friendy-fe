@@ -1,8 +1,7 @@
+<!--<registration-success-pop-up
+  *ngIf="true"
+  (closeEventCreationPopup)="onRegistrationSuccessPopupVisibility = false;"></registration-success-pop-up>-->
 <div @anim class="joinup-page">
-  <registration-success-pop-up
-    *ngIf="onRegistrationSuccessPopupVisibility"
-    (closeEventCreationPopup)="onRegistrationSuccessPopupVisibility = false;"></registration-success-pop-up>
-
   <a routerLink="/" class="logo">
     <img src="../../../../assets/images/logo-white.png" alt="Friendy logo" draggable="none">
   </a>
@@ -28,14 +27,12 @@
                 'bordered-onError': joinUpForm.get('surname').touched && joinUpForm.get('surname').invalid
                }">
         <div>
-          <input class="city fr-input"
-                 formControlName="city"
-                 name="city"
-                 placeholder="Miasto"
-                 type="text"
-                 [ngClass]="{
-                'bordered-onError': joinUpForm.get('city').touched && joinUpForm.get('city').invalid
-               }">
+          <app-city-input
+            [styles]="{background: 'white',
+             width: '100%',
+             marginTop: '.7rem'}"
+            [value]="chosenCity"
+            (onCitySelectEmitter)="onCitySelect($event)"></app-city-input>
         </div>
       </div>
       <div class="birthday">

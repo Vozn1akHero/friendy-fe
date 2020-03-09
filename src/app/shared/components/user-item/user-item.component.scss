@@ -3,12 +3,13 @@
 
 .user {
   display: flex;
-  background: #fff;
-  align-items: center;
+  background: white;
+  border-radius: 1rem;
   text-align: center;
   width: 26vw;
-  padding: 1rem 1.5rem;
+  padding: 0 2vw;
   position: relative;
+  margin-bottom: 1.5rem;
 
   .menu{
     display: none;
@@ -47,13 +48,16 @@
     font-size: 1.5rem;
     position: absolute;
     top: .5rem;
-    right: 1rem;
+    right: 17px;
     transition: .2s;
 
     &:hover{ color: $color-grey-dark; }
   }
 
   .avatar {
+    padding: 1rem 0;
+    width: 35%;
+
     a {
       figure {
         display: flex;
@@ -90,10 +94,12 @@
   }
 
   .info {
-    margin-left: .5rem;
+    padding: 1.5rem;
+    width: 65%;
+    margin-left: 1.5rem;
     display: flex;
     flex-direction: column;
-    width: 13rem;
+    align-items: flex-start;
 
     .row-info{
       display: flex;
@@ -110,9 +116,14 @@
       }
     }
 
-    .city-wrap{
-      .icon{
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23b5b5b5' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M8 0c-2.761 0-5 2.239-5 5 0 5 5 11 5 11s5-6 5-11c0-2.761-2.239-5-5-5zM8 8c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z'%3E%3C/path%3E%3C/svg%3E");
+    .city{
+      &__icon{
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M8 0c-2.761 0-5 2.239-5 5 0 5 5 11 5 11s5-6 5-11c0-2.761-2.239-5-5-5zM8 8c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z'%3E%3C/path%3E%3C/svg%3E");
+      }
+
+      &__title{
+        margin: .5rem 0;
+        font-size: .8rem;
       }
     }
 
@@ -132,12 +143,6 @@
       }
     }
 
-    .city{
-      margin: .5rem 0;
-      font-size: .8rem;
-      color: $color-grey-light;
-    }
-
     .online-status {
       display: flex;
       align-items: center;
@@ -154,6 +159,15 @@
         font-size: 0.75rem;
         color: $color-grey-light-2;
       }
+    }
+
+    .cw-line{
+      margin-top: 1.5rem;
+      height: 1px;
+      border: none;
+      background-color: $color-grey-light-2;
+      width: 100%;
+      opacity: .2;
     }
 
     .controls-wrapper{

@@ -3,6 +3,15 @@
      [infiniteScrollDistance]="2"
      [infiniteScrollThrottle]="50"
      (scrolled)="updateList()">
-  <app-photos-page-header [id]="id"></app-photos-page-header>
-  <app-photos-list [id]="id" [chosenSubpage]="chosenSubpage"></app-photos-list>
+  <div class="header
+  fr-border-bottom">
+    <app-base-data-panel [id]="id"></app-base-data-panel>
+    <app-new-photo-form [id]="id"
+                        *ngIf="editable"
+                        [chosenSubpage]="chosenSubpage"></app-new-photo-form>
+  </div>
+  <app-photo-view *ngIf="(photoViewVisible$|async)"></app-photo-view>
+  <app-photos-list [id]="id"
+                   [editable]="editable"
+                   [chosenSubpage]="chosenSubpage"></app-photos-list>
 </div>

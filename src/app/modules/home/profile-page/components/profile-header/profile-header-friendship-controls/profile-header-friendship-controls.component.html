@@ -1,31 +1,38 @@
 <div class="profile-header-friendship-controls">
   <ng-container *ngIf="(loaded$|async); else loader">
-    <ng-container *ngIf="(friendshipStatus$|async) === 0; else noFriend">
-      <a class="send-msg-btn"
+      <a *ngIf="(friendshipStatus$|async) === 0;"
+         class="send-msg-btn"
          [routerLink]="['/app/dialog', this.userId]">
         <span class="icon fr-span-icon"></span>
       </a>
-    </ng-container>
 
-    <ng-template #noFriend>
       <button (click)="onSendFriendRequestBtnClick()"
               (mouseleave)="removeSendRequestPopover()"
               (mouseover)="showSendRequestPopover()"
-              *ngIf="(friendshipStatus$|async) === 1; else removeRequestPopoverWrap"
+              *ngIf="(friendshipStatus$|async) === 1;"
               class="add-new-friend-btn">
         <span class="icon fr-span-icon"></span>
         <ng-template #sendRequestPopoverRef></ng-template>
       </button>
-      <ng-template #removeRequestPopoverWrap>
-        <button (click)="onRemoveFriendRequestBtnClick()"
-                (mouseleave)="removeRequestPopover()"
-                (mouseover)="showRequestPopover()"
-                class="remove-request-btn">
-          <span class="icon fr-span-icon"></span>
-          <ng-template #removeRequestPopoverRef></ng-template>
-        </button>
-      </ng-template>
-    </ng-template>
+
+      <button (click)="onRemoveFriendRequestBtnClick()"
+              (mouseleave)="removeRequestPopover()"
+              (mouseover)="showRequestPopover()"
+              class="remove-request-btn"
+              *ngIf="(friendshipStatus$|async) === 2;">
+        <span class="icon fr-span-icon"></span>
+        <ng-template #removeRequestPopoverRef></ng-template>
+      </button>
+
+      <button (click)="onConfirmReceivedRequestBtnClick()"
+              (mouseleave)="removeConfirmReceivedRequestPopover()"
+              (mouseover)="showConfirmReceivedRequestPopover()"
+              class="remove-received-request-btn"
+              *ngIf="(friendshipStatus$|async) === 3;">
+        <span class="icon fr-span-icon"></span>
+        <ng-template #removeReceivedRequestPopoverRef></ng-template>
+      </button>
+
   </ng-container>
   <ng-template #loader>
     <app-loader></app-loader>

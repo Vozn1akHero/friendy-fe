@@ -26,12 +26,23 @@ export class FriendshipService {
   }
 
   sendFriendRequest(id: number){
-    this._friendshipStatus.next(2);
-    return this.http.post(`api/friend/request/${id}`, {observe: 'response'});
+    return this.http.post(`api/friend/request/${id}`,
+      {observe: 'response'}).pipe(map((res: HttpResponse<any>) => {
+      this._friendshipStatus.next(2);
+    })).toPromise();
   }
 
   removeFriendRequest(id: number){
-    this._friendshipStatus.next(0);
-    return this.http.delete(`api/friend/request/${id}`, {observe: 'response'});
+    return this.http.delete(`api/friend/request/${id}`,
+      {observe: 'response'}).pipe(map((res: HttpResponse<any>) => {
+      this._friendshipStatus.next(1);
+    })).toPromise();
+  }
+
+  confirmFriendRequest(id: number){
+    return this.http.post(`api/friend/request/accept/${id}`, {observe: 'response'})
+      .pipe(map((res: HttpResponse<any>) => {
+      this._friendshipStatus.next(0);
+    })).toPromise()
   }
 }

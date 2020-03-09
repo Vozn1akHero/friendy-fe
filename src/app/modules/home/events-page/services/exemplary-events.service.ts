@@ -32,6 +32,7 @@ export class ExemplaryEventsService {
             event.avatarPath,
             event.participantsAmount,
             event.currentParticipantsAmount,
+            false,
             event.date))
         });
         this.exemplaryEvents = events;

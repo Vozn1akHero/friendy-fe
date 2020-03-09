@@ -19,9 +19,12 @@ import {ScrollableListNotifierService} from '../../../../../shared/services/scro
 export class ProfilePostListComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() isUserProfileOwner : boolean;
   @Input() userId: number;
-  @ViewChildren(PostItemComponent) postRefs: QueryList<PostItemComponent>;
+  @ViewChildren(PostItemComponent) postRefs:
+    QueryList<PostItemComponent>;
   posts$: Observable<Post[]>;
+  //posts: Post[] = [];
   loaded$: Observable<boolean>;
+  //loaded$: Observable<boolean>;
 
   constructor(private store: Store<AppState>,
               private router: Router,
@@ -38,6 +41,10 @@ export class ProfilePostListComponent implements OnInit, OnDestroy, AfterViewIni
     this.store.dispatch(new UserPostsActions.GetUserPosts({ userId : this.userId, page: 1 }));
     this.loaded$ = this.store.select(state => state.profilePageUserPosts.loaded);
     this.posts$ = this.store.select(state => state.profilePageUserPosts.posts);
+    /*this.store.select(state => state.profilePageUserPosts.posts).subscribe(value => {
+      this.posts = value;
+      //this.loaded = true;
+    })*/
   }
 
   onRemovePost(postId: number){

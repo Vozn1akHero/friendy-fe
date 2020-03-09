@@ -1,4 +1,4 @@
-export default class EventParticipantDetailed {
+export default class EventParticipantDetailedModel {
   id: number;
   name: string;
   surname: string;

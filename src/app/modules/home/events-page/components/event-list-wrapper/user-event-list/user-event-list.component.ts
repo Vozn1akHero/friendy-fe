@@ -15,7 +15,7 @@ import {Subscription} from 'rxjs';
 })
 export class UserEventListComponent implements OnInit, OnDestroy{
   chosenSection: SectionType;
-  chosenSectionText: string;
+  chosenSectionText: string = 'participating';
   searchActivatedSubscription: Subscription;
 
   constructor(private renderer: Renderer2,

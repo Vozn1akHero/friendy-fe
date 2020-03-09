@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 import {SharedComponentsModule} from './components/shared-components.module';
 import {ContentLoaderModule} from '@ngneat/content-loader';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import {ContentLoaderModule} from '@ngneat/content-loader';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     SharedComponentsModule
   ],
   declarations: [

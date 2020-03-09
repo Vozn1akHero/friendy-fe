@@ -1,5 +1,5 @@
 import {Component, ComponentFactoryResolver, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {FriendshipService} from '../../../services/friendship.service';
 import {ButtonHoverInfoPopoverComponent} from '../../../../../../shared/components/button-hover-info-popover/button-hover-info-popover.component';
 
@@ -14,34 +14,25 @@ export class ProfileHeaderFriendshipControlsComponent implements OnInit {
   friendshipStatus$: Observable<number>;
   @ViewChild('removeRequestPopoverRef', {read: ViewContainerRef}) removeRequestPopoverRef;
   @ViewChild('sendRequestPopoverRef', {read: ViewContainerRef}) sendRequestPopoverRef;
+  @ViewChild('removeReceivedRequestPopoverRef', {read: ViewContainerRef}) removeReceivedRequestPopoverRef;
 
   constructor(private friendshipService : FriendshipService,
               private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
-    this.setFriendshipStatus();
-  }
-
-  setFriendshipStatus(){
+    this.friendshipService.getFriendshipStatus(this.userId);
     this.friendshipStatus$ = this.friendshipService.friendshipStatus$;
     this.loaded$ = this.friendshipService.loaded$;
-    this.friendshipService.getFriendshipStatus(this.userId);
   }
 
   onSendFriendRequestBtnClick(){
     this.friendshipService
       .sendFriendRequest(this.userId)
-      .subscribe(() => {
-
-      })
   }
 
   onRemoveFriendRequestBtnClick(){
     this.friendshipService
       .removeFriendRequest(this.userId)
-      .subscribe(() => {
-        //this.friendRequestStatus = false;
-      })
   }
 
   showRequestPopover() : void {
@@ -70,5 +61,23 @@ export class ProfileHeaderFriendshipControlsComponent implements OnInit {
 
   removeSendRequestPopover(){
     this.sendRequestPopoverRef.clear();
+  }
+
+  onConfirmReceivedRequestBtnClick() {
+    this.friendshipService.confirmFriendRequest(this.userId)
+  }
+
+  removeConfirmReceivedRequestPopover() {
+    this.removeReceivedRequestPopoverRef.clear();
+  }
+
+  showConfirmReceivedRequestPopover() {
+    if(this.removeReceivedRequestPopoverRef.length===0){
+      const factory = this.componentFactoryResolver
+        .resolveComponentFactory(ButtonHoverInfoPopoverComponent);
+      const componentRef = this.removeReceivedRequestPopoverRef.createComponent(factory);
+      componentRef.instance.text = "Zatwierdź wniosek";
+      componentRef.changeDetectorRef.detectChanges();
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
-import {switchMap, catchError, map, tap, withLatestFrom, take, filter, mergeMap, exhaustMap, mapTo, concatMap} from 'rxjs/operators';
+import {switchMap, map,mergeMap} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import * as DialogActions from './dialog-messages.actions';
 import {DialogService} from '../../services/dialog.service';

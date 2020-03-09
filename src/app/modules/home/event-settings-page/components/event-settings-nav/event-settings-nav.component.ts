@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -9,12 +9,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class EventSettingsNavComponent implements OnInit {
   activatedRoute: string;
   private isEventCreator: boolean;
+  lineMarginTop: number;
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute = window.location.pathname;
     this.setIsEventCreator();
+    this.setLineTopMargin();
   }
 
   setIsEventCreator(){
@@ -40,4 +42,22 @@ export class EventSettingsNavComponent implements OnInit {
   navigateToBannedParticipantsSettings() {
     this.router.navigate([this.activatedRoute], {queryParams: { 'sp': 'banned-participants' }});
   }
+
+  private setLineTopMargin() {
+    this.route.queryParams.subscribe(queryParams => {
+      const chosenSubpage = queryParams["sp"];
+      if(chosenSubpage === 'basic'){
+        this.lineMarginTop = 0;
+      } else if(chosenSubpage === 'participants'){
+        this.lineMarginTop = 4.4;
+      } else if(chosenSubpage === 'requests'){
+        this.lineMarginTop = 8.4;
+      } else if(chosenSubpage === 'banned-participants'){
+        this.lineMarginTop = 12.5;
+      } else if(chosenSubpage === 'admins'){
+        this.lineMarginTop = 16.6;
+      }
+    })
+  }
+
 }

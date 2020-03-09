@@ -5,15 +5,12 @@ import { ProfilePageComponent } from './modules/home/profile-page/profile-page.c
 import { AuthGuard } from './auth.guard';
 import { EventsPageComponent } from './modules/home/events-page/events-page.component';
 import { FriendsPageComponent } from './modules/home/friends-page/friends-page.component';
-import { HomePageComponent } from './modules/home/home-page/home-page.component';
-import { MessagesPageComponent } from './modules/home/messages-page/messages-page.component';
 import {UserSettingsPageComponent} from './modules/home/user-settings-page/user-settings-page.component';
 import {EventComponent} from './modules/home/event-page/event-page.component';
 import {JoinUpPageComponent} from './modules/auth/joinup-page/joinup-page.component';
 import {LoginPageComponent} from './modules/auth/login-page/login-page.component';
 import {DialogPageComponent} from './modules/home/dialog-page/dialog-page.component';
 import {LoggedInResolver} from './logged-in.resolver';
-import {InterlocutorDataResolver} from './modules/home/dialog-page/resolvers/interlocutor-data.resolver';
 import {WrapperComponent} from './modules/wrapper/wrapper.component';
 import {ProfileBelongingResolver} from './modules/home/profile-page/resolvers/profile-belonging.resolver';
 import {ProfileIdResolver} from './modules/wrapper/resolvers/profile-id.resolver';
@@ -59,9 +56,11 @@ const routes: Routes = [
         }
       },
 
-      { path: 'profile/:id/photos', component: PhotosPageComponent },
+      { path: 'profile/:id/photos',
+        component: PhotosPageComponent },
 
-      {path: 'events', component: EventsPageComponent},
+      {path: 'events',
+        component: EventsPageComponent},
 
       {path: 'event/:id',
         component: EventComponent,
@@ -82,23 +81,24 @@ const routes: Routes = [
 
       {
         path: 'event/:id/photos',
-        component: PhotosPageComponent
+        component: PhotosPageComponent,
+        resolve: {
+          isEventAdmin: IsEventAdminResolver
+        }
       },
 
       {path: 'friends', component: FriendsPageComponent},
 
-
-      /*{path: 'home', component: HomePageComponent},
-
-      {path: 'messages', component: MessagesPageComponent},*/
+      /*{path: 'home', component: HomePageComponent},*/
 
       {path: 'dialog', component: DialogPageComponent},
 
       {path: 'dialog/:id',
         component: DialogPageComponent,
         runGuardsAndResolvers: 'paramsOrQueryParamsChange',
-        resolve: {interlocutorData: InterlocutorDataResolver,
-          profileId: ProfileIdResolver,
+        resolve: {/*interlocutorData: InterlocutorDataResolver,*/
+          /*initialMessageListResolver: InitialMessageListResolver,*/
+          //profileId: ProfileIdResolver,
           chatData: ChatDataResolver }},
 
       {path: 'settings', component: UserSettingsPageComponent}

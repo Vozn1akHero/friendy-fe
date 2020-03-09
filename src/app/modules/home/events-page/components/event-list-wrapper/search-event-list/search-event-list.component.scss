@@ -1,0 +1,30 @@
+.search-event-list{
+  width: 35rem;
+
+  .found-events-amount-text{
+    display: block;
+    margin: 1rem 0;
+  }
+
+  .initial-state{
+    height: 20rem;
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+    transform: translateY(14%);
+    opacity: .2;
+
+    .search-icon{
+      display: block;
+      margin: 0 auto 1rem auto;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z' fill='black'%3E%3C/path%3E%3C/svg%3E");
+      height: 7rem;
+      width: 7rem;
+    }
+
+    .bottom-text{
+      font-size: .8rem;
+      font-weight: 700;
+    }
+  }
+}

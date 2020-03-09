@@ -6,10 +6,16 @@
      (scrolledUp)="updateMessages()">
   <ng-container *ngIf="(messagesLoaded$|async); else loader">
     <ng-container *ngIf="(messages$|async).length>0; else emptyList">
-
-      <app-chat-message-item *ngFor="let message of (messages$|async);"
-                             [messageData]="message"
-                             [profileId]="profileId"></app-chat-message-item>
+      <div class="list-wrap">
+          <div class="fr-m-b-1"
+               *ngFor="let message of (messages$|async);">
+            <app-chat-message-item
+              #messageItemComponent
+              [messageData]="message"
+              [profileId]="userId"></app-chat-message-item>
+          </div>
+      </div>
+      <div #messagesEnd class="messages-end"></div>
     </ng-container>
     <ng-template #emptyList>
       <div class="empty-list">

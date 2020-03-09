@@ -7,11 +7,13 @@
 
   .participants-search-input{
     height: 39px;
-    width: 20vw;
+    width: 30vw;
     outline: none;
     border: none;
     padding-left: 1rem;
     transition: all .3s;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
   }
 
   .submit-btn{
@@ -19,6 +21,7 @@
     align-self: center;
     justify-content: center;
     border-radius: 1rem;
+    transform: translateX(-20px);
     width: 39px;
     height: 39px;
     border: none;

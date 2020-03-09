@@ -38,6 +38,6 @@ export class BannedUsersSettingsComponent implements OnInit {
   }
 
   searchParticipants(value: string) {
-    this.eventParticipantService.filterByKeyword(value);
+    this.eventParticipantService.filterByKeyword(this.eventId, value, 1, 20);
   }
 }

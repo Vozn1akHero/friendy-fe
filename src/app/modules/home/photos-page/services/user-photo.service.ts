@@ -1,45 +1,59 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import Photo from '../models/photo.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Injectable()
 export class UserPhotoService {
-  private _userPhotos = new BehaviorSubject<Photo[]>([]);
   private _loaded = new BehaviorSubject<boolean>(false);
 
-  /*get userPhotos(): Photo[] {
-    return this._userPhotos.getValue();
-  }*/
+  constructor(private http: HttpClient) {
+  }
 
-  get loaded$(){
+  private _userPhotos = new BehaviorSubject<Photo[]>([]);
+
+  get loaded$() {
     return this._loaded.asObservable();
   }
-
-  set userPhotos(value: Photo[]) {
-    this._userPhotos.next(value);
-  }
-
-  get userPhotos$() : Observable<Photo[]>{
+  get userPhotos$(): Observable<Photo[]> {
     return this._userPhotos.asObservable();
   }
 
-  constructor(private http: HttpClient){}
-
-  getRange(userId: number, page: number){
+  getRange(userId: number, page: number) {
     return this.http.get(`api/user-photo/${userId}/page/${page}`,
-      {observe: 'response'}).pipe(map(res => {
+      {observe: 'response'}).pipe(map((res: HttpResponse<any[]>) => {
+      if (this._userPhotos.getValue().length === 0) {
+        const arr = [...res.body.map(value => new Photo(value.id,
+          value.image.path))];
+        this._userPhotos.next(arr);
         this._loaded.next(true);
-        return res;
-    }))
+      } else {
+        this._userPhotos.next([
+          ...this._userPhotos.getValue(),
+          ...res.body.map(value => new Photo(value.id,
+            value.image.path))
+        ]);
+      }
+    })).toPromise();
   }
 
-  post(userId: number, image : File) : void {
+  post(image: File): void {
     const content = new FormData();
-    content.append("image", image);
-    this.http.post(`api/user-photo/${userId}`, content).subscribe((value:any) => {
-      this.userPhotos.push(new Photo(value.path));
-    })
+    content.append('image', image);
+    this.http.post(`api/user-photo`, content).subscribe((value: any) => {
+      this._userPhotos.next([new Photo(value.id,
+        value.path),
+        ...this._userPhotos.getValue()]);
+    });
+  }
+
+  delete(id: number){
+    this.http.delete(`api/event-photo/${id}`, {observe: 'response'})
+      .pipe(map((res: HttpResponse<any>) => {
+        this._userPhotos.next([...this._userPhotos
+          .getValue()
+          .filter(e=>e.id===id)])
+      }));
   }
 }

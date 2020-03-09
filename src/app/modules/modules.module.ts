@@ -12,8 +12,8 @@ import {DialogPageModule} from './home/dialog-page/dialog-page.module';
 import {WrapperModule} from './wrapper/wrapper.module';
 import {EventSettingsPageModule} from './home/event-settings-page/event-settings-page.module';
 import {UserSettingsPageModule} from './home/user-settings-page/user-settings-page.module';
-import PhotosPageModule from './home/photos-page/photos-page.module';
 import {SharedModulesModule} from './shared/shared-modules.module';
+import {PhotosPageModule} from './home/photos-page/photos-page.module';
 
 @NgModule({
   imports: [

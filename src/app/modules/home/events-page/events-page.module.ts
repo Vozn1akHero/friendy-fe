@@ -4,7 +4,7 @@ import {SharedModule} from '../../../shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from '../../../app-routing.module';
 import {EventsPageComponent} from './events-page.component';
-import {SearchEventsComponent} from './components/search-all-events-by-keyword/search-events/search-events.component';
+import {SearchEventsComponent} from './components/event-list-wrapper/search-event-list/search-events/search-events.component';
 import {EventsMineSearchComponent} from './components/event-list-wrapper/user-event-list/events-mine-search/events-mine-search.component';
 import {EventCreationComponent} from './components/event-creation/event-creation.component';
 import {EventsListControlsComponent} from './components/events-list-controls/events-list-controls.component';
@@ -16,9 +16,10 @@ import {UserParticipatingEventListComponent} from './components/event-list-wrapp
 import { EventsSearchPanelComponent } from './components/events-search-panel/events-search-panel.component';
 import { SuggestedEventsPanelComponent } from './components/suggested-events-panel/suggested-events-panel.component';
 import { EventListWrapperComponent } from './components/event-list-wrapper/event-list-wrapper.component';
-import { SearchAllEventsByKeywordComponent } from './components/search-all-events-by-keyword/search-all-events-by-keyword.component';
 import { EventCreationBtnWrapperComponent } from './components/event-creation-btn-wrapper/event-creation-btn-wrapper.component';
 import {EventParticipationService} from './services/event-participation.service';
+import {NavigationPanelComponent} from './components/navigation-panel/navigation-panel.component';
+
 
 @NgModule({
   imports: [
@@ -43,8 +44,8 @@ import {EventParticipationService} from './services/event-participation.service'
     EventsSearchPanelComponent,
     SuggestedEventsPanelComponent,
     EventListWrapperComponent,
-    SearchAllEventsByKeywordComponent,
-    EventCreationBtnWrapperComponent
+    EventCreationBtnWrapperComponent,
+    NavigationPanelComponent
   ],
   exports: [],
   providers:[

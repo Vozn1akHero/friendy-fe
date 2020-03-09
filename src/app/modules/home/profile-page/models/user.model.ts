@@ -1,30 +1,29 @@
 import * as moment from 'moment';
 import {SessionModel} from '../../../../shared/models/session.model';
+import City from '../../../../shared/models/city.model';
 
 export default class User {
   id: number;
   birthday: string;
-  city: string;
+  city: City;
   email: string;
   avatarUrl: string;
   backgroundUrl: string;
   genderId: number;
   name: string;
   surname: string;
-  profileBg: string;
   session: SessionModel;
   status: string;
 
   constructor(id: number,
               birthday: string,
-              city: string,
+              city: City,
               email: string,
               avatarPath: string,
               backgroundPath: string,
               genderId: number,
               name: string,
               surname: string,
-              profileBg: string,
               session: SessionModel,
               status: string) {
     this.id = id;
@@ -36,7 +35,6 @@ export default class User {
     this.genderId = genderId;
     this.name = name;
     this.surname = surname;
-    this.profileBg = profileBg;
     this.session = session;
     this.status = status;
   }

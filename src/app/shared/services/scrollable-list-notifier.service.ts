@@ -21,4 +21,9 @@ export class ScrollableListNotifierService {
   setDefaultValue(){
     this._endReached.next(false);
   }
+
+  reset(){
+    this._endReached.next(false);
+    this._currentPage.next(1);
+  }
 }

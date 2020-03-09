@@ -25,7 +25,7 @@
         <app-profile-header-basic-data
           [activeSettings]="activeSettings"
           [birthday]="(userData$|async)?.birthday"
-          [city]="(userData$|async)?.city"
+          [city]="(userData$|async)?.city.title"
           [isUserProfileOwner]="isUserProfileOwner"
           [name]="(userData$|async)?.name"
           [status]="(userData$|async)?.status"

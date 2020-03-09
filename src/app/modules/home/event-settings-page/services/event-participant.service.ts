@@ -8,20 +8,27 @@ import EventBannedParticipantModel from '../models/event-banned-participant.mode
 @Injectable()
 export class EventParticipantService {
   private _eventParticipants = new BehaviorSubject([]);
+  private _foundEventParticipants = new BehaviorSubject([]);
   private _eventParticipantsLoaded = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) {}
 
   private set eventParticipants(value : EventParticipantDetailed[]){
-    this._eventParticipants.next(value);
+    this._eventParticipants.next([...this._eventParticipants.getValue(), ...value]);
+  }
+  private set foundEventParticipants(value : EventParticipantDetailed[]){
+    this._foundEventParticipants.next([...this._foundEventParticipants.getValue(), ...value]);
   }
 
-  private get eventParticipants() : EventParticipantDetailed[]{
+  /*private get eventParticipants() : EventParticipantDetailed[]{
     return this._eventParticipants.getValue();
-  }
+  }*/
 
   public get eventParticipants$() : Observable<EventParticipantDetailed[]>{
     return this._eventParticipants.asObservable();
+  }
+  public get foundEventParticipants$() : Observable<EventParticipantDetailed[]>{
+    return this._foundEventParticipants.asObservable();
   }
 
   public set eventParticipantsLoaded(value : boolean){
@@ -32,30 +39,35 @@ export class EventParticipantService {
     return this._eventParticipantsLoaded.asObservable();
   }
 
-  filterByKeyword(keyword: string){
-    return this.http.get<any[]>(`api/event-participant/filter/${keyword}`, { observe: 'body' })
-      .pipe(take(1))
-      .subscribe(res => {
+  filterByKeyword(eventId: number, keyword: string, page: number, length: number){
+    if(page === 1) this.foundEventParticipants = [];
+    return this.http.get<any[]>(`api/event-participant/filter/${eventId}
+    ?keyword=${keyword}&page=${page}&length=${length}`,
+      { observe: 'response' })
+      .pipe(map((res : HttpResponse<any[]>)=> {
         let eventParticipants: EventParticipantDetailed[] = [];
-        res.map(value => {
-          eventParticipants.push(new EventParticipantDetailed(value.id, value.name, value.surname, value.avatarPath, value.isAdmin))
+        res.body.map(value => {
+          eventParticipants.push(new EventParticipantDetailed(value.id,
+            value.name,
+            value.surname,
+            value.avatarPath,
+            value.isAdmin))
         });
-        this.eventParticipants = eventParticipants;
-    })
+        this.foundEventParticipants = eventParticipants;
+    })).toPromise()
   }
 
-  getRange(eventId: number, startIndex: number, length: number){
-    return this.http.get<any[]>(`api/event-participant/range?eventId=${eventId}&startIndex=${startIndex}&length=${length}`,
-      {observe: 'body'})
-      .pipe(take(1))
-      .subscribe(res=>{
+  getRange(eventId: number, page: number, length: number){
+    return this.http.get(`api/event-participant/range/${eventId}?page=${page}&length=${length}`,
+      {observe: 'response'})
+      .pipe(map((res: HttpResponse<any[]>)=>{
       let eventParticipants: EventParticipantDetailed[] = [];
-      res.map(value => {
+      res.body.map(value => {
         eventParticipants.push(new EventParticipantDetailed(value.id, value.name, value.surname, value.avatarPath, value.isAdmin))
       });
       this.eventParticipants = eventParticipants;
       this.eventParticipantsLoaded = true;
-    })
+    })).toPromise()
   }
 
   getBanned(eventId: number){

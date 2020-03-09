@@ -1,0 +1,42 @@
+@import '../../../../../../assets/sass/base/variables';
+
+.base-data-panel{
+  width: 100%;
+
+  .upper-wrapper{
+    width: 100%;
+    height: 5rem;
+    position: relative;
+
+    .back-btn{
+      border: 0;
+      outline: none;
+      background: none;
+      width: 25%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 2rem;
+
+      &:hover{
+        background: linear-gradient(90deg, rgba($color-bg-light-grey-2, 0.4), white);
+      }
+
+      .back-arrow{
+        font-size: 1.5rem;
+        color: $color-bg-light-grey-2;
+      }
+
+      .base-avatar{
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        margin-left: 1rem;
+      }
+
+      .base-title{
+        margin-left: .5rem;
+      }
+    }
+  }
+}

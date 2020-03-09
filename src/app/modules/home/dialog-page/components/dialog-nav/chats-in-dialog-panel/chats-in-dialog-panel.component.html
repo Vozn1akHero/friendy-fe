@@ -1,0 +1,21 @@
+<div class="chats-in-dialog">
+  <div class="items">
+    <ng-container *ngIf="(dialogListLoaded$|async); else loader">
+      <ng-container *ngIf="dialogList.length > 0; else noDialogs">
+        <ng-container *ngFor="let dialog of dialogList; let i = index">
+          <app-chats-in-dialog-item
+            [data]="dialog"></app-chats-in-dialog-item>
+          <hr *ngIf="i !== dialogList.length - 1" class="line">
+        </ng-container>
+      </ng-container>
+      <ng-template #noDialogs>
+        <span class="fr-default-smaller-font">
+          Lista rozmów jest pusta
+        </span>
+      </ng-template>
+    </ng-container>
+    <ng-template #loader>
+      <app-loader></app-loader>
+    </ng-template>
+  </div>
+</div>

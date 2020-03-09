@@ -1,7 +1,8 @@
 @import '../../../../assets/sass/base/variables';
+@import '../../../../assets/sass/abstracts/mixins';
 
 .profile-page {
-  width: calc(100vw - #{$navigation-width});
+  @include min-width-page();
 
   .under-header-content-wrapper {
     position: relative;

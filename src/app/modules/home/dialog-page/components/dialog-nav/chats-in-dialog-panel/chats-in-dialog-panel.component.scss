@@ -1,0 +1,18 @@
+@import '../../../../../../../assets/sass/base/variables';
+
+.chats-in-dialog{
+  height: 100vh;
+
+  .items{
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .line{
+      opacity: .2;
+      margin: .55rem auto .95rem auto;
+      width: 87%;
+    }
+  }
+}

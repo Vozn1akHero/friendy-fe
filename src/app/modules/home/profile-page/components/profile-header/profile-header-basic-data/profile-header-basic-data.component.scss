@@ -37,7 +37,7 @@
 
   .location, .birthday {
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
 
     .icon {
@@ -48,7 +48,6 @@
     .text-by-icon {
       font-size: .8rem;
       margin-left: .5rem;
-      transform: translateY(.6rem);
     }
   }
 

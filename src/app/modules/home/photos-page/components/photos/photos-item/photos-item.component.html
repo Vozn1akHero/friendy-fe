@@ -1,1 +1,19 @@
-<div class="photo-wrapper" [style.background-image]="photoUrl" (click)="zoomUpImage()"></div>
+<div class="photo-wrapper"
+     [style.background-image]="photoUrl">
+  <a href="{{ photo.url }}"
+     download="{{ filename }}"
+     class="fr-btn-main-pink
+   download-btn">
+    Pobierz
+  </a>
+  <button (click)="onDelete()"
+          *ngIf="editable"
+          class="remove-btn">
+    <span class="icon fr-span-icon"></span>
+  </button>
+  <div (click)="onClick()"
+       class="clickable-area"></div>
+  <img src="{{ photo.url }}"
+       [ngStyle]="{visibility: 'hidden'}"
+       alt="">
+</div>

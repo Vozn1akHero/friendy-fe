@@ -26,7 +26,9 @@ import { MiniLoaderComponent } from './mini-loader/mini-loader.component';
 import { PostLoaderComponent } from './post-loader/post-loader.component';
 import {ContentLoaderModule} from '@ngneat/content-loader';
 import { UserItemComponent } from './user-item/user-item.component';
-
+import { CityInputComponent } from './city-input/city-input.component';
+import { InterestsInputComponent } from './interests-input/interests-input.component';
+import { FullScreenImageComponent } from './full-screen-image/full-screen-image.component';
 
 @NgModule({
   imports: [
@@ -59,7 +61,10 @@ import { UserItemComponent } from './user-item/user-item.component';
     LoaderComponent,
     MiniLoaderComponent,
     PostLoaderComponent,
-    UserItemComponent
+    UserItemComponent,
+    CityInputComponent,
+    InterestsInputComponent,
+    FullScreenImageComponent
   ],
   exports: [
     NewPostFormComponent,
@@ -84,7 +89,10 @@ import { UserItemComponent } from './user-item/user-item.component';
     LoaderComponent,
     MiniLoaderComponent,
     PostLoaderComponent,
-    UserItemComponent
+    UserItemComponent,
+    CityInputComponent,
+    InterestsInputComponent,
+    FullScreenImageComponent
   ],
   entryComponents: [
     ButtonHoverInfoPopoverComponent

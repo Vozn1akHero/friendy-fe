@@ -1,0 +1,17 @@
+<div (click)="selectContact()" class="contact">
+  <div class="avatar-wrap">
+    <img class="avatar-img" src="{{ contact.avatar }}" alt="">
+    <ng-container *ngIf="contact.isOnline">
+      <div class="is-online">
+            <span class="circle">
+              &#9679;
+            </span>
+      </div>
+    </ng-container>
+  </div>
+  <div class="right-wrap">
+    <span class="title">
+      {{ contact.name }} {{ contact.surname }}
+    </span>
+  </div>
+</div>

@@ -33,6 +33,12 @@
               {{ receivedFriendRequestsAmount }}
             </button>
         </div>
+      <div class="links__item photos">
+        <a [routerLink]="['/app/profile', (profileId$|async), 'photos']">
+          <span class="icon fr-span-icon"></span>
+          <span>Zdjęcia</span>
+        </a>
+      </div>
         <div class="links__item messages">
             <a routerLink="dialog">
               <span class="icon fr-span-icon"></span>

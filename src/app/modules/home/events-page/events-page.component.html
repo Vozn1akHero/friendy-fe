@@ -12,8 +12,12 @@
   <div class="right-side-wrapper">
     <app-event-creation-btn-wrapper
       (popupEmitter)="toggleEventCreationPopup()"></app-event-creation-btn-wrapper>
-    <app-search-all-events-by-keyword></app-search-all-events-by-keyword>
-    <app-suggested-events-panel></app-suggested-events-panel>
+    <div class="fr-m-t-2">
+      <app-navigation-panel></app-navigation-panel>
+    </div>
+    <div class="fr-m-t-2">
+      <app-suggested-events-panel></app-suggested-events-panel>
+    </div>
   </div>
 </section>
 

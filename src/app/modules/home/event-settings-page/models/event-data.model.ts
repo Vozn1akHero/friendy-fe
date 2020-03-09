@@ -1,10 +1,12 @@
+import City from '../../../../shared/models/city.model';
+
 export default class EventDataModel {
   id: number;
   title: string;
   description: string;
   street: string;
   streetNumber: string;
-  city: string;
+  city: City;
   participantsAmount: number;
   date: Date;
   hour: number;
@@ -18,7 +20,7 @@ export default class EventDataModel {
               description: string,
               street: string,
               streetNumber: string,
-              city: string,
+              city: City,
               participantsAmount: number,
               date: Date,
               hour: number,
