@@ -1,11 +1,10 @@
-<div class="dialog-search-input">
-  <div class="wrap">
-    <input type="text"
-           [(ngModel)]="value"
-           (focusin)="showContacts()"
-           (focusout)="hideContacts()"
-           class="input fr-input"
-           placeholder="Szukaj znajomych">
-    <span class="search-icon fr-span-icon"></span>
-  </div>
+<div class="dialog-search-input-wrap">
+  <input
+    type="text"
+    [(ngModel)]="value"
+    (focusin)="showContacts()"
+    class="input dialog-search-input fr-input"
+    placeholder="Szukaj znajomych"
+  />
+  <span class="search-icon fr-span-icon"></span>
 </div>

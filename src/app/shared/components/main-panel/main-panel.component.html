@@ -1,19 +1,27 @@
-<div class="main-panel"
-     [ngStyle]="panelStyles"
-     [style.margin-top]="panelContent.marginTop ? '2rem' : '0px'">
+<div
+  class="main-panel"
+  [ngStyle]="panelStyles"
+  [style.margin-top]="panelContent.marginTop ? '2rem' : '0px'"
+>
   <div class="header">
     <span class="icon fr-span-icon" [ngClass]="panelContent.iconClass"></span>
     <ng-container *ngIf="panelContent.link !== null; else standardText">
-        <a routerLink="{{panelContent.link}}"
-           [queryParams]="panelContent.queryParams"
-           class="section-link">{{panelContent.title}}</a>
+      <a
+        routerLink="{{ panelContent.link }}"
+        [queryParams]="panelContent.queryParams"
+        class="section-link"
+        >{{ panelContent.title }}</a
+      >
     </ng-container>
     <ng-template #standardText>
-      <p>{{panelContent.title}}</p>
+      <p>{{ panelContent.title }}</p>
     </ng-template>
   </div>
-  <div class="content" [ngClass]="{'for-subject-entries': forSubjectEntries}"
+  <!-- <div class="content" [ngClass]="{'for-subject-entries': forSubjectEntries}"
        [ngStyle]="contentAllStyles">
+    <ng-content></ng-content>
+  </ng-content> -->
+  <div class="content-fake">
     <ng-content></ng-content>
   </div>
 </div>

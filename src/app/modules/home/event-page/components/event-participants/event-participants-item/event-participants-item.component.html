@@ -1,0 +1,16 @@
+<div class="participant">
+  <a
+    [routerLink]="['/app/profile/', eventParticipant.id]"
+    class="participant__img-link"
+  >
+    <figure class="participant__avatar" class="participant__figure">
+      <img src="{{ eventParticipant.avatarUrl }}" alt="participant's avatar" />
+    </figure>
+  </a>
+  <a
+    [routerLink]="['/app/profile/', eventParticipant.id]"
+    class="participant__text-link"
+  >
+    {{ eventParticipant.name }} {{ eventParticipant.surname }}
+  </a>
+</div>

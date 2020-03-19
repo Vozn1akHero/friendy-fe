@@ -1,13 +1,13 @@
-import {Action} from '@ngrx/store';
-import ExemplaryFriend from '../../models/exemplary-friend.model';
+import { Action } from "@ngrx/store";
+import ExemplaryFriend from "../../models/exemplary-friend.model";
 
-export const GET_EXEMPLARY_FRIENDS = '[Profile Page] Get Exemplary Friends';
-export const SET_EXEMPLARY_FRIENDS = '[Profile Page] Set Exemplary Friends';
+export const GET_EXEMPLARY_FRIENDS = "[Profile Page] Get Exemplary Friends";
+export const SET_EXEMPLARY_FRIENDS = "[Profile Page] Set Exemplary Friends";
 
 export class SetExemplaryFriends implements Action {
   readonly type = SET_EXEMPLARY_FRIENDS;
 
-  constructor(public payload: ExemplaryFriend[]) {}
+  constructor(public payload: { [id: number]: ExemplaryFriend[] }) {}
 }
 
 export class GetExemplaryFriends implements Action {
@@ -16,7 +16,4 @@ export class GetExemplaryFriends implements Action {
   constructor(public payload: { id: number }) {}
 }
 
-
 export type Actions = GetExemplaryFriends | SetExemplaryFriends;
-
-

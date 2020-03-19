@@ -1,6 +1,27 @@
-@import '../../../../assets/sass/base/variables';
-@import '../../../../assets/sass/abstracts/mixins';
+@import "../../../../assets/sass/base/variables";
+@import "../../../../assets/sass/abstracts/mixins";
 
-.event-page{
+.event-page {
   @include min-width-page();
+
+  .event-main-content {
+    position: relative;
+    display: flex;
+    transform: translateY(-5rem);
+
+    .left-wrapper {
+      display: inline-block;
+      width: 40%;
+      padding-left: 9rem;
+      &__panel-wrap {
+        width: 301px;
+      }
+    }
+
+    .right-wrapper {
+      margin-left: 6rem;
+      margin-top: 2rem;
+      display: inline-block;
+    }
+  }
 }

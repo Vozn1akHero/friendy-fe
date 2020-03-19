@@ -1,29 +1,24 @@
-@import '../../../../../../../../assets/sass/base/variables';
+@import "../../../../../../../../assets/sass/base/variables";
 
-.contact{
+.contact {
   width: 70%;
   height: 40px;
   margin-bottom: 1rem;
   margin-left: 2rem;
   position: relative;
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 
-  &:hover{
-    background: $color-bg-grey-footer;
-    cursor: pointer;
-  }
-
-  .avatar-wrap{
+  .avatar-wrap {
     float: left;
 
-    .avatar-img{
+    .avatar-img {
       width: 2.5rem;
       height: 2.5rem;
       border-radius: 50%;
       margin: 2px 0 1px 4px;
     }
 
-    .is-online{
+    .is-online {
       position: absolute;
       right: 1px;
       bottom: 0;
@@ -32,7 +27,7 @@
       width: 5px;
       height: 5px;
 
-      .circle{
+      .circle {
         color: $color-blue;
         font-size: 1rem;
         position: absolute;
@@ -41,13 +36,19 @@
     }
   }
 
-  .right-wrap{
+  .right-wrap {
     float: left;
     margin-left: 1rem;
     margin-top: 10px;
   }
 
-  .title{
-    font-size: .81rem;
+  .title {
+    font-size: 0.81rem;
+    color: $color-grey-dark;
+  }
+
+  &:hover {
+    background: $color-bg-grey-footer;
+    cursor: pointer;
   }
 }

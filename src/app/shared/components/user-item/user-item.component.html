@@ -1,24 +1,26 @@
 <div [ngStyle]="styles" class="user">
   <ng-container *ngIf="friendshipStatusIndex === 0">
-    <button (mouseleave)="hideMenu()"
-            (mouseover)="showMenu()"
-            class="show-menu-btn">
-      &#8250;
+    <button
+      (click)="toogleMenu()"
+      class="show-menu-btn 
+             btn-pulse-on-click"
+    >
+      <span class="icon fr-span-icon"></span>
     </button>
-    <div #menu
-         class="menu">
-      <button (click)="removeFriend()"
-              class="remove-btn fr-hover-text-decoration">
+    <div #menu class="menu">
+      <button
+        (click)="removeFriend()"
+        class="remove-btn fr-hover-text-decoration"
+      >
         Usuń ze znajomych
       </button>
-      <hr class="line">
     </div>
   </ng-container>
 
   <div class="avatar">
     <a [routerLink]="['/app/profile', id]">
       <figure>
-        <img alt="friend's avatar" src="{{ avatar }}">
+        <img alt="friend's avatar" src="{{ avatar }}" />
         <ng-container *ngIf="isUserOnline">
           <div class="is-online">
             <span class="circle">
@@ -31,13 +33,11 @@
   </div>
 
   <div class="info">
-    <a [routerLink]="['/app/profile', id]"
-       class="name">
+    <a [routerLink]="['/app/profile', id]" class="name">
       {{ name }} {{ surname }}
     </a>
 
-    <div *ngIf="city != null"
-         class="row-info city">
+    <div *ngIf="city != null" class="row-info city">
       <span class="icon city__icon fr-span-icon"></span>
       <span class="text-by-icon city__title">
         {{ city }}
@@ -45,29 +45,35 @@
     </div>
 
     <ng-container *ngIf="friendshipStatusIndex !== 4">
-      <hr class="cw-line">
+      <hr class="cw-line" />
       <div class="controls-wrapper">
         <ng-container *ngIf="friendshipStatusIndex === 0; else noFriend">
-          <a [routerLink]="['/app/dialog', id]"
-             class="send-msg-btn">
+          <a
+            [routerLink]="['/app/dialog', id]"
+            class="send-msg-btn btn-pulse-on-click"
+          >
             <span class="icon fr-span-icon"></span>
           </a>
         </ng-container>
 
         <ng-template #noFriend>
-          <button (click)="onSendFriendRequestBtnClick()"
-                  (mouseleave)="removeSendRequestPopover()"
-                  (mouseover)="showSendRequestPopover()"
-                  *ngIf="friendshipStatusIndex === 1; else removeRequestPopoverWrap"
-                  class="add-new-friend-btn">
+          <button
+            (click)="onSendFriendRequestBtnClick()"
+            (mouseleave)="removeSendRequestPopover()"
+            (mouseover)="showSendRequestPopover()"
+            *ngIf="friendshipStatusIndex === 1; else removeRequestPopoverWrap"
+            class="add-new-friend-btn btn-pulse-on-click"
+          >
             <span class="icon fr-span-icon"></span>
             <ng-template #sendRequestPopoverRef></ng-template>
           </button>
           <ng-template #removeRequestPopoverWrap>
-            <button (click)="onRemoveFriendRequestBtnClick()"
-                    (mouseleave)="removeRequestPopover()"
-                    (mouseover)="showRequestPopover()"
-                    class="remove-request-btn">
+            <button
+              (click)="onRemoveFriendRequestBtnClick()"
+              (mouseleave)="removeRequestPopover()"
+              (mouseover)="showRequestPopover()"
+              class="remove-request-btn btn-pulse-on-click"
+            >
               <span class="icon fr-span-icon"></span>
               <ng-template #removeRequestPopoverRef></ng-template>
             </button>

@@ -1,6 +1,6 @@
-import NewCommentModel from './new-comment.model';
+import NewCommentModel from "./new-comment.model";
 
-export class NewCommentResponseModel extends NewCommentModel{
+export class NewCommentResponseModel extends NewCommentModel {
   commentId: number;
 
   constructor(postId: number, commentId: number, content: string, image: File) {

@@ -1,14 +1,15 @@
-@import '../../../../../../assets/sass/base/variables';
+@import "../../../../../../assets/sass/base/variables";
 
-.chat-message-list{
+.chat-message-list {
   padding: 2rem 2rem 1rem 2.5rem;
-  height: 71vh;
+  min-height: 71vh;
+  max-height: 682px;
   overflow-y: scroll;
   position: relative;
 
-  &:hover{
+  &:hover {
     &::-webkit-scrollbar-thumb {
-      background: #C0CCDD;
+      background: #c0ccdd;
       border-radius: 1rem;
       border: 5px solid transparent;
       background-clip: content-box;
@@ -17,7 +18,7 @@
     &::-webkit-scrollbar-track {
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
-      background: rgba(black, .02);
+      background: rgba(black, 0.02);
       background-clip: content-box;
     }
   }
@@ -26,7 +27,7 @@
     opacity: 0;
   }
 
-  .empty-list{
+  .empty-list {
     height: 100%;
     width: 100%;
     display: flex;
@@ -39,9 +40,9 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(black, .02);
+    background: rgba(black, 0.02);
     border-radius: 1rem;
-    transition: .5s;
+    transition: 0.5s;
     border: 5px solid transparent;
     background-clip: content-box;
   }

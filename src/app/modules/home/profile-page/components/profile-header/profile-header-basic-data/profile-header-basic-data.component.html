@@ -1,15 +1,17 @@
 <div class="profile-header-minor-data">
   <ng-container *ngIf="isUserProfileOwner">
     <div *ngIf="activeSettings" class="profile-ui-settings">
-        <textarea #userStatus
-                  class="desc"
-                  placeholder="Co słychać?"
-                  type="text"></textarea>
+      <textarea
+        #userStatus
+        class="desc"
+        placeholder="Co słychać?"
+        type="text"
+      ></textarea>
     </div>
   </ng-container>
 
   <div class="name-wrap">
-    <ng-container *ngIf="!(userDataLoaded$|async); else actNameSurname">
+    <ng-container *ngIf="!(userDataLoaded$ | async); else actNameSurname">
       <div class="wrap-for-loader">
         <content-loader>
           <svg:rect rx="3" ry="3" width="450" height="30" />
@@ -17,14 +19,14 @@
       </div>
     </ng-container>
     <ng-template #actNameSurname>
-        <h2 [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="name">
-          {{ name }} {{ surname }}
-        </h2>
+      <h2 [ngStyle]="{ opacity: activeSettings ? '0.1' : '1' }" class="name">
+        {{ name }} {{ surname }}
+      </h2>
     </ng-template>
   </div>
 
   <div class="status-wrap">
-    <ng-container *ngIf="!(userDataLoaded$|async); else actStatus">
+    <ng-container *ngIf="!(userDataLoaded$ | async); else actStatus">
       <div class="wrap-for-loader">
         <content-loader>
           <svg:rect x="0" y="0" rx="3" ry="3" width="450" height="30" />
@@ -32,46 +34,45 @@
       </div>
     </ng-container>
     <ng-template #actStatus>
-        <p *ngIf="status != null" [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}"
-           class="desc">
-          {{ status }}
-        </p>
+      <p
+        *ngIf="status != null"
+        [ngStyle]="{ opacity: activeSettings ? '0.1' : '1' }"
+        class="desc"
+      >
+        {{ status }}
+      </p>
     </ng-template>
   </div>
 
-  <div class="wrap-3">
-    <div [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="location">
-      <span class="fr-span-icon icon"></span>
-      <ng-container *ngIf="!(userDataLoaded$|async); else actCity">
-        <div class="wrap-for-loader--alongside-icon">
-          <content-loader>
-            <svg:rect x="0" y="0" rx="3" ry="3" width="450" height="30" />
-          </content-loader>
-        </div>
-      </ng-container>
-      <ng-template #actCity>
-        <span class="text-by-icon">
-          {{ city }}
-        </span>
-      </ng-template>
-    </div>
+  <div [ngStyle]="{ opacity: activeSettings ? '0.1' : '1' }" class="location">
+    <span class="fr-span-icon icon"></span>
+    <ng-container *ngIf="!(userDataLoaded$ | async); else actCity">
+      <div class="wrap-for-loader--alongside-icon">
+        <content-loader>
+          <svg:rect x="0" y="0" rx="3" ry="3" width="450" height="30" />
+        </content-loader>
+      </div>
+    </ng-container>
+    <ng-template #actCity>
+      <span class="text-by-icon">
+        {{ city }}
+      </span>
+    </ng-template>
   </div>
 
-  <div class="wrap-4">
-    <div [ngStyle]="{'opacity': activeSettings ? '0.1' : '1'}" class="birthday">
-      <span class="fr-span-icon icon"></span>
-      <ng-container *ngIf="!(userDataLoaded$|async); else actBirthday">
-        <div class="wrap-for-loader--alongside-icon">
-          <content-loader>
-            <svg:rect x="0" y="0" rx="3" ry="3" width="450" height="30" />
-          </content-loader>
-        </div>
-      </ng-container>
-      <ng-template #actBirthday>
-        <span class="text-by-icon">
-          <span>{{ birthday }}</span>
-        </span>
-      </ng-template>
-    </div>
+  <div [ngStyle]="{ opacity: activeSettings ? '0.1' : '1' }" class="birthday">
+    <span class="fr-span-icon icon"></span>
+    <ng-container *ngIf="!(userDataLoaded$ | async); else actBirthday">
+      <div class="wrap-for-loader--alongside-icon">
+        <content-loader>
+          <svg:rect x="0" y="0" rx="3" ry="3" width="450" height="30" />
+        </content-loader>
+      </div>
+    </ng-container>
+    <ng-template #actBirthday>
+      <span class="text-by-icon">
+        <span>{{ birthday }}</span>
+      </span>
+    </ng-template>
   </div>
 </div>

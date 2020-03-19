@@ -2,29 +2,59 @@
   <div class="left-wrap">
     <a [routerLink]="['/app/dialog', data.interlocutorId]" class="avatar">
       <figure>
-        <img alt="" src="{{ data.interlocutorAvatar }}">
+        <img alt="" src="{{ data.interlocutorAvatar }}" />
       </figure>
     </a>
   </div>
 
   <div class="right-wrap">
-    <a [routerLink]="['/app/profile', data.interlocutorId]"
-       class="user-data fr-hover-text-decoration">{{data.interlocutorName}}
-      {{data.interlocutorSurname}}</a>
+    <a
+      [routerLink]="['/app/profile', data.interlocutorId]"
+      class="user-data fr-hover-text-decoration"
+      >{{ data.interlocutorName }} {{ data.interlocutorSurname }}</a
+    >
 
     <a [routerLink]="['/app/dialog', data.interlocutorId]" class="content">
       <ng-container *ngIf="data.writtenByRequestIssuer; else writtenByFriend">
         <div class="written-by-user-msg-wrapper">
-          <span class="msg-text-content">
+          <span
+            class="msg-text-content fr-hover-text-decoration"
+            *ngIf="data.content"
+          >
             {{ cutMsgContent }}
           </span>
-          <img alt="" class="own-avatar" src="{{ data.avatarUrl }}">
+          <div
+            *ngIf="data.imageUrl"
+            class="image-wrap-in-cont"
+            [ngClass]="{
+              'image-wrap-in-cont--centered': data.content == null,
+              'image-wrap-in-cont--under-content': data.content != null
+            }"
+          >
+            <span class="image-in-dialog-icon fr-span-icon"></span>
+            <span class="text">Obraz</span>
+          </div>
+          <img alt="" class="own-avatar" src="{{ data.avatarUrl }}" />
         </div>
       </ng-container>
       <ng-template #writtenByFriend>
-          <span class="msg-text-content fr-hover-text-decoration">
-           {{ cutMsgContent }}
-          </span>
+        <span
+          class="msg-text-content fr-hover-text-decoration"
+          *ngIf="data.content"
+        >
+          {{ cutMsgContent }}
+        </span>
+        <div
+          *ngIf="data.imageUrl"
+          class="image-wrap-in-cont"
+          [ngClass]="{
+            'image-wrap-in-cont--centered': data.content == null,
+            'image-wrap-in-cont--under-content': data.content != null
+          }"
+        >
+          <span class="image-in-dialog-icon fr-span-icon"></span>
+          <span class="text">Obraz</span>
+        </div>
       </ng-template>
     </a>
   </div>

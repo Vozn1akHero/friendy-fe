@@ -1,26 +1,29 @@
 <div class="new-comment">
-  <form class="form"
-        #formElement>
-    <textarea placeholder="Napisz komentarz"
-              class="new-comment-ta"
-              (focus)="toggleTypingActive()"
-              (focusout)="toggleTypingActive()"
-              [ngStyle]="{height: typingActive ? '80px' : '4em', borderRadius:
-              typingActive ? '1rem' : '2rem'}"
-              #textAreaElement
-              [minLength]="1"></textarea>
+  <form class="form" #formElement>
+    <textarea
+      placeholder="Napisz komentarz"
+      class="new-comment-ta"
+      (focus)="toggleTypingActive()"
+      [ngStyle]="{
+        height: typingActive ? '80px' : '4em',
+        borderRadius: typingActive ? '1rem' : '2rem'
+      }"
+      #textAreaElement
+      [minLength]="1"
+    ></textarea>
     <div *ngIf="typingActive" class="controls">
       <div class="inner-wrapper">
         <div class="file-btn-wrapper">
           <span class="icon fr-span-icon"></span>
-          <input type="file"
-                 name="filename"
-                 #image
-                 accept="image/jpeg, image/png"
-                 style="opacity: 0;">
+          <input
+            type="file"
+            name="filename"
+            #image
+            accept="image/jpeg, image/png"
+            style="opacity: 0;"
+          />
         </div>
-        <button class="submit-btn"
-                (click)="onSubmit()">Wyślij</button>
+        <button class="submit-btn" (click)="onSubmit()">Wyślij</button>
       </div>
     </div>
   </form>

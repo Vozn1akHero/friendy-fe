@@ -1,22 +1,33 @@
 <div class="chat-message-item">
-  <div class="inner-ab-wrapper" [ngStyle]="{ justifyContent: isUserAuthor &&
-   'flex-end' }">
+  <div
+    class="inner-ab-wrapper"
+    [ngStyle]="{ justifyContent: isUserAuthor && 'flex-end' }"
+  >
     <ng-container *ngIf="isUserAuthor">
-       <span class="time-passed time-passed--user">
-        {{timePassed}}
+      <span class="time-passed time-passed--user">
+        {{ timePassed }}
       </span>
     </ng-container>
     <div class="content">
       <span *ngIf="messageData.content">
-        {{messageData.content}}
+        {{ messageData.content }}
       </span>
-      <div *ngIf="messageData.imageUrl" class="image-wrap-in-cont">
-        <img src="{{messageData.imageUrl}}" alt="" class="image">
+      <div
+        *ngIf="messageData.imageUrl"
+        [class.image-wrap-in-cont--under-text]="messageData.content != null"
+        class="image-wrap-in-cont"
+      >
+        <img
+          src="{{ messageData.imageUrl }}"
+          (click)="onImageClick()"
+          alt=""
+          class="image"
+        />
       </div>
     </div>
     <ng-container *ngIf="!isUserAuthor">
       <span class="time-passed time-passed--friend">
-        {{timePassed}}
+        {{ timePassed }}
       </span>
     </ng-container>
   </div>

@@ -1,15 +1,15 @@
-import * as UserExemplaryFriendsActions from './user-exemplary-friends.actions'
-import ExemplaryFriend from '../../models/exemplary-friend.model';
-
+import * as UserExemplaryFriendsActions from "./user-exemplary-friends.actions";
+import ExemplaryFriend from "../../models/exemplary-friend.model";
+import { stat } from "fs";
 
 export interface State {
-  exemplaryFriends: ExemplaryFriend[];
+  exemplaryFriends: { [id: number]: ExemplaryFriend[] };
   loading: boolean;
 }
 
 const initialState: State = {
   loading: true,
-  exemplaryFriends: []
+  exemplaryFriends: {}
 };
 
 export function userExemplaryFriendsReducer(
@@ -26,7 +26,10 @@ export function userExemplaryFriendsReducer(
       return {
         ...state,
         loading: false,
-        exemplaryFriends: action.payload
+        exemplaryFriends: {
+          ...state.exemplaryFriends,
+          ...action.payload
+        }
       };
     default:
       return state;

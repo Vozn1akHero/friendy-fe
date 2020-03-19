@@ -1,18 +1,20 @@
-@import '../../../../assets/sass/base/variables';
-
+@import "../../../../assets/sass/base/variables";
 
 .user {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   background: white;
   border-radius: 1rem;
   text-align: center;
-  width: 26vw;
-  padding: 0 2vw;
+  width: 240px;
+  padding: 0 2vw 1rem 2vw;
   position: relative;
-  margin-bottom: 1.5rem;
+  margin: 0 1.5rem 1.5rem 1.5rem;
 
-  .menu{
+  .menu {
     display: none;
+    top: 3rem;
     background: white;
     position: absolute;
     min-width: 10rem;
@@ -25,38 +27,51 @@
     z-index: 1000;
     right: 0;
 
-    .remove-btn{
+    .remove-btn {
       background: none;
       outline: none;
       border: none;
       color: $color-grey-dark;
     }
 
-    .line{
-      opacity: .2;
-      margin: .5rem auto 0;
+    .line {
+      opacity: 0.2;
+      margin: 0.5rem auto 0;
       width: 80%;
     }
   }
 
-  .show-menu-btn{
-    transform: rotate(90deg);
+  .show-menu-btn {
     background: none;
     outline: none;
     border: none;
     color: $color-grey-light-2;
     font-size: 1.5rem;
     position: absolute;
-    top: .5rem;
-    right: 17px;
-    transition: .2s;
+    top: 5px;
+    right: 5px;
+    transition: 0.2s;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 3rem;
+    transition: all 0.255s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    &:hover{ color: $color-grey-dark; }
+    .icon {
+      width: 1.2rem;
+      height: 1.2rem;
+      background-image: url("data:image/svg+xml,%3Csvg version='1.1' fill='%23b5b5b5'%0Axmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ctitle%3Enavigation-more%3C/title%3E%3Cpath d='M4 12c-1.105 0-2-0.895-2-2s0.895-2 2-2v0c1.105 0 2 0.895 2 2s-0.895 2-2 2v0zM10 12c-1.105 0-2-0.895-2-2s0.895-2 2-2v0c1.105 0 2 0.895 2 2s-0.895 2-2 2v0zM16 12c-1.105 0-2-0.895-2-2s0.895-2 2-2v0c1.105 0 2 0.895 2 2s-0.895 2-2 2v0z'%3E%3C/path%3E%3C/svg%3E%0A");
+    }
+
+    &:hover {
+      background: $grey-bg-on-btn-hover;
+    }
   }
 
   .avatar {
-    padding: 1rem 0;
-    width: 35%;
+    margin: 1rem 0;
 
     a {
       figure {
@@ -73,7 +88,7 @@
           height: 100%;
         }
 
-        .is-online{
+        .is-online {
           position: absolute;
           right: 1rem;
           bottom: 0;
@@ -82,7 +97,7 @@
           width: 2rem;
           height: 2rem;
 
-          .circle{
+          .circle {
             color: $color-blue;
             font-size: 1.3rem;
             position: absolute;
@@ -94,51 +109,48 @@
   }
 
   .info {
-    padding: 1.5rem;
-    width: 65%;
-    margin-left: 1.5rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 
-    .row-info{
+    .row-info {
       display: flex;
       align-items: center;
       justify-content: center;
 
-      .icon{
+      .icon {
         width: 1.2555rem;
         height: 1.2555rem;
       }
 
-      .text-by-icon{
-        margin-left: .2555rem;
+      .text-by-icon {
+        margin-left: 0.2555rem;
       }
     }
 
-    .city{
-      &__icon{
+    .city {
+      &__icon {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M8 0c-2.761 0-5 2.239-5 5 0 5 5 11 5 11s5-6 5-11c0-2.761-2.239-5-5-5zM8 8c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z'%3E%3C/path%3E%3C/svg%3E");
       }
 
-      &__title{
-        margin: .5rem 0;
-        font-size: .8rem;
+      &__title {
+        margin: 0.5rem 0;
+        font-size: 0.8rem;
       }
     }
 
-    .line{
-      opacity: .15;
+    .line {
+      opacity: 0.15;
       margin-top: 0.5rem;
     }
 
     .name {
-      font-size: .95rem;
+      font-size: 0.95rem;
       color: $color-blue;
       text-decoration: none;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
 
-      &:hover{
+      &:hover {
         text-decoration: underline;
       }
     }
@@ -146,12 +158,12 @@
     .online-status {
       display: flex;
       align-items: center;
-      margin-top: .7rem;
+      margin-top: 0.7rem;
       justify-content: center;
 
-      .user-is-online-smile{
+      .user-is-online-smile {
         font-size: 1.1rem;
-        margin-right: .15rem;
+        margin-right: 0.15rem;
         color: $color-grey-light-2;
       }
 
@@ -161,59 +173,68 @@
       }
     }
 
-    .cw-line{
-      margin-top: 1.5rem;
+    .cw-line {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
       height: 1px;
       border: none;
       background-color: $color-grey-light-2;
       width: 100%;
-      opacity: .2;
+      opacity: 0.2;
     }
 
-    .controls-wrapper{
+    .controls-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
+      justify-content: center;
       text-decoration: none;
-      margin-top: 1rem;
-      font-size: .8rem;
+      font-size: 0.8rem;
 
-      .remove-request-btn, .add-new-friend-btn, .send-msg-btn{
-        width: 2rem;
-        height: 2rem;
+      .remove-request-btn,
+      .add-new-friend-btn,
+      .send-msg-btn {
+        width: 2.5rem;
+        height: 2.5rem;
         border: none;
+        border-radius: 50%;
+        background: none;
+        outline: none;
+        position: relative;
 
-        .icon{
+        .icon {
           width: 1.2rem;
           height: 1.2rem;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+          background: $grey-bg-on-btn-hover;
         }
       }
 
-      .send-msg-btn{
-        .icon{
+      .send-msg-btn {
+        .icon {
           background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23b5b5b5'%3E%3Cpath d='M16 2c8.837 0 16 5.82 16 13s-7.163 13-16 13c-0.849 0-1.682-0.054-2.495-0.158-3.437 3.437-7.539 4.053-11.505 4.144v-0.841c2.142-1.049 4-2.961 4-5.145 0-0.305-0.024-0.604-0.068-0.897-3.619-2.383-5.932-6.024-5.932-10.103 0-7.18 7.163-13 16-13z'%3E%3C/path%3E%3C/svg%3E%0A");
         }
       }
 
-      .remove-request-btn{
-        color: $color-grey-light-2;
-        background: none;
-
+      .remove-request-btn {
         .icon {
-          background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z'%3E%3C/path%3E%3Cpath d='M21 8l-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z'%3E%3C/path%3E%3C/svg%3E");
+          background-image: url("data:image/svg+xml,%0A%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' fill='%23b5b5b5' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Ecross%3C/title%3E%3Cpath d='M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z'%3E%3C/path%3E%3C/svg%3E");
         }
       }
 
-      .add-new-friend-btn{
-        border-radius: 50%;
-        background: $color-pink;
-
-        .icon{
-          transform: translate(10px, 5px);
-          background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' fill='white' viewBox='0 0 28 28'%3E%3Cpath d='M15.5 6h-5.5v-5.5c0-0.276-0.224-0.5-0.5-0.5h-3c-0.276 0-0.5 0.224-0.5 0.5v5.5h-5.5c-0.276 0-0.5 0.224-0.5 0.5v3c0 0.276 0.224 0.5 0.5 0.5h5.5v5.5c0 0.276 0.224 0.5 0.5 0.5h3c0.276 0 0.5-0.224 0.5-0.5v-5.5h5.5c0.276 0 0.5-0.224 0.5-0.5v-3c0-0.276-0.224-0.5-0.5-0.5z'%3E%3C/path%3E%3C/svg%3E");
+      .add-new-friend-btn {
+        .icon {
+          width: 17.5px;
+          height: 17.5px;
+          background-image: url("data:image/svg+xml,%3Csvg version='1.1' fill='%23b5b5b5' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Eplus%3C/title%3E%3Cpath d='M31 12h-11v-11c0-0.552-0.448-1-1-1h-6c-0.552 0-1 0.448-1 1v11h-11c-0.552 0-1 0.448-1 1v6c0 0.552 0.448 1 1 1h11v11c0 0.552 0.448 1 1 1h6c0.552 0 1-0.448 1-1v-11h11c0.552 0 1-0.448 1-1v-6c0-0.552-0.448-1-1-1z'%3E%3C/path%3E%3C/svg%3E%0A");
         }
       }
     }
   }
 }
-

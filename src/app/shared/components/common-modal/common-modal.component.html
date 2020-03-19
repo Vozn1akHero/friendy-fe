@@ -1,9 +1,6 @@
 <div #commonModal class="common-modal">
-  <div (click)="closePopup()"
-       class="invisible-bg"></div>
-  <div class="wrapper">
-    <div class="content">
-      <ng-content></ng-content>
-    </div>
+  <div (click)="closePopup()" class="invisible-bg"></div>
+  <div class="content">
+    <ng-content></ng-content>
   </div>
 </div>

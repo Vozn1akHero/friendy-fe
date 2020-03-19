@@ -1,10 +1,14 @@
-@import '../../../../../../assets/sass/base/variables';
+@import "../../../../../../assets/sass/base/variables";
 
-.friends-list{
+.friends-list {
   width: 100%;
-  display: flex;
   margin-top: 2rem;
-  flex-direction: column;
-  align-items: center;
   border-radius: 1rem;
+
+  .flex-wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 }

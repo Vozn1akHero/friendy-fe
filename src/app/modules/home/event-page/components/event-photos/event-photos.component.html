@@ -1,0 +1,37 @@
+<section class="event-photos">
+  <app-main-panel
+    [panelContent]="{
+      title: 'Zdjęcia',
+      iconClass: 'images-icon',
+      link: activatedRoute + '/photos',
+      marginTop: true
+    }"
+  >
+    <ng-container *ngIf="photosLoaded$ | async; else loader">
+      <div
+        class="row row--1"
+        *ngIf="(photos$ | async).length > 0; else noPhotos"
+      >
+        <app-event-photos-item
+          *ngFor="let photo of (photos$ | async).slice(0, 3)"
+          [photo]="photo"
+        ></app-event-photos-item>
+      </div>
+      <div class="row row--2">
+        <app-event-photos-item
+          *ngFor="let photo of (photos$ | async).slice(3, 6)"
+          q
+          [photo]="photo"
+        ></app-event-photos-item>
+      </div>
+      <ng-template #noPhotos>
+        <span class="fr-default-smaller-font">
+          Brak
+        </span>
+      </ng-template>
+    </ng-container>
+    <ng-template #loader>
+      <app-loader></app-loader>
+    </ng-template>
+  </app-main-panel>
+</section>

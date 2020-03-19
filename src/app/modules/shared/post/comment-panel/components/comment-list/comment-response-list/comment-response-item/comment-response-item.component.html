@@ -4,18 +4,30 @@
     </button>-->
   <div class="upper-wrapper">
     <div class="avatar-wrapper">
-      <a class="avatar-link" [routerLink]="['/app/profile', commentResponse.authorId]">
+      <a
+        class="avatar-link"
+        [routerLink]="['/app/profile', commentResponse.authorId]"
+      >
         <figure class="avatar">
-            <img src="{{ commentResponse.authorAvatarUrl }}" alt="user's avatar">
+          <img
+            src="{{ commentResponse.authorAvatarUrl }}"
+            alt="user's avatar"
+          />
         </figure>
       </a>
     </div>
     <div class="content-wrapper">
       <p class="text-content">
-        <span class="user-data"
-              *ngIf="commentResponse.responseToCommentId != null">
-          {{commentResponse.commentAuthorName +
-        " " + commentResponse.commentAuthorSurname + ","}}
+        <span
+          class="user-data"
+          *ngIf="commentResponse.responseToCommentId != null"
+        >
+          {{
+            commentResponse.commentAuthorName +
+              " " +
+              commentResponse.commentAuthorSurname +
+              ","
+          }}
         </span>
         {{ commentResponse.content }}
       </p>
@@ -27,22 +39,28 @@
   </div>
 
   <div class="bottom-wrapper">
-    <button class="add-response-btn" (click)="onRespondBtnClick()">
-      Odpowiedz
-    </button>
-    <button *ngIf="userId===commentResponse.authorId||privilegedToDeleteRelatedEntries"
-            class="remove-response-btn">
-      Usuń
-    </button>
-    <button class="likes-btn"
-            [ngClass]="commentResponse.isCommentLikedByUser ?
-            'unlike-post-btn' :
-            'like-user-post-btn'"
-            (click)="onLikeOrUnlike()">
+    <button
+      class="likes-btn"
+      [ngClass]="
+        commentResponse.isCommentLikedByUser ? 'unlike-btn' : 'like-btn'
+      "
+      (click)="onLikeOrUnlike()"
+    >
       <span class="icon fr-span-icon"></span>
       <span class="btn-text">
         {{ commentResponse.likesCount }}
       </span>
+    </button>
+    <button class="add-response-btn" (click)="onRespondBtnClick()">
+      Odpowiedz
+    </button>
+    <button
+      *ngIf="
+        userId === commentResponse.authorId || privilegedToDeleteRelatedEntries
+      "
+      class="remove-response-btn"
+    >
+      Usuń
     </button>
     <p class="date">
       {{ timePassed }}

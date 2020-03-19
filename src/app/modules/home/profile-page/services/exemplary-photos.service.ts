@@ -1,15 +1,13 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ExemplaryPhotosService {
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
-  getExemplary(userId: number){
-    return this.http.get(`api/user-photo/${userId}/page/1?length=3`,
-      {observe: 'response'})
+  getExemplary(userId: number) {
+    return this.http.get(`api/user-photo/${userId}/page/1?length=6`, {
+      observe: "response"
+    });
   }
 }

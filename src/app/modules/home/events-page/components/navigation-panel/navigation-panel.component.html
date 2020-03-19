@@ -1,22 +1,26 @@
 <div class="navigation-panel">
   <ul>
     <li>
-      <a [routerLink]="['/app/events']" class="link
+      <a
+        [routerLink]="['/app/events']"
+        class="link
       all-friends
-      fr-hover-text-decoration">
+      fr-hover-text-decoration"
+      >
         Wydarzenia w których biorę udział
       </a>
     </li>
-    <hr class="underline">
+    <hr class="underline" />
     <li>
-      <a [routerLink]="['/app/events']" [queryParams]="{act:
-      'search'}"
-         class="link
+      <a
+        [routerLink]="['/app/events']"
+        [queryParams]="{ act: 'search' }"
+        class="link
          user-search
-         fr-hover-text-decoration">
+         fr-hover-text-decoration"
+      >
         Wyszukiwanie wydarzeń
       </a>
     </li>
-    <hr class="line">
   </ul>
 </div>

@@ -1,10 +1,11 @@
-@import '../../../../assets/sass/base/variables';
-@import '../../../../assets/sass/abstracts/mixins';
+@import "../../../../assets/sass/base/variables";
+@import "../../../../assets/sass/abstracts/mixins";
 
-.photos-page{
+.photos-page {
   @include min-width-page();
+  min-height: 100vh;
 
-  .header{
+  .header {
     width: 100%;
   }
 }

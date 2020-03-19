@@ -1,52 +1,58 @@
-.chat-message-item{
+.chat-message-item {
   height: fit-content;
   min-height: 3rem;
   margin-right: 1rem;
   text-decoration: none;
   width: 100%;
 
-  .inner-ab-wrapper{
+  .inner-ab-wrapper {
     display: flex;
   }
 
-  .content{
+  .content {
     background-color: #f8f8f8;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     min-height: 3rem;
     padding: 1rem;
 
-    span{
+    span {
       text-decoration: none;
-      font-size: .8rem;
+      font-size: 0.8rem;
       word-break: break-all;
       color: #3f3f3f;
-      transition: all .1s;
+      transition: all 0.1s;
     }
 
-    .image-wrap-in-cont{
+    .image-wrap-in-cont {
       width: 50px;
+      cursor: pointer;
 
-      .image{
+      .image {
         width: 100%;
+      }
+
+      &--under-text {
+        margin-top: 5px;
       }
     }
   }
 
-  .time-passed{
-    font-size: .65rem;
-    opacity: .55;
+  .time-passed {
+    font-size: 0.65rem;
+    opacity: 0.55;
 
-    &--user, &--friend{
+    &--user,
+    &--friend {
       float: left;
       transform: translateY(1rem);
     }
 
-    &--user{
-      margin-right: .5rem;
+    &--user {
+      margin-right: 0.5rem;
     }
 
-    &--friend{
-      margin-left: .5rem;
+    &--friend {
+      margin-left: 0.5rem;
     }
   }
 }

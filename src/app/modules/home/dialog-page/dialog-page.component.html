@@ -1,12 +1,16 @@
 <div class="dialog-page" *ngIf="loaded">
   <div class="wrapper-1">
-    <hr class="vertical-line">
+    <hr class="vertical-line" />
     <app-dialog-nav></app-dialog-nav>
   </div>
   <div class="wrapper-2 act-dialog">
-    <app-chat-friend-data [userId]="userId"
-                          [interlocutorData]="interlocutorData"></app-chat-friend-data>
+    <app-chat-friend-data
+      [userId]="userId"
+      [interlocutorData]="interlocutorData"
+    ></app-chat-friend-data>
     <app-chat-message-list [userId]="userId"></app-chat-message-list>
-    <app-new-message-in-dialog-form [interlocutorData]="interlocutorData"></app-new-message-in-dialog-form>
+    <app-new-message-in-dialog-form
+      [interlocutorData]="interlocutorData"
+    ></app-new-message-in-dialog-form>
   </div>
 </div>

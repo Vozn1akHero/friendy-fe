@@ -1,24 +1,24 @@
-@import '../../../../../../assets/sass/base/variables';
+@import "../../../../../../assets/sass/base/variables";
 
-.chosen-event-settings-subpage{
+.chosen-event-settings-subpage {
   float: right;
   width: 70%;
   min-height: 100vh;
   padding-top: 1.5rem;
   padding-left: 3rem;
   z-index: -1;
- // background-color: $color-bg-light-grey;
+  // background-color: $color-bg-light-grey;
 
-  .header{
+  .header {
     padding: 0.5rem 2rem;
-    .title{
+    .title {
       color: white;
       font-weight: 400;
       font-size: 1.2rem;
     }
   }
 
-  .header-bg{
+  .header-bg {
     position: absolute;
     height: 11rem;
     width: 100%;
@@ -28,4 +28,3 @@
     top: 4.55rem;
   }
 }
-

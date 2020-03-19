@@ -1,16 +1,20 @@
 <div class="friends-list">
-  <ng-container *ngIf="(friendsLoaded$ | async); else friendListLoading">
+  <ng-container *ngIf="friendsLoaded$ | async; else friendListLoading">
     <ng-container
-      *ngIf="(friendList$|async).length > 0; else friendListEmptyMsg">
-      <div *ngFor="let friend of (friendList$|async)"
-           class="user">
-        <app-user-item (removeFriendEmitter)="removeFriend($event)"
-                       [friendshipStatusIndex]="0"
-                       [avatar]="friend.avatarUrl"
-                       [isUserOnline]="friend.onlineStatus"
-                       [name]="friend.name"
-                       [surname]="friend.surname"
-                       [id]="friend.id"></app-user-item>
+      *ngIf="(friendList$ | async).length > 0; else friendListEmptyMsg"
+    >
+      <div class="flex-wrap">
+        <div *ngFor="let friend of friendList$ | async" class="user">
+          <app-user-item
+            (removeFriendEmitter)="removeFriend($event)"
+            [friendshipStatusIndex]="0"
+            [avatar]="friend.avatarUrl"
+            [isUserOnline]="friend.onlineStatus"
+            [name]="friend.name"
+            [surname]="friend.surname"
+            [id]="friend.id"
+          ></app-user-item>
+        </div>
       </div>
     </ng-container>
     <ng-template #friendListEmptyMsg>
@@ -20,6 +24,11 @@
     </ng-template>
   </ng-container>
   <ng-template #friendListLoading>
-    <app-loader></app-loader>
+    <app-user-loader></app-user-loader>
+    <app-user-loader></app-user-loader>
+    <app-user-loader></app-user-loader>
+    <app-user-loader></app-user-loader>
+    <app-user-loader></app-user-loader>
+    <app-user-loader></app-user-loader>
   </ng-template>
 </div>

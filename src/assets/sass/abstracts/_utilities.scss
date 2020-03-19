@@ -70,3 +70,10 @@
   height: 2rem;
   background: $color-grey-light-2;
 }
+
+.btn-pulse-on-click{
+  &:active{
+    transition: .2s;
+    transform: scale(.9);
+  }
+}

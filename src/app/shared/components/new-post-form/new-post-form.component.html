@@ -1,24 +1,29 @@
 <div class="new-post">
   <form (ngSubmit)="onSubmit()" class="form">
-    <textarea #newMessageContent
-              [minLength]="1"
-              placeholder="Napisz wiadomość"></textarea>
+    <textarea
+      #newMessageContent
+      [minLength]="1"
+      placeholder="Napisz wiadomość"
+    ></textarea>
     <div class="bottom-wrapper">
       <div class="image-wrap">
-        <div class="file-btn-wrapper">
+        <div class="file-btn-wrapper btn-pulse-on-click">
           <span class="icon fr-span-icon"></span>
-          <input #image
-                 (change)="onImageSelection()"
-                 accept="image/jpeg, image/png"
-                 name="filename"
-                 style="opacity: 0;"
-                 type="file">
+          <input
+            #image
+            (change)="onImageSelection()"
+            accept="image/jpeg, image/png"
+            name="filename"
+            style="opacity: 0;"
+            type="file"
+          />
         </div>
-        <div *ngIf="selectedImage!=null" class="selected-file">
+        <div *ngIf="selectedImage != null" class="selected-file">
           <span class="title fr-default-smaller-font">
             {{ selectedImage.name }}
           </span>
-          <button (click)="removeSelectedImage()" class="remove-btn">&times;
+          <button (click)="removeSelectedImage()" class="remove-btn">
+            &times;
           </button>
         </div>
       </div>

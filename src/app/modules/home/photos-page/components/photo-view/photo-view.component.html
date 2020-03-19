@@ -1,4 +1,8 @@
 <div class="photo-view">
+  <div class="bg-wrap">
+    <div class="blurred-bg" [ngStyle]="{'background-image': 'url(' + (photo$|async).url  + ')'}">
+    </div>
+  </div>
   <div class="image-wrap">
     <img src="{{ (photo$|async).url }}"
          alt="">

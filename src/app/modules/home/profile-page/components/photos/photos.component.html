@@ -1,0 +1,33 @@
+<div class="photos">
+  <app-main-panel
+    [forSubjectEntries]="true"
+    [panelContent]="{
+      title: 'Zdjęcia',
+      iconClass: 'images-icon',
+      link: activatedRoute + '/photos',
+      marginTop: true
+    }"
+  >
+    <ng-container *ngIf="userPhotosLoaded">
+      <ng-container *ngIf="userPhotos.length > 0; else noPhotosMsg">
+        <div class="row row--first">
+          <app-profile-photos-item
+            *ngFor="let photo of userPhotos.slice(0, 3)"
+            [photoContent]="photo"
+          ></app-profile-photos-item>
+        </div>
+        <div *ngIf="userPhotos.length > 3" class="row row--second">
+          <app-profile-photos-item
+            *ngFor="let photo of userPhotos.slice(3, 6)"
+            [photoContent]="photo"
+          ></app-profile-photos-item>
+        </div>
+      </ng-container>
+      <ng-template #noPhotosMsg>
+        <span class="fr-default-smaller-font">
+          Brak
+        </span>
+      </ng-template>
+    </ng-container>
+  </app-main-panel>
+</div>

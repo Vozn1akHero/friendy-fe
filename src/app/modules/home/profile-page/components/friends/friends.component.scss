@@ -1,0 +1,9 @@
+.friend-list {
+  .row {
+    display: flex;
+    justify-content: center;
+    &:nth-of-type(2) {
+      margin-top: 8px;
+    }
+  }
+}

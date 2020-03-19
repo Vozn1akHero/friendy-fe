@@ -1,19 +1,22 @@
-<div class="chat-message-list"
-     infiniteScroll
-     [infiniteScrollDistance]="2"
-     [infiniteScrollThrottle]="50"
-     [scrollWindow]="false"
-     (scrolledUp)="updateMessages()">
-  <ng-container *ngIf="(messagesLoaded$|async); else loader">
-    <ng-container *ngIf="(messages$|async).length>0; else emptyList">
+<div
+  class="chat-message-list"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  [scrollWindow]="false"
+  (scrolledUp)="updateMessages()"
+>
+  <ng-container *ngIf="messagesLoaded$ | async; else loader">
+    <ng-container *ngIf="(messages$ | async).length > 0; else emptyList">
       <div class="list-wrap">
-          <div class="fr-m-b-1"
-               *ngFor="let message of (messages$|async);">
-            <app-chat-message-item
-              #messageItemComponent
-              [messageData]="message"
-              [profileId]="userId"></app-chat-message-item>
-          </div>
+        <div class="fr-m-b-1" *ngFor="let message of messages$ | async">
+          <app-chat-message-item
+            #messageItemComponent
+            (imageClickEmitter)="onImageClick($event)"
+            [messageData]="message"
+            [profileId]="userId"
+          ></app-chat-message-item>
+        </div>
       </div>
       <div #messagesEnd class="messages-end"></div>
     </ng-container>

@@ -1,7 +1,11 @@
-.full-screen-image{
-  position: relative;
+.full-screen-image {
+  position: absolute;
   float: left;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, -50%);
+
+  img {
+    max-width: 30rem;
+  }
 }

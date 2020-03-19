@@ -10,8 +10,7 @@ import InterlocutorDataModel from './models/interlocutor-data.model';
 import SubscriptionManager from '../../../shared/helpers/SubscriptionManager';
 import * as DialogListActions from './store/dialog-list/dialog-list.actions';
 import {Store} from '@ngrx/store';
-import * as fromApp from '../../../core/ngrx/store/app.reducer';
-import {AppState} from './store/reducers';
+import {AppState} from './store/reducers'
 
 @Component({
   selector: 'app-dialog-page',

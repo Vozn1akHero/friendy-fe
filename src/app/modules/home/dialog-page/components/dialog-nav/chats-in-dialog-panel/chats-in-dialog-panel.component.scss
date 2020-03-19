@@ -1,18 +1,49 @@
-@import '../../../../../../../assets/sass/base/variables';
+@import "../../../../../../../assets/sass/base/variables";
 
-.chats-in-dialog{
+.chats-in-dialog {
   height: 100vh;
+  overflow-y: scroll;
 
-  .items{
+  .items {
     padding: 1rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 
-    .line{
-      opacity: .2;
-      margin: .55rem auto .95rem auto;
+    .line {
+      opacity: 0.2;
+      margin: 0.55rem auto 0.95rem auto;
       width: 87%;
     }
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: #c0ccdd;
+      border-radius: 1rem;
+      border: 5px solid transparent;
+      background-clip: content-box;
+      opacity: 1;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      background: rgba(black, 0.02);
+      background-clip: content-box;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    opacity: 0;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: white;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 1rem;
+    transition: 0.5s;
+    border: 5px solid transparent;
+    background-clip: content-box;
   }
 }

@@ -1,21 +1,16 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FriendModel} from '../../../../models/friend.model';
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { FriendModel } from "../../../../models/friend.model";
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  selector: "app-contact",
+  templateUrl: "./contact.component.html",
+  styleUrls: ["./contact.component.scss"]
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent {
   @Input() contact: FriendModel;
-  @Output() selectContactEmitter: EventEmitter<number> = new EventEmitter();
+  @Output() onClickEmitter: EventEmitter<number> = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  selectContact() {
-    this.selectContactEmitter.emit(this.contact.id);
+  onClick() {
+    this.onClickEmitter.emit(this.contact.id);
   }
 }

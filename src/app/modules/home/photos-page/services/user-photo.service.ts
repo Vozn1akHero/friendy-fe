@@ -20,8 +20,8 @@ export class UserPhotoService {
     return this._userPhotos.asObservable();
   }
 
-  getRange(userId: number, page: number) {
-    return this.http.get(`api/user-photo/${userId}/page/${page}`,
+  getRange(userId: number, page: number, length: number) {
+    return this.http.get(`api/user-photo/${userId}/page/${page}?length=${length}`,
       {observe: 'response'}).pipe(map((res: HttpResponse<any[]>) => {
       if (this._userPhotos.getValue().length === 0) {
         const arr = [...res.body.map(value => new Photo(value.id,

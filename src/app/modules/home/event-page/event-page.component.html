@@ -1,9 +1,27 @@
-<div class="event-page"
-     infiniteScroll
-     [infiniteScrollDistance]="2"
-     [infiniteScrollThrottle]="50"
-     (scrolled)="updateList()">
+<div
+  class="event-page"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="updateList()"
+>
   <app-event-header [isEventAdmin]="isEventAdmin"></app-event-header>
 
-  <app-event-main-content [isEventAdmin]="isEventAdmin"></app-event-main-content>
+  <div class="event-main-content">
+    <section class="left-wrapper">
+      <div class="left-wrapper__panel-wrap">
+        <app-event-participants
+          [isEventAdmin]="isEventAdmin"
+        ></app-event-participants>
+        <app-event-photos></app-event-photos>
+      </div>
+    </section>
+
+    <section class="right-wrapper">
+      <ng-container *ngIf="isEventAdmin">
+        <app-event-new-post></app-event-new-post>
+      </ng-container>
+      <app-event-post-list [isEventAdmin]="isEventAdmin"></app-event-post-list>
+    </section>
+  </div>
 </div>

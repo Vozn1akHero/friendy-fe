@@ -1,6 +1,5 @@
-import { Action } from '@ngrx/store';
+import { Action, createAction } from '@ngrx/store';
 import {FriendModel} from '../../models/friend.model';
-
 
 export const GET_CONTACTS = '[Dialog Page] Get Contacts';
 export const SET_CONTACTS = '[Dialog Page] Set Contacts';

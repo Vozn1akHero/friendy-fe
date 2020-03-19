@@ -1,16 +1,20 @@
 <section class="suggested-friends">
   <app-main-panel
     [panelContent]="{
-            title: 'Proponowani znajomi',
-            iconClass: 'people-icon',
-            link: null,
-            marginTop: true
-          }">
+      title: 'Proponowani znajomi',
+      iconClass: 'people-icon',
+      link: null,
+      marginTop: true
+    }"
+  >
     <ng-container *ngIf="suggestedFriendsLoaded$ | async; else loader">
-      <ng-container *ngIf="(suggestedFriends$|async).length>0;else noSuggestedFriends">
-        <app-suggested-friends-item *ngFor="let suggestedFriend of
-        (suggestedFriends$|async)"
-          [suggestedFriend]="suggestedFriend"></app-suggested-friends-item>
+      <ng-container
+        *ngIf="(suggestedFriends$ | async).length > 0; else noSuggestedFriends"
+      >
+        <app-suggested-friends-item
+          *ngFor="let suggestedFriend of suggestedFriends$ | async"
+          [suggestedFriend]="suggestedFriend"
+        ></app-suggested-friends-item>
       </ng-container>
       <ng-template #noSuggestedFriends>
         <span class="fr-default-smaller-font">
@@ -19,7 +23,10 @@
       </ng-template>
     </ng-container>
     <ng-template #loader>
-      <app-loader></app-loader>
+      <content-loader>
+        <svg:rect x="0" y="0" rx="3" ry="3" width="100%" height="65" />
+        <svg:rect x="0" y="70" rx="3" ry="3" width="100%" height="65" />
+      </content-loader>
     </ng-template>
   </app-main-panel>
 </section>

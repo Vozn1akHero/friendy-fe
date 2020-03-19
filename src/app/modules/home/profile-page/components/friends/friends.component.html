@@ -1,0 +1,36 @@
+<section *ngIf="!(exemplaryFriendsLoading$ | async)" class="friend-list">
+  <app-main-panel
+    [forSubjectEntries]="true"
+    [panelContent]="{
+      title: 'Znajomi',
+      iconClass: 'people-icon',
+      link: '/app/friends'
+    }"
+  >
+    <ng-container
+      *ngIf="(exemplaryFriends$ | async).length > 0; else noFriendsMsg"
+    >
+      <div class="row row--first">
+        <friend
+          *ngFor="
+            let exemplaryFriend of (exemplaryFriends$ | async).slice(0, 3)
+          "
+          [exemplaryFriend]="exemplaryFriend"
+        ></friend>
+      </div>
+      <div class="row row--first">
+        <friend
+          *ngFor="
+            let exemplaryFriend of (exemplaryFriends$ | async).slice(3, 6)
+          "
+          [exemplaryFriend]="exemplaryFriend"
+        ></friend>
+      </div>
+    </ng-container>
+    <ng-template #noFriendsMsg>
+      <span class="fr-default-smaller-font">
+        Brak
+      </span>
+    </ng-template>
+  </app-main-panel>
+</section>

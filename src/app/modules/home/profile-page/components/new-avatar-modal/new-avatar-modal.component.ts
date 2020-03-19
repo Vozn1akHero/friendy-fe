@@ -1,41 +1,53 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
-import {Store} from '@ngrx/store';
-import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
-import * as UserAvatarActions from '../../store/user-avatar/user-avatar.actions';
-import {ProfilePageModalsService} from '../../services/profile-page-modals.service';
+import { UserAvatarService } from "./../../services/user-avatar.service";
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from "@angular/core";
+import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
+import { Store } from "@ngrx/store";
+import * as fromApp from "../../../../../core/ngrx/store/app.reducer";
+import * as UserAvatarActions from "../../store/user-avatar/user-avatar.actions";
 
 @Component({
-  selector: 'app-new-avatar-modal',
-  templateUrl: './new-avatar-modal.component.html',
-  styleUrls: ['./new-avatar-modal.component.scss']
+  selector: "app-new-avatar-modal",
+  templateUrl: "./new-avatar-modal.component.html",
+  styleUrls: ["./new-avatar-modal.component.scss"]
 })
 export class NewAvatarModalComponent implements OnInit {
-  @Input() newAvatar : File;
+  @Input() newAvatar: File;
   @Output() newAvatarSubmitted: EventEmitter<void> = new EventEmitter();
   newAvatarBytesLoaded: boolean = false;
   newAvatarBytes: SafeResourceUrl;
 
-  constructor(private _sanitizer: DomSanitizer,
-              private profilePageModalsService: ProfilePageModalsService,
-              private store: Store<fromApp.AppState>) { }
+  constructor(
+    private _sanitizer: DomSanitizer,
+    private avatarService: UserAvatarService,
+    private store: Store<fromApp.AppState>
+  ) {}
 
   ngOnInit() {
     const reader = new FileReader();
     reader.onloadend = () => {
-      this.newAvatarBytes = this._sanitizer.bypassSecurityTrustResourceUrl(String(reader.result));
+      this.newAvatarBytes = this._sanitizer.bypassSecurityTrustResourceUrl(
+        String(reader.result)
+      );
       this.newAvatarBytesLoaded = true;
     };
     reader.readAsDataURL(this.newAvatar);
   }
 
-  updateAvatarSubmit(){
+  updateAvatarSubmit() {
     this.store.dispatch(new UserAvatarActions.UpdateUserAvatar(this.newAvatar));
     this.newAvatarSubmitted.emit();
   }
 
   closeModal() {
-    this.profilePageModalsService.newAvatar = null;
-    this.profilePageModalsService.newAvatarModalOpened = false;
+    this.avatarService.newAvatar = null;
+    this.avatarService.newAvatarModalOpened = false;
   }
 }

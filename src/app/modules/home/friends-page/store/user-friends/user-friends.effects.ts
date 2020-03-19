@@ -1,13 +1,21 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Actions, ofType, Effect } from '@ngrx/effects';
-import {switchMap, catchError, map, tap, withLatestFrom, filter, mergeMap} from 'rxjs/operators';
-import {HttpClient, HttpResponse} from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { Actions, ofType, Effect } from "@ngrx/effects";
+import {
+  switchMap,
+  catchError,
+  map,
+  tap,
+  withLatestFrom,
+  filter,
+  mergeMap
+} from "rxjs/operators";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 
-import * as UserFriendsActions from './user-friends.actions';
-import {Store} from '@ngrx/store';
-import * as fromApp from '../../../../../core/ngrx/store/app.reducer';
-import {FriendsService} from '../../services/friends.service';
+import * as UserFriendsActions from "./user-friends.actions";
+import { Store } from "@ngrx/store";
+import * as fromApp from "../../../../../core/ngrx/store/app.reducer";
+import { FriendsService } from "../../services/friends.service";
 
 @Injectable()
 export class UserFriendsEffects {
@@ -32,25 +40,28 @@ export class UserFriendsEffects {
   getStartList = this.actions$.pipe(
     ofType(UserFriendsActions.GET_START_FRIEND_LIST),
     switchMap(() => {
-      return this.friendsService.getFriends(1)
-        .pipe(
-          map(res => {
-            return ({type: UserFriendsActions.SET_START_FRIEND_LIST, payload: res})
-          })
-        )
+      return this.friendsService.getFriends(1, 20).pipe(
+        map(res => {
+          return {
+            type: UserFriendsActions.SET_START_FRIEND_LIST,
+            payload: res
+          };
+        })
+      );
     })
   );
 
   @Effect()
   getFriends = this.actions$.pipe(
     ofType(UserFriendsActions.GET_FRIENDS),
-    switchMap((getFriends: UserFriendsActions.GetFriends) => {
-      return this.friendsService.getFriends(getFriends.payload.page)
+    switchMap((action: UserFriendsActions.GetFriends) => {
+      return this.friendsService
+        .getFriends(action.payload.page, action.payload.length)
         .pipe(
           map(res => {
-            return ({type: UserFriendsActions.SET_FRIENDS, payload: res})
+            return { type: UserFriendsActions.SET_FRIENDS, payload: res };
           })
-        )
+        );
     })
   );
 
@@ -58,12 +69,16 @@ export class UserFriendsEffects {
   filterFriends = this.actions$.pipe(
     ofType(UserFriendsActions.FILTER_FRIENDS),
     switchMap((filterFriendsStart: UserFriendsActions.FilterFriends) => {
-      return this.friendsService.filterFriends(filterFriendsStart.payload.keyword)
+      return this.friendsService
+        .filterFriends(filterFriendsStart.payload.keyword)
         .pipe(
           map(res => {
-            return ({type: UserFriendsActions.SET_FILTERED_FRIENDS, payload: res})
+            return {
+              type: UserFriendsActions.SET_FILTERED_FRIENDS,
+              payload: res
+            };
           })
-        )
+        );
     })
   );
 
@@ -71,15 +86,16 @@ export class UserFriendsEffects {
   removeFriend = this.actions$.pipe(
     ofType(UserFriendsActions.REMOVE_FRIEND),
     switchMap((filterFriendsStart: UserFriendsActions.RemoveFriend) => {
-      return this.friendsService.removeById(filterFriendsStart.payload.id)
-        .pipe(
-          map((res:any) => {
-            if(res.status === 200){
-              return ({type: UserFriendsActions.REMOVE_FRIEND_FROM_STATE,
-                payload: { id: filterFriendsStart.payload.id }})
-            }
-          })
-        )
+      return this.friendsService.removeById(filterFriendsStart.payload.id).pipe(
+        map((res: any) => {
+          if (res.status === 200) {
+            return {
+              type: UserFriendsActions.REMOVE_FRIEND_FROM_STATE,
+              payload: { id: filterFriendsStart.payload.id }
+            };
+          }
+        })
+      );
     })
   );
 
@@ -91,4 +107,3 @@ export class UserFriendsEffects {
     private store: Store<fromApp.AppState>
   ) {}
 }
-

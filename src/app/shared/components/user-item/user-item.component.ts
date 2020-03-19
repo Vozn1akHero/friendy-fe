@@ -1,7 +1,4 @@
 import {Component, ComponentFactoryResolver, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef} from '@angular/core';
-import {Observable, of, Subscription} from 'rxjs';
-import FoundUserModel from '../../../modules/home/friends-page/models/found-user.model';
-import {FriendsSearchService} from '../../../modules/home/friends-page/services/friends-search.service';
 import {ButtonHoverInfoPopoverComponent} from '../button-hover-info-popover/button-hover-info-popover.component';
 
 @Component({
@@ -10,7 +7,6 @@ import {ButtonHoverInfoPopoverComponent} from '../button-hover-info-popover/butt
   styleUrls: ['./user-item.component.scss']
 })
 export class UserItemComponent implements OnInit {
-  //friendshipStatus$: Observable<number>;
   @ViewChild('removeRequestPopoverRef', {read: ViewContainerRef}) removeRequestPopoverRef;
   @ViewChild('sendRequestPopoverRef', {read: ViewContainerRef}) sendRequestPopoverRef;
   @Output() sendFriendRequestEmitter: EventEmitter<number> = new EventEmitter();
@@ -71,19 +67,8 @@ export class UserItemComponent implements OnInit {
     this.sendRequestPopoverRef.clear();
   }
 
-  ngOnDestroy(): void {
-    /*    this.friendshipStatusSubscription.unsubscribe();
-
-        if(this.friendRequestStatusSubscription != null){
-          this.friendRequestStatusSubscription.unsubscribe();
-        }*/
-  }
-
-  showMenu() {
-    this.menu.nativeElement.style.display = 'block'
-  }
-
-  hideMenu() {
-    this.menu.nativeElement.style.display = 'none'
+  toogleMenu() {
+    this.menu.nativeElement.style.display =
+     this.menu.nativeElement.style.display === 'block' ? 'none' : 'block';
   }
 }

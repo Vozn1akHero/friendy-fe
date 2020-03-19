@@ -1,34 +1,39 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {catchError, map} from 'rxjs/operators';
-import DialogModel from '../models/dialog.model';
-import {Router} from '@angular/router';
-import Friend from '../../friends-page/models/friend.model';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { map } from "rxjs/operators";
+import DialogModel from "../models/dialog.model";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class DialogListService {
-  constructor(private http: HttpClient, private router: Router){}
+  constructor(private http: HttpClient) {}
 
-  getByPage(page: number){
-    return this.http.get(`/api/chat/last-messages/paginate?page=${page}`,
-      {observe: 'body'}).pipe(map((response : any[]) => {
-          let messages : DialogModel[] = [];
-          response.map((res : any) => {
-            const chat = new DialogModel(res.content,
-              res.senderId,
-              res.sender.avatarPath,
-              res.date,
-              res.imageUrl != null,
-              res.interlocutor.id,
-              res.interlocutor.avatarPath,
-              res.interlocutor.name,
-              res.interlocutor.surname,
-              res.writtenByRequestIssuer);
-            messages.push(chat);
-          });
-          return messages;
-    }))
+  getByPage(page: number, length: number) {
+    return this.http
+      .get(`/api/chat/dialog?page=${page}&length=${length}`, {
+        observe: "body"
+      })
+      .pipe(
+        map((res: any[]) => {
+          return [
+            ...res.map(
+              (value: any) =>
+                new DialogModel(
+                  value.content,
+                  value.senderId,
+                  value.sender.avatarPath,
+                  value.date,
+                  value.imageUrl,
+                  value.interlocutor.id,
+                  value.interlocutor.avatarPath,
+                  value.interlocutor.name,
+                  value.interlocutor.surname,
+                  value.writtenByRequestIssuer
+                )
+            )
+          ];
+        })
+      );
   }
 }

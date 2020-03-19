@@ -1,0 +1,16 @@
+<div class="friend">
+  <a
+    [routerLink]="['/app/profile', exemplaryFriend.id]"
+    class="friend__img-link"
+  >
+    <figure class="friend__avatar" class="friend__figure">
+      <img src="{{ exemplaryFriend.avatarUrl }}" alt="friend's avatar" />
+    </figure>
+  </a>
+  <a
+    [routerLink]="['/app/profile', exemplaryFriend.id]"
+    class="friend__text-link"
+  >
+    {{ exemplaryFriend.name }} {{ exemplaryFriend.surname }}
+  </a>
+</div>

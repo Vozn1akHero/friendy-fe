@@ -1,11 +1,13 @@
-<section class="event-settings-page"
-         (scrolled)="updateList()"
-         [infiniteScrollDistance]="3"
-         [infiniteScrollThrottle]="50"
-         infiniteScroll>
-  <header class="header color-dark-grey fr-border-bottom">
+<section
+  class="event-settings-page"
+  (scrolled)="updateList()"
+  [infiniteScrollDistance]="3"
+  [infiniteScrollThrottle]="50"
+  infiniteScroll
+>
+  <div class="header color-dark-grey fr-border-bottom">
     <h1 class="title">Ustawienia</h1>
-  </header>
+  </div>
   <app-event-settings-nav></app-event-settings-nav>
   <app-chosen-event-settings-subpage></app-chosen-event-settings-subpage>
 </section>

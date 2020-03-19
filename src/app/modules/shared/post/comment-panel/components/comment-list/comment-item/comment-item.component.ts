@@ -1,42 +1,41 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import CommentModel from '../../../models/comment.model';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import CommentModel from "../../../models/comment.model";
 import * as moment from "moment";
 
 @Component({
-  selector: 'app-comment-item',
-  templateUrl: './comment-item.component.html',
-  styleUrls: ['./comment-item.component.scss']
+  selector: "app-comment-item",
+  templateUrl: "./comment-item.component.html",
+  styleUrls: ["./comment-item.component.scss"]
 })
 export class CommentItemComponent implements OnInit {
   @Input() userId: number;
-  @Input() privilegedToDeleteRelatedEntries: boolean|never;
-  @Input() comment : CommentModel;
-  @Output() actResponseToCommentEmitter: EventEmitter<number> = new EventEmitter();
+  @Input() privilegedToDeleteRelatedEntries: boolean | never;
+  @Input() comment: CommentModel;
+  @Output() actResponseToCommentEmitter: EventEmitter<
+    number
+  > = new EventEmitter();
   @Output() likeEmitter: EventEmitter<number> = new EventEmitter();
   @Output() unlikeEmitter: EventEmitter<number> = new EventEmitter();
   timePassed: string;
   responsesShown: boolean;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.timePassed = moment(this.comment.date).fromNow();
   }
 
-  onRespondBtnClick(){
+  onRespondBtnClick() {
     this.actResponseToCommentEmitter.emit(this.comment.id);
   }
 
-  onRemoveComment() {
+  onRemoveComment() {}
 
-  }
-
-  like(){
-    console.log(this.comment)
+  like() {
     this.likeEmitter.emit(this.comment.id);
   }
 
-  unlike(){
+  unlike() {
     this.unlikeEmitter.emit(this.comment.id);
   }
 
@@ -45,7 +44,7 @@ export class CommentItemComponent implements OnInit {
   }
 
   onLikeOrUnlikePost() {
-    if(!this.comment.isCommentLikedByUser){
+    if (!this.comment.isCommentLikedByUser) {
       this.like();
     } else {
       this.unlike();

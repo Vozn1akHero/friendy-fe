@@ -1,14 +1,17 @@
 <div class="contacts">
   <h5 class="title">ZNAJOMI</h5>
-  <ng-container *ngIf="(contactsLoaded$|async); else loader">
-    <ng-container *ngIf="(contacts$|async).length > 0; else emptyFriendList">
-      <app-contact *ngFor="let contact of (contacts$|async)"
-                   [contact]="contact"></app-contact>
+  <ng-container *ngIf="contactsLoaded$ | async; else loader">
+    <ng-container *ngIf="(contacts$ | async).length > 0; else emptyFriendList">
+      <app-contact
+        *ngFor="let contact of contacts$ | async"
+        (onClickEmitter)="redirectToDialog($event)"
+        [contact]="contact"
+      ></app-contact>
     </ng-container>
     <ng-template #emptyFriendList>
       <div class="empty-list-wrap">
         <span class="fr-default-smaller-font">
-          brak znajomych
+          Brak znajomych
         </span>
       </div>
     </ng-template>
