@@ -3,7 +3,7 @@
 
 .event-page {
   @include min-width-page();
-
+  position: relative;
   .event-main-content {
     position: relative;
     display: flex;

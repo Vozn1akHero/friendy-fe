@@ -57,13 +57,11 @@ export class PhotosComponent implements OnInit {
     this.listScrollListenerSub = this.scrollableListNotifierService.endReached$.subscribe(
       value => {
         if (value) {
-          this.eventPhotoService
-            .getRange(
-              this.id,
-              this.scrollableListNotifierService.currentPage,
-              20
-            )
-            .subscribe();
+          this.eventPhotoService.getRange(
+            this.id,
+            this.scrollableListNotifierService.currentPage,
+            20
+          );
           this.scrollableListNotifierService.setDefaultValue();
         }
       }
@@ -77,7 +75,7 @@ export class PhotosComponent implements OnInit {
   }
 
   getEventPhotos() {
-    this.eventPhotoService.getRange(this.id, 1, 20).subscribe();
+    this.eventPhotoService.getRange(this.id, 1, 20);
     this.photos$ = this.eventPhotoService.eventPhotos$;
     this.loaded$ = this.eventPhotoService.loaded$;
   }

@@ -30,6 +30,7 @@ import { CityInputComponent } from "./city-input/city-input.component";
 import { InterestsInputComponent } from "./interests-input/interests-input.component";
 import { FullScreenImageComponent } from "./full-screen-image/full-screen-image.component";
 import { UserLoaderComponent } from "./user-loader/user-loader.component";
+import { WhiteBgModalComponent } from "./white-bg-modal/white-bg-modal.component";
 
 @NgModule({
   imports: [
@@ -66,7 +67,8 @@ import { UserLoaderComponent } from "./user-loader/user-loader.component";
     CityInputComponent,
     InterestsInputComponent,
     FullScreenImageComponent,
-    UserLoaderComponent
+    UserLoaderComponent,
+    WhiteBgModalComponent
   ],
   exports: [
     NewPostFormComponent,
@@ -95,7 +97,8 @@ import { UserLoaderComponent } from "./user-loader/user-loader.component";
     CityInputComponent,
     InterestsInputComponent,
     FullScreenImageComponent,
-    UserLoaderComponent
+    UserLoaderComponent,
+    WhiteBgModalComponent
   ],
   entryComponents: [ButtonHoverInfoPopoverComponent]
 })

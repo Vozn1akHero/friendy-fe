@@ -1,12 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: 'app-main-panel',
-  templateUrl: './main-panel.component.html',
-  styleUrls: ['./main-panel.component.scss']
+  selector: "app-main-panel",
+  templateUrl: "./main-panel.component.html",
+  styleUrls: ["./main-panel.component.scss"]
 })
 export class MainPanelComponent implements OnInit {
-  @Input() panelContent:any = {
+  @Input() panelContent: any = {
     title: null,
     icon: null,
     link: null,
@@ -15,16 +15,21 @@ export class MainPanelComponent implements OnInit {
     marginTop: false
   };
   @Input() panelStyles = {
-    width: '100%'
+    width: "100%"
   };
   @Input() contentColumned: boolean = true;
   @Input() contentStyles;
   contentAllStyles;
   @Input() forSubjectEntries: boolean = false;
+  @Output() onLinkClickEmitter: EventEmitter<void> = new EventEmitter();
+
+  onLinkClick() {
+    this.onLinkClickEmitter.emit();
+  }
 
   ngOnInit(): void {
     this.contentAllStyles = {
-      flexDirection: this.contentColumned ? 'column': 'row',
+      flexDirection: this.contentColumned ? "column" : "row",
       ...this.contentStyles
     };
   }

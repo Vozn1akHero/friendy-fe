@@ -1,3 +1,5 @@
+import { ParticipantSmallItemComponent } from "./components/participants-modal/participant-small-item/participant-small-item.component";
+import { ParticipantsModalComponent } from "./components/participants-modal/participants-modal.component";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { SharedModule } from "../../../shared/shared.module";
@@ -17,8 +19,6 @@ import { EventPhotosItemComponent } from "./components/event-photos/event-photos
 import { EventHeaderBgAlterComponent } from "./components/event-header/event-header-bg/event-header-bg-alter/event-header-bg-alter.component";
 import { EventPostListComponent } from "./components/event-post-list/event-post-list.component";
 import { IsEventAdminResolver } from "./resolvers/is-event-admin.resolver";
-import { EventParticipantsPageComponent } from "../event-participants-page/event-participants-page.component";
-import { EventParticipantItemComponent } from "../event-participants-page/event-participant-item/event-participant-item.component";
 import { ControlsComponent } from "./components/event-header/event-info-panel/controls/controls.component";
 import { NonParticipantControlsComponent } from "./components/event-header/event-info-panel/controls/non-participant-controls/non-participant-controls.component";
 import { ParticipantControlsComponent } from "./components/event-header/event-info-panel/controls/participant-controls/participant-controls.component";
@@ -49,11 +49,11 @@ import { PostModule } from "../../shared/post/post.module";
     EventHeaderBgAlterComponent,
     EventHeaderComponent,
     EventPostListComponent,
-    EventParticipantItemComponent,
-    EventParticipantsPageComponent,
     ControlsComponent,
     NonParticipantControlsComponent,
-    ParticipantControlsComponent
+    ParticipantControlsComponent,
+    ParticipantsModalComponent,
+    ParticipantSmallItemComponent
   ],
   providers: [IsEventAdminResolver]
 })

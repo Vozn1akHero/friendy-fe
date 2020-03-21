@@ -19,7 +19,7 @@ import { AppState } from "../../store/reducers";
 })
 export class FriendsComponent implements OnInit {
   exemplaryFriends$: Observable<ExemplaryFriend[]>;
-  exemplaryFriendsLoading$: Observable<boolean>;
+  loaded$: Observable<boolean>;
   @Input() isUserProfileOwner: boolean;
   @Input() userId: number;
 
@@ -30,11 +30,11 @@ export class FriendsComponent implements OnInit {
   }
 
   getExemplaryFriends() {
-    this.exemplaryFriendsLoading$ = this.store.select(
-      state => state.profilePageUserExemplaryFriends.loading
-    );
     this.store.dispatch(
       new UserExemplaryFriends.GetExemplaryFriends({ id: this.userId })
+    );
+    this.loaded$ = this.store.select(
+      state => state.profilePageUserExemplaryFriends.loaded[this.userId]
     );
     this.exemplaryFriends$ = this.store.select(
       state =>

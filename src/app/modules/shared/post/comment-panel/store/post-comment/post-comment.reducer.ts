@@ -1,5 +1,5 @@
-import * as PostCommentActions from './post-comment.actions';
-import CommentModel from '../../models/comment.model';
+import * as PostCommentActions from "./post-comment.actions";
+import CommentModel from "../../models/comment.model";
 
 export interface State {
   comments: { [id: string]: CommentModel[] };
@@ -25,49 +25,55 @@ export function postCommentsReducer(
     case PostCommentActions.SET_POST_COMMENTS:
       return {
         ...state,
-        comments: {...action.payload},
+        comments: { ...state.comments, ...action.payload },
         loaded: true
       };
     case PostCommentActions.LIKE_IN_STATE:
       return {
         ...state,
-        comments: function() {
-          state.comments[action.payload.postId] = [...state.comments[action.payload.postId].map(e => {
-            if (e.id == action.payload.commentId) {
-              e.isCommentLikedByUser = true;
-              e.likesCount++;
-            }
-            return e;
-          })];
-         return state.comments;
-        }()
+        comments: (function() {
+          state.comments[action.payload.postId] = [
+            ...state.comments[action.payload.postId].map(e => {
+              if (e.id == action.payload.commentId) {
+                e.isCommentLikedByUser = true;
+                e.likesCount++;
+              }
+              return e;
+            })
+          ];
+          return state.comments;
+        })()
       };
     case PostCommentActions.UNLIKE_IN_STATE:
       return {
         ...state,
-        comments: function() {
-          state.comments[action.payload.postId] = [...state.comments[action.payload.postId].map(e => {
-            if (e.id == action.payload.commentId) {
-              e.isCommentLikedByUser = false;
-              e.likesCount--;
-            }
-            return e;
-          })];
+        comments: (function() {
+          state.comments[action.payload.postId] = [
+            ...state.comments[action.payload.postId].map(e => {
+              if (e.id == action.payload.commentId) {
+                e.isCommentLikedByUser = false;
+                e.likesCount--;
+              }
+              return e;
+            })
+          ];
           return state.comments;
-        }()
+        })()
       };
     case PostCommentActions.FINALIZE_CREATION:
       return {
         ...state,
-        comments: function() {
-          console.log(1);
+        comments: (function() {
           return {
             ...state.comments,
             ...{
-              [action.payload.postId]: [...state.comments[action.payload.postId], action.payload]
+              [action.payload.postId]: [
+                ...state.comments[action.payload.postId],
+                action.payload
+              ]
             }
-          }
-        }()
+          };
+        })()
       };
     default:
       return state;

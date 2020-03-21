@@ -1,118 +1,132 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Actions, ofType, Effect } from '@ngrx/effects';
-import {switchMap, map, tap, withLatestFrom, filter, mergeMap} from 'rxjs/operators';
-import {HttpClient, HttpResponse} from '@angular/common/http';
-import * as UserPostsActions from './user-posts.actions';
-import {Store} from '@ngrx/store';
-import {UserPostService} from '../../services/user-post.service';
-import Post from '../../models/post.model';
-import {AppState} from '../reducers';
-
+import { Injectable } from "@angular/core";
+import { Actions, ofType, Effect } from "@ngrx/effects";
+import {
+  switchMap,
+  map,
+  withLatestFrom,
+  filter,
+  mergeMap
+} from "rxjs/operators";
+import { HttpResponse } from "@angular/common/http";
+import * as UserPostActions from "./user-posts.actions";
+import { Store } from "@ngrx/store";
+import { UserPostService } from "../../services/user-post.service";
+import Post from "../../models/post.model";
+import { AppState } from "../reducers";
+import { of } from "rxjs";
 
 @Injectable()
 export class UserPostsEffects {
   @Effect()
   profilePageAddPost = this.actions$.pipe(
-    ofType(UserPostsActions.ADD_POST),
-    switchMap((addPostStart: UserPostsActions.AddPost) => {
-      return this.userPostService.create(addPostStart.payload)
-        .pipe(
-          map(res => {
-            return ({ type: UserPostsActions.SET_ADDED_POST, payload: res.body })
-          })
-        )
+    ofType(UserPostActions.ADD_POST),
+    switchMap((action: UserPostActions.AddPost) => {
+      return this.userPostService.create(action.payload.post).pipe(
+        map(res => {
+          return {
+            type: UserPostActions.SET_ADDED_POST,
+            payload: {
+              id: action.payload.id,
+              post: res
+            }
+          };
+        })
+      );
     })
   );
 
-  buildPosts(res: any[]){
-    let posts : Post[] = [];
+  buildPosts(res: any[]) {
+    let posts: Post[] = [];
     res.map(value => {
-      posts.push(new Post(value.id,
-        value.userId,
-        value.avatar,
-        value.content,
-        value.imagePath,
-        value.likesCount,
-        value.commentsCount,
-        value.postId,
-        value.isPostLikedByUser,
-        value.date))
+      posts.push(
+        new Post(
+          value.id,
+          value.userId,
+          value.avatar,
+          value.content,
+          value.imagePath,
+          value.likesCount,
+          value.commentsCount,
+          value.postId,
+          value.isPostLikedByUser,
+          value.date
+        )
+      );
     });
     return posts;
   }
 
   @Effect()
   profilePageGetUserPosts = this.actions$.pipe(
-    ofType(UserPostsActions.GET_USER_POSTS),
-    //withLatestFrom(this.store$.select(e => e.profilePageUserPosts.posts)),
-    switchMap((action : UserPostsActions.GetUserPosts) => {
-      return this.userPostService.getWithPagination(action.payload.userId, action.payload.page)
+    ofType<UserPostActions.GetUserPosts>(UserPostActions.GET_USER_POSTS),
+    withLatestFrom(this.store$.select(e => e.profilePageUserPosts.loaded)),
+    filter(([action, loaded]) => !loaded[action.payload.userId]),
+    mergeMap(([{ payload }]) => {
+      return this.userPostService
+        .getWithPagination(payload.userId, payload.page)
         .pipe(
           map((res: HttpResponse<any[]>) => {
-            const payload = this.buildPosts(res.body);
-            if(action.payload.page === 1){
-              return ({ type: UserPostsActions.SET_USER_POSTS,
-                payload })
-            }
-            else return ({ type: UserPostsActions.FULFILL_USER_POSTS,
-              payload })
+            const posts = this.buildPosts(res.body);
+            return new UserPostActions.SetUserPosts({
+              id: payload.userId,
+              posts
+            });
           })
-        )
+        );
     })
   );
 
-  /*@Effect()
-  startFulfillingUserPosts = this.actions$.pipe(
-    ofType(UserPostsActions.START_FULFILLING_USER_POSTS),
-    withLatestFrom(this.store$.select(e => e.profilePageUserPosts.posts)),
-    switchMap(([action, posts] : [UserPostsActions.GetUserPosts, Post[]]) => {
-      return this.userPostService.getByUserId(action.payload.userId, posts[posts.length - 1].id,5)
+  @Effect() fulfillPosts = this.actions$.pipe(
+    ofType(UserPostActions.START_FULFILLING),
+    switchMap((action: UserPostActions.StartFulfilling) => {
+      return this.userPostService
+        .getWithPagination(action.payload.id, action.payload.page)
         .pipe(
           map((res: HttpResponse<any[]>) => {
-            return ({ type: UserPostsActions.FULFILL_USER_POSTS,
-              payload: this.buildPosts(res.body) })
+            const posts = this.buildPosts(res.body);
+            return new UserPostActions.FulfillUserPosts({
+              id: action.payload.id,
+              posts
+            });
           })
-        )
+        );
     })
   );
-*/
 
   @Effect()
   profilePageRemovePost = this.actions$.pipe(
-    ofType(UserPostsActions.REMOVE_POST),
-    switchMap((payload: UserPostsActions.RemovePost) => {
-      return this.userPostService.delete(payload.payload.id)
-        .pipe(
-          map(() => {
-            return ({ type: UserPostsActions.REMOVE_POST_FROM_STATE,
-              payload: {id: payload.payload.id} })
-          })
-        )
+    ofType(UserPostActions.REMOVE_POST),
+    switchMap((payload: UserPostActions.RemovePost) => {
+      return this.userPostService.delete(payload.payload.id).pipe(
+        map(() => {
+          return {
+            type: UserPostActions.REMOVE_POST_FROM_STATE,
+            payload: { id: payload.payload.id }
+          };
+        })
+      );
     })
   );
 
-  @Effect({dispatch: false})
+  @Effect({ dispatch: false })
   profilePageLikePost = this.actions$.pipe(
-    ofType(UserPostsActions.LIKE_POST),
-    switchMap((payload: UserPostsActions.LikePost) => {
-      return this.userPostService.like(payload.payload.id)
+    ofType(UserPostActions.LIKE_POST),
+    switchMap((payload: UserPostActions.LikePost) => {
+      return this.userPostService.like(payload.payload.id);
     })
   );
 
-  @Effect({dispatch: false})
+  @Effect({ dispatch: false })
   profilePageUnlikePost = this.actions$.pipe(
-    ofType(UserPostsActions.UNLIKE_POST),
-    switchMap((payload: UserPostsActions.UnlikePost) => {
-      return this.userPostService.unlike(payload.payload.id)
+    ofType(UserPostActions.UNLIKE_POST),
+    switchMap((payload: UserPostActions.UnlikePost) => {
+      return this.userPostService.unlike(payload.payload.id);
     })
   );
 
   constructor(
     private actions$: Actions,
-    private http: HttpClient,
     private userPostService: UserPostService,
-    private router: Router,
     private store$: Store<AppState>
   ) {}
 }

@@ -1,0 +1,20 @@
+@import "../../../../assets/sass/base/variables";
+
+.common-modal {
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.788);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .invisible-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

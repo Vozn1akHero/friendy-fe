@@ -1,5 +1,6 @@
 <section class="event-participants">
   <app-main-panel
+    (onLinkClickEmitter)="onLinkClick()"
     [panelContent]="{
       title: 'Uczestnicy',
       link: this.activatedRoute + '/participants',
@@ -7,16 +8,27 @@
       marginTop: true
     }"
   >
-    <ng-container *ngIf="loaded; else loader">
-      <div
-        class="items"
-        *ngIf="eventExemplaryParticipants.length > 0; else noParticipants"
+    <ng-container *ngIf="loaded$ | async; else loader">
+      <ng-container
+        *ngIf="(eventParticipants$ | async).length > 0; else noParticipants"
       >
-        <app-event-participants-item
-          *ngFor="let eventParticipant of eventExemplaryParticipants"
-          [eventParticipant]="eventParticipant"
-        ></app-event-participants-item>
-      </div>
+        <div class="row row--1">
+          <app-event-participants-item
+            *ngFor="
+              let eventParticipant of (eventParticipants$ | async).slice(0, 3)
+            "
+            [eventParticipant]="eventParticipant"
+          ></app-event-participants-item>
+        </div>
+        <div class="row row--2">
+          <app-event-participants-item
+            *ngFor="
+              let eventParticipant of (eventParticipants$ | async).slice(3, 6)
+            "
+            [eventParticipant]="eventParticipant"
+          ></app-event-participants-item>
+        </div>
+      </ng-container>
       <ng-template #noParticipants>
         <span class="fr-default-smaller-font">
           Brak

@@ -1,0 +1,22 @@
+<app-white-bg-modal (closeEmitter)="closePopup()">
+  <div class="participants-modal-wrap">
+    <div class="header-wrap">
+      <button (click)="closePopup()" class="close-btn">&times;</button>
+    </div>
+    <div class="participants-list">
+      <ng-container *ngIf="loaded$ | async; else loader">
+        <app-participant-small-item
+          *ngFor="let eventParticipant of eventParticipants$ | async"
+          [id]="eventParticipant.id"
+          [avatarUrl]="eventParticipant.avatarUrl"
+          [name]="eventParticipant.name"
+          [surname]="eventParticipant.surname"
+        >
+        </app-participant-small-item>
+      </ng-container>
+      <ng-template #loader>
+        <app-loader></app-loader>
+      </ng-template>
+    </div>
+  </div>
+</app-white-bg-modal>

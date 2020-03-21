@@ -1,3 +1,4 @@
+import { UserPhotoEffects } from "./modules/home/profile-page/store/user-photos/user-photos.effects";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -51,6 +52,7 @@ import { ParticipationRequestEffects } from "./modules/home/event-settings-page/
 import { UserListEffects } from "./modules/home/friends-page/store/user-list/user-list.effects";
 import { ContactsEffects } from "./modules/home/dialog-page/store/contacts/contacts.effects";
 import { NotFoundHttpInterceptor } from "./shared/helpers/NotFoundHttpInterceptor";
+import { ParticipantEffects } from "./modules/home/event-page/store/participants/participants.effects";
 
 @NgModule({
   declarations: [
@@ -90,11 +92,13 @@ import { NotFoundHttpInterceptor } from "./shared/helpers/NotFoundHttpIntercepto
       UserExemplaryFriendsEffects,
       UserDataEffects,
       UserPostsEffects,
+      UserPhotoEffects,
       UserFriendsEffects,
       UserEventsEffects,
       AdministeredEventsEffects,
       DialogListEffects,
       EventDataEffects,
+      ParticipantEffects,
       ParticipationEffects,
       SPEventDataEffects,
       ParticipationRequestEffects

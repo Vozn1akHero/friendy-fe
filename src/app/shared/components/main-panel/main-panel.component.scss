@@ -1,46 +1,48 @@
-@import '../../../../assets/sass/base/variables';
+@import "../../../../assets/sass/base/variables";
 
-.main-panel{
+.main-panel {
   background-color: $color-bg-grey-footer;
   padding: 1rem;
   width: inherit;
   //border-radius: $panel-border-radius;
   border-radius: 1rem;
 
-  .header{
+  .header {
     display: flex;
     margin-bottom: 1rem;
 
-    .icon{
+    .icon {
       width: 20px;
       height: 18px;
     }
 
-    .section-link{
+    .section-link {
       display: flex;
       align-self: center;
-      font-size: .8rem;
-      margin-left: .5rem;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
       color: $color-grey-light-2;
       text-decoration: none;
+
+      &--btn {
+        background: none;
+        border: none;
+        outline: none;
+      }
     }
 
-    p{
+    p {
       display: flex;
       align-self: center;
-      font-size: .8rem;
-      margin-left: .5rem;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
       color: $color-grey-light-2;
     }
   }
 
-  .content{
-    display: flex;
-  }
-
-  .for-subject-entries{
+  .for-subject-entries {
     ::ng-deep > * {
-      margin-right: .5rem;
+      margin-right: 0.5rem;
     }
   }
 }

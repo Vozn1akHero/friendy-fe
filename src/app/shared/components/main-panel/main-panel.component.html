@@ -7,21 +7,25 @@
     <span class="icon fr-span-icon" [ngClass]="panelContent.iconClass"></span>
     <ng-container *ngIf="panelContent.link !== null; else standardText">
       <a
+        *ngIf="!onLinkClickEmitter"
         routerLink="{{ panelContent.link }}"
         [queryParams]="panelContent.queryParams"
         class="section-link"
         >{{ panelContent.title }}</a
       >
+      <button
+        class="section-link section-link--btn"
+        *ngIf="onLinkClickEmitter"
+        (click)="onLinkClick()"
+      >
+        {{ panelContent.title }}
+      </button>
     </ng-container>
     <ng-template #standardText>
       <p>{{ panelContent.title }}</p>
     </ng-template>
   </div>
-  <!-- <div class="content" [ngClass]="{'for-subject-entries': forSubjectEntries}"
-       [ngStyle]="contentAllStyles">
-    <ng-content></ng-content>
-  </ng-content> -->
-  <div class="content-fake">
+  <div class="content">
     <ng-content></ng-content>
   </div>
 </div>

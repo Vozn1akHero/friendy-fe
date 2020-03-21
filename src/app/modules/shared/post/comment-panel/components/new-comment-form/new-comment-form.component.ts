@@ -86,7 +86,7 @@ export class NewCommentFormComponent implements OnInit {
     }
   }
 
-  toggleTypingActive() {
-    this.typingActive = !this.typingActive;
+  activateTyping() {
+    this.typingActive = true;
   }
 }

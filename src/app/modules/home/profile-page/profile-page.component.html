@@ -28,7 +28,10 @@
       class="under-header-content-wrapper"
     >
       <div class="left-wrapper">
-        <app-profile-new-post *ngIf="isUserProfileOwner"></app-profile-new-post>
+        <app-profile-new-post
+          *ngIf="isUserProfileOwner"
+          [userId]="userId"
+        ></app-profile-new-post>
 
         <app-profile-post-list
           [isUserProfileOwner]="isUserProfileOwner"

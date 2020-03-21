@@ -36,7 +36,8 @@ export class EventPhotoService {
             ]);
           }
         })
-      );
+      )
+      .toPromise();
   }
 
   post(eventId: number, image: File): void {

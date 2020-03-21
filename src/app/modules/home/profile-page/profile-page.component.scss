@@ -1,5 +1,5 @@
-@import '../../../../assets/sass/base/variables';
-@import '../../../../assets/sass/abstracts/mixins';
+@import "../../../../assets/sass/base/variables";
+@import "../../../../assets/sass/abstracts/mixins";
 
 .profile-page {
   @include min-width-page();
@@ -22,14 +22,14 @@
       display: flex;
       flex-direction: column;
       margin-left: 4rem;
-      width: 301px;
+      width: 306px;
     }
 
     &--dim {
       position: absolute;
       top: 0;
       left: 0;
-      background-color: rgba(#6b6b6b, .5);
+      background-color: rgba(#6b6b6b, 0.5);
       height: 100%;
       width: 100%;
       z-index: 1;

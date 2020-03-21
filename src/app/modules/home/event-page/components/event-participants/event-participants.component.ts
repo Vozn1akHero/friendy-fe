@@ -1,48 +1,54 @@
-import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { AppState } from "./../../store/reducers";
+import { EventParticipant } from "src/app/shared/models/event-participant.model";
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  EventEmitter
+} from "@angular/core";
 import { Observable } from "rxjs";
 import { EventParticipantService } from "../../services/event-participant.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import EventExemplaryParticipant from "../../models/event-exemplary-participant.model";
-import SubscriptionManager from "../../../../../shared/helpers/SubscriptionManager";
-import EventParticipantListItem from "../../models/event-participant-list-item.model";
+import * as ParticipantActions from "../../store/participants/participants.actions";
+import { Store } from "@ngrx/store";
 
 @Component({
   selector: "app-event-participants",
   templateUrl: "./event-participants.component.html",
   styleUrls: ["./event-participants.component.scss"]
 })
-export class EventParticipantsComponent implements OnInit, OnDestroy {
+export class EventParticipantsComponent implements OnInit {
   @Input() isEventAdmin: boolean;
-  loaded: boolean;
-  eventExemplaryParticipants: EventParticipantListItem[];
+  loaded$: Observable<boolean>;
+  eventParticipants$: Observable<EventParticipant[]>;
   activatedRoute: string;
-  eventId: number;
+  @Input() eventId: number;
+  @Output() openParticipantsModalEmitter: EventEmitter<
+    void
+  > = new EventEmitter();
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private subscriptionManager: SubscriptionManager,
-    private eventParticipantService: EventParticipantService
-  ) {}
+  constructor(private router: Router, private store$: Store<AppState>) {}
 
   ngOnInit() {
-    this.eventId = this.route.snapshot.params.id;
     this.activatedRoute = this.router.url;
-    this.getExemplaryParticipants();
-  }
-
-  getExemplaryParticipants() {
-    this.subscriptionManager.add(
-      this.eventParticipantService
-        .getRange(this.eventId, 1, 3)
-        .subscribe(value => {
-          this.eventExemplaryParticipants = value;
-          this.loaded = true;
-        })
+    this.store$.dispatch(
+      new ParticipantActions.GetExemplary({ id: this.eventId })
+    );
+    this.loaded$ = this.store$.select(
+      e => e.eventPageParticipants.exemplaryLoaded[this.eventId]
+    );
+    this.eventParticipants$ = this.store$.select(
+      e => e.eventPageParticipants.initialParticipants[this.eventId]
     );
   }
 
-  ngOnDestroy(): void {
-    this.subscriptionManager.destroy();
+  onLinkClick() {
+    this.openParticipantsModalEmitter.emit();
+  }
+
+  openParticipantsModal() {
+    this.openParticipantsModalEmitter.emit();
   }
 }

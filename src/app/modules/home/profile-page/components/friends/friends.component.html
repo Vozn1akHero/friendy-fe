@@ -1,4 +1,4 @@
-<section *ngIf="!(exemplaryFriendsLoading$ | async)" class="friend-list">
+<section *ngIf="loaded$ | async" class="friend-list">
   <app-main-panel
     [forSubjectEntries]="true"
     [panelContent]="{

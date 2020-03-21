@@ -1,14 +1,13 @@
 import * as UserExemplaryFriendsActions from "./user-exemplary-friends.actions";
 import ExemplaryFriend from "../../models/exemplary-friend.model";
-import { stat } from "fs";
 
 export interface State {
   exemplaryFriends: { [id: number]: ExemplaryFriend[] };
-  loading: boolean;
+  loaded: { [id: number]: boolean };
 }
 
 const initialState: State = {
-  loading: true,
+  loaded: {},
   exemplaryFriends: {}
 };
 
@@ -19,16 +18,18 @@ export function userExemplaryFriendsReducer(
   switch (action.type) {
     case UserExemplaryFriendsActions.GET_EXEMPLARY_FRIENDS:
       return {
-        ...state,
-        loading: true
+        ...state
       };
     case UserExemplaryFriendsActions.SET_EXEMPLARY_FRIENDS:
       return {
         ...state,
-        loading: false,
+        loaded: {
+          ...state.loaded,
+          [action.payload.id]: true
+        },
         exemplaryFriends: {
           ...state.exemplaryFriends,
-          ...action.payload
+          [action.payload.id]: action.payload.entries
         }
       };
     default:

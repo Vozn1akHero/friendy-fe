@@ -1,5 +1,5 @@
+import { EventParticipant } from "src/app/shared/models/event-participant.model";
 import { Component, Input, OnInit } from "@angular/core";
-import EventParticipantListItem from "../../../models/event-participant-list-item.model";
 
 @Component({
   selector: "app-event-participants-item",
@@ -7,7 +7,7 @@ import EventParticipantListItem from "../../../models/event-participant-list-ite
   styleUrls: ["./event-participants-item.component.scss"]
 })
 export class EventParticipantsItemComponent {
-  @Input() eventParticipant: EventParticipantListItem;
+  @Input() eventParticipant: EventParticipant;
 
   constructor() {}
 }

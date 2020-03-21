@@ -20,7 +20,6 @@ export class EventPostListComponent implements OnInit, OnDestroy {
 
   constructor(
     private eventPostService: EventPostService,
-    private eventAvatarService: EventAvatarService,
     private router: Router,
     private subscriptionManager: SubscriptionManager,
     private scrollableListNotifierService: ScrollableListNotifierService,

@@ -1,4 +1,4 @@
-export default class EventParticipantListItem {
+export class EventParticipant {
   id: number;
   name: number;
   surname: number;

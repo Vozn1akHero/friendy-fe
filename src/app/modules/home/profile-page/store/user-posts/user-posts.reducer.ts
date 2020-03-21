@@ -1,17 +1,14 @@
-import * as UserPostsActions from './user-posts.actions'
-import Post from '../../models/post.model';
-
+import * as UserPostsActions from "./user-posts.actions";
+import Post from "../../models/post.model";
 
 export interface State {
-  posts: Post[];
-  loading: boolean;
-  loaded: boolean;
+  posts: { [id: number]: Post[] };
+  loaded: { [id: number]: boolean };
 }
 
 const initialState: State = {
-  loading: false,
-  posts: [],
-  loaded: false
+  posts: {},
+  loaded: {}
 };
 
 export function userPostsReducer(
@@ -26,30 +23,47 @@ export function userPostsReducer(
     case UserPostsActions.SET_USER_POSTS:
       return {
         ...state,
-        loaded: true,
-        posts: action.payload
+        loaded: {
+          ...state.loaded,
+          [action.payload.id]: true
+        },
+        posts: {
+          ...state.posts,
+          [action.payload.id]: [...action.payload.posts]
+        }
       };
     case UserPostsActions.FULFILL_USER_POSTS:
       return {
         ...state,
-        posts: [...action.payload, ...state.posts],
-        loaded: true
+        posts: {
+          ...state.posts,
+          [action.payload.id]: [
+            ...state.posts[action.payload.id],
+            ...action.payload.posts
+          ]
+        }
       };
     case UserPostsActions.ADD_POST:
       return {
-        ...state,
-        loading: true
+        ...state
       };
     case UserPostsActions.SET_ADDED_POST:
       return {
         ...state,
-        loading: false,
-        posts: [action.payload, ...state.posts]
+        posts: (function() {
+          state.posts[action.payload.id].push(action.payload.post);
+          return state.posts;
+        })()
       };
     case UserPostsActions.REMOVE_POST_FROM_STATE:
       return {
         ...state,
-        posts: [...state.posts.filter(post => post.postId !== action.payload.id)]
+        posts: (function() {
+          state.posts[action.payload.id].filter(
+            post => post.postId !== action.payload.id
+          );
+          return state.posts;
+        })()
       };
     default:
       return state;

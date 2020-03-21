@@ -3,7 +3,7 @@
     <textarea
       placeholder="Napisz komentarz"
       class="new-comment-ta"
-      (focus)="toggleTypingActive()"
+      (focus)="activateTyping()"
       [ngStyle]="{
         height: typingActive ? '80px' : '4em',
         borderRadius: typingActive ? '1rem' : '2rem'

@@ -3,15 +3,21 @@
 .friend {
   text-align: center;
   margin: 0 2px;
-  width: 84px;
+  width: 91px;
+  height: 107px;
+  padding: 5px;
+  background: white;
+  border-radius: 1rem;
 
   &__figure {
-    height: 5rem;
-    width: 100%;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
 
     img {
-      border-radius: 1rem;
+      border-radius: 50%;
       height: 100%;
+      width: 100%;
     }
   }
 
@@ -19,5 +25,7 @@
     font-size: 0.7rem;
     color: $color-grey-dark;
     text-decoration: none;
+    margin-top: 6px;
+    display: block;
   }
 }

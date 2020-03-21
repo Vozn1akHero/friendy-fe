@@ -1,3 +1,4 @@
+import { map } from "rxjs/operators";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
@@ -25,7 +26,7 @@ export class EventPhotosComponent implements OnInit {
     this.eventId = +this.route.snapshot.paramMap.get("id");
     this.activatedRoute = this.router.url;
     this.eventPhotoService.getExemplary(this.eventId);
-    this.photos$ = this.eventPhotoService.eventPhotos$;
-    this.photosLoaded$ = this.eventPhotoService.eventPhotosLoaded$;
+    this.photos$ = this.eventPhotoService.eventPhotosById(this.eventId);
+    this.photosLoaded$ = this.eventPhotoService.loadedById(this.eventId);
   }
 }

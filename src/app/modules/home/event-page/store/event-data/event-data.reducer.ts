@@ -1,11 +1,10 @@
-import * as EventDataActions from './event-data.actions'
-import EventShortened from '../../models/event-shortened.model';
-
+import * as EventDataActions from "./event-data.actions";
+import EventShortened from "../../models/event-shortened.model";
 
 export interface State {
-  events: {[id: string]: EventShortened};
-  loaded: {[id: string]:boolean};
-  }
+  events: { [id: string]: EventShortened };
+  loaded: { [id: string]: boolean };
+}
 
 const initialState: State = {
   events: {},
@@ -26,15 +25,11 @@ export function eventDataReducer(
         ...state,
         events: {
           ...state.events,
-          ...{
-            [action.payload.id]: action.payload
-          }
+          [action.payload.id]: action.payload.value
         },
         loaded: {
           ...state.loaded,
-          ...{
-            [action.payload.id]: true
-          }
+          [action.payload.id]: true
         }
       };
     default:
