@@ -14,7 +14,9 @@ import { FriendsSearchPanelComponent } from "./components/friends-search-panel/f
 import { FriendsSearchFormComponent } from "./components/friends-search-form/friends-search-form.component";
 import { FoundUsersListComponent } from "./components/found-users-list/found-users-list.component";
 import { NavigationPanelComponent } from "./components/navigation-panel/navigation-panel.component";
-import { SharedComponentsModule } from "src/app/shared/components/shared-components.module";
+import { SentFriendRequestsComponent } from "./components/sent-friend-requests/sent-friend-requests.component";
+import { FriendRequestService } from "./services/friend-request.service";
+import { ReceivedFriendRequestsComponent } from './components/received-friend-requests/received-friend-requests.component';
 
 @NgModule({
   imports: [
@@ -35,8 +37,11 @@ import { SharedComponentsModule } from "src/app/shared/components/shared-compone
     FriendsSearchFormComponent,
     FoundUsersListComponent,
     FriendsSearchPanelComponent,
-    NavigationPanelComponent
+    NavigationPanelComponent,
+    SentFriendRequestsComponent,
+    ReceivedFriendRequestsComponent
   ],
+  providers: [FriendRequestService],
   exports: []
 })
 export class FriendsPageModule {}

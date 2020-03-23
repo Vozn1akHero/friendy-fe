@@ -1,0 +1,31 @@
+<ng-container *ngIf="loaded$ | async; else loader">
+  <ng-container
+    *ngIf="(receivedFriendRequests$ | async).length > 0; else empty"
+  >
+    <div *ngFor="let user of receivedFriendRequests$ | async" class="user">
+      <app-user-item
+        [id]="user.userId"
+        [friendRequestId]="user.id"
+        [name]="user.name"
+        [surname]="user.surname"
+        [city]="null"
+        [avatar]="user.avatar"
+        [isUserOnline]="user.isOnline"
+        [friendshipStatusIndex]="3"
+      ></app-user-item>
+    </div>
+  </ng-container>
+  <ng-template #empty>
+    <span class="empty-list-text fr-err-mg-bg">
+      Brak otrzymanych zaproszeń do znajomych
+    </span>
+  </ng-template>
+</ng-container>
+<ng-template #loader>
+  <app-user-loader></app-user-loader>
+  <app-user-loader></app-user-loader>
+  <app-user-loader></app-user-loader>
+  <app-user-loader></app-user-loader>
+  <app-user-loader></app-user-loader>
+  <app-user-loader></app-user-loader>
+</ng-template>

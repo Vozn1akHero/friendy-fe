@@ -33,12 +33,6 @@
         <span class="icon fr-span-icon"></span>
         <span>Znajomi</span>
       </a>
-      <button
-        (click)="showFriendRequestsModal()"
-        class="friends__open-requests-modal-btn friends__open-requests-modal-btn--new"
-      >
-        {{ receivedFriendRequestsAmount }}
-      </button>
     </div>
     <div class="links__item photos">
       <a [routerLink]="['/app/profile', profileId$ | async, 'photos']">

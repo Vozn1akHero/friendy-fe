@@ -1,3 +1,4 @@
+import { ReceivedFriendRequestEffects } from "./modules/home/friends-page/store/received-friend-request/received-friend-request.effects";
 import { UserPhotoEffects } from "./modules/home/profile-page/store/user-photos/user-photos.effects";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -53,6 +54,7 @@ import { UserListEffects } from "./modules/home/friends-page/store/user-list/use
 import { ContactsEffects } from "./modules/home/dialog-page/store/contacts/contacts.effects";
 import { NotFoundHttpInterceptor } from "./shared/helpers/NotFoundHttpInterceptor";
 import { ParticipantEffects } from "./modules/home/event-page/store/participants/participants.effects";
+import { SentFriendRequestEffects } from "./modules/home/friends-page/store/sent-friend-request/sent-friend-request.effects";
 
 @NgModule({
   declarations: [
@@ -100,6 +102,8 @@ import { ParticipantEffects } from "./modules/home/event-page/store/participants
       EventDataEffects,
       ParticipantEffects,
       ParticipationEffects,
+      SentFriendRequestEffects,
+      ReceivedFriendRequestEffects,
       SPEventDataEffects,
       ParticipationRequestEffects
     ]),

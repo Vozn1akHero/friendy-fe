@@ -1,79 +1,89 @@
-@import '../base/variables';
-@import './m-p-loops';
+@import "../base/variables";
+@import "./m-p-loops";
 
-.bordered-onError{
-  box-shadow: 0 0 0 0.1rem rgba($color-red-for-invalid-input,.1);
+.bordered-onError {
+  box-shadow: 0 0 0 0.1rem rgba($color-red-for-invalid-input, 0.1);
 }
 
-.invalid-input-span{
+.invalid-input-span {
   display: block;
-  font-size: .6rem;
+  font-size: 0.6rem;
   color: $color-red-for-invalid-input;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
-.f-modal-hidden{
+.f-modal-hidden {
   visibility: hidden;
 }
 
-.f-modal-visible{
+.f-modal-visible {
   visibility: visible;
 }
 
-.fr-border-top{
-  border-top: 1px solid rgba(0,0,0,.1);
+.fr-border-top {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.fr-border-bottom{
-  border-bottom: 1px solid rgba(0,0,0,.1);
+.fr-border-bottom {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.fr-border-right{
-  border-right: 1px solid rgba(0,0,0,.1);
+.fr-border-right {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.fr-border-left{
-  border-left: 1px solid rgba(0,0,0,.1);
+.fr-border-left {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.fr-border-full{
-  border: 1px solid rgba(0,0,0,.1);
+.fr-border-full {
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.color-dark-grey{
+.color-dark-grey {
   color: $color-grey-dark;
 }
 
-.light-grey-background{
+.light-grey-background {
   background: $color-bg-grey-footer !important;
 }
 
-.fr-light-grey-section-bg{
+.fr-light-grey-section-bg {
   background: $color-bg-grey-footer;
 }
 
-.fr-centered{
+.fr-centered {
   margin: 0 auto;
 }
 
-.fr-default-smaller-font{
-  font-size: .8rem;
+.fr-default-smaller-font {
+  font-size: 0.8rem;
 }
 
-.fr-hover-text-decoration{
-  &:hover{
+.fr-hover-text-decoration {
+  &:hover {
     text-decoration: underline !important;
   }
 }
 
-.text-loader{
+.text-loader {
   height: 2rem;
   background: $color-grey-light-2;
 }
 
-.btn-pulse-on-click{
-  &:active{
-    transition: .2s;
-    transform: scale(.9);
+.btn-pulse-on-click {
+  &:active {
+    transition: 0.2s;
+    transform: scale(0.9);
   }
+}
+
+.fr-err-mg-bg {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: $color-grey-light;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

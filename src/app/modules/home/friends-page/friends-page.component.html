@@ -1,30 +1,37 @@
-<div class="friends"
-     infiniteScroll
-     [infiniteScrollDistance]="2"
-     [infiniteScrollThrottle]="50"
-     (scrolled)="updateFriendList()">
+<div
+  class="friends"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="updateFriendList()"
+>
   <section class="left-wrap">
     <div class="whole-section-wrap">
       <app-friends-search-controls></app-friends-search-controls>
-      <ng-container *ngIf="!(searchActivated$|async)">
-        <app-friend-list></app-friend-list>
-      </ng-container>
-      <ng-container *ngIf="(searchActivated$|async)">
-        <app-found-users-list></app-found-users-list>
-      </ng-container>
+
+      <app-friend-list *ngIf="(subpageIndex$ | async) === 1"></app-friend-list>
+      <app-received-friend-requests *ngIf="(subpageIndex$ | async) === 2">
+      </app-received-friend-requests>
+      <app-sent-friend-requests
+        *ngIf="(subpageIndex$ | async) === 3"
+      ></app-sent-friend-requests>
+      <app-found-users-list
+        *ngIf="(subpageIndex$ | async) === 4"
+      ></app-found-users-list>
     </div>
   </section>
 
   <section class="right-wrap">
     <app-navigation-panel></app-navigation-panel>
 
-    <div *ngIf="!(searchActivated$|async)">
+    <div *ngIf="(subpageIndex$ | async) === 1 || (subpageIndex$ | async) === 2">
       <app-suggested-friends-panel></app-suggested-friends-panel>
     </div>
 
-    <app-friends-search-panel *ngIf="(searchActivated$|async)"
-      (searchFormSubmitEmitter)="searchFormSubmit($event)">
+    <app-friends-search-panel
+      *ngIf="(subpageIndex$ | async) === 3"
+      (searchFormSubmitEmitter)="searchFormSubmit($event)"
+    >
     </app-friends-search-panel>
   </section>
 </div>
-

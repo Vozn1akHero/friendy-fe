@@ -10,12 +10,7 @@ import { Observable } from "rxjs";
   styleUrls: ["./navigation.component.scss"]
 })
 export class NavigationComponent implements OnInit {
-  @Input() friendRequestModalOpened: boolean;
-  @Output() openFriendRequestsModalEmitter: EventEmitter<
-    void
-  > = new EventEmitter();
   profileId$: Observable<number>;
-  @Input() receivedFriendRequestsAmount: number;
 
   constructor(
     private router: Router,
@@ -25,10 +20,6 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit() {
     this.profileId$ = this.userIdService.userId$;
-  }
-
-  showFriendRequestsModal() {
-    this.openFriendRequestsModalEmitter.emit();
   }
 
   showNotifications() {}

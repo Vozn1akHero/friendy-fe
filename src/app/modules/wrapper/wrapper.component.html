@@ -3,16 +3,7 @@
     <app-full-screen-image
       *ngIf="fullScreenImageModalVisible$ | async"
     ></app-full-screen-image>
-    <app-friend-requests-modal
-      *ngIf="friendRequestsModalOpened"
-      (closeModalEmitter)="closeFriendRequestsModal()"
-    >
-    </app-friend-requests-modal>
-    <app-navigation
-      [friendRequestModalOpened]="friendRequestsModalOpened"
-      [receivedFriendRequestsAmount]="receivedFriendRequestsAmount"
-      (openFriendRequestsModalEmitter)="openFriendRequestsModal()"
-    ></app-navigation>
+    <app-navigation></app-navigation>
     <section class="subpage">
       <router-outlet></router-outlet>
     </section>

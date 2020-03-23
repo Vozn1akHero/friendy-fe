@@ -103,26 +103,6 @@
       .icon {
         background: url($group-icon);
       }
-
-      &__open-requests-modal-btn {
-        margin-left: 1rem;
-        width: 1.8rem;
-        height: 1.8rem;
-        background: white;
-        border: none;
-        color: $color-grey-dark;
-        border-radius: 10px;
-        box-shadow: 3px 0px 6px 0 rgba(0, 0, 0, 0.15);
-        transition: 0.3s box-shadow;
-
-        &--new {
-          color: $color-pink;
-        }
-
-        &:hover {
-          box-shadow: 3px 0px 6px 0 rgba(0, 0, 0, 0.3);
-        }
-      }
     }
 
     .messages {

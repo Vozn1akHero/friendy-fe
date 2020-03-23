@@ -14,6 +14,30 @@
     <li>
       <a
         [routerLink]="['/app/friends']"
+        [queryParams]="{ act: 'sent-friend-requests' }"
+        class="link
+      all-friends
+      fr-hover-text-decoration"
+      >
+        Wysłanie zaproszenia do znajomych
+      </a>
+    </li>
+    <hr class="underline" />
+    <li>
+      <a
+        [routerLink]="['/app/friends']"
+        [queryParams]="{ act: 'received-friend-requests' }"
+        class="link
+      all-friends
+      fr-hover-text-decoration"
+      >
+        Otrzymane zaproszenia do znajomych
+      </a>
+    </li>
+    <hr class="underline" />
+    <li>
+      <a
+        [routerLink]="['/app/friends']"
         [queryParams]="{ act: 'search' }"
         class="link
          user-search
