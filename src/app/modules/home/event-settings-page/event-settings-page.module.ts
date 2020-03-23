@@ -24,6 +24,7 @@ import {EventParticipationRequestService} from './services/event-participation-r
 import { ParticipantsModalComponent } from './components/event-admins-settings/participants-modal/participants-modal.component';
 import { ParticipantSmallItemComponent } from './components/event-admins-settings/participants-modal/participant-small-item/participant-small-item.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import { ParticipantSettingsNavComponent } from './components/event-participants-settings/participant-settings-nav/participant-settings-nav.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
     ParticipantListButtonComponent,
     ParticipantRequestsSettingsComponent,
     ParticipantsModalComponent,
-    ParticipantSmallItemComponent
+    ParticipantSmallItemComponent,
+    ParticipantSettingsNavComponent
   ],
   providers: [
     IsEventCreatorResolver,

@@ -1,37 +1,39 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/auth/auth.service';
-import {UserIdService} from '../../shared/services/user-id.service';
-import {Observable} from 'rxjs';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Router } from "@angular/router";
+import { AuthService } from "src/app/core/auth/auth.service";
+import { UserIdService } from "../../shared/services/user-id.service";
+import { Observable } from "rxjs";
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  selector: "app-navigation",
+  templateUrl: "./navigation.component.html",
+  styleUrls: ["./navigation.component.scss"]
 })
 export class NavigationComponent implements OnInit {
-  @Input() friendRequestModalOpened:boolean;
-  @Output() openFriendRequestsModalEmitter: EventEmitter<void> = new EventEmitter();
+  @Input() friendRequestModalOpened: boolean;
+  @Output() openFriendRequestsModalEmitter: EventEmitter<
+    void
+  > = new EventEmitter();
   profileId$: Observable<number>;
   @Input() receivedFriendRequestsAmount: number;
 
-  constructor(private router: Router,
-              private userIdService : UserIdService,
-              private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private userIdService: UserIdService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
-    this.setProfileId();
-  }
-
-  showFriendRequestsModal(){
-    this.openFriendRequestsModalEmitter.emit();
-  }
-
-  setProfileId(){
     this.profileId$ = this.userIdService.userId$;
   }
 
-  logOut():void{
+  showFriendRequestsModal() {
+    this.openFriendRequestsModalEmitter.emit();
+  }
+
+  showNotifications() {}
+
+  logOut(): void {
     this.authService.logOut();
   }
 }

@@ -1,15 +1,13 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {EventParticipationRequestService} from '../../../../../services/event-participation-request.service';
-import {Observable, Subscription} from 'rxjs';
-import SubscriptionManager from '../../../../../../../../shared/helpers/SubscriptionManager';
-import {PARTICIPATION_STATUS} from '../../../../../models/participation-status.enum';
+import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Observable } from "rxjs";
+import { PARTICIPATION_STATUS } from "../../../../../models/participation-status.enum";
 
 @Component({
-  selector: 'app-non-participant-controls',
-  templateUrl: './non-participant-controls.component.html',
-  styleUrls: ['./non-participant-controls.component.scss']
+  selector: "app-non-participant-controls",
+  templateUrl: "./non-participant-controls.component.html",
+  styleUrls: ["./non-participant-controls.component.scss"]
 })
-export class NonParticipantControlsComponent{
+export class NonParticipantControlsComponent {
   @Input() participationStatus$: Observable<PARTICIPATION_STATUS>;
   nonParticipantStatus: PARTICIPATION_STATUS.NonParticipant;
   bannedParticipantStatus: PARTICIPATION_STATUS.Banned;
@@ -17,13 +15,11 @@ export class NonParticipantControlsComponent{
   @Output() sendRequestEmitter: EventEmitter<void> = new EventEmitter();
   @Output() removeRequestEmitter: EventEmitter<void> = new EventEmitter();
 
-  constructor() {}
-
   onJoinUpBtnClick() {
     this.sendRequestEmitter.emit();
   }
 
-  onRemoveRequestBtnClick(){
+  onRemoveRequestBtnClick() {
     this.removeRequestEmitter.emit();
   }
 }

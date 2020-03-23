@@ -22,6 +22,7 @@ export class MainPanelComponent implements OnInit {
   contentAllStyles;
   @Input() forSubjectEntries: boolean = false;
   @Output() onLinkClickEmitter: EventEmitter<void> = new EventEmitter();
+  @Input() showBtnInsteadOfAnchor: boolean = true;
 
   onLinkClick() {
     this.onLinkClickEmitter.emit();

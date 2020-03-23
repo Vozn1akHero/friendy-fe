@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UserPhotoService } from "./services/user-photo.service";
 import { EventPhotoService } from "./services/event-photo.service";
-import { BaseDataService } from "./services/base-data.service";
 import { ScrollableListNotifierService } from "../../../shared/services/scrollable-list-notifier.service";
 import { UserIdService } from "../../../shared/services/user-id.service";
 import { PhotoViewService } from "./services/photo-view.service";
@@ -15,7 +14,6 @@ import { Observable } from "rxjs";
   providers: [
     UserPhotoService,
     EventPhotoService,
-    BaseDataService,
     PhotoViewService,
     ScrollableListNotifierService
   ]

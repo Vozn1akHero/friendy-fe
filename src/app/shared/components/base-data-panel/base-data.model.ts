@@ -1,4 +1,4 @@
-export default class BaseData {
+export class BaseData {
   id: number;
   title: string;
   avatarUrl: string;

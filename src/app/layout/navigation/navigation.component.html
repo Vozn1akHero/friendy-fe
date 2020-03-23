@@ -1,59 +1,64 @@
+<nav class="navigation">
+  <div class="header-buttons">
+    <button class="logout-btn" (click)="logOut()">
+      <span class="icon fr-span-icon"></span>
+    </button>
 
-  <nav class="navigation">
-    <div class="header-buttons">
-        <button class="logout-btn" (click)="logOut()">
-          <span class="icon fr-span-icon"></span>
-        </button>
-
-        <a class="settings-btn" routerLink="settings">
-          <span class="icon fr-span-icon"></span>
-        </a>
-    </div>
-
-    <a routerLink="home" class="logo">
-        <img src="../../../assets/images/logo-white.png"
-             class="image"
-             alt="Friendy logo">
+    <a class="settings-btn" routerLink="settings">
+      <span class="icon fr-span-icon"></span>
     </a>
 
-    <div class="links">
-        <div class="links__item profile">
-            <a [routerLink]="['/app/profile', (this.profileId$|async)]">
-                <span class="icon fr-span-icon"></span>
-                <span>Profil</span>
-            </a>
-        </div>
-        <div class="links__item friends">
-            <a routerLink="friends">
-                <span class="icon fr-span-icon"></span>
-                <span>Znajomi</span>
-            </a>
-            <button (click)="showFriendRequestsModal()"
-                    class="friends__open-requests-modal-btn friends__open-requests-modal-btn--new">
-              {{ receivedFriendRequestsAmount }}
-            </button>
-        </div>
-      <div class="links__item photos">
-        <a [routerLink]="['/app/profile', (profileId$|async), 'photos']">
-          <span class="icon fr-span-icon"></span>
-          <span>Zdjęcia</span>
-        </a>
-      </div>
-        <div class="links__item messages">
-            <a routerLink="dialog">
-              <span class="icon fr-span-icon"></span>
-              <span>Wiadomości</span>
-            </a>
-        </div>
-        <div class="links__item events">
-            <a routerLink="events">
-              <span class="icon fr-span-icon"></span>
-              <span>Wydarzenia</span>
-            </a>
-        </div>
+    <button class="show-notifications-btn" (click)="showNotifications()">
+      <span class="icon fr-span-icon"></span>
+    </button>
+  </div>
+
+  <a routerLink="home" class="logo">
+    <img
+      src="../../../assets/images/logo-white.png"
+      class="image"
+      alt="Friendy logo"
+    />
+  </a>
+
+  <div class="links">
+    <div class="links__item profile">
+      <a [routerLink]="['/app/profile', this.profileId$ | async]">
+        <span class="icon fr-span-icon"></span>
+        <span>Profil</span>
+      </a>
     </div>
+    <div class="links__item friends">
+      <a routerLink="friends">
+        <span class="icon fr-span-icon"></span>
+        <span>Znajomi</span>
+      </a>
+      <button
+        (click)="showFriendRequestsModal()"
+        class="friends__open-requests-modal-btn friends__open-requests-modal-btn--new"
+      >
+        {{ receivedFriendRequestsAmount }}
+      </button>
+    </div>
+    <div class="links__item photos">
+      <a [routerLink]="['/app/profile', profileId$ | async, 'photos']">
+        <span class="icon fr-span-icon"></span>
+        <span>Zdjęcia</span>
+      </a>
+    </div>
+    <div class="links__item messages">
+      <a routerLink="dialog">
+        <span class="icon fr-span-icon"></span>
+        <span>Wiadomości</span>
+      </a>
+    </div>
+    <div class="links__item events">
+      <a routerLink="events">
+        <span class="icon fr-span-icon"></span>
+        <span>Wydarzenia</span>
+      </a>
+    </div>
+  </div>
 
-    <app-footer></app-footer>
-
-  </nav>
-
+  <app-footer></app-footer>
+</nav>

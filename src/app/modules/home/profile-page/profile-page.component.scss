@@ -3,7 +3,7 @@
 
 .profile-page {
   @include min-width-page();
-
+  position: relative;
   .under-header-content-wrapper {
     position: relative;
     display: flex;

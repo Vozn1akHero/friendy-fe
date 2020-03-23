@@ -1,11 +1,4 @@
 <ng-container *ngIf="userDataLoaded$ | async">
-  <app-new-avatar-modal
-    (newAvatarSubmitted)="newAvatarSubmitted()"
-    *ngIf="avatarService.newAvatarModalOpened"
-    [newAvatar]="avatarService.newAvatar"
-  >
-  </app-new-avatar-modal>
-
   <section
     (scrolled)="updateList()"
     [infiniteScrollDistance]="2"
@@ -13,6 +6,13 @@
     infiniteScroll
     class="profile-page"
   >
+    <app-new-avatar-modal
+      (newAvatarSubmitted)="newAvatarSubmitted()"
+      *ngIf="avatarService.newAvatarModalOpened"
+      [newAvatar]="avatarService.newAvatar"
+    >
+    </app-new-avatar-modal>
+
     <app-profile-header
       [activeSettings]="activeSettings"
       [isUserProfileOwner]="isUserProfileOwner"

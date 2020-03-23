@@ -1,5 +1,5 @@
-@import '../../../../../../assets/sass/base/variables';
-@import '../../../../../../assets/sass/components/dropdown';
+@import "../../../../../../assets/sass/base/variables";
+@import "../../../../../../assets/sass/components/dropdown";
 @import "../../../../../../assets/sass/components/fr-input";
 
 .new-avatar-modal {
@@ -8,13 +8,25 @@
   padding: 1rem;
   position: relative;
   text-align: center;
-  transition: all .3s;
+  transition: all 0.3s;
+  width: 50%;
+  min-height: 7rem;
 
-  .avatar-wrap{
-
+  .avatar-wrap {
+    img {
+      width: 13rem;
+      height: 13rem;
+      border-radius: 50%;
+    }
   }
 
-  .bottom-wrapper{
+  .bottom-wrap {
     margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+
+    .submit-btn {
+      width: 6rem;
+    }
   }
 }

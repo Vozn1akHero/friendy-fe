@@ -7,7 +7,7 @@
     <span class="icon fr-span-icon" [ngClass]="panelContent.iconClass"></span>
     <ng-container *ngIf="panelContent.link !== null; else standardText">
       <a
-        *ngIf="!onLinkClickEmitter"
+        *ngIf="!showBtnInsteadOfAnchor"
         routerLink="{{ panelContent.link }}"
         [queryParams]="panelContent.queryParams"
         class="section-link"
@@ -15,7 +15,7 @@
       >
       <button
         class="section-link section-link--btn"
-        *ngIf="onLinkClickEmitter"
+        *ngIf="showBtnInsteadOfAnchor"
         (click)="onLinkClick()"
       >
         {{ panelContent.title }}

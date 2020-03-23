@@ -1,0 +1,47 @@
+@import "../../../../assets/sass/base/variables";
+
+.base-data-panel {
+  width: 100%;
+
+  .upper-wrapper {
+    width: 100%;
+    height: 60px;
+    position: relative;
+
+    .back-btn {
+      border: 0;
+      outline: none;
+      background: none;
+      width: 25%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 2rem;
+
+      .icon {
+        width: 20px;
+        height: 20px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' stroke-width='2' stroke='%23c6c6c6' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='0' y='0' width='24' height='24' stroke='none'%3E%3C/rect%3E%3Cpolyline points='15 6 9 12 15 18' /%3E%3C/svg%3E");
+      }
+
+      &:hover {
+        background: linear-gradient(
+          90deg,
+          rgba($color-bg-light-grey-2, 0.4),
+          white
+        );
+      }
+
+      .base-avatar {
+        width: 41px;
+        height: 41px;
+        border-radius: 50%;
+        margin-left: 1rem;
+      }
+
+      .base-title {
+        margin-left: 13px;
+      }
+    }
+  }
+}

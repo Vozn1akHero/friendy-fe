@@ -25,16 +25,16 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.infoModalOpened$ = this.infoModalService.opened$;
-    // document.addEventListener('click', e => {
-    //   const el = e.target as HTMLElement;
-    //   if(!el.classList.contains("fr-popover")) {
-    //     const popovers = document.getElementsByClassName('fr-popover');
-    //     if (popovers.length > 0) {
-    //       [].slice.call(popovers).map(value => {
-    //         value.style.display = 'none'
-    //       });
-    //     }
-    //   }
-    // })
+    document.addEventListener("click", e => {
+      const el = e.target as HTMLElement;
+      if (!el.classList.contains("fr-popover")) {
+        const popovers = document.getElementsByClassName("fr-popover");
+        if (popovers.length > 0) {
+          [].slice.call(popovers).map(value => {
+            value.style.display = "none";
+          });
+        }
+      }
+    });
   }
 }

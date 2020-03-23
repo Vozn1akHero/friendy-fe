@@ -3,7 +3,8 @@ import {
   OnInit,
   ViewChild,
   Output,
-  EventEmitter
+  EventEmitter,
+  Input
 } from "@angular/core";
 
 @Component({
@@ -14,6 +15,7 @@ import {
 export class WhiteBgModalComponent implements OnInit {
   @ViewChild("commonModal") commonModal;
   @Output() closeEmitter: EventEmitter<void>;
+  @Input() contentCentered: boolean = false;
 
   constructor() {
     this.closeEmitter = new EventEmitter();

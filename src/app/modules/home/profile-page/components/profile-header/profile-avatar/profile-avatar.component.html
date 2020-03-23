@@ -1,14 +1,18 @@
 <div class="profile-avatar">
-  <ng-container *ngIf="userDataLoaded$|async">
+  <ng-container *ngIf="userDataLoaded$ | async">
     <ng-container *ngIf="isUserProfileOwner">
       <div *ngIf="activeSettings" class="profile-avatar-alter">
-        <input (change)="showNewAvatarModal($event)"
-               accept="image/jpeg, image/png"
-               name="filename"
-               type="file">
+        <input
+          (change)="showNewAvatarModal($event)"
+          accept="image/jpeg, image/png"
+          name="filename"
+          type="file"
+        />
         <button class="profile-avatar-alter-btn">
           <svg>
-            <use xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"></use>
+            <use
+              xlink:href="../../../../assets/images/icon/symbol-defs.svg#icon-image"
+            ></use>
           </svg>
           <span>
             Zmień zdjęcie
@@ -18,10 +22,10 @@
     </ng-container>
   </ng-container>
 
-  <!--<figure *ngIf="!(userDataLoaded$|async); else actAvatar" class="avatar-loader">
-  </figure>-->
-  <div *ngIf="!(userDataLoaded$|async); else actAvatar"
-       class="wrap-for-loader">
+  <div
+    *ngIf="!(userDataLoaded$ | async); else actAvatar"
+    class="wrap-for-loader"
+  >
     <content-loader height="400" width="400">
       <svg:circle cx="200" cy="200" r="212" />
     </content-loader>
@@ -35,7 +39,7 @@
           </span>
         </div>
       </ng-container>
-      <img alt="" src="{{ avatarUrl }}">
+      <img alt="" src="{{ avatarUrl }}" />
     </figure>
   </ng-template>
 </div>

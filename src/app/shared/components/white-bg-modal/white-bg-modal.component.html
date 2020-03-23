@@ -1,6 +1,6 @@
 <div #commonModal class="common-modal">
   <div (click)="closePopup()" class="invisible-bg"></div>
-  <div class="content">
+  <div class="content" [ngClass]="{ 'content--centered': contentCentered }">
     <ng-content></ng-content>
   </div>
 </div>

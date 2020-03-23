@@ -1,11 +1,15 @@
-<app-common-modal (closeEmitter)="closeModal()">
+<app-white-bg-modal [contentCentered]="true" (closeEmitter)="closeModal()">
   <div *ngIf="newAvatarBytesLoaded" class="new-avatar-modal">
     <div class="avatar-wrap">
       <img id="image" [src]="newAvatarBytes" alt="" />
     </div>
     <div class="bottom-wrap">
-      <button (click)="updateAvatarSubmit()"
-              class="submit-btn fr-btn-main-blue">Zmień</button>
+      <button
+        (click)="updateAvatarSubmit()"
+        class="submit-btn fr-btn-main-blue"
+      >
+        Zmień
+      </button>
     </div>
   </div>
-</app-common-modal>
+</app-white-bg-modal>

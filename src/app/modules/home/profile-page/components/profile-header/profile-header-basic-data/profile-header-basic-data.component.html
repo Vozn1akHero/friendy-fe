@@ -1,5 +1,5 @@
 <div class="profile-header-minor-data">
-  <ng-container *ngIf="isUserProfileOwner">
+  <!-- <ng-container *ngIf="isUserProfileOwner">
     <div *ngIf="activeSettings" class="profile-ui-settings">
       <textarea
         #userStatus
@@ -8,7 +8,7 @@
         type="text"
       ></textarea>
     </div>
-  </ng-container>
+  </ng-container> -->
 
   <div class="name-wrap">
     <ng-container *ngIf="!(userDataLoaded$ | async); else actNameSurname">

@@ -1,15 +1,20 @@
 <div class="non-participant-controls">
-  <ng-container *ngIf="(participationStatus$|async) == requestSentStatus;
-  else noSentRequest">
-    <button class="remove-application-btn"
-            (click)="onRemoveRequestBtnClick()">
-      Anuluj wniosek
+  <ng-container
+    *ngIf="
+      (participationStatus$ | async) == requestSentStatus;
+      else noSentRequest
+    "
+  >
+    <button
+      class="btn remove-application-btn"
+      (click)="onRemoveRequestBtnClick()"
+    >
+      <span class="text fr-hover-text-decoration">anuluj wniosek</span>
     </button>
   </ng-container>
   <ng-template #noSentRequest>
-    <button class="send-application-btn"
-            (click)="onJoinUpBtnClick()">
-      Zgłoś udział
+    <button class="btn send-application-btn" (click)="onJoinUpBtnClick()">
+      <span class="text fr-hover-text-decoration">zgłoś udział</span>
     </button>
   </ng-template>
 </div>

@@ -31,6 +31,7 @@ import { InterestsInputComponent } from "./interests-input/interests-input.compo
 import { FullScreenImageComponent } from "./full-screen-image/full-screen-image.component";
 import { UserLoaderComponent } from "./user-loader/user-loader.component";
 import { WhiteBgModalComponent } from "./white-bg-modal/white-bg-modal.component";
+import { BaseDataPanelComponent } from "./base-data-panel/base-data-panel.component";
 
 @NgModule({
   imports: [
@@ -68,7 +69,8 @@ import { WhiteBgModalComponent } from "./white-bg-modal/white-bg-modal.component
     InterestsInputComponent,
     FullScreenImageComponent,
     UserLoaderComponent,
-    WhiteBgModalComponent
+    WhiteBgModalComponent,
+    BaseDataPanelComponent
   ],
   exports: [
     NewPostFormComponent,
@@ -98,7 +100,8 @@ import { WhiteBgModalComponent } from "./white-bg-modal/white-bg-modal.component
     InterestsInputComponent,
     FullScreenImageComponent,
     UserLoaderComponent,
-    WhiteBgModalComponent
+    WhiteBgModalComponent,
+    BaseDataPanelComponent
   ],
   entryComponents: [ButtonHoverInfoPopoverComponent]
 })
