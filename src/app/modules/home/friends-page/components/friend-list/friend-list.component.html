@@ -1,22 +1,19 @@
 <div class="friends-list">
   <ng-container *ngIf="friendsLoaded$ | async; else friendListLoading">
-    <ng-container
+    <app-user-list
       *ngIf="(friendList$ | async).length > 0; else friendListEmptyMsg"
     >
-      <div class="flex-wrap">
-        <div *ngFor="let friend of friendList$ | async" class="user">
-          <app-user-item
-            (removeFriendEmitter)="removeFriend($event)"
-            [friendshipStatusIndex]="0"
-            [avatar]="friend.avatarUrl"
-            [isUserOnline]="friend.onlineStatus"
-            [name]="friend.name"
-            [surname]="friend.surname"
-            [id]="friend.id"
-          ></app-user-item>
-        </div>
-      </div>
-    </ng-container>
+      <app-user-item
+        *ngFor="let friend of friendList$ | async"
+        (removeFriendEmitter)="removeFriend($event)"
+        [friendshipStatusIndex]="0"
+        [avatar]="friend.avatarUrl"
+        [isUserOnline]="friend.onlineStatus"
+        [name]="friend.name"
+        [surname]="friend.surname"
+        [id]="friend.id"
+      ></app-user-item>
+    </app-user-list>
     <ng-template #friendListEmptyMsg>
       <span>
         Lista znajomych jest pusta

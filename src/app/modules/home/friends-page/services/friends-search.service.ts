@@ -57,17 +57,30 @@ export class FriendsSearchService {
       );
   }
 
-  // getExemplaryUsers(firstIndex: number, lastIndex: number): Observable<FoundUserModel[]> {
-  //   return this.http.get(`/api/user-search/exemplary/?firstIndex=${firstIndex}&lastIndex=${lastIndex}`)
-  //     .pipe(map(response => {
-  //       return response as FoundUserModel[];
-  //     }))
-  // }
-
-  // checkIfFriendByUserId(userId : number){
-  //   return this.http.get(`api/friend/friendship-status/?id=${userId}`,
-  //     {observe: 'response'})
-  // }
+  getByKeyword(keyword: string, page: number, length: number) {
+    return this.http
+      .get(`/al-users/by-keyword/${keyword}?page=${page}&length=${length}`, {
+        observe: "response"
+      })
+      .pipe(
+        map((res: HttpResponse<any[]>) => {
+          return [
+            ...res.body.map(
+              user =>
+                new FoundUserModel(
+                  user.id,
+                  user.name,
+                  user.surname,
+                  user.avatar,
+                  user.city,
+                  user.onlineStatus,
+                  user.friendshipStatus
+                )
+            )
+          ];
+        })
+      );
+  }
 
   getFriendRequestStatus(userId: number) {
     return this.http.get(`api/friend/request/status/?receiverId=${userId}`, {

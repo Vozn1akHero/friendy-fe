@@ -1,8 +1,14 @@
 import { FriendRequest } from "../../models/friend-request.model";
 import { Action } from "@ngrx/store";
 
-export const GET = "[Friends Page] Get";
-export const SET = "[Friends Page] Set";
+export const GET = "[Sent Friend Requests] Get";
+export const SET = "[Sent Friend Requests] Set";
+export const FIND_BY_KEYWORD = "[Sent Friend Requests] Find By Keyword";
+export const SET_FOUND = "[Sent Friend Requests] Set Found";
+export const FILL_FOUND_BY_KEYWORD =
+  "[Sent Friend Requests] Fill Found By Keyword";
+export const FILL_FOUND_BY_KEYWORD_IN_STATE =
+  "[Sent Friend Requests] Fill Found By Keyword In State";
 
 export class Get implements Action {
   readonly type = GET;
@@ -21,4 +27,54 @@ export class Set implements Action {
   constructor(public payload: FriendRequest[]) {}
 }
 
-export type Actions = Get | Set;
+export class FindByKeyword implements Action {
+  readonly type = FIND_BY_KEYWORD;
+
+  constructor(
+    public payload: {
+      keyword: string;
+    }
+  ) {}
+}
+
+export class SetFound implements Action {
+  readonly type = SET_FOUND;
+
+  constructor(
+    public payload: {
+      keyword: string;
+      entries: FriendRequest[];
+    }
+  ) {}
+}
+
+export class FillFoundByKeyword implements Action {
+  readonly type = FILL_FOUND_BY_KEYWORD;
+
+  constructor(
+    public payload: {
+      keyword: string;
+      page: number;
+      length: number;
+    }
+  ) {}
+}
+
+export class FillFoundByKeywordInState implements Action {
+  readonly type = FILL_FOUND_BY_KEYWORD_IN_STATE;
+
+  constructor(
+    public payload: {
+      keyword: string;
+      entries: FriendRequest[];
+    }
+  ) {}
+}
+
+export type Actions =
+  | Get
+  | Set
+  | FillFoundByKeyword
+  | FillFoundByKeywordInState
+  | FindByKeyword
+  | SetFound;

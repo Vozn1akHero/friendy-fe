@@ -15,10 +15,50 @@ export class SentFriendRequestEffects {
     filter(([action, loaded]) => !loaded),
     mergeMap(([{ payload }]) => {
       return this.friendRequestService
-        .getSentFriendRequests(payload.page, payload.length)
+        .getSent(payload.page, payload.length)
         .pipe(
           map(value => {
             return new SentFriendRequestActions.Set(value);
+          })
+        );
+    })
+  );
+
+  @Effect() findByKeyword = this.actions$.pipe(
+    ofType<SentFriendRequestActions.FindByKeyword>(
+      SentFriendRequestActions.FIND_BY_KEYWORD
+    ),
+    withLatestFrom(this.store$.select(e => e.sentFriendRequest.foundEntries)),
+    filter(([action, foundEntries]) => {
+      return foundEntries[action.payload.keyword] == null;
+    }),
+    mergeMap(([{ payload }]) => {
+      return this.friendRequestService
+        .filterSentByKeyword(payload.keyword, 1, 20)
+        .pipe(
+          map(value => {
+            return new SentFriendRequestActions.SetFound({
+              keyword: payload.keyword,
+              entries: value
+            });
+          })
+        );
+    })
+  );
+
+  @Effect() fillFoundByKeyword = this.actions$.pipe(
+    ofType<SentFriendRequestActions.FillFoundByKeyword>(
+      SentFriendRequestActions.FILL_FOUND_BY_KEYWORD
+    ),
+    mergeMap(({ payload }) => {
+      return this.friendRequestService
+        .filterSentByKeyword(payload.keyword, payload.page, payload.length)
+        .pipe(
+          map(value => {
+            return new SentFriendRequestActions.FillFoundByKeywordInState({
+              keyword: payload.keyword,
+              entries: value
+            });
           })
         );
     })

@@ -1,3 +1,4 @@
+import { SharedComponentsModule } from "./../../../shared/components/shared-components.module";
 import { NgModule } from "@angular/core";
 import { SuggestedFriendsItemComponent } from "./components/suggested-friends-panel/suggested-friends-item/suggested-friends-item.component";
 import { FriendsPageComponent } from "./friends-page.component";
@@ -16,12 +17,14 @@ import { FoundUsersListComponent } from "./components/found-users-list/found-use
 import { NavigationPanelComponent } from "./components/navigation-panel/navigation-panel.component";
 import { SentFriendRequestsComponent } from "./components/sent-friend-requests/sent-friend-requests.component";
 import { FriendRequestService } from "./services/friend-request.service";
-import { ReceivedFriendRequestsComponent } from './components/received-friend-requests/received-friend-requests.component';
+import { ReceivedFriendRequestsComponent } from "./components/received-friend-requests/received-friend-requests.component";
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
+    SharedComponentsModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -39,7 +42,8 @@ import { ReceivedFriendRequestsComponent } from './components/received-friend-re
     FriendsSearchPanelComponent,
     NavigationPanelComponent,
     SentFriendRequestsComponent,
-    ReceivedFriendRequestsComponent
+    ReceivedFriendRequestsComponent,
+    UserListComponent
   ],
   providers: [FriendRequestService],
   exports: []

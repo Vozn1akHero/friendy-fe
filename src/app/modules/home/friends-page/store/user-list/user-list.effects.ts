@@ -20,6 +20,18 @@ export class UserListEffects {
         );
     })
   );
+  @Effect() findByKeyword = this.actions$.pipe(
+    ofType<UserListActions.FindByKeyword>(UserListActions.FIND_BY_KEYWORD),
+    switchMap(({ payload }) => {
+      return this.friendsSearchService
+        .getByKeyword(payload.keyword, 1, 20)
+        .pipe(
+          map(res => {
+            return new UserListActions.SetInitialList(res);
+          })
+        );
+    })
+  );
 
   constructor(
     private actions$: Actions,

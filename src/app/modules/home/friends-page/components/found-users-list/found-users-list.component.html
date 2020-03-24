@@ -1,17 +1,17 @@
 <section class="found-users-search-list">
-  <ng-container *ngIf="initialListLoaded$ | async; else loader">
-    <div *ngFor="let user of userList$ | async" class="user">
-      <app-user-item
-        [id]="user.id"
-        [name]="user.name"
-        [surname]="user.surname"
-        [city]="user.city"
-        [avatar]="user.avatar"
-        [isUserOnline]="user.isOnline"
-        [friendshipStatusIndex]="user.friendshipStatusIndex"
-      ></app-user-item>
-    </div>
-  </ng-container>
+  <app-user-list *ngIf="initialListLoaded$ | async; else loader">
+    <app-user-item
+      *ngFor="let user of userList$ | async"
+      [id]="user.id"
+      [name]="user.name"
+      [surname]="user.surname"
+      [city]="user.city"
+      [avatar]="user.avatar"
+      [isUserOnline]="user.isOnline"
+      [friendshipStatusIndex]="user.friendshipStatusIndex"
+    ></app-user-item>
+  </app-user-list>
+
   <ng-template #loader>
     <app-user-loader></app-user-loader>
     <app-user-loader></app-user-loader>

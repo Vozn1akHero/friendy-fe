@@ -15,10 +15,58 @@ export class ReceivedFriendRequestEffects {
     filter(([action, loaded]) => !loaded),
     mergeMap(([{ payload }]) => {
       return this.friendRequestService
-        .getReceivedFriendRequests(payload.page, payload.length)
+        .getReceived(payload.page, payload.length)
         .pipe(
           map(value => {
             return new ReceivedFriendRequestActions.Set(value);
+          })
+        );
+    })
+  );
+
+  @Effect() findByKeyword = this.actions$.pipe(
+    ofType<ReceivedFriendRequestActions.FindByKeyword>(
+      ReceivedFriendRequestActions.FIND_BY_KEYWORD
+    ),
+    withLatestFrom(
+      this.store$.select(e => e.receivedFriendRequest.foundEntries)
+    ),
+    filter(([action, foundEntries]) => {
+      return foundEntries[action.payload.keyword] == null;
+    }),
+    mergeMap(([{ payload }]) => {
+      return this.friendRequestService
+        .filterSentByKeyword(payload.keyword, 1, 20)
+        .pipe(
+          map(value => {
+            return new ReceivedFriendRequestActions.SetFound({
+              keyword: payload.keyword,
+              entries: value
+            });
+          })
+        );
+    })
+  );
+
+  @Effect() fillFoundByKeyword = this.actions$.pipe(
+    ofType<ReceivedFriendRequestActions.FindByKeyword>(
+      ReceivedFriendRequestActions.FIND_BY_KEYWORD
+    ),
+    withLatestFrom(
+      this.store$.select(e => e.receivedFriendRequest.foundEntries)
+    ),
+    filter(([action, foundEntries]) => {
+      return foundEntries[action.payload.keyword] == null;
+    }),
+    mergeMap(([{ payload }]) => {
+      return this.friendRequestService
+        .filterSentByKeyword(payload.keyword, 1, 20)
+        .pipe(
+          map(value => {
+            return new ReceivedFriendRequestActions.FillFoundByKeywordInState({
+              keyword: payload.keyword,
+              entries: value
+            });
           })
         );
     })

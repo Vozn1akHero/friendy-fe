@@ -1,0 +1,18 @@
+<div class="light-bordered-nav">
+  <ul>
+    <ng-container *ngFor="let item of links; let i = index">
+      <li>
+        <a
+          [routerLink]="[item.link]"
+          [queryParams]="item.queryParams"
+          [class.link--active]="isLinkActive(i)"
+          class="link
+      fr-hover-text-decoration"
+        >
+          {{ item.text }}
+        </a>
+      </li>
+      <hr *ngIf="links.length - i > 1" class="underline" />
+    </ng-container>
+  </ul>
+</div>

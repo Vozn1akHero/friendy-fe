@@ -19,23 +19,6 @@ import { FriendsService } from "../../services/friends.service";
 
 @Injectable()
 export class UserFriendsEffects {
-  /*@Effect()
-  getFriends = this.actions$.pipe(
-    ofType(UserFriendsActions.GET_FRIENDS),
-    withLatestFrom(this.store.select(e=>e.friendsPageUserFriends.loaded)),
-    filter(([{payload}, loaded]) => {
-      return !loaded
-    }),
-    mergeMap(([{payload}] : any) => {
-      return this.friendsService.getFriendsRange(payload.firstIndex,
-        payload.length)
-        .pipe(
-          map(res => {
-            return ({type: UserFriendsActions.SET_FRIENDS, payload: res})
-          })
-        )
-    })
-  );*/
   @Effect()
   getStartList = this.actions$.pipe(
     ofType(UserFriendsActions.GET_START_FRIEND_LIST),
@@ -101,7 +84,6 @@ export class UserFriendsEffects {
 
   constructor(
     private actions$: Actions,
-    private http: HttpClient,
     private friendsService: FriendsService,
     private router: Router,
     private store: Store<fromApp.AppState>

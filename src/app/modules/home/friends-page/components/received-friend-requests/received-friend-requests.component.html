@@ -1,20 +1,20 @@
 <ng-container *ngIf="loaded$ | async; else loader">
-  <ng-container
+  <app-user-list
     *ngIf="(receivedFriendRequests$ | async).length > 0; else empty"
   >
-    <div *ngFor="let user of receivedFriendRequests$ | async" class="user">
-      <app-user-item
-        [id]="user.userId"
-        [friendRequestId]="user.id"
-        [name]="user.name"
-        [surname]="user.surname"
-        [city]="null"
-        [avatar]="user.avatar"
-        [isUserOnline]="user.isOnline"
-        [friendshipStatusIndex]="3"
-      ></app-user-item>
-    </div>
-  </ng-container>
+    <app-user-item
+      *ngFor="let user of receivedFriendRequests$ | async"
+      [id]="user.userId"
+      [friendRequestId]="user.id"
+      [name]="user.name"
+      [surname]="user.surname"
+      [city]="null"
+      [avatar]="user.avatar"
+      [isUserOnline]="user.isOnline"
+      [friendshipStatusIndex]="3"
+    ></app-user-item>
+  </app-user-list>
+
   <ng-template #empty>
     <span class="empty-list-text fr-err-mg-bg">
       Brak otrzymanych zaproszeń do znajomych

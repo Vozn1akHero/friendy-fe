@@ -7,7 +7,7 @@ import { FriendRequest } from "../models/friend-request.model";
 export class FriendRequestService {
   constructor(private http: HttpClient) {}
 
-  getSentFriendRequests(page: number, length: number) {
+  getSent(page: number, length: number) {
     return this.http
       .get(`api/friend/requests/sent`, { observe: "body" })
       .pipe(
@@ -27,7 +27,53 @@ export class FriendRequestService {
       );
   }
 
-  getReceivedFriendRequests(page: number, length: number) {
+  filterSentByKeyword(keyword: string, page: number, length: number) {
+    return this.http
+      .get(
+        `api/friend/requsts/sent?keyword=${keyword}&page=${page}&length=${length}`,
+        { observe: "body" }
+      )
+      .pipe(
+        map((res: any[]) => [
+          ...res.map(
+            (value: any) =>
+              new FriendRequest(
+                value.requestId,
+                value.receiverId,
+                value.name,
+                value.surname,
+                value.isOnline,
+                value.avatar
+              )
+          )
+        ])
+      );
+  }
+
+  filterReceivedByKeyword(keyword: string, page: number, length: number) {
+    return this.http
+      .get(
+        `api/friend/requsts/received?keyword=${keyword}&page=${page}&length=${length}`,
+        { observe: "body" }
+      )
+      .pipe(
+        map((res: any[]) => [
+          ...res.map(
+            (value: any) =>
+              new FriendRequest(
+                value.requestId,
+                value.authorId,
+                value.name,
+                value.surname,
+                value.isOnline,
+                value.avatar
+              )
+          )
+        ])
+      );
+  }
+
+  getReceived(page: number, length: number) {
     return this.http
       .get(`api/friend/requests/received`, { observe: "body" })
       .pipe(

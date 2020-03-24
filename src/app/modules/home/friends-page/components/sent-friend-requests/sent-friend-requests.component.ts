@@ -23,6 +23,6 @@ export class SentFriendRequestsComponent implements OnInit {
     this.sentFriendRequests$ = this.store$.select(
       e => e.sentFriendRequest.entries
     );
-    this.loaded$ = this.store$.select(e => e.receivedFriendRequest.loaded);
+    this.loaded$ = this.store$.select(e => e.sentFriendRequest.loaded);
   }
 }
