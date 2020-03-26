@@ -24,12 +24,18 @@
   <section class="right-wrap">
     <app-navigation-panel></app-navigation-panel>
 
-    <div *ngIf="(subpageIndex$ | async) === 1 || (subpageIndex$ | async) === 2">
+    <div
+      *ngIf="
+        (subpageIndex$ | async) === 1 ||
+        (subpageIndex$ | async) === 2 ||
+        (subpageIndex$ | async) === 3
+      "
+    >
       <app-suggested-friends-panel></app-suggested-friends-panel>
     </div>
 
     <app-friends-search-panel
-      *ngIf="(subpageIndex$ | async) === 3"
+      *ngIf="(subpageIndex$ | async) === 4"
       (searchFormSubmitEmitter)="searchFormSubmit($event)"
     >
     </app-friends-search-panel>

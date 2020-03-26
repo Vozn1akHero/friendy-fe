@@ -7,7 +7,7 @@
       marginTop: true
     }"
   >
-    <ng-container *ngIf="suggestedFriendsLoaded$ | async; else loader">
+    <ng-container *ngIf="suggestedFriendsLoaded$ | async; else loading">
       <ng-container
         *ngIf="(suggestedFriends$ | async).length > 0; else noSuggestedFriends"
       >
@@ -22,7 +22,7 @@
         </span>
       </ng-template>
     </ng-container>
-    <ng-template #loader>
+    <ng-template #loading>
       <content-loader>
         <svg:rect x="0" y="0" rx="3" ry="3" width="100%" height="65" />
         <svg:rect x="0" y="70" rx="3" ry="3" width="100%" height="65" />

@@ -28,18 +28,10 @@ export class EventPostListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.eventId = +this.route.snapshot.paramMap.get("id");
-    this.getEventPosts();
-    this.setEventPosts();
-    this.setListScrollListener();
-  }
-
-  getEventPosts() {
     this.eventPostService.getByEventId(this.eventId, 1);
-  }
-
-  setEventPosts() {
     this.eventPostsLoaded$ = this.eventPostService.loaded$;
     this.eventPosts$ = this.eventPostService.eventPosts$;
+    this.setListScrollListener();
   }
 
   setListScrollListener() {

@@ -15,7 +15,7 @@ export class NavigationPanelComponent {
     {
       link: "/app/friends",
       queryParams: { act: "sent-friend-requests" },
-      text: "Wysłanie zaproszenia do znajomych"
+      text: "Wysłane zaproszenia do znajomych"
     },
     {
       link: "/app/friends",

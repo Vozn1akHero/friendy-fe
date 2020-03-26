@@ -1,0 +1,14 @@
+.user-list-loader {
+  position: relative;
+  margin-top: 2rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+
+  .row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 3rem;
+  }
+}

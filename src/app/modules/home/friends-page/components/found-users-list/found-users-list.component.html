@@ -1,5 +1,5 @@
 <section class="found-users-search-list">
-  <app-user-list *ngIf="initialListLoaded$ | async; else loader">
+  <app-user-list *ngIf="initialListLoaded$ | async; else loading">
     <app-user-item
       *ngFor="let user of userList$ | async"
       [id]="user.id"
@@ -12,12 +12,11 @@
     ></app-user-item>
   </app-user-list>
 
-  <ng-template #loader>
-    <app-user-loader></app-user-loader>
-    <app-user-loader></app-user-loader>
-    <app-user-loader></app-user-loader>
-    <app-user-loader></app-user-loader>
-    <app-user-loader></app-user-loader>
-    <app-user-loader></app-user-loader>
+  <ng-template #loading>
+    <app-user-list-loader></app-user-list-loader>
+    <app-user-list-loader></app-user-list-loader>
+    <app-user-list-loader></app-user-list-loader>
+    <app-user-list-loader></app-user-list-loader>
+    <app-user-list-loader></app-user-list-loader>
   </ng-template>
 </section>

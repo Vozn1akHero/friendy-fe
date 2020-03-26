@@ -29,7 +29,6 @@ import { UserItemComponent } from "./user-item/user-item.component";
 import { CityInputComponent } from "./city-input/city-input.component";
 import { InterestsInputComponent } from "./interests-input/interests-input.component";
 import { FullScreenImageComponent } from "./full-screen-image/full-screen-image.component";
-import { UserLoaderComponent } from "./user-loader/user-loader.component";
 import { WhiteBgModalComponent } from "./white-bg-modal/white-bg-modal.component";
 import { BaseDataPanelComponent } from "./base-data-panel/base-data-panel.component";
 import { LightBorderedNavComponent } from "./light-bordered-nav/light-bordered-nav.component";
@@ -69,7 +68,6 @@ import { LightBorderedNavComponent } from "./light-bordered-nav/light-bordered-n
     CityInputComponent,
     InterestsInputComponent,
     FullScreenImageComponent,
-    UserLoaderComponent,
     WhiteBgModalComponent,
     BaseDataPanelComponent,
     LightBorderedNavComponent
@@ -101,7 +99,6 @@ import { LightBorderedNavComponent } from "./light-bordered-nav/light-bordered-n
     CityInputComponent,
     InterestsInputComponent,
     FullScreenImageComponent,
-    UserLoaderComponent,
     WhiteBgModalComponent,
     BaseDataPanelComponent,
     LightBorderedNavComponent

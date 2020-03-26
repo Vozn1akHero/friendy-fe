@@ -1,12 +1,14 @@
 <section class="profile-post-list">
-  <ng-container *ngIf="(loaded$|async); else loading">
-    <ng-container *ngIf="(posts$|async).length > 0; else noPosts">
-      <app-post-item *ngFor="let post of (posts$|async)"
-                     [post]="post"
-                     (removePostEmitter)="onRemovePost($event)"
-                     (likePostEmitter)="onLikePost($event)"
-                     (unlikePostEmitter)="onUnlikePost($event)"
-                     [privilegedToDeleteRelatedEntries]="isUserProfileOwner"></app-post-item>
+  <ng-container *ngIf="loaded$ | async; else loading">
+    <ng-container *ngIf="(posts$ | async).length > 0; else noPosts">
+      <app-post-item
+        *ngFor="let post of posts$ | async"
+        [post]="post"
+        (removePostEmitter)="onRemovePost($event)"
+        (likePostEmitter)="onLikePost($event)"
+        (unlikePostEmitter)="onUnlikePost($event)"
+        [privilegedToDeleteRelatedEntries]="isUserProfileOwner"
+      ></app-post-item>
     </ng-container>
     <ng-template #noPosts>
       <span class="fr-default-smaller-font">
@@ -16,6 +18,8 @@
   </ng-container>
   <ng-template #loading>
     <div class="loader-wrap">
+      <app-post-loader></app-post-loader>
+      <app-post-loader></app-post-loader>
       <app-post-loader></app-post-loader>
       <app-post-loader></app-post-loader>
     </div>

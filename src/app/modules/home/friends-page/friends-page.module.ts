@@ -18,7 +18,10 @@ import { NavigationPanelComponent } from "./components/navigation-panel/navigati
 import { SentFriendRequestsComponent } from "./components/sent-friend-requests/sent-friend-requests.component";
 import { FriendRequestService } from "./services/friend-request.service";
 import { ReceivedFriendRequestsComponent } from "./components/received-friend-requests/received-friend-requests.component";
-import { UserListComponent } from './components/user-list/user-list.component';
+import { UserListComponent } from "./components/user-list/user-list.component";
+import { UserListLoaderComponent } from "./components/user-list-loader/user-list-loader.component";
+import { UserLoaderComponent } from "./components/user-loader/user-loader.component";
+import { ContentLoaderModule } from "@ngneat/content-loader";
 
 @NgModule({
   imports: [
@@ -28,7 +31,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    ContentLoaderModule
   ],
   declarations: [
     FriendsPageComponent,
@@ -43,7 +47,9 @@ import { UserListComponent } from './components/user-list/user-list.component';
     NavigationPanelComponent,
     SentFriendRequestsComponent,
     ReceivedFriendRequestsComponent,
-    UserListComponent
+    UserListComponent,
+    UserListLoaderComponent,
+    UserLoaderComponent
   ],
   providers: [FriendRequestService],
   exports: []

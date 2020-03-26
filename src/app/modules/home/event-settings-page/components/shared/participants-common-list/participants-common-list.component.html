@@ -1,8 +1,10 @@
 <div class="participants-common-list">
   <app-participants-search
-    (emitInputValue)="onSearch($event)"></app-participants-search>
+    *ngIf="!searchInputHidden"
+    (emitInputValue)="onSearch($event)"
+  ></app-participants-search>
 
   <div class="list">
-      <ng-content></ng-content>
+    <ng-content></ng-content>
   </div>
 </div>

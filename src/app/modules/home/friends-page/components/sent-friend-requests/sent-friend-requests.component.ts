@@ -1,5 +1,5 @@
 import { AppState } from "./../../store/reducers";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { Component, OnInit } from "@angular/core";
 import { FriendRequest } from "../../models/friend-request.model";
 import { Store } from "@ngrx/store";

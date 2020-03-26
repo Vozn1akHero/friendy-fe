@@ -1,4 +1,4 @@
-<ng-container *ngIf="loaded$ | async; else loader">
+<ng-container *ngIf="loaded$ | async; else loading">
   <app-user-list *ngIf="(sentFriendRequests$ | async).length > 0; else empty">
     <app-user-item
       *ngFor="let user of sentFriendRequests$ | async"
@@ -20,11 +20,10 @@
   </ng-template>
 </ng-container>
 
-<ng-template #loader>
-  <app-user-loader></app-user-loader>
-  <app-user-loader></app-user-loader>
-  <app-user-loader></app-user-loader>
-  <app-user-loader></app-user-loader>
-  <app-user-loader></app-user-loader>
-  <app-user-loader></app-user-loader>
+<ng-template #loading>
+  <app-user-list-loader></app-user-list-loader>
+  <app-user-list-loader></app-user-list-loader>
+  <app-user-list-loader></app-user-list-loader>
+  <app-user-list-loader></app-user-list-loader>
+  <app-user-list-loader></app-user-list-loader>
 </ng-template>
