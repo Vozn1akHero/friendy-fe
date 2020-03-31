@@ -36,8 +36,9 @@ export class ProfilePageComponent {
       this.router.navigate(["app/profile", this.userIdService.userIdValue]);
     }
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.isUserProfileOwner = this.route.snapshot.data.profileBelongingStatus;
+    //this.isUserProfileOwner = this.route.snapshot.data.profileBelongingStatus;
     this.userId = +this.route.snapshot.params.id;
+    this.isUserProfileOwner = this.userId === this.userIdService.userIdValue;
     this.userDataLoaded$ = this.store.select(
       state => state.profilePageUserData.profiles[this.userId] !== null
     );

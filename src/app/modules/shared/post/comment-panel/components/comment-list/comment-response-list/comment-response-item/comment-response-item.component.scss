@@ -112,21 +112,6 @@
     padding-left: 4rem;
   }
 
-  .respond-btn,
-  .remove-btn {
-    margin-left: 1rem;
-  }
-
-  .remove-btn,
-  .respond-btn {
-    font-size: 0.65rem;
-    font-weight: 500;
-    text-decoration: none;
-    background: none;
-    outline: none;
-    border: none;
-  }
-
   .add-response-btn,
   .remove-response-btn {
     font-size: 0.65rem;
@@ -135,12 +120,6 @@
     background: none;
     outline: none;
     border: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  .remove-response-btn {
     margin-left: 1rem;
   }
 

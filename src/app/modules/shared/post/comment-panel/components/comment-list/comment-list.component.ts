@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from "@angular/core";
 import CommentModel from "../../models/comment.model";
-import { Observable } from "rxjs";
+import { Observable, from } from "rxjs";
 import { select, Store } from "@ngrx/store";
 import { AppState } from "../../store/reducers";
 import * as PostCommentActions from "../../store/post-comment/post-comment.actions";
 import * as commentSelectors from "../../store/selectors";
 import { distinctUntilChanged } from "rxjs/operators";
-import { NewCommentOrResponseService } from "../../services/new-comment-or-response.service";
+import { NewCommentService } from "../../services/new-comment.service";
+import { NewCommentResponseService } from "../../services/new-comment-response.service";
 import { CommentType } from "../../../comment-type.enum";
 
 @Component({
@@ -24,7 +25,8 @@ export class CommentListComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private newCommentOrResponseService: NewCommentOrResponseService
+    private newCommentService: NewCommentService,
+    private newCommentResponseService: NewCommentResponseService
   ) {}
 
   ngOnInit() {
@@ -32,16 +34,15 @@ export class CommentListComponent implements OnInit {
   }
 
   activateResponseToPostTyping() {
-    this.newCommentOrResponseService.commentType = CommentType.PostComment;
-    this.newCommentOrResponseService.initData = { postId: this.postId };
+    this.newCommentService.initData = { postId: this.postId };
   }
 
-  activateResponseToCommentTyping(commentId: number) {
-    this.newCommentOrResponseService.commentType =
-      CommentType.ResponseToComment;
-    this.newCommentOrResponseService.initData = {
+  activateResponseToCommentTyping(comment: CommentModel) {
+    this.newCommentResponseService.commentType = CommentType.ResponseToComment;
+    this.newCommentResponseService.initData = {
       postId: this.postId,
-      commentId: commentId
+      authorData: comment.authorName + " " + comment.authorSurname,
+      commentId: comment.id
     };
   }
 

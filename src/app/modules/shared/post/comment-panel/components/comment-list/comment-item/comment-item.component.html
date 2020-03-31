@@ -1,19 +1,21 @@
 <div class="comment-item fr-m-t-2">
-<!--  <button *ngIf="isUserProfileOwner" class="remove-post" (click)="onRemoveComment()">
+  <!--  <button *ngIf="isUserProfileOwner" class="remove-post" (click)="onRemoveComment()">
     &#10006;
   </button>-->
   <div class="upper-wrapper">
     <div class="avatar-wrapper">
       <a class="avatar-link" [routerLink]="['/app/profile', comment.authorId]">
         <figure class="avatar">
-          <img src="{{ comment.authorAvatarUrl }}" alt="user's avatar">
+          <img src="{{ comment.authorAvatarUrl }}" alt="user's avatar" />
         </figure>
       </a>
     </div>
     <div class="content-wrapper">
-      <a [routerLink]="['/app/profile', comment.authorId]"
-         class="title-link
-         fr-hover-text-decoration">
+      <a
+        [routerLink]="['/app/profile', comment.authorId]"
+        class="title-link
+         fr-hover-text-decoration"
+      >
         {{ comment.authorName }} {{ comment.authorSurname }}
       </a>
       <p class="text-content">
@@ -27,19 +29,18 @@
   </div>
 
   <div class="bottom-wrapper">
-    <button (click)="onShowCommentsBtnClick()"
-            class="show-comments-btn">
+    <button (click)="onShowCommentsBtnClick()" class="show-comments-btn">
       <span class="icon fr-span-icon"></span>
       <span class="btn-text">
         {{ comment.commentsCount }}
       </span>
     </button>
 
-    <button class="likes-btn"
-            [ngClass]="comment.isCommentLikedByUser ?
-            'unlike-btn' :
-            'like-btn'"
-            (click)="onLikeOrUnlikePost()">
+    <button
+      class="likes-btn"
+      [ngClass]="comment.isCommentLikedByUser ? 'unlike-btn' : 'like-btn'"
+      (click)="onLikeOrUnlikePost()"
+    >
       <span class="icon fr-span-icon"></span>
       <span class="btn-text">
         {{ comment.likesCount }}
@@ -50,9 +51,10 @@
       Odpowiedz
     </button>
 
-    <button *ngIf="comment.authorId === userId
-     || privilegedToDeleteRelatedEntries"
-            class="remove-btn">
+    <button
+      *ngIf="comment.authorId === userId || privilegedToDeleteRelatedEntries"
+      class="remove-btn"
+    >
       Usuń
     </button>
 
@@ -61,10 +63,16 @@
     </p>
   </div>
 
-  <ng-container *ngIf="comment.commentsCount > 0 && responsesShown">
-    <app-comment-response-list [commentId]="comment.id"
-                               [postId]="comment.postId"
-                               [privilegedToDeleteRelatedEntries]="privilegedToDeleteRelatedEntries"
+  <ng-container
+    *ngIf="
+      (comment.commentsCount > 0 && responsesShown) ||
+      newCommentResponseFormVisible
+    "
+  >
+    <app-comment-response-list
+      [commentId]="comment.id"
+      [postId]="comment.postId"
+      [privilegedToDeleteRelatedEntries]="privilegedToDeleteRelatedEntries"
     ></app-comment-response-list>
   </ng-container>
 </div>

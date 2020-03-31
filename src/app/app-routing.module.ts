@@ -13,7 +13,6 @@ import { DialogPageComponent } from "./modules/home/dialog-page/dialog-page.comp
 import { LoggedInResolver } from "./logged-in.resolver";
 import { WrapperComponent } from "./modules/wrapper/wrapper.component";
 import { ProfileBelongingResolver } from "./modules/home/profile-page/resolvers/profile-belonging.resolver";
-import { ProfileIdResolver } from "./modules/wrapper/resolvers/profile-id.resolver";
 import { EventSettingsPageComponent } from "./modules/home/event-settings-page/event-settings-page.component";
 import { IsEventAdminResolver } from "./modules/home/event-page/resolvers/is-event-admin.resolver";
 import { PhotosPageComponent } from "./modules/home/photos-page/photos-page.component";
@@ -42,9 +41,6 @@ const routes: Routes = [
   {
     path: "app",
     component: WrapperComponent,
-    resolve: {
-      profileId: ProfileIdResolver
-    },
     canActivate: [AuthGuard],
     children: [
       { path: "", redirectTo: "messages", pathMatch: "full" },

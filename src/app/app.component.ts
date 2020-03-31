@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  Inject,
-  OnInit,
-  ViewChild
-} from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import * as moment from "moment";
 import "moment/locale/pl";
 import { InfoModalService } from "./shared/components/info-modal/info-modal.service";

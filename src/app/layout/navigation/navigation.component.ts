@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
 import { AuthService } from "src/app/core/auth/auth.service";
 import { UserIdService } from "../../shared/services/user-id.service";
 import { Observable } from "rxjs";
@@ -13,7 +12,6 @@ export class NavigationComponent implements OnInit {
   profileId$: Observable<number>;
 
   constructor(
-    private router: Router,
     private userIdService: UserIdService,
     private authService: AuthService
   ) {}

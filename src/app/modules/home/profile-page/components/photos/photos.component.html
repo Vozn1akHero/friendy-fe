@@ -7,6 +7,7 @@
       link: activatedRoute + '/photos',
       marginTop: true
     }"
+    [showBtnInsteadOfAnchor]="false"
   >
     <ng-container *ngIf="loaded$ | async">
       <ng-container *ngIf="(userPhotos$ | async).length > 0; else noPhotosMsg">

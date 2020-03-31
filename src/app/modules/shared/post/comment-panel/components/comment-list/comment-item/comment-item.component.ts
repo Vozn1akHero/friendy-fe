@@ -12,21 +12,21 @@ export class CommentItemComponent implements OnInit {
   @Input() privilegedToDeleteRelatedEntries: boolean | never;
   @Input() comment: CommentModel;
   @Output() actResponseToCommentEmitter: EventEmitter<
-    number
+    CommentModel
   > = new EventEmitter();
   @Output() likeEmitter: EventEmitter<number> = new EventEmitter();
   @Output() unlikeEmitter: EventEmitter<number> = new EventEmitter();
   timePassed: string;
   responsesShown: boolean;
-
-  constructor() {}
+  newCommentResponseFormVisible: boolean;
 
   ngOnInit() {
     this.timePassed = moment(this.comment.date).fromNow();
   }
 
   onRespondBtnClick() {
-    this.actResponseToCommentEmitter.emit(this.comment.id);
+    this.actResponseToCommentEmitter.emit(this.comment);
+    this.newCommentResponseFormVisible = true;
   }
 
   onRemoveComment() {}
@@ -40,6 +40,7 @@ export class CommentItemComponent implements OnInit {
   }
 
   onShowCommentsBtnClick() {
+    this.actResponseToCommentEmitter.emit(this.comment);
     this.responsesShown = true;
   }
 

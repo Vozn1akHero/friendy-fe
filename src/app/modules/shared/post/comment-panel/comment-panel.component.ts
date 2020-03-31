@@ -1,18 +1,19 @@
 import { Component, Input, OnInit } from "@angular/core";
 import PostCommentService from "./services/post-comment.service";
 import CommentResponseService from "./services/comment-response.service";
-import { NewCommentOrResponseService } from "./services/new-comment-or-response.service";
-import { ActivatedRoute } from "@angular/router";
+import { NewCommentService } from "./services/new-comment.service";
 import { UserIdService } from "../../../../shared/services/user-id.service";
+import { NewCommentResponseService } from "./services/new-comment-response.service";
 
 @Component({
   selector: "app-comment-panel",
   templateUrl: "./comment-panel.component.html",
   styleUrls: ["./comment-panel.component.scss"],
   providers: [
-    PostCommentService,
     CommentResponseService,
-    NewCommentOrResponseService
+    PostCommentService,
+    NewCommentService,
+    NewCommentResponseService
   ]
 })
 export class CommentPanelComponent implements OnInit {

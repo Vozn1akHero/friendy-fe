@@ -13,13 +13,13 @@ import { FullScreenImageService } from "../../shared/services/full-screen-image.
 })
 export class WrapperComponent implements OnInit, OnDestroy {
   userIdLoaded$: Observable<boolean>;
+  userId$: Observable<number>;
   connectedToStatusHub: boolean = false;
   receivedFriendRequestsAmount: number;
   fullScreenImageModalVisible$: Observable<boolean>;
   photoEditorVisible$: Observable<boolean>;
 
   constructor(
-    private route: ActivatedRoute,
     private userStatusService: UserStatusService,
     private subscriptionManager: SubscriptionManager,
     private userIdService: UserIdService,
@@ -27,24 +27,30 @@ export class WrapperComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.userIdLoaded$ = this.userIdService.userIdLoaded$;
+    this.userIdService.getUserId();
+    this.userIdLoaded$ = this.userIdService.loaded$;
+    this.userId$ = this.userIdService.userId$;
     this.setConnectedStatus();
     this.fullScreenImageModalVisible$ = this.fullScreenImageService.visible$;
   }
 
   setConnectedStatus() {
     this.subscriptionManager.add(
-      this.userStatusService.connected$.subscribe(connected => {
-        if (connected) {
-          this.userStatusService.setConnectedState(
-            this.route.snapshot.data["profileId"]
+      this.userId$.subscribe(value => {
+        if (value != null) {
+          this.subscriptionManager.add(
+            this.userStatusService.connected$.subscribe(connected => {
+              if (connected) {
+                this.userStatusService.setConnectedState(value);
+              }
+            })
+          );
+          this.subscriptionManager.add(
+            this.userStatusService.connectedMethodExecuted$.subscribe(value => {
+              this.connectedToStatusHub = value;
+            })
           );
         }
-      })
-    );
-    this.subscriptionManager.add(
-      this.userStatusService.connectedMethodExecuted$.subscribe(value => {
-        this.connectedToStatusHub = value;
       })
     );
   }

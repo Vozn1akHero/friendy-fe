@@ -6,6 +6,7 @@
       iconClass: 'people-icon',
       link: '/app/friends'
     }"
+    [showBtnInsteadOfAnchor]="!isUserProfileOwner"
   >
     <ng-container
       *ngIf="(exemplaryFriends$ | async).length > 0; else noFriendsMsg"
