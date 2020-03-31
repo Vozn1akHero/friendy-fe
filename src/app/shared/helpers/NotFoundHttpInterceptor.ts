@@ -1,19 +1,18 @@
-import { tap, map, catchError } from "rxjs/operators";
-import { Router } from "@angular/router";
-import { Injectable, Injector } from "@angular/core";
 import {
-  HttpInterceptor,
-  HttpHandler,
-  HttpRequest,
+  HttpErrorResponse,
   HttpEvent,
-  HttpResponse,
-  HttpErrorResponse
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest
 } from "@angular/common/http";
+import { Injectable, Injector } from "@angular/core";
+import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 
 @Injectable()
 export class NotFoundHttpInterceptor implements HttpInterceptor {
-  url = ["/api/user"];
+  url = ["/api/user", "/api/event"];
 
   constructor(private _injector: Injector) {}
 
