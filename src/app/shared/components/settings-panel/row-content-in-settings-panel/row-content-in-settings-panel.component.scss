@@ -1,28 +1,26 @@
-@import "../../../../../assets/sass/base/variables";
-
-.content{
-  .column{
+.content {
+  .column {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: flex-end;
 
-    &--aligned-left{
+    &--aligned-left {
       align-items: flex-start;
     }
 
-    &>*:not(:last-child){
+    & > *:not(:last-child) {
       margin-bottom: 1rem;
     }
   }
 
-  .row{
+  .row {
     display: flex;
     flex-direction: row;
     width: 100%;
     align-items: flex-end;
 
-    &>::ng-deep *:nth-child(n+1){
+    & > ::ng-deep *:nth-child(n + 1) {
       margin-left: 1rem;
     }
   }

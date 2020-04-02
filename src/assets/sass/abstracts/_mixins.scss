@@ -1,41 +1,39 @@
-@import '../base/variables';
+@mixin cardview {
+  background-color: var(--color-bg-grey-footer);
+  //margin-left: 4rem;
+  padding: 1rem;
+  //width: 419px;
+  width: inherit;
 
-@mixin cardview{
-    background-color: $color-bg-grey-footer;
-    //margin-left: 4rem;
-    padding: 1rem;
-    //width: 419px;
-    width: inherit;
+  .header {
+    display: flex;
+    margin-bottom: 1rem;
 
-    .header{
-        display: flex;
-        margin-bottom: 1rem;
-
-        svg{
-            width: 20px;
-            height: 18px;
-            fill: $color-grey-light-2;
-        }
-
-        .section-link{
-            display: flex;
-            align-self: center;
-            font-size: .8rem;
-            margin-left: .5rem;
-            color: $color-grey-light-2;
-            text-decoration: none;
-        }
-
-        p{
-            display: flex;
-            align-self: center;
-            font-size: .8rem;
-            margin-left: .5rem;
-            color: $color-grey-light-2;
-        }
+    svg {
+      width: 20px;
+      height: 18px;
+      fill: var(--color-grey-light-2);
     }
+
+    .section-link {
+      display: flex;
+      align-self: center;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+      color: var(--color-grey-light-2);
+      text-decoration: none;
+    }
+
+    p {
+      display: flex;
+      align-self: center;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+      color: var(--color-grey-light-2);
+    }
+  }
 }
 
-@mixin min-width-page{
+@mixin min-width-page {
   min-width: 1270px;
 }

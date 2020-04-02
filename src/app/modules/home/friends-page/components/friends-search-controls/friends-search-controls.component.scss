@@ -1,14 +1,13 @@
-@import '../../../../../../assets/sass/base/variables';
-@import '../../../../../../assets/sass/components/checkbox';
+@import "../../../../../../assets/sass/components/checkbox";
 
-.friends-search-controls{
+.friends-search-controls {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-top: 1rem;
   width: 100%;
 
-  .checkbox-wrapper{
+  .checkbox-wrapper {
     display: flex;
     justify-content: space-between;
     padding: 1rem 2.5rem 0 2.5rem;

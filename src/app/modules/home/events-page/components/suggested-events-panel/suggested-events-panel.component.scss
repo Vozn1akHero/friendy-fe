@@ -1,26 +1,19 @@
-@import '../../../.././../../assets/sass/base/variables';
-
 .suggested-events-panel {
-  //background: $color-bg-grey-footer;
   margin-top: 3rem;
   width: 100%;
-  /*display: flex;
-  flex-direction: column;
-  align-items: center;*/
-  //border-radius: 1rem;
 
-  .line{
+  .line {
     width: 85%;
   }
 
-  .intro-text-wrapper{
+  .intro-text-wrapper {
     display: flex;
     align-items: center;
     margin-top: 2rem;
 
-    .location-icon{
+    .location-icon {
       display: inline-block;
-      opacity: .8;
+      opacity: 0.8;
       width: 2rem;
       height: 2rem;
       background-image: url("../../../../../../assets/images/icon/location.svg");
@@ -28,9 +21,9 @@
       background-size: cover;
     }
 
-    .text{
-      color: $color-grey-dark;
-      margin-left: .5rem;
+    .text {
+      color: var(--color-grey-dark);
+      margin-left: 0.5rem;
     }
   }
 }

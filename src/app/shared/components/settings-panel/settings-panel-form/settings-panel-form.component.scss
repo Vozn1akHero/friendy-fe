@@ -1,9 +1,8 @@
-@import "../../../../../assets/sass/base/variables";
-form{
-  .submit-btn-wrapper{
+form {
+  .submit-btn-wrapper {
     width: 100%;
     position: relative;
-    background: rgba($color-grey-dark, .05);
+    background: rgba(black, 0.05);
     display: flex;
     height: 4rem;
     justify-content: flex-end;
@@ -11,8 +10,8 @@ form{
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
 
-    .submit-btn{
-      margin-top: .5rem;
+    .submit-btn {
+      margin-top: 0.5rem;
       margin-right: 1.5rem;
     }
   }

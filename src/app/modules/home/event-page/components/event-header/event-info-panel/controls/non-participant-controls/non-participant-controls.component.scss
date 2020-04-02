@@ -1,5 +1,3 @@
-@import "../../../../../../../../../assets/sass/base/variables";
-
 .non-participant-controls {
   display: flex;
   align-items: center;
@@ -20,7 +18,7 @@
     }
 
     .text {
-      color: $color-grey-light-2;
+      color: var(--color-grey-light-2);
       font-size: 0.82rem;
       margin-right: 0.5rem;
     }

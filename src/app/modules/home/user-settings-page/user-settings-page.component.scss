@@ -1,17 +1,15 @@
-@import '../../../../assets/sass/base/variables';
-@import '../../../../assets/sass/components/dropdown';
-@import '../../../../assets/sass/components/radiobutton';
+@import "../../../../assets/sass/components/dropdown";
+@import "../../../../assets/sass/components/radiobutton";
 @import "../../../../assets/sass/components/fr-input";
 
-.user-settings-page{
+.user-settings-page {
   width: calc(100vw - 20rem);
 
-  .header{
+  .header {
     width: 100%;
     padding: 1.5rem 2rem;
   }
 
-  .inner-wrapper{
-
+  .inner-wrapper {
   }
 }

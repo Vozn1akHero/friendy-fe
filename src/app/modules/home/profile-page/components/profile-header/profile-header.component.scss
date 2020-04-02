@@ -1,11 +1,9 @@
-@import '../../../../../../assets/sass/base/variables';
-
-.profile-header{
+.profile-header {
   .profile-info-wrap {
     width: 100%;
     position: relative;
 
-    .content{
+    .content {
       display: flex;
       width: 97%;
       height: 97%;
@@ -18,14 +16,14 @@
       padding-top: 7rem;
       color: #010101;
 
-      .profile-info-bottom-wrapper-not-owner{
+      .profile-info-bottom-wrapper-not-owner {
         display: flex;
 
-        .left{
+        .left {
           width: 60%;
         }
 
-        .right{
+        .right {
           width: 40%;
         }
       }
@@ -36,7 +34,11 @@
       justify-content: center;
       width: 386px;
       height: 372px;
-      background-image: linear-gradient(0.85turn, $color-yellow, $color-blue);
+      background-image: linear-gradient(
+        0.85turn,
+        var(--color-yellow),
+        var(--color-blue)
+      );
       position: absolute;
       top: -17rem;
       left: 0;
@@ -45,8 +47,7 @@
       margin-right: auto;
       border-radius: 6%;
       z-index: 2;
-      transition: transform .1s linear;
+      transition: transform 0.1s linear;
     }
   }
-
 }

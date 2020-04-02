@@ -1,13 +1,11 @@
-@import "../../../../../assets/sass/base/variables";
-
-.row{
+.row {
   display: flex;
   justify-content: space-between;
   margin: 1rem;
 
-  .label{
-    font-size: .8rem;
+  .label {
+    font-size: 0.8rem;
     font-weight: 600;
-    color: $color-grey-dark;
+    color: var(--color-grey-dark);
   }
 }

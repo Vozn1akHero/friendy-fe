@@ -1,5 +1,3 @@
-@import "../../../../../../assets/sass/base/variables";
-
 .navigation-panel {
   display: flex;
   flex-direction: column;
@@ -11,7 +9,7 @@
   .link {
     font-size: 0.83rem;
     text-decoration: none;
-    color: $color-grey-dark;
+    color: var(--color-grey-dark);
   }
 
   ul {

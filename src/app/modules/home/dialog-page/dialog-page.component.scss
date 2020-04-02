@@ -1,5 +1,4 @@
-@import '../../../../assets/sass/base/variables';
-@import '../../../../assets/sass/abstracts/mixins';
+@import "../../../../assets/sass/abstracts/mixins";
 
 .dialog-page {
   display: flex;
@@ -8,39 +7,40 @@
   @include min-width-page();
   overflow-y: hidden;
 
-  &__back-anchor{
+  &__back-anchor {
     position: absolute;
     width: fit-content;
     top: 3.5rem;
     left: 3.5rem;
-    font-size: .8rem;
+    font-size: 0.8rem;
     text-decoration: none;
     z-index: 1;
-    color: $color-grey-dark;
+    color: var(--color-grey-dark);
 
-    &:hover{
+    &:hover {
       text-decoration: underline;
     }
   }
 
-  .wrapper-2, .wrapper-3{
+  .wrapper-2,
+  .wrapper-3 {
     display: flex;
     flex-direction: column;
   }
 
-  .wrapper-1{
+  .wrapper-1 {
     width: 26%;
     position: relative;
 
-    .vertical-line{
+    .vertical-line {
       position: absolute;
       height: 100%;
       right: 0;
-      opacity: .2;
+      opacity: 0.2;
     }
   }
 
-  .wrapper-2{
+  .wrapper-2 {
     width: 74%;
     position: relative;
   }
@@ -51,16 +51,15 @@
     height: 100vh;
     position: relative;
 
-    .vertical-line{
+    .vertical-line {
       position: absolute;
       height: 100%;
       left: 0;
-      opacity: .2;
+      opacity: 0.2;
     }
-    //background: $color-bg-grey-footer;
   }
 
-  .no-interlocutor-selected-wrap{
+  .no-interlocutor-selected-wrap {
     height: 100%;
     width: 80%;
     display: flex;

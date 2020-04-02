@@ -1,5 +1,3 @@
-@import "../../../../../../../assets/sass/base/variables";
-
 .new-comment-response {
   padding: 1rem;
   border-radius: 1rem;
@@ -11,7 +9,6 @@
       width: 100%;
       height: 4em;
       border-radius: 2rem;
-      //background-color: $color-bg-grey-footer;
       background: white;
       border: 1px solid #efefef;
 
@@ -22,9 +19,6 @@
 
     .controls {
       width: 100%;
-      /*background: #ffffff;
-      border-bottom-left-radius: 1rem;
-      border-bottom-right-radius: 1rem;*/
 
       .submit-btn {
         border: none;
@@ -38,9 +32,6 @@
         color: black;
         font-weight: 600;
         background: #efefef;
-      }
-
-      .inner-wrapper {
       }
 
       .file-btn-wrapper {

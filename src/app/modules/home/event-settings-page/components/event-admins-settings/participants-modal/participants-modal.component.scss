@@ -1,14 +1,12 @@
-@import '../../../../../../../assets/sass/base/variables';
-@import '../../../../../../../assets/sass/components/dropdown';
-
+@import "../../../../../../../assets/sass/components/dropdown";
 
 .participants-modal-wrap {
   width: 35rem;
   height: 30rem;
   margin: 10% auto 0;
-  background-color: $color-bg-light-grey;
+  background-color: var(--color-bg-light-grey);
   box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.16);
-  transition: all .3s;
+  transition: all 0.3s;
 
   .header-wrap {
     height: 13%;
@@ -26,17 +24,17 @@
     height: 2.5rem;
     background: none;
     outline: none;
-    color: $color-grey-dark;
-    transition: all .3s;
+    color: var(--color-grey-dark);
+    transition: all 0.3s;
     font-size: 2rem;
     border: none;
 
     &:hover {
-      background: rgba($color-grey-dark, .05);
+      background: rgba(var(--color-grey-dark), 0.05);
     }
   }
 
-  .participants-list{
+  .participants-list {
     padding: 1rem 0;
     height: 87%;
     overflow-y: scroll;
@@ -49,14 +47,14 @@
     &::-webkit-scrollbar-track {
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
-      background: rgba(black, .02);
+      background: rgba(black, 0.02);
       background-clip: content-box;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #C0CCDD;
+      background: #c0ccdd;
       border-radius: 1rem;
-      transition: .5s background;
+      transition: 0.5s background;
       border: 5px solid transparent;
       background-clip: content-box;
     }

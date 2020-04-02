@@ -1,9 +1,7 @@
-@import '../../../../../../assets/sass/base/variables';
-
-.registration-success-pop-up{
+.registration-success-pop-up {
   width: 100vw;
   height: 100vh;
-  background: rgba($color-grey-dark, .3);
+  background: rgba(black, 0.3);
   position: absolute;
   top: 0;
   right: 0;
@@ -12,13 +10,12 @@
   justify-content: center;
   z-index: 1000;
 
-  &__wrapper{
+  &__wrapper {
     width: 40vw;
     background: white;
     padding: 3rem;
     text-align: center;
     position: relative;
-
 
     .close-btn {
       position: absolute;
@@ -32,7 +29,6 @@
       place-content: center;
       background: #e85372;
 
-
       .close-icon {
         width: 55%;
         height: 55%;
@@ -41,15 +37,14 @@
         &:hover {
           cursor: pointer;
         }
-
       }
     }
 
-    .log-in-btn{
+    .log-in-btn {
       background: none;
       outline: none;
       border: none;
-      color: $color-blue;
+      color: var(--color-blue);
       text-decoration: none;
       margin-top: 2rem;
       display: block;

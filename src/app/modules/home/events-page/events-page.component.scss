@@ -1,11 +1,10 @@
-@import '../../../../assets/sass/base/variables';
-@import '../../../../assets/sass/components/checkbox';
-@import '../../../../assets/sass/abstracts/mixins';
-@import '../../../../assets/sass/base/animations';
+@import "../../../../assets/sass/components/checkbox";
+@import "../../../../assets/sass/abstracts/mixins";
+@import "../../../../assets/sass/base/animations";
 
 .events-page {
   display: flex;
-  width: calc(100vw - #{$navigation-width});
+  width: calc(100vw - #{var(--navigation-width)});
   padding-top: 5rem;
   justify-content: center;
   @include min-width-page();
@@ -19,4 +18,3 @@
     margin-left: 4rem;
   }
 }
-

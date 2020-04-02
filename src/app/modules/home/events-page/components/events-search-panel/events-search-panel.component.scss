@@ -1,56 +1,65 @@
-@import '../../../../../../assets/sass/base/variables';
-
-.event-search-panel{
+.event-search-panel {
   height: 100vh;
   width: 2rem;
-  transition: .255s width;
+  transition: 0.255s width;
   position: fixed;
   right: 0;
   top: 0;
-  background: $color-bg-grey-footer;
+  background: var(--color-bg-grey-footer);
   z-index: 10;
 
-  .controls{
+  .controls {
     visibility: hidden;
   }
 
-  .form{
+  .form {
     display: flex;
     flex-direction: column;
 
-    .row{
+    .row {
       margin-top: 1rem;
 
-      .input-label{
-        font-size: .8rem;
-        margin-bottom: .3rem;
+      .input-label {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
       }
 
-      .fr-input{
-        &--street{ width: 70%; }
-        &--street-number{width: 30%;}
+      .fr-input {
+        &--street {
+          width: 70%;
+        }
+        &--street-number {
+          width: 30%;
+        }
 
-        &--title, &--city, &--date{
+        &--title,
+        &--city,
+        &--date {
           width: 100%;
         }
 
-        &--participants-min, &--participants-max, &--price-min, &--price-max{
+        &--participants-min,
+        &--participants-max,
+        &--price-min,
+        &--price-max {
           width: 50%;
         }
 
-        &--street-number, &--participants-max, &--price-max{
+        &--street-number,
+        &--participants-max,
+        &--price-max {
           margin-left: 1rem;
         }
       }
     }
   }
 
-  .inner-wrapper{
+  .inner-wrapper {
     width: 100%;
     height: 100%;
     position: relative;
 
-    .toggle-btn{
+    .toggle-btn {
       width: 3rem;
       height: 3rem;
       background: white;

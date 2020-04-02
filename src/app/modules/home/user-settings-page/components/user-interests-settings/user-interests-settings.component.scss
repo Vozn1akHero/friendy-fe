@@ -1,17 +1,15 @@
-@import '../../../../../../assets/sass/base/variables';
 @import "../../../../../../assets/sass/components/settings-panel-wrapper";
 
-
 .user-interests-settings {
-  .upper-wrapper{
+  .upper-wrapper {
     min-height: 7rem;
   }
 
-  .found-interests-popup{
-    .item-btn{
+  .found-interests-popup {
+    .item-btn {
       border: none;
-      background: $color-pink;
-      color: $color-white;
+      background: var(--color-pink);
+      color: var(--color-white);
       height: 2rem;
       margin: 1rem;
       padding: 0 1rem;
@@ -19,18 +17,18 @@
   }
 
   .current-interests {
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
     width: 70%;
     margin-top: 2rem;
 
     .item {
-      font-size: .8rem;
-      margin: .5rem;
+      font-size: 0.8rem;
+      margin: 0.5rem;
       display: flex;
       align-items: center;
 
-      .title{
-        color: $color-grey-dark;
+      .title {
+        color: var(--color-grey-dark);
         margin-right: 1rem;
       }
 
@@ -42,8 +40,8 @@
         background: #d3d3d3;
         outline: none;
         opacity: 0.7;
-        -webkit-transition: .2s;
-        transition: opacity .2s;
+        -webkit-transition: 0.2s;
+        transition: opacity 0.2s;
       }
 
       .wage-slider:hover {
@@ -56,26 +54,26 @@
         width: 25px;
         height: 25px;
         border-radius: 50%;
-        background: $color-pink-lighter;
+        background: var(--color-pink-lighter);
         cursor: pointer;
       }
 
       .wage-slider::-moz-range-thumb {
         width: 25px;
         height: 25px;
-        background: darken($color-pink-lighter, .1);
+        background: darken(#e84c7e, 0.1);
         cursor: pointer;
       }
 
       .remove-btn {
         width: 2rem;
         height: 2rem;
-        margin-left: .5rem;
+        margin-left: 0.5rem;
         border-radius: 50%;
         border: 1.5px solid white;
         color: white;
         font-weight: 700;
-        background: $color-pink-lighter;
+        background: var(--color-pink-lighter);
       }
     }
   }

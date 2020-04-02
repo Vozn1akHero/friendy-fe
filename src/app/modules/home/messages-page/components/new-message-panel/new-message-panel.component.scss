@@ -1,10 +1,9 @@
-@import '../../../../../../assets/sass/base/variables';
 @import "../../../../../../assets/sass/components/dropdown";
 @import "../../../../../../assets/sass/components/fr-input";
 
 .new-message-panel {
   width: 320px;
-  background-color: $color-bg-light-grey;
+  background-color: var(--color-bg-light-grey);
 
   .form {
     align-items: center;
@@ -13,17 +12,15 @@
 
     .friends-list {
       select {
-        font-size: .8rem;
+        font-size: 0.8rem;
         width: 273px;
         margin: 1rem 0;
-
       }
 
       &::after {
         top: 42%;
       }
     }
-
 
     textarea {
       resize: none;
@@ -60,7 +57,7 @@
           background: none;
           width: 1.5rem;
           height: 1.5rem;
-          fill: $color-grey-light-2;
+          fill: var(--color-grey-light-2);
         }
       }
 
@@ -70,10 +67,10 @@
         height: 3rem;
         width: 10rem;
         border-radius: 3rem;
-        background: $color-blue;
+        background: var(--color-blue);
         font-weight: 700;
         color: white;
-        font-size: .85rem;
+        font-size: 0.85rem;
         align-self: center;
 
         &:hover {

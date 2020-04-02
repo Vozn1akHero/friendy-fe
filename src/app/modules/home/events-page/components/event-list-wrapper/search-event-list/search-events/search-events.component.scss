@@ -1,6 +1,4 @@
-@import '../../../../../../../../assets/sass/base/variables';
-@import '../../../../../../../../assets/sass/base/icons';
-
+@import "../../../../../../../../assets/sass/base/icons";
 
 .search-events {
   margin-top: 2rem;
@@ -8,35 +6,33 @@
   position: relative;
   overflow: auto;
 
-    .search-events-input {
-      height: 45px;
-      width: 100%;
-      float: left;
-      border-radius: 1rem;
-      outline: none;
-      border: none;
-      padding-left: 1rem;
-      transition: all .3s;
+  .search-events-input {
+    height: 45px;
+    width: 100%;
+    float: left;
+    border-radius: 1rem;
+    outline: none;
+    border: none;
+    padding-left: 1rem;
+    transition: all 0.3s;
+  }
+
+  .search-events-submit {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    border-radius: 1rem;
+    position: absolute;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    border: none;
+    background: var(--color-pink);
+
+    .search-icon {
+      width: 19px;
+      height: 19px;
+      background: url($search-icon);
     }
-
-    .search-events-submit {
-      display: flex;
-      align-self: center;
-      justify-content: center;
-      border-radius: 1rem;
-      position: absolute;
-      right: 0;
-      width: 45px;
-      height: 45px;
-      border: none;
-      background: $color-pink;
-
-      .search-icon {
-        width: 19px;
-        height: 19px;
-        background: url($search-icon);
-      }
-    }
-
+  }
 }
-

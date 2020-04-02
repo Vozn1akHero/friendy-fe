@@ -1,5 +1,3 @@
-@import "../../../../../../assets/sass/base/variables";
-
 .chosen-event-settings-subpage {
   float: right;
   width: 70%;
@@ -7,12 +5,11 @@
   padding-top: 1.5rem;
   padding-left: 3rem;
   z-index: -1;
-  // background-color: $color-bg-light-grey;
 
   .header {
     padding: 0.5rem 2rem;
     .title {
-      color: $color-grey-dark;
+      color: var(--color-grey-dark);
       font-weight: 400;
       font-size: 1.1rem;
     }
@@ -22,7 +19,7 @@
     position: absolute;
     height: 11rem;
     width: 100%;
-    background: $color-bg-grey-footer;
+    background: var(--color-bg-grey-footer);
     left: 0;
     z-index: -1;
     top: 132px;

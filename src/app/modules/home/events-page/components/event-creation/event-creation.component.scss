@@ -1,13 +1,11 @@
-@import '../../../../../../assets/sass/base/variables';
-@import '../../../../../../assets/sass/components/dropdown';
-
+@import "../../../../../../assets/sass/components/dropdown";
 
 .event-creation-wrap {
   width: 35rem;
   margin: 10% auto 0;
-  background-color: $color-bg-light-grey;
+  background-color: var(--color-bg-light-grey);
   box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.16);
-  transition: all .3s;
+  transition: all 0.3s;
 
   .header-wrap {
     height: 3.755rem;
@@ -25,13 +23,13 @@
     height: 2.5rem;
     background: none;
     outline: none;
-    color: $color-grey-dark;
-    transition: all .3s;
+    color: var(--color-grey-dark);
+    transition: all 0.3s;
     font-size: 2rem;
     border: none;
 
     &:hover {
-      background: rgba($color-grey-dark, .05);
+      background: rgba(black, 0.05);
     }
   }
 
@@ -40,10 +38,15 @@
     text-align: center;
     padding: 3rem 4rem;
 
-    .name, .desc, .city, .price, .subject, .participants-amount {
+    .name,
+    .desc,
+    .city,
+    .price,
+    .subject,
+    .participants-amount {
       width: 100%;
       display: block;
-      margin-top: .7rem;
+      margin-top: 0.7rem;
     }
 
     .desc {
@@ -58,7 +61,7 @@
 
     .spec-wrapper {
       display: flex;
-      margin-top: .7rem !important;
+      margin-top: 0.7rem !important;
       width: 417px;
       justify-content: space-between;
     }
@@ -69,7 +72,7 @@
 
     .number {
       width: 35%;
-      margin-left: .5rem;
+      margin-left: 0.5rem;
     }
 
     .date-wrapper {
@@ -77,58 +80,12 @@
         width: 50%;
       }
 
-      .hour-span, .minute-input {
+      .hour-span,
+      .minute-input {
         width: 25%;
-        margin-left: .5rem;
+        margin-left: 0.5rem;
       }
     }
-
-    /*  .date {
-        &-year {
-          width: 33%;
-        }
-
-        &-month {
-          select {
-            width: inherit;
-          }
-        }
-
-        &-day {
-          width: 33%;
-
-          select {
-            width: inherit;
-
-            &::after {
-              right: 1.45em !important;
-            }
-          }
-        }
-
-        &-month, &-day {
-          &::after {
-            top: 40%;
-          }
-        }
-
-        &-hour {
-          width: 50%;
-
-          select {
-            width: 100%;
-
-            &::after {
-
-              top: 40%;
-            }
-          }
-        }
-
-        &-minute {
-          width: 47%;
-        }
-      }*/
   }
 
   .create-event-btn {
@@ -137,10 +94,10 @@
     height: 3rem;
     width: 10rem;
     border-radius: 3rem;
-    background: $color-blue;
+    background: var(--color-blue);
     font-weight: 700;
     color: white;
-    font-size: .85rem;
+    font-size: 0.85rem;
 
     &:hover {
       cursor: pointer;

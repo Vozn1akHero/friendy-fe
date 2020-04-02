@@ -1,5 +1,3 @@
-@import "../../../../../../../assets/sass/base/variables";
-
 .participant-small-item {
   display: flex;
   width: 100%;
@@ -22,6 +20,6 @@
     font-size: 0.83rem;
     text-decoration: none;
     margin-left: 1rem;
-    color: $color-blue;
+    color: var(--color-blue);
   }
 }

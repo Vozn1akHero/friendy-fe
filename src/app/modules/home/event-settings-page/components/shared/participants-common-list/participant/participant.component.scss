@@ -1,6 +1,4 @@
-@import '../../../../../../../../assets/sass/base/variables';
-
-.participant{
+.participant {
   display: flex;
   min-width: 26rem;
   padding: 1rem;
@@ -8,44 +6,44 @@
   position: relative;
   justify-content: space-between;
 
-  .avatar-wrapper{
+  .avatar-wrapper {
     width: 6rem;
     height: 6rem;
 
-    .avatar-link img{
+    .avatar-link img {
       height: 100%;
       border-radius: 50%;
     }
   }
 
-  .basic-data-link{
-    font-size: .85rem;
-    color: $color-blue;
+  .basic-data-link {
+    font-size: 0.85rem;
+    color: var(--color-blue);
     text-decoration: none;
     word-wrap: break-word;
     word-break: break-word;
   }
 
-  .left-wrap{
+  .left-wrap {
     width: 70%;
     position: relative;
   }
 
-  .cw-line{
+  .cw-line {
     margin-top: 1.5rem;
     height: 1px;
     border: none;
     background-color: #b5b5b5;
     width: 100%;
-    opacity: .2;
+    opacity: 0.2;
   }
 
-  .controls-wrapper{
+  .controls-wrapper {
     margin-top: 1rem;
     display: flex;
 
-    ::ng-deep button{
-      margin-right: .5rem;
+    ::ng-deep button {
+      margin-right: 0.5rem;
     }
   }
 }

@@ -1,12 +1,9 @@
-@import '../../../../../assets/sass/base/variables';
-
-
-.post-wrapper{
+.post-wrapper {
   display: flex;
   flex-direction: column;
   margin-bottom: 3rem;
 
-  .comments-wrapper{
+  .comments-wrapper {
     width: 100%;
   }
 
@@ -16,12 +13,12 @@
     flex-direction: column;
     position: relative;
 
-    &:not(:first-child){
+    &:not(:first-child) {
       margin-top: 3rem;
     }
 
-    &:hover{
-      .remove-post{
+    &:hover {
+      .remove-post {
         opacity: 1;
       }
     }
@@ -29,21 +26,21 @@
     .upper-wrapper {
       display: flex;
 
-      .content-wrapper{
+      .content-wrapper {
         width: 330px;
 
         .text-content {
-          font-size: .8rem;
+          font-size: 0.8rem;
           word-break: break-all;
         }
 
-        .image{
+        .image {
           margin-top: 1rem;
           width: 100%;
         }
       }
 
-      .avatar-wrapper{
+      .avatar-wrapper {
         margin-right: 1rem;
 
         .avatar {
@@ -60,13 +57,13 @@
       }
     }
 
-    .remove-post{
+    .remove-post {
       position: absolute;
       top: 0;
       right: 1rem;
-      color: $color-grey-dark;
+      color: var(--color-grey-dark);
       opacity: 0;
-      transition: .2s;
+      transition: 0.2s;
       background: none;
       outline: none;
       border: none;
@@ -76,11 +73,12 @@
       position: relative;
       display: flex;
       width: 100%;
-      margin-top: .5rem;
+      margin-top: 0.5rem;
       padding-left: 5rem;
     }
 
-    .comments, .likes {
+    .comments,
+    .likes {
       display: flex;
       text-decoration: none;
       background: none;
@@ -91,7 +89,7 @@
       border-radius: 3rem;
       align-items: center;
       justify-content: center;
-      transition: all .255s;
+      transition: all 0.255s;
 
       .icon {
         height: 1rem;
@@ -99,51 +97,49 @@
       }
 
       .btn-text {
-        font-size: .6rem;
+        font-size: 0.6rem;
         display: flex;
         align-self: center;
-        margin-left: .3rem;
+        margin-left: 0.3rem;
       }
     }
 
-
-
-    .likes{
+    .likes {
       margin-left: 1rem;
 
-      .icon{
+      .icon {
         background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23b5b5b5'%3E%3Cpath d='M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z'%3E%3C/path%3E%3C/svg%3E%0A");
       }
     }
 
-    .unlike-post-btn{
-      background: $grey-bg-on-btn-hover;
-      &:hover{
+    .unlike-post-btn {
+      background: var(--grey-bg-on-btn-hover);
+      &:hover {
         background: white;
       }
     }
 
-    .like-user-post-btn{
-      &:hover{
-        background: $grey-bg-on-btn-hover;
+    .like-user-post-btn {
+      &:hover {
+        background: var(--grey-bg-on-btn-hover);
       }
     }
 
     .comments {
-      .icon{
+      .icon {
         background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23b5b5b5'%3E%3Cpath d='M16 2c8.837 0 16 5.82 16 13s-7.163 13-16 13c-0.849 0-1.682-0.054-2.495-0.158-3.437 3.437-7.539 4.053-11.505 4.144v-0.841c2.142-1.049 4-2.961 4-5.145 0-0.305-0.024-0.604-0.068-0.897-3.619-2.383-5.932-6.024-5.932-10.103 0-7.18 7.163-13 16-13z'%3E%3C/path%3E%3C/svg%3E%0A");
       }
-      &:hover{
-        background: $grey-bg-on-btn-hover;
+      &:hover {
+        background: var(--grey-bg-on-btn-hover);
       }
     }
 
     .date {
-      font-size: .6rem;
+      font-size: 0.6rem;
       right: 1rem;
       position: absolute;
       align-self: center;
-      color: $color-grey-light-2;
+      color: var(--color-grey-light-2);
     }
   }
 }

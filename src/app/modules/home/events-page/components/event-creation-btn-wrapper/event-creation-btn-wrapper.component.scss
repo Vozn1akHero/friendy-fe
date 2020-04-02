@@ -1,12 +1,10 @@
-@import '../../../../../../assets/sass/base/variables';
-
 .new-event {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 
-  hr{
+  hr {
     position: absolute;
     width: 15%;
     z-index: -1;
@@ -14,31 +12,31 @@
     transform: translateY(24px);
   }
 
-  .left-line{
+  .left-line {
     left: 0;
     top: -3px;
   }
 
-  .right-line{
+  .right-line {
     right: 0;
     top: -3px;
   }
 
   &__btn {
     margin: 0 auto;
-    color: rgba($color-grey-dark, .7);
+    color: rgba(#3f3f3f, 0.7);
     width: 70%;
-    border: 1px solid rgba($color-grey-dark, .6);
+    border: 1px solid rgba(#3f3f3f, 0.6);
     font-weight: 300;
     height: 2.6rem;
     text-decoration: none;
-    transition: all .3s;
-    font-size: .8rem;
+    transition: all 0.3s;
+    font-size: 0.8rem;
     position: relative;
     background: none;
     border-radius: 2rem;
 
-    &:before{
+    &:before {
       content: "";
       width: 0;
       position: absolute;
@@ -47,14 +45,14 @@
       left: 0;
       z-index: -1;
       height: 100%;
-      background: linear-gradient(0.85turn, $color-blue, $color-yellow);
+      background: linear-gradient(0.85turn, #00baff, #fff000);
     }
-    &:hover{
-      box-shadow: 0 0.1875rem 0.1875rem $color-bg-grey-footer;
-      color: $color-white;
+    &:hover {
+      box-shadow: 0 0.1875rem 0.1875rem var(--color-bg-grey-footer);
+      color: white;
 
-      &:before{
-        animation: search-friends-btn-hover-animation linear .1s 1 normal;
+      &:before {
+        animation: search-friends-btn-hover-animation linear 0.1s 1 normal;
         width: 100%;
       }
     }

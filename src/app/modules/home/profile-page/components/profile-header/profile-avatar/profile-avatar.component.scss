@@ -1,18 +1,13 @@
-@import '../../../../../../../assets/sass/base/variables';
-
-.profile-avatar{
+.profile-avatar {
   .profile-avatar-alter {
-    //display: none;
-    //visibility: hidden;
     position: absolute;
     width: 13rem;
     height: 13rem;
     top: -4rem;
     left: 5.6rem;
-    /* border-radius: 50%; */
     z-index: 1;
 
-    input[type=file] {
+    input[type="file"] {
       position: absolute;
       width: inherit;
       height: inherit;
@@ -21,7 +16,7 @@
 
       &:hover {
         & + button {
-          background: rgba(0, 0, 0, .1555);
+          background: rgba(0, 0, 0, 0.1555);
         }
       }
     }
@@ -31,61 +26,58 @@
       height: inherit;
       border-radius: 50%;
       border: none;
-      background: rgba(0, 0, 0, .255);
-      transition: background-color .5s;
+      background: rgba(0, 0, 0, 0.255);
+      transition: background-color 0.5s;
 
       svg {
         width: 40%;
         height: 40%;
-        fill: $color-white;
+        fill: white;
       }
 
       span {
         display: block;
         font-size: 1rem;
-        color: $color-white;
+        color: white;
       }
     }
   }
 
-  .wrap-for-loader{
-
-  }
-
-  .avatar-loader{
+  .avatar-loader {
     background: #f8f8f8;
     height: 1rem;
     width: 100%;
   }
 
-  &__wrapper, .avatar-loader, .wrap-for-loader {
+  &__wrapper,
+  .avatar-loader,
+  .wrap-for-loader {
     position: absolute;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
     top: -4rem;
-    //-webkit-clip-path: circle(50% at 50% 50%);
     width: 13rem;
     height: 13rem;
     //float: left;
     border-radius: 50%;
     overflow: hidden;
-    border: solid .3rem $color-white;
+    border: solid 0.3rem white;
     /*display: flex;
     justify-content: center;*/
 
-    .is-online{
+    .is-online {
       position: absolute;
       right: 1rem;
       bottom: 0;
-      background-color: $color-white;
+      background-color: white;
       border-radius: 50%;
       width: 3rem;
       height: 3rem;
 
-      .circle{
-        color: $color-blue;
+      .circle {
+        color: var(--color-blue);
         font-size: 1.3rem;
         position: absolute;
         transform: translate(13px, 3px);

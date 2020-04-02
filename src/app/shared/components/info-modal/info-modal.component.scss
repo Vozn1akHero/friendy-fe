@@ -1,27 +1,25 @@
-@import '../../../../assets/sass/base/variables';
-
-.success-modal{
+.success-modal {
   padding: 7rem;
   background: white;
   border-radius: 3rem;
   z-index: -1;
 
-  .message{
-    font-size: .85rem;
-    transform: translateY(-.855rem);
+  .message {
+    font-size: 0.85rem;
+    transform: translateY(-0.855rem);
   }
 
-  .bottom-wrapper{
+  .bottom-wrapper {
     position: absolute;
     bottom: 0;
     right: 0;
     padding: 1rem;
     width: 100%;
-    background: $color-bg-grey-footer;
+    background: var(--color-bg-grey-footer);
     border-bottom-left-radius: 3rem;
     border-bottom-right-radius: 3rem;
 
-    .close-btn{
+    .close-btn {
       float: right;
     }
   }

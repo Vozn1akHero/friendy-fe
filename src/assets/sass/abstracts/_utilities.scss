@@ -1,14 +1,13 @@
-@import "../base/variables";
 @import "./m-p-loops";
 
 .bordered-onError {
-  box-shadow: 0 0 0 0.1rem rgba($color-red-for-invalid-input, 0.1);
+  box-shadow: 0 0 0 0.1rem rgba(#ff334b, 0.1);
 }
 
 .invalid-input-span {
   display: block;
   font-size: 0.6rem;
-  color: $color-red-for-invalid-input;
+  color: #ff334b;
   margin-top: 0.5rem;
 }
 
@@ -41,15 +40,15 @@
 }
 
 .color-dark-grey {
-  color: $color-grey-dark;
+  color: var(--color-grey-dark);
 }
 
 .light-grey-background {
-  background: $color-bg-grey-footer !important;
+  background: var(--color-bg-grey-footer !important);
 }
 
 .fr-light-grey-section-bg {
-  background: $color-bg-grey-footer;
+  background: var(--color-bg-grey-footer);
 }
 
 .fr-centered {
@@ -68,7 +67,7 @@
 
 .text-loader {
   height: 2rem;
-  background: $color-grey-light-2;
+  background: var(--color-grey-light-2);
 }
 
 .btn-pulse-on-click {
@@ -81,7 +80,7 @@
 .fr-err-mg-bg {
   font-size: 0.8rem;
   font-weight: 700;
-  color: $color-grey-light;
+  color: var(--color-grey-light);
 }
 
 .fr-border-radius-1 {

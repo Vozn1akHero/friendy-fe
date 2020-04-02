@@ -1,12 +1,10 @@
-@import "../../../../../../../assets/sass/base/variables";
-
 .dialog-search-input-wrap {
   position: relative;
   width: 100%;
 
   .input {
     width: 90%;
-    background: $color-bg-grey-footer;
+    background: var(--color-bg-grey-footer);
     margin: 0 auto;
     display: block;
     border-radius: 1rem;

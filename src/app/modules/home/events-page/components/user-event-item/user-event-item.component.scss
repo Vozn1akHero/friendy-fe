@@ -1,10 +1,8 @@
-@import '../../../../../../assets/sass/base/variables';
-
 .user-event-item {
   display: flex;
   justify-content: center;
   margin-bottom: 1.5rem;
-  background: $color-white;
+  background: white;
   padding: 0 2vw;
   border-radius: 2rem;
 
@@ -37,40 +35,42 @@
     padding: 1.5rem;
     width: 65%;
 
-    .location, .date, .participants {
+    .location,
+    .date,
+    .participants {
       display: flex;
       align-items: center;
       margin-top: 1rem;
 
       .text {
-        font-size: .8rem;
-        margin-left: .5rem;
+        font-size: 0.8rem;
+        margin-left: 0.5rem;
       }
     }
 
     .title {
       font-size: 1.1rem;
-      color: $color-blue;
+      color: var(--color-blue);
       text-decoration: none;
     }
 
-    .icon-location{
-      background-image: url('../../../../../../assets/images/icon/location.svg');
+    .icon-location {
+      background-image: url("../../../../../../assets/images/icon/location.svg");
     }
 
-    .icon-calendar{
-      background-image: url('../../../../../../assets/images/icon/calendar.svg');
+    .icon-calendar {
+      background-image: url("../../../../../../assets/images/icon/calendar.svg");
     }
 
-    .icon-participants{
-      background-image: url('../../../../../../assets/images/icon/users1.svg');
+    .icon-participants {
+      background-image: url("../../../../../../assets/images/icon/users1.svg");
     }
 
     hr {
       margin-top: 1.5rem;
       height: 1px;
       border: none;
-      background-color: $color-grey-light-2;
+      background-color: var(--color-grey-light-2);
     }
   }
 
@@ -83,7 +83,7 @@
       border: none;
       align-items: center;
       text-decoration: none;
-      transition: .15s opacity;
+      transition: 0.15s opacity;
 
       &:not(:last-child) {
         margin-right: 1.5rem;
@@ -91,26 +91,26 @@
 
       .text {
         display: inline-block;
-        color: $color-grey-light-2;
-        font-size: .82rem;
-        margin-right: .4rem;
+        color: var(--color-grey-light-2);
+        font-size: 0.82rem;
+        margin-right: 0.4rem;
       }
 
       .icon {
         display: inline-block;
         width: 1rem;
         height: 1rem;
-        opacity: .3;
+        opacity: 0.3;
         transform: translateY(3px);
         background-size: cover;
       }
 
-      .icon-close{
-        background-image: url('../../../../../../assets/images/icon/cancel-circle.svg');
+      .icon-close {
+        background-image: url("../../../../../../assets/images/icon/cancel-circle.svg");
       }
 
-      .icon-notifications{
-        background-image: url('../../../../../../assets/images/icon/notifications.svg');
+      .icon-notifications {
+        background-image: url("../../../../../../assets/images/icon/notifications.svg");
       }
     }
   }

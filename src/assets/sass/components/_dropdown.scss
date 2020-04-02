@@ -1,5 +1,3 @@
-@import '../base/variables';
-
 .custom-dropdown {
   position: relative;
   display: inline-block;
@@ -7,19 +5,19 @@
   height: 44px;
 
   select {
-    background-color: $color-white;
-    color: $color-grey-light;
+    background-color: var(--color-white);
+    color: var(--color-grey-light);
     height: 100%;
     width: 100%;
-    font-size: .8rem;
-    padding: .5em;
+    font-size: 0.8rem;
+    padding: 0.5em;
     padding-left: 1rem;
     padding-right: 2.5em;
     border: 0;
     margin: 0;
     border-radius: 3px;
     text-indent: 0.01px;
-    text-overflow: '';
+    text-overflow: "";
     -webkit-appearance: button;
 
     &:focus {
@@ -27,22 +25,4 @@
       border: none;
     }
   }
-
-/*  &::before, &::after {
-    content: "";
-    position: absolute;
-    pointer-events: none;
-  }
-
-  &::after {
-    content: "\25BC";
-    height: 1em;
-    font-size: .8em;
-    right: 8px;
-    top: 16px;
-  }
-
-  &::after {
-    color: rgba($color-grey-dark, .7);
-  }*/
 }

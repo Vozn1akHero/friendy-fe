@@ -1,8 +1,7 @@
-@import '../../../../assets/sass/base/variables';
-@import '../../../../assets/sass/components/dropdown';
-@import '../../../../assets/sass/components/radiobutton';
+@import "../../../../assets/sass/components/dropdown";
+@import "../../../../assets/sass/components/radiobutton";
 @import "../../../../assets/sass/components/fr-input";
-@import '../../../../assets/sass/abstracts/utilities';
+@import "../../../../assets/sass/abstracts/utilities";
 
 .joinup-page {
   position: relative;
@@ -13,39 +12,44 @@
   height: 100vh;
   width: 100vw;
   z-index: 1000;
-  background-image: linear-gradient(0.85turn, rgba(#fff000, .55), rgba(#00baff, 1));
+  background-image: linear-gradient(
+    0.85turn,
+    rgba(#fff000, 0.55),
+    rgba(#00baff, 1)
+  );
 
   .logo {
     margin: 3rem;
-    transition: transform .4s;
+    transition: transform 0.4s;
   }
 
   .joinup-form {
-      background-color: $color-bg-light-grey;
-      width: 503px;
-      box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.16);
-      padding-top: 4rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      transition: all .3s;
+    background-color: var(--color-bg-light-grey);
+    width: 503px;
+    box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.16);
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s;
 
-    .name, .surname {
+    .name,
+    .surname {
       width: 201px;
     }
 
     .name {
-      margin-right: .5rem;
+      margin-right: 0.5rem;
     }
 
     .surname {
-      margin-left: .5rem;
+      margin-left: 0.5rem;
     }
 
-    .city{
+    .city {
       width: 100%;
-      margin-top: .7rem;
+      margin-top: 0.7rem;
     }
 
     .birthday {
@@ -54,21 +58,22 @@
       justify-content: space-between;
       position: relative;
 
-      &__calendar-icon{
+      &__calendar-icon {
         background-image: url("../../../../assets/images/icon/calendar.svg");
         position: absolute;
-        right: .7rem;
+        right: 0.7rem;
         top: 1.4rem;
-        opacity: .5;
+        opacity: 0.5;
       }
     }
 
-    .email input, .password input {
+    .email input,
+    .password input {
       width: 417px;
     }
 
     .password {
-      margin-top: .7rem;
+      margin-top: 0.7rem;
     }
 
     .gender {
@@ -79,20 +84,19 @@
 
       &__title {
         margin-right: 2rem;
-        font-size: .8rem;
+        font-size: 0.8rem;
       }
 
       .checkmark {
         top: -0.2rem !important;
       }
 
-      &__inner-wrapper{
-        .container:first-child{
+      &__inner-wrapper {
+        .container:first-child {
           margin-bottom: 1rem;
         }
       }
     }
-
 
     .submit-button {
       margin-top: 2.5rem;
@@ -100,10 +104,10 @@
       height: 3rem;
       width: 10rem;
       border-radius: 3rem;
-      background: $color-blue;
+      background: var(--color-blue);
       font-weight: 700;
       color: white;
-      font-size: .85rem;
+      font-size: 0.85rem;
       margin-bottom: 2rem;
 
       &:hover {

@@ -1,30 +1,28 @@
-@import '../../../../assets/sass/base/variables';
-
-.mini-search{
+.mini-search {
   display: flex;
   justify-content: center;
 
-  form{
+  form {
     width: 100%;
     display: flex;
     justify-content: center;
   }
 
-  .inner-wrapper{
+  .inner-wrapper {
     display: flex;
     margin-top: 2rem;
   }
 
-  &-input{
+  &-input {
     width: 0px;
     height: 39px;
     outline: none;
     border: none;
     padding-left: 1rem;
-    transition: all .3s;
+    transition: all 0.3s;
   }
 
-  &-btn{
+  &-btn {
     display: flex;
     align-self: center;
     justify-content: center;
@@ -32,15 +30,15 @@
     width: 39px;
     height: 39px;
     border: none;
-    background: $color-pink;
+    background: var(--color-pink);
 
-    svg{
+    svg {
       display: flex;
       align-self: center;
       width: 19px;
       height: 19px;
 
-      fill: $color-white;
+      fill: white;
     }
   }
 }

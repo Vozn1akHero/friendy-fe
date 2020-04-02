@@ -1,17 +1,14 @@
-@import '../../../../../../assets/sass/base/variables';
-
-.chosen-user-settings-subpage{
+.chosen-user-settings-subpage {
   width: 100%;
   min-height: 100vh;
   padding-top: 1.5rem;
   padding-left: 3rem;
-  background-color: $color-bg-light-grey;
+  background-color: var(--color-bg-light-grey);
 
-  .header{
+  .header {
     padding: 1.5rem 2rem;
 
-    .title{
-
+    .title {
     }
   }
 }

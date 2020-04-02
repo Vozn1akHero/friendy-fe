@@ -1,5 +1,3 @@
-@import "../../../../../../../assets/sass/base/variables";
-
 .participant {
   text-align: center;
   margin: 0 2px;
@@ -23,7 +21,7 @@
 
   &__text-link {
     font-size: 0.7rem;
-    color: $color-grey-dark;
+    color: var(--color-grey-dark);
     text-decoration: none;
     margin-top: 6px;
     display: block;

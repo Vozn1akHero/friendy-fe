@@ -13,6 +13,26 @@
 @import "assets/sass/components/fr-btn-main-pink";
 @import "assets/sass/components/fr-input-results-popover";
 
+:root {
+  --color-grey-dark: #3f3f3f;
+  --color-blue: #00baff;
+  --color-bg-light-grey: #f8f8f8;
+  --color-bg-light-grey-2: #c6c6c6;
+  --color-bg-grey-footer: #fafafa;
+  --color-grey-light: #aaaaaa;
+  --color-grey-light-2: #b5b5b5;
+  --color-grey-dark-2: #4f4f4f;
+  --color-grey-for-disabled-btn: #787878;
+  --color-yellow: #fff000;
+  --color-pink: #e83962;
+  --color-pink-lighter: #e84c7e;
+  --color-red-for-invalid-input: #ff334b;
+  --grey-bg-on-btn-hover: rgba(#3f3f3f, 0.04);
+  --custom-scroll-1-color: #afafaf;
+  --custom-scroll-1-hover-color: #8d8d8d;
+  --navigation-width: 20rem;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -68,8 +88,8 @@ html {
 }
 
 *::selection {
-  background: $color-blue;
-  color: $color-white;
+  background: var(--color-blue);
+  color: white;
 }
 
 svg {
@@ -78,7 +98,7 @@ svg {
 
 button {
   &:disabled {
-    background: $color-grey-for-disabled-btn !important;
+    background: var(--color-grey-for-disabled-btn) !important;
     pointer-events: none;
   }
 }
