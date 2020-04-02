@@ -1,79 +1,83 @@
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700');
-@import 'assets/sass/base/variables';
-@import 'assets/sass/base/icons';
-@import 'assets/sass/abstracts/utilities';
-@import 'assets/sass/abstracts/panel-icons';
-@import 'assets/sass/abstracts/flex-utilities';
-@import 'assets/sass/components/fr-input';
-@import 'assets/sass/components/fr-modal';
-@import 'assets/sass/components/fr-span-icon';
-@import 'assets/sass/components/dropdown';
-@import 'assets/sass/components/radiobutton';
-@import 'assets/sass/components/fr-btn-main-blue';
-@import 'assets/sass/components/fr-btn-main-pink';
-@import 'assets/sass/components/fr-input-results-popover';
-//@import 'assets/sass/components/settings-panel-wrapper';
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700");
+@import "assets/sass/base/variables";
+@import "assets/sass/base/icons";
+@import "assets/sass/abstracts/utilities";
+@import "assets/sass/abstracts/panel-icons";
+@import "assets/sass/abstracts/flex-utilities";
+@import "assets/sass/components/fr-input";
+@import "assets/sass/components/fr-modal";
+@import "assets/sass/components/fr-span-icon";
+@import "assets/sass/components/dropdown";
+@import "assets/sass/components/radiobutton";
+@import "assets/sass/components/fr-btn-main-blue";
+@import "assets/sass/components/fr-btn-main-pink";
+@import "assets/sass/components/fr-input-results-popover";
 
-
-*{
-    padding: 0;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
-select{
-  &:hover{
+select {
+  &:hover {
     cursor: pointer;
   }
 }
 
-button, input[type=file], a{
-    cursor: pointer;
+button,
+input[type="file"],
+a {
+  cursor: pointer;
 
-    &:focus{ outline: none; border: none; }
-}
-
-textarea, input{
+  &:focus {
     outline: none;
     border: none;
+  }
 }
 
-input[type='number'] {
-    -moz-appearance:textfield;
+textarea,
+input {
+  outline: none;
+  border: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
-body{
-    width: auto;
-    min-width: 1600px;
-    overflow-x: hidden;
+body {
+  width: auto;
+  min-width: 1600px;
+  overflow-x: hidden;
 }
 
-*, *::after, *::before{
-    box-sizing: inherit;
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
 }
 
-html{
-    box-sizing: border-box;
+html {
+  box-sizing: border-box;
 }
 
-
-*::selection{
-    background: $color-blue;
-    color: $color-white;
+*::selection {
+  background: $color-blue;
+  color: $color-white;
 }
 
-svg{
+svg {
   pointer-events: none;
 }
 
-button{
-  &:disabled{
+button {
+  &:disabled {
     background: $color-grey-for-disabled-btn !important;
     pointer-events: none;
   }

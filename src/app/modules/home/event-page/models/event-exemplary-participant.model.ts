@@ -1,3 +1,5 @@
+import { EnviromentVariables } from "@app/shared/helpers/EnviromentVariables.ts";
+
 export default class EventExemplaryParticipant {
   id: number;
   name: string;
@@ -8,6 +10,6 @@ export default class EventExemplaryParticipant {
     this.id = id;
     this.name = name;
     this.surname = surname;
-    this.avatarUrl = "http://localhost:5000/" + avatarPath;
+    this.avatarUrl = EnviromentVariables.fileHostBaseUrl + avatarPath;
   }
 }

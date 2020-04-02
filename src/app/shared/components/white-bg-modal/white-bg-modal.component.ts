@@ -14,12 +14,9 @@ import {
 })
 export class WhiteBgModalComponent implements OnInit {
   @ViewChild("commonModal") commonModal;
-  @Output() closeEmitter: EventEmitter<void>;
+  @Output() closeEmitter: EventEmitter<void> = new EventEmitter();
   @Input() contentCentered: boolean = false;
-
-  constructor() {
-    this.closeEmitter = new EventEmitter();
-  }
+  @Input() title: string;
 
   ngOnInit() {
     const body = document.querySelector("body");

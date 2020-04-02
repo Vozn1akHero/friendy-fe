@@ -1,18 +1,10 @@
-import { AppState } from "./../../store/reducers";
-import { EventParticipant } from "src/app/shared/models/event-participant.model";
-import {
-  Component,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  EventEmitter
-} from "@angular/core";
-import { Observable } from "rxjs";
-import { EventParticipantService } from "../../services/event-participant.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import * as ParticipantActions from "../../store/participants/participants.actions";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { EventParticipant } from "src/app/shared/models/event-participant.model";
+import * as ParticipantActions from "../../store/participants/participants.actions";
+import { AppState } from "./../../store/reducers";
 
 @Component({
   selector: "app-event-participants",

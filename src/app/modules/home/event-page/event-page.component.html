@@ -6,16 +6,18 @@
   (scrolled)="updateList()"
 >
   <app-event-header [isEventAdmin]="isEventAdmin"></app-event-header>
-  <app-participants-modal
+  <!-- <app-participants-modal
     [eventId]="[eventId]"
+    (closeModalEmitter)="toggleParticipantsModal()"
     *ngIf="participantsModalOpened"
-  ></app-participants-modal>
+  ></app-participants-modal> -->
+  <ng-template #participantsModal></ng-template>
 
   <div class="event-main-content">
     <section class="left-wrapper">
       <div class="left-wrapper__panel-wrap">
         <app-event-participants
-          (openParticipantsModalEmitter)="toggleParticipantsModal()"
+          (openParticipantsModalEmitter)="openParticipantsModal()"
           [eventId]="eventId"
           [isEventAdmin]="isEventAdmin"
         ></app-event-participants>

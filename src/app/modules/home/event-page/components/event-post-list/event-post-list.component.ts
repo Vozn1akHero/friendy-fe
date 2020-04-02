@@ -1,11 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
-import { EventPostService } from "../../services/event-post.service";
-import EventPost from "../../models/event-post.model";
-import { Observable, of, Subscription } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
-import { EventAvatarService } from "../../services/event-avatar.service";
-import { ScrollableListNotifierService } from "../../../../../shared/services/scrollable-list-notifier.service";
-import SubscriptionManager from "../../../../../shared/helpers/SubscriptionManager";
+import { Observable } from "rxjs";
+import { ScrollableListNotifierService } from "@app/shared/services/scrollable-list-notifier.service";
+import EventPost from "../../models/event-post.model";
+import { EventPostService } from "../../services/event-post.service";
+import SubscriptionManager from "@app/shared/helpers/SubscriptionManager";
 
 @Component({
   selector: "app-event-post-list",

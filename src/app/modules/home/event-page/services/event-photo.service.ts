@@ -1,15 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import {
-  BehaviorSubject,
-  Observable
-} from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import EventPhoto from "../models/event-photo.model";
-import {
-  map
-} from "rxjs/operators";
+import { map } from "rxjs/operators";
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: "root" })
 export class EventPhotoService {
   private _eventPhotos: BehaviorSubject<{
     [id: number]: EventPhoto[];
@@ -38,7 +33,6 @@ export class EventPhotoService {
 
   getExemplary(id: number) {
     const loaded = this._loaded.getValue()[id];
-    console.log(loaded, this._loaded.getValue());
     if (!loaded) {
       return this.http
         .get(`api/event-photo/${id}/page/1?length=6`, {

@@ -1,9 +1,6 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from "@angular/core";
-import NewPost from "../../models/new-post.model";
-import { EventPostService } from "../../services/event-post.service";
 import { ActivatedRoute } from "@angular/router";
-import { map } from "rxjs/operators";
-import { Subscription } from "rxjs";
+import { EventPostService } from "../../services/event-post.service";
 
 @Component({
   selector: "app-event-new-post",

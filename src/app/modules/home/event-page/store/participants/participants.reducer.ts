@@ -57,7 +57,7 @@ export function participantsReducer(
     case ParticipantActions.FILL:
       return {
         ...state,
-        participants: (function() {
+        participants: (() => {
           state.participants[action.payload.id].push(...action.payload.value);
           return state.participants;
         })(),

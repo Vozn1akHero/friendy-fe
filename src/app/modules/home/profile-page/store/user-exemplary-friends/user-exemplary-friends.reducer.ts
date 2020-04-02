@@ -1,8 +1,8 @@
 import * as UserExemplaryFriendsActions from "./user-exemplary-friends.actions";
-import ExemplaryFriend from "../../models/exemplary-friend.model";
+import UserFriend from "../../models/user-friend.model";
 
 export interface State {
-  exemplaryFriends: { [id: number]: ExemplaryFriend[] };
+  exemplaryFriends: { [id: number]: UserFriend[] };
   loaded: { [id: number]: boolean };
 }
 

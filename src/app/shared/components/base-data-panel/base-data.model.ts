@@ -1,3 +1,5 @@
+import { EnviromentVariables } from "@app/shared/helpers/EnviromentVariables";
+
 export class BaseData {
   id: number;
   title: string;
@@ -6,6 +8,6 @@ export class BaseData {
   constructor(id: number, title: string, avatarUrl: string) {
     this.id = id;
     this.title = title;
-    this.avatarUrl = "http://localhost:5000/" + avatarUrl;
+    this.avatarUrl = EnviromentVariables.fileHostBaseUrl + avatarUrl;
   }
 }

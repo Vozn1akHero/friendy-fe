@@ -1,7 +1,9 @@
+import { EnviromentVariables } from "@app/shared/helpers/EnviromentVariables";
+
 export default class ExemplaryPhotoModel {
   photoUrl: string;
 
   constructor(path: string) {
-    this.photoUrl = "http://localhost:5000/"+path;
+    this.photoUrl = EnviromentVariables.fileHostBaseUrl + path;
   }
 }

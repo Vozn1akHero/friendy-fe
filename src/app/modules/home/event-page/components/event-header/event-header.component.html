@@ -1,9 +1,16 @@
-<header class="event-header">
+<div class="event-header">
   <app-event-header-bg
-    [backgroundUrl]="(eventData$|async)?.backgroundUrl"></app-event-header-bg>
+    [backgroundUrl]="(eventData$ | async)?.backgroundUrl"
+  ></app-event-header-bg>
 
-  <app-event-header-event-info [isEventAdmin]="isEventAdmin"
-                               [eventId]="eventId"
-                               [eventDataLoaded$]="eventDataLoaded$"
-                               [eventData$]="eventData$"></app-event-header-event-info>
-</header>
+  <div class="fr-d-flex">
+    <app-event-header-event-info
+      [isEventAdmin]="isEventAdmin"
+      [eventId]="eventId"
+      [eventDataLoaded$]="eventDataLoaded$"
+      [eventData$]="eventData$"
+    ></app-event-header-event-info>
+
+    <app-event-info-sec></app-event-info-sec>
+  </div>
+</div>

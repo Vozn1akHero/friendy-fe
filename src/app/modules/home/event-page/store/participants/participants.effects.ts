@@ -1,11 +1,10 @@
-import { EventParticipant } from "src/app/shared/models/event-participant.model";
-import { AppState } from "./../reducers";
-import { Store } from "@ngrx/store";
-import { filter, mergeMap, map, withLatestFrom } from "rxjs/operators";
-import { ofType } from "@ngrx/effects";
-import { EventParticipantService } from "./../../services/event-participant.service";
 import { Injectable } from "@angular/core";
-import { Effect, Actions } from "@ngrx/effects";
+import { Actions, Effect, ofType } from "@ngrx/effects";
+import { Store } from "@ngrx/store";
+import { filter, map, mergeMap, withLatestFrom } from "rxjs/operators";
+import { EventParticipant } from "src/app/shared/models/event-participant.model";
+import { EventParticipantService } from "./../../services/event-participant.service";
+import { AppState } from "./../reducers";
 import * as ParticipantActions from "./participants.actions";
 
 @Injectable()

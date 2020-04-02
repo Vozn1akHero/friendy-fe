@@ -1,0 +1,25 @@
+.friend-in-modal {
+  display: flex;
+  width: 100%;
+  position: relative;
+  padding: 0 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .avatar-wrap {
+    width: 3.5rem;
+    height: 3.5rem;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  .basic-data-link {
+    font-size: 0.83rem;
+    text-decoration: none;
+    margin-left: 1rem;
+    color: var(--color-blue);
+  }
+}

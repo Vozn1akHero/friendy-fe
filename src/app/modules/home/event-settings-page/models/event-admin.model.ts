@@ -1,3 +1,5 @@
+import { EnviromentVariables } from "@app/shared/helpers/EnviromentVariables";
+
 export default class EventAdminModel {
   id: number;
   name: string;
@@ -5,11 +7,17 @@ export default class EventAdminModel {
   avatarUrl: string;
   isEventCreator: boolean;
 
-  constructor(id: number, name: string, surname: string, avatarUrl: string, isEventCreator: boolean) {
+  constructor(
+    id: number,
+    name: string,
+    surname: string,
+    avatarUrl: string,
+    isEventCreator: boolean
+  ) {
     this.id = id;
     this.name = name;
     this.surname = surname;
-    this.avatarUrl = "http://localhost:5000/"+avatarUrl;
+    this.avatarUrl = EnviromentVariables.fileHostBaseUrl + avatarUrl;
     this.isEventCreator = isEventCreator;
   }
 }

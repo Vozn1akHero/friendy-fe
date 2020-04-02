@@ -1,3 +1,5 @@
+import { EnviromentVariables } from "@app/shared/helpers/EnviromentVariables";
+
 export default class EventBannedParticipantModel {
   id: number;
   name: string;
@@ -8,6 +10,6 @@ export default class EventBannedParticipantModel {
     this.id = id;
     this.name = name;
     this.surname = surname;
-    this.avatarUrl = "http://localhost:5000/" + avatarPath;
+    this.avatarUrl = EnviromentVariables.fileHostBaseUrl + avatarPath;
   }
 }

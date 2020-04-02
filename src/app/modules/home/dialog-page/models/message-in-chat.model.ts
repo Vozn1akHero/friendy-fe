@@ -1,3 +1,5 @@
+import { EnviromentVariables } from "@app/shared/helpers/EnviromentVariables.ts";
+
 export default class MessageInChatModel {
   content: string;
   imageUrl: string;
@@ -6,7 +8,10 @@ export default class MessageInChatModel {
 
   constructor(content: string, imagePath: string, userId: number, date: Date) {
     this.content = content;
-    this.imageUrl = imagePath != null ? "http://localhost:5000/" + imagePath : null;
+    this.imageUrl =
+      imagePath != null
+        ? EnviromentVariables.fileHostBaseUrl + imagePath
+        : null;
     this.userId = userId;
     this.date = date;
   }

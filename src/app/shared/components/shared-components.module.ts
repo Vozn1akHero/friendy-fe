@@ -32,6 +32,7 @@ import { FullScreenImageComponent } from "./full-screen-image/full-screen-image.
 import { WhiteBgModalComponent } from "./white-bg-modal/white-bg-modal.component";
 import { BaseDataPanelComponent } from "./base-data-panel/base-data-panel.component";
 import { LightBorderedNavComponent } from "./light-bordered-nav/light-bordered-nav.component";
+import { WhiteMainPanelComponent } from "./white-main-panel/white-main-panel.component";
 
 @NgModule({
   imports: [
@@ -70,7 +71,8 @@ import { LightBorderedNavComponent } from "./light-bordered-nav/light-bordered-n
     FullScreenImageComponent,
     WhiteBgModalComponent,
     BaseDataPanelComponent,
-    LightBorderedNavComponent
+    LightBorderedNavComponent,
+    WhiteMainPanelComponent
   ],
   exports: [
     NewPostFormComponent,
@@ -101,7 +103,8 @@ import { LightBorderedNavComponent } from "./light-bordered-nav/light-bordered-n
     FullScreenImageComponent,
     WhiteBgModalComponent,
     BaseDataPanelComponent,
-    LightBorderedNavComponent
+    LightBorderedNavComponent,
+    WhiteMainPanelComponent
   ],
   entryComponents: [ButtonHoverInfoPopoverComponent]
 })

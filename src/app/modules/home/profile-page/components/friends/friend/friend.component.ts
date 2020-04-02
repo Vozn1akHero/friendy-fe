@@ -4,7 +4,7 @@ import {
   OnInit,
   ChangeDetectionStrategy
 } from "@angular/core";
-import ExemplaryFriend from "../../../models/exemplary-friend.model";
+import ExemplaryFriend from "../../../models/user-friend.model";
 
 @Component({
   selector: "friend",

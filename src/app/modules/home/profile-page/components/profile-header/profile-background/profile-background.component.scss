@@ -1,4 +1,4 @@
-.profile-bg{
+.profile-bg {
   position: relative;
 
   .profile-bg-alter {
@@ -12,17 +12,16 @@
       width: 100%;
       height: 100%;
 
-      input[type=file] {
+      input[type="file"] {
         position: relative;
         width: 100%;
         height: 100%;
         opacity: 0;
         z-index: 2;
 
-
         &:hover {
           & + div:last-child {
-            background-color: rgba(204, 204, 204, .4);
+            background-color: rgba(204, 204, 204, 0.4);
           }
         }
       }
@@ -34,8 +33,8 @@
         z-index: -1;
         top: 0;
         left: 0;
-        background-color: rgba(204, 204, 204, .5);
-        transition: background-color .5s;
+        background-color: rgba(204, 204, 204, 0.5);
+        transition: background-color 0.5s;
       }
     }
 
@@ -59,7 +58,6 @@
       span {
         font-size: 1.2rem;
         color: white;
-        //margin-left: 1.5rem;
       }
     }
   }
@@ -69,11 +67,14 @@
     height: 25rem;
     overflow: hidden;
 
-    .act-bg{
+    .act-bg {
       width: 100%;
       height: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
 
-      &--null{
+      &--null {
         background: #f8f8f8;
       }
     }

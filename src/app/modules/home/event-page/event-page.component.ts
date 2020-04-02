@@ -1,12 +1,17 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import {
+  Component,
+  ComponentFactoryResolver,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  ViewContainerRef
+} from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { OpenSettingsService } from "./services/opensettings.service";
-import { Store } from "@ngrx/store";
-import * as fromApp from "../../../core/ngrx/store/app.reducer";
-import { Subscription } from "rxjs";
+import SubscriptionManager from "src/app/shared/helpers/SubscriptionManager";
 import { ScrollableListNotifierService } from "../../../shared/services/scrollable-list-notifier.service";
+import { ParticipantsModalComponent } from "./components/participants-modal/participants-modal.component";
 import { EventPostService } from "./services/event-post.service";
-import { EventPhotoService } from "./services/event-photo.service";
+import { OpenSettingsService } from "./services/open-settings.service";
 
 @Component({
   selector: "app-event",
@@ -18,12 +23,13 @@ export class EventComponent implements OnInit, OnDestroy {
   isEventAdmin: boolean;
   eventId: number;
   activeSettings: boolean = false;
-  activeSettingsSubscription: Subscription;
   participantsModalOpened: boolean;
+  @ViewChild("participantsModal", { read: ViewContainerRef }) participantsModal;
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<fromApp.AppState>,
+    private subscriptionManager: SubscriptionManager,
+    private componentFactoryResolver: ComponentFactoryResolver,
     private scrollableListNotifierService: ScrollableListNotifierService,
     private openSettingsService: OpenSettingsService
   ) {}
@@ -31,19 +37,33 @@ export class EventComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.eventId = +this.route.snapshot.paramMap.get("id");
     this.isEventAdmin = this.route.snapshot.data.isEventAdmin;
-    this.activeSettingsSubscription = this.openSettingsService.openedSettingsValueChanged$.subscribe(
-      value => {
+    this.subscriptionManager.add(
+      this.openSettingsService.openedSettingsValueChanged$.subscribe(value => {
         this.activeSettings = value;
-      }
+      })
     );
   }
 
-  toggleParticipantsModal() {
-    this.participantsModalOpened = !this.participantsModalOpened;
+  openParticipantsModal() {
+    const factory = this.componentFactoryResolver.resolveComponentFactory(
+      ParticipantsModalComponent
+    );
+    const componentRef = this.participantsModal.createComponent(factory);
+    componentRef.instance.eventId = this.eventId;
+    this.subscriptionManager.add(
+      componentRef.instance.closeModalEmitter.subscribe(() => {
+        this.removeParticipantsModal();
+      })
+    );
+    componentRef.changeDetectorRef.detectChanges();
+  }
+
+  removeParticipantsModal() {
+    this.participantsModal.clear();
   }
 
   ngOnDestroy(): void {
-    this.activeSettingsSubscription.unsubscribe();
+    this.subscriptionManager.destroy();
   }
 
   updateList() {

@@ -1,3 +1,5 @@
+import { EnviromentVariables } from "../helpers/EnviromentVariables";
+
 export class EventParticipant {
   id: number;
   name: number;
@@ -8,6 +10,6 @@ export class EventParticipant {
     this.id = id;
     this.name = name;
     this.surname = surname;
-    this.avatarUrl = "http://localhost:5000/" + avatarPath;
+    this.avatarUrl = EnviromentVariables.fileHostBaseUrl + avatarPath;
   }
 }

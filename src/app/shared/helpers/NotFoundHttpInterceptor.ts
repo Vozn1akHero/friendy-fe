@@ -26,6 +26,7 @@ export class NotFoundHttpInterceptor implements HttpInterceptor {
           if (this.url.some(value => req.url.includes(value))) {
             const router = this._injector.get(Router);
             router.navigate(["/404"]);
+            return;
           }
         }
         return throwError(err);

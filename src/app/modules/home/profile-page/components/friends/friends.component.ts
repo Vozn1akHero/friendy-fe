@@ -1,15 +1,16 @@
 import {
+  ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
-  OnDestroy,
   OnInit,
-  ChangeDetectionStrategy
+  Output
 } from "@angular/core";
-import ExemplaryFriend from "../../models/exemplary-friend.model";
-import * as UserExemplaryFriends from "../../store/user-exemplary-friends/user-exemplary-friends.actions";
 import { Store } from "@ngrx/store";
-import { Observable, Subscription } from "rxjs";
+import { Observable } from "rxjs";
+import UserFriend from "../../models/user-friend.model";
 import { AppState } from "../../store/reducers";
+import * as UserExemplaryFriends from "../../store/user-exemplary-friends/user-exemplary-friends.actions";
 
 @Component({
   selector: "friends",
@@ -18,10 +19,11 @@ import { AppState } from "../../store/reducers";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FriendsComponent implements OnInit {
-  exemplaryFriends$: Observable<ExemplaryFriend[]>;
+  exemplaryFriends$: Observable<UserFriend[]>;
   loaded$: Observable<boolean>;
   @Input() isUserProfileOwner: boolean;
   @Input() userId: number;
+  @Output() openFriendsModalEmitter: EventEmitter<void> = new EventEmitter();
 
   constructor(private store: Store<AppState>) {}
 
@@ -40,5 +42,9 @@ export class FriendsComponent implements OnInit {
       state =>
         state.profilePageUserExemplaryFriends.exemplaryFriends[this.userId]
     );
+  }
+
+  openFriendsModal() {
+    this.openFriendsModalEmitter.emit();
   }
 }

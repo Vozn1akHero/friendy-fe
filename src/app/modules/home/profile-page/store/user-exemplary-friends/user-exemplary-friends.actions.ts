@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import ExemplaryFriend from "../../models/exemplary-friend.model";
+import UserFriend from "../../models/user-friend.model";
 
 export const GET_EXEMPLARY_FRIENDS = "[Profile Page] Get Exemplary Friends";
 export const SET_EXEMPLARY_FRIENDS = "[Profile Page] Set Exemplary Friends";
@@ -10,7 +10,7 @@ export class SetExemplaryFriends implements Action {
   constructor(
     public payload: {
       id: number;
-      entries: ExemplaryFriend[];
+      entries: UserFriend[];
     }
   ) {}
 }

@@ -6,6 +6,8 @@
     infiniteScroll
     class="profile-page"
   >
+    <ng-template #userFriendsModal></ng-template>
+
     <app-new-avatar-modal
       (newAvatarSubmitted)="newAvatarSubmitted()"
       *ngIf="avatarService.newAvatarModalOpened"
@@ -41,6 +43,7 @@
 
       <div class="right-wrapper">
         <friends
+          (openFriendsModalEmitter)="openFriendsModal()"
           [isUserProfileOwner]="isUserProfileOwner"
           [userId]="userId"
         ></friends>

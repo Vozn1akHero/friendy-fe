@@ -1,0 +1,17 @@
+<app-white-bg-modal [title]="'Lista znajomych'" (closeEmitter)="closePopup()">
+  <div class="friend-list">
+    <ng-container *ngIf="loaded$ | async; else loader">
+      <app-friend-in-modal
+        *ngFor="let userFriend of userFriends$ | async"
+        [id]="userFriend.id"
+        [avatarUrl]="userFriend.avatarUrl"
+        [name]="userFriend.name"
+        [surname]="userFriend.surname"
+      >
+      </app-friend-in-modal>
+    </ng-container>
+    <ng-template #loader>
+      <app-loader></app-loader>
+    </ng-template>
+  </div>
+</app-white-bg-modal>

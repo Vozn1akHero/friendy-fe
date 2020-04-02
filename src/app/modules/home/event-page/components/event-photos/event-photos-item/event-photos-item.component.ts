@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
-import EventPhoto from "../../../models/event-photo.model";
 import { DomSanitizer, SafeStyle } from "@angular/platform-browser";
+import EventPhoto from "../../../models/event-photo.model";
 
 @Component({
   selector: "app-event-photos-item",

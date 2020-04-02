@@ -1,3 +1,5 @@
+import { EnviromentVariables } from "@app/shared/helpers/EnviromentVariables";
+
 export class FriendRequest {
   id: number;
   userId: number;
@@ -19,6 +21,6 @@ export class FriendRequest {
     this.name = name;
     this.surname = surname;
     this.isOnline = isOnline;
-    this.avatar = "http://localhost:5000/" + avatarPath;
+    this.avatar = EnviromentVariables.fileHostBaseUrl + avatarPath;
   }
 }

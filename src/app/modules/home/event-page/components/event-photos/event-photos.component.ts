@@ -1,4 +1,3 @@
-import { map } from "rxjs/operators";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";

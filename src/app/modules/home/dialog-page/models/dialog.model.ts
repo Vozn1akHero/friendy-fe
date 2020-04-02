@@ -1,3 +1,5 @@
+import { EnviromentVariables } from "@app/shared/helpers/EnviromentVariables.ts";
+
 export default class DialogModel {
   public content: string;
   public senderId: number;
@@ -24,11 +26,12 @@ export default class DialogModel {
   ) {
     this.content = content;
     this.senderId = senderId;
-    this.avatarUrl = "http://localhost:5000/" + avatarPath;
+    this.avatarUrl = EnviromentVariables.fileHostBaseUrl + avatarPath;
     this.date = date;
-    this.imageUrl = imageUrl && "http://localhost:5000/" + imageUrl;
+    this.imageUrl = imageUrl && EnviromentVariables.fileHostBaseUrl + imageUrl;
     this.interlocutorId = interlocutorId;
-    this.interlocutorAvatar = "http://localhost:5000/" + interlocutorAvatarPath;
+    this.interlocutorAvatar =
+      EnviromentVariables.fileHostBaseUrl + interlocutorAvatarPath;
     this.interlocutorName = interlocutorName;
     this.interlocutorSurname = interlocutorSurname;
     this.writtenByRequestIssuer = writtenByRequestIssuer;

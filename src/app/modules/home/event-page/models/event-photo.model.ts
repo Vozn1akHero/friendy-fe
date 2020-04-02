@@ -1,7 +1,8 @@
-export default class EventPhoto{
+import { EnviromentVariables } from "@app/shared/helpers/EnviromentVariables.ts";
+export default class EventPhoto {
   photoUrl: string;
 
   constructor(path: string) {
-    this.photoUrl = "http://localhost:5000/"+path;
+    this.photoUrl = EnviromentVariables.fileHostBaseUrl + path;
   }
 }

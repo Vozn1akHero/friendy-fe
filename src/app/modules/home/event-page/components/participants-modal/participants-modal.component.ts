@@ -1,24 +1,50 @@
-import { AppState } from "./../../store/reducers";
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output
+} from "@angular/core";
+import SubscriptionManager from "@app/shared/helpers/SubscriptionManager";
+import { ScrollableListNotifierService } from "@app/shared/services/scrollable-list-notifier.service";
 import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
 import { EventParticipant } from "src/app/shared/models/event-participant.model";
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { concat, Observable, Subscription } from "rxjs";
 import * as ParticipantActions from "../../store/participants/participants.actions";
+import { AppState } from "./../../store/reducers";
 
 @Component({
   selector: "app-participants-modal",
   templateUrl: "./participants-modal.component.html",
-  styleUrls: ["./participants-modal.component.scss"]
+  providers: [ScrollableListNotifierService]
 })
-export class ParticipantsModalComponent implements OnInit {
+export class ParticipantsModalComponent implements OnInit, OnDestroy {
   loaded$: Observable<boolean>;
   eventParticipants$: Observable<EventParticipant[]>;
   @Input() eventId: number;
-  @Output() hideModal: EventEmitter<void> = new EventEmitter();
+  @Output() closeModalEmitter: EventEmitter<void> = new EventEmitter();
 
-  constructor(private store$: Store<AppState>) {}
+  constructor(
+    private store$: Store<AppState>,
+    private subscriptionManager: SubscriptionManager,
+    private scrollableListNotifierService: ScrollableListNotifierService
+  ) {}
+
+  ngOnDestroy(): void {
+    this.subscriptionManager.destroy();
+  }
 
   ngOnInit() {
+    this.subscriptionManager.add(
+      this.store$
+        .select(e => e.eventPageParticipants.currentPage[this.eventId])
+        .subscribe(value => {
+          if (value != null) {
+            this.scrollableListNotifierService.currentPage = value;
+          }
+        })
+    );
     this.store$.dispatch(
       new ParticipantActions.GetInitial({ id: this.eventId })
     );
@@ -30,7 +56,17 @@ export class ParticipantsModalComponent implements OnInit {
     );
   }
 
+  fill() {
+    console.log(this.scrollableListNotifierService.currentPage);
+    this.store$.dispatch(
+      new ParticipantActions.StartFilling({
+        id: this.eventId,
+        page: this.scrollableListNotifierService.currentPage
+      })
+    );
+  }
+
   closePopup() {
-    this.hideModal.emit();
+    this.closeModalEmitter.emit();
   }
 }

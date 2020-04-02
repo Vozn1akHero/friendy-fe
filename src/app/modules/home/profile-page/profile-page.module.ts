@@ -20,12 +20,14 @@ import { ProfileHeaderBasicDataComponent } from "./components/profile-header/pro
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { PostModule } from "../../shared/post/post.module";
 import { PhotosComponent } from "./components/photos/photos.component";
-import { ExemplaryFriendsService } from "./services/exemplary-friends.service";
+import { UserFriendsService } from "./services/user-friends.service";
 import { FriendshipService } from "./services/friendship.service";
 import { UserPostService } from "./services/user-post.service";
 import { UserDataService } from "./services/user-data.service";
 import { ExemplaryPhotosService } from "./services/exemplary-photos.service";
 import { UserAvatarService } from "./services/user-avatar.service";
+import { FriendsModalComponent } from "./components/friends/friends-modal/friends-modal.component";
+import { FriendInModalComponent } from "./components/friends/friends-modal/friend-in-modal/friend-in-modal.component";
 
 @NgModule({
   imports: [
@@ -50,7 +52,9 @@ import { UserAvatarService } from "./services/user-avatar.service";
     ProfileBackgroundComponent,
     ProfileHeaderFriendshipControlsComponent,
     ProfileHeaderBasicDataComponent,
-    ProfileHeaderSettingsComponent
+    ProfileHeaderSettingsComponent,
+    FriendsModalComponent,
+    FriendInModalComponent
   ],
   providers: [
     ProfileBelongingResolver,
@@ -58,8 +62,9 @@ import { UserAvatarService } from "./services/user-avatar.service";
     UserPostService,
     UserDataService,
     ExemplaryPhotosService,
-    ExemplaryFriendsService,
+    UserFriendsService,
     UserAvatarService
-  ]
+  ],
+  entryComponents: [FriendsModalComponent]
 })
 export class ProfilePageModule {}

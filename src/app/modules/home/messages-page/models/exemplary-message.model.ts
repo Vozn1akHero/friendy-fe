@@ -1,3 +1,5 @@
+import { EnviromentVariables } from "@app/shared/helpers/EnviromentVariables";
+
 export default class ExemplaryMessage {
   public content: string;
   public senderId: number;
@@ -8,21 +10,24 @@ export default class ExemplaryMessage {
   public interlocutorAvatar: string;
   public writtenByRequestIssuer: boolean;
 
-  constructor(content: string,
-              senderId: number,
-              avatarPath: string,
-              date: Date,
-              hasImage: boolean,
-              interlocutorId: number,
-              interlocutorAvatarPath: string,
-              writtenByRequestIssuer: boolean) {
+  constructor(
+    content: string,
+    senderId: number,
+    avatarPath: string,
+    date: Date,
+    hasImage: boolean,
+    interlocutorId: number,
+    interlocutorAvatarPath: string,
+    writtenByRequestIssuer: boolean
+  ) {
     this.content = content;
     this.senderId = senderId;
-    this.avatarUrl = "http://localhost:5000/" + avatarPath;
+    this.avatarUrl = EnviromentVariables.fileHostBaseUrl + avatarPath;
     this.date = date;
     this.hasImage = hasImage;
     this.interlocutorId = interlocutorId;
-    this.interlocutorAvatar = "http://localhost:5000/" + interlocutorAvatarPath;
+    this.interlocutorAvatar =
+      EnviromentVariables.fileHostBaseUrl + interlocutorAvatarPath;
     this.writtenByRequestIssuer = writtenByRequestIssuer;
   }
 }

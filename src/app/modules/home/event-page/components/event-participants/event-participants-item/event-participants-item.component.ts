@@ -1,5 +1,5 @@
+import { Component, Input } from "@angular/core";
 import { EventParticipant } from "src/app/shared/models/event-participant.model";
-import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-event-participants-item",

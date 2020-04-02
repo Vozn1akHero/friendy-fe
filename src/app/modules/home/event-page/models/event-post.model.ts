@@ -1,4 +1,5 @@
-export default class EventPost{
+import { EnviromentVariables } from "./../../../../shared/helpers/EnviromentVariables";
+export default class EventPost {
   id: number;
   eventId: number;
   avatarUrl: string;
@@ -10,21 +11,26 @@ export default class EventPost{
   isPostLikedByUser: boolean;
   date: Date;
 
-  constructor(id: number,
-              eventId: number,
-              avatarPath: string,
-              content: string,
-              imagePath: string,
-              likesCount: any,
-              commentsCount: any,
-              postId: number,
-              isPostLikedByUser: boolean,
-              date: Date) {
+  constructor(
+    id: number,
+    eventId: number,
+    avatarPath: string,
+    content: string,
+    imagePath: string,
+    likesCount: any,
+    commentsCount: any,
+    postId: number,
+    isPostLikedByUser: boolean,
+    date: Date
+  ) {
     this.id = id;
     this.eventId = eventId;
-    this.avatarUrl = "http://localhost:5000/" + avatarPath;
+    this.avatarUrl = EnviromentVariables.fileHostBaseUrl + avatarPath;
     this.content = content;
-    this.imagePath = imagePath != null ? `http://localhost:5000/${imagePath}` : null;
+    this.imagePath =
+      imagePath != null
+        ? `${EnviromentVariables.fileHostBaseUrl}${imagePath}`
+        : null;
     this.likesCount = likesCount;
     this.commentsCount = commentsCount;
     this.postId = postId;

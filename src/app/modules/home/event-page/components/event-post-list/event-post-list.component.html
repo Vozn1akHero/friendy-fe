@@ -20,10 +20,12 @@
     </ng-template>
   </ng-container>
 
-  <div class="loader-wrap">
-    <app-post-loader></app-post-loader>
-    <app-post-loader></app-post-loader>
-    <app-post-loader></app-post-loader>
-    <app-post-loader></app-post-loader>
-  </div>
+  <ng-template #loading>
+    <div class="loader-wrap">
+      <app-post-loader></app-post-loader>
+      <app-post-loader></app-post-loader>
+      <app-post-loader></app-post-loader>
+      <app-post-loader></app-post-loader>
+    </div>
+  </ng-template>
 </section>

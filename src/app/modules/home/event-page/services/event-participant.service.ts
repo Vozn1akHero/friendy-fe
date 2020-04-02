@@ -1,7 +1,6 @@
-import { Injectable } from "@angular/core";
 import { HttpClient, HttpResponse } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators";
-import { BehaviorSubject, Observable } from "rxjs";
 import { EventParticipant } from "src/app/shared/models/event-participant.model";
 
 @Injectable({

@@ -24,6 +24,7 @@ import { NonParticipantControlsComponent } from "./components/event-header/event
 import { ParticipantControlsComponent } from "./components/event-header/event-info-panel/controls/participant-controls/participant-controls.component";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { PostModule } from "../../shared/post/post.module";
+import { EventInfoSecComponent } from "./components/event-header/event-info-sec/event-info-sec.component";
 
 @NgModule({
   imports: [
@@ -52,9 +53,11 @@ import { PostModule } from "../../shared/post/post.module";
     ControlsComponent,
     NonParticipantControlsComponent,
     ParticipantControlsComponent,
+    ParticipantSmallItemComponent,
     ParticipantsModalComponent,
-    ParticipantSmallItemComponent
+    EventInfoSecComponent
   ],
+  entryComponents: [ParticipantsModalComponent],
   providers: [IsEventAdminResolver]
 })
 export class EventPageModule {}

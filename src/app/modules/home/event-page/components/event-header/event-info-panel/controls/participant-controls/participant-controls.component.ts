@@ -1,14 +1,14 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 
 @Component({
-  selector: 'app-participant-controls',
-  templateUrl: './participant-controls.component.html',
-  styleUrls: ['./participant-controls.component.scss']
+  selector: "app-participant-controls",
+  templateUrl: "./participant-controls.component.html",
+  styleUrls: ["./participant-controls.component.scss"]
 })
 export class ParticipantControlsComponent implements OnInit {
   @Output() leaveEmitter: EventEmitter<void> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
 

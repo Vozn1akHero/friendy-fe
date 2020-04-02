@@ -1,3 +1,5 @@
+import { EnviromentVariables } from "@app/shared/helpers/EnviromentVariables";
+
 export default class CommentModel {
   id: number;
   authorId: number;
@@ -11,18 +13,25 @@ export default class CommentModel {
   isCommentLikedByUser: boolean;
   date: Date;
 
-  constructor(id: number,
-              authorId: number,
-              authorName: string,
-              authorSurname: string,
-              authorAvatarPath: string,
-              content: string,
-              likesCount: number, commentsCount: number, postId: number, isCommentLikedByUser: boolean, date: Date) {
+  constructor(
+    id: number,
+    authorId: number,
+    authorName: string,
+    authorSurname: string,
+    authorAvatarPath: string,
+    content: string,
+    likesCount: number,
+    commentsCount: number,
+    postId: number,
+    isCommentLikedByUser: boolean,
+    date: Date
+  ) {
     this.id = id;
     this.authorId = authorId;
     this.authorName = authorName;
     this.authorSurname = authorSurname;
-    this.authorAvatarUrl = "http://localhost:5000/" + authorAvatarPath;
+    this.authorAvatarUrl =
+      EnviromentVariables.fileHostBaseUrl + authorAvatarPath;
     this.content = content;
     this.likesCount = likesCount;
     this.commentsCount = commentsCount;

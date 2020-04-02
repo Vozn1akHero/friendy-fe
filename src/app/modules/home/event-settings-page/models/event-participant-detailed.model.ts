@@ -1,3 +1,4 @@
+import { EnviromentVariables } from "@app/shared/helpers/EnviromentVariables.ts";
 export default class EventParticipantDetailedModel {
   id: number;
   name: string;
@@ -5,11 +6,17 @@ export default class EventParticipantDetailedModel {
   avatarUrl: string;
   isAdmin: boolean;
 
-  constructor(id: number, name: string, surname: string, avatarPath: string, isAdmin: boolean) {
+  constructor(
+    id: number,
+    name: string,
+    surname: string,
+    avatarPath: string,
+    isAdmin: boolean
+  ) {
     this.id = id;
     this.name = name;
     this.surname = surname;
-    this.avatarUrl = "http://localhost:5000/" + avatarPath;
+    this.avatarUrl = EnviromentVariables.fileHostBaseUrl + avatarPath;
     this.isAdmin = isAdmin;
   }
 }

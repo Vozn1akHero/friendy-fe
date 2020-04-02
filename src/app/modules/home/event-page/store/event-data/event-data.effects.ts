@@ -1,19 +1,10 @@
 import { Injectable } from "@angular/core";
-import { Actions, ofType, Effect } from "@ngrx/effects";
-import {
-  switchMap,
-  catchError,
-  map,
-  tap,
-  withLatestFrom,
-  mergeMap,
-  filter
-} from "rxjs/operators";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import * as EventDataActions from "./event-data.actions";
-import { EventDataService } from "../../services/event-data.service";
+import { Actions, Effect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
+import { filter, map, mergeMap, withLatestFrom } from "rxjs/operators";
+import { EventDataService } from "../../services/event-data.service";
 import { AppState } from "../reducers";
+import * as EventDataActions from "./event-data.actions";
 
 @Injectable()
 export class EventDataEffects {
