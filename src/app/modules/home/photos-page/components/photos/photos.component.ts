@@ -20,6 +20,7 @@ export class PhotosComponent implements OnInit {
   @Input() id: number;
   listScrollListenerSub: Subscription;
   @Input() editable: boolean;
+  loading$: Observable<boolean>;
 
   constructor(
     private userPhotoService: UserPhotoService,
@@ -72,12 +73,14 @@ export class PhotosComponent implements OnInit {
     this.userPhotoService.getRange(this.id, 1, 10);
     this.photos$ = this.userPhotoService.userPhotos$;
     this.loaded$ = this.userPhotoService.loaded$;
+    this.loading$ = this.userPhotoService.loading$;
   }
 
   getEventPhotos() {
     this.eventPhotoService.getRange(this.id, 1, 20);
     this.photos$ = this.eventPhotoService.eventPhotos$;
     this.loaded$ = this.eventPhotoService.loaded$;
+    this.loading$ = this.eventPhotoService.loading$;
   }
 
   openImageInModal(photo: Photo) {

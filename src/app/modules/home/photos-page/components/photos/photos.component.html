@@ -1,13 +1,15 @@
 <div class="photos">
-  <ng-container *ngIf="loaded$|async; else loader">
-    <ng-container *ngIf="(photos$ | async).length>0; else noPhotos">
-      <app-photos-item *ngFor="let photo of (photos$ | async)"
-                       [chosenSubpage]="chosenSubpage"
-                       [editable]="editable"
-                       (deleteEventPhotoEmitter)="deleteEventPhoto($event)"
-                       (deleteUserPhotoEmitter)="deleteUserPhoto($event)"
-                       (openInModalEmitter)="openImageInModal($event)"
-                       [photo]="photo"></app-photos-item>
+  <ng-container *ngIf="loaded$ | async">
+    <ng-container *ngIf="(photos$ | async).length > 0; else noPhotos">
+      <app-photos-item
+        *ngFor="let photo of photos$ | async"
+        [chosenSubpage]="chosenSubpage"
+        [editable]="editable"
+        (deleteEventPhotoEmitter)="deleteEventPhoto($event)"
+        (deleteUserPhotoEmitter)="deleteUserPhoto($event)"
+        (openInModalEmitter)="openImageInModal($event)"
+        [photo]="photo"
+      ></app-photos-item>
     </ng-container>
     <ng-template #noPhotos>
       <div class="no-photos-wrap">
@@ -17,7 +19,7 @@
       </div>
     </ng-template>
   </ng-container>
-  <ng-template #loader>
+  <ng-container *ngIf="!(loaded$ | async) || (loading$ | async)">
     <app-loader></app-loader>
-  </ng-template>
+  </ng-container>
 </div>

@@ -6,20 +6,24 @@ import { map } from "rxjs/operators";
 
 @Injectable()
 export class UserPhotoService {
-  private _loaded = new BehaviorSubject<boolean>(false);
-
   constructor(private http: HttpClient) {}
 
   private _userPhotos = new BehaviorSubject<Photo[]>([]);
+  private _loaded = new BehaviorSubject<boolean>(false);
+  private _loading = new BehaviorSubject<boolean>(false);
 
   get loaded$() {
     return this._loaded.asObservable();
+  }
+  get loading$() {
+    return this._loading.asObservable();
   }
   get userPhotos$(): Observable<Photo[]> {
     return this._userPhotos.asObservable();
   }
 
   getRange(userId: number, page: number, length: number) {
+    this._loading.next(true);
     return this.http
       .get(`api/user-photo/${userId}/page/${page}?length=${length}`, {
         observe: "response"
@@ -38,6 +42,7 @@ export class UserPhotoService {
               ...res.body.map(value => new Photo(value.id, value.path))
             ]);
           }
+          this._loading.next(false);
         })
       )
       .toPromise();

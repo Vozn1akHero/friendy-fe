@@ -8,16 +8,21 @@ import { BehaviorSubject, Observable } from "rxjs";
 export class EventPhotoService {
   private _eventPhotos = new BehaviorSubject<Photo[]>([]);
   private _loaded = new BehaviorSubject<boolean>(false);
+  private _loading = new BehaviorSubject<boolean>(false);
   get loaded$() {
     return this._loaded.asObservable();
   }
   get eventPhotos$(): Observable<Photo[]> {
     return this._eventPhotos.asObservable();
   }
+  get loading$(): Observable<boolean> {
+    return this._loading.asObservable();
+  }
 
   constructor(private http: HttpClient) {}
 
   getRange(eventId: number, page: number, length: number) {
+    this._loading.next(true);
     return this.http
       .get(`api/event-photo/${eventId}/page/${page}?length=${length}`, {
         observe: "body"
@@ -35,6 +40,7 @@ export class EventPhotoService {
               ...res.map(value => new Photo(value.id, value.path))
             ]);
           }
+          this._loading.next(false);
         })
       )
       .toPromise();
